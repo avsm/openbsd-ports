@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.5 2002/04/04 11:28:39 reinhard Exp $
+# $OpenBSD: Makefile,v 1.5.2.1 2002/09/28 01:37:58 brad Exp $
 
 COMMENT=	"Java servlet 2.3 and Java server pages 1.2 server"
 
 # Requires a JVM
 ONLY_FOR_ARCHS=	i386
 
-V=		4.0.2
+V=		4.0.5
 DISTNAME=	jakarta-tomcat-${V}
 CATEGORIES=	www
 NEED_VERSION=	1.516
@@ -42,14 +42,16 @@ TOMCATDIR=	/var/tomcat
 SUBST_VARS=	TOMCATDIR CONFDIR DISTNAME
 
 post-patch:
-	@cd ${WRKDIST}/conf && perl -pi -e 's,,,g' ${CONF_FILES}
+	@cd ${WRKDIST}/conf && perl -pi -e 's,\r,,g' ${CONF_FILES}
 
 do-install:
-	@${INSTALL_DATA_DIR} ${PREFIX}/${DISTNAME}
-	@cd ${WRKDIST} && ${INSTALL_DATA} ${DOCS} ${PREFIX}/${DISTNAME}
-	@cd ${WRKDIST}/bin && chmod +x *.sh	# for .zip file
-	@cd ${WRKDIST} && \
+	${INSTALL_DATA_DIR} ${PREFIX}/${DISTNAME}
+	cd ${WRKDIST} && ${INSTALL_DATA} ${DOCS} ${PREFIX}/${DISTNAME}
+	cd ${WRKDIST}/bin && chmod +x *.sh	# for .zip file
+	cd ${WRKDIST} && \
 		tar cf - ${DIRS} | (cd ${PREFIX}/${DISTNAME} && tar -xf -)
-	@${INSTALL_DATA} ${FILESDIR}/README.OpenBSD ${PREFIX}/${DISTNAME}/conf
+	${INSTALL_DATA} ${FILESDIR}/README.OpenBSD ${PREFIX}/${DISTNAME}/conf
+	rm -f ${PREFIX}/${DISTNAME}/bin/catalina.sh.orig \
+		${PREFIX}/${DISTNAME}/conf/server.xml.orig
 
 .include "bsd.port.mk"

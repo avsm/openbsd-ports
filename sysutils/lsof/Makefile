@@ -3,7 +3,7 @@
 # Date created:         25 November 1997
 # Whom:                 Angelos D. Keromytis
 #
-# $Id: Makefile,v 1.1 1997/11/25 23:16:33 angelos Exp $
+# $Id: Makefile,v 1.2 1997/12/21 18:11:37 angelos Exp $
 #
 
 DISTNAME=	lsof_4.15_W
@@ -19,6 +19,8 @@ HAS_CONFIGURE=	yes
 CONFIGURE_SCRIPT=	Configure
 CONFIGURE_ARGS=	-n openbsd
 MAN1=		lsof.1
+
+ONLY_FOR_ARCHS=	i386
 
 SRCBALL_NAME=	${DISTNAME:S/_W$//}
 

@@ -1,6 +1,7 @@
-# $OpenBSD: DEINSTALL,v 1.1 2000/03/26 01:10:39 espie Exp $
+#!/bin/sh
+# $OpenBSD: DEINSTALL,v 1.1.2.1 2000/09/15 05:16:16 marc Exp $
 #
-# zsh de-installation
+# scsh de-installation
 
 set -e
 PATH=/bin:/usr/bin:/sbin:/usr/sbin

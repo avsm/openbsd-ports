@@ -1,0 +1,99 @@
+$OpenBSD: patch-src_kernel_qjpegio_cpp,v 1.2.4.1 2004/10/01 17:50:07 brad Exp $
+--- src/kernel/qjpegio.cpp.orig	Mon Feb 24 03:30:22 2003
++++ src/kernel/qjpegio.cpp	Thu Sep 30 14:32:13 2004
+@@ -254,15 +254,18 @@ void read_jpeg_image(QImageIO* iio)
+ 	    scaleSize( sWidth, sHeight, cinfo.output_width, cinfo.output_height, sMode );
+ //	    qDebug( "Scaling the jpeg to %i x %i", sWidth, sHeight, sModeStr );
+ 
++	    bool created = FALSE;
+ 	    if ( cinfo.output_components == 3 || cinfo.output_components == 4) {
+-		image.create( sWidth, sHeight, 32 );
++		created = image.create( sWidth, sHeight, 32 );
+ 	    } else if ( cinfo.output_components == 1 ) {
+-		image.create( sWidth, sHeight, 8, 256 );
++		created = image.create( sWidth, sHeight, 8, 256 );
+ 		for (int i=0; i<256; i++)
+ 		    image.setColor(i, qRgb(i,i,i));
+ 	    } else {
+ 		// Unsupported format
+ 	    }
++	    if (!created)
++		image = QImage();
+ 
+ 	    if (!image.isNull()) {
+ 		QImage tmpImage( cinfo.output_width, 1, 32 );
+@@ -300,49 +303,54 @@ void read_jpeg_image(QImageIO* iio)
+ 
+ 	} else {
+ 
++	    bool created = false;
+ 	    if ( cinfo.output_components == 3 || cinfo.output_components == 4) {
+-		image.create( cinfo.output_width, cinfo.output_height, 32 );
++		created = image.create( cinfo.output_width, cinfo.output_height, 32 );
+ 	    } else if ( cinfo.output_components == 1 ) {
+-		image.create( cinfo.output_width, cinfo.output_height, 8, 256 );
++		created = image.create( cinfo.output_width, cinfo.output_height, 8, 256 );
+ 		for (int i=0; i<256; i++)
+ 		    image.setColor(i, qRgb(i,i,i));
+ 	    } else {
+ 		// Unsupported format
+ 	    }
++	    if (!created)
++		image = QImage();
+ 
+ 	    if (!image.isNull()) {
+ 		uchar** lines = image.jumpTable();
+ 		while (cinfo.output_scanline < cinfo.output_height)
+ 		    (void) jpeg_read_scanlines(&cinfo,
+-				lines + cinfo.output_scanline,
+-				cinfo.output_height);
++		                               lines + cinfo.output_scanline,
++		                               cinfo.output_height);
+ 		(void) jpeg_finish_decompress(&cinfo);
+-	    }
+ 
+-	    if ( cinfo.output_components == 3 ) {
+-		// Expand 24->32 bpp.
+-		for (uint j=0; j<cinfo.output_height; j++) {
+-		    uchar *in = image.scanLine(j) + cinfo.output_width * 3;
+-		    QRgb *out = (QRgb*)image.scanLine(j);
++		if ( cinfo.output_components == 3 ) {
++		    // Expand 24->32 bpp.
++		    for (uint j=0; j<cinfo.output_height; j++) {
++			uchar *in = image.scanLine(j) + cinfo.output_width * 3;
++			QRgb *out = (QRgb*)image.scanLine(j);
+ 
+-		    for (uint i=cinfo.output_width; i--; ) {
+-			in-=3;
+-			out[i] = qRgb(in[0], in[1], in[2]);
++			for (uint i=cinfo.output_width; i--; ) {
++			    in-=3;
++			    out[i] = qRgb(in[0], in[1], in[2]);
++			}
+ 		    }
+ 		}
+ 	    }
+         }
+ 
+-	if ( cinfo.density_unit == 1 ) {
+-	    image.setDotsPerMeterX( int(100. * cinfo.X_density / 2.54) );
+-	    image.setDotsPerMeterY( int(100. * cinfo.Y_density / 2.54) );
+-	} else if ( cinfo.density_unit == 2 ) {
+-	    image.setDotsPerMeterX( int(100. * cinfo.X_density) );
+-	    image.setDotsPerMeterY( int(100. * cinfo.Y_density) );
++	if (!image.isNull()) {
++	    if ( cinfo.density_unit == 1 ) {
++	        image.setDotsPerMeterX( int(100. * cinfo.X_density / 2.54) );
++	        image.setDotsPerMeterY( int(100. * cinfo.Y_density / 2.54) );
++	    } else if ( cinfo.density_unit == 2 ) {
++		image.setDotsPerMeterX( int(100. * cinfo.X_density) );
++		image.setDotsPerMeterY( int(100. * cinfo.Y_density) );
++	    }
+ 	}
+ 
+ 	iio->setImage(image);
+-	iio->setStatus(0);
++	iio->setStatus(image.isNull());
+     }
+ 
+     jpeg_destroy_decompress(&cinfo);

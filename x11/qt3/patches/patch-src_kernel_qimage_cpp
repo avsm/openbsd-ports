@@ -1,13 +1,53 @@
-$OpenBSD: patch-src_kernel_qimage_cpp,v 1.3 2004/09/20 20:05:51 brad Exp $
---- src/kernel/qimage.cpp.orig	Sun Sep 19 20:58:07 2004
-+++ src/kernel/qimage.cpp	Sun Sep 19 21:01:10 2004
-@@ -5723,6 +5723,9 @@ static void read_xpm_image_or_array( QIm
+$OpenBSD: patch-src_kernel_qimage_cpp,v 1.3.4.1 2004/10/01 17:50:07 brad Exp $
+--- src/kernel/qimage.cpp.orig	Mon Nov 10 05:21:58 2003
++++ src/kernel/qimage.cpp	Thu Sep 30 21:53:47 2004
+@@ -4803,6 +4803,7 @@ bool read_dib( QDataStream& s, int offse
+ 	if ( comp == BMP_RLE8 ) {		// run length compression
+ 	    int x=0, y=0, b;
+ 	    register uchar *p = line[h-1];
++	    const uchar *endp = line[h-1]+w;
+ 	    while ( y < h ) {
+ 		if ( (b=d->getch()) == EOF )
+ 		    break;
+@@ -4820,9 +4821,20 @@ bool read_dib( QDataStream& s, int offse
+ 			case 2:			// delta (jump)
+ 			    x += d->getch();
+ 			    y += d->getch();
++
++			    // Protection
++			    if ( (uint)x >= (uint)w )
++				x = w-1;
++			    if ( (uint)y >= (uint)h )
++				y = h-1;
++
+ 			    p = line[h-y-1] + x;
+ 			    break;
+ 			default:		// absolute mode
++			    // Protection
++			    if ( p + b > endp )
++				b = endp-p;
++
+ 			    if ( d->readBlock( (char *)p, b ) != b )
+ 				return FALSE;
+ 			    if ( (b & 1) == 1 )
+@@ -4831,6 +4843,10 @@ bool read_dib( QDataStream& s, int offse
+ 			    p += b;
+ 		    }
+ 		} else {			// encoded mode
++		    // Protection
++		    if ( p + b > endp )
++			b = endp-p;
++
+ 		    memset( p, d->getch(), b ); // repeat pixel
+ 		    x += b;
+ 		    p += b;
+@@ -5665,6 +5681,9 @@ static void read_xpm_image_or_array( QIm
+     } else {
  	image.create( w, h, 8, ncols );
      }
- 
-+    if (image.isNull())
-+        return;
 +
++    if (image.isNull())
++	return;
+ 
      QMap<QString, int> colorMap;
      int currentColor;
- 

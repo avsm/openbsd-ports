@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.7 2001/09/09 18:14:51 naddy Exp $
+# $OpenBSD: Makefile,v 1.7.2.1 2001/11/18 23:33:50 lebel Exp $
 
 COMMENT=	"Z shell, Bourne shell-compatible, release flavor"
 COMMENT-zftp=	"Z shell embedded ftp client"
@@ -7,14 +7,14 @@ VERSION=	4.0.2
 DISTNAME=	zsh-${VERSION}
 CATEGORIES=	shells
 NEED_VERSION=	1.402
-MASTER_SITES=	ftp://ftp.zsh.org/zsh/ \
-		ftp://ftp.sterling.com/zsh/ \
-		ftp://ftp.rge.com/pub/zsh/ \
-		ftp://ftp.cenatls.cena.dgac.fr/pub/shells/zsh/ \
-		ftp://mrrl.lut.ac.uk/zsh/ \
-		ftp://ftp.fu-berlin.de/pub/unix/shells/zsh/ \
-		ftp://ftp.ips.oz.au/pub/packages/zsh/ \
-		ftp://ftp.uit.no/pub/unix/shells/zsh/
+MASTER_SITES=	ftp://ftp.zsh.org/zsh/old/ \
+		ftp://ftp.sterling.com/zsh/old/ \
+		ftp://ftp.rge.com/pub/zsh/old/ \
+		ftp://ftp.cenatls.cena.dgac.fr/pub/shells/zsh/old/ \
+		ftp://mrrl.lut.ac.uk/zsh/old/ \
+		ftp://ftp.fu-berlin.de/pub/unix/shells/zsh/old/ \
+		ftp://ftp.ips.oz.au/pub/packages/zsh/old/ \
+		ftp://ftp.uit.no/pub/unix/shells/zsh/old/
 EXTRACT_SUFX=	.tar.bz2
 
 HOMEPAGE=	http://www.zsh.org/

@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# $Id$
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+PREFIX=${PKG_PREFIX:-/usr/local}
+
+if [ ! -e /usr/lib/sasl ]; then 
+	ln -s ${PREFIX}/lib/sasl /usr/lib/sasl
+fi
+
+exit 0

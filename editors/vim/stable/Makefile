@@ -1,15 +1,13 @@
-# $OpenBSD: Makefile,v 1.46 2002/03/28 16:50:02 lebel Exp $
+# $OpenBSD: Makefile,v 1.46.2.1 2003/02/06 20:38:00 lebel Exp $
 
 COMMENT=	"vi clone, many additional features"
 COMMENT-lang=	"vi clone, NLS subpackage"
 
 DISTNAME=	vim-6.1
-#REVISION=	0
-#VERSION=	6.1.${REVISION}
-VERSION=	6.1
+REVISION=	320
+VERSION=	6.1.${REVISION}
 PKGNAME=	vim-${VERSION}
 CATEGORIES=	editors
-NEED_VERSION=	1.487
 MASTER_SITES=	ftp://ftp.vim.org/pub/vim/unix/ \
 		ftp://ftp.home.vim.org/pub/vim/unix/ \
 		ftp://ftp.berlin.de.vim.org/misc/editors/vim/unix/ \
@@ -26,10 +24,11 @@ HOMEPAGE=	http://www.vim.org/
 
 MAINTAINER=	David Lebel <lebel@openbsd.org>
 
-#_patches!=	jot -w%03d - 1 ${REVISION} 1
-#.for p in ${_patches}
-#PATCHFILES+=	6.0.${p}:0
-#.endfor
+PATCHFILES=	6.1.1-100.gz:0 6.1.101-200.gz:0 6.1.201-300.gz:0
+_patches!=	jot -w%03d - 301 ${REVISION} 1
+.for p in ${_patches}
+PATCHFILES+=	6.1.${p}:0
+.endfor
 
 # allow vim to build on m68k and vax
 .if (${MACHINE_ARCH} == "m68k")
@@ -58,7 +57,7 @@ RUN_DEPENDS=::editors/vim/stable${_flavor}
 PKGNAME$i=      vim$i-${VERSION}
 .endfor
 
-FLAVORS=	huge gtk athena motif no_x11 perl python
+FLAVORS=	huge gtk athena motif no_x11 perl python ruby
 FLAVOR?=	gtk
 
 CONFIGURE_STYLE= gnu
@@ -78,6 +77,12 @@ CONFIGURE_ENV+=	vi_cv_path_python=${LOCALBASE}/bin/python${PYTHON_VER}
 CONFIGURE_ARGS+=--enable-pythoninterp \
 	--with-python-config-dir=${LOCALBASE}/lib/python${PYTHON_VER}/config
 LIB_DEPENDS+=	python${PYTHON_VER}.0.0:python-${PYTHON_VER}*:lang/python/${PYTHON_VER}
+.endif
+
+.if ${FLAVOR:L:Mruby}
+CONFIGURE_ARGS+=--enable-rubyinterp
+MAKE_ENV+=	RUBY="${LOCALBASE}/bin/ruby"
+LIB_DEPENDS+=	ruby::lang/ruby
 .endif
 
 .if ${FLAVOR:L:Mno_x11} && \
@@ -104,9 +109,13 @@ WRKSRC=			${WRKDIST}/src
 
 SUBST_VARS=     	VERSION
 
+.include <bsd.own.mk>
+
 # don't try to regenerate the configure script. Works around the fact that
 # auto/configure.in is newer than auto/configure.
 post-patch:
 	touch ${WRKBUILD}/auto/configure
 
+post-install:
+	${INSTALL_DATA} ${FILESDIR}/pf.vim ${PREFIX}/share/vim/vim61/syntax
 .include <bsd.port.mk>

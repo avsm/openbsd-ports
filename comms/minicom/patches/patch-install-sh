@@ -1,0 +1,113 @@
+# $OpenBSD: patch-install-sh,v 1.3 2000/06/03 11:02:37 form Exp $
+
+--- install.sh.orig	Wed Mar 15 22:25:21 2000
++++ install.sh	Sat Jun  3 17:57:11 2000
+@@ -15,20 +15,20 @@
+ 	exit 1
+ fi
+ 
+-for i in $*
+-do
+-	mkdir -p $i
+-done
++#for i in $*
++#do
++#	mkdir -p $i
++#done
+ 
+-if test ! -d $1
+-then
+-	mkdir -p $1
+-	if [ $? != 0 ]
+-	then
+-		echo "$1: No such directory"
+-		exit 1
+-	fi
+-fi
++#if test ! -d $1
++#then
++#	mkdir -p $1
++#	if [ $? != 0 ]
++#	then
++#		echo "$1: No such directory"
++#		exit 1
++#	fi
++#fi
+ 
+ if test ! -d $2
+ then
+@@ -46,8 +46,8 @@
+ then
+ 	echo "Installing minicom in $2"
+ 	cp minicom $2/minicom
+-	chown root $2/minicom
+-	chgrp uucp $2/minicom
++	chown uucp $2/minicom
++	chgrp dialer $2/minicom
+ 	chmod 755 $2/minicom
+ fi
+ 
+@@ -59,18 +59,18 @@
+ 	cp $i $2/$i
+ 	chmod 755 $2/$i
+ 	chown root $2/$i
+-	chgrp root $2/$i
++	chgrp wheel $2/$i
+   fi
+ done
+ 
+-if test -f keyserv
+-then
+-	echo "Installing keyserv in $1"
+-	cp keyserv $1/keyserv
+-	chmod 755 $1/keyserv
+-	chown root $1/keyserv
+-	chgrp root $1/keyserv
+-fi
++#if test -f keyserv
++#then
++#	echo "Installing keyserv in $1"
++#	cp keyserv $1/keyserv
++#	chmod 755 $1/keyserv
++#	chown root $1/keyserv
++#	chgrp wheel $1/keyserv
++#fi
+ 
+ echo "Installing manpages in $3"
+ for i in minicom.1 runscript.1 ascii-xfr.1
+@@ -78,17 +78,17 @@
+ 	cp ../man/$i $3
+ 	chmod 644 $3/$i
+ 	chown root $3/$i
+-	chgrp root $3/$i
++	chgrp wheel $3/$i
+ done
+ 
+-if [ ! -f $1/minicom.users ]
+-then
+-	echo "Installing sample config file minicom.users in $1"
+-	cp minicom.users $1
+-	chown root $1/minicom.users
+-	chgrp root $1/minicom.users
+-	chmod 644 $1/minicom.users
+-fi
++#if [ ! -f $1/minicom.users ]
++#then
++#	echo "Installing sample config file minicom.users in $1"
++#	cp minicom.users $1
++#	chown root $1/minicom.users
++#	chgrp wheel $1/minicom.users
++#	chmod 644 $1/minicom.users
++#fi
+ 
+ mkdir -p $4 2>/dev/null
+ 
+@@ -101,7 +101,7 @@
+ 		chmod -f 644 $4/* $4/demos/* $4/tables/*
+ 		chmod -f a+x $4/demos $4/tables
+ 		chown -f root $4/* $4/demos/* $4/tables/*
+-		chgrp -f root $4/* $4/demos/* $4/tables/*
++		chgrp -f wheel $4/* $4/demos/* $4/tables/*
+ else
+ 	echo "You don't have a $4 directory - script examples not installed."
+ fi

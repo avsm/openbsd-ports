@@ -1,0 +1,23 @@
+$OpenBSD: patch-xpdf_xpdf_cc,v 1.1.2.1 2003/06/20 01:26:07 brad Exp $
+--- xpdf/xpdf.cc.orig	Tue May 21 02:40:09 2002
++++ xpdf/xpdf.cc	Thu Jun 19 21:17:12 2003
+@@ -1563,7 +1563,7 @@ static void doLink(int mx, int my) {
+ 	}
+ 	if (s) {
+ 	  fileName = ((LinkURI *)action)->getURI()->copy();
+-	  // filter out any quote marks (' or ") to avoid a potential
++	  // filter out any quote marks (' " `) to avoid a potential
+ 	  // security hole
+ 	  i = 0;
+ 	  while (i < fileName->getLength()) {
+@@ -1574,6 +1574,10 @@ static void doLink(int mx, int my) {
+ 	    } else if (fileName->getChar(i) == '\'') {
+ 	      fileName->del(i);
+ 	      fileName->insert(i, "%27");
++	      i += 3;
++	    } else if (fileName->getChar(i) == '`') {
++	      fileName->del(i);
++	      fileName->insert(i, "%60");
+ 	      i += 3;
+ 	    } else {
+ 	      ++i;

@@ -1,0 +1,24 @@
+$OpenBSD: patch-libhttpd_c,v 1.2.2.1 2003/11/08 00:39:32 margarida Exp $
+--- libhttpd.c.orig	2003-11-06 16:37:31.000000000 -0500
++++ libhttpd.c	2003-11-06 16:39:21.000000000 -0500
+@@ -818,7 +818,7 @@ defang( char* str, char* dfstr, int dfsi
+     char* cp2;
+ 
+     for ( cp1 = str, cp2 = dfstr;
+-	  *cp1 != '\0' && cp2 - dfstr < dfsize - 1;
++	  *cp1 != '\0' && cp2 - dfstr < dfsize - 5;
+ 	  ++cp1, ++cp2 )
+ 	{
+ 	switch ( *cp1 )
+@@ -2096,6 +2096,11 @@ httpd_parse_request( httpd_conn* hc )
+ 		cp = strchr( hc->hdrhost, ':' );
+ 		if ( cp != (char*) 0 )
+ 		    *cp = '\0';
++ 		if ( strchr( hc->hdrhost, '/' ) != (char*) 0 )
++ 		    {
++ 		    httpd_send_err( hc, 400, httpd_err400title, "", httpd_err400form, "" );
++ 		    return -1;
++ 		    }
+ 		}
+ 	    else if ( strncasecmp( buf, "Accept:", 7 ) == 0 )
+ 		{

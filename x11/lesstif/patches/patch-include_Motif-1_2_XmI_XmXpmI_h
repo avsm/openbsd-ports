@@ -1,4 +1,4 @@
-$OpenBSD: patch-include_Motif-1_2_XmI_XmXpmI_h,v 1.1 2004/09/01 22:57:36 pvalchev Exp $
+$OpenBSD: patch-include_Motif-1_2_XmI_XmXpmI_h,v 1.1.6.1 2004/09/30 01:41:32 brad Exp $
 --- include/Motif-1.2/XmI/XmXpmI.h.orig	Thu Sep 21 14:49:43 2000
 +++ include/Motif-1.2/XmI/XmXpmI.h	Wed Sep  1 20:30:12 2004
 @@ -90,6 +90,11 @@ extern FILE *popen();

@@ -1,12 +1,13 @@
-# $OpenBSD: Makefile,v 1.28 2002/03/21 20:35:41 espie Exp $
+# $OpenBSD: Makefile,v 1.28.2.1 2002/09/30 16:55:44 brad Exp $
 
 COMMENT=	"extract, list & test files in a ZIP archive"
 
-DISTNAME=	unzip542
-PKGNAME=	unzip-5.42
+DISTNAME=	unzip550
+PKGNAME=	unzip-5.50
 CATEGORIES=	archivers
 NEED_VERSION=	1.515
-MASTER_SITES=	ftp://ftp.uu.net/pub/archiving/zip/src/ \
+MASTER_SITES=	ftp://ftp.info-zip.org/pub/infozip/src/ \
+		ftp://ftp.uu.net/pub/archiving/zip/src/ \
 		ftp://ftp.icce.rug.nl/infozip/src/
 
 HOMEPAGE=	http://www.ctan.org/tex-archive/tools/zip/info-zip/UnZip.html

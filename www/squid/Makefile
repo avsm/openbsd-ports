@@ -1,36 +1,21 @@
-# $OpenBSD: Makefile,v 1.55 2003/08/22 21:12:18 brad Exp $
+# $OpenBSD: Makefile,v 1.55.2.1 2004/04/16 01:03:59 brad Exp $
 
 COMMENT=	"WWW and FTP proxy cache and accelerator"
 
-DISTNAME=	squid-2.5.STABLE3
-PKGNAME=	${DISTNAME}p4
+DISTNAME=	squid-2.5.STABLE5
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	www
-MASTER_SITES=	http://www.squid-cache.org/Versions/v2/2.5/
-MASTER_SITES0=	http://www.squid-cache.org/Versions/v2/2.5/bugs/
+MASTER_SITES=	${HOMEPAGE}Versions/v2/2.5/
+MASTER_SITES0=	${HOMEPAGE}Versions/v2/2.5/bugs/
 DIST_SUBDIR=	squid
 
 PATCH_DIST_STRIP= -p1
-PATCHFILES=	squid-2.5.STABLE3-deny_info.patch:0 \
-		squid-2.5.STABLE3-header_access_peer.patch:0 \
-		squid-2.5.STABLE3-memwarnsbrk.patch:0 \
-		squid-2.5.STABLE3-hostscomments.patch:0 \
-		squid-2.5.STABLE3-tcp_reset_leak.patch:0 \
-		squid-2.5.STABLE3-hostheader.patch:0 \
-		squid-2.5.STABLE3-reply_body_max_size.patch:0 \
-		squid-2.5.STABLE3-ie_refresh.patch:0 \
-		squid-2.5.STABLE3-http_reply_access-denied.patch:0 \
-		squid-2.5.STABLE3-SENT_PASV.patch:0 \
-		squid-2.5.STABLE3-peer_digest_not_found_assertion.patch:0 \
-		squid-2.5.STABLE3-round_robin_max_size.patch:0 \
-		squid-2.5.STABLE3-syscalls.disk-counters.patch:0 \
-		squid-2.5.STABLE3-blank-username-log.patch:0 \
-		squid-2.5.STABLE3-mem_cfd.patch:0 \
-		squid-2.5.STABLE3-aufs_open_fail.patch:0 \
-		squid-2.5.STABLE3-aufs_threads.patch:0 \
-		squid-2.5.STABLE3-digest_compile.patch:0 \
-		squid-2.5.STABLE3-407_user_name.patch:0 \
-		squid-2.5.STABLE3-multicast-ICP-timeout.patch:0 \
-		squid-2.5.STABLE3-forwarded_for.patch:0
+PATCHFILES=	${DISTNAME}-helper_warning.patch:0 \
+		${DISTNAME}-vary.patch:0 \
+		${DISTNAME}-deny_info.patch:0 \
+		${DISTNAME}-CONNECT_timeout.patch:0 \
+		${DISTNAME}-cache_swap_log.patch:0 \
+		${DISTNAME}-rfc1035NameUnpack.patch:0
 
 HOMEPAGE=	http://www.squid-cache.org/
 
@@ -49,7 +34,7 @@ FLAVORS=	transparent
 FLAVOR?=
 
 # Gcc 3
-MODULES=	gcc3                                                                                                  
+MODULES=	gcc3
 MODGCC3_ARCHES=	sparc64
 
 SEPARATE_BUILD=	concurrent
@@ -67,5 +52,7 @@ CONFIGURE_ARGS+= --enable-pf-transparent
 
 post-install:
 	@chown -R ${SHAREOWN}:${SHAREGRP} ${PREFIX}/share/examples/squid
+	@find ${PREFIX}/share/examples/squid/errors \
+		-name '*.orig' -print0 | xargs -0 rm -f
 
 .include <bsd.port.mk>

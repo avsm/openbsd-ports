@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.2 2002/02/05 09:07:13 dhartmei Exp $
+@comment $OpenBSD: PLIST,v 1.2.2.1 2002/11/22 02:16:34 brad Exp $
 bin/convert_smbpasswd
 bin/make_printerdef
 bin/make_smbcodepage
@@ -149,27 +149,27 @@ share/doc/samba/textdocs/UNIX_SECURITY.txt
 share/doc/samba/textdocs/Win95.txt
 share/doc/samba/textdocs/WinNT.txt
 share/doc/samba/textdocs/cifsntdomain.txt
-share/doc/samba/textdocs/kurs.pdf
-share/doc/samba/textdocs/kurs.tex
-share/doc/samba/textdocs/logo.ps
 share/doc/samba/textdocs/security_level.txt
 share/examples/samba/LDAP/README
-share/examples/samba/LDAP/export2_smbpasswd.pl
 share/examples/samba/LDAP/export_smbpasswd.pl
-share/examples/samba/LDAP/import2_smbpasswd.pl
 share/examples/samba/LDAP/import_smbpasswd.pl
 share/examples/samba/LDAP/ldapchpasswd
 share/examples/samba/LDAP/ldapsync.pl
 share/examples/samba/LDAP/samba.schema
 share/examples/samba/README
 share/examples/samba/VFS/.cvsignore
-share/examples/samba/VFS/Makefile
+share/examples/samba/VFS/Makefile.in
 share/examples/samba/VFS/README
 share/examples/samba/VFS/audit.c
-share/examples/samba/VFS/block/Makefile
 share/examples/samba/VFS/block/block.c
 share/examples/samba/VFS/block/samba-block.conf
 share/examples/samba/VFS/block/smb.conf
+share/examples/samba/VFS/configure
+share/examples/samba/VFS/configure.in
+share/examples/samba/VFS/recycle/README
+share/examples/samba/VFS/recycle/cleanup_recycle.pl
+share/examples/samba/VFS/recycle/recycle.c
+share/examples/samba/VFS/recycle/recycle.conf
 share/examples/samba/VFS/skel.c
 share/examples/samba/appliance/Makefile
 share/examples/samba/appliance/README
@@ -179,6 +179,8 @@ share/examples/samba/appliance/smb.conf-appliance
 share/examples/samba/autofs/auto.a
 share/examples/samba/dce-dfs/README
 share/examples/samba/dce-dfs/smb.conf
+share/examples/samba/libsmbclient/Makefile
+share/examples/samba/libsmbclient/README
 share/examples/samba/libsmbclient/testsmbc.c
 share/examples/samba/libsmbclient/tree.c
 share/examples/samba/misc/extra_smbstatus
@@ -192,8 +194,9 @@ share/examples/samba/printer-accounting/hp5-redir
 share/examples/samba/printer-accounting/lp-acct
 share/examples/samba/printer-accounting/printcap
 share/examples/samba/printing/smbprint
-share/examples/samba/printing/smbprint-new.sh
 share/examples/samba/printing/smbprint.newer
+share/examples/samba/printing/smbprint.old
+share/examples/samba/printing/smbprint.safer
 share/examples/samba/printing/smbprint.sysv
 share/examples/samba/simple/README
 share/examples/samba/simple/smb.conf
@@ -444,6 +447,7 @@ share/swat/using_samba/this_edition.html
 @dirrm share/examples/samba/dce-dfs
 @dirrm share/examples/samba/autofs
 @dirrm share/examples/samba/appliance
+@dirrm share/examples/samba/VFS/recycle
 @dirrm share/examples/samba/VFS/block
 @dirrm share/examples/samba/VFS
 @dirrm share/examples/samba/LDAP

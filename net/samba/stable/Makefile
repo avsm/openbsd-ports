@@ -1,20 +1,21 @@
-# $OpenBSD: Makefile,v 1.4 2002/02/11 16:17:17 dhartmei Exp $
+# $OpenBSD: Makefile,v 1.4.2.1 2002/11/22 02:16:34 brad Exp $
 
 COMMENT=	"SMB and CIFS client and server for UNIX"
 
-DISTNAME=	samba-2.2.3a
+DISTNAME=	samba-2.2.7
 CATEGORIES=	net
-NEED_VERSION=	1.500
-MASTER_SITES=	ftp://ftp.samba.org/pub/samba/ \
-		http://us1.samba.org/samba/ftp/ \
+MASTER_SITES=	http://us1.samba.org/samba/ftp/ \
+		http://us2.samba.org/samba/ftp/ \
+		http://us3.samba.org/samba/ftp/ \
+		http://us4.samba.org/samba/ftp/ \
+		http://se.samba.org/samba/ftp/ \
+		ftp://ftp.samba.org/pub/samba/ \
 		ftp://ca.samba.org/pub/samba/ \
-		ftp://ftp.uni-trier.de/pub/unix/network/samba/ \
-		ftp://ring.asahi-net.or.jp/pub/net/samba/ \
-		ftp://ftp.funet.fi/pub/mirrors/ftp.samba.org/pub/samba/
+		ftp://ftp.ring.gr.jp/pub/net/samba/
 
 HOMEPAGE=	http://www.samba.org/
 
-MAINTAINER=	Daniel Hartmeier <daniel@benzedrine.cx>
+MAINTAINER=	Daniel Hartmeier <dhartmei@openbsd.org>
 
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
@@ -25,8 +26,10 @@ MAKE_FLAGS=	PASSWD_PROGRAM="/usr/bin/passwd"
 FAKE_FLAGS=	prefix="${WRKINST}${PREFIX}" \
 		BASEDIR="${WRKINST}${PREFIX}" \
 		LIBDIR="${WRKINST}${PREFIX}/lib/samba" \
+		PIDDIR="${WRKINST}/var/run" \
 		SWATDIR="${WRKINST}${PREFIX}/share/swat" \
-		SBINDIR="${WRKINST}${PREFIX}/libexec"
+		SBINDIR="${WRKINST}${PREFIX}/libexec" \
+		VARDIR="${WRKINST}/var"
 
 SYSCONFDIR=	/etc/samba
 SAMBA_SPOOL=	/var/spool/samba
@@ -40,6 +43,7 @@ CONFIGURE_ARGS=	--libdir="${PREFIX}/lib/samba" \
 		--sbindir="${PREFIX}/libexec" \
 		--with-configdir="${SYSCONFDIR}" \
 		--with-lockdir="${SAMBA_SPOOL}" \
+		--with-piddir="/var/run" \
 		--with-logfilebase="${SAMBA_LOGDIR}" \
 		--with-privatedir="${SYSCONFDIR}" \
 		--with-swatdir="${PREFIX}/share/swat" \

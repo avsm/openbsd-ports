@@ -1,9 +1,10 @@
-# $OpenBSD: Makefile,v 1.13 2003/03/20 19:11:19 lebel Exp $
+# $OpenBSD: Makefile,v 1.13.2.1 2004/02/12 04:28:41 brad Exp $
 
 COMMENT=	"tty-based e-mail client"
 
 VERSION=	1.4.1
 DISTNAME=	mutt-${VERSION}i
+PKGNAME=	${DISTNAME}p0
 CATEGORIES=	mail
 MASTER_SITES=	ftp://ftp.mutt.org/mutt/ \
 		ftp://ftp.gbnet.net/pub/mutt-international/ \
@@ -17,6 +18,7 @@ MODULES=	gettext
 
 MAINTAINER=	Federico Schwindt <fgsch@openbsd.org>
 
+# GPL
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes

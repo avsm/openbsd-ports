@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.9.2.3 2003/03/16 03:40:12 brad Exp $
+# $OpenBSD: Makefile,v 1.9.2.4 2003/04/07 19:58:18 brad Exp $
 
 COMMENT=	"SMB and CIFS client and server for UNIX"
 
-DISTNAME=	samba-2.2.8
+DISTNAME=	samba-2.2.8a
 CATEGORIES=	net
 MASTER_SITES=	http://us1.samba.org/samba/ftp/ \
 		http://us2.samba.org/samba/ftp/ \
@@ -14,6 +14,8 @@ MASTER_SITES=	http://us1.samba.org/samba/ftp/ \
 		ftp://ftp.ring.gr.jp/pub/net/samba/
 
 HOMEPAGE=	http://www.samba.org/
+
+LIB_DEPENDS=	popt::devel/popt
 
 # GPL
 PERMIT_PACKAGE_CDROM=	Yes
@@ -50,6 +52,8 @@ CONFIGURE_ARGS=	--libdir="${PREFIX}/lib/samba" \
 		--with-ssl \
 		--with-sslinc="/usr/include/ssl" \
 		--with-ssllib="/usr/lib"
+CONFIGURE_ENV=	CPPFLAGS="-I${LOCALBASE}/include" \
+		LDFLAGS="-L${LOCALBASE}/lib"
 
 # Warning: these aditional options have not been tested.
 #CONFIGURE_ARGS+=       --with-afs

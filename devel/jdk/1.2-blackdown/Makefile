@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.5 2001/09/16 17:02:02 naddy Exp $
+# $OpenBSD: Makefile,v 1.5.2.1 2002/02/13 02:03:17 naddy Exp $
 
 ONLY_FOR_ARCHS=	i386
 
@@ -16,7 +16,12 @@ PERMIT_PACKAGE_FTP=	"Redistribution not permitted"
 PERMIT_DISTFILES_CDROM=	"Redistribution not permitted"
 PERMIT_DISTFILES_FTP=	"Redistribution not permitted"
 
-MASTER_SITES=	ftp://metalab.unc.edu/pub/linux/devel/lang/java/blackdown.org/JDK-1.2/i386/pre-v2/glibc2.0/
+MASTER_SITE_SUBDIR=	JDK-1.2/i386/pre-v2/glibc2.0
+MASTER_SITES=	ftp://ftp.tux.org/pub/java/%SUBDIR%/ \
+		ftp://ftp.mirror.ac.uk/sites/ftp.blackdown.org/java-linux/%SUBDIR%/ \
+		ftp://ftp.gwdg.de/pub/languages/java/linux/%SUBDIR%/ \
+		ftp://ftp.informatik.hu-berlin.de/pub/Java/Linux/%SUBDIR/ \
+		ftp://ftp.uk.linux.org/pub/linux/java/%SUBDIR%/
 DISTFILES=	jdk1.2pre-v2.tar.bz2
 
 BUILD_DEPENDS=	/emul/linux/usr/X11R6/lib/libXp.so.6:redhat_base->=6.2:emulators/redhat/base

@@ -4,13 +4,12 @@
 # Whom:			jfieber
 #
 # $FreeBSD: Makefile,v 1.4 1998/01/17 17:25:46 jfieber Exp $
-# $OpenBSD: Makefile,v 1.7 2000/04/09 17:38:29 espie Exp $
+# $OpenBSD: Makefile,v 1.7.2.1 2000/09/15 05:20:03 marc Exp $
 #
 
 DISTNAME=	linuxdoc-1.1
 CATEGORIES=	textproc
 NEED_VERSION=	 1.230
-FAKE=No
 MASTER_SITES=	ftp://fallout.campusview.indiana.edu/pub/sgml/
 
 MAINTAINER=	matthieu@laas.fr
@@ -23,9 +22,7 @@ PERMIT_DISTFILES_FTP=	Yes
 
 RUN_DEPENDS=    ${ISOCAT}::textproc/iso8879
 
-NO_MTREE=       Yes
 NO_BUILD=       Yes
-NO_CONFIGURE=	Yes
 WRKDIST=	${WRKDIR}
 
 INSTDIR=	${PREFIX}/share/sgml/linuxdoc

@@ -3,7 +3,7 @@
 # Date created:		December 1, 1997
 # Whom:			Angelos D. Keromytis
 #
-# $OpenBSD: Makefile,v 1.9 2000/04/21 23:24:53 espie Exp $
+# $OpenBSD: Makefile,v 1.9.2.1 2000/09/15 05:19:50 marc Exp $
 #
 
 DISTNAME=	html-4.0b
@@ -21,10 +21,7 @@ PERMIT_DISTFILES_FTP=	Yes
 
 EXTRACT_ONLY=	# empty
 NO_BUILD=       Yes
-NO_PATCH=	Yes
-NO_CONFIGURE=	Yes
 WRKDIST=	${WRKDIR}
-FAKE=		Yes
 
 INSTDIR=	${PREFIX}/share/sgml/html
 

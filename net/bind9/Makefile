@@ -1,9 +1,10 @@
-# $OpenBSD: Makefile,v 1.29.2.1 2002/06/13 18:47:29 jakob Exp $
+# $OpenBSD: Makefile,v 1.29.2.2 2002/10/27 19:47:52 jakob Exp $
 
 COMMENT=	Berkeley Internet Name Daemon
 
 VERSION=	9.2.1
 DISTNAME=	bind-${VERSION}
+PKGNAME=	bind-${VERSION}p1
 CATEGORIES=	net
 NEED_VERSION=	1.499
 
@@ -33,7 +34,8 @@ CONFIGURE_STYLE=	gnu
 CONFIGURE_ARGS+=	--with-libtool ${CONFIGURE_SHARED} \
 			--localstatedir=/var \
 			--enable-libbind \
-			--with-openssl="/usr"
+			--with-openssl="/usr" \
+			--with-randomdev=/dev/arandom
 
 MODGNU_CONFIG_GUESS_DIRS= ${WRKSRC}
 

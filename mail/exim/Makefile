@@ -1,12 +1,13 @@
-# $OpenBSD: Makefile,v 1.32 2001/12/29 12:55:08 peter Exp $
+# $OpenBSD: Makefile,v 1.32.4.1 2002/12/10 15:29:31 brad Exp $
 
 COMMENT=	"flexible mail transfer agent"
 
-VERSION=	3.34
+VERSION=	3.36
 VERSION_DOC=	3.30
 DISTNAME=	exim-${VERSION}
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	mail
-NEED_VERSION=	1.502
+
 MASTER_SITES=	ftp://ftp.csx.cam.ac.uk/pub/software/email/exim/exim3/ \
 		ftp://ftp.exim.org/pub/exim/exim3/ \
 		ftp://ftp.fu-berlin.de/unix/mail/exim/exim3/
@@ -66,6 +67,7 @@ EXIM_LOOKUP_LIBS+=	-L${LOCALBASE}/lib -lpq
 EXIM_MAKECAT+=	"SUPPORT_TLS=yes\nTLS_LIBS=-lssl -lcrypto\n"
 .endif
 
+NO_REGRESS=	Yes
 
 do-configure:
 	@mkdir -p ${WRKSRC}/Local

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.3.2.1 2004/07/29 13:30:54 robert Exp $
+# $OpenBSD: Makefile,v 1.3.2.2 2004/07/30 14:30:50 robert Exp $
 
 COMMENT=	"monitoring and managing daemons utility"
 
@@ -26,14 +26,11 @@ NO_REGRESS=	Yes
 
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/monit
-	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/monit/api-docs
 	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/monit
 	cd ${WRKSRC} && ${INSTALL_DATA} FAQ.txt README.SSL \
 	  ${PREFIX}/share/doc/monit
 	cd ${WRKSRC}/doc && ${INSTALL_DATA} monit.html examples.html \
 	  ${PREFIX}/share/doc/monit
-	cd ${WRKSRC}/doc/api-docs && ${INSTALL_DATA} * \
-	  ${PREFIX}/share/doc/monit/api-docs
 	cd ${WRKSRC} && ${INSTALL_DATA} monitrc \
 	  ${PREFIX}/share/examples/monit
 

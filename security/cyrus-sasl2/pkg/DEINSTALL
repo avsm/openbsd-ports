@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# $Id$
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+if [ -L /usr/lib/sasl2 ]; then
+	rm /usr/lib/sasl2
+fi
+
+exit 0

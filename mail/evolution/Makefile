@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.12 2004/02/04 07:39:18 sturm Exp $
+# $OpenBSD: Makefile,v 1.12.2.1 2005/02/05 17:58:05 robert Exp $
 
 COMMENT=		"integrated email and PIM software for GNOME"
 COMMENT-devguide=	"Evolution Developer's Guide"
@@ -6,6 +6,7 @@ COMMENT-devguide=	"Evolution Developer's Guide"
 V=			1.2
 VERSION=		${V}.4
 DISTNAME=		evolution-${VERSION}
+PKGNAME=		${DISTNAME}p0
 FULLPKGNAME-devguide=	evolution-devguide-${VERSION}
 CATEGORIES=    		mail x11
 

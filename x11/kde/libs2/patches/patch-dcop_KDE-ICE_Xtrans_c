@@ -1,0 +1,21 @@
+$OpenBSD: patch-dcop_KDE-ICE_Xtrans_c,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- dcop/KDE-ICE/Xtrans.c.orig	Mon May 14 02:32:16 2001
++++ dcop/KDE-ICE/Xtrans.c	Sun Jan  5 16:04:15 2003
+@@ -1021,7 +1021,7 @@ TRANS(MakeAllCOTSServerListeners) (char 
+ 	if (trans->flags&TRANS_ALIAS || trans->flags&TRANS_NOLISTEN)
+ 	    continue;
+ 
+-	sprintf(buffer,"%s/:%s", trans->TransName, port ? port : "");
++	snprintf(buffer, 256, "%s/:%s", trans->TransName, port ? port : "");
+ 
+ 	PRMSG (5,"MakeAllCOTSServerListeners: opening %s\n",
+ 	       buffer, 0, 0);
+@@ -1123,7 +1123,7 @@ TRANS(MakeAllCLTSServerListeners) (char 
+ 	if (trans->flags&TRANS_ALIAS || trans->flags&TRANS_NOLISTEN)
+ 	    continue;
+ 
+-	sprintf(buffer,"%s/:%s", trans->TransName, port ? port : "");
++	snprintf(buffer, 256, "%s/:%s", trans->TransName, port ? port : "");
+ 
+ 	PRMSG (5,"MakeAllCLTSServerListeners: opening %s\n",
+ 	    buffer, 0, 0);

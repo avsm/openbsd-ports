@@ -1,0 +1,20 @@
+$OpenBSD: patch-kdeprint_management_kmwlpd_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kdeprint/management/kmwlpd.cpp.orig	Fri Aug  3 16:13:53 2001
++++ kdeprint/management/kmwlpd.cpp	Sun Jan  5 16:04:16 2003
+@@ -122,12 +122,15 @@ kdDebug() << "connection closed" << endl
+ 	}
+ 
+ 	char	buf[1024] = {0};
+-	int	n;
++	int	n, tot(1);
+ kdDebug() << "reading" << endl;
+ 	while ((n=::read(sock,res,63)) > 0)
+ 	{
+ 		res[n] = 0;
++		tot += n;
+ kdDebug() << buf << endl;
++		if (tot >= 1024)
++			break;
+ 		strncat(buf,res,1023);
+ 	}
+ 	close(sock);

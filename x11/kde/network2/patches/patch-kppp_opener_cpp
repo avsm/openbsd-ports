@@ -1,0 +1,64 @@
+$OpenBSD: patch-kppp_opener_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kppp/opener.cpp.orig	Tue Nov 13 20:34:56 2001
++++ kppp/opener.cpp	Sun Jan  5 21:33:22 2003
+@@ -59,22 +59,21 @@ extern "C" int _Precvmsg();
+ #include <netinet/in.h>
+ 
+ #ifdef __FreeBSD__
+-     // For kldload
+-     #include <sys/linker.h>
++#  include <sys/linker.h>  // for kldload
+ #endif
+ 
+ #ifdef HAVE_CONFIG_H
+-#include <config.h>
++#  include <config.h>
+ #endif
+ 
+ #ifndef HAVE_NET_IF_PPP_H
+-#ifdef HAVE_LINUX_IF_PPP_H
+-#include <linux/if_ppp.h>
+-#endif
++#  ifdef HAVE_LINUX_IF_PPP_H
++#    include <linux/if_ppp.h>
++#  endif
+ #else
+-#include <net/ppp_defs.h>
+-#include <net/if.h>
+-#include <net/if_ppp.h>
++#  include <net/ppp_defs.h>
++#  include <net/if.h>
++#  include <net/if_ppp.h>
+ #endif
+ 
+ #include <errno.h>
+@@ -91,8 +90,8 @@ extern "C" int _Precvmsg();
+ #include "devices.h"
+ 
+ #ifdef HAVE_RESOLV_H
+-#include <arpa/nameser.h>
+-#include <resolv.h>
++#  include <arpa/nameser.h>
++#  include <resolv.h>
+ #endif
+ 
+ #ifndef _PATH_RESCONF
+@@ -204,7 +203,7 @@ void Opener::mainLoop() {
+ 	device = deviceByIndex(request.lock.deviceNum);
+ 	MY_ASSERT(strlen(LOCK_DIR)+strlen(device) < MaxPathLen);
+ 	strncpy(lockfile, LOCK_DIR"/LCK..", MaxPathLen);
+-	strncat(lockfile, device + strlen("/dev/"),
++	strncat(lockfile, strrchr(device, '/') + 1,
+ 		MaxPathLen - strlen(lockfile));
+ 	lockfile[MaxPathLen] = '\0';
+ 	response.status = 0;
+@@ -526,7 +525,8 @@ bool Opener::execpppd(const char *argume
+     case 0:
+       // let's parse the arguments the user supplied into UNIX suitable form
+       // that is a list of pointers each pointing to exactly one word
+-      strcpy(buf, arguments);
++      strncpy(buf, arguments, sizeof(buf));
++      buf[sizeof(buf)-1] = '\0';
+       parseargs(buf, args);
+       // become a session leader and let /dev/ttySx
+       // be the controlling terminal.

@@ -1,0 +1,11 @@
+$OpenBSD: patch-klipper_urlgrabber_h,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- klipper/urlgrabber.h.orig	Tue Jan 30 16:46:15 2001
++++ klipper/urlgrabber.h	Sun Jan  5 18:22:16 2003
+@@ -63,7 +63,6 @@ public:
+ private:	
+   const ActionList& matchingActions( const QString& );
+   void execute( const struct ClipCommand *command ) const;
+-  void startProcess( const QString& cmdLine ) const;
+   void editData();
+   bool isAvoidedWindow() const;
+   void actionMenu( bool wm_class_check );

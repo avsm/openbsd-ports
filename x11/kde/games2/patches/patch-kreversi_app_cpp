@@ -1,0 +1,14 @@
+$OpenBSD: patch-kreversi_app_cpp,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- kreversi/app.cpp.orig	Sun Jul 29 00:59:49 2001
++++ kreversi/app.cpp	Sun Jan  5 21:20:49 2003
+@@ -804,8 +804,8 @@ void App::readHighscore() {
+       highscore.resize(i+1);
+ 
+       HighScore hs;
+-      sscanf((const char *)e.utf8(), "%s %d %d %d %f %ld", 
+-	     (char *)&hs.name, &hs.color, &hs.winner, 
++      sscanf( e.utf8(), "%31s %d %d %d %f %ld",
++	     hs.name, &hs.color, &hs.winner,
+ 	     &hs.loser, &hs.rating, &hs.date);
+       highscore[i] = hs;
+     } else

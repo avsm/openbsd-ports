@@ -1,0 +1,17 @@
+$OpenBSD: patch-ktalkd_ktalkd_machines_talkconn_cpp,v 1.1.2.1 2003/01/07 00:12:41 brad Exp $
+--- ktalkd/ktalkd/machines/talkconn.cpp.orig	Sat Jan  8 21:18:04 2000
++++ ktalkd/ktalkd/machines/talkconn.cpp	Sun Jan  5 21:33:22 2003
+@@ -88,9 +88,13 @@ TalkConnection::TalkConnection(struct in
+     *old_msg.r_tty = '\0';
+ 
+     strncpy(new_msg.l_name,local_user,NEW_NAME_SIZE);
++    new_msg.l_name[NEW_NAME_SIZE-1]='\0';
+     strncpy(new_msg.r_name,r_name,NEW_NAME_SIZE);
++    new_msg.r_name[NEW_NAME_SIZE-1]='\0';
+     strncpy(old_msg.l_name,local_user,OLD_NAME_SIZE);
++    old_msg.l_name[OLD_NAME_SIZE-1]='\0';
+     strncpy(old_msg.r_name,r_name,OLD_NAME_SIZE);
++    old_msg.r_name[OLD_NAME_SIZE-1]='\0';
+ 
+ }
+ 

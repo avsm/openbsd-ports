@@ -1,0 +1,15 @@
+$OpenBSD: patch-kdecore_tests_kmemtest_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kdecore/tests/kmemtest.cpp.orig	Tue Feb 22 10:06:49 2000
++++ kdecore/tests/kmemtest.cpp	Sun Jan  5 16:04:15 2003
+@@ -165,9 +165,9 @@ int main(int argc, char *argv[]) 
+      char buf[200];
+   
+      if (argc >=3)
+-        sprintf(buf, "%s &", argv[2]);
++        snprintf(buf, 200, "%s &", argv[2]);
+      else
+-        sprintf(buf, "%s &", argv[0]);
++        snprintf(buf, 200, "%s &", argv[0]);
+ 
+      printf("Waiting for memory usage to settle down....\n");
+      long prev = showTotalMem();

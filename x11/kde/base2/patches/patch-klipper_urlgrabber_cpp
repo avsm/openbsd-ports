@@ -1,0 +1,65 @@
+$OpenBSD: patch-klipper_urlgrabber_cpp,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- klipper/urlgrabber.cpp.orig	Mon Nov  5 21:40:29 2001
++++ klipper/urlgrabber.cpp	Sun Jan  5 18:22:16 2003
+@@ -201,42 +201,39 @@ void URLGrabber::execute( const struct C
+ {
+     if ( command->isEnabled ) {
+         QString cmdLine = command->command;
++        QString escClipData = KShellProcess::quote(myClipData);
+ 
+-        // escape $ to avoid it being expanded by the shell
+-        QString escClipData = myClipData;
+-        escClipData.replace( QRegExp( "\\$" ), "\\$" );
+-
+-        // replace "%s" with the clipboard contents
++        // replace "%s", '%s' and %s with the clipboard contents
++        // the quotes have to be replaced as well as they might
++        // be part of config files from older klipper versions
+         // replace \%s to %s
+-        int pos = 0;
+-        
++        int pos;
+         while ( (pos = cmdLine.find("%s", pos)) >= 0 ) {
+-            if ( pos > 0 && cmdLine.at( pos -1 ) == '\\' ) {
++            if ( pos > 0 && cmdLine.at( pos - 1 ) == '\\' ) {
+                 cmdLine.remove( pos -1, 1 ); // \%s -> %s
+                 pos++;
+             }
++            else if (pos > 0 && (cmdLine[pos - 1] == '\'' || cmdLine[pos - 1] == '"') &&
++                     pos + 2 < cmdLine.length() && cmdLine[pos + 2] == cmdLine[pos - 1]) {
++                cmdLine.replace ( pos - 1, 4, escClipData );
++                pos += escClipData.length();
++            }
+             else {
+                 cmdLine.replace( pos, 2, escClipData );
+                 pos += escClipData.length();
+             }
+         }
+ 
+-        startProcess( cmdLine );
+-    }
+-}
++        kdDebug() << "now starting " << cmdLine << endl;
++        if ( cmdLine.isEmpty() )
++            return;
+ 
++        KShellProcess proc;
++        proc << cmdLine.stripWhiteSpace();
+ 
+-void URLGrabber::startProcess( const QString& cmdLine ) const
+-{
+-    kdDebug() << "now starting " << cmdLine << endl;
+-    if ( cmdLine.isEmpty() )
+-        return;
+-
+-    KShellProcess proc;
+-    proc << cmdLine.simplifyWhiteSpace().stripWhiteSpace();
+-
+-    if ( !proc.start(KProcess::DontCare, KProcess::NoCommunication ))
+-        qWarning("Klipper: Couldn't start process!");
++        if ( !proc.start(KProcess::DontCare, KProcess::NoCommunication ))
++            qWarning("Klipper: Couldn't start process!");
++    }
+ }
+ 
+ 

@@ -1,0 +1,31 @@
+$OpenBSD: patch-kdoctools_xslt_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kdoctools/xslt.cpp.orig	Sat Nov 10 00:32:38 2001
++++ kdoctools/xslt.cpp	Sun Jan  5 16:04:16 2003
+@@ -95,7 +95,9 @@ QString transform( const QString &pat, c
+     /* if (contents.left(5) != "<?xml") {
+         fprintf(stderr, "xmlizer\n");
+         INFO(i18n("XMLize document"));
+-        FILE *p = popen(QString::fromLatin1("xmlizer %1").arg(pat).latin1(), "r");
++        QString cmd = "xmlizer ";
++        cmd += KProcess::quote(pat);
++        FILE *p = popen(QFile::encodeName(cmd), "r");
+         xmlFile.open(IO_ReadOnly, p);
+         char buffer[5001];
+         contents.truncate(0);
+@@ -403,12 +405,16 @@ QCString fromUnicode( const QString &dat
+         for ( uint i = 0; i < len; i++ ) {
+             QCString test = locale->fromUnicode( part.mid( i, 1 ) );
+             if ( locale->toUnicode( test ) == part.mid( i, 1 ) ) {
++                if (buffer_len + test.length() + 1 > sizeof(buffer))
++                   break;
+                 strcpy( buffer + buffer_len, test.data() );
+                 buffer_len += test.length();
+             } else {
+                 QString res;
+                 res.sprintf( "&#%d;", part.at( i ).unicode() );
+                 test = locale->fromUnicode( res );
++                if (buffer_len + test.length() + 1 > sizeof(buffer))
++                   break;
+                 strcpy( buffer + buffer_len, test.data() );
+                 buffer_len += test.length();
+             }

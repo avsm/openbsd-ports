@@ -1,0 +1,12 @@
+$OpenBSD: patch-kparts_browserextension_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kparts/browserextension.cpp.orig	Wed Jun 20 16:19:00 2001
++++ kparts/browserextension.cpp	Sun Jan  5 16:07:24 2003
+@@ -541,7 +541,7 @@ bool BrowserHostExtension::openURLInFram
+ 
+ BrowserHostExtension *BrowserHostExtension::childObject( QObject *obj )
+ {
+-    if ( !obj )
++    if ( !obj || !obj->children() )
+         return 0L;
+ 
+     // we try to do it on our own, in hope that we are faster than

@@ -1,0 +1,21 @@
+$OpenBSD: patch-libkmid_midimapper_h,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- libkmid/midimapper.h.orig	Fri Jul 28 17:45:30 2000
++++ libkmid/midimapper.h	Sun Jan  5 16:07:25 2003
+@@ -27,6 +27,8 @@
+ #include <stdio.h>
+ #include <libkmid/dattypes.h>
+ 
++#define KM_NAME_SIZE 30
++
+ /**
+  * A Midi Mapper class which defines the way MIDI events are translated
+  * (or "mapped") to different ones. This way, when two MIDI devices "talk"
+@@ -65,7 +67,7 @@ class MidiMapper
+      */
+     struct Keymap
+     {
+-      char name[30];
++      char name[KM_NAME_SIZE];
+       uchar key[128];
+       struct Keymap *next;
+     };

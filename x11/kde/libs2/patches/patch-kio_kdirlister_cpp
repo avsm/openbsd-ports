@@ -1,0 +1,40 @@
+$OpenBSD: patch-kio_kdirlister_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kio/kdirlister.cpp.orig	Wed Jun  6 16:39:51 2001
++++ kio/kdirlister.cpp	Sun Jan  5 16:07:24 2003
+@@ -159,7 +159,8 @@ void KDirLister::openURL( const KURL& _u
+     return;
+   }
+ 
+-  m_url = _url;
++  if ( m_url.isEmpty() || !_keep ) // Set toplevel URL if not set yet
++    m_url = _url;
+ 
+   m_bComplete = false;
+   d->urlChanged = false;
+@@ -261,15 +262,13 @@ void KDirLister::slotResult( KIO::Job* j
+   {
+     job->showErrorDialog();
+ 
+-    if ( m_lstDirs.count() > 1 )
+-      emit canceled( job->url() );
++    emit canceled( job->url() );
+     if ( m_bComplete )
+       emit canceled();
+   }
+   else
+   {
+-    if ( m_lstDirs.count() > 1 )
+-      emit completed( job->url() );
++    emit completed( job->url() );
+     if ( m_bComplete )
+       emit completed();
+   }
+@@ -308,7 +307,7 @@ void KDirLister::slotEntries( KIO::Job* 
+ 
+     if ( name == dot )
+     {
+-      if ( !m_rootFileItem ) // only if we didn't keep the previous dir
++      if ( !m_rootFileItem && url == m_url ) // only if we didn't keep the previous dir
+       {
+         m_rootFileItem = createFileItem( *it, url, m_bDelayedMimeTypes );
+       }

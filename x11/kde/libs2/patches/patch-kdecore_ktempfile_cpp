@@ -1,0 +1,13 @@
+$OpenBSD: patch-kdecore_ktempfile_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kdecore/ktempfile.cpp.orig	Tue Sep  4 19:06:38 2001
++++ kdecore/ktempfile.cpp	Sun Jan  5 16:04:15 2003
+@@ -90,6 +90,9 @@ bool
+ KTempFile::create(const QString &filePrefix, const QString &fileExtension,
+ 		  int mode)
+ {
++   // make sure the random seed is randomized
++   (void) KApplication::random();
++
+    QCString ext = QFile::encodeName(fileExtension);
+    QCString nme = QFile::encodeName(filePrefix) + "XXXXXX" + ext;
+    if((mFd = mkstemps(nme.data(), ext.length())) < 0)

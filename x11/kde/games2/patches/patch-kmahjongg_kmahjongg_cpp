@@ -1,0 +1,21 @@
+$OpenBSD: patch-kmahjongg_kmahjongg_cpp,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- kmahjongg/kmahjongg.cpp.orig	Mon Nov  5 21:44:08 2001
++++ kmahjongg/kmahjongg.cpp	Sun Jan  5 21:20:49 2003
+@@ -774,7 +774,7 @@ void KMahjonggWidget::loadGame(void) {
+     }
+ 
+     // verify the magic
+-    fscanf(outFile, "%s\n", buffer);
++    fscanf(outFile, "%1023s\n", buffer);
+     if (buffer != gameMagic) {
+ 	KMessageBox::sorry(this,
+ 		i18n("File format not recognised."));
+@@ -783,7 +783,7 @@ void KMahjonggWidget::loadGame(void) {
+     }
+ 
+     //ed the elapsed time
+-    fscanf(outFile, "%s\n", buffer);
++    fscanf(outFile, "%1023s\n", buffer);
+     gameTimer->fromString(buffer);
+ 
+     // suck out all the game data

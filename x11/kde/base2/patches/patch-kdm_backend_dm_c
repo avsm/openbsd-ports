@@ -1,0 +1,53 @@
+$OpenBSD: patch-kdm_backend_dm_c,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- kdm/backend/dm.c.orig	Mon Nov  5 21:40:03 2001
++++ kdm/backend/dm.c	Sun Jan  5 18:22:16 2003
+@@ -363,6 +363,11 @@ enum utState { UtWait, UtActive };
+ #define UT_LINESIZE 32
+ #endif
+ 
++#define __stringify(x) #x
++#define stringify(x) __stringify(x)
++
++#define UT_LINESIZE_S stringify(UT_LINESIZE)
++
+ struct utmps {
+     struct utmps *next;
+     struct display *d;
+@@ -436,7 +441,7 @@ CheckUtmp (void)
+ #else
+ 		    if (ut->ut_type == LOGIN_PROCESS)
+ 		    {
+-			Debug ("utmp entry for %s marked waiting\n", utp->line);
++			Debug ("utmp entry for %." UT_LINESIZE_S "s marked waiting\n", utp->line);
+ 			utp->state = UtWait;
+ 		    }
+ 		    else if (ut->ut_type != USER_PROCESS)
+@@ -445,7 +450,7 @@ CheckUtmp (void)
+ #endif
+ 		    {
+ 			utp->hadSess = 1;
+-			Debug ("utmp entry for %s marked active\n", utp->line);
++			Debug ("utmp entry for %." UT_LINESIZE_S "s marked active\n", utp->line);
+ 			utp->state = UtActive;
+ 		    }
+ 		    if (utp->time < ut->ut_time)
+@@ -460,7 +465,7 @@ CheckUtmp (void)
+ 	    {
+ 		utp->state = UtWait;
+ 		utp->time = now;
+-		Debug ("utmp entry for %s marked waiting\n", utp->line);
++		Debug ("utmp entry for %." UT_LINESIZE_S "s marked waiting\n", utp->line);
+ 	    }
+ #elif defined(sun)
+ 	endutxent();
+@@ -479,8 +484,8 @@ CheckUtmp (void)
+ 	    if (remains <= 0)
+ 	    {
+ 		struct display *d = utp->d;
+-		Debug ("console login for %s at %s timed out\n", 
+-		       utp->d->name, utp->line);
++		Debug ("console login for %s at %." UT_LINESIZE_S "s timed out\n", 
++		       d->name, utp->line);
+ 		*utpp = utp->next;
+ 		free (utp);
+ 		ExitDisplay (d, TRUE, TRUE, TRUE);

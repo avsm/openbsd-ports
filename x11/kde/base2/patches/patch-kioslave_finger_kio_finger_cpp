@@ -1,0 +1,12 @@
+$OpenBSD: patch-kioslave_finger_kio_finger_cpp,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- kioslave/finger/kio_finger.cpp.orig	Fri May 11 16:59:50 2001
++++ kioslave/finger/kio_finger.cpp	Sun Jan  5 18:22:16 2003
+@@ -123,7 +123,7 @@ void FingerProtocol::get(const KURL& url
+   
+   //kdDebug() << "Refresh rate: " << refreshRate << endl;
+  
+-  myKProcess = new KShellProcess();  
++  myKProcess = new KProcess();  
+   *myKProcess << *myPerlPath << *myFingerPerlScript 
+ 	      << *myFingerPath << *myFingerCSSFile 
+ 	      << refreshRate << myURL->host() << myURL->user() ;

@@ -1,0 +1,14 @@
+$OpenBSD: patch-ksirc_servercontroller_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- ksirc/servercontroller.cpp.orig	Thu Jun 21 11:28:58 2001
++++ ksirc/servercontroller.cpp	Sun Jan  5 21:33:22 2003
+@@ -516,8 +516,8 @@ void servercontroller::ProcMessage(QStri
+   case ProcCommand::changeChannel:
+     {
+       char *new_s, *old_s;
+-      new_s = new char[args.length()];
+-      old_s = new char[args.length()];
++      new_s = new char[args.length()+1];
++      old_s = new char[args.length()+1];
+       sscanf(args.ascii(), "%s %s", old_s, new_s);
+       //  If the channel has a !, it's a control channel, remove the !
+       if(old_s[0] == '!')

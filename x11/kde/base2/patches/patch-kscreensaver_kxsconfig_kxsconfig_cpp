@@ -1,0 +1,13 @@
+$OpenBSD: patch-kscreensaver_kxsconfig_kxsconfig_cpp,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- kscreensaver/kxsconfig/kxsconfig.cpp.orig	Tue Aug  1 19:20:45 2000
++++ kscreensaver/kxsconfig/kxsconfig.cpp	Sun Jan  5 18:22:16 2003
+@@ -256,7 +256,8 @@ int main(int argc, char *argv[])
+   KApplication app;
+ 
+   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+-
++  if(args->count()==0)
++    exit(1);
+   KXSConfigDialog *dialog = new KXSConfigDialog(args->arg(0));
+   dialog->show();
+ 

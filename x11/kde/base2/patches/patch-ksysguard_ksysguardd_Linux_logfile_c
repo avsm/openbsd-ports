@@ -1,0 +1,12 @@
+$OpenBSD: patch-ksysguard_ksysguardd_Linux_logfile_c,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- ksysguard/ksysguardd/Linux/logfile.c.orig	Sun Jul 29 00:56:47 2001
++++ ksysguard/ksysguardd/Linux/logfile.c	Sun Jan  5 22:57:10 2003
+@@ -102,7 +102,7 @@ void printLogFileInfo(const char* cmd)
+ 
+ void registerLogFile(const char* cmd)
+ {
+-	char name[256];
++	char name[257];
+ 	FILE* file;
+ 	LogFileEntry *entry;
+ 	int i;

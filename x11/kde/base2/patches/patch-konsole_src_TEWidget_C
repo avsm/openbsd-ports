@@ -1,0 +1,39 @@
+$OpenBSD: patch-konsole_src_TEWidget_C,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- konsole/src/TEWidget.C.orig	Mon Nov  5 21:40:30 2001
++++ konsole/src/TEWidget.C	Sun Jan  5 18:22:16 2003
+@@ -1172,7 +1172,7 @@ void TEWidget::dropEvent(QDropEvent* eve
+           dropText += " ";
+           bPopup = false; // more than one file, don't popup
+         }
+-        KURL url(p);
++        KURL url(QUriDrag::uriToUnicodeUri(p));
+         QString tmp;
+         if (url.isLocalFile()) {
+           tmp = url.path(); // local URL : remove protocol
+@@ -1181,7 +1181,8 @@ void TEWidget::dropEvent(QDropEvent* eve
+           tmp = url.url();
+           bPopup = false; // a non-local file, don't popup
+         }
+-        KRun::shellQuote(tmp);
++        if (strlist.count()>1)
++          KRun::shellQuote(tmp);
+         dropText += tmp;
+       }
+ 
+@@ -1212,6 +1213,7 @@ void TEWidget::drop_menu_activated(int i
+    switch (item)
+    {
+    case 0: // paste
++      KRun::shellQuote(dropText);
+       currentSession->getEmulation()->sendString(dropText.local8Bit());
+ //    KWM::activate((Window)this->winId());
+       break;
+@@ -1227,7 +1229,7 @@ void TEWidget::drop_menu_activated(int i
+             dropText = url.directory( true, false ); // remove filename
+          }
+       }
+-      dropText.replace(QRegExp(" "), "\\ "); // escape spaces
++      KRun::shellQuote(dropText); 
+       currentSession->getEmulation()->sendString(dropText.local8Bit());
+       currentSession->getEmulation()->sendString("\n");
+       //    KWM::activate((Window)this->winId());

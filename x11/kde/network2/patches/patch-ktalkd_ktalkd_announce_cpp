@@ -1,0 +1,12 @@
+$OpenBSD: patch-ktalkd_ktalkd_announce_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- ktalkd/ktalkd/announce.cpp.orig	Wed Apr  4 10:33:30 2001
++++ ktalkd/ktalkd/announce.cpp	Sun Jan  5 21:33:22 2003
+@@ -430,7 +430,7 @@ void print_mesg(FILE * tf, NEW_CTL_MSG *
+ 		*(bptr++) = '\n';
+ 	}
+ 	*bptr = '\0';
+-	fprintf(tf, big_buf);
++	fprintf(tf, "%s", big_buf);
+ 	fflush(tf);
+ 	ioctl(fileno(tf), TIOCNOTTY, (struct sgttyb *) 0);
+         delete remotemach;

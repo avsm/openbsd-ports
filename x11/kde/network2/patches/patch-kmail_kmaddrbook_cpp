@@ -1,0 +1,21 @@
+$OpenBSD: patch-kmail_kmaddrbook_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kmail/kmaddrbook.cpp.orig	Tue Jun 12 05:44:13 2001
++++ kmail/kmaddrbook.cpp	Sun Jan  5 21:33:22 2003
+@@ -14,6 +14,7 @@
+ #include <klocale.h>
+ #include <kstddirs.h>
+ #include <kmessagebox.h>
++#include <kprocess.h>
+ 
+ #include "kmkernel.h" // for KabBridge
+ #include "kmmessage.h" // for KabBridge
+@@ -329,8 +330,7 @@ void KMAddrBookExternal::addEmail(QStrin
+   KConfigGroupSaver saver(config, "General");
+   int ab = config->readNumEntry("addressbook", 3);
+   if (ab == 3) {
+-    KRun::runCommand( "kaddressbook -a \"" + addr.replace(QRegExp("\""), "")
+-      + "\"" );
++    KRun::runCommand( "kaddressbook -a " + KShellProcess::quote(addr));
+     return;
+   }
+   if (!KMAddrBookExternal::useKAB()) {

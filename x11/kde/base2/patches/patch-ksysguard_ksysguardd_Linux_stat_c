@@ -1,0 +1,29 @@
+$OpenBSD: patch-ksysguard_ksysguardd_Linux_stat_c,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- ksysguard/ksysguardd/Linux/stat.c.orig	Mon Jun  4 10:45:05 2001
++++ ksysguard/ksysguardd/Linux/stat.c	Sun Jan  5 22:57:10 2003
+@@ -963,10 +963,10 @@ void
+ printDiskIO(const char* cmd)
+ {
+ 	int major, minor;
+-	char name[16];
++	char name[17];
+ 	DiskIOInfo* ptr;
+ 
+-	sscanf(cmd, "disk/%d:%d/%s", &major, &minor, name);
++	sscanf(cmd, "disk/%d:%d/%16s", &major, &minor, name);
+ 
+ 	if (Dirty)
+ 		processStat();
+@@ -1009,10 +1009,10 @@ void
+ printDiskIOInfo(const char* cmd)
+ {
+ 	int major, minor;
+-	char name[16];
++	char name[17];
+ 	DiskIOInfo* ptr = DiskIO;
+ 
+-	sscanf(cmd, "disk/%d:%d/%s", &major, &minor, name);
++	sscanf(cmd, "disk/%d:%d/%16s", &major, &minor, name);
+ 
+ 	while (ptr && (ptr->major != major || ptr->minor != minor))
+ 		ptr = ptr->next;

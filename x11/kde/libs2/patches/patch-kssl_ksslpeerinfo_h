@@ -1,0 +1,30 @@
+$OpenBSD: patch-kssl_ksslpeerinfo_h,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kssl/ksslpeerinfo.h.orig	Sat Nov 10 00:32:40 2001
++++ kssl/ksslpeerinfo.h	Sun Jan  5 16:07:25 2003
+@@ -24,7 +24,7 @@
+ class KSSL;
+ 
+ #include <qglobal.h>
+-#include <qstring.h>
++#include <qstringlist.h>
+ #include <ksslcertificate.h>
+ 
+ class KSSLPeerInfoPrivate;
+@@ -38,14 +38,15 @@ public:
+   KSSLCertificate& getPeerCertificate();
+   bool certMatchesAddress();
+   QString getPeerAddress();
+-  
++
+   void setProxying(bool active, QString realHost = QString::null);
+- 
++
+ protected:
+   KSSLPeerInfo();
+ 
+   KSSLCertificate m_cert;
+   void setPeerAddress(KInetSocketAddress &x);
++  void extractDomains(const QString &fqdn, QStringList &domains);
+ 
+ private:
+   KSSLPeerInfoPrivate *d;

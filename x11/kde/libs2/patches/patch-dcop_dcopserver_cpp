@@ -1,0 +1,48 @@
+$OpenBSD: patch-dcop_dcopserver_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- dcop/dcopserver.cpp.orig	Fri Aug  3 16:13:52 2001
++++ dcop/dcopserver.cpp	Sun Jan  5 16:04:15 2003
+@@ -475,12 +475,15 @@ static char *unique_filename (const char
+     char tempFile[PATH_MAX];
+     char *tmp;
+ 
+-    sprintf (tempFile, "%s/%sXXXXXX", path, prefix);
++    snprintf (tempFile, PATH_MAX, "%s/%sXXXXXX", path, prefix);
+     tmp = (char *) mktemp (tempFile);
+     if (tmp)
+ 	{
+ 	    char *ptr = (char *) malloc (strlen (tmp) + 1);
+-	    strcpy (ptr, tmp);
++        if (ptr != NULL)
++        {
++	        strcpy (ptr, tmp);
++        }
+ 	    return (ptr);
+ 	}
+     else
+@@ -490,7 +493,7 @@ static char *unique_filename (const char
+     char tempFile[PATH_MAX];
+     char *ptr;
+ 
+-    sprintf (tempFile, "%s/%sXXXXXX", path, prefix);
++    snprintf (tempFile, PATH_MAX, "%s/%sXXXXXX", path, prefix);
+     ptr = static_cast<char *>(malloc(strlen(tempFile) + 1));
+     if (ptr != NULL)
+ 	{
+@@ -541,7 +544,7 @@ SetAuthentication (int count, IceListenO
+     FILE        *removefp = NULL;
+     const char  *path;
+     int         original_umask;
+-    char        command[256];
++    char        command[PATH_MAX + 32];
+     int         i;
+ #ifdef HAVE_MKSTEMP
+     int         fd;
+@@ -613,7 +616,7 @@ SetAuthentication (int count, IceListenO
+ 
+     umask (original_umask);
+ 
+-    sprintf (command, "iceauth source %s", addAuthFile);
++    snprintf (command, PATH_MAX + 32, "iceauth source %s", addAuthFile);
+     system (command);
+ 
+     unlink(addAuthFile);

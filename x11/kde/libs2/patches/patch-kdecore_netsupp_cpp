@@ -1,0 +1,30 @@
+$OpenBSD: patch-kdecore_netsupp_cpp,v 1.2.2.1 2003/01/07 00:12:40 brad Exp $
+--- kdecore/netsupp.cpp.orig	Mon Nov  5 21:35:52 2001
++++ kdecore/netsupp.cpp	Sun Jan  5 16:04:15 2003
+@@ -926,7 +926,7 @@ int getnameinfo(const struct sockaddr *s
+ 
+       if (servlen && serv != NULL)
+ 	*serv = '\0';
+-      if (host == NULL || hostlen < strlen(s._sun->sun_path))
++      if (host != NULL && hostlen > strlen(s._sun->sun_path))
+ 	strcpy(host, s._sun->sun_path);
+ 
+       return 0;
+@@ -1008,7 +1008,7 @@ const char* inet_ntop(int af, const void
+     {
+       sprintf(buf2, "%u.%u.%u.%u", data[0], data[1], data[2], data[3]);
+ 
+-      if (len >= strlen(buf2))
++      if (len > strlen(buf2))
+ 	{
+ 	  strcpy(buf, buf2);
+ 	  return buf;
+@@ -1077,7 +1077,7 @@ const char* inet_ntop(int af, const void
+ 	    }
+ 	}
+ 
+-      if (strlen(buf2) <= len)
++      if (strlen(buf2) < len)
+ 	{
+ 	  strcpy(buf, buf2);
+ 	  return buf;

@@ -1,0 +1,15 @@
+$OpenBSD: patch-kio_ftp_ftp_cc,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kio/ftp/ftp.cc.orig	Mon Nov  5 21:37:42 2001
++++ kio/ftp/ftp.cc	Sun Jan  5 16:07:24 2003
+@@ -1677,7 +1677,10 @@ FtpEntry* Ftp::ftpParseDir( char* buffer
+                     }
+                     else
+                       de.link = QString::null;
+-
++                      
++                    if (strchr(p_name, '/'))
++                       return 0L; // Don't trick us!
++                    
+                     de.access = 0;
+                     de.type = S_IFREG;
+                     switch ( p_access[0] ) {

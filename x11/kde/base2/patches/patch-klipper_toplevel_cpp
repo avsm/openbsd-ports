@@ -1,0 +1,12 @@
+$OpenBSD: patch-klipper_toplevel_cpp,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- klipper/toplevel.cpp.orig	Mon Nov  5 21:40:29 2001
++++ klipper/toplevel.cpp	Sun Jan  5 18:22:16 2003
+@@ -39,7 +39,7 @@
+ #define CONFIG_ITEM  60
+ #define EMPTY_ITEM   80
+ 
+-#define MENU_ITEMS   7
++#define MENU_ITEMS   8
+ // the <clipboard empty> item
+ #define EMPTY (pQPMmenu->count() - MENU_ITEMS)
+ 

@@ -1,0 +1,12 @@
+$OpenBSD: patch-kbackgammon_engines_fibs_kplayerlist_cpp,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- kbackgammon/engines/fibs/kplayerlist.cpp.orig	Tue Jun 19 01:15:44 2001
++++ kbackgammon/engines/fibs/kplayerlist.cpp	Sun Jan  5 21:20:49 2003
+@@ -616,7 +616,7 @@ void KFibsPlayerList::changePlayer(const
+ 	entry[Status][0] = '\0';
+ 
+ 	// the line comes from FIBS and is 7 bit ASCII
+-	sscanf(line.latin1(), "%s %s %s %s %s %s %s %s %s %s %s %s", entry[Player], entry[Opponent], 
++	sscanf(line.latin1(), "%99s %99s %99s %1s %1s %99s %99s %99s %99s %99s %99s %99s", entry[Player], entry[Opponent], 
+ 	       entry[Watches], ready, away, entry[Rating], entry[Experience], entry[Idle], entry[Time], 
+ 	       entry[Host], entry[Client], entry[Email]);
+ 	

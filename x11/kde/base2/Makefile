@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.36 2002/04/10 01:24:39 espie Exp $
+# $OpenBSD: Makefile,v 1.36.2.1 2003/01/07 00:12:39 brad Exp $
 
 COMMENT= 		"X11 toolkit, basic applications"
 CATEGORIES=		x11 x11/kde
-NEED_VERSION=		1.504
 VERSION=		2.2.2
 DISTNAME=		kdebase-${VERSION}
+PKGNAME=		${DISTNAME}p1
 
 LIB_DEPENDS=	kdecore.3,kdeui,DCOP,artskde,kab,kdefakes,kdeprint,kdeprint_management,kdesu,kfile,khtml,kio,kjava,kmid,kparts,kscreensaver,kspell,kssl,ksycoca,ktexteditor,soundserver_idl::x11/kde/libs2 \
 		ldap.2,lber:openldap-client-2.*:databases/openldap \

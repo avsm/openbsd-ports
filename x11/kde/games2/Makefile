@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.25 2002/04/10 01:24:39 espie Exp $
+# $OpenBSD: Makefile,v 1.25.2.1 2003/01/07 00:12:39 brad Exp $
 
 COMMENT=		games for KDE
 COMMENT-cards=		faces for kde card games
@@ -29,9 +29,9 @@ COMMENT-kwin4=		4 in a rows game for kde
 COMMENT-lskat=		card game for two players, based on Skat
 
 CATEGORIES=		x11 x11/kde games
-NEED_VERSION=		1.504
 VERSION=		2.2.2
 DISTNAME=		kdegames-${VERSION}
+PKGNAME=		${DISTNAME}p1
 
 LIB_DEPENDS= kdecore.3,DCOP,artsflow,artsflow_idl,kdeprint,kdesu,kdeui,kfile,kio,kmedia2_idl,kparts,kssl,ksycoca,mcop,qtmcop,soundserver_idl::x11/kde/libs2
 BUILD_DEPENDS=	::x11/qt2-designer
@@ -40,11 +40,9 @@ BUILD_DEPENDS=	::x11/qt2-designer
 kjezz kjumpingcube kmahjongg kmines konquest kpat kpoker kreversi ksame \
 kshisen ksirtet ksmiletris ksnake ksokoban kspaceduel ktron ktuberling \
 kwin4 lskat
-#MULTI_PACKAGES+= -$i
-PKGNAME-$i=$i-${VERSION}
+PKGNAME-$i=$i-${VERSION}p1
 .endfor
-#MULTI_PACKAGES+= -cards
-PKGNAME-cards=kdecardgames-${VERSION}
+PKGNAME-cards=kdecardgames-${VERSION}p1
 SUBST_VARS=VERSION
 
 .if defined(PACKAGING)

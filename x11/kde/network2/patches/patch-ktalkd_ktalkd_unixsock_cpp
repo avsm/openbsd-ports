@@ -1,0 +1,19 @@
+$OpenBSD: patch-ktalkd_ktalkd_unixsock_cpp,v 1.1.2.1 2003/01/07 00:12:41 brad Exp $
+--- ktalkd/ktalkd/unixsock.cpp.orig	Wed Apr  4 10:33:30 2001
++++ ktalkd/ktalkd/unixsock.cpp	Sun Jan  5 21:33:22 2003
+@@ -67,6 +67,9 @@ bool sendToKtalk (const char *username, 
+ */
+ 
+ {
++    // WABA: Disabled for reasons outlined below by XXX.
++    return FALSE;
++#if 0    
+     // Create a socket
+     int sock;
+     if ((sock = socket (AF_UNIX, SOCK_DGRAM, 0)) < 0) return FALSE;
+@@ -142,4 +145,5 @@ bool sendToKtalk (const char *username, 
+     unlink (tempAddr.sun_path);
+     message("Announce to ktalk : result = %d",result);
+     return result;
++#endif
+ }

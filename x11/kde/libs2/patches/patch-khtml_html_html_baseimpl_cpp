@@ -1,0 +1,20 @@
+$OpenBSD: patch-khtml_html_html_baseimpl_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- khtml/html/html_baseimpl.cpp.orig	Mon Nov  5 21:36:23 2001
++++ khtml/html/html_baseimpl.cpp	Sun Jan  5 16:04:16 2003
+@@ -272,7 +272,7 @@ void HTMLFrameElementImpl::attach()
+     while ((part = part->parentPart()))
+         depth++;
+ 
+-    if (depth > 6 || url.isNull()) {
++    if (depth > 6) {
+         style()->setDisplay( NONE );
+         return;
+     }
+@@ -309,6 +309,7 @@ void HTMLFrameElementImpl::attach()
+       kdDebug( 6030 ) << "creating frame name: " << name.string() << endl;
+     }
+ 
++    if (!url.isNull())
+     w->part()->requestFrame( renderFrame, url.string(), name.string() );
+ 
+     HTMLElementImpl::attach();

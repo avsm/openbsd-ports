@@ -1,0 +1,22 @@
+$OpenBSD: patch-kdecore_kdebug_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kdecore/kdebug.cpp.orig	Mon Jul 30 18:11:19 2001
++++ kdecore/kdebug.cpp	Sun Jan  5 16:04:15 2003
+@@ -276,7 +276,7 @@ static void kDebugBackend( unsigned shor
+           }
+         case 3: // syslog
+           {
+-	      syslog( nPriority, data);
++	      syslog( nPriority, "%s", data);
+           }
+         case 4: // nothing
+           {
+@@ -448,7 +448,8 @@ kdbgstream &kdbgstream::form(const char 
+     char buf[4096];
+     va_list arguments;
+     va_start( arguments, format );
+-    vsprintf( buf, format, arguments );
++    buf[sizeof(buf)-1] = '\0';
++    vsnprintf( buf, sizeof(buf)-1, format, arguments );
+     va_end(arguments);
+     *this << buf;
+     return *this;

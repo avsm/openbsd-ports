@@ -1,0 +1,15 @@
+$OpenBSD: patch-kfaxview_kfax_multipage_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kfaxview/kfax_multipage.cpp.orig	Thu Mar 29 14:23:42 2001
++++ kfaxview/kfax_multipage.cpp	Sun Jan  5 21:26:04 2003
+@@ -138,9 +138,8 @@ bool KFaxMultiPage::openTIFF(TIFF *tif)
+ 	{
+ 	  QString fname = KGlobal::dirs()->saveLocation("data", "kfax/faxes");
+ 	  fname += "/faxXXXXXX";
+-	  char buffer[256];
+-	  strcpy(buffer, fname.local8Bit());
+-	  int fd=mkstemp(buffer);
++	  QCString buffer = QFile::encodeName(fname);
++	  int fd=mkstemp(buffer.data());
+ 	  TIFF *tif2 = TIFFFdOpen(fd, buffer, "w");
+ 	  if (!tif2)
+ 	    {

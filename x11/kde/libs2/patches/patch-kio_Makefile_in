@@ -1,0 +1,21 @@
+$OpenBSD: patch-kio_Makefile_in,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kio/Makefile.in.orig	Sun Jan  5 16:16:20 2003
++++ kio/Makefile.in	Sun Jan  5 16:17:13 2003
+@@ -338,7 +338,7 @@ kmailservice_SOURCES = kmailservice.cpp
+ kmailservice_LDADD = $(LIB_KDECORE)
+ kmailservice_LDFLAGS = $(KDE_RPATH) $(all_libraries)
+ 
+-kmailprotocol_DATA = kmailservice.protocol telnet.protocol rlogin.protocol
++kmailprotocol_DATA = kmailservice.protocol
+ kmailprotocoldir = $(kde_servicesdir)
+ 
+ update_DATA = kioslave.upd useragent.pl proxytype.pl
+@@ -438,7 +438,7 @@ DIST_COMMON =  Makefile.am Makefile.in
+ 
+ #>- DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
+ #>+ 4
+-KDE_DIST=DESIGN.metadata kcomprfilter.desktop application.desktop kioslave.upd proxytype.pl DESIGN configure.in.in DESIGN.krun rlogin.protocol kurifilterplugin.desktop lex.l kscan.desktop kio_uiserver.desktop ktypecode.h useragent.pl kmailservice.protocol yacc.y kservicegroupfactory.h design.h telnet.protocol magic DESKTOP_ENTRY_STANDARD 
++KDE_DIST=DESIGN.metadata kcomprfilter.desktop application.desktop kioslave.upd proxytype.pl DESIGN configure.in.in DESIGN.krun kurifilterplugin.desktop lex.l kscan.desktop kio_uiserver.desktop ktypecode.h useragent.pl kmailservice.protocol yacc.y kservicegroupfactory.h design.h magic DESKTOP_ENTRY_STANDARD 
+ 
+ DISTFILES= $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST) $(KDE_DIST)
+ 

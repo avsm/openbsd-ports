@@ -1,0 +1,12 @@
+$OpenBSD: patch-kio_kmimetype_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kio/kmimetype.cpp.orig	Sat Nov 10 00:32:39 2001
++++ kio/kmimetype.cpp	Sun Jan  5 16:07:24 2003
+@@ -653,7 +653,7 @@ pid_t KDEDesktopMimeType::runMimeType( c
+   // at the global file, or at a file not in share/mimelnk...
+ 
+   KShellProcess p;
+-  p << "kfmclient" << "openProperties" << url.path().local8Bit();
++  p << "kfmclient" << "openProperties" << KShellProcess::quote(url.path());
+   p.start(KProcess::DontCare);
+   return p.getPid();
+ }

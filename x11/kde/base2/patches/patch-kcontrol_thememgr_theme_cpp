@@ -1,0 +1,108 @@
+$OpenBSD: patch-kcontrol_thememgr_theme_cpp,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- kcontrol/thememgr/theme.cpp.orig	Mon Nov  5 21:40:02 2001
++++ kcontrol/thememgr/theme.cpp	Sun Jan  5 18:22:16 2003
+@@ -53,6 +53,8 @@
+ #include <kicontheme.h>
+ #include <kipc.h>
+ #include <kdebug.h>
++#include <kprocess.h>
++
+ #include "theme.h"
+ 
+ #include <kio/netaccess.h>
+@@ -90,7 +92,7 @@ Theme::Theme()
+ Theme::~Theme()
+ {
+   saveSettings();
+-  if (mMappings) delete mMappings;
++  delete mMappings;
+ }
+ 
+ 
+@@ -186,9 +188,12 @@ void Theme::cleanupWorkDir(void)
+   int rc;
+ 
+   // cleanup work directory
+-  cmd = QString::fromLatin1( "rm -rf %1*" ).arg( workDir() );
+-  rc = system(cmd.local8Bit());
+-  if (rc) kdWarning() << "Error during cleanup of work directory: rc=" << rc << " " << cmd << endl;
++  if (!workDir().isEmpty()) {
++    KProcess p;
++    p << "/bin/rm" << "-rf" << workDir();
++    if(!p.start(KProcess::Block))
++      kdWarning() << "Error during cleanup of work directory: rc=" << rc << " " << cmd << endl;
++  }
+ }
+ 
+ void Theme::findThemerc(const QString &path, const QStringList &list)
+@@ -238,11 +243,9 @@ bool Theme::load(const QString &aPath, Q
+     if (i >= 0) str = workDir() + aPath.mid(i);
+     else str = workDir();
+ 
+-    cmd = QString("cp -r \"%1\" \"%2\"").arg(aPath).arg(str);
+-    kdDebug() << cmd << endl;
+-    rc = system(QFile::encodeName(cmd).data());
+-    if (rc)
+-    {
++    KProcess p;
++    p << "/bin/cp" << "-r" << aPath << str;
++    if(!p.start(KProcess::Block)) {
+       error = i18n("Theme contents could not be copied from\n%1\ninto\n%2")
+ 		.arg(aPath).arg(str);
+       return false;
+@@ -251,8 +254,7 @@ bool Theme::load(const QString &aPath, Q
+   else if (aPath.right(4) == ".zip")
+   {
+     // The theme given is a zip archive. Unpack the archive.
+-    cmd = QString("cd \"%1\"; unzip -qq \"%2\"")
+-             .arg(workDir()).arg(aPath);
++    cmd = QString::fromLatin1("cd ") + KShellProcess::quote(workDir()) + "; unzip -qq " + KShellProcess::quote(aPath);
+     kdDebug() << cmd << endl;
+     rc = system(QFile::encodeName(cmd).data());
+     if (rc)
+@@ -265,9 +267,7 @@ bool Theme::load(const QString &aPath, Q
+   else
+   {
+     // The theme given is a tar package. Unpack theme package.
+-    cmd = QString("cd \"%1\"; gzip -c -d \"%2\" | tar xf -")
+-             .arg(workDir()).arg(aPath);
+-    kdDebug() << cmd << endl;
++    cmd = QString::fromLatin1("cd ") + KShellProcess::quote(workDir()) + "; gzip -c -d " + KShellProcess::quote(aPath) + " | tar xf -";
+     rc = system(QFile::encodeName(cmd).data());
+     if (rc)
+     {
+@@ -366,9 +366,7 @@ bool Theme::save(const QString &aPath)
+     path += defaultExtension();
+   }
+ 
+-  QString cmd = QString("cd \"%1\";tar cf - *|gzip -c >\"%2\"").
+-		arg(workDir()).arg(path);
+-
++  QString cmd = QString::fromLatin1("cd ") + KShellProcess::quote(workDir()) + ";tar cf - *|gzip -c >" + KShellProcess::quote(path);
+   kdDebug() << cmd << endl;
+   int rc = system(QFile::encodeName(cmd).data());
+   if (rc) kdDebug() << "Failed to save theme to " << aPath << " with command " << cmd << endl;
+@@ -993,8 +991,8 @@ void Theme::doCmdList(void)
+       appName = cmd.mid(7).stripWhiteSpace();
+       str = i18n("Restart %1 to activate the new settings?").arg( appName );
+       if (KMessageBox::questionYesNo(0, str) == KMessageBox::Yes) {
+-          str.sprintf(mRestartCmd.local8Bit().data(), appName.local8Bit().data(),
+-                      appName.local8Bit().data());
++          str.sprintf(mRestartCmd.local8Bit().data(), KShellProcess::quote(appName).local8Bit().data(),
++                      KShellProcess::quote(appName).local8Bit().data());
+           system(str.local8Bit());
+       }
+     }
+@@ -1014,11 +1012,7 @@ bool Theme::backupFile(const QString &fn
+   if (!fi.exists()) return false;
+ 
+   QFile::remove((fname + '~'));
+-  cmd.sprintf("mv \"%s\" \"%s~\"", fname.local8Bit().data(),
+-	      fname.local8Bit().data());
+-  rc = system(cmd.local8Bit());
+-  if (rc) kdWarning() << "Cannot make backup copy of "
+-          << fname << ": mv returned " << rc << endl;
++  rc = ::rename(fname.local8Bit().data(), QString(fname + "~").local8Bit().data());
+   return (rc==0);
+ }
+ 

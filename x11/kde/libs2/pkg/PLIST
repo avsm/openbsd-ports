@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.18 2002/04/03 16:38:21 espie Exp $
+@comment $OpenBSD: PLIST,v 1.18.2.1 2003/01/07 00:12:40 brad Exp $
 @pkgcfl arts-*
 bin/artsc-config
 bin/artscat
@@ -2484,8 +2484,6 @@ share/services/knotify.desktop
 share/services/krl.kimgio
 share/services/png.kimgio
 share/services/pnm.kimgio
-share/services/rlogin.protocol
-share/services/telnet.protocol
 share/services/tiff.kimgio
 share/services/xbm.kimgio
 share/services/xpm.kimgio

@@ -1,0 +1,12 @@
+$OpenBSD: patch-ksirc_puke_controller_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- ksirc/puke/controller.cpp.orig	Tue Mar 13 20:13:19 2001
++++ ksirc/puke/controller.cpp	Sun Jan  5 21:33:22 2003
+@@ -567,7 +567,7 @@ void PukeController::hdlrPukeFetchWidget
+   int iParent=-1, iType=-1;
+ 
+   char rand[50],name[50];
+-  int found = sscanf(pm->cArg, "%d\t%d\t%s\t%s", &iParent, &iType, rand, name);
++  int found = sscanf(pm->cArg, "%d\t%d\t%49s\t%49s", &iParent, &iType, rand, name);
+   if(found != 4){
+       throw(errorCommandFailed(PUKE_INVALID,6));
+   }

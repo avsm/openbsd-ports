@@ -1,0 +1,114 @@
+$OpenBSD: patch-klipper_klipperrc,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- klipper/klipperrc.orig	Tue Sep  4 19:16:18 2001
++++ klipper/klipperrc	Sun Jan  5 18:22:16 2003
+@@ -4,7 +4,7 @@ Number of commands=1
+ Regexp=^\\/.+\\.jpg$
+ 
+ [Action_0/Command_0]
+-Commandline=kview "%s"
++Commandline=kview %s
+ Description=Launch K&View
+ Enabled=true
+ 
+@@ -14,7 +14,7 @@ Number of commands=5
+ Regexp=^https?:\\/\\/
+ 
+ [Action_1/Command_0]
+-Commandline=kfmclient exec '%s'
++Commandline=kfmclient exec %s
+ Description=Open with &Konqueror
+ Enabled=true
+ 
+@@ -29,12 +29,12 @@ Description=Open with &Mozilla
+ Enabled=true
+ 
+ [Action_1/Command_3]
+-Commandline=kmail --body  '%s'
++Commandline=kmail --body  %s
+ Description=Send &URL
+ Enabled=true
+ 
+ [Action_1/Command_4]
+-Commandline=kmail  --attach '%s'
++Commandline=kmail  --attach %s
+ Description=Send &Page
+ Enabled=true
+ 
+@@ -49,7 +49,7 @@ Description=Launch &Kmail
+ Enabled=true
+ 
+ [Action_2/Command_1]
+-Commandline=konsole -e mutt `echo "%s" | sed 's/mailto://g'`
++Commandline=konsole -e mutt `echo %s | sed 's/mailto://g'`
+ Description=Launch &mutt
+ Enabled=true
+ 
+@@ -59,12 +59,12 @@ Number of commands=2
+ Regexp=^\\/.+\\.txt$
+ 
+ [Action_3/Command_0]
+-Commandline=kedit "%s"
++Commandline=kedit %s
+ Description=Launch K&Edit
+ Enabled=true
+ 
+ [Action_3/Command_1]
+-Commandline=kwrite "%s"
++Commandline=kwrite %s
+ Description=Launch K&Write
+ Enabled=true
+ 
+@@ -74,12 +74,12 @@ Number of commands=2
+ Regexp=^file:.
+ 
+ [Action_4/Command_0]
+-Commandline=kmail --body  '%s'
++Commandline=kmail --body  %s
+ Description=Send &URL
+ Enabled=true
+ 
+ [Action_4/Command_1]
+-Commandline=kmail  --attach '%s'
++Commandline=kmail  --attach %s
+ Description=Send &File
+ Enabled=true
+ 
+@@ -89,12 +89,12 @@ Number of commands=2
+ Regexp=^gopher:.
+ 
+ [Action_5/Command_0]
+-Commandline=kmail --body  '%s'
++Commandline=kmail --body  %s
+ Description=Send &URL
+ Enabled=true
+ 
+ [Action_5/Command_1]
+-Commandline=kmail  --attach '%s'
++Commandline=kmail  --attach %s
+ Description=Send &File
+ Enabled=true
+ 
+@@ -104,7 +104,7 @@ Number of commands=5
+ Regexp=^ftp:\\/\\/
+ 
+ [Action_6/Command_0]
+-Commandline=kfmclient exec '%s'
++Commandline=kfmclient exec %s
+ Description=Open with &Konqueror
+ Enabled=true
+ 
+@@ -119,12 +119,12 @@ Description=Open with &Mozilla
+ Enabled=true
+ 
+ [Action_6/Command_3]
+-Commandline=kmail --body  '%s'
++Commandline=kmail --body  %s
+ Description=Send &URL
+ Enabled=true
+ 
+ [Action_6/Command_4]
+-Commandline=kmail  --attach '%s'
++Commandline=kmail  --attach %s
+ Description=Send &File
+ Enabled=true
+ 

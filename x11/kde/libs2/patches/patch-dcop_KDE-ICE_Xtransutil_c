@@ -1,0 +1,15 @@
+$OpenBSD: patch-dcop_KDE-ICE_Xtransutil_c,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- dcop/KDE-ICE/Xtransutil.c.orig	Sun May  6 12:35:54 2001
++++ dcop/KDE-ICE/Xtransutil.c	Sun Jan  5 16:04:15 2003
+@@ -367,9 +367,9 @@ TRANS(GetPeerNetworkId) (XtransConnInfo 
+ 
+ 	if (np = getnodebyaddr(saddr->sdn_add.a_addr,
+ 	    saddr->sdn_add.a_len, AF_DECnet)) {
+-	    sprintf(addrbuf, "%s:", np->n_name);
++	    snprintf(addrbuf, 256, "%s:", np->n_name);
+ 	} else {
+-	    sprintf(addrbuf, "%s:", dnet_htoa(&saddr->sdn_add));
++	    snprintf(addrbuf, 256, "%s:", dnet_htoa(&saddr->sdn_add));
+ 	}
+ 	addr = addrbuf;
+ 	break;

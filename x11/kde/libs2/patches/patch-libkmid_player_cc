@@ -1,0 +1,13 @@
+$OpenBSD: patch-libkmid_player_cc,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- libkmid/player.cc.orig	Thu Aug  2 00:43:12 2001
++++ libkmid/player.cc	Sun Jan  5 16:07:25 2003
+@@ -366,7 +366,8 @@ void MidiPlayer::parseSpecialEvents(void
+                     {
+                       lasttexttime=pspev->absmilliseconds;
+                       lasttexttype=pspev->type;
+-                      strcpy(lasttext,pspev->text);
++                      strncpy(lasttext, pspev->text, 1024);
++                      lasttext[1023] = 0;
+ #endif
+                       pspev->next=new SpecialEvent;
+ #ifdef PLAYERDEBUG

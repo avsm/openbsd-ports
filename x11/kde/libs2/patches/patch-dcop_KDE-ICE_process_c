@@ -1,0 +1,12 @@
+$OpenBSD: patch-dcop_KDE-ICE_process_c,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- dcop/KDE-ICE/process.c.orig	Mon Mar 12 20:36:38 2001
++++ dcop/KDE-ICE/process.c	Sun Jan  5 16:04:15 2003
+@@ -734,7 +734,7 @@ IceReplyWaitInfo *replyWait;
+ 	    case IceMajorOpcodeDuplicate:
+ 
+ 		prefix = "The major opcode was already used : ";
+-		errorStr = (char *) malloc (strlen (prefix) + 2);
++		errorStr = (char *) malloc (strlen (prefix) + 16);
+ 		sprintf (errorStr, "%s%d", prefix, (int) *pData);
+ 		break;
+ 

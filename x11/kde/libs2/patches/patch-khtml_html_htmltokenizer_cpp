@@ -1,0 +1,12 @@
+$OpenBSD: patch-khtml_html_htmltokenizer_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- khtml/html/htmltokenizer.cpp.orig	Mon Nov  5 21:36:23 2001
++++ khtml/html/htmltokenizer.cpp	Sun Jan  5 16:04:16 2003
+@@ -281,7 +281,7 @@ void HTMLTokenizer::parseSpecial(DOMStri
+     while ( src.length() ) {
+         checkScriptBuffer();
+         unsigned char ch = src->latin1();
+-        if ( !scriptCodeResync && ch == '-' && scriptCodeSize >= 3 && !src.escaped() && QConstString( scriptCode+scriptCodeSize-3, 3 ).string() == "<!-" ) {
++        if ( !scriptCodeResync && !textarea && ch == '-' && scriptCodeSize >= 3 && !src.escaped() && QConstString( scriptCode+scriptCodeSize-3, 3 ).string() == "<!-" ) {
+             comment = true;
+             parseComment( src );
+             continue;

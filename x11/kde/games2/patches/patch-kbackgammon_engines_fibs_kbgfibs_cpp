@@ -1,0 +1,30 @@
+$OpenBSD: patch-kbackgammon_engines_fibs_kbgfibs_cpp,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- kbackgammon/engines/fibs/kbgfibs.cpp.orig	Fri Jun 22 14:50:24 2001
++++ kbackgammon/engines/fibs/kbgfibs.cpp	Sun Jan  5 21:20:49 2003
+@@ -402,7 +402,7 @@ void KBgEngineFIBS::changeJoin(const QSt
+ 	 * Extract the name of the player, her opponent, rating and experience.
+ 	 * It is okay to use latin1(), since the string is coming from FIBS.
+ 	 */
+-	sscanf(info.latin1(), "%s %s %*s %*s %*s %f %i %*s %*s %*s %*s %*s", 
++	sscanf(info.latin1(), "%99s %99s %*s %*s %*s %f %i %*s %*s %*s %*s %*s", 
+ 	       name_p, name_o, &rate, &expi);
+ 
+ 	QString name = name_p;
+@@ -1419,7 +1419,7 @@ void KBgEngineFIBS::handleMessageConnect
+ 		char p[3][256];
+ 		time_t tmp;
+ 		// Using latin1() is okay, since the string comes from FIBS.
+-		int words = sscanf (line.latin1(), "%s%s%li%s", p[0], p[1], &tmp, p[2]);
++		int words = sscanf (line.latin1(), "%255s%255s%li%255s", p[0], p[1], &tmp, p[2]);
+ 		if (words >= 4) {
+ 			QDateTime d; d.setTime_t(tmp);
+ 			QString text = i18n("%1, last logged in from %2 at %3.").arg(p[1]).arg(p[2]).arg(d.toString());
+@@ -1469,7 +1469,7 @@ void KBgEngineFIBS::handleMessageConnect
+ 		double rating;    
+ 		
+ 		// Using latin1() is okay, since the string comes from FIBS.
+-		int words = sscanf (line.latin1(), "%s%s%i%i%i%i%i%i%i%i%i%i%i%i%i%lf%i%i%i%i%i%s", 
++		int words = sscanf (line.latin1(), "%255s%255s%i%i%i%i%i%i%i%i%i%i%i%i%i%lf%i%i%i%i%i%255s", 
+ 				    p[0], p[1], 
+ 				    &fibsOptions[OptAllowPip], 
+ 				    &n[0], 

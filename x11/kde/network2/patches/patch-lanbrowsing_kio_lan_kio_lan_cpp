@@ -1,0 +1,23 @@
+$OpenBSD: patch-lanbrowsing_kio_lan_kio_lan_cpp,v 1.1.2.1 2003/01/07 00:12:41 brad Exp $
+--- lanbrowsing/kio_lan/kio_lan.cpp.orig	Mon Nov  5 21:42:02 2001
++++ lanbrowsing/kio_lan/kio_lan.cpp	Sun Jan  5 21:33:22 2003
+@@ -259,7 +259,8 @@ int LANProtocol::rlanReadDataFromServer(
+       //should never happen
+       socketname+="???";
+ 
+-   strcpy(addr.sun_path,socketname);
++   strncpy(addr.sun_path,socketname,sizeof(addr.sun_path));
++   addr.sun_path[sizeof(addr.sun_path)-1] = '\0';
+    int result=::connect(sockFD,(sockaddr*)&addr, sizeof(addr));
+ 
+    kdDebug(7101)<<"readDataFromServer(): result: "<<result<<" name: "<<addr.sun_path<<" socket: "<<sockFD<<endl;
+@@ -289,7 +290,8 @@ int LANProtocol::rlanReadDataFromServer(
+ 
+       memset((char*)&addr,0,sizeof(addr));
+       addr.sun_family=AF_LOCAL;
+-      strcpy(addr.sun_path,socketname);
++      strncpy(addr.sun_path,socketname,sizeof(addr.sun_path));
++      addr.sun_path[sizeof(addr.sun_path)-1] = '\0';
+ 
+       kdDebug(7101)<<"connecting..."<<endl;
+       result=::connect(sockFD,(sockaddr*)&addr, sizeof(addr));

@@ -1,0 +1,12 @@
+$OpenBSD: patch-kdeprint_lpd_make_driver_db_lpd_c,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- kdeprint/lpd/make_driver_db_lpd.c.orig	Mon Apr  2 09:21:07 2001
++++ kdeprint/lpd/make_driver_db_lpd.c	Sun Jan  5 16:04:15 2003
+@@ -82,7 +82,7 @@ int parseRhsPrinterDb(const char *filena
+ 			c2 = strchr(c+12,'}');
+ 			if (c1 && c2)
+ 			{
+-				char 	model[256], manuf[256];
++				char 	model[BUFFER_SIZE], manuf[BUFFER_SIZE];
+ 				char 	*c3;
+ 
+ 				*c2 = 0;

@@ -1,0 +1,12 @@
+$OpenBSD: patch-khtml_html_html_imageimpl_cpp,v 1.1.2.1 2003/01/07 00:12:40 brad Exp $
+--- khtml/html/html_imageimpl.cpp.orig	Mon Nov  5 21:36:23 2001
++++ khtml/html/html_imageimpl.cpp	Sun Jan  5 16:04:16 2003
+@@ -462,7 +462,7 @@ QRegion HTMLAreaElementImpl::getRegion(i
+         int y1 = coords->at(3)->minWidth(height_);
+         region = QRegion(x0,y0,x1-x0,y1-y0);
+     }
+-    else /*if (shape==Default || shape == Unknown)*/ {
++    else if (shape==Default) {
+         //cout << "default/unknown" << endl;
+         region = QRegion(0,0,width_,height_);
+     }

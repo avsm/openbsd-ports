@@ -1,0 +1,12 @@
+$OpenBSD: patch-kioslave_finger_kio_finger_h,v 1.1.2.1 2003/01/07 00:12:39 brad Exp $
+--- kioslave/finger/kio_finger.h.orig	Thu Nov  2 13:48:09 2000
++++ kioslave/finger/kio_finger.h	Sun Jan  5 18:22:16 2003
+@@ -54,7 +54,7 @@ private: 
+   QString		*myStdStream;  
+ 
+  
+-  KShellProcess	        *myKProcess;
++  KProcess	        *myKProcess;
+ 
+   void       getProgramPath();
+   void       parseCommandLine(const KURL& url);

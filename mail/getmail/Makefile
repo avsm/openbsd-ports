@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.15 2003/08/01 11:49:28 sturm Exp $
+# $OpenBSD: Makefile,v 1.15.2.1 2004/09/30 05:46:15 brad Exp $
 
 COMMENT=	"POP3 mail retriever"
 
-DISTNAME=	getmail-3.1.8
+DISTNAME=	getmail-3.2.5
 CATEGORIES=	mail
 
-HOMEPAGE=	http://www.qcc.ca/~charlesc/software/getmail-3.0/
+HOMEPAGE=	http://www.qcc.ca/~charlesc/software/getmail-4/
 
 MAINTAINER=	Nikolay Sturm <sturm@openbsd.org>
 
@@ -27,7 +27,7 @@ DOCDIR=		${PREFIX}/share/doc/getmail
 EXDIR=		${PREFIX}/share/examples/getmail
 GMDIR=		${PREFIX}/share/getmail
 
-HELPERS=	${WRKDIST}/getmail_maildir ${WRKDIST}/getmail_mbox \
+HELPERS=	${WRKDIST}/getmail_maildir ${WRKDIST}/getmail_mbox
 
 do-configure:
 	@perl -i -p -e "s#/usr/lib/getmail#${GMDIR}#;" \

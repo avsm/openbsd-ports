@@ -1,5 +1,5 @@
 #!/bin/sh
-# $OpenBSD: INSTALL,v 1.2 1999/04/10 07:14:56 marc Exp $
+# $OpenBSD: INSTALL,v 1.2.6.1 2000/09/15 05:13:03 marc Exp $
 #
 # Pre/post-installation setup of enscript
 
@@ -7,7 +7,7 @@ set -e
 PATH=/bin:/usr/bin:/sbin:/usr/sbin
 PREFIX=${PREFIX:-/usr/local}
 CONFIG_FILE=/etc/enscript.cfg
-CONFIG_SAMPLE=${PREFIX}/lib/enscript.cfg-sample
+CONFIG_SAMPLE=${PREFIX}/share/examples/enscript/enscript.cfg-sample
 
 if [ $# -ne 2 ]; then
     echo "usage: $0 distname { PRE-INSTALL | POST-INSTALL }" >&2

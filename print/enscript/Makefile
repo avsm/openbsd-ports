@@ -1,10 +1,12 @@
-# $OpenBSD: Makefile,v 1.9 2000/04/09 17:37:51 espie Exp $
+# $OpenBSD: Makefile,v 1.9.2.1 2000/09/15 05:13:02 marc Exp $
 
 DISTNAME=		enscript-1.6.1
+NEED_VERSION=		1.319
 CATEGORIES=     	print
-FAKE=No
 
-MAINTAINER=		ports@openbsd.org
+MAINTAINER=		matt@openbsd.org
+
+HOMEPAGE=		http://people.ssh.fi/mtr/genscript/
 
 LICENSE_TYPE=		GPL
 PERMIT_PACKAGE_CDROM=	YES
@@ -15,10 +17,8 @@ PERMIT_DISTFILES_FTP=	YES
 MASTER_SITES=		${MASTER_SITE_GNU}
 MASTER_SITE_SUBDIR=	enscript
 
-GNU_CONFIGURE=		yes
+CONFIGURE_STYLE=	gnu
 CONFIGURE_ARGS+=	--with-media=Letter
 
-post-install:
-	@PREFIX="${PREFIX}" ${SH} ${PKGDIR}/INSTALL ${DISTNAME} POST-INSTALL
-
 .include <bsd.port.mk>
+

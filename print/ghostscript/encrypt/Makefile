@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.7 2000/04/03 01:54:06 espie Exp $
+# $OpenBSD: Makefile,v 1.7.2.1 2000/09/15 05:13:09 marc Exp $
 
 CATEGORIES=	print
 NEED_VERSION=	1.247
@@ -40,8 +40,6 @@ pre-fake:
 	mkdir -p ${GSDIR}
 
 do-install:
-	# needed to keep dumb pkg_create quiet
-	touch ${GSDIR}/.gs-encrypt
 	${INSTALL_DATA} ${FULLDISTDIR}/${DISTFILES} ${GSDIR}
 	
 .include <bsd.port.mk>

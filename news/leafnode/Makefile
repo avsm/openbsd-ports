@@ -1,29 +1,40 @@
-# $OpenBSD: Makefile,v 1.20 2001/10/28 13:05:48 espie Exp $
+# $OpenBSD: Makefile,v 1.20.2.1 2003/01/28 19:11:52 marcm Exp $
 
-COMMENT=	"USENET software package designed for small sites"
+COMMENT=		"USENET software package designed for small sites"
 
-DISTNAME=	leafnode-1.9.19
-CATEGORIES=	news
-NEED_VERSION=	1.402
-MASTER_SITES=	ftp://wpxx02.toxi.uni-wuerzburg.de/pub/			\
-		ftp://ftp.karlsruhe.org/pub/news/servers/leafnode/	\
-		ftp://ftp.unixpower.org/pub/leafnode/			\
-		ftp://ftp.stikman.com/pub/leafnode/			\
-		ftp://ftp.gigabell.net/pub/leafnode/
+VERSION=		1.9.32
+DISTNAME=		leafnode-${VERSION}.rel
+PKGNAME=		leafnode-${VERSION}
+CATEGORIES=		news
 
-HOMEPAGE=	http://www.leafnode.org/
+HOMEPAGE=		http://www.leafnode.org/
 
+MAINTAINER=		Marc Matteo <marcm@openbsd.org>
+
+# GPL/LGPL/Other
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
+MASTER_SITES=		${MASTER_SITE_SOURCEFORGE:=leafnode/}
+EXTRACT_SUFX=		.tar.bz2
+
+LIB_DEPENDS=		pcre::devel/pcre
+
 CONFIGURE_STYLE=	gnu
-CONFIGURE_ARGS+= --sysconfdir=/etc/leafnode --localstatedir=/var
+CONFIGURE_ARGS+=	--localstatedir=/var
+CONFIGURE_ARGS+=	--with-lockfile=/var/spool/news/fetchnews.lck
+CONFIGURE_ARGS+=	--with-ipv6
+
+DOCS=		README README-FQDN INSTALL FAQ.txt
 
 post-install:
 	$(INSTALL_DATA_DIR) ${PREFIX}/share/doc/leafnode
-	cd ${WRKSRC} && $(INSTALL_DATA) README INSTALL FAQ config.example \
-	  ${PREFIX}/share/doc/leafnode
+	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/leafnode
+	cd ${WRKSRC} && $(INSTALL_DATA) ${DOCS} \
+		${PREFIX}/share/doc/leafnode
+	${INSTALL_DATA} ${WRKINST}/${SYSCONFDIR}/leafnode/* \
+		${PREFIX}/share/examples/leafnode/
 
 .include <bsd.port.mk>

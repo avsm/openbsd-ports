@@ -1,17 +1,36 @@
 #!/bin/sh
+#
+# $OpenBSD: DEINSTALL,v 1.4.6.1 2003/01/28 19:11:52 marcm Exp $
+#
 
-# Post-deinstallation cleanup of leafnode
+set -e
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
 
-echo ""
-echo "** To completely deinstall the leafnode package you need to perform"
-echo "** these steps as root:"
-echo "**"
-echo "**           rm -rf /etc/leafnode"
-echo "**           rm -rf /var/spool/news"
-echo "**"
-echo "** Also, you should run the command \"user del news\" and remove the"
-echo "** news pseudo user.  Be absolutly sure you want to completely remove"
-echo "** the package before issuing these commands."
-echo ""
+FILES='
+leafnode/config
+'
+
+SPOOLDIR=/var/spool/news
+
+echo
+echo "+--------------- $1"
+echo "| To fully remove $1 from your system you should also"
+echo "| remove the configuration files from the ${SYSCONFDIR}/leafnode"
+echo "| directory as well as the news spool directory ${SPOOLDIR}."
+echo "|"
+echo "| You should also remove the 'news' user from the system by running:"
+echo "|"
+echo "|     userdel news"
+echo "|"
+echo "| If you are planning on installing $1 again in the future"
+echo "| you can leave them as they are."
+echo "|"
+echo "| FYI, the following configuration files belong to this package:"
+echo "|"
+for f in ${FILES}; do
+	echo "| ${SYSCONFDIR}/$f"
+done
+echo "+--------------- $1"
+echo
 
 exit 0

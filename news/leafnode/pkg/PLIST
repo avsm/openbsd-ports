@@ -1,7 +1,8 @@
-@comment $OpenBSD: PLIST,v 1.6 2000/06/10 19:00:16 fgsch Exp $
+@comment $OpenBSD: PLIST,v 1.6.8.1 2003/01/28 19:11:53 marcm Exp $
+bin/leafnode-version
 bin/newsq
+man/man1/leafnode-version.1
 man/man1/newsq.1
-man/man7/pcre.7
 man/man8/applyfilter.8
 man/man8/checkgroups.8
 man/man8/fetchnews.8
@@ -12,8 +13,16 @@ sbin/checkgroups
 sbin/fetchnews
 sbin/leafnode
 sbin/texpire
-share/doc/leafnode/FAQ
+share/doc/leafnode/FAQ.txt
 share/doc/leafnode/INSTALL
 share/doc/leafnode/README
-share/doc/leafnode/config.example
+share/doc/leafnode/README-FQDN
+share/examples/leafnode/Makefile.dist
+share/examples/leafnode/UNINSTALL-daemontools
+share/examples/leafnode/config.example
+share/examples/leafnode/filters.example
+share/examples/leafnode/nntp.rules.dist
+share/examples/leafnode/run.tcpd.dist
+share/examples/leafnode/run.tcpserver.dist
+@dirrm share/examples/leafnode
 @dirrm share/doc/leafnode

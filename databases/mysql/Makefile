@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.86.2.1 2003/12/30 01:20:16 brad Exp $
+# $OpenBSD: Makefile,v 1.86.2.2 2004/04/16 00:21:18 brad Exp $
 # $FreeBSD: Makefile,v 1.44 1999/03/04 21:27:58 dirk Exp $
 # Uses pthreads
 
@@ -9,7 +9,7 @@ COMMENT-tests=	"multithreaded SQL database (regression test suite)"
 VERSION=	3.23.57
 DISTNAME=	mysql-${VERSION}
 FULLPKGNAME=	mysql-client-${VERSION}
-PKGNAME-server=	mysql-server-${VERSION}p1
+PKGNAME-server=	mysql-server-${VERSION}p2
 FULLPKGNAME-tests= mysql-tests-${VERSION}
 CATEGORIES=	databases
 V=		MySQL-3.23

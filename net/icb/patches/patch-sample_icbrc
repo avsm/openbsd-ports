@@ -1,4 +1,4 @@
-$OpenBSD: patch-sample_icbrc,v 1.1 2001/05/14 16:42:54 millert Exp $
+$OpenBSD: patch-sample_icbrc,v 1.1.2.1 2001/05/15 16:25:07 naddy Exp $
 --- sample.icbrc.orig	Fri Feb 24 14:19:29 1995
 +++ sample.icbrc	Mon May 14 10:33:06 2001
 @@ -15,6 +15,7 @@ oset tabreply false	# set to "true" to p

@@ -1,4 +1,4 @@
-$OpenBSD: patch-readline_readline_c,v 1.1 2001/05/14 16:42:54 millert Exp $
+$OpenBSD: patch-readline_readline_c,v 1.1.2.1 2001/05/15 16:25:07 naddy Exp $
 --- readline/readline.c.orig	Fri Feb 24 14:20:03 1995
 +++ readline/readline.c	Mon May 14 10:33:03 2001
 @@ -610,22 +610,22 @@ rl_signal_handler (sig)

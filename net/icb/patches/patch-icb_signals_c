@@ -1,4 +1,4 @@
-$OpenBSD: patch-icb_signals_c,v 1.1 2001/05/14 16:42:54 millert Exp $
+$OpenBSD: patch-icb_signals_c,v 1.1.2.1 2001/05/15 16:25:06 naddy Exp $
 --- icb/signals.c.orig	Fri Feb 24 14:20:29 1995
 +++ icb/signals.c	Mon May 14 10:33:04 2001
 @@ -22,14 +22,14 @@ trapsignals()

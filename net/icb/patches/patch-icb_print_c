@@ -1,4 +1,4 @@
-$OpenBSD: patch-icb_print_c,v 1.1 2001/05/14 16:42:53 millert Exp $
+$OpenBSD: patch-icb_print_c,v 1.1.2.1 2001/05/15 16:25:06 naddy Exp $
 --- icb/print.c.orig	Fri Feb 24 14:20:25 1995
 +++ icb/print.c	Mon May 14 10:33:06 2001
 @@ -5,6 +5,7 @@

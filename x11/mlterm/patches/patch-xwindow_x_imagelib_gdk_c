@@ -1,20 +1,20 @@
-$OpenBSD: patch-xwindow_x_imagelib_gdk_c,v 1.1 2005/03/11 21:30:14 robert Exp $
---- xwindow/x_imagelib_gdk.c.orig	Fri Mar 11 21:52:55 2005
-+++ xwindow/x_imagelib_gdk.c	Fri Mar 11 21:57:26 2005
-@@ -294,6 +294,12 @@
+$OpenBSD: patch-xwindow_x_imagelib_gdk_c,v 1.1.2.1 2005/03/15 22:21:40 robert Exp $
+--- xwindow/x_imagelib_gdk.c.orig	Sun Oct  5 15:10:06 2003
++++ xwindow/x_imagelib_gdk.c	Tue Mar 15 22:36:52 2005
+@@ -261,6 +261,12 @@
  	unsigned char *pixel ;
  	int i, j ;
  
 +	if( !width || !height)
 +		return -1;
-+	
++
 +	if( width > ((SIZE_MAX / 4) - 2) / height)
 +		return -1; /* integer overflow */
-+		
- 	*cardinal = malloc( (width * height + 2) *4) ;
- 	if( !(*cardinal))
- 		return  -1 ;
-@@ -356,7 +362,7 @@
++	
+ 	/* create (maybe shriked) copy */ 
+ 	pixbuf = gdk_pixbuf_scale_simple(pixbuf, width, height, GDK_INTERP_TILES) ;
+ 
+@@ -318,7 +324,7 @@
  	int blue
  	)
  {
@@ -23,33 +23,33 @@ $OpenBSD: patch-xwindow_x_imagelib_gdk_c,v 1.1 2005/03/11 21:30:14 robert Exp $
  	int  i ;
  	unsigned long  min = 0xffffff ;
  	unsigned long  diff ;
-@@ -831,6 +837,9 @@
- 
+@@ -797,6 +803,9 @@
  	width = gdk_pixbuf_get_width( pixbuf) ;
  	height = gdk_pixbuf_get_height( pixbuf) ;
-+	
-+	if( !width || !height)
-+		return	NULL ;
  
++	if( !width || !height)
++		return  NULL ;
++
  	r_mask = vinfo[0].red_mask ;
  	g_mask = vinfo[0].green_mask ;
-@@ -851,6 +860,9 @@
+ 	b_mask = vinfo[0].blue_mask ;
+@@ -816,6 +825,9 @@
  		int r_limit, g_limit, b_limit ;
  		u_int16_t *data ;
  
 +		if( width > (SIZE_MAX / 2) / height)
-+			return	NULL ;
-+			
++			return  NULL ;
++
  		data = (u_int16_t *)malloc( width *  height * 2) ;
  		if( !data)
  			return  NULL ;
-@@ -883,6 +895,9 @@
+@@ -848,6 +860,9 @@
  	{
  		u_int32_t *  data ;
  
 +		if( width > (SIZE_MAX / 4) / height)
-+			return	NULL;
-+			
++			return  NULL;
++		
  		data = (u_int32_t *)malloc( width *  height * 4) ;
  		if( !data)
  			return  NULL;

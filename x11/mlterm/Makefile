@@ -1,9 +1,10 @@
-# $OpenBSD: Makefile,v 1.2 2004/08/04 16:39:21 naddy Exp $
+# $OpenBSD: Makefile,v 1.2.2.1 2005/03/15 22:21:40 robert Exp $
 
 NOT_FOR_ARCHS=	vax
 
 COMMENT=	"color terminal emulator with transparency and unicode support"
 DISTNAME=	mlterm-2.8.0
+PKGNAME=	${DISTNAME}p0
 CATEGORIES=	x11
 
 MAINTAINER=	Waldemar Brodkorb <wbx@openbsd.de>

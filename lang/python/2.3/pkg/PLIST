@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.2 2004/02/03 07:39:51 sturm Exp $
+@comment $OpenBSD: PLIST,v 1.2.2.1 2005/03/29 20:27:33 sturm Exp $
 @option no-default-conflict
 @pkgcfl python-2.3*
 %%tkinter%%
@@ -609,6 +609,7 @@ lib/python2.3/email/test/data/msg_32.txt
 lib/python2.3/email/test/data/msg_33.txt
 lib/python2.3/email/test/data/msg_34.txt
 lib/python2.3/email/test/data/msg_35.txt
+lib/python2.3/email/test/data/msg_40.txt
 lib/python2.3/email/test/test_email.py
 lib/python2.3/email/test/test_email.pyc
 lib/python2.3/email/test/test_email.pyo

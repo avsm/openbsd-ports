@@ -1,7 +1,7 @@
-# $OpenBSD: Makefile,v 1.3 2004/02/29 16:39:39 naddy Exp $
+# $OpenBSD: Makefile,v 1.3.2.1 2005/03/29 20:27:32 sturm Exp $
 
 VERSION=		2.3
-PATCHLEVEL=		.3
+PATCHLEVEL=		.5
 PKG_PATCHLEVEL=
 
 COMMENT-bsddb=		"Berkeley db module for Python"

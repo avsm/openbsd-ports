@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.6 2001/09/18 21:26:10 naddy Exp $
+# $OpenBSD: Makefile,v 1.6.2.1 2001/09/27 20:26:52 naddy Exp $
 
 ONLY_FOR_ARCHS=	i386
 COMMENT=	"network file distribution system"

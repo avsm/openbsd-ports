@@ -1,6 +1,6 @@
-$OpenBSD: patch-hfaxd_SNPPServer_c++,v 1.1 2003/11/11 22:30:34 todd Exp $
---- hfaxd/SNPPServer.c++.orig	2002-02-14 22:20:50.000000000 -0600
-+++ hfaxd/SNPPServer.c++	2003-11-11 16:26:23.000000000 -0600
+$OpenBSD: patch-hfaxd_SNPPServer_c++,v 1.1.4.1 2003/11/12 17:31:19 margarida Exp $
+--- hfaxd/SNPPServer.c++.orig	Fri Feb 15 04:20:50 2002
++++ hfaxd/SNPPServer.c++	Wed Nov 12 13:00:54 2003
 @@ -849,7 +849,7 @@ SNPPServer::dataCmd(void)
  	fxStr emsg;
  	u_int seqnum = getDocumentNumbers(1, emsg);

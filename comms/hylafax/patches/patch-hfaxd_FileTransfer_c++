@@ -1,6 +1,6 @@
-$OpenBSD: patch-hfaxd_FileTransfer_c++,v 1.2 2003/11/11 22:30:34 todd Exp $
---- hfaxd/FileTransfer.c++.orig	1999-11-18 06:18:57.000000000 -0600
-+++ hfaxd/FileTransfer.c++	2003-11-11 16:26:23.000000000 -0600
+$OpenBSD: patch-hfaxd_FileTransfer_c++,v 1.2.4.1 2003/11/12 17:31:19 margarida Exp $
+--- hfaxd/FileTransfer.c++.orig	Thu Nov 18 12:18:57 1999
++++ hfaxd/FileTransfer.c++	Wed Nov 12 13:00:41 2003
 @@ -556,7 +556,7 @@ HylaFAXServer::storeUniqueCmd(bool isTem
  	} else
  	    perror_reply(553, filename, errno);

@@ -1,0 +1,16 @@
+$OpenBSD: patch-suplib_src_m3makefile,v 1.2 2001/05/27 20:39:09 naddy Exp $
+--- suplib/src/m3makefile.orig	Sun Apr 15 23:53:17 2001
++++ suplib/src/m3makefile	Sun May 27 13:28:05 2001
+@@ -69,7 +69,11 @@ or equal(TARGET, "FBSD_ALPHA")
+   include_dir("FreeBSD")
+   import_lib("md", "/usr/lib")
+ else
+-  include_dir("POSIX")
++  if equal(TARGET, "OpenBSD_386")
++  	include_dir("FreeBSD")
++  else
++  	include_dir("POSIX")
++  end
+   include_dir("libmd")
+ end
+ 

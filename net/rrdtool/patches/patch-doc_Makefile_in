@@ -1,0 +1,15 @@
+$OpenBSD: patch-doc_Makefile_in,v 1.2 2000/06/29 21:12:24 jakob Exp $
+--- doc/Makefile.in.orig	Tue Jun 13 06:47:10 2000
++++ doc/Makefile.in	Thu Jun 29 13:40:03 2000
+@@ -106,9 +106,9 @@ HTML = $(POD:.pod=.html) $(PMP:.pm=.html
+ EXTRA_DIST = $(POD) $(HTML) $(TXT)
+ 
+ # some install rules
+-idocdir = $(prefix)/doc
++idocdir = $(prefix)/share/doc/rrdtool
+ idoc_DATA = $(POD) $(TXT)
+-ihtmldir = $(prefix)/html
++ihtmldir = $(prefix)/share/doc/rrdtool/html
+ ihtml_DATA = $(HTML)
+ imandir = $(prefix)/man/man1
+ iman_DATA = $(MAN)

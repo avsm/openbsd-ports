@@ -1,0 +1,12 @@
+$OpenBSD: patch-contrib_trytime_Makefile_in,v 1.2 2000/06/29 21:12:24 jakob Exp $
+--- contrib/trytime/Makefile.in.orig	Tue Jun 13 06:47:34 2000
++++ contrib/trytime/Makefile.in	Thu Jun 29 13:39:24 2000
+@@ -87,7 +87,7 @@ ZLIB_LIB_DIR = @ZLIB_LIB_DIR@
+ 
+ INCLUDES = -I../../src -I../../gd1.3
+ EXTRA_DIST = trytime.c
+-contribdir = $(prefix)/contrib/trytime
++contribdir = $(prefix)/share/examples/rrdtool/contrib/trytime
+ contrib_DATA = README trytime.c
+ bin_PROGRAMS = trytime
+ trytime_SOURCES = trytime.c

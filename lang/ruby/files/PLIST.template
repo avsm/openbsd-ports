@@ -1,5 +1,6 @@
+@comment $OpenBSD: PLIST.template,v 1.1.1.1.2.1 2000/09/15 04:55:46 marc Exp $
 bin/ruby
-@exec mkdir -p %D/lib/ruby/REV/site_ruby/SUB
+@exec mkdir -p %D/lib/ruby/site_ruby/REV/SUB
 lib/ruby/REV/English.rb
 lib/ruby/REV/Env.rb
 lib/ruby/REV/base64.rb
@@ -23,7 +24,7 @@ lib/ruby/REV/getoptlong.rb
 lib/ruby/REV/getopts.rb
 ifdef(`DYNAMIC',dnl
 lib/libruby.so
-lib/libruby.so.1.4.3
+lib/libruby.so.1.4.4
 @exec /sbin/ldconfig -m %B
 lib/ruby/REV/SUB/curses.so
 lib/ruby/REV/SUB/dbm.so
@@ -164,8 +165,9 @@ share/doc/ruby/bundle.html
 share/doc/ruby/kconv.html
 share/doc/ruby/thread.html
 @dirrm share/doc/ruby
-@dirrm lib/ruby/REV/site_ruby/SUB
-@dirrm lib/ruby/REV/site_ruby
+@dirrm lib/ruby/site_ruby
+@dirrm lib/ruby/site_ruby/REV/SUB
+@dirrm lib/ruby/site_ruby/REV
 @dirrm lib/ruby/REV/net
 @dirrm lib/ruby/REV/irb
 @dirrm lib/ruby/REV/cgi

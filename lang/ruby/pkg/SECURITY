@@ -1,4 +1,4 @@
-$OpenBSD: SECURITY,v 1.1.1.1 2000/03/28 13:16:02 espie Exp $
+$OpenBSD: SECURITY,v 1.1.1.1.2.1 2000/09/15 04:55:48 marc Exp $
 
 One use of mktemp replaced with mkstemp.
 

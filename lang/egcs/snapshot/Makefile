@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.72 2000/04/18 23:34:45 espie Exp $
+# $OpenBSD: Makefile,v 1.72.2.1 2000/09/15 04:55:17 marc Exp $
 
 # This is a configuration file for egcs, snapshot flavor
 # PLEASE use the regular egcs-stable for serious work, resort to this one
@@ -11,7 +11,7 @@
 BUILD_DEPENDS=	autoconf::devel/autoconf
 
 CATEGORIES=	lang 
-NEED_VERSION=	1.270
+NEED_VERSION=	1.302
 MAINTAINER=	Marc.Espie@openbsd.org
 
 
@@ -38,7 +38,7 @@ PERMIT_DISTFILES_CDROM="Probably meaningless"
 # cygnus packaging scheme is now working, though it is weird.
 # namely, testsuite holds all the tests. g++-tests no longer exists,
 # and g77-tests only holds duplicates from the main testsuite archive.
-#MAKE_TESTS=yes
+MAKE_TESTS=yes
 MAKE_GXX=Yes
 MAKE_FORTRAN=Yes
 # we don't care about chill
@@ -77,11 +77,16 @@ PATCH_LIST+=patch-java-*
 MULTI_PACKAGES+=-java
 .endif
 
-.if defined(MAKE_TESTS)
-BUILD_DEPENDS+=	runtest::devel/dejagnu
+.if defined(MAKE_TESTS) && ${MAKE_TESTS:L} == "yes"
+BUILD_DEPENDS+=	runtest::lang/egcs/dejagnu
 .endif
 
-LATEST_DATE=2000-03-13
+# No way around it, java wants a pure parser
+.if defined(MAKE_JAVA) && ${MAKE_JAVA:L} == "yes"
+BUILD_DEPENDS+=bison::devel/bison
+.endif
+
+LATEST_DATE=2000-07-31
 
 #### fetch section
 # configuration is built so that you can test the next snapshot easily,
@@ -93,7 +98,7 @@ LATEST_DATE=2000-03-13
 #PATCH_DEBUG=yes
 
 LATEST=${LATEST_DATE:S/-//g}
-DIRECTORY=egcs/snapshots/%DATE%/
+DIRECTORY=snapshots/%DATE%/
 .if defined(NEXT_DATE)
 NEXT=${NEXT_DATE:S/-//g}
 DISTNAME=	egcs-${NEXT}
@@ -112,52 +117,60 @@ PATCH_DIST_STRIP=-p1
 DISTFILES=  egcs-${LATEST}${EXTRACT_SUFX}
 
 SITES=	
-SITES+=	ftp://egcs.cygnus.com/pub/${DIRECTORY} 
-SITES+=	ftp://ftp.lip6.fr/pub/${DIRECTORY}
-SITES+= ftp://ftp.goof.com/pub/pcg/${DIRECTORY}
-SITES+= ftp://go.cygnus.com/pub/ftp.cygnus.com/${DIRECTORY}
-SITES+= ftp://cambridge.cygnus.com/pub/${DIRECTORY}
-SITES+= ftp://sunsite.doc.ic.ac.uk/Mirrors/egcs.cygnus.com/pub/${DIRECTORY}
-SITES+= ftp://gd.tuwien.ac.at/gnu/${DIRECTORY}
-SITES+= ftp://ftp.ilog.fr/pub/Mirrors/${DIRECTORY}
-SITES+= ftp://ftp.irisa.fr/pub/mirrors/${DIRECTORY}
 
-SITES+= ftp://ftp.gts.cz/pub/MIRRORS/ftp.cygnus.com/pub/${DIRECTORY}
-SITES+= ftp://sunsite.auc.dk/pub/${DIRECTORY}
-SITES+= ftp://ftp.fu-berlin.de/unix/languages/${DIRECTORY}
-SITES+= ftp://ftp.gwdg.de/pub/cygnus/${DIRECTORY}
-SITES+= ftp://ftp.mpi-sb.mpg.de/pub/gnu/mirror/egcs.cygnus.com/${DIRECTORY}
-SITES+= ftp://ftp.uni-trier.de/pub/languages/c/implementation/${DIRECTORY}
-SITES+= ftp://ftp.sunet.se/pub/gnu/${DIRECTORY}
-SITES+= ftp://ftp.unicamp.br/pub/gnu/=EXTRA=/cygnus/${DIRECTORY}
-SITES+= ftp://ftp.lbi.ro/mirrors/ftp.cygnus.com/pub/${DIRECTORY}
-SITES+= ftp://ftp.ntua.gr/pub/gnu/${DIRECTORY}
-SITES+= ftp://ftp.nluug.nl/pub/languages/${DIRECTORY}
-SITES+= ftp://ftp.dti.ad.jp/pub/lang/${DIRECTORY}
-SITES+= ftp://ftp.win.or.jp/pub/lang/${DIRECTORY}
-SITES+= ftp://ftp.telewaynet.ad.jp/pub/lang/${DIRECTORY}
-SITES+= ftp://ftp.lab.kdd.co.jp/lang/${DIRECTORY}
-SITES+= ftp://ftp.funet.fi/mirrors/ftp.cygnus.com/pub/${DIRECTORY}
-SITES+= ftp://ftp.crc.ca/pub/packages/${DIRECTORY}
-SITES+= ftp://ftp.nc.orc.ru/pub/${DIRECTORY}
-SITES+= ftp://ftp.u-aizu.ac.jp/pub/lang/C/pcg/${DIRECTORY}
-SITES+= ftp://ftp.maisel.int-evry.fr/pub/linux/pentium/${DIRECTORY}
-SITES+= ftp://ftp.yggdrasil.com/mirrors/site/egcs.cygnus.com/pub/${DIRECTORY}
-SITES+= ftp://unix.hensa.ac.uk/mirrors/egcs.cygnus.com/pub/${DIRECTORY}
+SITES+= ftp://ftp.uvsq.fr/pub/egcs/${DIRECTORY}
+SITES+= ftp://ftp.grolier.fr/pub/egcs/${DIRECTORY}
+SITES+= ftp://gd.tuwien.ac.at/gnu/gcc/${DIRECTORY}
+SITES+= ftp://chardonnay.elis.rug.ac.be/pub/mirrors/gcc.cygnus.com/pub/gcc/${DIRECTORY}
+SITES+= ftp://gd.tuwien.ac.at/gnu/gcc/${DIRECTORY}
+SITES+=	ftp://egcs.cygnus.com/pub/egcs/${DIRECTORY} 
+SITES+= ftp://ftp.goof.com/pub/pcg/egcs/${DIRECTORY}
+SITES+= ftp://go.cygnus.com/pub/ftp.cygnus.com/egcs/${DIRECTORY}
+SITES+= ftp://cambridge.cygnus.com/pub/egcs/${DIRECTORY}
+SITES+= ftp://sunsite.doc.ic.ac.uk/Mirrors/egcs.cygnus.com/pub/egcs/${DIRECTORY}
+
+SITES+= ftp://ftp.gts.cz/pub/MIRRORS/ftp.cygnus.com/pub/egcs/${DIRECTORY}
+SITES+= ftp://sunsite.auc.dk/pub/egcs/${DIRECTORY}
+SITES+= ftp://ftp.fu-berlin.de/unix/languages/egcs/egcs/${DIRECTORY}
+SITES+= ftp://ftp.gwdg.de/pub/cygnus/egcs/${DIRECTORY}
+SITES+= ftp://ftp.mpi-sb.mpg.de/pub/gnu/mirror/egcs.cygnus.com/egcs/${DIRECTORY}
+SITES+= ftp://ftp.uni-trier.de/pub/languages/c/implementation/egcs/${DIRECTORY}
+SITES+= ftp://ftp.sunet.se/pub/gnu/egcs/${DIRECTORY}
+SITES+= ftp://ftp.unicamp.br/pub/gnu/=EXTRA=/cygnus/egcs/${DIRECTORY}
+SITES+= ftp://ftp.lbi.ro/mirrors/ftp.cygnus.com/pub/egcs/${DIRECTORY}
+SITES+= ftp://ftp.ntua.gr/pub/gnu/egcs/${DIRECTORY}
+SITES+= ftp://ftp.nluug.nl/pub/languages/egcs/${DIRECTORY}
+SITES+= ftp://ftp.dti.ad.jp/pub/lang/egcs/${DIRECTORY}
+SITES+= ftp://ftp.win.or.jp/pub/lang/egcs/${DIRECTORY}
+SITES+= ftp://ftp.telewaynet.ad.jp/pub/lang/egcs/${DIRECTORY}
+SITES+= ftp://ftp.lab.kdd.co.jp/lang/egcs/${DIRECTORY}
+SITES+= ftp://ftp.funet.fi/mirrors/ftp.cygnus.com/pub/egcs/${DIRECTORY}
+SITES+= ftp://ftp.crc.ca/pub/packages/egcs/${DIRECTORY}
+SITES+= ftp://ftp.nc.orc.ru/pub/egcs/${DIRECTORY}
+SITES+= ftp://ftp.u-aizu.ac.jp/pub/lang/C/pcg/egcs/${DIRECTORY}
+SITES+= ftp://ftp.maisel.int-evry.fr/pub/linux/pentium/egcs/${DIRECTORY}
+SITES+= ftp://ftp.yggdrasil.com/mirrors/site/egcs.cygnus.com/pub/egcs/${DIRECTORY}
+SITES+= ftp://unix.hensa.ac.uk/mirrors/egcs.cygnus.com/pub/egcs/${DIRECTORY}
 
 # Can't contact those, maybe they work ?
-SITES+= ftp://sunsite.mff.cuni.cz/pub/GNU/${DIRECTORY}
-SITES+= ftp://sunsite.icm.edu.pl/pub/programming/${DIRECTORY}
-SITES+= ftp://ftp.task.gda.pl/mirror/egcs.cygnus.com/pub/${DIRECTORY}
-SITES+= ftp://ftp.lca.uevora.pt/pub/${DIRECTORY}
-SITES+= ftp://cair-archive.kaist.ac.kr/pub/gnu/${DIRECTORY}
-SITES+= ftp://linux.ihep.su/pub/cygnus/${DIRECTORY}
-SITES+= ftp://linux.cis.nctu.edu.tw/pub/packages/pcg/${DIRECTORY}
-SITES+= ftp://ftp.ninemoons.com/pub/mirrors/${DIRECTORY}
+SITES+= ftp://sunsite.mff.cuni.cz/pub/GNU/egcs/${DIRECTORY}
+SITES+= ftp://sunsite.icm.edu.pl/pub/programming/egcs/${DIRECTORY}
+SITES+= ftp://ftp.task.gda.pl/mirror/egcs.cygnus.com/pub/egcs/${DIRECTORY}
+SITES+= ftp://ftp.lca.uevora.pt/pub/egcs/${DIRECTORY}
+SITES+= ftp://cair-archive.kaist.ac.kr/pub/gnu/egcs/${DIRECTORY}
+SITES+= ftp://linux.ihep.su/pub/cygnus/egcs/${DIRECTORY}
+SITES+= ftp://linux.cis.nctu.edu.tw/pub/packages/pcg/egcs/${DIRECTORY}
+SITES+= ftp://ftp.ninemoons.com/pub/mirrors/egcs/${DIRECTORY}
 
+# Bad mirrors (no snapshot)
+# ftp.lip6.fr, ftp.ilog.fr, ftp.irisa.fr
+# No route to host
+# mirrors.aarnet.edu.au
+#SITES+=	ftp://ftp.lip6.fr/pub/egcs/${DIRECTORY}
+#SITES+= ftp://ftp.ilog.fr/pub/Mirrors/egcs/${DIRECTORY}
+#SITES+= ftp://ftp.irisa.fr/pub/mirrors/egcs.cygwin.com/gcc/${DIRECTORY}
 MASTER_SITES=${SITES:S/%DATE%/${LATEST_DATE}/}
 
-FAKE=		Yes
 FAKE_FLAGS=	DESTDIR=${WRKINST}
 # add a possible next snapshot
 
@@ -181,8 +194,6 @@ post-extract:
 
 # get openbsd configuration files where they should be
 post-patch:
-		# avoid packaging include copies along...
-	find ${WRKSRC} -name \*.orig|xargs rm
 	cp -R ${FILESDIR}/config/* ${WRKSRC}
 	cp -R ${FILESDIR}/include/* ${WRKSRC}/gcc/ginclude
 	cd ${WRKSRC} && contrib/gcc_update --touch
@@ -191,6 +202,7 @@ post-patch:
 	cd ${WRKSRC}/gcc && PATH=${PORTPATH} autoconf
 	cd ${WRKSRC}/libiberty && PATH=${PORTPATH} autoconf
 	cd ${WRKSRC}/libf2c/libI77 && PATH=${PORTPATH} autoconf
+	cd ${WRKSRC} && rm -rf texinfo
 
 
 
@@ -202,42 +214,39 @@ post-patch:
 # This should not be used for regular releases, but if you're using this
 # snapshot, you know what you're doing, don't you ?
 
-HAS_CONFIGURE=	yes
+CONFIGURE_STYLE=	gnu dest
 
 #CONFIGURE_SCRIPT=../source/configure
 
 LANGS=c
 .if defined(MAKE_GXX)
-LANGS+=c++
+LANGS:=${LANGS},c++
 .endif
 .if defined(MAKE_FORTRAN)
-LANGS+=f77
+LANGS:=${LANGS},f77
 .endif
 .if defined(MAKE_CHILL)
-LANGS+=CHILL
+LANGS.=${LANGS},CHILL
 .endif
 .if defined(MAKE_OBJC)
-LANGS+=objc
+LANGS:=${LANGS},objc
 .endif
 .if defined(MAKE_JAVA)
-LANGS+=java
+LANGS:=${LANGS},java
 .endif
 
 # Note: the configure target passes CFLAGS to the configure script anyways.
 
-CFLAGS=-O2
-CONFIGURE_ENV=LANGUAGES='${LANGS}'  
+CFLAGS=-O2 -g
 
 
-
-CONFIGURE_ARGS= --prefix='$${DESTDIR}${PREFIX}' \
---verbose --program-transform-name=s,^,e, \
---disable-subdir-texinfo \
---disable-nls
+CONFIGURE_ARGS= --verbose --program-transform-name=s,^,e, \
+--disable-nls 
 
 # This is needed, as internal cpp is no longer compatible with the
 # visible beast
 CONFIGURE_ARGS+=--enable-cpp
+CONFIGURE_ARGS+=--enable-languages=${LANGS}
 
 
 # if you wish to try your luck
@@ -270,7 +279,7 @@ SEPARATE_BUILD=concurrent
 
 # you shouldn't skip bootstrap unless you know what you're doing
 # use bootstrap-lean if you're pressed for space
-ALL_TARGET=bootstrap 
+ALL_TARGET=bootstrap
 #ALL_TARGET=bootstrap3
 # ALL_TARGET=bootstrap-lean
 
@@ -282,17 +291,12 @@ pre-build:
 	chmod a+x ${WRKSRC}/gcc/fixinc/openbsd-special
 	echo "cp ${WRKSRC}/gcc/fixinc/openbsd-special ${WRKBUILD}/gcc/fixinc.sh" >${WRKSRC}/gcc/fixinc/mkfixinc.sh
 
-# XXX we need to override do-build to get the warnings from within make
-do-build:
-	@{ cd ${WRKBUILD}; \
-	${MAKE_ENV} make ${ALL_TARGET} 2>warnings; } || \
-	{ echo "*** Make bootstrap failed."; \
-	echo "*** Look at ${WRKBUILD}/warnings for errors"; exit 1; }
-
 ####
 # Install & tests section 
 
 post-build:
+		# avoid packaging include copies along...
+	find ${WRKBUILD} -name \*.orig|xargs rm
 	mkdir -p ${WRKBUILD}/gcc/include/machine
 	cp ${FILESDIR}/include/machine/ansi.h ${WRKBUILD}/gcc/include/machine
 

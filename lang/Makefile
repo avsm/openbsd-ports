@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.25 2000/04/03 17:13:16 espie Exp $
+# $OpenBSD: Makefile,v 1.25.2.1 2000/09/15 04:55:13 marc Exp $
 # $FreeBSD: Makefile,v 1.89 1997/11/24 09:24:06 tg Exp $
 #
 
@@ -51,8 +51,8 @@
 #    SUBDIR += pgcc
 #    SUBDIR += pgcc-current
      SUBDIR += python:
-     SUBDIR += python:tk,tools,threads
-     SUBDIR += python:tk,tools
+     SUBDIR += python:tk,threads,mpz,no_tools
+     SUBDIR += python:tk,mpz,no_tools
 #    SUBDIR += rexx-imc
      SUBDIR += ruby
 #    SUBDIR += scheme48

@@ -1,15 +1,15 @@
 # Icon library port
-# $OpenBSD: Makefile,v 1.7 2000/03/24 23:28:13 espie Exp $
+# $OpenBSD: Makefile,v 1.7.2.1 2000/09/15 04:55:30 marc Exp $
 
-VERSION=9.3.2
+VERSION=9.3.3
 DISTNAME=icon_lib-${VERSION}
 DIST_SUBDIR=icon/${VERSION}
 
 CATEGORIES=lang
-NEED_VERSION=	 1.230
+NEED_VERSION=	 1.317
 
 MAINTAINER=espie@openbsd.org
-LICENSE_TYPE=PD
+# PD
 PERMIT_DISTFILES_CDROM=Yes
 PERMIT_DISTFILES_FTP=Yes
 PERMIT_PACKAGE_CDROM=Yes
@@ -21,12 +21,9 @@ PERMIT_PACKAGE_FTP=Yes
 # Anyway, since source is available, using pre-compiled binaries is not
 # OpenBSD policy...
 
-MASTER_SITES=ftp://ftp.cs.arizona.edu:/icon/library/
+MASTER_SITES=ftp://ftp.cs.arizona.edu/icon/library/
 DISTFILES=bipl.tgz gipl.tgz info.tgz
 WRKDIST=	${WRKDIR}
-FAKE=		Yes
-
-
 
 BUILD_DEPENDS=${PREFIX}/bin/icont::lang/icon/interp
 RUN_DEPENDS=${PREFIX}/bin/iconx::lang/icon/interp

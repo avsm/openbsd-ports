@@ -1,7 +1,8 @@
-# $OpenBSD: Makefile,v 1.1.1.1 2000/03/28 13:16:02 espie Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.1 2000/09/15 04:55:45 marc Exp $
 
-DISTNAME=ruby-1.4.3
+DISTNAME=ruby-1.4.4
 CATEGORIES = lang
+NEED_VERSION=	1.310
 MASTER_SITES=ftp://ftp.netlab.co.jp/pub/lang/ruby/ \
     ftp://ftp.iij.ad.jp/pub/lang/ruby/ \
     ftp://ftp.TokyoNet.AD.JP/pub/misc/ruby/ \
@@ -10,7 +11,7 @@ MASTER_SITES=ftp://ftp.netlab.co.jp/pub/lang/ruby/ \
 MASTER_SITES0=${MASTER_SITES:C,$,doc/,}
 
 BINARCH=${DISTNAME}.tar.gz
-MANARCH=ruby-man-1.4.3.tar.gz
+MANARCH=ruby-man-1.4.4.tar.gz
 DISTFILES=${BINARCH} ${MANARCH}:0
 EXTRACT_ONLY=${BINARCH}
 
@@ -25,9 +26,8 @@ NO_CDROM="st.[ch] is rumored to be public domain, copyright unclear"
 LIB_DEPENDS=tcl83.:${PORTSDIR}/lang/tcl/8.3 \
             tk83.:${PORTSDIR}/x11/tk/8.3
 
-GNU_CONFIGURE=	Yes
+CONFIGURE_STYLE=	gnu
 SEPARATE_BUILD=	concurrent
-FAKE=		Yes
 
 CONFIGURE_ENV=YACC=yacc
 CONFIGURE_ARGS=${CONFIGURE_SHARED} \
@@ -50,18 +50,9 @@ post-install:
 	cd ${PREFIX}/share/doc && \
 	tar -s/ruby-man-1.4/ruby/ -zxf ${FULLDISTDIR}/${MANARCH}
 
-PLIST=${WRKBUILD}/PLIST
 
-M4FLAGS=-Uinclude -Uindex -DSUB=${ARCH}-openbsd${OSREV} -DREV=1.4
-pre-package: 
-	@cd ${.CURDIR} && make ${PLIST}
-
+REV=1.4
+SUB=${ARCH}-openbsd${OSREV}
+SUBST_VARS=SUB REV
 
 .include <bsd.port.mk>
-.if !defined(NO_SHARED_LIBS)
-M4FLAGS+= -DDYNAMIC
-.endif
-
-${PLIST}: ${FILESDIR}/PLIST.template
-	m4 ${M4FLAGS} <${FILESDIR}/PLIST.template >${PLIST}
-

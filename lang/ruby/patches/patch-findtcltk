@@ -1,3 +1,4 @@
+$OpenBSD: patch-findtcltk,v 1.1.1.1.2.1 2000/09/15 04:55:47 marc Exp $
 --- ext/tcltklib/extconf.rb.orig	Sat Oct 30 15:39:17 1999
 +++ ext/tcltklib/extconf.rb	Tue Dec 14 01:38:33 1999
 @@ -21,6 +21,7 @@ def find_tcl(tcllib)

@@ -1,6 +1,6 @@
 #-*- mode: Fundamental; tab-width: 4; -*-
 # ex:ts=4 sw=4 filetype=make:
-FULL_REVISION=$$OpenBSD: bsd.port.mk,v 1.405.2.1 2001/05/05 20:34:19 espie Exp $$
+FULL_REVISION=$$OpenBSD: bsd.port.mk,v 1.405.2.2 2001/05/07 23:21:19 miod Exp $$
 #	$FreeBSD: bsd.port.mk,v 1.264 1996/12/25 02:27:44 imp Exp $
 #	$NetBSD: bsd.port.mk,v 1.62 1998/04/09 12:47:02 hubertf Exp $
 #
@@ -256,11 +256,11 @@ FULLDISTDIR?=	${DISTDIR}/${DIST_SUBDIR}
 .else
 FULLDISTDIR?=	${DISTDIR}
 .endif
-PACKAGES?=		${PORTSDIR}/packages/${ARCH}
+PACKAGES?=		${PORTSDIR}/packages/${MACHINE_ARCH}
 TEMPLATES?=		${PORTSDIR}/infrastructure/templates
 
-CDROM_PACKAGES?=	${PORTSDIR}/cdrom-packages/${ARCH}
-FTP_PACKAGES?=		${PORTSDIR}/ftp-packages/${ARCH}
+CDROM_PACKAGES?=	${PORTSDIR}/cdrom-packages/${MACHINE_ARCH}
+FTP_PACKAGES?=		${PORTSDIR}/ftp-packages/${MACHINE_ARCH}
 
 .if exists(${.CURDIR}/patches.${ARCH})
 PATCHDIR?=		${.CURDIR}/patches.${ARCH}
@@ -472,7 +472,7 @@ WRKDIST?=		${WRKDIR}/${DISTNAME}
 WRKSRC?=	   ${WRKDIST}
 
 .if defined(SEPARATE_BUILD)
-WRKBUILD?=		${WRKDIR}/build-${ARCH}${FLAVOR_EXT}
+WRKBUILD?=		${WRKDIR}/build-${MACHINE_ARCH}${FLAVOR_EXT}
 .else
 WRKBUILD?=		${WRKSRC}
 .endif
@@ -585,7 +585,7 @@ SCRIPTS_ENV+=	${_INSTALL_MACROS}
 
 
 # Create the generic variable substitution list, from subst vars
-SUBST_VARS+=ARCH HOMEPAGE PREFIX SYSCONFDIR FLAVOR_EXT
+SUBST_VARS+=ARCH MACHINE_ARCH HOMEPAGE PREFIX SYSCONFDIR FLAVOR_EXT
 _SED_SUBST=sed
 .for _v in ${SUBST_VARS}
 _SED_SUBST+=-e 's,$${${_v}},${${_v}},g'
@@ -1792,9 +1792,9 @@ ftp-packages:
 
 
 ${PKGFILE}:
-	@mkdir -p ${PORTSDIR}/logs/${ARCH}
+	@mkdir -p ${PORTSDIR}/logs/${MACHINE_ARCH}
 	@cd ${.CURDIR} && exec ${MAKE} package ALWAYS_PACKAGE=Yes 2>&1 | \
-		tee ${PORTSDIR}/logs/${ARCH}/${FULLPKGNAME}.log
+		tee ${PORTSDIR}/logs/${MACHINE_ARCH}/${FULLPKGNAME}.log
 
 ${FTP_PACKAGES}/${FULLPKGNAME}${PKG_SUFX}: ${PKGFILE}
 	@mkdir -p ${FTP_PACKAGES}
@@ -1954,7 +1954,7 @@ RECURSIVE_FETCH_LIST?=	Yes
 # packing list utilities.  This generates a packing list from a recently
 # installed port.  Not perfect, but pretty close.  The generated file
 # will have to have some tweaks done by hand.
-# Note: add @comment PACKAGE(arch=${ARCH}, opsys=${OPSYS}, vers=${OPSYS_VER})
+# Note: add @comment PACKAGE(arch=${MACHINE_ARCH}, opsys=${OPSYS}, vers=${OPSYS_VER})
 # when port is installed or package created.
 #
 .if ${FAKE:L} == "yes"

@@ -1,11 +1,4 @@
-# imported from FreeBSD on july 27 1998
-#
-# New ports collection makefile for:	kterm
-# Version required:	6.2
-# Date created:		18 November 1994
-# Whom:			asami
-#
-# $Id: Makefile,v 1.16 1997/12/25 22:29:38 asami Exp $
+# $OpenBSD: Makefile,v 1.2 1998/10/18 05:02:07 marc Exp $
 #
 
 DISTNAME=	kterm-6.2.0

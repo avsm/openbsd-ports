@@ -1,9 +1,4 @@
-# OpenBSD makefile for:	navigator
-# Version required:	4.05-export
-# Date created:		1998-Jun-14
-# Whom:			dugsong@OpenBSD.ORG
-#
-# $Id: Makefile,v 1.2 1998/09/14 18:03:12 marc Exp $
+# $OpenBSD: Makefile,v 1.4 1998/10/18 05:02:10 marc Exp $
 #
 # Relevant URLs:	http://www.bsdi.com/netscape/
 #			http://www.fortify.net/

@@ -1,5 +1,4 @@
-# $Id: Makefile,v 1.4 1997/12/15 17:09:23 vanilla Exp $
-# $OpenBSD: Makefile,v 1.1.1.1 1998/09/24 00:58:57 ian Exp $
+# $OpenBSD: Makefile,v 1.2 1998/10/18 05:02:10 marc Exp $
 #
 
 DISTNAME=	contool-3.3a

@@ -1,9 +1,4 @@
-# New ports collection makefile for:	slirp
-# Version required:	1.0c
-# Date created:		25 Aug 1995
-# Whom:			Alain Kalker <A.C.P.M.Kalker@student.utwente.nl>
-#
-# $Id: Makefile,v 1.7 1996/12/12 03:24:08 erich Exp $
+# $OpenBSD: Makefile,v 1.2 1998/10/18 05:02:09 marc Exp $
 #
 
 DISTNAME=	slirp-1.0c

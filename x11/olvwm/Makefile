@@ -1,5 +1,4 @@
-# $Id: Makefile,v 1.12 1998/08/07 23:56:53 asami Exp $
-# $OpenBSD: Makefile,v 1.1.1.1 1998/09/30 02:31:44 ian Exp $
+# $OpenBSD: Makefile,v 1.2 1998/10/18 05:02:11 marc Exp $
 #
 
 DISTNAME=	olvwm4

@@ -1,4 +1,4 @@
-$OpenBSD: patch-xpdf_XRef_cc,v 1.1 2004/10/23 02:24:37 brad Exp $
+$OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2004/12/27 12:19:00 robert Exp $
 --- xpdf/XRef.cc.orig	Wed Jan 21 20:26:45 2004
 +++ xpdf/XRef.cc	Fri Oct 22 21:54:48 2004
 @@ -96,7 +96,7 @@ ObjectStream::ObjectStream(XRef *xref, i

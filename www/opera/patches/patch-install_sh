@@ -1,27 +1,45 @@
-$OpenBSD: patch-install_sh,v 1.6 2003/04/27 16:27:51 naddy Exp $
---- install.sh.orig	Sat Apr 26 13:40:48 2003
-+++ install.sh	Sat Apr 26 13:42:13 2003
-@@ -1101,7 +1101,7 @@ run_install()
+$OpenBSD: patch-install_sh,v 1.6.2.1 2004/06/03 11:33:35 robert Exp $
+--- install.sh.orig	2004-05-12 17:34:45.000000000 +0200
++++ install.sh	2004-05-12 17:37:01.000000000 +0200
+@@ -1129,7 +1129,7 @@ run_install()
+ 	mkdir $mkdirv $mkdirp $doc_dir/
+ 	chmod $chmodv 755 $doc_dir
+ 	cp $cpv $cpf LICENSE $doc_dir
+-	if not test -d "$doc_dir/help"; then ln -s $str_localdirshare/help $doc_dir/help; fi
++	ln -s $str_localdirshare/help $doc_dir/help
  
-      # System wide configuration files
+     # Shared files
+ 	debug_msg 1 "Shared files"
+@@ -1180,9 +1180,7 @@ run_install()
+ 	chmod $chmodv 755 $share_dir/styles/user
+ 	cp $cpv $cpf $cpR styles/user/* $share_dir/styles/user/
+ 
+-	if not test -f "$share_dir/styles/OPF.css"; then
+-	    ln $lns opf.css $share_dir/styles/OPF.css
+-	fi
++	ln $lns opf.css $share_dir/styles/OPF.css
+ 
+ 	cp $cpv $cpf hhd.ssr chartables.bin $share_dir/
+ 
+@@ -1256,7 +1254,7 @@ run_install()
+ 
+ 	# System wide configuration files
  	config_dir="/etc"
 -	if can_write_to "$config_dir"; then
 +	if false can_write_to "$config_dir"; then
  	    echo
  	    echo "System wide configuration files:"
  	    echo "  $config_dir/opera6rc"
-@@ -1138,10 +1138,10 @@ run_install()
+@@ -1278,12 +1276,6 @@ run_install()
  	fi
  
       # Shorcuts and Icons
 -	icons
 -	gnome
--	kde2
--	kde
-+#	icons
-+#	gnome
-+#	kde2
-+#	kde
+-	kde 3
+-	kde 2
+-	kde1
+-	mandrake
  
- # Add uninstallation here
+ 	fi # OPERADESTDIR
  

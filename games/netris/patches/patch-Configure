@@ -1,4 +1,4 @@
-$OpenBSD: patch-Configure,v 1.1 2002/12/23 19:17:00 pvalchev Exp $
+$OpenBSD: patch-Configure,v 1.1.4.1 2003/08/14 16:35:36 brad Exp $
 --- Configure.orig	Sun May 16 08:57:48 1999
 +++ Configure	Mon Dec 23 13:59:26 2002
 @@ -159,12 +159,12 @@ sed -e "s/-LFLAGS-/$LFLAGS/g" -e "s/-SRC

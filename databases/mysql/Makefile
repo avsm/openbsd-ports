@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.94.2.1 2004/05/06 00:59:30 brad Exp $
+# $OpenBSD: Makefile,v 1.94.2.2 2004/08/23 17:34:57 robert Exp $
 # Uses pthreads
 
 .if ${MACHINE_ARCH} == "hppa"
@@ -12,7 +12,7 @@ COMMENT-tests=	"multithreaded SQL database (regression test suite)"
 VERSION=	4.0.18
 DISTNAME=	mysql-${VERSION}
 FULLPKGNAME=	mysql-client-${VERSION}
-PKGNAME-server=	mysql-server-${VERSION}p1
+PKGNAME-server=	mysql-server-${VERSION}p2
 FULLPKGNAME-tests= mysql-tests-${VERSION}
 CATEGORIES=	databases
 V=		MySQL-4.0

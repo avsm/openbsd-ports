@@ -1,4 +1,4 @@
-$OpenBSD: patch-pngread_c,v 1.1 2004/08/05 19:17:14 brad Exp $
+$OpenBSD: patch-pngread_c,v 1.1.2.1 2004/08/05 19:32:37 brad Exp $
 --- pngread.c.orig	Thu Oct  3 07:32:29 2002
 +++ pngread.c	Thu Aug  5 14:29:45 2004
 @@ -384,7 +384,7 @@ png_read_info(png_structp png_ptr, png_i

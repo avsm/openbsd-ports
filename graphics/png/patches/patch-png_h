@@ -1,4 +1,4 @@
-$OpenBSD: patch-png_h,v 1.1 2004/08/05 19:17:14 brad Exp $
+$OpenBSD: patch-png_h,v 1.1.2.1 2004/08/05 19:32:37 brad Exp $
 --- png.h.orig	Thu Oct  3 07:32:26 2002
 +++ png.h	Thu Aug  5 14:29:45 2004
 @@ -833,7 +833,11 @@ typedef png_info FAR * png_infop;

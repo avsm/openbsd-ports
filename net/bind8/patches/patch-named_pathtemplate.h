@@ -1,8 +1,8 @@
 --- named/pathtemplate.h.orig	Sun Feb  4 16:03:25 2001
 +++ named/pathtemplate.h	Sun Feb  4 16:03:03 2001
 @@ -1,4 +1,4 @@
--/* $OpenBSD: patch-named_pathtemplate.h,v 1.1 2001/02/04 15:24:01 ho Exp $ */
-+/* $OpenBSD: patch-named_pathtemplate.h,v 1.1 2001/02/04 15:24:01 ho Exp $ */
+-/* $OpenBSD: patch-named_pathtemplate.h,v 1.1.2.1 2001/03/01 12:55:33 naddy Exp $ */
++/* $OpenBSD: patch-named_pathtemplate.h,v 1.1.2.1 2001/03/01 12:55:33 naddy Exp $ */
  /*
   *	$ISC: pathtemplate.h,v 8.6 2000/04/21 06:54:15 vixie Exp $
   */

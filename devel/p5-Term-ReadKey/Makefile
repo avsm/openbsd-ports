@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.1.1.1 2001/03/27 08:45:34 wilfried Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.1 2001/05/07 23:35:33 miod Exp $
 
 COMMENT=		'change terminal modes, and perform non-blocking reads'
 
 DISTNAME=		TermReadKey-2.14
 PKGNAME=		p5-Term-ReadKey-2.14
 CATEGORIES=		devel perl5
-NEED_VERSION=		1.364
+NEED_VERSION=		1.406
 
 MAINTAINER=		Peter Stromberg <wilfried@openbsd.org>
 

@@ -1,4 +1,4 @@
-$OpenBSD: patch-gdk-pixbuf_io-xpm_c,v 1.1 2004/09/19 23:41:32 brad Exp $
+$OpenBSD: patch-gdk-pixbuf_io-xpm_c,v 1.1.2.1 2004/09/29 23:52:07 brad Exp $
 --- gdk-pixbuf/io-xpm.c.orig	Sat Sep 18 22:04:13 2004
 +++ gdk-pixbuf/io-xpm.c	Sat Sep 18 22:06:26 2004
 @@ -352,17 +352,30 @@ pixbuf_create_from_xpm (const gchar * (*

@@ -1,10 +1,11 @@
-# $OpenBSD: Makefile,v 1.30 2004/03/02 07:57:21 brad Exp $
+# $OpenBSD: Makefile,v 1.30.2.1 2004/09/29 23:52:07 brad Exp $
 
 COMMENT=	"GdkPixbuf graphics library"
 COMMENT-gnome=	"GdkPixbuf graphics library (GNOME Canvas)"
 
 VERSION=	0.22.0
 DISTNAME=	gdk-pixbuf-${VERSION}
+PKGNAME=	${DISTNAME}p1
 PKGNAME-gnome=	gdk-pixbuf-gnome-${VERSION}
 CATEGORIES=	graphics
 

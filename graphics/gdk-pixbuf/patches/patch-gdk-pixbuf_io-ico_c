@@ -1,4 +1,4 @@
-$OpenBSD: patch-gdk-pixbuf_io-ico_c,v 1.1 2004/09/19 23:41:32 brad Exp $
+$OpenBSD: patch-gdk-pixbuf_io-ico_c,v 1.1.2.1 2004/09/29 23:52:07 brad Exp $
 --- gdk-pixbuf/io-ico.c.orig	Sat Sep 18 22:16:41 2004
 +++ gdk-pixbuf/io-ico.c	Sat Sep 18 22:17:54 2004
 @@ -330,6 +330,11 @@ DecodeHeader (guchar *Data, gint Bytes, 

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.4 2000/04/21 19:32:16 espie Exp $
+# $OpenBSD: Makefile,v 1.4.2.1 2000/09/15 04:54:24 marc Exp $
 
 CATEGORIES= japanese chinese korean
 DISTNAME= Wnn-data-4.2
@@ -12,7 +12,6 @@ PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
 NO_BUILD=		Yes
-FAKE=			Yes
 
 pre-extract:
 	@cd ${PORTSDIR} && cd japanese/Wnn && make patch
@@ -26,6 +25,7 @@ post-extract:
 
 do-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/lib/wnn
-	${INSTALL_DATA} ${WRKDIST}/* ${PREFIX}/lib/wnn
+	${INSTALL_DATA} ${WRKDIST}/cvt_key* ${PREFIX}/lib/wnn
+	${INSTALL_DATA} ${WRKDIST}/serverdefs ${PREFIX}/lib/wnn
 	${INSTALL_SCRIPT} ${FILESDIR}/install-script ${PREFIX}/lib/wnn
 .include <bsd.port.mk>

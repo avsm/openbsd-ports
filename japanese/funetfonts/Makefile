@@ -1,7 +1,8 @@
-# $OpenBSD: Makefile,v 1.1.1.1 2000/04/24 18:25:23 espie Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.1 2000/09/15 04:54:25 marc Exp $
 
 CATEGORIES=	japanese x11
 DIST_SUBDIR=	ja-fonts
+NEED_VERSION=	1.300
 
 DISTNAME=		ja-fonts-funet
 
@@ -28,8 +29,7 @@ PERMIT_DISTFILES_FTP=	Yes
 PERMIT_PACKAGE_CDROM=	No fee
 PERMIT_PACKAGE_FTP=	Yes
 
-USE_IMAKE=		Yes
-FAKE=			Yes
+CONFIGURE_STYLE=	imake
 
 FONTDIR=${PREFIX}/lib/X11/fonts/ja
 

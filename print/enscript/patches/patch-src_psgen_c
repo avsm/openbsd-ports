@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_psgen_c,v 1.1 2005/02/11 19:12:42 naddy Exp $
+$OpenBSD: patch-src_psgen_c,v 1.1.2.1 2005/02/12 12:12:26 robert Exp $
 --- src/psgen.c.orig	Fri Feb 11 20:01:12 2005
 +++ src/psgen.c	Fri Feb 11 20:01:25 2005
 @@ -2034,8 +2034,9 @@ dump_ps_page_header (char *fname, int em

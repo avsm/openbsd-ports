@@ -1,6 +1,6 @@
-$OpenBSD: patch-kghostview_kpswidget_cpp,v 1.1.2.1 2003/04/10 18:59:40 brad Exp $
+$OpenBSD: patch-kghostview_kpswidget_cpp,v 1.1.2.2 2003/04/11 17:21:27 brad Exp $
 --- kghostview/kpswidget.cpp.orig	Thu Mar  7 20:18:00 2002
-+++ kghostview/kpswidget.cpp	Thu Apr 10 02:05:05 2003
++++ kghostview/kpswidget.cpp	Fri Apr 11 12:42:16 2003
 @@ -311,10 +311,11 @@ void KPSWidget::setGhostscriptArguments(
      }
  }
@@ -15,7 +15,7 @@ $OpenBSD: patch-kghostview_kpswidget_cpp,v 1.1.2.1 2003/04/10 18:59:40 brad Exp 
  	_fileName = fileName;
  	stopInterpreter();
  	_ghostscriptDirty = true;
-@@ -510,8 +511,11 @@ void KPSWidget::startInterpreter()
+@@ -510,8 +511,12 @@ void KPSWidget::startInterpreter()
      for( ; it != _ghostscriptArguments.end(); ++it )
  	*_process << (*it);
      
@@ -25,11 +25,12 @@ $OpenBSD: patch-kghostview_kpswidget_cpp,v 1.1.2.1 2003/04/10 18:59:40 brad Exp 
 +        *_process <<
 +        // The following two lines are their to ensure that we are allowed to read _fileName
 +        "-dDELAYSAFER" << "-sInputFile="+_fileName << "-c" <<
-+        "<< /PermitFileReading [ InputFile ] /PermitFileWriting [] /PermitFileControl [] >> setuserparams .locksafe";
++        "<< /PermitFileReading [ InputFile ] /PermitFileWriting [] /PermitFileControl [] >> setuserparams .locksafe" <<
++        "-";
      else
  	*_process << _fileName << "-c" << "quit";
  
-@@ -529,7 +533,7 @@ void KPSWidget::startInterpreter()
+@@ -529,7 +534,7 @@ void KPSWidget::startInterpreter()
      // Finally fire up the interpreter.
      kdDebug(4500) << "KPSWidget: starting interpreter" << endl;
      if( _process->start( KProcess::NotifyOnExit, 
@@ -38,7 +39,7 @@ $OpenBSD: patch-kghostview_kpswidget_cpp,v 1.1.2.1 2003/04/10 18:59:40 brad Exp 
      {
  	_interpreterBusy = true;
  	setCursor( waitCursor );
-@@ -650,7 +654,7 @@ void KPSWidget::readSettings()
+@@ -650,7 +655,7 @@ void KPSWidget::readSettings()
      if( !intConfig->platformFonts() )
  	arguments << "-dNOPLATFONTS";
      

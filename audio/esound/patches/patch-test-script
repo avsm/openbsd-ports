@@ -1,0 +1,16 @@
+--- test-script.orig	Wed Jul 15 04:26:14 1998
++++ test-script	Sun Aug  6 03:02:13 2000
+@@ -1,4 +1,4 @@
+-#!/bin/tcsh
++#!/usr/local/bin/tcsh
+ echo welcome to the test.
+ 
+ echo ""
+@@ -40,7 +40,6 @@
+ esdmon > sample.raw &
+ esdcat -b -m -r 11025 test.wav
+ sleep 3
+-killall esdmon
+ 
+ echo press enter to continue...
+ echo $< >& /dev/null

@@ -1,6 +1,6 @@
-$OpenBSD: patch-kfile-plugins_vcf_kfile_vcf_cpp,v 1.1 2003/12/15 21:23:20 brad Exp $
---- kfile-plugins/vcf/kfile_vcf.cpp.orig	2003-12-15 14:36:28.000000000 -0500
-+++ kfile-plugins/vcf/kfile_vcf.cpp	2003-12-15 14:37:29.000000000 -0500
+$OpenBSD: patch-kfile-plugins_vcf_kfile_vcf_cpp,v 1.1.2.1 2003/12/16 04:15:26 margarida Exp $
+--- kfile-plugins/vcf/kfile_vcf.cpp.orig	Sun Sep 15 22:15:51 2002
++++ kfile-plugins/vcf/kfile_vcf.cpp	Mon Dec 15 23:02:15 2003
 @@ -90,17 +90,17 @@ bool KVcfPlugin::readInfo( KFileMetaInfo
      while (!done) {
      

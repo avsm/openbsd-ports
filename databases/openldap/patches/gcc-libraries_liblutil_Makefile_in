@@ -1,4 +1,4 @@
-$OpenBSD: gcc-libraries_liblutil_Makefile_in,v 1.1 2002/01/29 06:10:22 pvalchev Exp $
+$OpenBSD: gcc-libraries_liblutil_Makefile_in,v 1.1.2.1 2002/02/16 23:13:53 jakob Exp $
 --- libraries/liblutil/Makefile.in.orig	Fri Jan  4 13:38:24 2002
 +++ libraries/liblutil/Makefile.in	Fri Jan 25 23:03:43 2002
 @@ -31,6 +31,9 @@ CPPFLAGS = $(@PLAT@_@LIB_LINKAGE@_LIB_DE

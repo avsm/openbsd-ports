@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.17.2.5 2002/01/16 09:04:03 jakob Exp $
+# $OpenBSD: Makefile,v 1.17.2.6 2002/02/16 23:13:53 jakob Exp $
 
 COMMENT=	"Open source LDAP software (client)"
 COMMENT-server=	"Open source LDAP software (server)"
 
-VERSION=	2.0.21
+VERSION=	2.0.23
 DISTNAME=	openldap-${VERSION}
 FULLPKGNAME=	openldap-client-${VERSION}
 PKGNAME-server=	openldap-server-${VERSION}
@@ -48,6 +48,11 @@ CONFIGURE_ARGS+=	--without-kerberos \
 CONFIGURE_ARGS+=	--disable-ipv6
 
 MODGNU_CONFIG_GUESS_DIRS=	${WRKSRC} ${WRKSRC}/build
+
+# XXX workaround sparc64 gcc optimization bug
+.if ${MACHINE_ARCH:Msparc64}
+PATCH_LIST=	gcc-* patch-*
+.endif
 
 FLAVORS=	sasl
 FLAVOR?=

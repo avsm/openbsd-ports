@@ -1,14 +1,13 @@
-# $OpenBSD: Makefile,v 1.11.2.1 2003/01/19 09:15:42 pvalchev Exp $
+# $OpenBSD: Makefile,v 1.11.2.2 2003/02/12 00:56:54 brad Exp $
 
 ONLY_FOR_ARCHS=	i386
 
 COMMENT=	"Java Development Kit for Java 2 Standard Edition 1.3"
-VERSION=	1.3.1_06
+VERSION=	1.3.1_07
 
 DISTNAME=	jdk${VERSION}
 PKGNAME=	jdk-linux-${VERSION}
 CATEGORIES=	devel java
-NEED_VERSION=	1.499
 
 HOMEPAGE=	http://java.sun.com/j2se/
 MAINTAINER=	Christian Edward Gruber <cgruber@israfil.net>

@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.13.2.1 2002/12/10 15:20:56 brad Exp $
+# $OpenBSD: Makefile,v 1.13.2.2 2003/01/21 14:07:29 danh Exp $
 
 COMMENT=	"web server log file analysis program"
 
 DISTNAME=	webalizer-2.01-10-src
-PKGNAME=	webalizer-2.01.10
+PKGNAME=	webalizer-2.01.10p1
 CATEGORIES=     www
 MASTER_SITES=	ftp://ftp.mrunix.net/pub/webalizer/
 EXTRACT_SUFX=	.tgz

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.52 2001/10/07 19:18:16 jakob Exp $
+# $OpenBSD: Makefile,v 1.52.2.1 2001/12/13 23:22:34 jakob Exp $
 
 COMMENT=	network protocol analyzer
 
@@ -37,7 +37,6 @@ FLAVORS=	no_x11 snmp
 FLAVOR?=
 
 .if ${FLAVOR:L:Mno_x11}
-USE_X11=		No
 LIB_DEPENDS=		glib.1.2::devel/glib
 CONFIGURE_ARGS+=	--disable-ethereal
 .else

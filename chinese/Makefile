@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.3 2000/01/18 10:14:53 kevlo Exp $
+# $OpenBSD: Makefile,v 1.3.2.1 2000/09/15 04:46:33 marc Exp $
 # $FreeBSD: Makefile,v 1.16 1997/11/17 18:36:43 max Exp $
 #
 
@@ -9,6 +9,7 @@
 #    SUBDIR += celvis
      SUBDIR += cless
 #    SUBDIR += cnsfonts
+     SUBDIR += crxvt
 #    SUBDIR += cxterm
 #    SUBDIR += gb2ps
 #    SUBDIR += gbfonts
@@ -20,7 +21,9 @@
 #    SUBDIR += nvi-big5
 #    SUBDIR += nvi-euc-cn
 #    SUBDIR += nvi-euc-tw
+     SUBDIR += taipeifonts
 #    SUBDIR += samba
 #    SUBDIR += ted
+     SUBDIR += xcin
 
 .include <bsd.port.subdir.mk>

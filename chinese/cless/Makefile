@@ -3,12 +3,13 @@
 # Date created:         Thu Jan 18, 2000
 # Whom:                 Kevin Lo <kevlo@openbsd.org>
 #
-# $OpenBSD: Makefile,v 1.5 2000/03/13 08:33:41 kevlo Exp $
+# $OpenBSD: Makefile,v 1.5.2.1 2000/09/15 04:46:34 marc Exp $
 #
 
 DISTNAME=       cless-290
 PKGNAME=        zh-${DISTNAME}
 CATEGORIES=     chinese misc
+NEED_VERSION=	1.307
 MASTER_SITES=   ftp://ftp.cuhk.hk/pub/chinese/ifcss/software/unix/c-utils/ \
                 ftp://ftp.edu.tw/Chinese/ifcss/software/unix/c-utils/
 
@@ -19,9 +20,7 @@ PERMIT_PACKAGE_FTP=     Yes
 PERMIT_DISTFILES_CDROM= Yes
 PERMIT_DISTFILES_FTP=   Yes
 
-FAKE=		Yes
-HAS_CONFIGURE=  Yes
-CONFIGURE_ARGS=	--prefix='$${DESTDIR}${PREFIX}'
+CONFIGURE_STYLE=	gnu dest
 CFLAGS+=        -DHANZI # LDFLAGS=-s datadir=/usr/local/lib/less
 
 post-install:

@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.1.1.1.2.1 2000/09/15 04:46:34 marc Exp $
 bin/cless
 bin/clesskey
 man/man1/cless.1

@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.17.2.2 2002/10/26 22:19:10 brad Exp $
+# $OpenBSD: Makefile,v 1.17.2.3 2002/10/28 02:08:54 brad Exp $
 
 COMMENT= 	"PostScript and PDF previewer"
 
 DISTNAME=	gv-3.5.8
-PKGNAME=	${DISTNAME}p2
+PKGNAME=	${DISTNAME}p3
 CATEGORIES=	print
 NEED_VERSION=	1.496
 MASTER_SITES=	ftp://ftpthep.physik.uni-mainz.de/pub/gv/unix/

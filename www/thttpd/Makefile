@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.7.2.1 2001/05/07 10:52:55 naddy Exp $
+# $OpenBSD: Makefile,v 1.7.2.2 2001/11/24 03:41:11 brad Exp $
 
-COMMENT=	tiny/turbo/throttling HTTP server
+COMMENT=	"tiny/turbo/throttling HTTP server"
 
-DISTNAME=	thttpd-2.21b
+DISTNAME=	thttpd-2.22beta4
+PKGNAME=	thttpd-2.22b4
 CATEGORIES=    	www
 NEED_VERSION=	1.363
 
@@ -20,7 +21,7 @@ MASTER_SITES=		http://www.acme.com/software/thttpd/
 CONFIGURE_STYLE=	gnu
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/thttpd   ${PREFIX}/sbin
-	${INSTALL_MAN}     ${WRKSRC}/thttpd.8 ${PREFIX}/man/man8
+	${INSTALL_PROGRAM} ${WRKSRC}/thttpd ${PREFIX}/sbin
+	${INSTALL_MAN} ${WRKSRC}/thttpd.8 ${PREFIX}/man/man8
 
 .include <bsd.port.mk>

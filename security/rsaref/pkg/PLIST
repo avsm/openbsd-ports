@@ -1,6 +1,6 @@
+@comment $OpenBSD: PLIST,v 1.6.4.1 2000/09/15 05:15:29 marc Exp $
 lib/librsaref.a
-lib/librsaref.so.2.0
-@exec /sbin/ldconfig -m %B
+%%SHARED%%
 include/rsa.h
 include/_des.h
 include/_md2.h

@@ -1,3 +1,6 @@
+@comment $OpenBSD: PLIST,v 1.1.1.1.6.1 2000/09/15 05:15:26 marc Exp $
+@option no-default-conflict
+@pkgcfl pgp-5.*
 bin/pgp5
 bin/pgpe
 bin/pgps

@@ -3,12 +3,13 @@
 # Date created:		10 Feb 2000
 # Whom:			dugsong@monkey.org
 #
-# $OpenBSD: Makefile,v 1.6 2000/04/30 10:00:12 kevlo Exp $
+# $OpenBSD: Makefile,v 1.6.2.1 2000/09/15 05:15:17 marc Exp $
 
+DISTNAME=       linux-netbus-client-v0.4
 PKGNAME=	lxnb-0.4
 
 CATEGORIES=	security
-NEED_VERSION=	1.191
+NEED_VERSION=	1.314
 
 MAINTAINER=	dugsong@monkey.org
 
@@ -18,15 +19,14 @@ PERMIT_DISTFILES_CDROM=	"no obvious license"
 PERMIT_DISTFILES_FTP=	Yes
 
 MASTER_SITES=	http://ns2.crw.se/~tm/projects/lxnb/
-DISTNAME=	linux-netbus-client-v0.4
 EXTRACT_SUFX=	.tgz
 
 WRKDIST=	${WRKDIR}/${PKGNAME}
 
-NO_CONFIGURE=	Yes
-FAKE=		Yes
-
 pre-build:
 	rm -f ${WRKSRC}/lxnetbus
+
+do-install:
+	${INSTALL_PROGRAM} ${WRKSRC}/lxnetbus ${PREFIX}/bin/lxnb
 
 .include <bsd.port.mk>

@@ -1,19 +1,13 @@
-# Makefile for:         nessus
-# Version required:     0.2
-# Date created:         14 Mar 1999
-# Whom:                 dugsong@monkey.org
-#
-# $OpenBSD: Makefile,v 1.10 2000/04/09 17:38:05 espie Exp $
+# $OpenBSD: Makefile,v 1.10.2.1 2000/09/15 05:15:19 marc Exp $
 
 PKGNAME=	nessus-${VERS}
 
 CATEGORIES=	security
-NEED_VERSION=	 1.230
-FAKE=No
+NEED_VERSION=	1.316
 
-VERS=		0.98.3
+VERS=		1.0.4
 
-DIST_SUBDIR=	${PKGNAME}
+DIST_SUBDIR=	nessus-${VERS}
 
 DISTFILES=	nessus-libraries-${VERS}${EXTRACT_SUFX} \
 		libnasl-${VERS}${EXTRACT_SUFX} \
@@ -22,40 +16,56 @@ DISTFILES=	nessus-libraries-${VERS}${EXTRACT_SUFX} \
 
 NESSUS_DIRS=	${DISTFILES:S/-${VERS}${EXTRACT_SUFX}//g}
 
-MASTER_SITES=	ftp://ftp.nessus.org/pub/nessus/nessus-${VERS}/ \
-		ftp://ftp.gwdg.de/pub/linux/misc/nessus/nessus-${VERS}/ \
-		ftp://cvs.nessus.org/pub/nessus/nessus-${VERS}/ \
-		ftp://ftp.chg.ru/pub/security/nessus/nessus-${VERS}/ \
-		ftp://ftp.sekure.net/pub/nessus/nessus-${VERS}/ \
-		ftp://ftp.nectec.or.th/pub/mirrors/nessus/nessus-${VERS}/
+MASTER_SITES=	ftp://ftp.nessus.org/pub/nessus/nessus-${VERS}/src/ \
+		ftp://ftp.gwdg.de/pub/linux/misc/nessus/nessus-${VERS}/src/ \
+		ftp://cvs.nessus.org/pub/nessus/nessus-${VERS}/src/ \
+		ftp://ftp.chg.ru/pub/security/nessus/nessus-${VERS}/src/ \
+		ftp://ftp.sekure.net/pub/nessus/nessus-${VERS}/src/ \
+		ftp://ftp.nectec.or.th/pub/mirrors/nessus/nessus-${VERS}/src/
 
-MAINTAINER=	dugsong@monkey.org
+MAINTAINER=	matt@openbsd.org
 
-LICENSE_TYPE=		GPL
+HOMEPAGE=	http://www.nessus.org/
+
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
+FLAVORS=no_x11
+FLAVOR?=
+
+CONFIGURE_STYLE=gnu
+CONFIGURE_ARGS+=--localstatedir=/var
+
+.if empty(FLAVOR:L:Mno_x11)
 LIB_DEPENDS=	gtk.1.2::x11/gtk+
+.else
+CONFIGURE_ARGS+=--disable-gtk
+.endif
 
-GNU_CONFIGURE=	Yes
-
-CONFIGURE_ARGS+= --sharedstatedir=${PREFIX}/share --localstatedir=${PREFIX}/share
-
-# GNU build environment gone horribly wrong. ugh.
 post-extract:
-	@sed "s%y0y0y0%${NESSUS_DIRS}%g" ${FILESDIR}/Makefile > ${WRKSRC}Makefile
+	@sed "s%y0y0y0%${NESSUS_DIRS}%g" \
+		${FILESDIR}/Makefile > ${WRKSRC}Makefile
 	@sed -e "s%y0y0y0%${NESSUS_DIRS}%g" -e "s%w00w00%${WRKSRC}%g" \
 		${FILESDIR}/configure > ${WRKSRC}configure
-	@sed "s%w00w00%${WRKSRC}%g" ${FILESDIR}/nessus-config > ${WRKSRC}nessus-config
-	@sed "s%w00w00%${WRKSRC}%g" ${FILESDIR}/nasl-config > ${WRKSRC}nasl-config
+	@sed -e "s%w00w00%${WRKSRC}%g" -e "s%@@VERS@@%${VERS}%g" \
+		${FILESDIR}/nessus-config > ${WRKSRC}nessus-config
+	@sed "s%w00w00%${WRKSRC}%g" \
+		${FILESDIR}/nasl-config > ${WRKSRC}nasl-config
 	@chmod 755 ${WRKSRC}*
 	@(cd ${WRKSRC}nessus-libraries/include ; ln -s . nessus)
-	@(cd ${WRKSRC}nessus-libraries/cipher ; ln -s . peks)
+	@(cd ${WRKSRC}nessus-libraries/libpeks ; ln -s . peks)
+	@(cd ${WRKSRC}nessus-libraries/libpcap-nessus ; ln -s . nessus)
 	@(cd ${WRKSRC}libnasl/include ; ln -s . nessus)
+
+# Convince nmap_wrapper.nes to build regardless of nmap's presence.
+post-configure:
+	@cp ${FILESDIR}/nmap.h ${WRKSRC}nessus-plugins/plugins/nmap_wrapper/
+	@touch ${WRKSRC}nessus-plugins/plugins/nmap_wrapper/nmap_installed
 
 pre-install:
 	mkdir -p -m 755 ${PREFIX}/include/nessus
 
 .include <bsd.port.mk>
+

@@ -1,4 +1,4 @@
-$OpenBSD: patch-cgi-bin_openwebmail_openwebmail-main_pl,v 1.1 2003/01/30 07:57:26 kevlo Exp $
+$OpenBSD: patch-cgi-bin_openwebmail_openwebmail-main_pl,v 1.1.2.1 2003/02/16 18:42:53 margarida Exp $
 --- cgi-bin/openwebmail/openwebmail-main.pl.orig	Tue Nov 26 11:05:44 2002
 +++ cgi-bin/openwebmail/openwebmail-main.pl	Thu Jan 30 14:45:07 2003
 @@ -1,4 +1,4 @@

@@ -1,4 +1,4 @@
-$OpenBSD: patch-cgi-bin_openwebmail_etc_openwebmail_conf_default,v 1.1 2003/01/30 07:57:26 kevlo Exp $
+$OpenBSD: patch-cgi-bin_openwebmail_etc_openwebmail_conf_default,v 1.1.2.1 2003/02/16 18:42:53 margarida Exp $
 --- cgi-bin/openwebmail/etc/openwebmail.conf.default.orig	Wed Nov 27 11:22:51 2002
 +++ cgi-bin/openwebmail/etc/openwebmail.conf.default	Thu Jan 30 14:45:07 2003
 @@ -42,11 +42,11 @@ savedsuid_support	yes

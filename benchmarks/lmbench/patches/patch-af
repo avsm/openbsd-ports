@@ -1,0 +1,10 @@
+--- src/memsize.c.~1~	Sat Nov 11 10:42:42 1995
++++ src/memsize.c	Sun Mar  1 00:24:59 1998
+@@ -10,6 +10,7 @@
+  */
+ char	*id = "$Id: memsize.c,v 1.6 1995/10/26 01:03:42 lm Exp $\n";
+ 
++#include <stdlib.h>
+ #include "timing.c"
+ 
+ #define	CHK(x)	if ((x) == -1) { perror("x"); exit(1); }

@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.6 2002/09/01 08:25:25 espie Exp $
+@comment $OpenBSD: PLIST,v 1.6.2.1 2002/12/26 22:28:17 pvalchev Exp $
 @pkgcfl kdelibs-2.*
 bin/artsc-config
 bin/artscat

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.9 2002/09/26 15:49:58 naddy Exp $
+# $OpenBSD: Makefile,v 1.9.2.1 2002/12/26 22:28:18 pvalchev Exp $
 
 COMMENT=		"office applications for kde"
 CATEGORIES=		x11 x11/kde productivity
@@ -6,8 +6,8 @@ VERSION=		3.0
 VMEM_WARNING=		Yes
 MASTER_SITES?=	${MASTER_SITE_KDE:S@$@stable/${DISTNAME}/src/@}
 
-DISTNAME=	koffice-1.2
-PKGNAME=	koffice-1.2
+DISTNAME=	koffice-1.2.1
+PKGNAME=	koffice-1.2.1
 
 # kill docs for now, they don't compile yet.
 #MAKE_FLAGS=TOPSUBDIRS="autocorrect karbon kchart kformula kivio kontour koshell kounavail kpresenter kspread kugar kword pics plugins servicetypes templates tools"
@@ -17,8 +17,10 @@ LIB_DEPENDS=	kdecore.4,DCOP,artskde,kdefx,kdeprint,kdesu,kdeui,khtml,kio,kjava,k
 		python2.2.0.0:python-2.2*:lang/python/2.2 \
 		art_lgpl_2.5::graphics/libart
 
+post-extract:
+	ln -s /usr/bin/true ${WRKDIR}/bin/automake-1.6
+
 #PATCHORIG=	.bsdorig
-MODULES=	qt3
 #PATCH_LIST=	p-* patch-*
 
 #KDE=lib/kde3

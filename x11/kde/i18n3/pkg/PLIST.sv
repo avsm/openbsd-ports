@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST.sv,v 1.5 2002/09/15 00:33:16 naddy Exp $
+@comment $OpenBSD: PLIST.sv,v 1.5.2.1 2002/12/26 22:28:18 pvalchev Exp $
 share/apps/ktuberling/sounds/sv/brosch.wav
 share/apps/ktuberling/sounds/sv/cigarr.wav
 share/apps/ktuberling/sounds/sv/fluga.wav
@@ -924,7 +924,6 @@ ${LOC}empath.mo
 ${LOC}extensionproxy.mo
 ${LOC}filetypes.mo
 ${LOC}fontinst.mo
-${LOC}gideon.mo
 ${LOC}htmlsearch.mo
 ${LOC}imgalleryplugin.mo
 ${LOC}kab.mo

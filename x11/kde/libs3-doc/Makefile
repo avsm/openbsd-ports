@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.6 2002/09/14 17:05:19 naddy Exp $
+# $OpenBSD: Makefile,v 1.6.2.1 2002/12/26 22:28:18 pvalchev Exp $
 
 COMMENT=		"X11 toolkit, libraries documentation"
 CATEGORIES=		x11 x11/kde devel
-VERSION=		3.0.3a
+VERSION=		3.0.5a
 PKGNAME=		kdelibs-doc-${VERSION}
 
 DISTFILES=
@@ -23,6 +23,8 @@ post-patch:
 do-build:
 	qt2kdoc -u "file:${LOCALBASE}/share/doc/qt3/html" \
 	    -o ${WRKDIST}/qt ${LOCALBASE}/share/doc/qt3/html
+
+NO_REGRESS=	Yes
 
 do-install:
 	mkdir -p ${DDIR}

@@ -1,0 +1,11 @@
+--- scripts/tkremind.orig	Wed Feb  2 15:20:35 2000
++++ scripts/tkremind	Wed Feb  2 15:20:42 2000
+@@ -15,7 +15,7 @@
+ # $Id: tkremind,v 1.26 1999/04/13 01:39:33 dfs Exp $
+ 
+ # the next line restarts using wish \
+-exec wish "$0" "$@"
++exec wish8.0 "$0" "$@"
+ 
+ wm withdraw .
+ 

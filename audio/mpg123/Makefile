@@ -1,12 +1,12 @@
-# $OpenBSD: Makefile,v 1.26 2002/03/29 23:29:55 pvalchev Exp $
+# $OpenBSD: Makefile,v 1.26.4.1 2003/07/18 00:27:53 brad Exp $
 
 NOT_FOR_ARCHS=	sparc64
 
 COMMENT=	"mpeg audio 1/2 layer 1, 2 and 3 player"
 
 DISTNAME=	mpg123-0.59r
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	audio
-NEED_VERSION=	1.515
 HOMEPAGE=	http://www.mpg123.de/
 
 # Long, unclear license in ${WRKSRC}/COPYING.

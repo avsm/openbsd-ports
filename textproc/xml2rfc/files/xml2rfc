@@ -1,0 +1,5 @@
+#!y0y0y0/bin/wish8.3
+#
+# $Id$
+
+source y0y0y0/share/xml2rfc/xml2rfc.tcl

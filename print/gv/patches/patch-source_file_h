@@ -1,4 +1,4 @@
-$OpenBSD: patch-source_file_h,v 1.1 2002/10/04 18:29:14 brad Exp $
+$OpenBSD: patch-source_file_h,v 1.1.2.1 2002/10/04 22:59:21 brad Exp $
 --- source/file.h.orig	Fri Apr 25 18:00:00 1997
 +++ source/file.h	Fri Oct  4 14:20:31 2002
 @@ -70,6 +70,14 @@ extern int			file_fileIsNotUseful (

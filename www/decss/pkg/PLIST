@@ -1,3 +1,8 @@
+@comment $OpenBSD: PLIST,v 1.1.1.1.2.1 2000/09/15 05:21:47 marc Exp $
 bin/DeCSS
+share/doc/DeCSS/FAQ
 share/doc/DeCSS/README
+share/doc/DeCSS/decss-now.png
+share/doc/DeCSS/decss_mirror.html
+share/doc/DeCSS/original_pigdog_article.txt
 @dirrm share/doc/DeCSS

@@ -1,7 +1,7 @@
-# $OpenBSD: Makefile,v 1.4 2000/03/24 22:12:03 espie Exp $
+# $OpenBSD: Makefile,v 1.4.2.1 2000/09/15 05:22:21 marc Exp $
 # Original from: Bruno Rohée <rohee@OpenBSD.ORG>
 
-TIDYDATE=	13jan00
+TIDYDATE=	30apr00
 DISTNAME=	tidy${TIDYDATE}
 PKGNAME=	tidy-${TIDYDATE}
 

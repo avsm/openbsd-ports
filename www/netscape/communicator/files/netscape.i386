@@ -1,5 +1,5 @@
 #!/bin/sh
-# $OpenBSD: netscape.i386,v 1.1.1.1 2000/04/09 15:50:15 espie Exp $
+# $OpenBSD: netscape.i386,v 1.1.1.1.2.1 2000/09/15 05:21:58 marc Exp $
 #
 # Wrapper for the fortified Netscape navigator program.
 

@@ -1,5 +1,5 @@
+@comment $OpenBSD: PLIST.i386,v 1.1.1.1.2.1 2000/09/15 05:22:05 marc Exp $
 @pkgcfl communicator-*
-@unexec rm -f %D/netscape/netscape.sav
 bin/netscape
 netscape/LICENSE
 netscape/Netscape.ad
@@ -13,7 +13,7 @@ netscape/java/classes/java40.jar
 netscape/java/classes/jio40.jar
 netscape/java/classes/joptio40.jar
 netscape/java/classes/jsd10.jar
-netscape/java/classes/ldap30.jar
+netscape/java/classes/ldap40.jar
 netscape/java/classes/resource.jar
 netscape/java/classes/scd10.jar
 netscape/nethelp/Back_dep.gif

@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.16 2000/04/01 17:23:54 form Exp $
+# $OpenBSD: Makefile,v 1.16.2.1 2000/09/15 05:21:31 marc Exp $
 
-DISTNAME=	analog-4.1
+DISTNAME=	analog-4.11
 CATEGORIES=	www
-MASTER_SITES=	http://www.statslab.cam.ac.uk/~sret1/analog/ \
+MASTER_SITES=	http://www.analog.cx/ \
+		http://www.statslab.cam.ac.uk/~sret1/analog/ \
 		http://www.magma.ca/~brendanr/analog/ \
 		http://brendanr.simplenet.com/analog/ \
 		http://analog.gsp.com/ \
@@ -13,6 +14,8 @@ MASTER_SITES=	http://www.statslab.cam.ac.uk/~sret1/analog/ \
 		http://analog.wizard.net/ \
 		ftp://ftp.netcasting.net/pub/packages/analog/
 
+HOMEPAGE=	http://www.analog.cx/
+
 MAINTAINER=	form@OpenBSD.ORG
 
 PERMIT_PACKAGE_CDROM=	Yes
@@ -20,20 +23,20 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-FAKE=		Yes
-
 ETCDIR=		/etc
-ANALOGDIR=	${PREFIX}/lib/analog
+ANALOGDIR=	${PREFIX}/share/analog
 CONFIGFILE=	${ETCDIR}/analog.cfg
 DOCDIR=		${PREFIX}/share/doc/analog
 HTTPDIR=	/var/www
 IMAGEDIR=	/analog-images
 
-CFLAGS+=	-DANALOGDIR=\\\"${ANALOGDIR}/\\\" \
-		-DDEFAULTCONFIGFILE=\\\"${CONFIGFILE}\\\" \
-		-DHTTPDIR=\\\"${HTTPDIR}/\\\" \
-		-DIMAGEDIR=\\\"${IMAGEDIR}/\\\" \
-		-DANALOG=\\\"${PREFIX}/bin/analog\\\"
+CFLAGS+=	-DANALOGDIR=\"${ANALOGDIR}/\" \
+		-DDEFAULTCONFIGFILE=\"${CONFIGFILE}\" \
+		-DHTTPDIR=\"${HTTPDIR}/\" \
+		-DIMAGEDIR=\"${IMAGEDIR}/\" \
+		-DANALOG=\"${PREFIX}/bin/analog\"
+
+ALL_TARGET=	analog
 
 post-patch:
 	@mv ${WRKSRC}/anlgform.pl ${WRKSRC}/anlgform.pl.src
@@ -41,12 +44,13 @@ post-patch:
 		> ${WRKSRC}/anlgform.pl
 
 do-install:
-	@${INSTALL_DATA_DIR} ${DOCDIR}
-	@${INSTALL_DATA_DIR} ${ANALOGDIR}/lang
-	@${INSTALL_DATA_DIR} ${ANALOGDIR}/images
-	@${INSTALL_DATA_DIR} ${HTTPDIR}/htdocs${IMAGEDIR}
+	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/analog
+	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/analog
+	${INSTALL_DATA_DIR} ${ANALOGDIR}/lang
+	${INSTALL_DATA_DIR} ${ANALOGDIR}/images
 	${INSTALL_PROGRAM} ${WRKSRC}/analog ${PREFIX}/bin
-	${INSTALL_DATA} ${WRKSRC}/docs/* ${DOCDIR}
+	${INSTALL_DATA} ${WRKSRC}/docs/* ${PREFIX}/share/doc/analog
+	${INSTALL_DATA} ${WRKSRC}/examples/* ${PREFIX}/share/examples/analog
 	${INSTALL_DATA} ${WRKSRC}/images/* ${ANALOGDIR}/images
 	${INSTALL_DATA} ${WRKSRC}/lang/* ${ANALOGDIR}/lang
 	${INSTALL_DATA} ${WRKSRC}/analog.cfg ${ANALOGDIR}

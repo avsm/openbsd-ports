@@ -1,5 +1,5 @@
 #!/bin/sh
-# $OpenBSD: netscape.sparc,v 1.1.1.1 2000/04/09 15:50:16 espie Exp $
+# $OpenBSD: netscape.sparc,v 1.1.1.1.2.1 2000/09/15 05:22:01 marc Exp $
 #
 # Wrapper for the fortified Netscape navigator program.
 

@@ -1,44 +1,40 @@
-# $OpenBSD: Makefile.inc,v 1.2 2000/04/16 21:06:26 brad Exp $
+# $OpenBSD: Makefile.inc,v 1.2.2.1 2000/09/15 05:21:55 marc Exp $
 #
 # Relevant URLs:	http://www.bsdi.com/netscape/
 #			http://www.fortify.net/
 
 CATEGORIES=     www
-NEED_VERSION=	1.258
+NEED_VERSION=	1.310
 DIST_SUBDIR=	netscape
+
+HOMEPAGE=	http://www.netscape.com/
 
 PERMIT_PACKAGE_CDROM=	No
 PERMIT_PACKAGE_FTP=	No
 PERMIT_DISTFILES_CDROM=	No
 PERMIT_DISTFILES_FTP=	No
 
-# Subdirectory MUST define PROGRAM_V, EMUL_OS and DISTRIBUTION
+# Subdirectory MUST define PROGRAM_V and LOCATION
 
 MASTER_SITES= \
-	http://wuarchive.wustl.edu/packages/www/Netscape/%SUBDIR%/ \
 	ftp://netscape.Mirror.McGill.CA/pub/mirrors/ftp.netscape.com/pub/%SUBDIR%/ \
 	ftp://ftp.netscape.com/pub/%SUBDIR%/ \
 	ftp://uiarchive.uiuc.edu/pub/www/netscape/%SUBDIR%/ \
 	ftp://ftp.the.net/pub/mirrors/ftp.netscape.com/pub/%SUBDIR%/ \
 	ftp://sunsite.doc.ic.ac.uk/packages/netscape/pub/%SUBDIR%/ \
 	ftp://ftp-de.netscape.com/pub/%SUBDIR%/ \
-	ftp://ftp.heanet.ie/pub/netscape/%SUBDIR%/ \
-	ftp://nic.funet.fi/pub/mirrors/ftp.netscape.com/pub/%SUBDIR%/ \
-	ftp://sunsite.tut.fi/pub/Mirror/mirrorsite.netscape.com/pub/%SUBDIR%/
+	ftp://nic.funet.fi/pub/mirrors/ftp.netscape.com/pub/%SUBDIR%/
 
 MASTER_SITES0=	ftp://ftp.fortify.net/pub/Fortify/ \
 		ftp://ftp.sunet.se/pub/security/tools/net/Fortify/ \
 		ftp://ftp.funet.fi/pub/crypt/mirrors/fortify/ \
-		ftp://ftp.replay.com/pub/crypto/apache/Fortify/ \
 		ftp://ftp.it.net.au/mirrors/Fortify/
 
 FORTIFY=	Fortify-1.4.6-unix-src
 DISTFILES=	${DISTNAME}.tar.gz \
 		${FORTIFY}.tar.gz:0
 
-MASTER_SITE_SUBDIR=communicator/english/${PROGRAM_V}/unix/unsupported/${LOCATION}
-
-FAKE=	Yes
+MASTER_SITE_SUBDIR=	communicator/english/${PROGRAM_V}/unix/unsupported/${LOCATION}
 
 OBJMACHINE=	Yes
 NO_CONFIGURE=	Yes
@@ -58,7 +54,7 @@ pre-fetch:
 .if ${MACHINE_ARCH} == "sparc"
 	@echo ""
 	@echo "  WARNING: This application requires a kernel compiled with"
-	@echo "           'option COMPAT_SUNOS' and SunOS shared librarys"
+	@echo "           'option COMPAT_SUNOS' and SunOS shared libraries"
 	@echo "           for proper operation, see compat_sunos(8) for"
 	@echo "           further details. The GENERIC kernel contains"
 	@echo "           this option."

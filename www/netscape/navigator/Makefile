@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.1.1.1 2000/04/09 15:50:16 espie Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.1 2000/09/15 05:22:03 marc Exp $
 
-ONLY_FOR_ARCHS=	i386 
+ONLY_FOR_ARCHS=	i386
+NEED_VERSION=	1.310
 
-PROGRAM_V=	4.7
+PROGRAM_V=	4.73
 V2:=${PROGRAM_V:S/.//}
 
 DISTNAME=	navigator-v${V2}-export.x86-bsdi-bsd2
@@ -10,5 +11,10 @@ LOCATION=	bsdi21/navigator_standalone
 DIRNAME=	navigator-v${V2}.x86-bsdi-bsd2
 
 PKGNAME=	navigator-${PROGRAM_V}
+
+pre-patch:
+	@cd ${WRKDIR}/Fortify-1.4.6-unix-src/x86-bsdi-bsd2 && \
+	   mkdir nav-4.73 && \
+	   cp nav-4.72/morphs-1.2 nav-4.73
 
 .include <bsd.port.mk>

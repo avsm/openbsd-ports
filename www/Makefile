@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.24 2000/04/21 18:45:14 espie Exp $
+# $OpenBSD: Makefile,v 1.24.2.1 2000/09/15 05:21:26 marc Exp $
 # $FreeBSD: Makefile,v 1.65 1997/11/17 06:31:39 fenner Exp $
 #
 
@@ -8,6 +8,8 @@
 #    SUBDIR += arena
 #    SUBDIR += ashe           # requires Motif
 #    SUBDIR += aswedit
+     SUBDIR += august
+     SUBDIR += bk2site
      SUBDIR += bluefish
      SUBDIR += cgiparse
 #    SUBDIR += chimera
@@ -42,12 +44,15 @@
 #    SUBDIR += p5-libwww
      SUBDIR += php3
      SUBDIR += squid
+     SUBDIR += thttpd
      SUBDIR += tidy
      SUBDIR += transproxy
 #    SUBDIR += vrweb
 #    SUBDIR += w3
 #    SUBDIR += w3c-httpd
      SUBDIR += w3m
+     SUBDIR += w3m:kanji
+     SUBDIR += webalizer
 #    SUBDIR += webcopy
      SUBDIR += weblint
 #    SUBDIR += webstone

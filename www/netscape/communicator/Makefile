@@ -1,10 +1,9 @@
-# $OpenBSD: Makefile,v 1.1.1.1 2000/04/09 15:50:14 espie Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.1 2000/09/15 05:21:57 marc Exp $
 
 ONLY_FOR_ARCHS=	i386 
-NEED_VERSION=	1.121
+NEED_VERSION=	1.310
 
-
-PROGRAM_V=	4.7
+PROGRAM_V=	4.73
 V2:=${PROGRAM_V:S/.//}
 
 DISTNAME=	communicator-v${V2}-export.x86-bsdi-bsd2
@@ -12,5 +11,10 @@ LOCATION=	bsdi21/complete_install
 DIRNAME=	communicator-v${V2}.x86-bsdi-bsd2
 
 PKGNAME=	communicator-${PROGRAM_V}
+
+pre-patch:
+	@cd ${WRKDIR}/Fortify-1.4.6-unix-src/x86-bsdi-bsd2 && \
+	   mkdir comm-4.73 && \
+	   cp comm-4.72/morphs-1.2 comm-4.73
 
 .include <bsd.port.mk>

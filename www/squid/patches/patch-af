@@ -1,27 +1,29 @@
---- errors/Makefile.in.orig	Fri Apr 24 01:26:39 1998
-+++ errors/Makefile.in	Sun May  9 14:05:51 1999
-@@ -15,7 +15,7 @@
+--- errors/Makefile.in.orig	Wed Sep 22 00:53:18 1999
++++ errors/Makefile.in	Fri Aug  4 20:55:35 2000
+@@ -15,7 +15,10 @@
  
  INSTALL         	= @INSTALL@
  INSTALL_FILE    	= @INSTALL_DATA@
 -DEFAULT_ERROR_DIR	= $(sysconfdir)/errors
++
++DESTDIR = 
++
 +DEFAULT_ERROR_DIR	= $(prefix)/share/squid/errors
  
  LANGUAGE		= @ERR_LANGUAGE@
  
-@@ -23,26 +23,18 @@
+@@ -23,26 +26,18 @@
  
  install: install-mkdirs
  	@for f in $(srcdir)/$(LANGUAGE)/ERR_*; do \
 -		if test -f $(DEFAULT_ERROR_DIR)/$$f ; then \
-+		if test -f $(prefix)/lib/squid/errors/$$f ; then \
- 			:; \
- 		else \
+-			:; \
+-		else \
 -			echo "$(INSTALL_FILE) $$f $(DEFAULT_ERROR_DIR)"; \
 -			$(INSTALL_FILE) $$f $(DEFAULT_ERROR_DIR); \
-+			echo "$(INSTALL_FILE) $$f $(prefix)/lib/squid/errors"; \
-+			$(INSTALL_FILE) $$f $(prefix)/lib/squid/errors; \
- 		fi; \
+-		fi; \
++		echo "$(INSTALL_FILE) $$f $(DESTDIR)$(prefix)/share/examples/squid/errors"; \
++		$(INSTALL_FILE) $$f $(DESTDIR)$(prefix)/share/examples/squid/errors; \
  	done
  
  install-mkdirs:
@@ -32,13 +34,16 @@
 -	-@if test ! -d $(sysconfdir); then \
 -		echo "mkdir $(sysconfdir)"; \
 -		mkdir $(sysconfdir); \
--	fi
++	-@if test ! -d $(DESTDIR)$(prefix); then \
++		echo "${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(prefix)"; \
++		${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(prefix); \
+ 	fi
 -	-@if test ! -d $(DEFAULT_ERROR_DIR); then \
 -		echo "mkdir $(DEFAULT_ERROR_DIR)"; \
 -		mkdir $(DEFAULT_ERROR_DIR); \
-+	-@if test ! -d $(prefix)/lib/squid/errors; then \
-+		echo "mkdir $(prefix)/lib/squid/errors"; \
-+		${BSD_INSTALL_DATA_DIR} $(prefix)/lib/squid/errors; \
++	-@if test ! -d $(DESTDIR)$(prefix)/share/examples/squid/errors; then \
++		echo "${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(prefix)/share/examples/squid/errors"; \
++		${BSD_INSTALL_DATA_DIR} $(DESTDIR)$(prefix)/share/examples/squid/errors; \
  	fi
  
- clean:
+ # undocumented hack.  You can use this target to create multi-lingual

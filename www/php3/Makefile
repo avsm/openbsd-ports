@@ -1,8 +1,11 @@
-# $OpenBSD: Makefile,v 1.11 2000/04/17 19:29:47 jakob Exp $
+# $OpenBSD: Makefile,v 1.11.2.1 2000/09/15 05:22:12 marc Exp $
 
 DISTNAME=	php-3.0.16
 PKGNAME=	php3-3.0.16
 CATEGORIES=	www lang
+NEED_VERSION=	1.302
+
+HOMEPAGE=	http://www.php.net/
 
 MAINTAINER=     jakob@openbsd.org
 
@@ -19,17 +22,17 @@ PERMIT_DISTFILES_FTP=   Yes
 # This port current only works with archs supporting dynamic loading
 ONLY_FOR_ARCHS=	i386 m68k sparc mips
 
-GNU_CONFIGURE=	yes
-FAKE=		yes
-
+CONFIGURE_STYLE=	gnu
 CONFIGURE_ARGS+=	--with-apxs=/usr/sbin/apxs \
-			--without-pcre-regex \
+			--with-pcre-regex \
 			--with-xml \
+			--with-imap=${PREFIX} \
 			--with-config-file-path=/var/www/conf
 
-BUILD_DEPENDS+=		${PREFIX}/lib/libexpat.a::textproc/expat
+BUILD_DEPENDS+=		${PREFIX}/lib/libexpat.a::textproc/expat \
+			${PREFIX}/lib/libc-client.a::mail/c-client
 
-FLAVORS=	mysql
+FLAVORS=	mysql postgresql
 
 FLAVOR?=
 .if ${FLAVOR:L} == "mysql"
@@ -37,6 +40,13 @@ CONFIGURE_ARGS+=	--with-mysql
 BUILD_DEPENDS+=		${PREFIX}/lib/mysql/libmysqlclient.a::databases/mysql
 .else
 CONFIGURE_ARGS+=	--without-mysql 
+.endif
+
+.if ${FLAVOR:L} == "postgresql"
+CONFIGURE_ARGS+=	--with-pgsql
+BUILD_DEPENDS+=		${PREFIX}/pgsql/lib/libpq.a::databases/postgresql
+.else
+CONFIGURE_ARGS+=	--without-pgsql
 .endif
 
 do-install:

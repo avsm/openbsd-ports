@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.48 2002/09/14 00:10:08 naddy Exp $
+# $OpenBSD: Makefile,v 1.48.2.1 2002/11/29 15:54:43 naddy Exp $
 
 COMMENT=	"pager/text-based web browser"
 
-VERSION=	0.3.1
-M17N_VERSION=	20020717
+VERSION=	0.3.2.1
+M17N_VERSION=	20021127
 
 DISTNAME=	w3m-${VERSION}
 CATEGORIES=	www
@@ -26,6 +26,8 @@ LIB_DEPENDS=	gc.1::devel/boehm-gc
 
 FLAVORS=	image japanese m17n
 FLAVOR?=
+
+PATCH_LIST=	patch-*
 
 CONFIGURE_STYLE= simple
 CONFIGURE_ARGS=	--nonstop \
@@ -69,6 +71,7 @@ PKGNAME=	w3m-${VERSION}.${M17N_VERSION}
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:0
 CONFIGURE_ARGS+= --suffix="" --charset=UTF-8
 DOCS+=		README.m17n
+PATCH_LIST+=	m17n-patch-*
 .endif
 
 post-install:

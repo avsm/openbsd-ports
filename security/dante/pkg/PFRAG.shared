@@ -1,0 +1,7 @@
+bin/socksify
+lib/libsocks.so
+lib/libsocks.so.1.0
+lib/libdsocks.la
+lib/libdsocks.so
+lib/libdsocks.so.1.0
+DYNLIBDIR(%B)

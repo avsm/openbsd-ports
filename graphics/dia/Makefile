@@ -1,7 +1,9 @@
-# $OpenBSD: Makefile,v 1.2.2.1 2000/11/20 13:39:48 espie Exp $
+# $OpenBSD: Makefile,v 1.2.2.2 2000/11/20 13:46:54 espie Exp $
 
 DISTNAME=	dia-0.86
 CATEGORIES=	graphics
+PKGNAME=	dia-0.86p1
+
 NEED_VERSION=	1.320
 MASTER_SITES=	${MASTER_SITE_GNOME}
 MASTER_SITE_SUBDIR= stable/sources/dia

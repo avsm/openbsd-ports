@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.12 2000/10/27 16:52:02 espie Exp $
+# $OpenBSD: Makefile,v 1.12.2.1 2000/11/24 14:19:25 espie Exp $
 # $FreeBSD: Makefile,v 1.33 1999/02/27 03:09:57 andreas Exp $
 
 VERSION=	2.1
@@ -146,7 +146,7 @@ do-install:
 
 .if ${SUBPACKAGE} == "-examples"
 .  if ${FLAVOR:L} == "gl"
-PKGNAME:=	qt2-examples-${VERSION}-gl
+PKGNAME:=	qt2-examples-${VERSION}p1-gl
 .  else
 PKGNAME:=	qt2-examples-${VERSION}
 .  endif

@@ -1,0 +1,12 @@
+$OpenBSD: patch-kimgio_eps_cpp,v 1.1.4.1 2003/05/02 18:49:30 naddy Exp $
+--- kimgio/eps.cpp.orig	Thu Dec  5 21:22:02 2002
++++ kimgio/eps.cpp	Wed Apr 23 01:00:56 2003
+@@ -99,7 +99,7 @@ void kimgio_eps_read (QImageIO *image)
+         tmp.setNum( wantedHeight );
+         cmdBuf += "x";
+         cmdBuf += tmp;
+-        cmdBuf += " -dNOPAUSE -sDEVICE=ppm -c "
++        cmdBuf += " -dSAFER -dPARANOIDSAFER -dNOPAUSE -sDEVICE=ppm -c "
+                 "0 0 moveto "
+                 "1000 0 lineto "
+                 "1000 1000 lineto "

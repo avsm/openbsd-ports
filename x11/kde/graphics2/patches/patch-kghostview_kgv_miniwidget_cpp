@@ -1,0 +1,13 @@
+$OpenBSD: patch-kghostview_kgv_miniwidget_cpp,v 1.1.2.1 2002/10/06 18:07:47 brad Exp $
+--- kghostview/kgv_miniwidget.cpp.orig	Sat Nov 10 00:20:18 2001
++++ kghostview/kgv_miniwidget.cpp	Sat Oct  5 11:32:21 2002
+@@ -529,7 +529,8 @@ bool KGVMiniWidget::psCopyDoc( const QSt
+ 	    free( comment );
+ 	    continue;
+ 	}
+-	sscanf( comment + length("%%Pages:" ), "%s", text );
++	sscanf( comment + length("%%Pages:" ), "%256s", text );
++        text[256] = 0;
+ 	if( strcmp( text, "(atend)" ) == 0 ) {
+ 	    fputs( comment, to );
+ 	    pages_atend = true;

@@ -1,13 +1,12 @@
-# $OpenBSD: Makefile,v 1.6 2002/05/18 22:35:45 lebel Exp $
+# $OpenBSD: Makefile,v 1.6.2.1 2003/02/25 03:32:17 brad Exp $
 
 COMMENT=	"cross-platform remote desktop access"
 COMMENT-viewer=	"client for cross-platform remote desktop access"
 
-VERSION=	1.2.3
+VERSION=	1.2.7
 PKGNAME=        tightvnc-${VERSION}
 DISTNAME=       ${PKGNAME}_unixsrc
 CATEGORIES=	net
-NEED_VERSION=	1.500
 MASTER_SITES=   ${MASTER_SITE_SOURCEFORGE:=vnc-tight/}
 MASTER_SITES0=	http://www.uk.research.att.com/vnc/dist/
 DOCDIST=	vnc-latest_doc.tgz

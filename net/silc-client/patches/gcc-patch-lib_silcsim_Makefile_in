@@ -1,4 +1,4 @@
-$OpenBSD: gcc-patch-lib_silcsim_Makefile_in,v 1.1 2002/10/05 19:41:17 fgsch Exp $
+$OpenBSD: gcc-patch-lib_silcsim_Makefile_in,v 1.1.4.1 2002/10/07 00:11:28 brad Exp $
 --- lib/silcsim/Makefile.in.orig	Sat Sep  7 14:04:47 2002
 +++ lib/silcsim/Makefile.in	Sat Oct  5 07:59:27 2002
 @@ -440,6 +440,9 @@ uninstall-am: uninstall-includeHEADERS u

@@ -1,7 +1,7 @@
-# $OpenBSD: Makefile,v 1.2 2003/07/23 02:46:31 jolan Exp $
+# $OpenBSD: Makefile,v 1.2.2.1 2004/06/22 06:45:59 robert Exp $
 
 COMMENT=	"utility to create virtual hosts on a network"
-DISTNAME=	honeyd-0.6a
+DISTNAME=	honeyd-0.8a
 CATEGORIES=	net
 MASTER_SITES=	${HOMEPAGE}
 

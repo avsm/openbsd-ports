@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.1.1.1 1997/11/18 10:11:05 todd Exp $
+# $OpenBSD: Makefile,v 1.3 1998/10/09 00:26:02 marc Exp $
 #
 
 DISTNAME=       make-3.76.1

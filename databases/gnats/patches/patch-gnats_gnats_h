@@ -1,4 +1,4 @@
-$OpenBSD: patch-gnats_gnats_h,v 1.1 2003/08/25 23:35:06 brad Exp $
+$OpenBSD: patch-gnats_gnats_h,v 1.1.4.1 2003/08/26 01:03:22 brad Exp $
 --- gnats/gnats.h.orig	Wed Nov 25 07:14:47 1998
 +++ gnats/gnats.h	Wed Jul  2 13:23:13 2003
 @@ -234,7 +234,7 @@ extern FILE *open_index			PARAMS((void))

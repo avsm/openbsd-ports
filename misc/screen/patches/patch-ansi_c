@@ -1,4 +1,4 @@
-$OpenBSD: patch-ansi_c,v 1.1 2003/12/04 23:27:07 margarida Exp $
+$OpenBSD: patch-ansi_c,v 1.1.2.1 2003/12/04 23:47:11 margarida Exp $
 --- ansi.c.orig	2003-11-28 00:27:43.000000000 +0000
 +++ ansi.c	2003-11-28 00:28:29.000000000 +0000
 @@ -559,7 +559,7 @@ register int len;

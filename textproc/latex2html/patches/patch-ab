@@ -1,0 +1,13 @@
+*** install-test.orig	Mon Sep 21 19:30:07 1998
+--- install-test	Mon Sep 21 19:30:20 1998
+***************
+*** 1,4 ****
+! #!/usr/local/bin/perl
+  
+  # $Id: install-test,v 1.5 1997/07/07 00:38:59 JCL Exp $
+  # LaTeX2HTML Version 96.2 : install_test
+--- 1,4 ----
+! #!/usr/bin/perl
+  
+  # $Id: install-test,v 1.5 1997/07/07 00:38:59 JCL Exp $
+  # LaTeX2HTML Version 96.2 : install_test

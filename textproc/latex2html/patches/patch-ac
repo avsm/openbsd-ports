@@ -1,0 +1,13 @@
+*** texexpand.orig	Mon Sep 21 19:30:07 1998
+--- texexpand	Mon Sep 21 19:30:41 1998
+***************
+*** 1,4 ****
+! #!/usr/local/bin/perl
+  
+  # $Id: texexpand,v 1.11 1997/06/15 18:26:00 JCL Exp $
+  #
+--- 1,4 ----
+! #!/usr/bin/perl
+  
+  # $Id: texexpand,v 1.11 1997/06/15 18:26:00 JCL Exp $
+  #

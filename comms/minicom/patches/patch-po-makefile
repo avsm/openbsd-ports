@@ -1,0 +1,31 @@
+# $OpenBSD: patch-po-makefile,v 1.2 2000/06/09 16:14:40 form Exp $
+
+--- po/Makefile.orig	Fri Feb 18 23:33:40 2000
++++ po/Makefile	Fri Jun  9 23:00:31 2000
+@@ -1,7 +1,7 @@
+ INSTALL= /usr/bin/install -c
+ INSTALL_PROGRAM= ${INSTALL}
+ INSTALL_DATA= ${INSTALL} -m 644
+-INSTALLNLSDIR=/usr/share/locale
++INSTALLNLSDIR= $(PREFIX)/share/locale
+ 
+ MSGMERGE = msgmerge
+ 
+@@ -52,12 +52,13 @@
+ install: $(CATALOGS)
+ 	for n in $(CATALOGS); do \
+ 	    l=`basename $$n .mo`; \
+-	    $(INSTALL) -m 755 -d $(R)$(INSTALLNLSDIR)/$$l; \
+-	    $(INSTALL) -m 755 -d $(R)$(INSTALLNLSDIR)/$$l/LC_MESSAGES; \
+-	    $(INSTALL) -m 644 $$n $(R)$(INSTALLNLSDIR)/$$l/LC_MESSAGES/minicom.mo; \
++	    $(INSTALL) -m 755 -d $(INSTALLNLSDIR)/$$l; \
++	    $(INSTALL) -m 755 -d $(INSTALLNLSDIR)/$$l/LC_MESSAGES; \
++	    $(INSTALL) -m 644 $$n $(INSTALLNLSDIR)/$$l/LC_MESSAGES/minicom.mo; \
+ 	done
+ 
+-%.mo: %.po
++.SUFFIXES:	.po .mo
++.po.mo:
+ 	msgfmt -o $@ $<
+ 
+ # Automatically make ja_JP.SJIS.po from ja.po

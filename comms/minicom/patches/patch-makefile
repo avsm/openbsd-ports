@@ -1,0 +1,97 @@
+# $OpenBSD: patch-makefile,v 1.2 2000/06/09 16:14:40 form Exp $
+
+--- Makefile.orig	Tue Apr 25 22:42:32 2000
++++ Makefile	Fri Jun  9 23:08:51 2000
+@@ -22,10 +22,12 @@
+ # enochw@scn.org Oct 99: flags for UWIN 2.0 (Unix for Windows)
+ 
+ # Where to install things for Linux sites (FSSTND)
+-BINDIR	= /usr/bin
+-LIBDIR	= /etc
+-DOCDIR	= /usr/doc/minicom
+-MANDIR	= /usr/man/man1
++R	= $(DESTDIR)
++PREFIX ?= /usr/local
++BINDIR	= $(PREFIX)/bin
++LIBDIR	= /etc/minicom
++DOCDIR	= $(PREFIX)/share/doc/minicom
++MANDIR	= $(PREFIX)/man/man1
+ 
+ # fmg 8/22/97: seems a more logical place for this :-)
+ # Select Compile Options you want:
+@@ -40,7 +42,7 @@
+ # -D_I18N_		- Internationalization and localized text strings
+ #			  see file "../doc/Locales"
+ #
+-OPFLAGS	= -D_HISTORY -D_HAVE_MACROS -D_SEARCH_HISTORY -D_I18N_
++OPFLAGS	= -D_HISTORY -D_HAVE_MACROS -D_SEARCH_HISTORY #-D_I18N_
+ 
+ # Remove if you don't have gettext and don't want to install it and use
+ # the localized strings
+@@ -60,11 +62,11 @@
+ # MANDIR	= /usr/local/man/man1
+ 
+ # Take these compilation flags for Linux with libncurses.
+-FLAGS	= -Wall -D_POSIX -D_SYSV -D_SELECT -pipe # -I/usr/include/ncurses
+-PROGS	= minicom runscript ascii-xfr
+-LFLAGS	= -s
+-LIBS	= -lncurses #-lintl
+-CC	= cc
++#FLAGS	= -Wall -D_POSIX -D_SYSV -D_SELECT -pipe # -I/usr/include/ncurses
++#PROGS	= minicom runscript ascii-xfr
++#LFLAGS	= -s
++#LIBS	= -lncurses #-lintl
++#CC	= cc
+ 
+ # Take these compilation flags for FreeBSD.
+ #FLAGS	= -Wall -D_POSIX -D_BSD43 -D_SELECT -D_DCDFLOW
+@@ -73,6 +75,13 @@
+ #LIBS	= -ltermcap
+ #CC	= cc
+ 
++# Take these compilation flags for OpenBSD.
++FLAGS	= -Wall -D_POSIX -D_BSD43 -D_SELECT -D_DCDFLOW
++PROGS	= minicom runscript ascii-xfr
++LFLAGS	= -s
++LIBS	= -lcurses
++#CC	= cc
++
+ # Take these flags for SCO unix.
+ #FLAGS	= -D_SYSV -D_SCO -D_POSIX -D_SELECT
+ #PROGS	= minicom runscript ascii-xfr
+@@ -199,7 +208,7 @@
+ SOBJS	= script.o sysdep1.o common.o
+ 
+ # fmg 8/22/97: merge in new OPFLAGS...
+-CFLAGS	= $(FLAGS) $(OPFLAGS) -DLIBDIR=\"$(LIBDIR)\"
++CFLAGS	+= $(FLAGS) $(OPFLAGS) -DLIBDIR=\"$(LIBDIR)\"
+ 
+ R	= $(ROOTDIR)
+ 
+@@ -209,7 +218,7 @@
+ 		$(CC) $(LFLAGS) -o minicom $(MOBJS) $(LIBS)
+ 
+ po: dummy
+-		$(MAKE) -C po
++		@cd po; $(MAKE)
+ 
+ keyserv:	$(KOBJS)
+ 		$(CC) -o keyserv $(LFLAGS) $(KOBJS) $(LIBS)
+@@ -262,7 +271,7 @@
+ dummy:
+ 
+ install:	$(PROGS)
+-		$(MAKE) -C po install R=$(R)
++		@cd po; $(MAKE)  install PREFIX=$(PREFIX)
+ 		sh install.sh $(R)$(LIBDIR) $(R)$(BINDIR) $(R)$(MANDIR) $(R)$(DOCDIR)
+ 
+ install2:	$(PROGS)
+@@ -270,7 +279,7 @@
+ 
+ clobber:
+ 		rm -f *.o *~ minicom keyserv runscript ascii-xfr
+-		$(MAKE) -C po clean
++		@cd po; $(MAKE) clean
+ 
+ clean:		
+ 		rm -f *.o

@@ -1,13 +1,12 @@
-# $OpenBSD: Makefile,v 1.9 2000/04/09 17:37:46 espie Exp $
+# $OpenBSD: Makefile,v 1.9.2.1 2000/09/15 05:12:14 marc Exp $
 
 DISTNAME=	9wm-1.1
 CATEGORIES=	plan9
 NEED_VERSION=	1.191
-FAKE=No
 MASTER_SITES=	ftp://ftp.mathcs.emory.edu/pub/arnold/
 EXTRACT_SUFX=	.shar.gz
 
-MAINTAINER=	angelos@openbsd.org
+MAINTAINER=	ports@openbsd.org
 
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
@@ -18,6 +17,6 @@ WRKDIST=	${WRKDIR}
 EXTRACT_CMD=	gzcat
 EXTRACT_BEFORE_ARGS=	# empty
 EXTRACT_AFTER_ARGS= | ${SH}
-USE_IMAKE=	yes
+USE_IMAKE=	Yes
 
 .include <bsd.port.mk>

@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.11 2002/07/26 00:08:09 naddy Exp $
+# $OpenBSD: Makefile,v 1.11.2.1 2003/01/19 09:15:42 pvalchev Exp $
 
 ONLY_FOR_ARCHS=	i386
 
 COMMENT=	"Java Development Kit for Java 2 Standard Edition 1.3"
-VERSION=	1.3.1_04
+VERSION=	1.3.1_06
 
 DISTNAME=	jdk${VERSION}
 PKGNAME=	jdk-linux-${VERSION}
@@ -37,7 +37,7 @@ do-fetch:
 	   echo "" ; \
 	   echo "     http://java.sun.com/j2se/1.3/download-linux.html" ; \
 	   echo "" ; \
-	   echo " Choose the 'GNUZIP Tar shell script' option and place" ; \
+	   echo " Choose the '* Linux self-extracting file' option and place" ; \
 	   echo " ${DISTFILES} into ${DISTDIR}." ; \
 	   echo "" ; \
            exit 1 ; \
@@ -52,4 +52,3 @@ do-install:
 	@cp -Rp ${WRKDIST}/* ${JDK_HOME}
 	
 .include <bsd.port.mk>
-

@@ -1,4 +1,4 @@
-$OpenBSD: patch-libs_xpdf_xpdf_XRef_cc,v 1.1 2004/11/27 14:15:04 sturm Exp $
+$OpenBSD: patch-libs_xpdf_xpdf_XRef_cc,v 1.1.2.1 2004/12/25 23:22:45 sturm Exp $
 --- libs/xpdf/xpdf/XRef.cc.orig	Sun Nov  3 23:15:37 2002
 +++ libs/xpdf/xpdf/XRef.cc	Sat Nov 27 14:51:17 2004
 @@ -28,6 +28,7 @@

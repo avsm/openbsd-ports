@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.5 2003/11/27 16:42:28 lebel Exp $
+# $OpenBSD: Makefile,v 1.5.2.1 2004/05/06 09:52:29 robert Exp $
 
 COMMENT=		"command-line WebDAV client"
 
-VERSION=		0.22.0
+VERSION=		0.22.1
 DISTNAME=		cadaver-${VERSION}
 CATEGORIES=     	net www
 

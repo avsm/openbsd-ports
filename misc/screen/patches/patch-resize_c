@@ -1,7 +1,7 @@
-$OpenBSD: patch-resize_c,v 1.1 2003/12/04 23:27:07 margarida Exp $
---- resize.c.orig	2003-11-28 00:28:47.000000000 +0000
-+++ resize.c	2003-11-28 00:30:19.000000000 +0000
-@@ -682,6 +682,18 @@ int wi, he, hi;
+$OpenBSD: patch-resize_c,v 1.1.4.1 2003/12/13 04:08:50 margarida Exp $
+--- resize.c.orig	Tue Aug 13 11:06:58 2002
++++ resize.c	Sat Dec 13 04:00:04 2003
+@@ -680,6 +680,18 @@ int wi, he, hi;
    if (wi == 0)
      he = hi = 0;
  

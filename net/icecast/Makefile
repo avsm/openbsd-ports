@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.23.2.1 2004/05/14 22:53:10 brad Exp $
+# $OpenBSD: Makefile,v 1.23.2.2 2004/10/19 18:27:47 robert Exp $
 
 COMMENT=	"server for streaming Ogg Vorbis and MP3"
 
-DISTNAME=	icecast-2.0.1
+DISTNAME=	icecast-2.0.2
 CATEGORIES=	net audio
 
 HOMEPAGE=	http://www.icecast.org/
@@ -15,7 +15,7 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-MASTER_SITES=	http://icecast.org/files/
+MASTER_SITES=	http://svn.xiph.org/releases/icecast/
 
 CONFIGURE_STYLE= gnu
 CONFIGURE_ARGS+= --localstatedir=/var

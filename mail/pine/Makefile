@@ -1,6 +1,6 @@
-# $OpenBSD: Makefile,v 1.22.2.1 2001/01/18 19:23:13 brad Exp $
+# $OpenBSD: Makefile,v 1.22.2.2 2001/02/02 17:24:59 brad Exp $
 
-VERSION=	4.32
+VERSION=	4.33
 DISTNAME=	pine${VERSION}
 NEED_VERSION=	1.336
 MASTER_SITES=	ftp://ftp.cac.washington.edu/pine/ \
@@ -8,7 +8,7 @@ MASTER_SITES=	ftp://ftp.cac.washington.edu/pine/ \
 
 HOMEPAGE=	http://www.washington.edu/pine/
 
-MAINTAINER=	Marco S Hyman <marc@openbsd.org>
+MAINTAINER=	Brad Smith <brad@openbsd.org>
 
 PERMIT_PACKAGE_CDROM=	No
 PERMIT_PACKAGE_FTP=	Yes

@@ -1,10 +1,9 @@
-# $OpenBSD: Makefile,v 1.13 2000/03/22 06:40:44 form Exp $
+# $OpenBSD: Makefile,v 1.13.2.1 2000/09/15 05:13:45 marc Exp $
 
-DISTNAME=	xcyrillic-1.1
+DISTNAME=	xcyrillic-2.0
 CATEGORIES=	russian x11
-MASTER_SITES=	ftp://ftp.styx.org/users/ww/cyrillic/ \
-		${MASTER_SITE_BACKUP} \
-		ftp://vell.nsc.ru/pub/X11/cyrillic/
+MASTER_SITES=	ftp://vell.nsc.ru/pub/X11/cyrillic/ \
+		ftp://ftp.styx.org/users/ww/cyrillic/
 
 MAINTAINER=	form@openbsd.org
 
@@ -13,23 +12,11 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-NO_CONFIGURE=	Yes
+WRKSRC=		${WRKDIR}/${DISTNAME}/fonts
 USE_X11=	Yes
-FAKE=		Yes
 
-ALL_TARGET=	X11R6
-
-post-build:
-	@${X11BASE}/bin/mkfontdir ${WRKSRC}/misc ${WRKSRC}/75dpi ${WRKSRC}/100dpi
-
-do-install:
-	${INSTALL_DATA_DIR} ${PREFIX}/lib/X11/fonts/xcyrillic
-.for d in misc 75dpi 100dpi
-	${INSTALL_DATA_DIR} ${PREFIX}/lib/X11/fonts/xcyrillic/${d}
-	${INSTALL_DATA} ${WRKSRC}/${d}/fonts.dir ${WRKSRC}/${d}/*.pcf.gz \
-		${PREFIX}/lib/X11/fonts/xcyrillic/${d}
-.endfor
-	${INSTALL_DATA} ${WRKSRC}/misc/fonts.alias \
-		${PREFIX}/lib/X11/fonts/xcyrillic/misc
+post-install:
+	${INSTALL_DATA} ${WRKBUILD}/../LICENSE.txt \
+		${PREFIX}/lib/X11/fonts/xcyrillic
 
 .include <bsd.port.mk>

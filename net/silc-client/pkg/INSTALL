@@ -1,5 +1,5 @@
 #!/bin/sh
-# $OpenBSD: INSTALL,v 1.1.1.1.2.2 2002/10/03 02:36:07 brad Exp $
+# $OpenBSD: INSTALL,v 1.1.1.1.2.3 2002/12/13 17:55:55 brad Exp $
 
 # exit on errors, use a sane path and install prefix
 #
@@ -7,7 +7,7 @@ set -e
 PATH=/bin:/usr/bin:/sbin:/usr/sbin
 PREFIX=${PKG_PREFIX:-/usr/local}
 CONFIG_DIR=${SYSCONFDIR}/silc
-SAMPLE_CONFIG_DIR=$PREFIX/share/doc/silc
+SAMPLE_CONFIG_DIR=$PREFIX/share/examples/silc
 THEME_DIR=$PREFIX/share/silc/themes
 
 do_notice_conf()

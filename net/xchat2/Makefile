@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.4.2.1 2004/08/19 03:00:43 brad Exp $
+# $OpenBSD: Makefile,v 1.4.2.2 2004/08/21 13:24:45 wilfried Exp $
 
 COMMENT=	"GTK+2 IRC client"
 
@@ -21,6 +21,7 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
+BUILD_DEPENDS=	:pkgconfig-*:devel/pkgconfig
 LIB_DEPENDS=	gtk-x11-2.0.0.0,gdk-x11-2.0.0.0,gdk_pixbuf-2.0.0.0::x11/gtk+2
 
 MODULES=	gettext

@@ -1,15 +1,6 @@
-$OpenBSD: patch-khtml_rendering_render_replaced_cpp,v 1.2.2.1 2003/04/10 18:59:40 brad Exp $
+$OpenBSD: patch-khtml_rendering_render_replaced_cpp,v 1.2.2.2 2003/04/14 14:29:07 brad Exp $
 --- khtml/rendering/render_replaced.cpp.orig	Tue Oct  1 15:22:51 2002
 +++ khtml/rendering/render_replaced.cpp	Wed Apr  9 23:18:49 2003
-@@ -19,7 +19,7 @@
-  * the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-  * Boston, MA 02111-1307, USA.
-  *
-- * $Id: render_replaced.cpp,v 1.92.2.5 2002/10/01 19:22:51 mueller Exp $
-+ * $Id: render_replaced.cpp,v 1.92.2.6 2003/01/04 23:42:31 mueller Exp $
-  */
- #include "render_replaced.h"
- #include "render_root.h"
 @@ -153,7 +153,6 @@ void RenderWidget::detach()
  RenderWidget::~RenderWidget()
  {

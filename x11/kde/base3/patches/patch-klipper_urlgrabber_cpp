@@ -1,15 +1,6 @@
-$OpenBSD: patch-klipper_urlgrabber_cpp,v 1.1.2.1 2003/04/10 18:59:40 brad Exp $
+$OpenBSD: patch-klipper_urlgrabber_cpp,v 1.1.2.2 2003/04/14 14:29:07 brad Exp $
 --- klipper/urlgrabber.cpp.orig	Sun Dec 15 21:44:19 2002
 +++ klipper/urlgrabber.cpp	Wed Apr  9 23:27:35 2003
-@@ -2,7 +2,7 @@
- 
-    urlgrabber.cpp (part of Klipper - Cut & paste history for KDE)
- 
--   $Id: urlgrabber.cpp,v 1.29.2.1 2002/12/07 01:59:55 mueller Exp $
-+   $Id: urlgrabber.cpp,v 1.29.2.2 2003/01/05 19:30:24 mueller Exp $
- 
-    (C) 2000 by Carsten Pfeiffer <pfeiffer@kde.org>
- 
 @@ -210,7 +210,7 @@ void URLGrabber::execute( const struct C
          // the quotes have to be replaced as well as they might
          // be part of config files from older klipper versions

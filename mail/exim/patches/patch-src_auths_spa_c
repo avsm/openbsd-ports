@@ -1,0 +1,30 @@
+$OpenBSD: patch-src_auths_spa_c,v 1.1.2.1 2005/01/27 06:34:10 sturm Exp $
+--- src/auths/spa.c.orig	Thu Jul 22 10:46:52 2004
++++ src/auths/spa.c	Wed Jan 26 21:40:52 2005
+@@ -133,7 +133,7 @@ if (auth_get_no64_data(&data, US"NTLM su
+   return FAIL;
+   }
+ 
+-if (spa_base64_to_bits((char *)(&request), (const char *)(data)) < 0)
++if (spa_base64_to_bits((char *)(&request), sizeof(request), (const char *)(data)) < 0)
+   {
+   DEBUG(D_auth) debug_printf("auth_spa_server(): bad base64 data in "
+   "request: %s\n", data);
+@@ -153,7 +153,7 @@ if (auth_get_no64_data(&data, msgbuf) !=
+   }
+ 
+ /* dump client response */
+-if (spa_base64_to_bits((char *)(&response), (const char *)(data)) < 0)
++if (spa_base64_to_bits((char *)(&response), sizeof(response), (const char *)(data)) < 0)
+   {
+   DEBUG(D_auth) debug_printf("auth_spa_server(): bad base64 data in "
+   "response: %s\n", data);
+@@ -319,7 +319,7 @@ auth_spa_client(
+        /* convert the challenge into the challenge struct */
+        DSPA("\n\n%s authenticator: challenge (%s)\n\n",
+                ablock->name, buffer + 4);
+-       spa_base64_to_bits ((char *)(&challenge), (const char *)(buffer + 4));
++       spa_base64_to_bits ((char *)(&challenge), sizeof(challenge), (const char *)(buffer + 4));
+ 
+        spa_build_auth_response (&challenge, &response,
+                CS username, CS password);

@@ -1,0 +1,23 @@
+$OpenBSD: patch-src_host_c,v 1.1.2.1 2005/01/27 06:34:10 sturm Exp $
+--- src/host.c.orig	Thu Jul 22 10:46:52 2004
++++ src/host.c	Wed Jan 26 21:40:52 2005
+@@ -710,12 +710,18 @@ if (Ustrchr(address, ':') != NULL)
+ 
+   if (*p == ':') p++;
+ 
+-  /* Split the address into components separated by colons. */
++  /* Split the address into components separated by colons. The input address 
++  is supposed to be checked for syntax. There was a case where this was 
++  overlooked; to guard against that happening again, check here and crash if 
++  there is a violation. */
+ 
+   while (*p != 0)
+     {
+     int len = Ustrcspn(p, ":");
+     if (len == 0) nulloffset = ci;
++    if (ci > 7) log_write(0, LOG_MAIN|LOG_PANIC_DIE, 
++      "Internal error: invalid IPv6 address \"%s\" passed to host_aton()",
++      address);  
+     component[ci++] = p;
+     p += len;
+     if (*p == ':') p++;

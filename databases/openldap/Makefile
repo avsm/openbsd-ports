@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.17 2001/09/28 17:56:09 jakob Exp $
+# $OpenBSD: Makefile,v 1.17.2.1 2001/11/16 17:29:05 jakob Exp $
 
 COMMENT=	"Open source LDAP software (client)"
 COMMENT-server=	"Open source LDAP software (server)"
 
-VERSION=	2.0.15
+VERSION=	2.0.18
 DISTNAME=	openldap-${VERSION}
 FULLPKGNAME=	openldap-client-${VERSION}
 PKGNAME-server=	openldap-server-${VERSION}
@@ -25,7 +25,8 @@ MASTER_SITES=	ftp://ftp.OpenLDAP.org/pub/OpenLDAP/openldap-release/ \
 		ftp://mirror.aarnet.edu.au/pub/OpenLDAP/openldap-release/ \
 		ftp://gd.tuwien.ac.at/infosys/network/OpenLDAP/openldap-release/ \
 		http://www.unibase.cz/ldapcz/Programy/Free/OpenLDAP/openldap-release/ \
-		ftp://ftp.ntua.gr/mirror/OpenLDAP/openldap-release/
+		ftp://ftp.ntua.gr/mirror/OpenLDAP/openldap-release/ \
+		ftp://ftp.shellhung.org/pub/OpenLDAP/openldap-release/
 
 EXTRACT_SUFX=		.tgz
 

@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_remove_h,v 1.1 2003/02/25 14:35:43 brad Exp $
+$OpenBSD: patch-src_remove_h,v 1.1.2.1 2003/02/25 14:43:40 brad Exp $
 --- src/remove.h.orig	Mon Oct 16 10:32:03 2000
 +++ src/remove.h	Mon Feb 24 23:21:17 2003
 @@ -44,8 +44,16 @@ struct File_spec

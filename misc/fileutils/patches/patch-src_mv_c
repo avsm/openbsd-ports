@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_mv_c,v 1.1 2003/02/25 14:35:43 brad Exp $
+$OpenBSD: patch-src_mv_c,v 1.1.2.1 2003/02/25 14:43:40 brad Exp $
 --- src/mv.c.orig	Sat Feb  3 11:48:34 2001
 +++ src/mv.c	Mon Feb 24 23:21:17 2003
 @@ -1,5 +1,5 @@

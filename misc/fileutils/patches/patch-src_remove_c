@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_remove_c,v 1.1 2003/02/25 14:35:43 brad Exp $
+$OpenBSD: patch-src_remove_c,v 1.1.2.1 2003/02/25 14:43:40 brad Exp $
 --- src/remove.c.orig	Sun Feb 18 11:17:32 2001
 +++ src/remove.c	Mon Feb 24 23:21:17 2003
 @@ -433,10 +433,13 @@ same_file (const char *file_1, const cha

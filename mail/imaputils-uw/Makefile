@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.4 2001/09/28 13:31:25 brad Exp $
+# $OpenBSD: Makefile,v 1.4.2.1 2002/01/16 23:52:07 brad Exp $
 
 COMMENT=	University of Washington IMAP utilities
 
 DISTNAME=	imap-utils
-PKGNAME=	imaputils-uw-20001219
+PKGNAME=	imaputils-uw-20001219p1
 CATEGORIES=	mail
-NEED_VERSION=	1.460
+NEED_VERSION=	1.475
 
 HOMEPAGE=	http://www.washington.edu/imap/
 
@@ -20,7 +20,7 @@ MASTER_SITES=	ftp://ftp.cac.washington.edu/imap/
 EXTRACT_SUFX=	.tar.Z
 DIST_SUBDIR=	${PKGNAME}
 
-LIB_DEPENDS=	c-client.3:c-client->=4.40p1:mail/c-client
+LIB_DEPENDS=	c-client.4:c-client->=4.41:mail/c-client
 
 WRKDIST=	${WRKDIR}
 SUBDIRS=	chkmail dmail icat ifrom imapcopy imapxfer \
@@ -29,7 +29,7 @@ SUBDIRS=	chkmail dmail icat ifrom imapcopy imapxfer \
 CFLAGS+=	-I${LOCALBASE}/include/c-client
 LIBS+=		-L${LOCALBASE}/lib -lc-client \
 		-lssl -lcrypto \
-		-lgssapi -lkrb5 -lasn1 -lcom_err
+		-lkrb -lkafs -lgssapi -lkrb5 -lasn1 -lcom_err
 
 do-build:
 .for prog in ${SUBDIRS}

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.55 2001/10/15 00:56:53 avsm Exp $
+# $OpenBSD: Makefile,v 1.55.2.1 2002/01/16 23:52:07 brad Exp $
 
 MULTI_PACKAGES=	-pear
 SUBPACKAGE?=
@@ -12,11 +12,11 @@ ONLY_FOR_ARCHS=	i386 m68k sparc
 
 V=		4.0.6
 DISTNAME=	php-${V}
-PKGNAME=	php4-${V}p1
-FULLPKGNAME-pear= php4-pear-${V}p1
+PKGNAME=	php4-${V}p2
+FULLPKGNAME-pear= php4-pear-${V}p2
 
 CATEGORIES=	www lang
-NEED_VERSION=	1.435
+NEED_VERSION=	1.475
 
 MAINTAINER=     Anil Madhavapeddy <avsm@openbsd.org>
 
@@ -79,7 +79,7 @@ CONFIGURE_ARGS+=	--without-gettext
 
 .if ${FLAVOR:L:Mimap}
 CONFIGURE_ARGS+=	--with-imap=${LOCALBASE} --with-imap-ssl=${LOCALBASE} --with-kerberos
-LIB_DEPENDS+=		c-client.3::mail/c-client
+LIB_DEPENDS+=		c-client.4:c-client->=4.41:mail/c-client
 .else
 CONFIGURE_ARGS+=	--without-imap
 .endif

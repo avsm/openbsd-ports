@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.37 2001/10/16 08:01:44 espie Exp $
+# $OpenBSD: Makefile,v 1.37.2.1 2002/01/16 23:52:07 brad Exp $
 
 COMMENT=	"server-side HTML-embedded scripting language"
 
@@ -7,9 +7,9 @@ COMMENT=	"server-side HTML-embedded scripting language"
 ONLY_FOR_ARCHS=	i386 m68k sparc
 
 DISTNAME=	php-3.0.18
-PKGNAME=	php3-3.0.18
+PKGNAME=	php3-3.0.18p1
 CATEGORIES=	www lang
-NEED_VERSION=	1.435
+NEED_VERSION=	1.475
 
 HOMEPAGE=	http://www.php.net/
 
@@ -29,17 +29,17 @@ CONFIGURE_STYLE=	gnu
 CONFIGURE_ARGS+=	--with-apxs=/usr/sbin/apxs \
 			--with-pcre-regex \
 			--with-xml \
-			--without-gdbm \
 			--with-config-file-path=/var/www/conf
 
 LIB_DEPENDS+=		expat.2::textproc/expat
+LIB_DEPENDS+=		gdbm::databases/gdbm
 
 FLAVORS=	imap gd mysql postgresql
 FLAVOR?= 
 
 .if ${FLAVOR:L:Mimap}
 CONFIGURE_ARGS+=	--with-imap=${LOCALBASE}
-LIB_DEPENDS+=		c-client.3::mail/c-client
+LIB_DEPENDS+=		c-client.4:c-client->=4.41:mail/c-client
 .else
 CONFIGURE_ARGS+=	--without-imap
 .endif

@@ -1,6 +1,6 @@
-$OpenBSD: patch-pine_pine.c,v 1.3 2001/09/27 16:52:40 brad Exp $
---- pine/pine.c.orig	Tue Aug  7 18:52:00 2001
-+++ pine/pine.c	Thu Sep 27 08:53:23 2001
+$OpenBSD: patch-pine_pine.c,v 1.3.2.1 2002/01/16 23:52:07 brad Exp $
+--- pine/pine.c.orig	Mon Nov 19 14:54:04 2001
++++ pine/pine.c	Thu Nov 22 15:23:41 2001
 @@ -40,7 +40,7 @@ static char rcsid[] = "$Id: pine.c,v 4.5
    ----------------------------------------------------------------------*/
  
@@ -10,7 +10,7 @@ $OpenBSD: patch-pine_pine.c,v 1.3 2001/09/27 16:52:40 brad Exp $
  
  
  /*
-@@ -361,7 +361,7 @@ main(argc, argv)
+@@ -409,7 +409,7 @@ main(argc, argv)
  #endif
  
      /*------- Set up c-client drivers -------*/ 

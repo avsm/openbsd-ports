@@ -1,4 +1,4 @@
-$OpenBSD: patch-language_modula3_m3compiler_m3cc_gcc_config_i386_openbsd_h,v 1.2 2001/09/07 16:47:23 espie Exp $
+$OpenBSD: patch-language_modula3_m3compiler_m3cc_gcc_config_i386_openbsd_h,v 1.2.2.1 2001/09/27 20:22:58 naddy Exp $
 --- language/modula3/m3compiler/m3cc/gcc/config/i386/openbsd.h.orig	Fri Sep  7 15:10:40 2001
 +++ language/modula3/m3compiler/m3cc/gcc/config/i386/openbsd.h	Fri Sep  7 15:11:58 2001
 @@ -0,0 +1,100 @@

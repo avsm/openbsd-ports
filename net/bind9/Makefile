@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.20.2.1 2001/05/07 02:03:29 naddy Exp $
+# $OpenBSD: Makefile,v 1.20.2.2 2001/05/11 11:37:15 naddy Exp $
 
 COMMENT=	Berkeley Internet Name Daemon
 
@@ -8,7 +8,7 @@ CATEGORIES=	net
 NEED_VERSION=	1.363
 
 MASTER_SITES=	ftp://ftp.isc.org/isc/bind9/${VERSION}/ \
-		ftp://ftp.sunet.se/pub/network/isc/bind9/${VERSION}
+		ftp://ftp.sunet.se/pub/network/isc/bind9/${VERSION}/
 
 HOMEPAGE=	http://www.isc.org/products/BIND/
 

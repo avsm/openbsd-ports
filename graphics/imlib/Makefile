@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.46 2003/11/14 23:52:42 brad Exp $
+# $OpenBSD: Makefile,v 1.46.2.1 2004/09/30 05:15:32 brad Exp $
 # $FreeBSD: Makefile,v 1.45 1999/03/09 01:08:57 nectar Exp $
 
 COMMENT=	"image manipulation library for X11"
 
 V=		1.9.14
 DISTNAME=	imlib-${V}
-PKGNAME=	imlib-${V}p2
+PKGNAME=	imlib-${V}p3
 CATEGORIES=	graphics devel
 MASTER_SITES=	${MASTER_SITE_GNOME:=sources/imlib/1.9/}
 

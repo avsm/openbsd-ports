@@ -1,6 +1,6 @@
-$OpenBSD: patch-configure_in,v 1.3 2002/12/14 23:56:43 brad Exp $
---- configure.in.orig	Thu Dec  5 04:37:05 2002
-+++ configure.in	Fri Dec 13 22:37:51 2002
+$OpenBSD: patch-configure_in,v 1.3.4.1 2003/09/03 00:26:22 brad Exp $
+--- configure.in.orig	Fri Jun  6 10:39:17 2003
++++ configure.in	Tue Sep  2 20:04:58 2003
 @@ -392,38 +392,7 @@ AC_SUBST(PERL5)
  AC_PATH_PROG(PS, ps, ps)
  AC_MSG_CHECKING("how to check if pid exists")
@@ -62,7 +62,7 @@ $OpenBSD: patch-configure_in,v 1.3 2002/12/14 23:56:43 brad Exp $
    *bsdi*)
      echo "Adding fix for BSDI"
      CFLAGS="$CFLAGS -D__BSD__ -DHAVE_BROKEN_REALPATH"
-@@ -1309,7 +1283,7 @@ then
+@@ -1305,7 +1279,7 @@ then
    AC_CHECK_LIB(c_r,strtok_r)
    case "$with_osf32_threads---$target_os" in
      # Don't keep -lc_r in LIBS; -pthread handles it magically
@@ -71,7 +71,7 @@ $OpenBSD: patch-configure_in,v 1.3 2002/12/14 23:56:43 brad Exp $
    esac
    AC_CHECK_FUNCS(strtok_r pthread_init)
  else
-@@ -1330,29 +1304,6 @@ AC_SUBST(LIBDL)
+@@ -1326,29 +1300,6 @@ AC_SUBST(LIBDL)
  
  # System characteristics
  AC_SYS_RESTARTABLE_SYSCALLS

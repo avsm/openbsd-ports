@@ -1,10 +1,11 @@
-# $OpenBSD: Makefile,v 1.11 2004/06/18 16:24:19 jcs Exp $
+# $OpenBSD: Makefile,v 1.11.2.1 2005/02/22 14:05:37 robert Exp $
 
 # This port currently only works with archs supporting dynamic loading
 # and has Apache that supports DSO's.
 NOT_FOR_ARCHS=	${NO_SHARED_ARCHS}
 
 DISTNAME=	mod_auth_radius-1.5.7
+PKGNAME=	${DISTNAME}p0
 CATEGORIES=	www
 
 # Apache
@@ -22,7 +23,7 @@ MAINTAINER=	Joshua Stein <jcs@rt.fm>
 
 NO_REGRESS=	Yes
 
-WRKDIST=	${WRKDIR}/${PKGNAME}
+WRKDIST=	${WRKDIR}/${DISTNAME}
 
 do-build:
 	@cd ${WRKSRC}; /usr/sbin/apxs -c mod_auth_radius.c

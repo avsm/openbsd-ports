@@ -1,0 +1,11 @@
+$OpenBSD: patch-libmpdemux_demuxer_h,v 1.1.2.1 2005/01/22 10:44:54 robert Exp $
+--- libmpdemux/demuxer.h.orig	Mon Apr 12 16:19:12 2004
++++ libmpdemux/demuxer.h	Wed Dec 29 15:34:38 2004
+@@ -27,7 +27,6 @@
+ #define DEMUXER_TYPE_MF 16
+ #define DEMUXER_TYPE_AUDIO 17
+ #define DEMUXER_TYPE_OGG 18
+-#define DEMUXER_TYPE_BMP 19
+ #define DEMUXER_TYPE_RAWAUDIO 20
+ #define DEMUXER_TYPE_RTP 21
+ #define DEMUXER_TYPE_RAWDV 22

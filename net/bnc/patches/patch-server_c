@@ -1,4 +1,4 @@
-$OpenBSD: patch-server_c,v 1.1 2004/10/15 16:51:17 robert Exp $
+$OpenBSD: patch-server_c,v 1.1.2.1 2004/11/21 18:28:47 robert Exp $
 --- server.c.orig	Fri Oct 15 18:34:12 2004
 +++ server.c	Fri Oct 15 18:36:30 2004
 @@ -343,7 +343,7 @@

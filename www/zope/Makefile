@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.3.2.1 2002/03/05 00:39:53 matt Exp $
+# $OpenBSD: Makefile,v 1.3.2.2 2002/04/18 13:41:19 matt Exp $
 
 COMMENT=	"object-oriented web application server"
 
 VERSION=	2.4.1
 DISTNAME=	Zope-${VERSION}-src
-PKGNAME=	zope-${VERSION}.2
+PKGNAME=	zope-${VERSION}.3
 CATEGORIES=     www
 NEED_VERSION=	1.419
 
@@ -25,12 +25,15 @@ HOTFIX_DATE0=	2001-09-28
 MASTER_SITES0=	http://www.zope.org/Products/Zope/Hotfix_${HOTFIX_DATE0}/
 HOTFIX_DATE1=	2002-03-01
 MASTER_SITES1=	http://www.zope.org/Products/Zope/Hotfix_${HOTFIX_DATE1}/
+HOTFIX_DATE2=	2002-04-15
+MASTER_SITES2=	http://www.zope.org/Products/Zope/Hotfix_${HOTFIX_DATE2}/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} \
 		Hotfix_${HOTFIX_DATE0}.tgz:0 \
-		Hotfix_${HOTFIX_DATE1}.tgz:1
+		Hotfix_${HOTFIX_DATE1}.tgz:1 \
+		Hotfix_${HOTFIX_DATE2}.tgz:2
 
 BUILD_DEPENDS=	python2.1:python-2.1*-threads:lang/python \
-		gtar::archivers/gtar					
+		gtar::archivers/gtar
 RUN_DEPENDS=	python2.1:python-2.1*-threads:lang/python
 
 # Note that the configure script is really just for pcgi, but it's
@@ -83,6 +86,10 @@ do-install:
 	${INSTALL_DATA} \
 		${WRKDIR}/lib/python/Products/Hotfix_${HOTFIX_DATE1}/* \
 		${PRODUCTSDIR}/Hotfix_${HOTFIX_DATE1}
+	${INSTALL_DATA_DIR} ${PRODUCTSDIR}/Hotfix_${HOTFIX_DATE2}
+	${INSTALL_DATA} \
+		${WRKDIR}/lib/python/Products/Hotfix_${HOTFIX_DATE2}/* \
+		${PRODUCTSDIR}/Hotfix_${HOTFIX_DATE2}
 
 .include <bsd.port.mk>
 

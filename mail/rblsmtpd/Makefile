@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.7 2000/04/26 14:25:30 camield Exp $
+# $OpenBSD: Makefile,v 1.7.2.1 2000/09/15 05:02:08 marc Exp $
 
 BROKEN=		"obsoleted by net/ucspi-tcp"
 
@@ -23,11 +23,8 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-NO_CONFIGURE=	Yes
 ALL_TARGET=	it install WRKINST=${WRKINST}
 INSTALL_TARGET=	setup check
-
-FAKE=	Yes
 
 RUN_DEPENDS=	tcpserver::net/ucspi-tcp
 

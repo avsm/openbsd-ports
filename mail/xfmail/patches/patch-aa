@@ -1,7 +1,14 @@
---- ui/newobjs.h.orig	Wed Oct 22 04:31:31 1997
-+++ ui/newobjs.h	Fri Jun 26 03:14:01 1998
-@@ -6,3 +6,3 @@
+--- ui/rules.c.orig	Tue Jun 13 19:14:27 2000
++++ ui/rules.c	Tue Jun 13 19:15:19 2000
+@@ -1194,11 +1194,6 @@
  
--#include <forms.h>
-+#include <X11/forms.h>
- #include <sys/param.h>
+     new_rule = (struct _xf_rule *) xf_malloc(sizeof(struct _xf_rule));
+     
+-    /* for some crappy distros only */    
+-    new_rule->rx.buffer=(unsigned char *) NULL;
+-    new_rule->rx.fastmap=(char *) NULL;
+-    new_rule->rx.translate=(char *) NULL;
+-    
+     strcpy(new_rule->name, p);
+ 
+ #ifdef HAVE_REGCOMP

@@ -1,36 +1,48 @@
-# $OpenBSD: Makefile,v 1.40 2000/04/26 18:43:53 fgsch Exp $
+# $OpenBSD: Makefile,v 1.40.2.1 2000/09/15 05:01:32 marc Exp $
 
-DISTNAME=       fetchmail-5.3.8
+DISTNAME=	fetchmail-5.4.4
 CATEGORIES=	mail
+NEED_VERSION=	1.310
 MASTER_SITES=	http://www.tuxedo.org/~esr/fetchmail/ \
 		ftp://ftp.ccil.org/pub/esr/fetchmail/ 
+
+HOMEPAGE=	http://www.tuxedo.org/~esr/fetchmail/
+
 MAINTAINER=	fgsch@openbsd.org
 
-FAKE=			YES
+PERMIT_PACKAGE_CDROM=	Yes
+PERMIT_PACKAGE_FTP=	Yes
+PERMIT_DISTFILES_CDROM=	Yes
+PERMIT_DISTFILES_FTP=	Yes
 
-LICENSE_TYPE=		GPL
-PERMIT_PACKAGE_CDROM=	YES
-PERMIT_PACKAGE_FTP=	YES
-PERMIT_DISTFILES_CDROM=	YES
-PERMIT_DISTFILES_FTP=	YES
+CONFIGURE_STYLE= gnu dest
+CONFIGURE_ARGS=	--disable-nls --enable-inet6
 
-GNU_CONFIGURE=		YES
-CONFIGURE_ARGS+= --disable-nls
-.if defined(WITH_KERBEROS) && ${WITH_KERBEROS:U} == YES
+FLAVORS=	kerberos ssl
+FLAVOR?=
+
+.if ${FLAVOR:L} == "kerberos"
 CONFIGURE_ARGS+= --with-kerberos
 .endif
-.if defined(WITH_SSL) && ${WITH_SSL:U} == YES
+.if ${FLAVOR:L} == "ssl"
 CONFIGURE_ARGS+= --with-ssl
 .endif
-.if defined(WITH_INET6) && ${WITH_INET6:U} == YES
-CONFIGURE_ARGS+= --enable-inet6
-.endif
+
+pre-patch:
+	@sed -e "s|@PREFIX@|${LOCALBASE}|" \
+	  ${FILESDIR}/fetchmailconf > ${WRKDIR}/fetchmailconf
+	@tbl ${WRKSRC}/fetchmail.man > ${WRKSRC}/fetchmail.tbl; \
+	  cp -f ${WRKSRC}/fetchmail.tbl ${WRKSRC}/fetchmail.man
 
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/fetchmail
+	@cd ${PREFIX}/man/man1 && ln -sf fetchmail.1 fetchmailconf.1
 	cd ${WRKSRC} && ${INSTALL_DATA} \
-	   sample.rcfile FAQ NOTES FEATURES README COPYING \
-	   fetchmail-FAQ.html fetchmail-features.html \
-	   design-notes.html ${PREFIX}/share/doc/fetchmail
+	  sample.rcfile FAQ NOTES FEATURES README COPYING \
+	  fetchmail-FAQ.html fetchmail-features.html \
+	  design-notes.html ${PREFIX}/share/doc/fetchmail
+	${INSTALL_SCRIPT} ${WRKSRC}/fetchmailconf \
+	  ${PREFIX}/libexec/fetchmailconf.bin
+	${INSTALL_SCRIPT} ${WRKDIR}/fetchmailconf ${PREFIX}/bin
 
 .include <bsd.port.mk>

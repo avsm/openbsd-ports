@@ -1,11 +1,10 @@
-# $OpenBSD: Makefile,v 1.11 2000/04/09 17:37:01 espie Exp $
+# $OpenBSD: Makefile,v 1.11.2.1 2000/09/15 05:02:16 marc Exp $
 # $NetBSD: Makefile,v 1.2 1998/07/04 09:19:04 mycroft Exp $
 
-DISTNAME=       xfmail-1.3
+DISTNAME=       xfmail-1.4.6
 CATEGORIES=     mail x11
-NEED_VERSION=	 1.230
-FAKE=No
-MASTER_SITES=	ftp://burka.netvision.net.il/pub/xfmail/
+NEED_VERSION=	1.301
+MASTER_SITES=	ftp://xfmail.ufies.org/pub/xfmail/release/1.4.6/source/
 
 MAINTAINER=	ports@openbsd.org
 
@@ -20,14 +19,23 @@ ONLY_FOR_ARCHS=	i386 sparc m68k hp300
 
 RESTRICTED=	"Selling this software requires permission of the authors."
 
+USE_BZIP2=	Yes
 USE_X11=	Yes
-GNU_CONFIGURE=	Yes
+
+CONFIGURE_STYLE=	gnu
+
+CONFIGURE_ARGS=	--without-threads	
+
+CONFIGURE_ENV=  CPPFLAGS="-I${LOCALBASE}/include/X11" \
+		LDFLAGS="-L${LOCALBASE}/lib/X11"
 
 pre-configure:
 	@cp -f ${FILESDIR}/config.cache ${WRKSRC}
 
-post-install:
-	mkdir -p ${PREFIX}/share/doc/xfmail
+do-install:
+	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/xfmail
 	${INSTALL_DATA} ${WRKSRC}/Copyright ${PREFIX}/share/doc/xfmail
+	${INSTALL_PROGRAM} ${WRKSRC}/ui/xfmail ${PREFIX}/bin
+	${INSTALL_MAN} ${WRKSRC}/ui/xfmail.1 ${PREFIX}/man/man1
 
 .include <bsd.port.mk>

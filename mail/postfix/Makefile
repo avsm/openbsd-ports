@@ -1,6 +1,6 @@
-# $OpenBSD: Makefile,v 1.22 2000/03/30 19:06:40 jakob Exp $
+# $OpenBSD: Makefile,v 1.22.2.1 2000/09/15 05:02:03 marc Exp $
 
-DISTNAME=	postfix-19991231-pl06
+DISTNAME=	postfix-19991231-pl08
 CATEGORIES=     mail
 NEED_VERSION=	1.241
 MASTER_SITES=	ftp://ftp.merit.edu/postfix/official/ \
@@ -14,10 +14,6 @@ PERMIT_PACKAGE_CDROM=	yes
 PERMIT_PACKAGE_FTP=	yes
 PERMIT_DISTFILES_CDROM=	yes
 PERMIT_DISTFILES_FTP=	yes
-
-FAKE=		yes
-
-NO_CONFIGURE=	yes
 
 MAKE_FLAGS=	CC="${CC}" DEBUG="" OPT="${CFLAGS}" \
 		OPTS="CC=\"${CC}\" DEBUG=\"\" OPT=\"${CFLAGS}\""

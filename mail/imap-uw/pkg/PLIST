@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.1.1.1.2.1 2000/09/15 05:01:38 marc Exp $
 libexec/imapd
 libexec/ipop2d
 libexec/ipop3d

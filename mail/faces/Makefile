@@ -1,11 +1,8 @@
-# $OpenBSD: Makefile,v 1.8 2000/04/09 17:36:56 espie Exp $
-
-BROKEN=		bad packing lists
+# $OpenBSD: Makefile,v 1.8.2.1 2000/09/15 05:01:25 marc Exp $
 
 DISTNAME=	faces-1.6.1
 CATEGORIES=	mail
-NEED_VERSION=	1.191
-FAKE=No
+NEED_VERSION=	1.310
 
 MAINTAINER=	angelos@openbsd.org
 
@@ -18,16 +15,11 @@ MASTER_SITES=	ftp://ftp.cs.indiana.edu/pub/faces/faces/ \
 		ftp://odie.physik2.uni-rostock.de/pub/
 EXTRACT_SUFX=	.tar.Z
 
-WRKDIST=		$(WRKDIR)/faces
+WRKDIST=	$(WRKDIR)/faces
 MAN1=		compface.1 faces.1 face_update.1
 MAN3=		compface.3 
 
-post-install:
-	${LDCONFIG} -m ${PREFIX}/lib
-.if !defined(NOMANCOMPRESS)
-	@rm ${PREFIX}/man/man1/uncompface.1 ${PREFIX}/man/man3/uncompface.3
-	@ln -fs compface.1.gz ${PREFIX}/man/man1/uncompface.1.gz
-	@ln -fs compface.3.gz ${PREFIX}/man/man3/uncompface.3.gz
-.endif
+post-extract:
+	@cd ${WRKSRC} && cp Makefile.dist Makefile
 
 .include <bsd.port.mk>

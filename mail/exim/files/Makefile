@@ -1,3 +1,4 @@
+# $OpenBSD: Makefile,v 1.5.2.1 2000/09/15 05:01:19 marc Exp $
 ##################################################
 #          The Exim mail transport agent         #
 ##################################################
@@ -240,8 +241,9 @@ EXICYCLOG_MAX=10
 # locations of various X11 directories for libraries and include files
 # are defaulted in the OS/Makefile-Default file, and can be overridden
 # in local OS-specific make files.
-
+.if !${FLAVOR:L:Mno_x11}
 EXIM_MONITOR=eximon.bin
+.endif
 
 
 # Compiling in support for embedded Perl: If you want to be able to

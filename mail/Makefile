@@ -1,11 +1,14 @@
-# $OpenBSD: Makefile,v 1.25 2000/04/01 23:33:29 espie Exp $
+# $OpenBSD: Makefile,v 1.25.2.1 2000/09/15 05:01:02 marc Exp $
 # $FreeBSD: Makefile,v 1.51 1997/11/14 22:56:43 hoek Exp $
 #
 
+     SUBDIR += abook
      SUBDIR += adcomplain
      SUBDIR += asmail
      SUBDIR += bulk_mailer
+     SUBDIR += c-client
      SUBDIR += checkpassword
+     SUBDIR += courier-imap
      SUBDIR += cucipop
 #    SUBDIR += cyrus
      SUBDIR += dot-forward
@@ -16,11 +19,14 @@
      SUBDIR += ezmlm
      SUBDIR += faces
      SUBDIR += fastforward
-     SUBDIR += fetchmail
+     SUBDIR += fetchmail:kerberos
+     SUBDIR += fetchmail:kerberos,ssl
+     SUBDIR += fetchmail:ssl
+     SUBDIR += hypermail
      SUBDIR += imap-uw
 #    SUBDIR += mailagent
 #    SUBDIR += majorcool
-#    SUBDIR += majordomo
+     SUBDIR += majordomo
      SUBDIR += mess822
      SUBDIR += metamail
 #    SUBDIR += mew
@@ -34,7 +40,7 @@
      SUBDIR += nmh
 #    SUBDIR += p5-Mail-Folder
      SUBDIR += p5-Mail-POP3Client
-#    SUBDIR += p5-Mail-Tools
+     SUBDIR += p5-Mail-Tools
      SUBDIR += pgpsendmail
      SUBDIR += pine
      SUBDIR += popclient
@@ -49,8 +55,10 @@
      SUBDIR += rblsmtpd
      SUBDIR += serialmail
 #    SUBDIR += smail
+     SUBDIR += solid-pop3d
      SUBDIR += tkrat
      SUBDIR += vrfy
+     SUBDIR += wmbiff
      SUBDIR += xfaces
      SUBDIR += xfmail
      SUBDIR += xlbiff

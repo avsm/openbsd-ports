@@ -1,67 +1,62 @@
-# $OpenBSD: Makefile,v 1.29 2000/04/01 23:33:03 espie Exp $
+# $OpenBSD: Makefile,v 1.29.2.1 2000/09/15 05:01:43 marc Exp $
 
-DISTNAME=	mutt-1.0.1i
+DISTNAME=	mutt-1.2.5i
 CATEGORIES=     mail
-NEED_VERSION=	 1.230
-MASTER_SITES=	ftp://ftp.guug.de/pub/mutt/ \
-		ftp://riemann.iam.uni-bonn.de/pub/mutt/ \
+NEED_VERSION=	1.310
+MASTER_SITES=	ftp://ftp.mutt.org/pub/mutt/ \
                 ftp://ftp.gbnet.net/pub/mutt-international/ \
                 ftp://ftp.fu-berlin.de/pub/unix/mail/mutt/ \
-                ftp://ftp.gwdg.de/pub/unix/mail/mutt/international/
+                ftp://ftp.gwdg.de/pub/unix/mail/mutt/international/ \
+		ftp://ftp.iks-jena.de/pub/mitarb/lutz/crypt/software/pgp/mutt/
 
-MAINTAINER=	turan@openbsd.org
+HOMEPAGE=	http://www.mutt.org/
 
-LICENSE_TYPE=		GPL
+LIB_DEPENDS=	intl.1::devel/gettext 
+
+MAINTAINER=	fgsch@openbsd.org
+
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-FLAVORS=slang curses imap pop
+FLAVORS=	slang curses imap pop
+FLAVOR?=	curses
 
-.if defined(TTY_LIB)
-FLAVOR?=
-FLAVOR+=${TTY_LIB}
-.endif
-FLAVOR?=slang
-.if defined(WITH_IMAP)
-FLAVOR+=imap
-.endif
-.if defined(WITH_POP)
-FLAVOR+=pop
-.endif
+SYSCONFDIR=	/etc/mutt
+SUBST_VARS=	SYSCONFDIR
 
-FAKE=		Yes
-LIB_DEPENDS=	intl.1::devel/gettext 
-
-GNU_CONFIGURE=	Yes
-SYSCONFDIR=	${PREFIX}/share/mutt
-CONFIGURE_ARGS=	--prefix=${PREFIX} \
-		--with-sharedir=${PREFIX}/share/mutt \
-		--with-docdir=${PREFIX}/share/doc/mutt 
+CONFIGURE_STYLE= gnu
+CONFIGURE_ARGS=	--with-sharedir="${PREFIX}/share/mutt" \
+		--with-docdir="${PREFIX}/share/doc/mutt" \
+		--enable-flock --disable-fcntl \
+		--enable-external_dotlock
+CONFIGURE_ENV=	CPPFLAGS="-I${LOCALBASE}/include" \
+		LDFLAGS="-L${LOCALBASE}/lib" \
+		ISPELL="${LOCALBASE}/bin/ispell"
 
 .if ${FLAVOR:L:Mslang}
 LIB_DEPENDS+=	slang.14::devel/libslang
-CONFIGURE_ARGS+=--with-slang=${PREFIX}
-
+CONFIGURE_ARGS+= --with-slang="${PREFIX}"
 .elif ${FLAVOR:L:Mcurses}
-CONFIGURE_ARGS+=--with-curses
+CONFIGURE_ARGS+= --with-curses
 .else
-.BEGIN::
-	@echo "Bad choice FLAVOR=${FLAVOR}"; exit 1
+.BEGIN:
+	echo "Bad choice FLAVOR=${FLAVOR}"; exit 1
 .endif
 
 .if defined(HOMESPOOL)
-CONFIGURE_ARGS+= --with-homespool=${HOMESPOOL}
+CONFIGURE_ARGS+= --with-homespool="${HOMESPOOL}"
 .endif
 
-# If you need IMAP or IPOP, you may want to enable those.
-# NOTE: read mutt documentation !!! those `features' are not very
-# useful, it's likely you would be better off using fetchmail...
+# If you need IMAP or POP, you may want to enable those.
 .if ${FLAVOR:L:Mimap}
-CONFIGURE_ARGS+= --enable-imap
+CONFIGURE_ARGS+= --enable-imap --with-ssl
 .endif
 
+# Note: The POP3 support is there only for convenience, and it's rather
+# limited.  If you need more functionality you should consider using a
+# specialized program, such as fetchmail.
 .if ${FLAVOR:L:Mpop}
 CONFIGURE_ARGS+= --enable-pop
 .endif
@@ -79,12 +74,11 @@ pre-fetch:
 .endif
 
 post-install:
-	strip ${PREFIX}/bin/mutt
-	@echo 
-	@echo '************************************************************'
-	@echo ' A sample muttrc and mime.types is available in '
-	@echo ' ${PREFIX}/share/mutt/{Muttrc,mime.types}       '        
-	@echo '************************************************************'
-	@echo
+	@strip ${PREFIX}/bin/mutt
+	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/mutt
+	${INSTALL_DATA} ${WRKSRC}/Muttrc \
+	 ${PREFIX}/share/examples/mutt/Muttrc.sample
+	${INSTALL_DATA} ${WRKSRC}/mime.types \
+	 ${PREFIX}/share/examples/mutt/mime.types.sample
 
 .include <bsd.port.mk>

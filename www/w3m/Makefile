@@ -1,13 +1,15 @@
-# $OpenBSD: Makefile,v 1.44.2.1 2002/11/30 02:54:32 brad Exp $
+# $OpenBSD: Makefile,v 1.44.2.2 2002/12/13 02:28:31 naddy Exp $
 
 ONLY_FOR_ARCHS=	alpha i386 m68k powerpc sparc
 
 COMMENT=	"pager/text-based web browser"
 
-VERSION=	0.3.2.1
-M17N_VERSION=	20021127
+VERSION=	0.3.2.2
+M17N_VERSION=	20021207
+REVISION=
 
 DISTNAME=	w3m-${VERSION}
+PKGNAME=	${DISTNAME}${REVISION}
 CATEGORIES=	www
 HOMEPAGE=	http://w3m.sourceforge.net/
 
@@ -18,17 +20,15 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-MASTER_SITES=		${MASTER_SITE_SOURCEFORGE}
+MASTER_SITES=	${MASTER_SITE_SOURCEFORGE}
 MASTER_SITE_SUBDIR=	w3m
-MASTER_SITES0=		http://www2u.biglobe.ne.jp/~hsaka/w3m/patch/
+MASTER_SITES0=	http://www2u.biglobe.ne.jp/~hsaka/w3m/patch/
 
 SUPDISTFILES=	w3m-${VERSION}${EXTRACT_SUFX} \
-		w3m-${VERSION}-m17n-${M17N_VERSION}${EXTRACT_SUFX}:0
+		w3m-${VERSION}-stable-m17n-${M17N_VERSION}${EXTRACT_SUFX}:0
 
 FLAVORS=	image japanese m17n
 FLAVOR?=
-
-PATCH_LIST=	patch-*
 
 CONFIGURE_STYLE= simple
 CONFIGURE_ARGS=	--nonstop \
@@ -64,17 +64,15 @@ DOCSRC=		${WRKSRC}/doc
 .endif
 
 .if ${FLAVOR:L:Mm17n}
-DISTNAME=	w3m-${VERSION}-m17n-${M17N_VERSION}
-PKGNAME=	w3m-${VERSION}.${M17N_VERSION}
+DISTNAME=	w3m-${VERSION}-stable-m17n-${M17N_VERSION}
+PKGNAME=	w3m-${VERSION}.${M17N_VERSION}${REVISION}
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:0
 CONFIGURE_ARGS+= --suffix="" --charset=UTF-8
 DOCS+=		README.m17n
-PATCH_LIST+=	m17n-patch-*
 .endif
 
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/w3m
-	${INSTALL_MAN} ${DOCSRC}/w3m.1 ${PREFIX}/man/man1
 	cd ${DOCSRC}; ${INSTALL_DATA} ${DOCS} ${PREFIX}/share/doc/w3m
 
 .include <bsd.port.mk>

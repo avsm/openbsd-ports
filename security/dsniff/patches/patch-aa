@@ -1,0 +1,18 @@
+--- Makefile.orig	Sat Dec 18 00:11:59 1999
++++ Makefile	Sat Dec 18 00:12:23 1999
+@@ -5,11 +5,11 @@
+ #
+ # $Id: Makefile,v 1.8 1999/12/18 01:32:39 dugsong Exp $
+ 
+-CC	= gcc
+-CFLAGS	= -g -O2 -Wall
+-LDFLAGS	= -s
++CC	?= gcc
++CFLAGS	?= -g -O2 -Wall
++LDFLAGS	?= -s
+ 
+-PREFIX	= /usr/local
++PREFIX	?= /usr/local
+ 
+ PCAPDIR	= /usr
+ PCAPINC = -I$(PCAPDIR)/include

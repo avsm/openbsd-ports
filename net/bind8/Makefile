@@ -1,4 +1,6 @@
-# $OpenBSD: Makefile,v 1.26 2002/03/23 20:41:51 lebel Exp $
+# $OpenBSD: Makefile,v 1.26.2.1 2002/12/12 14:59:12 jakob Exp $
+
+BROKEN=		"Insecure, use net/bind9 instead" 
 
 COMMENT=	Berkeley Internet Name Daemon
 

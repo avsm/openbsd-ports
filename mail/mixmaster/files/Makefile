@@ -6,11 +6,11 @@
 # ANY KIND, either express or implied. See the file COPYRIGHT for
 # details.
 
-# $Id: Makefile.in,v 1.4 2002/07/24 07:48:50 rabbi Exp $
+# $Id: Makefile,v 1.1 2002/09/14 15:21:14 naddy Exp $
 
 # Edit according to the libraries you want to use:
 INC =  -Ipcre-2.08
-DEF =  -DUSE_ZLIB -DUSE_PCRE -DUSE_NCURSES -DHAVE_NCURSES_H -DUSE_SOCK -DSPOOL='"$(SYSCONFDIR)"' -DCOMPILEDPASS='"$(PASS)"'
+DEF =  -DUSE_ZLIB -DUSE_PCRE -DUSE_NCURSES -DHAVE_NCURSES_H -DUSE_SOCK -DSPOOL='"$(SYSCONFDIR)"'
 LIBS =   pcre-2.08/libpcre.a  
 LDFLAGS =  -lz  -lcrypto -lcurses
 
@@ -19,7 +19,7 @@ OPT = -Wall
 # OPT = -O2 -Wall
 
 CFLAGS += $(INC) $(DEF) $(OPT)
-#CC ?= gcc
+CC ?= gcc
 AR = ar rc
 RANLIB = ranlib
 #MAKE = make

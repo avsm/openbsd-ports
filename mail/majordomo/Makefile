@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.9 2002/04/25 07:41:07 dhartmei Exp $
+# $OpenBSD: Makefile,v 1.9.2.1 2003/02/07 01:07:56 brad Exp $
 
 COMMENT=	"mailing list manager"
 
 DISTNAME=	majordomo-1.94.5
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=     mail
-NEED_VERSION=	1.515
 
 HOMEPAGE=	http://www.greatcircle.com/majordomo/
 
@@ -28,6 +28,8 @@ MAKE_FLAGS+=	W_HOME=${PREFIX}/lib/majordomo \
 		W_MAJORDOMO_CFDIR=/etc/majordomo \
 		W_MAJORDOMO_CF=majordomo.cf \
 		POSIX=""
+
+NO_REGRESS=	Yes
 
 FAKE_TARGET=	install-scripts install-wrapper install-man
 FAKE_FLAGS+=	W_HOME=${WRKINST}${PREFIX}/lib/majordomo \

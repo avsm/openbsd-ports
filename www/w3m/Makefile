@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.17 2001/04/03 22:54:50 naddy Exp $
+# $OpenBSD: Makefile,v 1.17.2.1 2001/06/22 01:58:10 lebel Exp $
 
 ONLY_FOR_ARCHS=	i386 sparc m68k
 
@@ -8,9 +8,10 @@ COMMENT-m17n=		"multi-script text-based web browser/pager"
 COMMENT-kanji-m17n=	"multi-script text-based web browser/pager, japanese flavor"
 
 V_AITO=		0.2.1
-V_HSAKA=	0.18
+V_HSAKA=	0.19
 
 DISTNAME=	w3m-${V_AITO}
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	www
 NEED_VERSION=	1.364
 HOMEPAGE=	http://ei5nazha.yz.yamagata-u.ac.jp/~aito/w3m/eng/
@@ -48,9 +49,10 @@ DOCS=	FAQ.html HISTORY MANUAL.html \
 PKGNAME=		${DISTNAME}.${V_HSAKA}
 PATCHFILES=		${M17NPATCH}
 PATCH_DIST_STRIP=	-p1
-PATCH_LIST=		patch-* m17n-*
 CONFIGURE_ARGS+=	-suffix="" -charset=UTF-8
 DOCS+=			README.m17n
+.else
+PATCH_LIST=		patch-* no_m17n-*
 .endif
 
 .if ${FLAVOR:L:Mkanji}

@@ -1,4 +1,4 @@
-$OpenBSD: patch-pngpread_c,v 1.1 2004/08/05 19:17:14 brad Exp $
+$OpenBSD: patch-pngpread_c,v 1.1.4.1 2004/08/05 19:53:27 brad Exp $
 --- pngpread.c.orig	Thu Oct  3 07:32:28 2002
 +++ pngpread.c	Thu Aug  5 14:29:45 2004
 @@ -208,7 +208,7 @@ png_push_read_chunk(png_structp png_ptr,

@@ -1,4 +1,4 @@
-$OpenBSD: patch-pngset_c,v 1.1 2004/08/05 19:17:14 brad Exp $
+$OpenBSD: patch-pngset_c,v 1.1.4.1 2004/08/05 19:53:27 brad Exp $
 --- pngset.c.orig	Thu Oct  3 07:32:30 2002
 +++ pngset.c	Thu Aug  5 14:29:45 2004
 @@ -253,6 +253,8 @@ png_set_IHDR(png_structp png_ptr, png_in

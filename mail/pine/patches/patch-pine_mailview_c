@@ -1,0 +1,12 @@
+$OpenBSD: patch-pine_mailview_c,v 1.1.4.1 2003/11/12 17:35:30 margarida Exp $
+--- pine/mailview.c.orig	Wed Jan  8 00:17:00 2003
++++ pine/mailview.c	Tue Nov 11 17:37:47 2003
+@@ -8617,7 +8617,7 @@ display_parameters(params)
+ 
+     for(p = params; p; p = p->next)	/* ok if we include *'s */
+       if(p->attribute && (n = strlen(p->attribute)) > longest)
+-	longest = n;
++	longest = min(32, n);   /* shouldn't be any bigger than 32 */
+ 
+     d = tmp_20k_buf;
+     if(parmlist = rfc2231_newparmlist(params)){

@@ -1,12 +1,12 @@
 #!/bin/sh
-# $OpenBSD: DEINSTALL,v 1.2.4.1 2000/09/15 05:05:39 marc Exp $
+# $OpenBSD: DEINSTALL,v 1.2.4.2 2000/09/16 20:13:43 marc Exp $
 #
 # screen de-installation
 
 set -e
 PATH=/bin:/usr/bin:/sbin:/usr/sbin
 PREFIX=${PKG_PREFIX:-/usr/local}
-CONFIG_FILE=/etc/screenrc
+CONFIG_FILE=${SYSCONFDIR}/screenrc
 
 if [ -e $CONFIG_FILE ]; then
     echo

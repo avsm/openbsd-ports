@@ -1,5 +1,5 @@
---- Makefile.in.orig	Fri Sep  1 12:07:26 2000
-+++ Makefile.in	Tue Sep  5 20:11:29 2000
+--- Makefile.in.orig	Fri Sep  1 18:07:26 2000
++++ Makefile.in	Thu Sep  7 19:50:53 2000
 @@ -7,6 +7,8 @@
  srcdir = @srcdir@
  VPATH = @srcdir@
@@ -21,7 +21,7 @@
  LIBS = @LIBS@
  
  CPP=@CPP@
-@@ -68,14 +70,14 @@
+@@ -68,18 +70,18 @@
  	$(CC) -c -I. -I$(srcdir) $(M_CFLAGS) $(DEFS) $(OPTIONS) $(CFLAGS) $<
  
  install_bin: .version screen
@@ -43,6 +43,11 @@
  
  ###############################################################################
  install: installdirs install_bin
+-	cd doc ; $(MAKE) install
++	cd doc ; $(MAKE) DESTDIR=$(DESTDIR) install
+ 	-if [ -d /usr/lib/terminfo ]; then \
+ 		PATH="$$PATH:/usr/5bin" tic ${srcdir}/terminfo/screeninfo.src; \
+ 		chmod 644 /usr/lib/terminfo/s/screen*; \
 @@ -91,14 +93,14 @@
  
  installdirs:

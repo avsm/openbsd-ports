@@ -1,0 +1,34 @@
+$OpenBSD: patch-lib_mcrypt_extra_c,v 1.1.2.1 2003/02/26 16:44:37 brad Exp $
+--- lib/mcrypt_extra.c.orig	Fri May 18 06:54:14 2001
++++ lib/mcrypt_extra.c	Wed Feb 26 11:18:14 2003
+@@ -83,11 +83,13 @@ WIN32DLL_DEFINE char **mcrypt_list_algor
+ 	*size = 0;
+ 
+ 	if (libdir == NULL) {
+-		strcpy(directory, LIBDIR);
++		strncpy(directory, LIBDIR, sizeof(directory)-1);
+ 	} else {
+-		strcpy(directory, libdir);
++		strncpy(directory, libdir, sizeof(directory)-1);
+ 	}
+ 
++	directory[ sizeof(directory)-1] = 0;
++
+ 	pdir = opendir(directory);
+ 	if (pdir == NULL) {
+ #ifdef DEBUG
+@@ -147,10 +149,12 @@ WIN32DLL_DEFINE char **mcrypt_list_modes
+ 	int tmpsize;
+ 
+ 	if (libdir == NULL) {
+-		strcpy(directory, LIBDIR);
++		strncpy(directory, LIBDIR, sizeof(directory)-1);
+ 	} else {
+-		strcpy(directory, libdir);
++		strncpy(directory, libdir, sizeof(directory)-1);
+ 	}
++
++    directory[ sizeof(directory)-1] = 0;
+ 
+ 	pdir = opendir(directory);
+ 	if (pdir == NULL) {

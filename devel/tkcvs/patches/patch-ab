@@ -4,7 +4,7 @@
  #!/bin/sh
  # \
 -	exec tclsh $0 ${1+"$@"}
-+	exec tclsh8.0 $0 ${1+"$@"}
++	exec tclsh8.2 $0 ${1+"$@"}
  
- # $Id: cvscheck.blank,v 1.8 1995/11/20 06:08:35 davide Exp $
+ # $Id: patch-ab,v 1.1.1.1 1998/06/15 05:35:00 todd Exp $
  #

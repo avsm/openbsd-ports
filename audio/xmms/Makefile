@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.14 2001/10/08 16:24:20 naddy Exp $
+# $OpenBSD: Makefile,v 1.14.2.1 2001/11/24 17:37:40 pvalchev Exp $
 # Uses pthreads
 
 ONLY_FOR_ARCHS=	i386
@@ -9,9 +9,9 @@ COMMENT-vorbis=		"Ogg Vorbis input plugin for XMMS"
 
 VERSION=		1.2.5
 DISTNAME=		xmms-${VERSION}
-FULLPKGNAME=		xmms-${VERSION}
-FULLPKGNAME-esd=	xmms-esd-${VERSION}
-FULLPKGNAME-vorbis=	xmms-vorbis-${VERSION}
+FULLPKGNAME=		xmms-${VERSION}p1
+FULLPKGNAME-esd=	xmms-esd-${VERSION}p1
+FULLPKGNAME-vorbis=	xmms-vorbis-${VERSION}p1
 DISTDRIVER=		xmms_sun-${VERSION}-p2
 CATEGORIES=		audio
 NEED_VERSION=		1.435

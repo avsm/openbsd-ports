@@ -1,10 +1,9 @@
-# $OpenBSD: Makefile,v 1.6 2002/03/28 11:45:28 espie Exp $
+# $OpenBSD: Makefile,v 1.6.2.1 2003/02/17 00:11:08 margarida Exp $
 
 COMMENT=	"highly configurable webmail client"
 
-DISTNAME=	openwebmail-1.63
+DISTNAME=	openwebmail-1.81
 CATEGORIES=	mail
-NEED_VERSION=	1.504
 
 HOMEPAGE=	http://www.openwebmail.org/
 
@@ -26,7 +25,7 @@ RUN_DEPENDS=	::net/p5-libnet \
 		::converters/p5-MIME-Base64 \
 		::databases/p5-ldap \
 		::textproc/ispell \
-		::chinese/hc
+		:p5-Text-Iconv->=1.2:converters/p5-Text-Iconv
 
 NO_BUILD=	Yes
 NO_REGRESS=	Yes
@@ -36,8 +35,7 @@ WRKDIST=	${WRKDIR}
 PREFIX=		/var/www
 SYSCONFDIR=	${PREFIX}/conf
 
-SCRIPTFILES=	checkmail.pl openwebmail-prefs.pl openwebmail.pl\
-		openwebmail-shared.pl 
+SCRIPTFILES=	openwebmail-tool.pl openwebmail.pl ow-shared.pl
 
 do-configure:
 .for file in ${SCRIPTFILES}
@@ -45,7 +43,7 @@ do-configure:
 		${WRKSRC}/cgi-bin/openwebmail/${file}
 .endfor
 	@cd ${WRKSRC} && cp -Rp data htdocs
-	@find ${WRKSRC}/cgi-bin -name '*.orig' |xargs rm
+#	@find ${WRKSRC}/cgi-bin -name '*.orig' |xargs rm
 	@cd ${WRKSRC} && mkdir -p conf/openwebmail && \
 		cp -Rp cgi-bin/openwebmail/etc/* conf/openwebmail
 	@find ${WRKSRC}/cgi-bin -name 'etc' -type d |xargs rm -rf

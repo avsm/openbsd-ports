@@ -1,4 +1,4 @@
-$OpenBSD: patch-cgi-bin_openwebmail_ow-shared_pl,v 1.1 2003/01/30 07:57:26 kevlo Exp $
+$OpenBSD: patch-cgi-bin_openwebmail_ow-shared_pl,v 1.1.4.1 2003/02/17 00:11:08 margarida Exp $
 --- cgi-bin/openwebmail/ow-shared.pl.orig	Tue Nov 26 12:20:51 2002
 +++ cgi-bin/openwebmail/ow-shared.pl	Thu Jan 30 14:45:08 2003
 @@ -125,8 +125,8 @@ use vars qw($_OFFSET $_FROM $_TO $_DATE 

@@ -1,5 +1,5 @@
 #!/bin/sh
-# $OpenBSD: INSTALL,v 1.3 2002/03/22 07:51:35 kevlo Exp $
+# $OpenBSD: INSTALL,v 1.3.2.1 2003/02/17 00:11:08 margarida Exp $
 #
 # Pre/post-installation setup of openwebmail
 
@@ -11,9 +11,10 @@ CONFIG_DIR=${SYSCONFDIR}/openwebmail
 CONFIG_FILE=$CONFIG_DIR/openwebmail.conf
 CGI_DIR=${PREFIX}/cgi-bin/openwebmail
 SAMPLE_CONFIG_FILE=$CONFIG_FILE.default
-SCRIPTFILES="checkmail.pl openwebmail-main.pl openwebmail-prefs.pl \
-	    openwebmail-read.pl openwebmail-send.pl openwebmail-viewatt.pl \
-	    openwebmail.pl openwebmail-spell.pl openwebmail-folder.pl"
+SCRIPTFILES="openwebmail-abook.pl openwebmail-advsearch.pl openwebmail-cal.pl \
+	    openwebmail-folder.pl openwebmail-main.pl openwebmail-prefs.pl \
+	    openwebmail-read.pl openwebmail-send.pl openwebmail-spell.pl \
+	    openwebmail-tool.pl openwebmail-viewatt.pl openwebmail.pl"
 
 # Function: set up mail group 
 #
@@ -56,12 +57,13 @@ do_install()
     chmod 770 $CONFIG_DIR/sessions
     chmod 770 $CONFIG_DIR/users
     install -o root -g wheel -m 644 $SAMPLE_CONFIG_FILE $CONFIG_FILE
+    perl $CGI_DIR/openwebmail-tool.pl --init
     echo
     echo "+---------------"
     echo "| The $1 configuration file,"
     echo "| $CONFIG_FILE,"
     echo "| has been installed.  Please view this file and"
-    echo "| change the configuration to meet your needs"
+    echo "| change the configuration to meet your needs."
     echo "+---------------"
     echo
 }

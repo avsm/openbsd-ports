@@ -1,0 +1,12 @@
+$OpenBSD: patch-src_lookups_dnsdb_c,v 1.1.4.1 2005/01/27 06:35:40 sturm Exp $
+--- src/lookups/dnsdb.c.orig	2005-01-26 21:55:58.000000000 +0100
++++ src/lookups/dnsdb.c	2005-01-26 21:55:35.000000000 +0100
+@@ -116,7 +116,7 @@ if (equals != NULL)
+ /* If the type is PTR, we have to construct the relevant magic lookup
+ key. */
+ 
+-if (type == T_PTR)
++if (type == T_PTR && string_is_ip_address(keystring, NULL))
+   {
+   char *p = keystring + (int)strlen(keystring);
+   char *pp = buffer;

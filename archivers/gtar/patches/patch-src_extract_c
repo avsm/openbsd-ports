@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_extract_c,v 1.1 2002/10/01 02:03:52 brad Exp $
+$OpenBSD: patch-src_extract_c,v 1.1.2.1 2002/10/03 02:50:45 brad Exp $
 --- src/extract.c.orig	Mon Sep 24 14:55:17 2001
 +++ src/extract.c	Mon Sep 30 21:39:17 2002
 @@ -1019,10 +1019,19 @@ extract_archive (void)

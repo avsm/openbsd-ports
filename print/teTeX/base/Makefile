@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.25.6.1 2004/12/25 23:25:38 sturm Exp $
+# $OpenBSD: Makefile,v 1.25.6.2 2005/01/30 08:48:57 sturm Exp $
 
 COMMENT=	"TeX distribution, executables"
 
 VERSION=	2.0.2
 DISTNAME=	tetex-base-${VERSION}
-PKGNAME=	${DISTNAME:S/tetex-/teTeX_/}p1
+PKGNAME=	${DISTNAME:S/tetex-/teTeX_/}p2
 CATEGORIES=	print
 
 DISTFILES=	tetex-src-${VERSION}.tar.gz

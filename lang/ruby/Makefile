@@ -1,9 +1,10 @@
-# $OpenBSD: Makefile,v 1.27 2004/02/20 22:52:57 couderc Exp $
+# $OpenBSD: Makefile,v 1.27.2.1 2004/08/18 00:03:02 robert Exp $
 
 COMMENT=		"object oriented script language with threads"
 
 VERSION=		1.8.1
 DISTNAME=		ruby-${VERSION}
+PKGNAME=		${DISTNAME}p1
 CATEGORIES=		lang
 
 HOMEPAGE=		http://www.ruby-lang.org/

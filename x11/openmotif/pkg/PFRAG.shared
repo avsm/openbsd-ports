@@ -1,0 +1,5 @@
+@comment $OpenBSD: PFRAG.shared,v 1.2 2000/07/08 18:11:23 espie Exp $
+lib/libMrm.so.2.1
+lib/libUil.so.2.1
+lib/libXm.so.2.1
+DYNLIBDIR(%D/lib)

@@ -1,4 +1,4 @@
-$OpenBSD: patch-include_ttyio_h,v 1.1 2001/06/05 09:19:07 reinhard Exp $
+$OpenBSD: patch-include_ttyio_h,v 1.1.2.1 2001/06/05 19:32:14 naddy Exp $
 --- include/ttyio.h.orig	Fri May 25 08:42:50 2001
 +++ include/ttyio.h	Fri Jun  1 19:56:14 2001
 @@ -24,7 +24,7 @@ int tty_batchmode( int onoff );

@@ -1,2 +1,2 @@
-@comment $OpenBSD: PFRAG.idea,v 1.1 2001/05/23 15:28:50 jakob Exp $
+@comment $OpenBSD: PFRAG.idea,v 1.1.2.1 2001/06/05 19:32:14 naddy Exp $
 lib/gnupg/idea

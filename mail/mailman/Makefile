@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.7.2.1 2002/05/23 16:51:02 naddy Exp $
+# $OpenBSD: Makefile,v 1.7.2.2 2002/08/04 11:50:39 naddy Exp $
 
 COMMENT=	"mailing list manager with web interface"
 
-DISTNAME=	mailman-2.0.11
-CATEGORIES=     mail
+DISTNAME=	mailman-2.0.12
+CATEGORIES=	mail
 NEED_VERSION=	1.522
 
 HOMEPAGE=	http://www.gnu.org/software/mailman/mailman.html
@@ -20,8 +20,8 @@ MASTER_SITES=		${MASTER_SITE_SOURCEFORGE:=mailman/}
 EXTRACT_SUFX=		.tgz
 
 PYTHON_VER=		2.1
-BUILD_DEPENDS=		:python-${PYTHON_VER}*:lang/python/${PYTHON_VER}
-RUN_DEPENDS=		${BUILD_DEPENDS}
+BUILD_DEPENDS=		${RUN_DEPENDS}
+RUN_DEPENDS=		:python-${PYTHON_VER}*:lang/python/${PYTHON_VER}
 
 NO_REGRESS=		Yes
 
@@ -33,7 +33,7 @@ MMSPOOL=		/var/spool/mailman
 FAKE_FLAGS=		prefix="${WRKINST}${MMHOME}" \
 			var_prefix="${WRKINST}${MMSPOOL}" \
 			MAKE="make prefix=${WRKINST}${MMHOME} \
-				   var_prefix=${WRKINST}${MMSPOOL}" \
+				var_prefix=${WRKINST}${MMSPOOL}" \
 			DIRSETGID=":"
 
 CONFIGURE_STYLE=	simple

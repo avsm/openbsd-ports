@@ -1,4 +1,4 @@
-$OpenBSD: patch-vfs_fish_c,v 1.1 2005/02/17 21:59:11 robert Exp $
+$OpenBSD: patch-vfs_fish_c,v 1.1.2.1 2005/02/20 10:00:22 robert Exp $
 --- vfs/fish.c.orig	Thu Feb 17 22:26:51 2005
 +++ vfs/fish.c	Thu Feb 17 22:27:24 2005
 @@ -232,7 +232,7 @@

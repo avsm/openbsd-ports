@@ -1,4 +1,4 @@
-$OpenBSD: patch-vfs_extfs_c,v 1.1 2005/02/17 21:59:11 robert Exp $
+$OpenBSD: patch-vfs_extfs_c,v 1.1.2.1 2005/02/20 10:00:22 robert Exp $
 --- vfs/extfs.c.orig	Thu Feb 17 22:31:24 2005
 +++ vfs/extfs.c	Thu Feb 17 22:32:43 2005
 @@ -1281,14 +1281,13 @@

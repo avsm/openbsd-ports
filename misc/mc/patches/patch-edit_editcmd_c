@@ -1,4 +1,4 @@
-$OpenBSD: patch-edit_editcmd_c,v 1.1 2005/02/17 21:59:11 robert Exp $
+$OpenBSD: patch-edit_editcmd_c,v 1.1.2.1 2005/02/20 10:00:22 robert Exp $
 --- edit/editcmd.c.orig	Thu Feb 17 22:33:12 2005
 +++ edit/editcmd.c	Thu Feb 17 22:33:30 2005
 @@ -247,7 +247,7 @@

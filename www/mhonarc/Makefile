@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.12.2.1 2002/11/12 01:32:24 brad Exp $
+# $OpenBSD: Makefile,v 1.12.2.2 2002/12/29 22:09:25 margarida Exp $
 
 COMMENT=		"highly customizable e-mail to HTML converter"
 
-VERSION=		2.5.13
+VERSION=		2.5.14
 DISTNAME=		MHonArc${VERSION}
 PKGNAME=		mhonarc-${VERSION}
 CATEGORIES=     	www mail

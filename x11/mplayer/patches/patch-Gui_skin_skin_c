@@ -1,0 +1,106 @@
+$OpenBSD: patch-Gui_skin_skin_c,v 1.3.2.1 2004/07/04 12:15:58 robert Exp $
+--- Gui/skin/skin.c.orig	Tue Jun  3 19:36:25 2003
++++ Gui/skin/skin.c	Sat Jul  3 05:30:36 2004
+@@ -116,7 +116,7 @@
+ {
+  CHECKDEFLIST( "window" );
+ 
+- strcpy( window_name,strlower( in ) );
++ strlcpy( window_name,strlower( in ),sizeof( window_name ) );
+  if ( !strncmp( in,"main",4 ) ) { currSection=&skinAppMPlayer->main; currSubItem=&skinAppMPlayer->NumberOfItems; currSubItems=skinAppMPlayer->Items; }
+   else if ( !strncmp( in,"sub",3 ) ) currSection=&skinAppMPlayer->sub;
+    else if ( !strncmp( in,"playbar",7 ) ) { currSection=&skinAppMPlayer->bar; currSubItem=&skinAppMPlayer->NumberOfBarItems; currSubItems=skinAppMPlayer->barItems; }
+@@ -147,7 +147,7 @@
+    defList->main.x=x;
+    defList->main.y=y;
+    defList->main.type=itBase;
+-   strcpy( tmp,path ); strcat( tmp,fname );
++   strlcpy(tmp, path, sizeof( tmp )); strlcat(tmp, fname, sizeof( tmp )); 
+    if ( skinBPRead( tmp,&defList->main.Bitmap ) ) return 1;
+    defList->main.width=defList->main.Bitmap.Width;
+    defList->main.height=defList->main.Bitmap.Height;
+@@ -162,7 +162,7 @@
+  if ( !strcmp( window_name,"sub" ) )
+   {
+    defList->sub.type=itBase;
+-   strcpy( tmp,path ); strcat( tmp,fname );
++   strlcpy(tmp, path, sizeof( tmp )); strlcat(tmp, fname, sizeof( tmp )); 
+    if ( skinBPRead( tmp,&defList->sub.Bitmap ) ) return 1;
+    defList->sub.x=x;
+    defList->sub.y=y;
+@@ -179,7 +179,7 @@
+   {
+    defList->menuIsPresent=1;
+    defList->menuBase.type=itBase;
+-   strcpy( tmp,path ); strcat( tmp,fname );
++   strlcpy(tmp, path, sizeof( tmp )); strlcat(tmp, fname, sizeof( tmp )); 
+    if ( skinBPRead( tmp,&defList->menuBase.Bitmap ) ) return 1;
+    defList->menuBase.width=defList->menuBase.Bitmap.Width;
+    defList->menuBase.height=defList->menuBase.Bitmap.Height;
+@@ -197,7 +197,7 @@
+    defList->bar.x=x;
+    defList->bar.y=y;
+    defList->bar.type=itBase;
+-   strcpy( tmp,path ); strcat( tmp,fname );
++   strlcpy(tmp, path, sizeof( tmp )); strlcat(tmp, fname, sizeof( tmp )); 
+    if ( skinBPRead( tmp,&defList->bar.Bitmap ) ) return 1;
+    defList->bar.width=defList->bar.Bitmap.Width;
+    defList->bar.height=defList->bar.Bitmap.Height;
+@@ -268,7 +268,7 @@
+  currSubItems[ *currSubItem ].Bitmap.Image=NULL;
+  if ( strcmp( fname,"NULL" ) )
+   {
+-   strcpy( tmp,path ); strcat( tmp,fname );
++   strlcpy(tmp, path, sizeof( tmp )); strlcat(tmp, fname, sizeof( tmp )); 
+    if ( skinBPRead( tmp,&currSubItems[ *currSubItem ].Bitmap ) ) return 1;
+   }
+ 
+@@ -289,7 +289,7 @@
+ 
+  cutItem( in,fname,',',0 );
+  defList->menuSelected.type=itBase;
+- strcpy( tmp,path ); strcat( tmp,fname );
++ strlcpy(tmp, path, sizeof( tmp )); strlcat(tmp, fname, sizeof( tmp )); 
+  mp_dbg( MSGT_GPLAYER,MSGL_DBG2,"\n[skin] selected: %s\n",fname );
+  if ( skinBPRead( tmp,&defList->menuSelected.Bitmap ) ) return 1;
+  defList->menuSelected.width=defList->menuSelected.Bitmap.Width;
+@@ -381,14 +381,14 @@
+  item->Bitmap.Image=NULL;
+  if ( strcmp( phfname,"NULL" ) )
+   {
+-   strcpy( tmp,path ); strcat( tmp,phfname );
++   strlcpy(tmp, path, sizeof( tmp )); strlcat(tmp, phfname, sizeof( tmp )); 
+    if ( skinBPRead( tmp,&item->Bitmap ) ) return 1;
+   }
+ 
+  item->Mask.Image=NULL;
+  if ( strcmp( pfname,"NULL" ) )
+   {
+-   strcpy( tmp,path ); strcat( tmp,pfname );
++   strlcpy(tmp, path, sizeof( tmp )); strlcat(tmp, pfname, sizeof( tmp )); 
+    if ( skinBPRead( tmp,&item->Mask ) ) return 1;
+   }
+  return 0;
+@@ -445,7 +445,7 @@
+  item->Bitmap.Image=NULL;
+  if ( strcmp( phfname,"NULL" ) )
+   {
+-   strcpy( tmp,path ); strcat( tmp,phfname );
++   strlcpy(tmp, path, sizeof( tmp )); strlcat(tmp, phfname, sizeof( tmp )); 
+    if ( skinBPRead( tmp,&item->Bitmap ) ) return 1;
+   }
+  return 0;
+@@ -655,7 +655,12 @@
+ FILE * skinFile;
+ 
+ void setname( char * item1, char * item2 )
+-{ strcpy( fn,item1 ); strcat( fn,"/" ); strcat( fn,item2 ); strcpy( path,fn ); strcat( path,"/" ); strcat( fn,"/skin" ); }
++{
++  strlcpy(fn, item1, sizeof( fn ));
++  strlcat(fn, "/", sizeof( fn )); strlcat(fn, item2, sizeof( fn ));
++  strlcpy(path, fn, sizeof( path )); strlcat(path, "/", sizeof( path ));
++  strlcat(fn, "/skin", sizeof( fn ));
++}
+ 
+ int skinRead( char * dname )
+ {

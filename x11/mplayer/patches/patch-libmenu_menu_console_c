@@ -1,0 +1,16 @@
+$OpenBSD: patch-libmenu_menu_console_c,v 1.2.2.1 2004/07/04 12:15:58 robert Exp $
+--- libmenu/menu_console.c.orig	Sat Sep 13 20:02:20 2003
++++ libmenu/menu_console.c	Sat Jul  3 05:30:36 2004
+@@ -150,8 +150,10 @@
+     return;
+   }
+   priv->lines[ll] = realloc(priv->lines[ll],strlen(priv->lines[ll]) + strlen(l) + 1);
+-  strcat(priv->lines[ll],l);
+-  
++  if ( priv->lines[ll] != NULL )
++  {
++    strcat(priv->lines[ll],l);
++  }
+ }
+ 
+ static void draw(menu_t* menu, mp_image_t* mpi) {

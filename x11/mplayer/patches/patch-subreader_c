@@ -1,0 +1,12 @@
+$OpenBSD: patch-subreader_c,v 1.1.2.1 2004/07/04 12:15:58 robert Exp $
+--- subreader.c.orig	Wed Nov 19 02:41:27 2003
++++ subreader.c	Sat Jul  3 05:30:36 2004
+@@ -1034,7 +1034,7 @@
+   while (l){
+      char *ip = icbuffer;
+      char *op = sub->text[--l];
+-     strcpy(ip, op);
++     strlcpy(ip, op, ICBUFFSIZE);
+      ileft = strlen(ip);
+      oleft = ICBUFFSIZE - 1;
+ 		

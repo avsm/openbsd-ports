@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.16 2004/08/04 14:51:31 naddy Exp $
+# $OpenBSD: Makefile,v 1.16.2.1 2005/01/31 01:31:03 brad Exp $
 
 COMMENT=	"RFC 2222 SASL (Simple Authentication and Security Layer)"
 
 DISTNAME=	cyrus-sasl-2.1.19
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=     security
 
 MASTER_SITES=	ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/ \

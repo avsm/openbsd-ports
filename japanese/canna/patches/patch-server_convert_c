@@ -1,4 +1,4 @@
-$OpenBSD: patch-server_convert_c,v 1.1 2003/03/12 21:21:55 brad Exp $
+$OpenBSD: patch-server_convert_c,v 1.1.2.1 2003/03/12 21:58:26 brad Exp $
 --- server/convert.c.orig	Mon Dec  2 06:01:34 1996
 +++ server/convert.c	Wed Mar 12 14:59:07 2003
 @@ -54,4 +54,6 @@ static char rcs_id[] = "@(#) 102.1 $Id: 

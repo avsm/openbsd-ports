@@ -1,0 +1,57 @@
+$OpenBSD: patch-Makefile_in,v 1.1 2002/05/22 09:58:37 mark Exp $
+--- Makefile.in.orig	Sat May 18 01:40:58 2002
++++ Makefile.in	Tue May 21 20:07:34 2002
+@@ -533,51 +533,25 @@ install-dirs:
+ 	-mkdir -p $(docdir)
+ 	-mkdir -p $(logsdir)
+ 
+-generate-server-key:
+-	-@if test '!' -f $(etcdir)/silcd.pub ; then \
+-	  $(sbindir)/silcd -C $(etcdir); \
+-	fi
+-
+-sim-install:
+-	-$(INSTALL_DATA) $(srcdir)/lib/silcsim/*.so $(modulesdir)/
+-
+ doc-install:
+-	$(INSTALL_DATA) $(srcdir)/doc/CodingStyle $(docdir)/
+ 	$(INSTALL_DATA) $(srcdir)/doc/FAQ $(docdir)/
+-	$(INSTALL_DATA) $(srcdir)/doc/example_* $(docdir)/
+-	$(INSTALL_DATA) $(srcdir)/doc/*.txt $(docdir)/
+-	$(INSTALL_DATA) $(srcdir)/COPYING $(docdir)/
++	$(INSTALL_DATA) $(srcdir)/irssi/silc.conf $(docdir)/silc.conf.default
+ 	$(INSTALL_DATA) $(srcdir)/CHANGES $(docdir)/
+ 	$(INSTALL_DATA) $(srcdir)/CREDITS $(docdir)/
+ 	$(INSTALL_DATA) $(srcdir)/README* $(docdir)/
+-	$(INSTALL_DATA) $(srcdir)/INSTALL $(docdir)/
+-	$(INSTALL_DATA) $(srcdir)/TODO $(docdir)/
+ 
+ toolkit-install:
+ 	-mkdir -p $(docdir)/toolkit/
+ 	-$(INSTALL_DATA) $(srcdir)/doc/toolkit/* $(docdir)/toolkit
+ 	-$(INSTALL_DATA) $(srcdir)/lib/doc/*.gif $(docdir)/toolkit
+ 
+-examples-install:
+-	-mkdir -p $(docdir)/examples/
+-	$(INSTALL_DATA) $(srcdir)/doc/examples/README $(docdir)/examples/
+-	$(INSTALL_DATA) $(srcdir)/doc/examples/silc* $(docdir)/examples/
+-	$(INSTALL_DATA) $(srcdir)/doc/examples/cell* $(docdir)/examples/
+-
+ etc-install:
+-	-@if test '!' -f $(etcdir)/silcd.conf ; then \
+-	  $(INSTALL_DATA) $(srcdir)/doc/example_silcd.conf \
+-		$(etcdir)/silcd.conf; \
+-	  $(INSTALL_DATA) $(srcdir)/doc/silcalgs.conf \
+-		$(etcdir)/silcalgs.conf; \
+-          chmod go= $(etcdir)/silcd.conf; \
+-	fi
+ 	-@if test '!' -f $(etcdir)/silc.conf ; then \
+ 	  $(INSTALL_DATA) $(srcdir)/irssi/silc.conf \
+ 	  $(etcdir)/silc.conf; \
+ 	fi
+ 
+-@SILC_DIST_CLIENT_TRUE@install-data-hook: install-dirs sim-install doc-install etc-install
++@SILC_DIST_CLIENT_TRUE@install-data-hook: install-dirs doc-install etc-install
+ @SILC_DIST_CLIENT_FALSE@@SILC_DIST_TOOLKIT_TRUE@install-data-hook: install-dirs generate-server-key sim-install doc-install toolkit-install examples-install etc-install
+ @SILC_DIST_CLIENT_FALSE@@SILC_DIST_TOOLKIT_FALSE@install-data-hook: install-dirs generate-server-key sim-install doc-install examples-install etc-install
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.

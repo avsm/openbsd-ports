@@ -1,0 +1,21 @@
+$OpenBSD: patch-src_HttpDir_cc,v 1.1.2.1 2003/12/16 04:07:05 margarida Exp $
+--- src/HttpDir.cc.orig	2003-04-15 07:26:32.000000000 -0400
++++ src/HttpDir.cc	2003-12-15 18:13:38.000000000 -0500
+@@ -354,7 +354,7 @@ static bool try_netscape_proxy(file_info
+       debug("Netscape-Proxy 2.53 listing matched");
+       return true;
+    }
+-   n=sscanf(str,"%3s %3s %d %2d:%2d:%2d %4d %s",
++   n=sscanf(str,"%3s %3s %d %2d:%2d:%2d %4d %30s",
+ 	    week_day,info.month_name,&info.day,
+ 	    &info.hour,&info.minute,&info.second,&info.year,info.size_str);
+    if(n==7 || (n==8 && !is_ascii_digit(info.size_str[0])))
+@@ -372,7 +372,7 @@ static bool try_squid_eplf(file_info &in
+    info.clear();
+ 
+    char week_day[4];
+-   int n=sscanf(str,"%3s %3s %d %2d:%2d:%2d %4d %s",
++   int n=sscanf(str,"%3s %3s %d %2d:%2d:%2d %4d %30s",
+ 	    week_day,info.month_name,&info.day,
+ 	    &info.hour,&info.minute,&info.second,&info.year,info.size_str);
+    if(n==8) // maybe squid's EPLF listing.

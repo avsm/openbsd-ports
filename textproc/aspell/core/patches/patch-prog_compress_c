@@ -1,4 +1,4 @@
-$OpenBSD: patch-prog_compress_c,v 1.1 2004/06/19 16:40:12 robert Exp $
+$OpenBSD: patch-prog_compress_c,v 1.1.2.1 2004/06/19 22:56:25 robert Exp $
 --- prog/compress.c.orig	Sat Aug 31 20:51:11 2002
 +++ prog/compress.c	Sat Jun 19 16:10:04 2004
 @@ -28,6 +28,11 @@

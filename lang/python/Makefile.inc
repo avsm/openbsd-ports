@@ -1,13 +1,13 @@
-# $OpenBSD: Makefile.inc,v 1.4 2002/03/23 04:34:22 matt Exp $
+# $OpenBSD: Makefile.inc,v 1.4.2.1 2002/10/11 23:50:40 brad Exp $
 
 COMMENT=	"interpreted object-oriented programming language"
-COMMENT-tests=	"Python testsuite"
+COMMENT-tests=	"Python test suite"
 COMMENT-tools=	"extra tools for Python"
 COMMENT-mpz=	"GNU arbitrary magnitude integer module for Python"
 COMMENT-tkinter="tk GUI module for Python"
 COMMENT-expat=	"expat module for Python"
 
-PKGNAME=	python-${VERSION}${PATCHLEVEL}
+PKGNAME=	python-${VERSION}${PATCHLEVEL}${PKG_PATCHLEVEL}
 DISTNAME=	Python-${VERSION}${PATCHLEVEL}
 CATEGORIES=	lang
 NEED_VERSION=	1.504
@@ -38,10 +38,10 @@ SUBPACKAGE?=
 RUN_DEPENDS=		::lang/python/${VERSION}
 .endif
 
-# On architectures with shared libs, no_xxx flavors are pretty much
-# a convenient way to avoid pulling in dependencies, and don't actually
-# show up in the final package names.  On architectures without shared
-# libs, some no_xxx flavors mean something.
+# On architectures with shared libs, no_xxx flavors are a convenient
+# way to avoid pulling in dependencies, and don't actually show up
+# in the final package names.  On architectures without shared libs,
+# no_xxx flavors dictate what gets linked into the Python binary.
 
 .if empty(FLAVOR:L:Mno_tkinter)
 BUILD_DEPENDS+=		::x11/tk/8.3
@@ -52,13 +52,14 @@ SED_PLIST+=		| sed -e '/^%%tkinter%%/d' \
 			| sed -e '/^%%tkinter_no_shared%%/r${PKGDIR}/PFRAG-tkinter.no_shared' -e '//d'
 .  else
 SED_PLIST+=		| sed -e '/^%%tkinter%%/r${PKGDIR}/PFRAG-tkinter.no_shared' -e '//d'
+LIB_DEPENDS+=		tk83::x11/tk/8.3
 .  endif
 .else
 SED_PLIST+=		| sed -e '/^%%tkinter%%/d'
 .endif
 
 .if defined(PACKAGING) && ${SUBPACKAGE} == "-tkinter"
-LIB_DEPENDS=		tk83::x11/tk/8.3
+LIB_DEPENDS+=		tk83::x11/tk/8.3
 .endif
 
 .if empty(FLAVOR:L:Mno_mpz)
@@ -72,7 +73,7 @@ LIB_DEPENDS+=		gmp::devel/gmp
 .endif
 
 .if defined(PACKAGING) && ${SUBPACKAGE} == "-mpz"
-LIB_DEPENDS=		gmp::devel/gmp
+LIB_DEPENDS+=		gmp::devel/gmp
 .endif
 
 .if empty(FLAVOR:L:Mno_expat)
@@ -86,20 +87,21 @@ LIB_DEPENDS+=		expat::textproc/expat
 .endif
 
 .if defined(PACKAGING) && ${SUBPACKAGE} == "-expat"
-LIB_DEPENDS=		expat::textproc/expat
+LIB_DEPENDS+=		expat::textproc/expat
 .endif
 
-# Strip off no_xxx flavors from the package name.
+# Strip off no_xxx flavors from the package name if we are not
+# building the "monster" Python for platforms without shared libraries.
 
 .if !defined(NO_SHARED_LIBS) || ${NO_SHARED_LIBS:U} != YES
 FULLPKGNAME=${PKGNAME}${FLAVOR_EXT:S/-no_mpz//:S/-no_tkinter//:S/-no_expat//}
 .endif
 
-FULLPKGNAME-tests=	python-tests-${VERSION}${PATCHLEVEL}
-FULLPKGNAME-tools=	python-tools-${VERSION}${PATCHLEVEL}
-FULLPKGNAME-mpz=	python-mpz-${VERSION}${PATCHLEVEL}
-FULLPKGNAME-tkinter=	python-tkinter-${VERSION}${PATCHLEVEL}${FLAVOR_EXT}
-FULLPKGNAME-expat=	python-expat-${VERSION}${PATCHLEVEL}${FLAVOR_EXT}
+FULLPKGNAME-tests=	python-tests-${VERSION}${PATCHLEVEL}${PKG_PATCHLEVEL}
+FULLPKGNAME-tools=	python-tools-${VERSION}${PATCHLEVEL}${PKG_PATCHLEVEL}
+FULLPKGNAME-mpz=	python-mpz-${VERSION}${PATCHLEVEL}${PKG_PATCHLEVEL}
+FULLPKGNAME-tkinter=	python-tkinter-${VERSION}${PATCHLEVEL}${PKG_PATCHLEVEL}
+FULLPKGNAME-expat=	python-expat-${VERSION}${PATCHLEVEL}${PKG_PATCHLEVEL}
 
 CONFIGURE_STYLE= autoconf dest
 CONFIGURE_ARGS+= ${CONFIGURE_SHARED}

@@ -1,6 +1,6 @@
-$OpenBSD: patch-Lib_os_py,v 1.1 2002/10/08 02:52:25 brad Exp $
---- Lib/os.py.orig	Mon Oct  7 22:16:49 2002
-+++ Lib/os.py	Mon Oct  7 22:16:51 2002
+$OpenBSD: patch-Lib_os_py,v 1.1.4.1 2002/10/11 23:50:40 brad Exp $
+--- Lib/os.py.orig	Fri Oct 11 19:28:22 2002
++++ Lib/os.py	Fri Oct 11 19:27:22 2002
 @@ -298,7 +298,7 @@ def execvp(file, args):
      _execvpe(file, args)
  
@@ -72,8 +72,3 @@ $OpenBSD: patch-Lib_os_py,v 1.1 2002/10/08 02:52:25 brad Exp $
  
  # Change environ to automatically call putenv() if it exists
  try:
-@@ -618,3 +610,4 @@ try:
-                      _make_statvfs_result)
- except NameError: # statvfs_result may not exist
-     pass
-+

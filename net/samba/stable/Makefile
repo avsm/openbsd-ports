@@ -1,17 +1,11 @@
-# $OpenBSD: Makefile,v 1.20 2003/08/21 14:46:52 naddy Exp $
+# $OpenBSD: Makefile,v 1.20.2.1 2004/05/28 20:41:55 brad Exp $
 
 COMMENT=	"SMB and CIFS client and server for UNIX"
 
-DISTNAME=	samba-2.2.8a
+DISTNAME=	samba-2.2.9
 CATEGORIES=	net
-MASTER_SITES=	http://us1.samba.org/samba/ftp/ \
-		http://us2.samba.org/samba/ftp/ \
-		http://us3.samba.org/samba/ftp/ \
-		http://us4.samba.org/samba/ftp/ \
-		http://se.samba.org/samba/ftp/ \
-		ftp://ftp.samba.org/pub/samba/ \
-		ftp://ca.samba.org/pub/samba/ \
-		ftp://ftp.ring.gr.jp/pub/net/samba/
+MASTER_SITES=	http://us1.samba.org/samba/ftp/old-versions/ \
+		http://us4.samba.org/samba/ftp/old-versions/
 
 HOMEPAGE=	http://www.samba.org/
 
@@ -39,10 +33,10 @@ SUBST_VARS=	SAMBA_SPOOL CONFDIR
 
 SEPARATE_BUILD=	concurrent
 CONFIGURE_STYLE= autoconf
-CONFIGURE_ARGS=	--libdir="${PREFIX}/lib/samba" \
+CONFIGURE_ARGS=	--disable-cups \
+		--libdir="${PREFIX}/lib/samba" \
 		--localstatedir="/var" \
 		--sbindir="${PREFIX}/libexec" \
-		--disable-cups \
 		--with-configdir="${CONFDIR}" \
 		--with-lockdir="${SAMBA_SPOOL}" \
 		--with-piddir="/var/run" \
@@ -55,11 +49,6 @@ CONFIGURE_ARGS=	--libdir="${PREFIX}/lib/samba" \
 CONFIGURE_ENV=	CPPFLAGS="-I${LOCALBASE}/include" \
 		LDFLAGS="-L${LOCALBASE}/lib"
 
-# Warning: these aditional options have not been tested.
-#CONFIGURE_ARGS+=       --with-afs
-#CONFIGURE_ARGS+=       --with-dfs
-#CONFIGURE_ARGS+=       --with-krb5=base-dir
-
 NO_REGRESS=	Yes
 
 WRKDIST=	${WRKDIR}/${DISTNAME}/source
@@ -69,22 +58,24 @@ SAMBA_DOCS=${WRKSRC}/../README \
 	${WRKSRC}/../docs/history \
 	${WRKSRC}/../docs/announce \
 	${WRKSRC}/../docs/Registry/*.reg
-SAMPLE_CONFIG=	${PREFIX}/share/examples/samba/smb.conf.default
+SAMPLE_CONFIG=	${PREFIX}/share/examples/samba/smb.conf
 
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/samba/faq
 	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/samba/textdocs
 	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/samba
-	@cp -R ${WRKSRC}/../examples/* ${PREFIX}/share/examples/samba
+	cp -R ${WRKSRC}/../examples/* ${PREFIX}/share/examples/samba
 	@chown -R ${SHAREOWN}:${SHAREGRP} ${PREFIX}/share/examples/samba
+	@chmod -R go+r ${PREFIX}/share/examples/samba/*
+	@find ${PREFIX}/share/examples/samba -type d -exec chmod go+x {} \;
 	${INSTALL_DATA} ${FILESDIR}/README.OpenBSD ${PREFIX}/share/doc/samba
-	@for i in ${SAMBA_DOCS}; do \
+	for i in ${SAMBA_DOCS}; do \
 	 ${INSTALL_DATA} $$i ${PREFIX}/share/doc/samba ;	\
 	done
-	@for i in ${WRKSRC}/../docs/faq/* ; do \
+	for i in ${WRKSRC}/../docs/faq/* ; do \
 	 ${INSTALL_DATA} $$i ${PREFIX}/share/doc/samba/faq ; \
 	done
-	@for i in ${WRKSRC}/../docs/textdocs/* ; do \
+	for i in ${WRKSRC}/../docs/textdocs/* ; do \
 	 if [ -f $$i ]; then \
 	  ${INSTALL_DATA} $$i ${PREFIX}/share/doc/samba/textdocs ;\
 	 fi \

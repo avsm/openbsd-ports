@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.31 2002/12/26 18:41:14 sturm Exp $
+# $OpenBSD: Makefile,v 1.31.2.1 2003/06/04 01:16:39 margarida Exp $
 
-COMMENT="GNU PostScript interpreter"
+COMMENT=	"GNU PostScript interpreter"
 
-VERSION=	7.05
+VERSION=	7.05p1
 DISTNAME=	ghostscript-${VERSION}
 CATEGORIES=	print lang
 

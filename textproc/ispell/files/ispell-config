@@ -1,10 +1,11 @@
 #! /bin/sh
 #
+# $Id$
+#
 # Script to change the default language for ispell.
 # Parts borrowed from a similar script for Debian Linux.
 #
 # By: Jason Ish <jasoni@openbsd.org>
-#
 
 PREFIX=/usr/local
 DICT_DIR=/usr/local/lib/ispell

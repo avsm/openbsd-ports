@@ -1,4 +1,4 @@
-$OpenBSD: patch-dbinc_mutex_h,v 1.1 2004/05/27 21:05:25 pvalchev Exp $
+$OpenBSD: patch-dbinc_mutex_h,v 1.1.2.1 2004/05/28 21:42:30 brad Exp $
 --- dbinc/mutex.h.orig	2003-09-20 15:40:49.000000000 -0600
 +++ dbinc/mutex.h	2004-05-27 14:51:44.000000000 -0600
 @@ -578,28 +578,28 @@ typedef u_int32_t tsl_t;

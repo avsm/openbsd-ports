@@ -1,16 +1,17 @@
-# $OpenBSD: Makefile,v 1.16 2000/03/24 22:11:35 espie Exp $
+# $OpenBSD: Makefile,v 1.16.2.1 2000/09/15 04:42:46 marc Exp $
 
 DISTNAME=	mpg123-0.59r
 CATEGORIES=	audio
-NEED_VERSION=	1.213
+NEED_VERSION=	1.300
 MASTER_SITES=	http://www.mpg123.de/mpg123/ \
 		http://www-ti.informatik.uni-tuebingen.de/~hippm/mpg123/ \
 		ftp://ftp.tu-clausthal.de/pub/unix/audio/mpg123/ \
 		http://ftp.tu-clausthal.de/pub/unix/audio/mpg123
 MASTER_SITES0=	ftp://ftp.kame.net/pub/kame/misc/
+MASTER_SITES1=	http://www.unix-ag.org/Linux-Alpha/Packages/
 
-
-PATCHFILES=	mpg123-059r-v6-20000217.diff.gz:0
+PATCHFILES=	mpg123-059r-v6-20000713b.diff.gz:0 \
+		l3.diff.gz:1
 PATCH_DIST_STRIP= -p1
 
 HOMEPAGE=	http://www.mpg123.de/
@@ -22,11 +23,9 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-FAKE=	Yes
-
 MAKE_ENV=	USE_INET6=Yes
 MAKE_FLAGS=	CC="${CC}"
-FAKE_FLAGS=	PREFIX=${WRKINST}${PREFIX}
+FAKE_FLAGS=	PREFIX="${WRKINST}${PREFIX}"
 
 .if (${MACHINE_ARCH} != "i386")
 ALL_TARGET=	openbsd

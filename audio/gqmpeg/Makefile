@@ -1,13 +1,13 @@
-# $OpenBSD: Makefile,v 1.10 2000/03/30 22:40:32 espie Exp $
+# $OpenBSD: Makefile,v 1.10.2.1 2000/09/15 04:42:35 marc Exp $
 # Original from: Bruno Rohée
 
 DISTNAME=	gqmpeg-0.6.3.src
 PKGNAME=	gqmpeg-0.6.3
 CATEGORIES=     audio
 NEED_VERSION=	1.230
-MASTER_SITES=	http://gqview.netpedia.net/
+MASTER_SITES=	http://www.netpedia.net/hosting/gqview/packages/
 
-HOMEPAGE=	http://gqview.netpedia.net/mpeg-over.html
+HOMEPAGE=	http://www.netpedia.net/hosting/gqview/mpeg-index.html
 
 MAINTAINER=	rohee@openbsd.org
 
@@ -23,16 +23,13 @@ LIB_DEPENDS=	glib.1.2::devel/glib \
 BUILD_DEPENDS=	mpg123::audio/mpg123
 RUN_DEPENDS=	mpg123::audio/mpg123
 
-NO_CONFIGURE=	Yes
-FAKE=		Yes
-
 ALL_TARGET=	gqmpeg
 WRKDIST=	${WRKDIR}/${PKGNAME}
 
 DOCS=	COPYING FAQ README SKIN-SPECS ChangeLog
 
 do-install:
-	@mkdir -p ${PREFIX}/share/doc/gqmpeg
+	@${INSTALL_DATA_DIR} ${PREFIX}/share/doc/gqmpeg
 	${INSTALL_PROGRAM} ${WRKSRC}/gqmpeg ${PREFIX}/bin
 	${INSTALL_SCRIPT} ${WRKSRC}/plugin/gqmpeg-shoutcast-plugin.sh ${PREFIX}/bin
 .for f in ${DOCS}

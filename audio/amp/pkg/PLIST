@@ -1,2 +1,3 @@
+@comment $OpenBSD: PLIST,v 1.1.1.1.8.1 2000/09/15 04:42:27 marc Exp $
 bin/amp
 man/man1/amp.1

@@ -1,10 +1,12 @@
-# $OpenBSD: Makefile,v 1.28 2000/04/21 18:45:10 espie Exp $
+# $OpenBSD: Makefile,v 1.28.2.1 2000/09/15 04:42:24 marc Exp $
 # $FreeBSD: Makefile,v 1.40 1997/11/16 22:49:20 fenner Exp $
 #
 
      SUBDIR += ac3dec
      SUBDIR += amp
+     SUBDIR += aumix
      SUBDIR += bladeenc
+     SUBDIR += bwap
 #    SUBDIR += cam
 #    SUBDIR += cddbd
 #    SUBDIR += cdplay
@@ -15,6 +17,7 @@
      SUBDIR += gqmpeg
      SUBDIR += gsm
      SUBDIR += knapster
+     SUBDIR += lame
 #    SUBDIR += maplay
 #    SUBDIR += mikmod
      SUBDIR += mp3cddb
@@ -29,6 +32,7 @@
      SUBDIR += p5-cddb
 #    SUBDIR += playmidi
 #    SUBDIR += radio
+     SUBDIR += rio500
 #    SUBDIR += rosegarden
      SUBDIR += rplay
      SUBDIR += rsynth

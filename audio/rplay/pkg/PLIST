@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.6.2.1 2000/09/15 04:42:55 marc Exp $
 @unexec install-info --delete --info-dir=%D/info %D/info/RPLAY.info
 @unexec install-info --delete --info-dir=%D/info %D/info/RPTP.info
 @unexec install-info --delete --info-dir=%D/info %D/info/librplay.info

@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.1.1.1.8.1 2000/09/15 04:43:09 marc Exp $
 bin/xmcd
 bin/cda
 bin/wm2xmcd

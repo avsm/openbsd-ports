@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.1.1.1.4.1 2000/09/15 04:42:42 marc Exp $
 bin/mp3encode
 lib/mp3encode/1cb0
 lib/mp3encode/1cb1

@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.1.1.1.4.1 2000/09/15 04:43:04 marc Exp $
 bin/waveplay
 share/doc/waveplay/README
 share/doc/waveplay/README.jp

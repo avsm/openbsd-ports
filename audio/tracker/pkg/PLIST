@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.4.2.1 2000/09/15 04:43:02 marc Exp $
 @unexec install-info --delete --info-dir=%D/info %D/info/tracker.info
 bin/randomize
 bin/tracker

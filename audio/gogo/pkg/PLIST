@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.1.1.1.2.1 2000/09/15 04:42:33 marc Exp $
 bin/gogo
 share/doc/gogo/readme.txt
 share/doc/gogo/readme_e.txt

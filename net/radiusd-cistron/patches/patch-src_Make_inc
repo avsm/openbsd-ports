@@ -1,0 +1,20 @@
+$OpenBSD: patch-src_Make_inc,v 1.2 2002/02/15 21:28:50 danh Exp $
+--- src/Make.inc.orig	Tue Jul 24 14:52:43 2001
++++ src/Make.inc	Fri Feb 15 16:22:03 2002
+@@ -127,7 +127,7 @@ install:
+ 	$(INSTALL) -m 755 -s raduse  $(BINDIR)
+ 	$(INSTALL) -m 755 -s radzap  $(BINDIR)
+ 	$(INSTALL) -m 755 -s radclient $(BINDIR)
+-	test -z "$(DBM)" || $(INSTALL) -m 755 -s builddbm $(BINDIR)
++	$(INSTALL) -m 755 -s builddbm $(BINDIR)
+ 	$(INSTALL) -m 755    checkrad.pl $(SBINDIR)/checkrad
+ 	$(INSTALL) -m 755    radlast $(BINDIR)
+ 	$(INSTALL) -m 755    radtest $(BINDIR)
+@@ -139,7 +139,6 @@ install:
+ 		    $(INSTALL) -m 644 $$manfile $(MANDIR)/man$$section; \
+ 		done ; \
+ 	done
+-	test -n "$(DBM)" || rm -f $(MANDIR)/man8/builddbm.8rad
+ 	@if [ -d /etc/pam.d/ ] && [ ! -f /etc/pam.d/radius ]; then \
+ 		$(INSTALL) -m 644 ../redhat/radiusd-pam /etc/pam.d/radius;\
+ 	fi

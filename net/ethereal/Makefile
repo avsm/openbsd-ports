@@ -1,5 +1,6 @@
-# $OpenBSD: Makefile,v 1.75 2003/08/05 08:54:27 jakob Exp $
+# $OpenBSD: Makefile,v 1.75.2.1 2004/07/21 16:20:07 robert Exp $
 
+BROKEN=		"numerous security issues"
 COMMENT=	"network protocol analyzer"
 
 VERSION=	0.9.14

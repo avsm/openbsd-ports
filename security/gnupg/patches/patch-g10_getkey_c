@@ -1,6 +1,6 @@
-$OpenBSD: patch-g10_getkey_c,v 1.1 2003/12/13 03:22:16 margarida Exp $
---- g10/getkey.c.orig	2003-12-13 01:55:47.000000000 +0000
-+++ g10/getkey.c	2003-12-13 02:00:35.000000000 +0000
+$OpenBSD: patch-g10_getkey_c,v 1.1.4.1 2003/12/13 03:50:23 margarida Exp $
+--- g10/getkey.c.orig	Tue Apr 29 08:26:40 2003
++++ g10/getkey.c	Sat Dec 13 03:36:13 2003
 @@ -1636,6 +1636,12 @@ merge_selfsigs_main( KBNODE keyblock, in
          if ( x ) /* mask it down to the actual allowed usage */
              key_usage &= x; 

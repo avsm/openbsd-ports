@@ -1,6 +1,6 @@
-$OpenBSD: patch-g10_keygen_c,v 1.1 2003/12/13 03:22:16 margarida Exp $
---- g10/keygen.c.orig	2003-12-13 01:55:42.000000000 +0000
-+++ g10/keygen.c	2003-12-13 02:02:25.000000000 +0000
+$OpenBSD: patch-g10_keygen_c,v 1.1.4.1 2003/12/13 03:50:23 margarida Exp $
+--- g10/keygen.c.orig	Wed Apr  9 15:58:01 2003
++++ g10/keygen.c	Sat Dec 13 03:36:04 2003
 @@ -953,8 +953,6 @@ ask_algo (int addmode, unsigned int *r_u
      tty_printf(    _("   (%d) DSA (sign only)\n"), 2 );
      if( addmode )
@@ -10,10 +10,11 @@ $OpenBSD: patch-g10_keygen_c,v 1.1 2003/12/13 03:22:16 margarida Exp $
      tty_printf(    _("   (%d) RSA (sign only)\n"), 5 );
      if (addmode)
          tty_printf(    _("   (%d) RSA (encrypt only)\n"), 6 );
-@@ -985,20 +983,6 @@ ask_algo (int addmode, unsigned int *r_u
+@@ -984,20 +982,6 @@ ask_algo (int addmode, unsigned int *r_u
+ 	    algo = PUBKEY_ALGO_RSA;
              *r_usage = PUBKEY_USAGE_SIG;
  	    break;
- 	}
+-	}
 -	else if( algo == 4 && opt.expert)
 -	  {
 -	    tty_printf(_(
@@ -27,7 +28,6 @@ $OpenBSD: patch-g10_keygen_c,v 1.1 2003/12/13 03:22:16 margarida Exp $
 -		algo = PUBKEY_ALGO_ELGAMAL;
 -		break;
 -	      }
--	}
+ 	}
  	else if( algo == 3 && addmode ) {
  	    algo = PUBKEY_ALGO_ELGAMAL_E;
- 	    break;

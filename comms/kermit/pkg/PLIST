@@ -1,4 +1,8 @@
-bin/kermit
+@comment $OpenBSD: PLIST,v 1.4.10.1 2000/09/15 04:47:01 marc Exp $
 man/cat1/kermit.0
 share/examples/kermit/dot.kermrc
 @dirrm share/examples/kermit
+@owner uucp
+@group dialer
+@mode u+s
+bin/kermit

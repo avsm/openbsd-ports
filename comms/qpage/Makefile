@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.8 2000/04/09 17:36:10 espie Exp $
+# $OpenBSD: Makefile,v 1.8.2.1 2000/09/15 04:47:05 marc Exp $
 
 DISTNAME=	qpage-3.3
 CATEGORIES=	comms
-FAKE=No
+FAKE=		Yes
 
 MAINTAINER=	angelos@openbsd.org
 

@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.4.2.1 2000/09/15 04:47:05 marc Exp $
 bin/addresses
 bin/ccexample
 bin/debugsh
@@ -20,6 +21,7 @@ bin/pi-nredir
 bin/pi-port
 bin/pilot-addresses
 bin/pilot-clip
+bin/pilot-debug
 bin/pilot-dedupe
 bin/pilot-file
 bin/pilot-mail

@@ -1,11 +1,8 @@
-# $OpenBSD: Makefile,v 1.10 2000/04/09 17:36:12 espie Exp $
-
-BROKEN=		"installs files into /usr/local/etc"
+# $OpenBSD: Makefile,v 1.10.2.1 2000/09/15 04:47:06 marc Exp $
 
 DISTNAME=       xcept-2.1.2
 CATEGORIES=	comms
 NEED_VERSION=	1.191
-FAKE=No
 
 MAINTAINER=     ports@openbsd.org
 

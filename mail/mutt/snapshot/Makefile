@@ -1,16 +1,14 @@
-# $OpenBSD: Makefile,v 1.18 2002/05/03 15:13:14 lebel Exp $
+# $OpenBSD: Makefile,v 1.18.2.1 2003/03/21 14:27:56 brad Exp $
 
 COMMENT=	"tty-based e-mail client, development version"
 
-VERSION=	1.3.99
+VERSION=	1.5.4
 DISTNAME=	mutt-${VERSION}i
 CATEGORIES=	mail
-NEED_VERSION=	1.460
-MASTER_SITES=	ftp://ftp.mutt.org/pub/mutt/ \
-		ftp://ftp.gbnet.net/pub/mutt-international/ \
-		ftp://ftp.fu-berlin.de/pub/unix/mail/mutt/ \
-		ftp://ftp.gwdg.de/pub/unix/mail/mutt/international/ \
-		ftp://ftp.iks-jena.de/pub/mitarb/lutz/crypt/software/pgp/mutt/
+MASTER_SITES=	ftp://ftp.mutt.org/mutt/devel/ \
+		ftp://ftp.gbnet.net/pub/mutt-international/devel/ \
+		ftp://ftp.fu-berlin.de/pub/unix/mail/mutt/devel/ \
+		ftp://ftp.gwdg.de/pub/unix/mail/mutt/international/devel/
 MASTER_SITES0=	http://www.spinnaker.de/mutt/compressed/
 
 HOMEPAGE=	http://www.mutt.org/
@@ -55,7 +53,7 @@ CONFIGURE_ARGS+= --with-curses
 PATCHFILES+=	patch-${VERSION}.rr.compressed.1.gz:0
 PATCH_DIST_STRIP=-p1
 CONFIGURE_ARGS+= --enable-compressed
-CONFIGURE_STYLE= autoconf
+CONFIGURE_STYLE= automake
 .else
 SUPDISTFILES+=  patch-${VERSION}.rr.compressed.1.gz:0
 CONFIGURE_STYLE= gnu
@@ -75,10 +73,6 @@ CONFIGURE_ARGS+= --with-domain="${DOMAIN}"
 .endif
 
 WRKDIST=	${WRKDIR}/${DISTNAME:S/i$//}
-
-post-configure:
-# make sure `missing' as the proper bits sets.
-	@chmod 755 ${WRKSRC}/missing
 
 post-install:
 	@strip ${PREFIX}/bin/mutt

@@ -1,16 +1,14 @@
-# $OpenBSD: Makefile,v 1.10 2002/06/14 21:09:11 lebel Exp $
+# $OpenBSD: Makefile,v 1.10.2.1 2003/03/21 14:27:56 brad Exp $
 
 COMMENT=	"tty-based e-mail client"
 
-VERSION=	1.4
+VERSION=	1.4.1
 DISTNAME=	mutt-${VERSION}i
 CATEGORIES=	mail
-NEED_VERSION=	1.500
-MASTER_SITES=	ftp://ftp.mutt.org/pub/mutt/ \
+MASTER_SITES=	ftp://ftp.mutt.org/mutt/ \
 		ftp://ftp.gbnet.net/pub/mutt-international/ \
 		ftp://ftp.fu-berlin.de/pub/unix/mail/mutt/ \
-		ftp://ftp.gwdg.de/pub/unix/mail/mutt/international/ \
-		ftp://ftp.iks-jena.de/pub/mitarb/lutz/crypt/software/pgp/mutt/
+		ftp://ftp.gwdg.de/pub/unix/mail/mutt/international/
 MASTER_SITES0=	http://www.spinnaker.de/mutt/compressed/
 
 HOMEPAGE=	http://www.mutt.org/
@@ -33,7 +31,6 @@ PATCH_LIST=     gcc-* patch-*
 .endif
 
 SYSCONFDIR=	/etc/mutt
-CONFIGURE_STYLE= gnu
 CONFIGURE_ARGS=	--with-sharedir="${PREFIX}/share/mutt" \
 		--with-docdir="${PREFIX}/share/doc/mutt" \
 		--enable-flock --disable-fcntl \
@@ -56,8 +53,10 @@ CONFIGURE_ARGS+= --with-curses
 PATCHFILES+=	patch-${VERSION}.rr.compressed.1.gz:0
 PATCH_DIST_STRIP=-p1
 CONFIGURE_ARGS+= --enable-compressed
+CONFIGURE_STYLE= automake
 .else
 SUPDISTFILES+=	patch-${VERSION}.rr.compressed.1.gz:0
+CONFIGURE_STYLE= gnu
 .endif
 
 .if ${FLAVOR:L:Mmixmaster}

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.4 2000/10/22 18:43:58 espie Exp $
+# $OpenBSD: Makefile,v 1.4.2.1 2001/02/12 23:48:21 naddy Exp $
 
 MULTI_PACKAGES=	-client
 SUBPACKAGE?=
@@ -9,9 +9,9 @@ CATEGORIES=	databases net
 NEED_VERSION=	1.338
 
 .if ${SUBPACKAGE} == "-client"
-PKGNAME=	openldapclient-${VERSION}
+PKGNAME=	openldapclient-${VERSION}p1
 .else
-PKGNAME=	openldap-${VERSION}
+PKGNAME=	openldap-${VERSION}p1
 .endif
 
 HOMEPAGE=	http://www.openldap.org/
@@ -55,7 +55,7 @@ FLAVOR?=
 CONFIGURE_ARGS+=	--with-cyrus-sasl \
 			--enable-spasswd
 CONFIGURE_ENV+=		CPPFLAGS="-I${PREFIX}/include/sasl" \
-			LIBS="-L${PREFIX}/lib"
+			LIBS="-L${PREFIX}/lib -lkrb"
 LIB_DEPENDS+=		sasl::security/cyrus-sasl
 .else
 CONFIGURE_ARGS+=	--without-cyrus-sasl \

@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.23 2000/04/08 05:40:07 brad Exp $
+# $OpenBSD: Makefile,v 1.23.2.1 2000/09/15 04:47:47 marc Exp $
 # $FreeBSD: Makefile,v 1.44 1999/03/04 21:27:58 dirk Exp $
 
 #BROKEN=	installs files automatically in /etc
 
 DISTNAME=	mysql-3.22.32
 CATEGORIES=	databases
-NEED_VERSION=	1.234
+NEED_VERSION=	1.310
 MASTER_SITES=	http://web.tryc.on.ca/mysql/Downloads/MySQL-3.22/ \
 		http://mysql.he.net/Downloads/MySQL-3.22/ \
 		http://www.buoy.com/mysql/Downloads/MySQL-3.22/ \
@@ -15,6 +15,8 @@ MASTER_SITES=	http://web.tryc.on.ca/mysql/Downloads/MySQL-3.22/ \
 		http://mysql.pingzero.net/Downloads/MySQL-3.22/ \
 		ftp://ftp.digex.net/pub/packages/database/mysql/Downloads/MySQL-3.22/ 
 
+HOMEPAGE=	http://www.mysql.com/
+
 MAINTAINER=	brad@openbsd.org
 
 PERMIT_PACKAGE_CDROM=	Yes
@@ -22,13 +24,7 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-.if ${MACHINE_ARCH} == "sparc"
-BROKEN=		"pthreads are currently not working on the SPARC architecture"
-.endif
-
-FAKE=	Yes
-
-GNU_CONFIGURE=	Yes
+CONFIGURE_STYLE= gnu
 CONFIGURE_ARGS+= ${CONFIGURE_SHARED}
 CONFIGURE_ARGS+= --enable-static \
 		 --localstatedir="/var/mysql" \
@@ -38,8 +34,21 @@ CONFIGURE_ARGS+= --enable-static \
 		 --without-bench \
 		 --without-mit-threads \
 		 --with-unix-socket-path="/var/mysql/mysql.sock"
+
+FLAVORS=	pth
+FLAVOR?=
+
+.if ${FLAVOR:L} == "pth"
+LIB_DEPENDS=	pthread.13::devel/pth
+CONFIGURE_ENV=	CPPFLAGS="-I${LOCALBASE}/include" \
+		LDFLAGS="-L${LOCALBASE}/lib"
+.else
+. if ${MACHINE_ARCH} == "sparc"
+BROKEN=		"pthreads are currently not working on the SPARC architecture"
+. endif
 CONFIGURE_ENV=	CFLAGS="${CFLAGS} -pthread" \
 		CXXFLAGS="${CXXFLAGS} -pthread"
+.endif
 
 pre-build:      
 	@echo ""

@@ -1,10 +1,9 @@
-# $OpenBSD: Makefile,v 1.15 2000/04/09 17:36:14 espie Exp $
+# $OpenBSD: Makefile,v 1.15.2.1 2000/09/15 04:47:48 marc Exp $
 
 DISTNAME=	DBD-Pg-0.93
 PKGNAME=	p5-DBD-Pg-0.93
 CATEGORIES=	databases perl5
-NEED_VERSION=	 1.230
-FAKE=No
+NEED_VERSION=	 1.302
 
 MAINTAINER=	kevlo@openbsd.org
 
@@ -16,12 +15,10 @@ PERMIT_DISTFILES_FTP=	Yes
 MASTER_SITES=	${MASTER_SITE_PERL_CPAN}
 MASTER_SITE_SUBDIR=	DBD
 
-BUILD_DEPENDS=	/usr/local/libdata/perl5/site_perl/i386-openbsd/DBI.pm::databases/p5-DBI \
-		pq.1.::databases/postgresql
+BUILD_DEPENDS= /usr/local/libdata/perl5/site_perl/i386-openbsd/DBI.pm::databases/p5-DBI 
+LIB_DEPENDS= pq.2.::databases/postgresql
+CONFIGURE_STYLE=	perl
 
-CONFIGURE_ENV+=	"POSTGRES_HOME=${PREFIX}/pgsql"
-
-do-configure:
-	@cd ${WRKSRC}; ${SETENV} ${CONFIGURE_ENV} /usr/bin/perl Makefile.PL
+MAKE_ENV+=	"POSTGRES_HOME=${PREFIX}/pgsql"
 
 .include <bsd.port.mk>

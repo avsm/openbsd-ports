@@ -1,0 +1,17 @@
+$OpenBSD: patch-cleanup_c,v 1.2.2.1 2003/02/23 18:33:14 brad Exp $
+--- cleanup.c.orig	Tue Mar 26 19:03:13 2002
++++ cleanup.c	Sun Feb 23 00:57:22 2003
+@@ -43,6 +43,13 @@ void _exit_cleanup(int code, const char 
+ 	int ocode = code;
+ 	extern int keep_partial;
+ 	extern int log_got_error;
++	static int inside_cleanup = 0;
++
++	if (inside_cleanup > 10) {
++		/* prevent the occasional infinite recursion */
++		return;
++	}
++	inside_cleanup++;
+ 
+ 	signal(SIGUSR1, SIG_IGN);
+ 	signal(SIGUSR2, SIG_IGN);

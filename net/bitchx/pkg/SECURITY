@@ -1,4 +1,4 @@
-$OpenBSD: SECURITY,v 1.1 2000/12/13 14:37:08 brad Exp $
+$OpenBSD: SECURITY,v 1.1.2.1 2000/12/13 14:42:28 brad Exp $
 
 patches/patch-source_misc.c
 ${WRKSRC}/source/misc.c

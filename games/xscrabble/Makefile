@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.8 2000/03/31 19:07:48 brad Exp $
+# $OpenBSD: Makefile,v 1.8.2.1 2000/09/15 05:39:06 marc Exp $
 
 DISTNAME=	xscrabble
 PKGNAME=	xscrabble-1.0
 CATEGORIES=	games
 MASTER_SITES=	http://people.freebsd.org/~mph/distfiles/
 
-MAINTAINER=	angelos@openbsd.org
+MAINTAINER=	ports@openbsd.org
 
 PERMIT_PACKAGE_CDROM=	"no fee"
 PERMIT_PACKAGE_FTP=	Yes

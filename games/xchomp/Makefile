@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.9 2000/04/01 18:23:45 espie Exp $
+# $OpenBSD: Makefile,v 1.9.2.1 2000/09/15 05:38:36 marc Exp $
 
 DISTNAME=	xchomp-pl1
 CATEGORIES=	games
 NEED_VERSION=	1.191
 MASTER_SITES=	${MASTER_SITE_BACKUP}
 
-MAINTAINER=	angelos@openbsd.org
+MAINTAINER=	ports@openbsd.org
 
 LICENSE_TYPE=		NONE
 PERMIT_PACKAGE_CDROM=	Yes

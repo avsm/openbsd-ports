@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.8 2000/04/01 18:23:46 espie Exp $
+# $OpenBSD: Makefile,v 1.8.2.1 2000/09/15 05:38:45 marc Exp $
 #
 
 DISTNAME=	xeyes-g
@@ -6,7 +6,7 @@ PKGNAME=	xgolgo-1.0
 CATEGORIES=	games
 NEED_VERSION=	1.191
 
-MAINTAINER=	angelos@openbsd.org
+MAINTAINER=	ports@openbsd.org
 
 LICENSE_TYPE=		BSD
 PERMIT_PACKAGE_CDROM=	Yes

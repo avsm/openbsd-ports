@@ -1,16 +1,16 @@
-# $OpenBSD: Makefile,v 1.5 2001/09/24 17:39:16 lebel Exp $
+# $OpenBSD: Makefile,v 1.5.2.1 2002/01/03 04:21:07 lebel Exp $
 
 COMMENT=	"tty-based e-mail client, development version"
 
-VERSION=	1.3.21
+VERSION=	1.3.25
 DISTNAME=	mutt-${VERSION}i
 CATEGORIES=     mail
 NEED_VERSION=	1.460
-MASTER_SITES=	ftp://ftp.mutt.org/pub/mutt/devel/ \
-                ftp://ftp.gbnet.net/pub/mutt-international/devel/ \
-                ftp://ftp.fu-berlin.de/pub/unix/mail/mutt/devel/ \
-                ftp://ftp.gwdg.de/pub/unix/mail/mutt/international/devel/ \
-		ftp://ftp.iks-jena.de/pub/mitarb/lutz/crypt/software/pgp/mutt/devel/
+MASTER_SITES=	ftp://ftp.mutt.org/pub/mutt/ \
+                ftp://ftp.gbnet.net/pub/mutt-international/ \
+                ftp://ftp.fu-berlin.de/pub/unix/mail/mutt/ \
+                ftp://ftp.gwdg.de/pub/unix/mail/mutt/international/ \
+		ftp://ftp.iks-jena.de/pub/mitarb/lutz/crypt/software/pgp/mutt/
 
 HOMEPAGE=	http://www.mutt.org/
 
@@ -23,7 +23,9 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-FLAVORS=	slang imap pop compressed mixmaster
+# disable compressed FLAVOR for the time being, until the author of the patch
+# provide a new patch fro 1.3.25 (or a later version).
+FLAVORS=	slang imap pop mixmaster # compressed
 FLAVOR?=
 
 SYSCONFDIR=	/etc/mutt

@@ -1,17 +1,17 @@
-# $OpenBSD: Makefile,v 1.22 2001/02/11 04:20:09 brad Exp $
+# $OpenBSD: Makefile,v 1.22.2.1 2001/06/12 23:49:16 lebel Exp $
 
 VERSION=	3.0.8
 DISTNAME=	zsh-${VERSION}
 CATEGORIES=	shells
 NEED_VERSION=	1.336
-MASTER_SITES=	ftp://ftp.zsh.org/zsh/ \
-		ftp://ftp.sterling.com/zsh/ \
-		ftp://ftp.rge.com/pub/zsh/ \
-		ftp://ftp.cenatls.cena.dgac.fr/pub/shells/zsh/ \
-		ftp://mrrl.lut.ac.uk/zsh/ \
-		ftp://ftp.fu-berlin.de/pub/unix/shells/zsh/ \
-		ftp://ftp.ips.oz.au/pub/packages/zsh/ \
-		ftp://ftp.uit.no/pub/unix/shells/zsh/
+MASTER_SITES=	ftp://ftp.zsh.org/zsh/old/ \
+		ftp://ftp.sterling.com/zsh/old/ \
+		ftp://ftp.rge.com/pub/zsh/old/ \
+		ftp://ftp.cenatls.cena.dgac.fr/pub/shells/zsh/old/ \
+		ftp://mrrl.lut.ac.uk/zsh/old/ \
+		ftp://ftp.fu-berlin.de/pub/unix/shells/zsh/old/ \
+		ftp://ftp.ips.oz.au/pub/packages/zsh/old/ \
+		ftp://ftp.uit.no/pub/unix/shells/zsh/old/
 
 HOMEPAGE=	http://www.zsh.org/
 

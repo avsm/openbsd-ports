@@ -1,10 +1,9 @@
-# $OpenBSD: Makefile,v 1.24 2002/06/09 05:37:04 wilfried Exp $
+# $OpenBSD: Makefile,v 1.24.2.1 2003/03/05 00:07:40 margarida Exp $
 
 COMMENT=	"highly flexible sniffer/NIDS"
 
-DISTNAME=	snort-1.8.6
+DISTNAME=	snort-1.9.1
 CATEGORIES=	net security
-NEED_VERSION=	1.525
 MASTER_SITES=	${HOMEPAGE}/dl/
 
 HOMEPAGE=       http://www.snort.org
@@ -47,10 +46,12 @@ CONFIGURE_ARGS+= --enable-smbalerts
 
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/snort
-	${INSTALL_DATA} ${WRKSRC}/snort.conf ${PREFIX}/share/examples/snort
-	${INSTALL_DATA} ${WRKSRC}/sid-msg.map ${PREFIX}/share/examples/snort
-	${INSTALL_DATA} ${WRKSRC}/classification.config \
+	${INSTALL_DATA} ${WRKSRC}/etc/snort.conf ${PREFIX}/share/examples/snort
+	${INSTALL_DATA} ${WRKSRC}/etc/sid-msg.map ${PREFIX}/share/examples/snort
+	${INSTALL_DATA} ${WRKSRC}/etc/classification.config \
 		 ${PREFIX}/share/examples/snort
-	${INSTALL_DATA} ${WRKSRC}/*.rules ${PREFIX}/share/examples/snort
+	${INSTALL_DATA} ${WRKSRC}/etc/reference.config \
+	 	 ${PREFIX}/share/examples/snort
+	${INSTALL_DATA} ${WRKSRC}/rules/*.rules ${PREFIX}/share/examples/snort
 
 .include <bsd.port.mk>

@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-pear,v 1.5.2.2 2004/07/17 00:52:34 robert Exp $
+@comment $OpenBSD: PLIST-pear,v 1.5.2.3 2004/12/22 17:26:56 robert Exp $
 pear/lib/.registry/archive_tar.reg
 pear/lib/.registry/console_getopt.reg
 pear/lib/.registry/pear.reg
@@ -70,6 +70,8 @@ pear/doc/DB/doc/MAINTAINERS
 pear/doc/DB/doc/STATUS
 pear/doc/DB/doc/TESTERS
 pear/doc/DB/doc/IDEAS
+pear/doc/Net_SMTP/docs/examples/basic.php
+pear/doc/Net_SMTP/docs/guide.txt
 pear/data/PEAR/template.spec
 pear/data/PEAR/package.dtd
 pear/tests/DB/tests/db_parsedsn.phpt
@@ -89,6 +91,9 @@ pear/tests/DB/tests/sequences.inc
 pear/tests/DB/tests/simplequery.inc
 pear/tests/DB/tests/transactions.inc
 pear/tests/DB/tests/skipif.inc
+pear/tests/Net_SMTP/tests/auth.phpt
+pear/tests/Net_SMTP/tests/basic.phpt
+pear/tests/Net_SMTP/tests/config.php.dist
 pear/tests/DB/tests/driver/02fetch.phpt
 pear/tests/DB/tests/driver/03simplequery.phpt
 pear/tests/DB/tests/driver/04numcols.phpt
@@ -157,6 +162,7 @@ pear/include/Zend/zend_ptr_stack.h
 pear/include/Zend/zend_qsort.h
 pear/include/Zend/zend_stack.h
 pear/include/Zend/zend_static_allocator.h
+pear/include/Zend/zend_strtod.h
 pear/include/Zend/zend_types.h
 pear/include/Zend/zend_variables.h
 pear/include/TSRM/TSRM.h
@@ -313,6 +319,8 @@ pear/build/Makefile.global
 pear/build/acinclude.m4
 @dirrm pear/tests/XML_Parser/tests
 @dirrm pear/tests/XML_Parser
+@dirrm pear/tests/Net_SMTP/tests
+@dirrm pear/tests/Net_SMTP
 @dirrm pear/tests/DB/tests/driver
 @dirrm pear/tests/DB/tests
 @dirrm pear/tests/DB
@@ -344,6 +352,9 @@ pear/build/acinclude.m4
 @dirrm pear/include/Zend
 @dirrm pear/include/TSRM
 @dirrm pear/include
+@dirrm pear/doc/Net_SMTP/docs/examples
+@dirrm pear/doc/Net_SMTP/docs
+@dirrm pear/doc/Net_SMTP
 @dirrm pear/doc/DB/doc
 @dirrm pear/doc/DB
 @dirrm pear/doc/Archive_Tar/docs

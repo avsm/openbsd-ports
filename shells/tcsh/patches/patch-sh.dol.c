@@ -1,14 +1,5 @@
 --- sh.dol.c.orig	Sun Nov 12 15:22:50 2000
 +++ sh.dol.c	Sun Nov 12 15:27:11 2000
-@@ -36,7 +36,7 @@
-  */
- #include "sh.h"
- 
--RCSID("$Id: sh.dol.c,v 3.40 2000/06/10 21:36:06 kim Exp $")
-+RCSID("$Id: sh.dol.c,v 3.42 2000/10/31 16:55:52 christos Exp $")
- 
- /*
-  * C shell
 @@ -1017,7 +1017,7 @@
  heredoc(term)
      Char   *term;

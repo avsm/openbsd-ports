@@ -1,4 +1,4 @@
-$OpenBSD: patch-pbm_pbmtoascii_c,v 1.1 2003/03/29 04:13:54 brad Exp $
+$OpenBSD: patch-pbm_pbmtoascii_c,v 1.1.2.1 2003/03/29 23:25:06 brad Exp $
 --- pbm/pbmtoascii.c.orig	Sat Mar 25 17:23:05 2000
 +++ pbm/pbmtoascii.c	Fri Mar 28 20:22:06 2003
 @@ -115,9 +115,11 @@ char* argv[];

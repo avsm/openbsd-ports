@@ -1,4 +1,4 @@
-$OpenBSD: patch-pbm_mgrtopbm_c,v 1.1 2003/03/29 04:13:54 brad Exp $
+$OpenBSD: patch-pbm_mgrtopbm_c,v 1.1.2.1 2003/03/29 23:25:06 brad Exp $
 --- pbm/mgrtopbm.c.orig	Thu Mar  2 20:02:09 2000
 +++ pbm/mgrtopbm.c	Fri Mar 28 20:22:06 2003
 @@ -108,6 +108,12 @@ getinit( file, colsP, rowsP, depthP, pad

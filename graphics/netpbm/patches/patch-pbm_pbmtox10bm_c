@@ -1,4 +1,4 @@
-$OpenBSD: patch-pbm_pbmtox10bm_c,v 1.1 2003/03/29 04:13:54 brad Exp $
+$OpenBSD: patch-pbm_pbmtox10bm_c,v 1.1.2.1 2003/03/29 23:25:06 brad Exp $
 --- pbm/pbmtox10bm.c.orig	Fri Jun  9 03:07:01 2000
 +++ pbm/pbmtox10bm.c	Fri Mar 28 20:22:06 2003
 @@ -57,6 +57,7 @@ main( argc, argv )

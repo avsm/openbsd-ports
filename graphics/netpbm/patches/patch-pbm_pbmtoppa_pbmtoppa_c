@@ -1,4 +1,4 @@
-$OpenBSD: patch-pbm_pbmtoppa_pbmtoppa_c,v 1.1 2003/03/29 04:13:54 brad Exp $
+$OpenBSD: patch-pbm_pbmtoppa_pbmtoppa_c,v 1.1.2.1 2003/03/29 23:25:06 brad Exp $
 --- pbm/pbmtoppa/pbmtoppa.c.orig	Fri Jun  9 03:09:41 2000
 +++ pbm/pbmtoppa/pbmtoppa.c	Fri Mar 28 20:22:06 2003
 @@ -447,6 +447,7 @@ int main (int argc, char *argv[])

@@ -1,4 +1,4 @@
-$OpenBSD: patch-pbm_pbmtolj_c,v 1.1 2003/03/29 04:13:54 brad Exp $
+$OpenBSD: patch-pbm_pbmtolj_c,v 1.1.2.1 2003/03/29 23:25:06 brad Exp $
 --- pbm/pbmtolj.c.orig	Sun Oct  7 14:14:15 2001
 +++ pbm/pbmtolj.c	Fri Mar 28 20:22:06 2003
 @@ -29,6 +29,7 @@

@@ -1,4 +1,4 @@
-$OpenBSD: patch-pbm_pbmtoybm_c,v 1.1 2003/03/29 04:13:54 brad Exp $
+$OpenBSD: patch-pbm_pbmtoybm_c,v 1.1.2.1 2003/03/29 23:25:06 brad Exp $
 --- pbm/pbmtoybm.c.orig	Mon Oct  4 05:10:43 1993
 +++ pbm/pbmtoybm.c	Fri Mar 28 20:22:07 2003
 @@ -45,6 +45,7 @@ main( argc, argv )

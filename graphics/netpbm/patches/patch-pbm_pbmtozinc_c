@@ -1,4 +1,4 @@
-$OpenBSD: patch-pbm_pbmtozinc_c,v 1.1 2003/03/29 04:13:54 brad Exp $
+$OpenBSD: patch-pbm_pbmtozinc_c,v 1.1.2.1 2003/03/29 23:25:06 brad Exp $
 --- pbm/pbmtozinc.c.orig	Fri Jun  9 03:07:21 2000
 +++ pbm/pbmtozinc.c	Fri Mar 28 20:22:07 2003
 @@ -66,6 +66,7 @@ main( argc, argv )

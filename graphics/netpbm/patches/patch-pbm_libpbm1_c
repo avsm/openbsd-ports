@@ -1,4 +1,4 @@
-$OpenBSD: patch-pbm_libpbm1_c,v 1.1 2003/03/29 04:13:54 brad Exp $
+$OpenBSD: patch-pbm_libpbm1_c,v 1.1.2.1 2003/03/29 23:25:06 brad Exp $
 --- pbm/libpbm1.c.orig	Thu Jan  3 15:09:23 2002
 +++ pbm/libpbm1.c	Fri Mar 28 20:22:06 2003
 @@ -36,13 +36,18 @@ pbm_check(FILE * file, const enum pm_che

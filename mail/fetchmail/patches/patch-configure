@@ -1,0 +1,12 @@
+$OpenBSD: patch-configure,v 1.4 2002/09/10 10:14:24 fgsch Exp $
+--- configure.orig	Wed Sep  4 10:43:37 2002
++++ configure	Tue Sep 10 06:29:13 2002
+@@ -6982,7 +6982,7 @@ echo "configure:6981: checking kerberosI
+ #define KERBEROS_V4 1
+ EOF
+ 
+-  CEFLAGS="$CEFLAGS -I/usr/include/kerberosIV"
++  CEFLAGS="$CEFLAGS -I/usr/include -I/usr/include/kerberosIV"
+   LIBS="$LIBS -lkrb -ldes"
+ else
+   #we need to detect when we're building under a kerberosV compatibility

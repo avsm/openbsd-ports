@@ -1,6 +1,6 @@
-$OpenBSD: patch-configure_in,v 1.3 2003/01/03 21:53:07 marcm Exp $
---- configure.in.orig	Wed Nov  6 10:25:53 2002
-+++ configure.in	Mon Nov 11 23:55:32 2002
+$OpenBSD: patch-configure_in,v 1.3.2.1 2003/05/07 20:31:47 marcm Exp $
+--- configure.in.orig	Mon Mar 17 09:06:46 2003
++++ configure.in	Fri Mar 21 13:26:54 2003
 @@ -86,7 +86,8 @@ AC_CHECK_HEADERS(alloca.h)
  
  dnl check for socklen_t (in Unix98)
@@ -11,7 +11,7 @@ $OpenBSD: patch-configure_in,v 1.3 2003/01/03 21:53:07 marcm Exp $
  socklen_t x;
  ],[],[AC_MSG_RESULT(yes)],[
  AC_TRY_COMPILE([#include <sys/socket.h>
-@@ -357,7 +358,7 @@ AC_SUBST(DB3_CFLAGS)
+@@ -360,7 +361,7 @@ AC_SUBST(DB3_CFLAGS)
  
  CPPFLAGS_save="$CPPFLAGS"
  CPPFLAGS="$DB3_CFLAGS $CPPFLAGS"
@@ -20,7 +20,7 @@ $OpenBSD: patch-configure_in,v 1.3 2003/01/03 21:53:07 marcm Exp $
  
  AC_CACHE_CHECK([db3 header version], ac_cv_db3_header_version,
  [
-@@ -365,8 +366,12 @@ AC_CACHE_CHECK([db3 header version], ac_
+@@ -368,8 +369,12 @@ AC_CACHE_CHECK([db3 header version], ac_
  		#ifdef HAVE_DB3_DB_H
  		#include <db3/db.h>
  		#else
@@ -33,7 +33,7 @@ $OpenBSD: patch-configure_in,v 1.3 2003/01/03 21:53:07 marcm Exp $
  	],[
  		#if DB_VERSION_MAJOR != $evolution_db_version_major || \
  		    DB_VERSION_MINOR != $evolution_db_version_minor || \
-@@ -389,8 +394,12 @@ AC_CACHE_CHECK([for db3 library name], a
+@@ -392,8 +397,12 @@ AC_CACHE_CHECK([for db3 library name], a
  			#ifdef HAVE_DB3_DB_H
  			#include <db3/db.h>
  			#else
@@ -46,7 +46,7 @@ $OpenBSD: patch-configure_in,v 1.3 2003/01/03 21:53:07 marcm Exp $
  		],[
  			DB *db;
  			db_create (&db, 0, 0);
-@@ -415,8 +424,12 @@ AC_CACHE_CHECK([that db3 library version
+@@ -418,8 +427,12 @@ AC_CACHE_CHECK([that db3 library version
  		#ifdef HAVE_DB3_DB_H
  		#include <db3/db.h>
  		#else
@@ -59,18 +59,18 @@ $OpenBSD: patch-configure_in,v 1.3 2003/01/03 21:53:07 marcm Exp $
  
  		int
  		main (void)
-@@ -648,20 +661,29 @@ if test ${with_krb5:=no} != no; then
- 
- 	mitlibs="-lkrb5 -lk5crypto -lcom_err"
- 	heimlibs="-lkrb5 -lcrypto -lasn1 -lcom_err -lroken"
-+	altheimlibs="-lkrb5 -lcrypto -lasn1"
+@@ -652,26 +665,36 @@ if test "$x{with_krb5}" != "xno"; then
+ 	
+ 	mitlibs="-lkrb5 -lk5crypto -lcom_err -lgssapi_krb5"
+ 	heimlibs="-lkrb5 -lcrypto -lasn1 -lcom_err -lroken -lgssapi"
++	altheimlibs="-lkrb5 -lcrypto -lasn1 -lgssapi"
  	AC_CACHE_CHECK([for Kerberos 5], ac_cv_lib_kerberos5,
  	[
  		LDFLAGS="$LDFLAGS -L$with_krb5/lib $mitlibs"
  		AC_TRY_LINK_FUNC(krb5_init_context, ac_cv_lib_kerberos5="$mitlibs",
  		[
  			LDFLAGS="$LDFLAGS_save -L$with_krb5/lib $heimlibs"
--			AC_TRY_LINK_FUNC(krb5_init_context, ac_cv_lib_kerberos5="$heimlibs", ac_cv_lib_kerberos5=no)
+-			AC_TRY_LINK_FUNC(krb5_init_context, ac_cv_lib_kerberos5="$heimlibs", ac_cv_lib_kerberos5="no")
 +			AC_TRY_LINK_FUNC(krb5_init_context, ac_cv_lib_kerberos5="$heimlibs",
 +			[
 +				LDFLAGS="$LDFLAGS_save -L$with_krb5/lib $altheimlibs"
@@ -79,15 +79,27 @@ $OpenBSD: patch-configure_in,v 1.3 2003/01/03 21:53:07 marcm Exp $
  		])
  		LDFLAGS="$LDFLAGS_save"
  	])
- 	if test "$ac_cv_lib_kerberos5" != no; then
+ 	if test "$ac_cv_lib_kerberos5" != "no"; then
  		AC_DEFINE(HAVE_KRB5)
- 		msg_krb5=yes
--		KRB5_CFLAGS="-I$with_krb5/include/krb5"
+-		if test "$ac_cv_lib_kerberos5" == "$mitlibs"; then
+-			msg_krb5="yes (MIT)"
+-			AC_DEFINE(HAVE_MIT_KRB5)
 +		if test "$ac_cv_lib_kerberos5" == "$altheimlibs"; then
 +			KRB5_CFLAGS="-I$with_krb5/include/kerberosV"
-+		else
++			msg_krb5="yes (alternate Heimdal)"
+ 		else
+-			msg_krb5="yes (Heimdal)"
+-			AC_DEFINE(HAVE_HEIMDAL_KRB5)
++			if test "$ac_cv_lib_kerberos5" == "$mitlibs"; then
++				msg_krb5="yes (MIT)"
++				AC_DEFINE(HAVE_MIT_KRB5)
++			else
++				msg_krb5="yes (Heimdal)"
++				AC_DEFINE(HAVE_HEIMDAL_KRB5)
++			fi
 +			KRB5_CFLAGS="-I$with_krb5/include/krb5"
-+		fi
+ 		fi
+-		KRB5_CFLAGS="-I$with_krb5/include/krb5"
  		KRB5_LDFLAGS="-L$with_krb5/lib $ac_cv_lib_kerberos5"
  	fi
  else

@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.8 2003/01/03 21:53:07 marcm Exp $
+# $OpenBSD: Makefile,v 1.8.2.1 2003/05/07 20:31:47 marcm Exp $
 
 COMMENT=		"integrated email and PIM software for GNOME"
 COMMENT-devguide=	"Evolution Developer's Guide"
 
 V=			1.2
-VERSION=		${V}.1
+VERSION=		${V}.3
 DISTNAME=		evolution-${VERSION}
 FULLPKGNAME-devguide=	evolution-devguide-${VERSION}
 CATEGORIES=    		mail x11
@@ -42,7 +42,7 @@ CONFIGURE_ARGS+=	${CONFIGURE_SHARED}
 CONFIGURE_ARGS+=	--with-db3=${LOCALBASE}
 CONFIGURE_ARGS+=	--with-krb5=/usr
 CONFIGURE_ARGS+=	--with-krb4=/usr
-CONFIGURE_ARGS+=	--enable-ipv6
+#CONFIGURE_ARGS+=	--enable-ipv6
 CONFIGURE_ARGS+=	--enable-openssl
 CONFIGURE_ARGS+=	--disable-pilot-conduits
 CONFIGURE_ARGS+=	--disable-gtk-doc

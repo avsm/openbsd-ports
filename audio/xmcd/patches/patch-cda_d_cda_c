@@ -1,4 +1,4 @@
-$OpenBSD: patch-cda_d_cda_c,v 1.1 2001/08/08 23:31:23 naddy Exp $
+$OpenBSD: patch-cda_d_cda_c,v 1.1.2.1 2001/08/09 02:03:35 naddy Exp $
 --- cda_d/cda.c.orig	Sat Feb  5 08:26:38 2000
 +++ cda_d/cda.c	Wed Aug  8 01:32:14 2001
 @@ -349,23 +349,52 @@ cda_init(curstat_t *s)

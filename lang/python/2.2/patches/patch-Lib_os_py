@@ -1,4 +1,4 @@
-$OpenBSD: patch-Lib_os_py,v 1.1 2002/10/08 02:52:25 brad Exp $
+$OpenBSD: patch-Lib_os_py,v 1.1.2.1 2002/10/08 03:08:45 brad Exp $
 --- Lib/os.py.orig	Mon Oct  7 22:16:49 2002
 +++ Lib/os.py	Mon Oct  7 22:16:51 2002
 @@ -298,7 +298,7 @@ def execvp(file, args):

@@ -1,6 +1,6 @@
-$OpenBSD: patch-configure,v 1.1 2002/10/13 22:09:25 naddy Exp $
---- configure.orig	Thu Oct 10 18:13:49 2002
-+++ configure	Thu Oct 10 18:15:00 2002
+$OpenBSD: patch-configure,v 1.1.4.1 2002/10/14 18:44:21 brad Exp $
+--- configure.orig	Mon Oct 14 09:56:31 2002
++++ configure	Mon Oct 14 09:58:36 2002
 @@ -1229,6 +1229,9 @@ case "$target" in
      gmp_cflags_cc="-xtarget=native -xarch=v8 -xO4"
      gmp_cflags64_cc="-xtarget=native -xarch=v9 -xO4"

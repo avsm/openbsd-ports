@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.5 2001/01/08 23:10:59 avsm Exp $
+# $OpenBSD: Makefile,v 1.5.2.1 2001/05/10 22:38:10 naddy Exp $
 
 DISTNAME=	GDGraph-1.33
 PKGNAME=	p5-GD-Graph-1.33
@@ -7,7 +7,7 @@ NEED_VERSION=	1.338
 MASTER_SITES=	${MASTER_SITE_PERL_CPAN}
 MASTER_SITE_SUBDIR= GD
 
-RUN_DEPENDS=	${LOCALBASE}/libdata/perl5/site_perl/${ARCH}-openbsd/GD.pm::graphics/p5-GD \
+RUN_DEPENDS=	${LOCALBASE}/libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd/GD.pm::graphics/p5-GD \
 		${LOCALBASE}/libdata/perl5/site_perl/GD/Text.pm::graphics/p5-GD-TextUtil
 
 MAINTAINER=	Anil Madhavapeddy <avsm@openbsd.org>

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.2 2001/03/17 00:45:01 avsm Exp $
+# $OpenBSD: Makefile,v 1.2.2.1 2001/05/10 22:38:12 naddy Exp $
 
 DISTNAME=	HTML-Tree-3.11
 PKGNAME=	p5-${DISTNAME}
@@ -8,7 +8,7 @@ MASTER_SITES=	${MASTER_SITE_PERL_CPAN}
 MASTER_SITE_SUBDIR= HTML
 
 PERL_MODULES=	${LOCALBASE}/libdata/perl5/site_perl
-BUILD_DEPENDS=  ${PERL_MODULES}/${ARCH}-openbsd/HTML/Entities.pm::www/p5-HTML-Parser \
+BUILD_DEPENDS=  ${PERL_MODULES}/${MACHINE_ARCH}-openbsd/HTML/Entities.pm::www/p5-HTML-Parser \
 		${PERL_MODULES}/HTML/Tagset.pm::www/p5-HTML-Tagset
 RUN_DEPENDS=    ${BUILD_DEPENDS}
 

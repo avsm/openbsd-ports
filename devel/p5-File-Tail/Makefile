@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.5 2000/12/27 22:00:36 avsm Exp $
+# $OpenBSD: Makefile,v 1.5.2.1 2001/05/10 22:38:09 naddy Exp $
 
 DISTNAME=	File-Tail-0.98
 PKGNAME=	p5-${DISTNAME}
@@ -7,7 +7,7 @@ NEED_VERSION=	1.348
 MASTER_SITES=	${MASTER_SITE_PERL_CPAN}
 MASTER_SITE_SUBDIR= File
 
-PERL_MODULES=	${LOCALBASE}/libdata/perl5/site_perl/${ARCH}-openbsd
+PERL_MODULES=	${LOCALBASE}/libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd
 BUILD_DEPENDS=	${PERL_MODULES}/Time/HiRes.pm::devel/p5-Time-HiRes
 RUN_DEPENDS=	${BUILD_DEPENDS}
 

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.3 2001/02/28 03:28:46 avsm Exp $
+# $OpenBSD: Makefile,v 1.3.2.1 2001/05/10 22:38:13 naddy Exp $
 
 DISTNAME=	URI-1.11
 PKGNAME=	p5-${DISTNAME}
@@ -7,7 +7,7 @@ NEED_VERSION=	1.351
 MASTER_SITES=	${MASTER_SITE_PERL_CPAN}
 MASTER_SITE_SUBDIR= URI
 
-BUILD_DEPENDS=	${LOCALBASE}/libdata/perl5/site_perl/${ARCH}-openbsd/MIME/Base64.pm::converters/p5-MIME-Base64
+BUILD_DEPENDS=	${LOCALBASE}/libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd/MIME/Base64.pm::converters/p5-MIME-Base64
 RUN_DEPENDS=	${BUILD_DEPENDS}
 
 MAINTAINER=	Anil Madhavapeddy <avsm@openbsd.org>

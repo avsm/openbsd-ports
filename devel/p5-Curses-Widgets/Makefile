@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.1.1.1 2000/12/05 19:12:39 avsm Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.1 2001/05/10 22:38:09 naddy Exp $
 
 DISTNAME=	curses_widgets_1_2
 PKGNAME=	p5-Curses-Widgets-1.2
@@ -16,7 +16,7 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-PERL_MODULES=   ${LOCALBASE}/libdata/perl5/site_perl/${ARCH}-openbsd
+PERL_MODULES=   ${LOCALBASE}/libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd
 BUILD_DEPENDS=  ${PERL_MODULES}/Curses.pm::devel/p5-Curses
 RUN_DEPENDS=    ${BUILD_DEPENDS}
 

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.1.1.1 2001/01/25 00:18:47 avsm Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.1 2001/05/10 22:38:11 naddy Exp $
 
 DISTNAME=	XML-XSLT-0.32
 PKGNAME=	p5-${DISTNAME}
@@ -10,7 +10,7 @@ MASTER_SITE_SUBDIR= XML
 MAINTAINER=	Anil Madhavapeddy <avsm@openbsd.org>
 
 PERL_MODULES=   ${LOCALBASE}/libdata/perl5/site_perl
-BUILD_DEPENDS=  ${PERL_MODULES}/${ARCH}-openbsd/XML/Parser.pm::textproc/p5-XML-Parser \
+BUILD_DEPENDS=  ${PERL_MODULES}/${MACHINE_ARCH}-openbsd/XML/Parser.pm::textproc/p5-XML-Parser \
 		${PERL_MODULES}/XML/DOM.pm::textproc/p5-XML-DOM
 RUN_DEPENDS=    ${BUILD_DEPENDS}
 

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.1.1.1 2001/01/19 12:41:01 avsm Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.1 2001/05/10 22:38:12 naddy Exp $
 
 DISTNAME=	HTML-TableExtract-1.06
 PKGNAME=	p5-${DISTNAME}
@@ -9,7 +9,7 @@ MASTER_SITES=	${MASTER_SITE_PERL_CPAN}
 MASTER_SITE_SUBDIR= HTML
 
 PERL_MODULES=	${LOCALBASE}/libdata/perl5/site_perl
-BUILD_DEPENDS=	${PERL_MODULES}/${ARCH}-openbsd/HTML/Entities.pm::www/p5-HTML-Parser
+BUILD_DEPENDS=	${PERL_MODULES}/${MACHINE_ARCH}-openbsd/HTML/Entities.pm::www/p5-HTML-Parser
 RUN_DEPENDS=	${BUILD_DEPENDS}
 
 MAINTAINER=	Anil Madhavapeddy <avsm@openbsd.org>

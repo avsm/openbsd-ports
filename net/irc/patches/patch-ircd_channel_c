@@ -1,6 +1,6 @@
-$OpenBSD: patch-ircd_channel_c,v 1.1 2003/11/11 15:17:34 margarida Exp $
---- ircd/channel.c.orig	2000-06-06 23:34:27.000000000 +0100
-+++ ircd/channel.c	2003-11-09 00:03:46.000000000 +0000
+$OpenBSD: patch-ircd_channel_c,v 1.1.2.1 2003/11/11 15:18:33 margarida Exp $
+--- ircd/channel.c.orig	Tue Jun  6 23:34:27 2000
++++ ircd/channel.c	Sat Nov  8 23:59:38 2003
 @@ -1966,7 +1966,7 @@ char	*parv[];
  	Reg	Link	*lp;
  	Reg	aChannel *chptr;

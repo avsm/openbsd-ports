@@ -1,0 +1,20 @@
+--- Makefile.in.orig	Sun Jun 25 12:37:47 2000
++++ Makefile.in	Thu Jun 29 22:41:07 2000
+@@ -127,7 +127,7 @@
+ # Lets put the informational stuff in a sub directory to avoid 
+ # poluting /usr/local for default installs.
+ #
+-rootdir = $(exec_prefix)/LessTif
++rootdir = $(pkgdatadir)
+ root_DATA = AUTHORS BUG-REPORTING COPYING COPYING.LIB CREDITS \
+ 	KNOWN_BUGS NEWS README RELEASE-POLICY TODO release-notes.txt
+ 
+@@ -136,7 +136,7 @@
+ 		BUG-REPORTING CREDITS KNOWN_BUGS RELEASE-POLICY NOTES
+ 
+ 
+-htmldir = $(exec_prefix)/LessTif/doc
++htmldir = $(pkgdatadir)/doc/html
+ html_DATA = release-notes.html
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs

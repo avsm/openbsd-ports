@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.4 2001/06/03 05:19:01 brad Exp $
+# $OpenBSD: Makefile,v 1.4.2.1 2001/12/19 14:25:30 brad Exp $
 
 COMMENT=		'mysql drivers for the perl DBI'
 
@@ -21,7 +21,7 @@ PERL_MODULES=		${LOCALBASE}/libdata/perl5/site_perl
 BUILD_DEPENDS=		${PERL_MODULES}/${MACHINE_ARCH}-openbsd/DBI.pm::databases/p5-DBI
 RUN_DEPENDS=		${PERL_MODULES}/${MACHINE_ARCH}-openbsd/DBI.pm::databases/p5-DBI
 
-LIB_DEPENDS=		mysqlclient.10:mysql-client-3.23.*:databases/mysql
+LIB_DEPENDS=		lib/mysql/mysqlclient.10:mysql-client-3.23.*:databases/mysql
 
 CONFIGURE_STYLE=	perl
 CONFIGURE_ARGS+=	--noprompt \

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.18.4.1 2003/12/14 04:14:31 margarida Exp $
+# $OpenBSD: Makefile,v 1.18.4.2 2003/12/14 05:02:23 margarida Exp $
 # Original from: Timo Sirainen <tss@iki.fi>
 
 COMMENT=	"modular IRC client with many features (ipv6,socks,proxy)"
@@ -24,7 +24,7 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-LIB_DEPENDS=		glib.1.2,gmodule::devel/glib
+LIB_DEPENDS=		glib-2.0.0.0,gmodule-2.0.0.0::devel/glib2
 
 CONFIGURE_STYLE=	gnu
 

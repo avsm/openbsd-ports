@@ -1,4 +1,4 @@
-$OpenBSD: patch-pbm_pbmtoatk_c,v 1.1 2003/03/29 04:13:54 brad Exp $
+$OpenBSD: patch-pbm_pbmtoatk_c,v 1.1.4.1 2003/05/03 03:19:05 brad Exp $
 --- pbm/pbmtoatk.c.orig	Fri Jun  9 03:05:24 2000
 +++ pbm/pbmtoatk.c	Fri Mar 28 20:22:06 2003
 @@ -65,6 +65,7 @@ main( argc, argv )

@@ -1,4 +1,4 @@
-$OpenBSD: patch-pbm_pbmreduce_c,v 1.1 2003/03/29 04:13:54 brad Exp $
+$OpenBSD: patch-pbm_pbmreduce_c,v 1.1.4.1 2003/05/03 03:19:05 brad Exp $
 --- pbm/pbmreduce.c.orig	Wed Apr 26 15:24:02 2000
 +++ pbm/pbmreduce.c	Fri Mar 28 20:22:06 2003
 @@ -92,8 +92,9 @@ main( argc, argv )

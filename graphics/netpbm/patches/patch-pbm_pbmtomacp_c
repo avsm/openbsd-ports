@@ -1,4 +1,4 @@
-$OpenBSD: patch-pbm_pbmtomacp_c,v 1.1 2003/03/29 04:13:54 brad Exp $
+$OpenBSD: patch-pbm_pbmtomacp_c,v 1.1.4.1 2003/05/03 03:19:05 brad Exp $
 --- pbm/pbmtomacp.c.orig	Thu Mar  2 21:27:33 2000
 +++ pbm/pbmtomacp.c	Fri Mar 28 20:22:06 2003
 @@ -102,6 +102,7 @@ char *argv[];

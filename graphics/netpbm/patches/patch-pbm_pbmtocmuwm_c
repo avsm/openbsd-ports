@@ -1,4 +1,4 @@
-$OpenBSD: patch-pbm_pbmtocmuwm_c,v 1.1 2003/03/29 04:13:54 brad Exp $
+$OpenBSD: patch-pbm_pbmtocmuwm_c,v 1.1.4.1 2003/05/03 03:19:05 brad Exp $
 --- pbm/pbmtocmuwm.c.orig	Mon Oct  4 05:10:46 1993
 +++ pbm/pbmtocmuwm.c	Fri Mar 28 20:22:06 2003
 @@ -43,6 +43,7 @@ main( argc, argv )

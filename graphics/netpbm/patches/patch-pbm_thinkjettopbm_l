@@ -1,4 +1,4 @@
-$OpenBSD: patch-pbm_thinkjettopbm_l,v 1.1 2003/03/29 04:13:54 brad Exp $
+$OpenBSD: patch-pbm_thinkjettopbm_l,v 1.1.4.1 2003/05/03 03:19:05 brad Exp $
 --- pbm/thinkjettopbm.l.orig	Fri Jan  4 10:12:53 2002
 +++ pbm/thinkjettopbm.l	Fri Mar 28 20:22:07 2003
 @@ -71,7 +71,9 @@ DIG             [0-9]

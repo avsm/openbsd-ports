@@ -1,0 +1,12 @@
+$OpenBSD: patch-configure,v 1.1 2000/06/05 00:31:34 espie Exp $
+--- configure.orig	Wed Nov 22 14:45:11 1995
++++ configure	Mon Jun  5 02:15:41 2000
+@@ -1215,7 +1215,7 @@ fi
+ if test -z "$LEXLIB"
+ then
+   case "$LEX" in
+-  flex*) ac_lib=fl ;;
++  flex*) ac_lib=l ;;
+   *) ac_lib=l ;;
+   esac
+   echo $ac_n "checking for -l$ac_lib""... $ac_c" 1>&4

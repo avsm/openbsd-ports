@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.9.2.2 2002/11/22 02:09:18 brad Exp $
+# $OpenBSD: Makefile,v 1.9.2.3 2003/03/16 03:40:12 brad Exp $
 
 COMMENT=	"SMB and CIFS client and server for UNIX"
 
-DISTNAME=	samba-2.2.7
+DISTNAME=	samba-2.2.8
 CATEGORIES=	net
 MASTER_SITES=	http://us1.samba.org/samba/ftp/ \
 		http://us2.samba.org/samba/ftp/ \
@@ -15,8 +15,7 @@ MASTER_SITES=	http://us1.samba.org/samba/ftp/ \
 
 HOMEPAGE=	http://www.samba.org/
 
-MAINTAINER=	Daniel Hartmeier <dhartmei@openbsd.org>
-
+# GPL
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
@@ -41,6 +40,7 @@ CONFIGURE_STYLE= autoconf
 CONFIGURE_ARGS=	--libdir="${PREFIX}/lib/samba" \
 		--localstatedir="/var" \
 		--sbindir="${PREFIX}/libexec" \
+		--disable-cups \
 		--with-configdir="${SYSCONFDIR}" \
 		--with-lockdir="${SAMBA_SPOOL}" \
 		--with-piddir="/var/run" \

@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.4.4.1 2000/09/15 04:40:47 marc Exp $
 bin/rar
 man/cat1/rar.1
 share/rar/dos.sfx

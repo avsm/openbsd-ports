@@ -1,10 +1,12 @@
-# $OpenBSD: Makefile,v 1.17 2000/03/26 22:34:28 brad Exp $
+# $OpenBSD: Makefile,v 1.17.2.1 2000/09/15 04:40:53 marc Exp $
 
-DISTNAME=	unzip540
-PKGNAME=	unzip-5.40
+DISTNAME=	unzip541
+PKGNAME=	unzip-5.41
 CATEGORIES=	archivers
-NEED_VERSION=	1.218
+NEED_VERSION=	1.310
 MASTER_SITES=	ftp://ftp.freesoftware.com/pub/infozip/src/
+
+HOMEPAGE=	http://ftp.freesoftware.com/pub/infozip/
 
 MAINTAINER=	ports@openbsd.org
 
@@ -13,12 +15,11 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-FAKE=		Yes
-
-MAKE_FILE=	unix/Makefile
 MAKE_FLAGS=	CC="${CC}" LD="${CC}" LOC="${CFLAGS} -DUSE_UNSHRINK" \
 		CF='-I. $$(LOC)'
 FAKE_FLAGS=	prefix="${WRKINST}${PREFIX}"
+
+MAKE_FILE=	unix/Makefile
 
 ALL_TARGET=	bsd
 

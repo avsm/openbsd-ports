@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.12 2000/03/30 22:31:53 brad Exp $
+# $OpenBSD: Makefile,v 1.12.2.1 2000/09/15 04:40:36 marc Exp $
 
 DISTNAME=	ha0999
 PKGNAME=	ha-0.999b
 CATEGORIES=	archivers
-NEED_VERSION=	1.213
+NEED_VERSION=	1.301
 MASTER_SITES=	ftp://ftp.kiarchive.ru/pub/unix/arcers/
 EXTRACT_SUFX=	.tgz
 
@@ -14,15 +14,13 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-FAKE=	Yes
-
 USE_GMAKE=	Yes
-NO_CONFIGURE=	Yes
-MAKE_FILE=	makefile.nix
 
 MAKE_FLAGS=	CC="${CC}" \
 		CFLAGS='${CFLAGS} -Wall -c -I../$$(MCH) -I../include' \
 		LDFLAGS=""
+
+MAKE_FILE=	makefile.nix
 
 WRKDIST=	${WRKDIR}
 

@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.13 2000/03/31 19:07:47 brad Exp $
+# $OpenBSD: Makefile,v 1.13.2.1 2000/09/15 04:40:42 marc Exp $
 
 DISTNAME=	nulib325
 PKGNAME=	nulib-3.25
 CATEGORIES=	archivers
-NEED_VERSION=	1.218
+NEED_VERSION=	1.301
 MASTER_SITES=	http://people.freebsd.org/~jseger/
 EXTRACT_SUFX=	.tar.Z
 
@@ -13,10 +13,6 @@ PERMIT_PACKAGE_CDROM=	"May not sell"
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	"May not sell"
 PERMIT_DISTFILES_FTP=	Yes
-
-FAKE=	Yes
-
-NO_CONFIGURE=	Yes
 
 MAKE_FLAGS=	CC="${CC}" OPTIMIZE="${CFLAGS}"
 

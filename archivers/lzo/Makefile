@@ -1,12 +1,14 @@
-# $OpenBSD: Makefile,v 1.13 2000/03/26 23:17:03 brad Exp $
+# $OpenBSD: Makefile,v 1.13.2.1 2000/09/15 04:40:38 marc Exp $
 
 DISTNAME=	lzo-1.06
 CATEGORIES=	archivers devel
-NEED_VERSION=	1.218
+NEED_VERSION=	1.310
 MASTER_SITES=	ftp://ftp.rhrz.uni-bonn.de/pub-koeln/util/arc/ \
 		ftp://ftp.fu-berlin.de/pub/unix/tools/archivers/lzo/ \
 		${MASTER_SITE_SUNSITE}
 MASTER_SITE_SUBDIR= libs/compression
+
+HOMEPAGE=	http://wildsau.idv.uni-linz.ac.at/mfx/lzo.html
 
 MAINTAINER=	brad@openbsd.org
 
@@ -15,10 +17,8 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-FAKE=	Yes
-
 SEPARATE_BUILD=	concurrent
-GNU_CONFIGURE=	Yes
+CONFIGURE_STYLE= gnu
 CONFIGURE_ARGS+= ${CONFIGURE_SHARED}
 CONFIGURE_ARGS+= --enable-static
 

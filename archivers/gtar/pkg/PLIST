@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.7.2.1 2000/09/15 04:40:36 marc Exp $
 bin/gtar
 @unexec install-info --delete --info-dir=%D/info %D/info/tar.info
 info/tar.info

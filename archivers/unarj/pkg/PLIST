@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.2.6.1 2000/09/15 04:40:49 marc Exp $
 bin/unarj
 share/doc/unarj/unarj.doc
 share/doc/unarj/technote.doc

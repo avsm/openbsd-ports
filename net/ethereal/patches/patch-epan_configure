@@ -1,4 +1,4 @@
-$OpenBSD: patch-epan_configure,v 1.1 2003/01/14 15:06:25 jakob Exp $
+$OpenBSD: patch-epan_configure,v 1.1.2.1 2003/01/18 23:31:43 jakob Exp $
 --- epan/configure.orig	Sat Jan 11 18:04:17 2003
 +++ epan/configure	Sat Jan 11 18:04:28 2003
 @@ -7887,7 +7887,7 @@ echo "${ECHO_T}none needed" >&6

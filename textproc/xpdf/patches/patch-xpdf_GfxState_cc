@@ -1,4 +1,4 @@
-$OpenBSD: patch-xpdf_GfxState_cc,v 1.1 2002/12/29 23:45:20 brad Exp $
+$OpenBSD: patch-xpdf_GfxState_cc,v 1.1.2.1 2002/12/29 23:57:04 brad Exp $
 --- xpdf/GfxState.cc.orig	Thu Dec 26 23:05:20 2002
 +++ xpdf/GfxState.cc	Thu Dec 26 23:22:59 2002
 @@ -788,9 +788,19 @@ GfxColorSpace *GfxIndexedColorSpace::par

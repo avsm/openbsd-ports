@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# $OpenBSD: make-plist,v 1.4 2000/04/17 21:00:56 espie Exp $
+# $OpenBSD: make-plist,v 1.4.2.1 2000/09/15 04:38:07 marc Exp $
 
 #  Copyright (c) 1999 Marc Espie
 # 
@@ -39,7 +39,15 @@ use strict;
 
 use File::Find;
 
-my (%newdir, %occupied, %ldconfig, %has_stuff, %infodir, @files);
+my ($plist, $pshared);
+
+my (%newdir, %occupied, %ldconfig, %has_stuff, %infodir, @files, @libfiles);
+die "Update bsd.port.mk" if @ARGV == 0;
+$plist = shift;
+$pshared = $plist;
+$pshared =~ s/PLIST/PFRAG.shared/;
+open(PLIST, ">$plist-auto") or die "Can't write to $plist-auto";
+select PLIST;
 
 print "\@comment \$OpenBSD\$\n";
 
@@ -94,7 +102,6 @@ sub add_info {
 	}
 }
 
-
 # recursive traversal: mark specific `info' dirs, `ldconfig' dirs,
 # and potentially modified dirs
 
@@ -106,14 +113,16 @@ find(
 			if (-d _) {
 				$newdir{$File::Find::name} = 1;
 			} else {
-				push(@files, $File::Find::name);
 				if (/\.so\.\d+\.\d+$/) {
 					$ldconfig{$File::Find::dir} = 1;
-				}
-				if (/\.info$/) {
-					my $d = $File::Find::dir;
-					$infodir{$d} = [] unless defined $infodir{$d};
-					push(@{$infodir{$d}}, $_);
+					push(@libfiles, $File::Find::name);
+				} else {
+					push(@files, $File::Find::name);
+					if (/\.info$/) {
+						my $d = $File::Find::dir;
+						$infodir{$d} = [] unless defined $infodir{$d};
+						push(@{$infodir{$d}}, $_);
+					}
 				}
 			}
 		} else {
@@ -143,6 +152,23 @@ for my $f (sort @files) {
 	print strip($f), "\n" unless ($f =~ m|/dir$|) && (defined $infodir{$`});
 }
 
+if (@libfiles > 0) {
+    	print "\%\%SHARED\%\%\n";
+	open(SHARED, ">$pshared-auto") or die "Can't write to $pshared-auto";
+	print SHARED "\@comment \$OpenBSD\$\n";
+	for my $f (sort @libfiles) {
+	    print SHARED strip($f), "\n";
+	}
+	for my $d (sort (keys %ldconfig)) {
+		if (defined $newdir{$d}) {
+			print SHARED "NEWDYNLIBDIR(\%D/", strip($d), ")\n";
+		} else {
+			print SHARED "DYNLIBDIR(\%D/", strip($d), ")\n";
+		}
+	}
+	close SHARED;
+}
+
 for my $d (sort { $b cmp $a } (grep { $newdir{$_} } (keys %newdir) ) ) {
 	# case of new directory that does not hold anything: it's marked
 	# for removal, but it must exist first
@@ -152,13 +178,4 @@ for my $d (sort { $b cmp $a } (grep { $newdir{$_} } (keys %newdir) ) ) {
 	print "\@dirrm ",strip($d), "\n";
 }
 	
-my $ldconfig = $ENV{LDCONFIG};
-
-for my $d (sort (keys %ldconfig)) {
-	print "\@exec $ldconfig -m %D/", strip($d), "\n";
-	print "\@unexec $ldconfig -m %D/", strip($d) ,"\n";
-}
-	
 add_info('@exec install-info', \%infodir);
-
-	

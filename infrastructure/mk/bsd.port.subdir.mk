@@ -1,5 +1,5 @@
 #	from: @(#)bsd.subdir.mk	5.9 (Berkeley) 2/1/91
-#	$OpenBSD: bsd.port.subdir.mk,v 1.25 2000/04/16 20:10:21 espie Exp $
+#	$OpenBSD: bsd.port.subdir.mk,v 1.25.2.1 2000/09/15 04:38:08 marc Exp $
 #	FreeBSD Id: bsd.port.subdir.mk,v 1.20 1997/08/22 11:16:15 asami Exp
 #
 # The include file <bsd.port.subdir.mk> contains the default targets
@@ -49,6 +49,21 @@ STRIP?=	-s
 OPSYS=	OpenBSD
 .endif
 
+.if !defined(PKGPATH)
+_PORTSDIR!=	cd ${PORTSDIR} && pwd -P
+_CURDIR!=	cd ${.CURDIR} && pwd -P
+.  if ${_PORTSDIR} == ${_CURDIR}
+PKGPATH=
+.  else
+PKGPATH=${_CURDIR:S,${_PORTSDIR}/,,}
+.  endif
+.endif
+.if empty(PKGPATH)
+_SEP=
+.else
+_SEP=/
+.endif
+
 ECHO_MSG?=	echo
 
 RECURSIVE_FETCH_LIST?=	No
@@ -59,7 +74,7 @@ _SUBDIRUSE: .USE
 	@for entry in ${SUBDIR}; do \
 		for dud in $$DUDS; do \
 			if [ $${dud} = $${entry} ]; then \
-				${ECHO_MSG} "===> ${DIRPRFX}$${entry} skipped"; \
+				${ECHO_MSG} "===> ${PKGPATH}${_SEP}$${entry} skipped"; \
 				continue 2; \
 			fi; \
 		done; \
@@ -78,14 +93,14 @@ _SUBDIRUSE: .USE
 		elif cd ${.CURDIR}/$${entry} 2>/dev/null; then \
 			edir=$${entry}; \
 		else \
-			${ECHO_MSG} "===> ${DIRPRFX}$${entry} non-existent"; \
+			${ECHO_MSG} "===> ${PKGPATH}${_SEP}$${entry} non-existent"; \
 			continue; \
 		fi; \
-		${ECHO_MSG} "===> ${DIRPRFX}$${edir}$$display"; \
-		if ${MAKE} ${.TARGET:realinstall=install} \
-			DIRPRFX=${DIRPRFX}$$edir/ \
+		${ECHO_MSG} "===> ${PKGPATH}${_SEP}$${edir}$$display"; \
+		if env  $$varname="$$flavor" \
+			PKGPATH=${PKGPATH}${_SEP}$$edir \
 			RECURSIVE_FETCH_LIST=${RECURSIVE_FETCH_LIST} \
-			$$varname="$$flavor"; \
+			${MAKE} ${.TARGET:realinstall=install}; \
 		then :; else ${REPORT_PROBLEM}; fi; \
 	done
 
@@ -100,8 +115,8 @@ ${SUBDIR}::
 .for __target in all fetch fetch-list package fake extract configure \
 		 build clean depend describe distclean deinstall \
 		 reinstall tags checksum mirror-distfiles list-distfiles \
-		 show obj fetch-makefile cdrom-packages ftp-packages \
-		 packageinstall
+		 show obj fetch-makefile all-packages cdrom-packages \
+		 ftp-packages packageinstall
 
 .if !target(${__target})
 ${__target}: _SUBDIRUSE
@@ -164,4 +179,4 @@ README.html:
 	describe distclean deinstall reinstall tags checksum mirror-distfiles \
 	list-distfiles obj show readmes readme \
 	beforeinstall afterinstall install realinstall fake \
-	cdrom-packages ftp-packages packageinstall
+	all-packages cdrom-packages ftp-packages packageinstall

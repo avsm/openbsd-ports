@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.66 2002/04/06 23:12:17 brad Exp $
+# $OpenBSD: Makefile,v 1.66.2.1 2002/09/21 22:16:01 avsm Exp $
 
 MULTI_PACKAGES=	-pear
 SUBPACKAGE?=
@@ -12,7 +12,7 @@ ONLY_FOR_ARCHS=	alpha i386 m68k powerpc sparc sparc64
 
 V=		4.1.2
 DISTNAME=	php-${V}
-PKGNAME=	php4-${V}
+PKGNAME=	php4-${V}p1
 FULLPKGNAME-pear= php4-pear-${V}
 
 CATEGORIES=	www lang

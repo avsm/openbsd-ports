@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.2.4.1 2000/09/15 05:05:20 marc Exp $
 bin/cdrecord
 man/man1/cdrecord.1
 share/doc/cdrecord/README

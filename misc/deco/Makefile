@@ -1,9 +1,10 @@
-# $OpenBSD: Makefile,v 1.5 2000/03/12 13:51:52 form Exp $
+# $OpenBSD: Makefile,v 1.5.2.1 2000/09/15 05:05:21 marc Exp $
 # $FreeBSD: Makefile,v 1.1.1.1 1998/03/27 11:56:44 tg Exp $
 
 DISTNAME=	deco383
 PKGNAME=	deco-3.8.3
 CATEGORIES=	misc
+NEED_VERSION=	1.301
 MASTER_SITES=	ftp://ftp.cronyx.ru/cronyx/deco/
 EXTRACT_SUFX=	.tgz
 
@@ -12,11 +13,9 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-FAKE=		Yes
-
 MAINTAINER=	form@openbsd.org
 
-GNU_CONFIGURE=	yes
+CONFIGURE_STYLE=gnu
 CONFIGURE_ARGS=	--libdir=${PREFIX}/share
 
 do-install:

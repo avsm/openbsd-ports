@@ -1,13 +1,15 @@
-# $OpenBSD: Makefile,v 1.24 2000/02/03 02:41:29 kevlo Exp $
+# $OpenBSD: Makefile,v 1.24.2.1 2000/09/15 05:05:12 marc Exp $
 # $FreeBSD: Makefile,v 1.121 1997/11/17 10:14:33 tg Exp $
 #
 
      SUBDIR += amanda
      SUBDIR += astrolog
      SUBDIR += buffer
+     SUBDIR += brs
 #    SUBDIR += cal
      SUBDIR += calentool
      SUBDIR += cbb
+     SUBDIR += cdrdao
      SUBDIR += cdrecord
 #    SUBDIR += chord
 #    SUBDIR += colorls
@@ -38,9 +40,11 @@
      SUBDIR += mshell
 #    SUBDIR += nwrite
 #    SUBDIR += p5-Array-PrintCols
+     SUBDIR += p5-CreditCard
 #    SUBDIR += p5-Business-CreditCard
 #    SUBDIR += p5-Locale-Codes
 #    SUBDIR += p5-Search
+     SUBDIR += pdmenu
      SUBDIR += pi-address
      SUBDIR += plan
      SUBDIR += remind

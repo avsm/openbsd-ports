@@ -1,2 +1,3 @@
+@comment $OpenBSD: PLIST,v 1.1.1.1.6.1 2000/09/15 05:05:25 marc Exp $
 bin/delay
 man/man1/delay.1

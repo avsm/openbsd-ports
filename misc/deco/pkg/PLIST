@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.2.2.1 2000/09/15 05:05:22 marc Exp $
 bin/deco
 man/man1/deco.1
 share/deco/help/d.edit

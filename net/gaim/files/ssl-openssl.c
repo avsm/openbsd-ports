@@ -1,4 +1,4 @@
-/*	$OpenBSD: ssl-openssl.c,v 1.4 2004/01/22 08:59:32 brad Exp $	*/
+/*	$OpenBSD: ssl-openssl.c,v 1.4.2.1 2005/03/27 15:16:43 sturm Exp $	*/
 
 /*
  * OpenSSL SSL-plugin for gaim
@@ -22,6 +22,7 @@
 #include "debug.h"
 #include "plugin.h"
 #include "sslconn.h"
+#include "version.h"
 
 #define SSL_OPENSSL_PLUGIN_ID "ssl-openssl"
 
@@ -58,8 +59,6 @@ static void ssl_openssl_init_openssl(void)
    * should in gaim-win32.
    */
   SSL_library_init();
-
-  return TRUE;
 }
 
 /*
@@ -97,6 +96,10 @@ static void ssl_openssl_connect_cb(gpointer data, gint source, GaimInputConditio
    */
   if(source < 0)
     {
+      if(gsc->error_cb != NULL)
+	gsc->error_cb(gsc, GAIM_SSL_CONNECT_FAILED, gsc->connect_cb_data);
+
+      gaim_ssl_close(gsc);
       return;
     }
 
@@ -275,7 +278,9 @@ static gboolean plugin_unload(GaimPlugin *plugin)
 
 static GaimPluginInfo info =
 {
-  2,                                                /* api_version    */
+  GAIM_PLUGIN_MAGIC,
+  GAIM_MAJOR_VERSION,
+  GAIM_MINOR_VERSION,
   GAIM_PLUGIN_STANDARD,                             /* type           */
   NULL,                                             /* ui_requirement */
   GAIM_PLUGIN_FLAG_INVISIBLE,                       /* flags          */

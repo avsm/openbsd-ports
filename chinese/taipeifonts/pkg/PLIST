@@ -1,0 +1,8 @@
+lib/X11/fonts/chinese/fonts.alias
+lib/X11/fonts/chinese/fonts.dir
+lib/X11/fonts/chinese/taipei15.pcf.gz
+lib/X11/fonts/chinese/taipei16.pcf.gz
+lib/X11/fonts/chinese/taipei24.pcf.gz
+lib/X11/fonts/chinese/taipeik24.pcf.gz
+@exec echo "Remember to add %B to your font path."
+@unexec echo "Remove %B manually if it's now empty"

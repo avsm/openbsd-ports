@@ -1,0 +1,22 @@
+$OpenBSD: patch-Makefile_in,v 1.1 2000/07/13 02:30:22 danh Exp $
+--- Makefile.in.orig	Fri Mar 24 18:13:16 2000
++++ Makefile.in	Wed Jul 12 21:04:56 2000
+@@ -23,7 +23,7 @@ BINDIR = @bindir@
+ MANDIR = @mandir@/man1
+ CC     = @CC@
+ CFLAGS = @CFLAGS@
+-LIBS   = @LIBS@
++LIBS   = @LIBS@ -ljpeg
+ DEFS   = @DEFS@@OPTS@
+ LDFLAGS= @LDFLAGS@
+ INSTALL= @INSTALL@
+@@ -85,9 +85,6 @@ distclean: clean
+ install: all
+ 	$(INSTALL_PROGRAM) webalizer ${BINDIR}/webalizer
+ 	$(INSTALL_DATA) webalizer.1 ${MANDIR}/webalizer.1
+-	$(INSTALL_DATA) sample.conf /etc/webalizer.conf.sample
+-	rm -f ${BINDIR}/webazolver
+-	@LN_S@ ${BINDIR}/webalizer ${BINDIR}/webazolver
+ 
+ uninstall:
+ 	rm -f ${BINDIR}/webalizer

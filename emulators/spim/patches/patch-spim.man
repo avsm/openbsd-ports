@@ -1,8 +1,0 @@
---- spim.man.orig	Mon Jul 23 12:03:34 2001
-+++ spim.man	Mon Jul 23 12:03:38 2001
-@@ -1,5 +1,4 @@
- .\" $Header: /Software/SPIM/src/spim.man 4     12/24/00 1:37p Larus $
--
- .TH spim 1
- .SH NAME
- spim \- A MIPS R2000/R3000 Simulator

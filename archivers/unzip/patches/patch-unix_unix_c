@@ -1,4 +1,4 @@
-$OpenBSD: patch-unix_unix_c,v 1.1 2003/07/02 16:03:59 brad Exp $
+$OpenBSD: patch-unix_unix_c,v 1.1.2.1 2003/07/02 16:06:52 brad Exp $
 --- unix/unix.c.orig	Mon Jan 21 17:54:42 2002
 +++ unix/unix.c	Wed Jul  2 11:48:50 2003
 @@ -421,7 +421,8 @@ int mapname(__G__ renamed)

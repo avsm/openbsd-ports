@@ -1,4 +1,4 @@
-$OpenBSD: patch-coders_bmp_c,v 1.1 2004/09/21 18:39:15 brad Exp $
+$OpenBSD: patch-coders_bmp_c,v 1.1.4.1 2004/12/30 19:37:18 sturm Exp $
 --- coders/bmp.c.orig	Fri Apr  9 19:13:24 2004
 +++ coders/bmp.c	Tue Sep 21 04:05:37 2004
 @@ -178,6 +178,7 @@ static unsigned int DecodeImage(Image *i

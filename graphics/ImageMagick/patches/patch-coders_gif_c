@@ -1,4 +1,4 @@
-$OpenBSD: patch-coders_gif_c,v 1.1 2004/09/21 18:39:15 brad Exp $
+$OpenBSD: patch-coders_gif_c,v 1.1.4.1 2004/12/30 19:37:18 sturm Exp $
 --- coders/gif.c.orig	Tue Sep 21 03:42:27 2004
 +++ coders/gif.c	Tue Sep 21 03:43:39 2004
 @@ -261,6 +261,8 @@ static unsigned int DecodeImage(Image *i

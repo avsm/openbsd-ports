@@ -1,15 +1,17 @@
-# $OpenBSD: Makefile,v 1.1.1.1.2.1 2002/01/02 22:21:02 naddy Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.2 2002/01/11 01:54:03 naddy Exp $
 
 COMMENT=	"tty-based e-mail client"
 
-DISTNAME=	mutt-1.2.5.1
-CATEGORIES=     mail
+VERSION=	1.2.5.1
+DISTNAME=	mutt-${VERSION}
+CATEGORIES=	mail
 NEED_VERSION=	1.384
 MASTER_SITES=	ftp://ftp.mutt.org/pub/mutt/ \
-                ftp://ftp.gbnet.net/pub/mutt-international/ \
-                ftp://ftp.fu-berlin.de/pub/unix/mail/mutt/ \
-                ftp://ftp.gwdg.de/pub/unix/mail/mutt/international/ \
+		ftp://ftp.gbnet.net/pub/mutt-international/ \
+		ftp://ftp.fu-berlin.de/pub/unix/mail/mutt/ \
+		ftp://ftp.gwdg.de/pub/unix/mail/mutt/international/ \
 		ftp://ftp.iks-jena.de/pub/mitarb/lutz/crypt/software/pgp/mutt/
+MASTER_SITES0=	http://www.spinnaker.de/mutt/compressed/
 
 HOMEPAGE=	http://www.mutt.org/
 
@@ -22,7 +24,7 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-FLAVORS=	slang imap pop compressed mixmaster
+FLAVORS=	slang imap pop mixmaster compressed
 FLAVOR?=
 
 SYSCONFDIR=	/etc/mutt
@@ -43,12 +45,13 @@ CONFIGURE_ARGS+= --with-curses
 .endif
 
 # compressed folder support provided by
-# http://www.spinnaker.de/mutt/compressed/patch-1.2.5.rr.compressed.1.gz
+# http://www.spinnaker.de/mutt/compressed/
 .if ${FLAVOR:L:Mcompressed}
-MASTER_SITES0=	http://www.spinnaker.de/mutt/compressed/
-PATCHFILES+=	patch-1.2.5.rr.compressed.1.gz:0
+PATCHFILES+=	patch-${VERSION}.rr.compressed.1.gz:0
 PATCH_DIST_STRIP=-p1
 CONFIGURE_ARGS+= --enable-compressed
+.else
+SUPDISTFILES+=	patch-${VERSION}.rr.compressed.1.gz:0
 .endif
 
 # If you need IMAP or POP, you may want to enable those.
@@ -83,8 +86,8 @@ post-install:
 	@strip ${PREFIX}/bin/mutt
 	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/mutt
 	${INSTALL_DATA} ${WRKSRC}/Muttrc \
-	 ${PREFIX}/share/examples/mutt/Muttrc.sample
+	  ${PREFIX}/share/examples/mutt/Muttrc.sample
 	${INSTALL_DATA} ${WRKSRC}/mime.types \
-	 ${PREFIX}/share/examples/mutt/mime.types.sample
+	  ${PREFIX}/share/examples/mutt/mime.types.sample
 
 .include <bsd.port.mk>

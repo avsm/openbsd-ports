@@ -1,5 +1,5 @@
---- ksysguard/ksysguardd/FreeBSD/ksysguardd.h.orig	Mon Dec 24 10:37:00 2001
-+++ ksysguard/ksysguardd/FreeBSD/ksysguardd.h	Mon Dec 24 10:36:51 2001
+--- ksysguard/ksysguardd/FreeBSD/ksysguardd.h.orig	Sun Dec 30 20:41:59 2001
++++ ksysguard/ksysguardd/FreeBSD/ksysguardd.h	Sun Dec 30 20:41:59 2001
 @@ -0,0 +1,31 @@
 +/*
 +    KSysGuard, the KDE System Guard

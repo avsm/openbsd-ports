@@ -1,5 +1,6 @@
+$OpenBSD: patch-config_h,v 1.1 2001/02/19 15:00:55 danh Exp $
 --- config.h.orig	Tue May 12 17:09:14 1998
-+++ config.h	Mon Dec 25 01:28:21 2000
++++ config.h	Tue Jan 30 12:43:56 2001
 @@ -1,9 +1,9 @@
  /*$Id: config.h,v 1.20 1998/05/12 21:09:14 srb Exp $*/
  
@@ -12,7 +13,7 @@
  
  /*#define SHADOW_PASSWD /**/		  /* shadow password library support */
  
-@@ -84,6 +84,6 @@
+@@ -84,6 +84,6 @@ typedef unsigned long uidl_t;			    /* f
  #define MAXBULLETINS	64
  #define MAXSTATEAGE	8388608				       /* > 3 months */
  #define MEMORY_CACHE	(64*1024)

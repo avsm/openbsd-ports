@@ -1,5 +1,5 @@
 --- libjbig/Makefile.orig	Fri Apr 10 21:33:27 1998
-+++ libjbig/Makefile	Sat May  8 15:10:58 1999
++++ libjbig/Makefile	Wed Jun  9 10:24:38 1999
 @@ -2,12 +2,14 @@
  # $Id: Makefile,v 1.7 1998-04-11 02:26:33+01 mgk25 Rel $
  
@@ -24,13 +24,13 @@
  
 +$(SOJBIGLIB): jbig.so jbig_tab.so
 +	rm -f ${.TARGET}
-+	ld -Bshareable -o ${.TARGET} ${.ALLSRC}
++	ld -Bshareable -Bforcearchive -o ${.TARGET} ${.ALLSRC}
 +	
  jbig.o: jbig.c jbig.h
  
 +.SUFFIXES: .c .so
 +.c.so:
-+	${CC} -c -fPIC -DPIC ${CFLAGS} ${.IMPSRC} -o ${.TARGET}
++	${CC} -c -fpic -DPIC ${CFLAGS} ${.IMPSRC} -o ${.TARGET}
 +jbig.so: jbig.c jbig.h
 +jbig_tab.so: jbig_tab.c
 +

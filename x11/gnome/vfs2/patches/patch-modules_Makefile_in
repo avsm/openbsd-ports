@@ -1,0 +1,33 @@
+$OpenBSD: patch-modules_Makefile_in,v 1.1.4.1 2005/01/02 15:36:18 sturm Exp $
+--- modules/Makefile.in.orig	Sun Jan  2 16:22:31 2005
++++ modules/Makefile.in	Sun Jan  2 16:22:57 2005
+@@ -197,7 +197,7 @@ am__include = @am__include@
+ am__quote = @am__quote@
+ install_sh = @install_sh@
+ NULL = 
+-SUBDIRS = extfs vfolder
++SUBDIRS = vfolder
+ 
+ INCLUDES = \
+ 	-I$(top_srcdir)				\
+@@ -248,7 +248,6 @@ modulesdir = $(libdir)/gnome-vfs-2.0/mod
+ modules_LTLIBRARIES = \
+ 	$(CDDA_LTLIBS)				\
+ 	libcomputer.la				\
+-	libextfs.la				\
+ 	libfile.la				\
+ 	libnetwork.la				\
+ 	libnntp.la				\
+@@ -294,12 +293,6 @@ libcdda_la_LIBADD = -lcdda_paranoia -lcd
+ libcomputer_la_SOURCES = computer-method.c
+ libcomputer_la_LDFLAGS = $(module_flags)
+ libcomputer_la_LIBADD = $(MODULES_FILE_LIBS) ../libgnomevfs/libgnomevfs-2.la
+-
+-
+-###  `extfs' method
+-libextfs_la_SOURCES = extfs-method.c
+-libextfs_la_LDFLAGS = $(module_flags)
+-libextfs_la_LIBADD = $(MODULES_FILE_LIBS) ../libgnomevfs/libgnomevfs-2.la
+ 
+ 
+ ###  `file' method

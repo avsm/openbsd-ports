@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.9 2003/11/13 09:10:19 kevlo Exp $
+# $OpenBSD: Makefile,v 1.9.2.1 2004/07/12 11:26:11 robert Exp $
 
 ONLY_FOR_ARCHS=	i386
 
@@ -20,10 +20,8 @@ PERMIT_PACKAGE_FTP=     "Unsure of codec's license"
 PERMIT_DISTFILES_CDROM= "Unsure of codec's license"
 PERMIT_DISTFILES_FTP=   "Unsure of codec's license"
 
-MASTER_SITES=	http://www1.mplayerhq.hu/MPlayer/releases/codecs/ \
-		http://www2.mplayerhq.hu/MPlayer/releases/codecs/ \
-		ftp://mplayerhq.hu/MPlayer/releases/codecs/ \
-		ftp://ftp.lug.udel.edu/MPlayer/releases/codecs/
+MASTER_SITES=	http://www.beastie.hu/distfiles/3.5/ \
+		http://dev.beastie.hu/distfiles/3.5/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${QTDLLS}${EXTRACT_SUFX} ${REALDLLS}${EXTRACT_SUFX}
 EXTRACT_SUFX=	.tar.bz2
 

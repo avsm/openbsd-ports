@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.19 2003/01/21 17:12:30 avsm Exp $
+# $OpenBSD: Makefile,v 1.19.6.1 2005/02/12 12:13:03 robert Exp $
 
 COMMENT=		"convert ASCII files to PostScript"
 
 DISTNAME=		enscript-1.6.3
+PKGNAME=		${DISTNAME}p0
 CATEGORIES=     	print
 
 HOMEPAGE=		http://people.ssh.fi/mtr/genscript/

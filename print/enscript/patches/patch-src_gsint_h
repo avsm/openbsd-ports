@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_gsint_h,v 1.1 2005/02/11 19:12:42 naddy Exp $
+$OpenBSD: patch-src_gsint_h,v 1.1.4.1 2005/02/12 12:13:03 robert Exp $
 --- src/gsint.h.orig	Fri Feb 11 20:01:12 2005
 +++ src/gsint.h	Fri Feb 11 20:01:25 2005
 @@ -701,4 +701,9 @@ FILE *printer_open ___P ((char *cmd, cha

@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_util_c,v 1.1 2005/02/11 19:12:42 naddy Exp $
+$OpenBSD: patch-src_util_c,v 1.1.4.1 2005/02/12 12:13:03 robert Exp $
 --- src/util.c.orig	Fri Feb 11 20:01:12 2005
 +++ src/util.c	Fri Feb 11 20:01:25 2005
 @@ -1239,6 +1239,8 @@ escape_string (char *string)

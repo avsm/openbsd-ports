@@ -1,4 +1,4 @@
-$OpenBSD: patch-mod_auth_radius_c,v 1.1 2005/01/14 17:33:17 jcs Exp $
+$OpenBSD: patch-mod_auth_radius_c,v 1.1.4.1 2005/02/22 14:06:24 robert Exp $
 --- mod_auth_radius.c.orig	Mon Mar 24 13:16:15 2003
 +++ mod_auth_radius.c	Fri Jan 14 11:28:55 2005
 @@ -302,7 +302,7 @@ module radius_auth_module;

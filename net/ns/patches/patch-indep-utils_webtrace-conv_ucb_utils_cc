@@ -1,4 +1,4 @@
-$OpenBSD: patch-indep-utils_webtrace-conv_ucb_utils_cc,v 1.1 2000/11/09 11:43:34 espie Exp $
+$OpenBSD: patch-indep-utils_webtrace-conv_ucb_utils_cc,v 1.1.2.1 2000/11/20 13:51:37 espie Exp $
 --- indep-utils/webtrace-conv/ucb/utils.cc.orig	Sun Nov  5 19:06:43 2000
 +++ indep-utils/webtrace-conv/ucb/utils.cc	Sun Nov  5 19:07:20 2000
 @@ -351,7 +351,7 @@ int correct_read(int s, char *data, int 

@@ -1,4 +1,4 @@
-$OpenBSD: patch-indep-utils_webtrace-conv_dec_my-endian_cc,v 1.1 2000/11/09 11:43:34 espie Exp $
+$OpenBSD: patch-indep-utils_webtrace-conv_dec_my-endian_cc,v 1.1.2.1 2000/11/20 13:51:37 espie Exp $
 --- indep-utils/webtrace-conv/dec/my-endian.cc.orig	Sun Nov  5 19:05:22 2000
 +++ indep-utils/webtrace-conv/dec/my-endian.cc	Sun Nov  5 19:06:00 2000
 @@ -39,14 +39,14 @@ void ToOtherEndian(TEntry *e) {

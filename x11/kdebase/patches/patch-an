@@ -1,0 +1,10 @@
+--- kcontrol/info/memory_fbsd.cpp.orig	Sun Jun 20 19:43:22 1999
++++ kcontrol/info/memory_fbsd.cpp	Sun Jun 20 19:43:36 1999
+@@ -1,6 +1,7 @@
+ // $Id: memory_fbsd.cpp,v 1.7 1998/10/11 05:33:32 garbanzo Exp $
+ 
+ #include <sys/types.h>
++#include <sys/param.h>
+ #include <sys/sysctl.h>
+ #include <stdlib.h>	// For atoi()
+ 

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.15 2003/08/12 18:49:07 jolan Exp $
+# $OpenBSD: Makefile,v 1.15.2.1 2004/06/19 22:52:55 robert Exp $
 
 COMMENT=		"spell checker designed to eventually replace Ispell"
 COMMENT-br=		"aspell dictionary for Breton"
@@ -25,6 +25,7 @@ COMMENT-uk=		"aspell dictionary for Ukrainian"
 
 VERSION=		0.50.3
 DISTNAME=		aspell-${VERSION}
+PKGNAME=		${DISTNAME}p1
 DIST_SUBDIR=		aspell
 CATEGORIES=		textproc
 DISTFILES=		${DISTNAME}${EXTRACT_SUFX}

@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.41 2002/12/29 21:14:12 fgsch Exp $
+# $OpenBSD: Makefile,v 1.41.2.1 2003/06/01 08:45:46 couderc Exp $
 # $FreeBSD: Makefile,v 1.12 1999/06/08 23:41:54 steve Exp $
 
 COMMENT=	"X-Chat is an X11 IRC client"
 
 MAJOR=		1.8
-VERSION=	${MAJOR}.9
+VERSION=	${MAJOR}.11
 DISTNAME=	xchat-${VERSION}
 CATEGORIES=	net x11
 
@@ -15,7 +15,7 @@ EXTRACT_SUFX=	.tar.bz2
 
 HOMEPAGE=	http://www.xchat.org/
 
-MAINTAINER=	Shell Hung <shell@openbsd.org>
+MAINTAINER=	Damien Couderc <couderc@openbsd.org>
 
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
@@ -29,17 +29,19 @@ MODULES=	iconv gettext
 USE_GMAKE=	Yes
 USE_X11=	Yes
 CONFIGURE_STYLE= gnu
-CONFIGURE_ARGS+= --disable-python --disable-gnome \
-		 --disable-zvt --disable-mmx \
-		 --enable-ipv6 --enable-openssl="/usr" \
-		 --enable-japanese-conv \
-		 --with-libiconv-prefix="${LOCALBASE}"
+CONFIGURE_ARGS+=	--disable-python --disable-gnome \
+			--disable-zvt --disable-mmx \
+			--enable-ipv6 --enable-openssl="/usr" \
+			--enable-japanese-conv
+CONFIGURE_ENV+=		CPPFLAGS="-I${LOCALBASE}/include" \
+			LDFLAGS="-L${LOCALBASE}/lib"
 
 DOCDIR=		${PREFIX}/share/doc/xchat
 
 post-install:
 	${INSTALL_DATA_DIR} ${DOCDIR}
 	${INSTALL_DATA} ${WRKSRC}/README ${DOCDIR}
+	@rm -rf ${WRKSRC}/doc/CVS
 	${INSTALL_DATA} ${WRKSRC}/doc/* ${DOCDIR}
 
 .include <bsd.port.mk>

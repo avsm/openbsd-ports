@@ -1,12 +1,12 @@
-$OpenBSD: patch-src_fe-text_Makefile_in,v 1.4 2002/12/30 09:07:45 pvalchev Exp $
---- src/fe-gtk/Makefile.in.orig	Sun May 19 21:44:31 2002
-+++ src/fe-gtk/Makefile.in	Mon Dec 30 00:53:18 2002
-@@ -107,7 +107,7 @@ uniqpath = @uniqpath@
- bin_PROGRAMS = xchat
- 
- CFLAGS = $(GUI_CFLAGS)
--LIBS = $(GUI_LIBS)
-+LIBS = $(GUI_LIBS) $(INTLLIBS)
- 
- INCLUDES = -I$(includedir)
- 
+$OpenBSD: patch-src_fe-text_Makefile_in,v 1.4.2.1 2003/06/01 08:45:46 couderc Exp $
+--- src/fe-text/Makefile.in.orig	Fri May 30 11:24:22 2003
++++ src/fe-text/Makefile.in	Fri May 30 11:24:36 2003
+@@ -146,7 +146,7 @@ DEFS = @DEFS@
+ DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
+ CPPFLAGS = @CPPFLAGS@
+ LDFLAGS = @LDFLAGS@
+-LIBS = @LIBS@
++LIBS = @LIBS@ $(LIBICONV)
+ depcomp = $(SHELL) $(top_srcdir)/depcomp
+ am__depfiles_maybe = depfiles
+ @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/fe-text.Po ./$(DEPDIR)/glib.Po

@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.9 2003/12/15 20:35:20 naddy Exp $
+@comment $OpenBSD: PLIST,v 1.9.4.1 2005/01/02 15:16:18 sturm Exp $
 bin/gnome-vfs-config
 include/gnome-vfs-1.0/libgnomevfs/gnome-vfs-application-registry.h
 include/gnome-vfs-1.0/libgnomevfs/gnome-vfs-async-ops.h
@@ -53,29 +53,10 @@ lib/libgnomevfs-pthread.a
 lib/libgnomevfs-pthread.la
 lib/libgnomevfs.a
 lib/libgnomevfs.la
-lib/vfs/extfs/README
-lib/vfs/extfs/a
-lib/vfs/extfs/ar
-lib/vfs/extfs/arj
-lib/vfs/extfs/cpio
-lib/vfs/extfs/deb
-lib/vfs/extfs/hp48
-lib/vfs/extfs/lha
-lib/vfs/extfs/mailfs
-lib/vfs/extfs/patchfs
-lib/vfs/extfs/rar
-lib/vfs/extfs/rpm
-lib/vfs/extfs/rpms
-lib/vfs/extfs/tar
-lib/vfs/extfs/trpm
-lib/vfs/extfs/zip
-lib/vfs/extfs/zoo
 lib/vfs/modules/libbzip2.a
 lib/vfs/modules/libbzip2.la
 lib/vfs/modules/libdesktop.a
 lib/vfs/modules/libdesktop.la
-lib/vfs/modules/libextfs.a
-lib/vfs/modules/libextfs.la
 lib/vfs/modules/libfile.a
 lib/vfs/modules/libfile.la
 lib/vfs/modules/libftp.a
@@ -103,7 +84,6 @@ share/examples/gnome-vfs/vfs/modules/default-modules.conf
 @dirrm share/examples/gnome-vfs/vfs
 @dirrm share/examples/gnome-vfs
 @dirrm lib/vfs/modules
-@dirrm lib/vfs/extfs
 @dirrm lib/vfs
 @dirrm lib/gnome-vfs-1.0/include
 @dirrm lib/gnome-vfs-1.0

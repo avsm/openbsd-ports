@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.10 2004/06/23 03:26:21 marcm Exp $
+@comment $OpenBSD: PLIST,v 1.10.2.1 2005/01/02 15:16:18 sturm Exp $
 bin/gnomevfs-cat
 bin/gnomevfs-copy
 bin/gnomevfs-info
@@ -57,8 +57,6 @@ lib/gnome-vfs-2.0/modules/libcdda.la
 lib/gnome-vfs-2.0/modules/libcomputer.a
 lib/gnome-vfs-2.0/modules/libcomputer.la
 lib/gnome-vfs-2.0/modules/libcomputer.so
-lib/gnome-vfs-2.0/modules/libextfs.a
-lib/gnome-vfs-2.0/modules/libextfs.la
 lib/gnome-vfs-2.0/modules/libfile.a
 lib/gnome-vfs-2.0/modules/libfile.la
 lib/gnome-vfs-2.0/modules/libftp.a
@@ -91,23 +89,6 @@ lib/libgnomevfs-2.a
 lib/libgnomevfs-2.la
 lib/pkgconfig/gnome-vfs-2.0.pc
 lib/pkgconfig/gnome-vfs-module-2.0.pc
-lib/vfs/2.0/extfs/README
-lib/vfs/2.0/extfs/a
-lib/vfs/2.0/extfs/ar
-lib/vfs/2.0/extfs/arj
-lib/vfs/2.0/extfs/cpio
-lib/vfs/2.0/extfs/deb
-lib/vfs/2.0/extfs/hp48
-lib/vfs/2.0/extfs/lha
-lib/vfs/2.0/extfs/mailfs
-lib/vfs/2.0/extfs/patchfs
-lib/vfs/2.0/extfs/rar
-lib/vfs/2.0/extfs/rpm
-lib/vfs/2.0/extfs/rpms
-lib/vfs/2.0/extfs/tar
-lib/vfs/2.0/extfs/trpm
-lib/vfs/2.0/extfs/zip
-lib/vfs/2.0/extfs/zoo
 libexec/gnome-vfs-daemon
 share/examples/gnome-vfs2/gnome-vfs-2.0/modules/cdda-module.conf
 share/examples/gnome-vfs2/gnome-vfs-2.0/modules/default-modules.conf
@@ -254,9 +235,6 @@ share/schemas/gnome-vfs2/system_smb.schemas
 @dirrm share/examples/gnome-vfs2/gnome-vfs-2.0/modules
 @dirrm share/examples/gnome-vfs2/gnome-vfs-2.0
 @dirrm share/examples/gnome-vfs2
-@dirrm lib/vfs/2.0/extfs
-@dirrm lib/vfs/2.0
-@dirrm lib/vfs
 @dirrm lib/gnome-vfs-2.0/modules
 @dirrm lib/gnome-vfs-2.0/include
 @dirrm lib/gnome-vfs-2.0

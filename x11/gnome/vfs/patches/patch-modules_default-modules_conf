@@ -1,6 +1,6 @@
-$OpenBSD: patch-modules_default-modules_conf,v 1.1 2005/01/02 09:23:12 sturm Exp $
---- modules/default-modules.conf.orig	Sat Jan  1 17:37:14 2005
-+++ modules/default-modules.conf	Sat Jan  1 17:37:32 2005
+$OpenBSD: patch-modules_default-modules_conf,v 1.1.2.1 2005/01/02 15:16:18 sturm Exp $
+--- modules/default-modules.conf.orig	Sun Jan  2 11:58:52 2005
++++ modules/default-modules.conf	Sun Jan  2 11:58:59 2005
 @@ -30,9 +30,6 @@ pipe: vfs-pipe
  
  ssh: ssh

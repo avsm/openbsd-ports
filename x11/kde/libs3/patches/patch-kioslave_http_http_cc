@@ -1,0 +1,49 @@
+$OpenBSD: patch-kioslave_http_http_cc,v 1.1.2.1 2003/08/03 22:28:17 brad Exp $
+--- kioslave/http/http.cc.orig	Sun Dec 15 20:56:30 2002
++++ kioslave/http/http.cc	Sun Aug  3 15:38:44 2003
+@@ -195,20 +195,33 @@ void HTTPProtocol::resetSessionSettings(
+   m_maxCacheAge = config()->readNumEntry("MaxCacheAge", DEFAULT_MAX_CACHE_AGE);
+   m_request.window = config()->readEntry("window-id");
+ 
+-  bool sendReferrer = config()->readBoolEntry("SendReferrer", true);
+-  if ( sendReferrer )
+-     m_request.referrer = metaData("referrer");
+-  else
+-     m_request.referrer = QString::null;
+-     
+-  if (!m_request.referrer.startsWith("http"))
++
++  m_request.referrer = QString::null;
++  if ( config()->readBoolEntry("SendReferrer", true) )
+   {
+-     if (m_request.referrer.startsWith("webdav"))
+-        m_request.referrer.replace(0, 6, "http");
+-     else
+-        m_request.referrer = QString::null;
++     KURL referrerURL = metaData("referrer");
++     if (referrerURL.isValid())
++     {
++        // Sanitize
++        QString protocol = referrerURL.protocol();
++        if (protocol.startsWith("webdav"))
++        {
++           protocol.replace(0, 6, "http");
++           referrerURL.setProtocol(protocol);
++        }
++        
++        if ((protocol == "http") || 
++            ((protocol == "https") && ((m_protocol == "https") || (m_protocol == "webdavs")))
++           )
++        {
++           referrerURL.setRef(QString::null);
++           referrerURL.setUser(QString::null);
++           referrerURL.setPass(QString::null);
++           m_request.referrer = referrerURL.url();
++        }
++     }
+   }
+-
++  
+   if ( config()->readBoolEntry("SendLanguageSettings", true) )
+   {
+       m_request.charsets = config()->readEntry( "Charsets", "iso-8859-1" );

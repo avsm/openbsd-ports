@@ -1,19 +1,20 @@
-# $OpenBSD: Makefile,v 1.22.2.1 2000/12/23 17:21:49 naddy Exp $
+# $OpenBSD: Makefile,v 1.22.2.2 2001/03/25 11:48:41 naddy Exp $
 
 DISTNAME=	gnupg-1.0.4
-PKGNAME=	${DISTNAME}p1
+PKGNAME=	${DISTNAME}p2
 CATEGORIES=	security
 NEED_VERSION=	1.320
 MASTER_SITES=	ftp://ftp.gnupg.org/pub/gcrypt/gnupg/ \
 		ftp://ftp.progsoc.uts.edu.au/pub/gnupg/gnupg/ \
-		ftp://openbsd.rug.ac.be/pub/gcrypt/ \
+		ftp://openbsd.rug.ac.be/pub/gcrypt/gnupg/ \
 		ftp://sunsite.auc.dk/pub/security/gcrypt/gnupg/ \
 		ftp://ftp.linux.it/pub/mirrors/gnupg/gnupg/ \
 		ftp://pgp.iijlab.net/pub/gnupg/gnupg/ \
 		ftp://ring.aist.go.jp/pub/net/gnupg/gnupg/ \
 		ftp://sunsite.icm.edu.pl/pub/security/gcrypt/gnupg/ \
 		ftp://ftp.stacken.kth.se/pub/crypto/gnupg/gnupg/ \
-		ftp://ftp.net.lut.ac.uk/gcrypt/gnupg/
+		ftp://ftp.net.lut.ac.uk/gcrypt/gnupg/ \
+		ftp://gd.tuwien.ac.at/privacy/gnupg/gnupg/
 
 HOMEPAGE=	http://www.gnupg.org/
 

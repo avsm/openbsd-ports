@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.58 2003/06/18 14:03:36 avsm Exp $
+# $OpenBSD: Makefile,v 1.58.2.1 2003/11/08 00:23:06 margarida Exp $
 
 # May not be hard to add more.
 ONLY_FOR_ARCHS=		i386 macppc
@@ -7,7 +7,7 @@ COMMENT=		"Movie player supporting MPEG, DivX, AVI, ASF, MOV & more"
 
 DISTNAME=		MPlayer-0.90
 DIST_SUBDIR=		mplayer
-PKGNAME=		${DISTNAME:L}p1
+PKGNAME=		${DISTNAME:L}p2
 CATEGORIES=		x11
 EXTRACT_SUFX=		.tar.bz2
 
@@ -19,7 +19,9 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-MASTER_SITES=		http://www2.mplayerhq.hu/MPlayer/releases/
+MASTER_SITES=		http://www2.mplayerhq.hu/MPlayer/releases/ \
+			ftp://ftp.freebsd.org/pub/FreeBSD/distfiles/ \
+			http://www.devilness.org/mplayer/
 MASTER_SITES+=		http://www.mplayerhq.hu/MPlayer/releases/
 MASTER_SITES+=		http://ftp.lug.udel.edu/MPlayer/releases/
 # The skins tarball changes on a daily basis so it is mirrored

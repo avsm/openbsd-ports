@@ -1,12 +1,11 @@
-# $OpenBSD: Makefile,v 1.9 2002/05/13 18:50:42 espie Exp $
+# $OpenBSD: Makefile,v 1.9.2.1 2003/08/28 21:52:10 brad Exp $
 
 COMMENT=	"NetHack derivative"
 
 VERSION=	1.9.3
 DISTNAME=	nethack_source_331_jtp_${VERSION:S/.//g}
-PKGNAME=	falconseye-${VERSION}
+PKGNAME=	falconseye-${VERSION}p1
 CATEGORIES=	games x11
-NEED_VERSION=	1.515
 EXTRACT_SUFX=	.zip
 
 HOMEPAGE=	http://falconseye.sourceforge.net/
@@ -22,7 +21,6 @@ MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=falconseye/}
 
 LIB_DEPENDS=	SDL::devel/sdl
 RUN_DEPENDS=	:hackdata-*:games/hackdata
-RUN_DEPENDS+=	:timidity-*:audio/timidity
 
 FAKE_FLAGS=	PREFIX="${PREFIX}" DESTDIR="${WRKINST}"
 
@@ -34,6 +32,8 @@ WRKDIST=	${WRKDIR}
 NETHACKCONFIG=	${FILESDIR}/x-config
 USE_X11=        Yes
 MAKE_ENV+=	CFLAGS="${CFLAGS} -I${X11BASE}/include -I${LOCALBASE}/include -L${X11BASE}/lib -L${LOCALBASE}/lib"
+
+NO_REGRESS=	Yes
 
 do-configure:
 	@cd ${WRKSRC}/sys/unix && ${SH} setup.sh symlinks

@@ -1,5 +1,5 @@
 #!/bin/sh
-# $OpenBSD: DEINSTALL,v 1.5 2001/03/24 17:20:36 danh Exp $
+# $OpenBSD: DEINSTALL,v 1.5.2.1 2001/04/10 11:59:59 naddy Exp $
 #
 # ntp de-installation
 

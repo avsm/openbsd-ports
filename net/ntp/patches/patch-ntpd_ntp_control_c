@@ -1,4 +1,4 @@
-$OpenBSD: patch-ntpd_ntp_control_c,v 1.2 2001/04/06 13:40:18 danh Exp $
+$OpenBSD: patch-ntpd_ntp_control_c,v 1.2.2.1 2001/04/10 11:59:58 naddy Exp $
 --- ntpd/ntp_control.c.orig	Thu Apr  5 22:38:59 2001
 +++ ntpd/ntp_control.c	Thu Apr  5 22:57:03 2001
 @@ -1782,7 +1782,7 @@ ctl_getitem(

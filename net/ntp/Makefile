@@ -1,14 +1,9 @@
-# $OpenBSD: Makefile,v 1.12 2001/04/06 14:31:23 brad Exp $
-
-COMMENT=	network time protocol implementation
-COMMENT-doc=	network time protocol documentation
+# $OpenBSD: Makefile,v 1.12.2.1 2001/04/10 11:59:58 naddy Exp $
 
 VERSION=	4.0.99k
 DISTNAME=	ntp-${VERSION}
-PKGNAME=	ntp-${VERSION}p1
-PKGNAME-doc=	ntp-doc-${VERSION}p1
 CATEGORIES=	net
-NEED_VERSION=	1.384
+NEED_VERSION=	1.340
 MASTER_SITES=	ftp://ftp.udel.edu/pub/ntp/ntp4/ \
 		http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ \
 		ftp://ftp.cs.umn.edu/mirrors00/ftp.udel.edu/pub/ntp/ntp4/
@@ -24,6 +19,12 @@ PERMIT_DISTFILES_FTP=	Yes
 
 MULTI_PACKAGES=	-doc
 SUBPACKAGE?=
+
+.if ${SUBPACKAGE} == "-doc"
+PKGNAME=	ntp-doc-${VERSION}p1
+.else
+PKGNAME=	ntp-${VERSION}p1
+.endif
 
 SEPARATE_BUILD=	concurrent
 CONFIGURE_STYLE= gnu

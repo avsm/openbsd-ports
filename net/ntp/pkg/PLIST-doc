@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-doc,v 1.1 2001/02/07 18:13:43 danh Exp $
+@comment $OpenBSD: PLIST-doc,v 1.1.2.1 2001/04/10 11:59:59 naddy Exp $
 share/doc/ntp/Oncore-SHMEM.htm
 share/doc/ntp/accopt.htm
 share/doc/ntp/assoc.htm

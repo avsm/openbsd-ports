@@ -1,4 +1,4 @@
-$OpenBSD: patch-php_ini-recommended,v 1.10.2.1 2004/07/17 00:36:33 robert Exp $
+$OpenBSD: patch-php_ini-recommended,v 1.10.2.2 2004/07/17 00:52:34 robert Exp $
 --- php.ini-recommended.orig	Mon May 17 18:31:14 2004
 +++ php.ini-recommended	Mon Jul  5 01:56:46 2004
 @@ -423,11 +423,8 @@

@@ -1,4 +1,4 @@
-$OpenBSD: patch-php_ini-dist,v 1.12.2.1 2004/07/17 00:36:33 robert Exp $
+$OpenBSD: patch-php_ini-dist,v 1.12.2.2 2004/07/17 00:52:34 robert Exp $
 --- php.ini-dist.orig	Mon May 17 18:31:13 2004
 +++ php.ini-dist	Mon Jul  5 01:56:38 2004
 @@ -408,10 +408,7 @@

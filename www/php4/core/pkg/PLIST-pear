@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-pear,v 1.5.2.1 2004/07/17 00:36:33 robert Exp $
+@comment $OpenBSD: PLIST-pear,v 1.5.2.2 2004/07/17 00:52:34 robert Exp $
 pear/lib/.registry/archive_tar.reg
 pear/lib/.registry/console_getopt.reg
 pear/lib/.registry/pear.reg

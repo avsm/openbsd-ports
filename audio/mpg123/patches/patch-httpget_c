@@ -1,6 +1,6 @@
-$OpenBSD: patch-httpget_c,v 1.1 2003/11/13 20:51:50 margarida Exp $
---- httpget.c.orig	2003-11-13 18:34:37.000000000 +0000
-+++ httpget.c	2003-11-13 18:35:10.000000000 +0000
+$OpenBSD: patch-httpget_c,v 1.1.4.1 2003/11/13 20:55:52 margarida Exp $
+--- httpget.c.orig	Thu Nov 13 18:23:47 2003
++++ httpget.c	Thu Nov 13 18:27:48 2003
 @@ -55,11 +55,10 @@ void readstring (char *string, int maxle
  #endif
  	int pos = 0;

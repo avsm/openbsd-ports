@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.27.2.1 2003/07/18 00:25:20 brad Exp $
+# $OpenBSD: Makefile,v 1.27.2.2 2003/11/13 20:55:52 margarida Exp $
 
 NOT_FOR_ARCHS=	sparc64
 
 COMMENT=	"mpeg audio 1/2 layer 1, 2 and 3 player"
 
 DISTNAME=	mpg123-0.59r
-PKGNAME=	${DISTNAME}p1
+PKGNAME=	${DISTNAME}p2
 CATEGORIES=	audio
 HOMEPAGE=	http://www.mpg123.de/
 

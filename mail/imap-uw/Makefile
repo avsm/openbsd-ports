@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.40 2003/10/05 22:00:00 jakob Exp $
+# $OpenBSD: Makefile,v 1.40.2.1 2005/02/09 07:20:10 sturm Exp $
 
 COMMENT=		"University of Washington IMAP4rev1/POP2/POP3 mail servers"
 COMMENT-mailutil=	"University of Washington IMAP4rev1/POP2/POP3 mail utility"
 
-VERSION=		2002.339
-DISTNAME=		imap-2002e
+VERSION=		2004.357
+DISTNAME=		imap-2004c1
 
 PKGNAME=		imap-uw-${VERSION}
 PKGNAME-mailutil=	mailutil-uw-${VERSION}
@@ -25,7 +25,7 @@ PERMIT_DISTFILES_CDROM=	no
 PERMIT_DISTFILES_FTP=	yes
 
 ALL_TARGET=	bso
-MAKE_FLAGS=	EXTRACFLAGS="${CFLAGS}" EXTRAAUTHENTICATORS="gss"
+MAKE_FLAGS=	EXTRACFLAGS="${CFLAGS}" EXTRAAUTHENTICATORS="gss" IP=6
 
 MULTI_PACKAGES=	-mailutil
 SUBPACKAGE?=
@@ -52,8 +52,8 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/dmail/dmail ${PREFIX}/bin
 	${INSTALL_PROGRAM} ${WRKSRC}/mailutil/mailutil ${PREFIX}/bin
 	${INSTALL_PROGRAM} ${WRKSRC}/tmail/tmail ${PREFIX}/bin
-	${INSTALL_MAN} ${WRKSRC}/src/imapd/imapd.8c ${PREFIX}/man/man8/imapd.8
-	${INSTALL_MAN} ${WRKSRC}/src/ipopd/ipopd.8c ${PREFIX}/man/man8/ipopd.8
+	${INSTALL_MAN} ${WRKSRC}/src/imapd/imapd.8 ${PREFIX}/man/man8/imapd.8
+	${INSTALL_MAN} ${WRKSRC}/src/ipopd/ipopd.8 ${PREFIX}/man/man8/ipopd.8
 	${INSTALL_MAN} ${WRKSRC}/src/dmail/dmail.1 ${PREFIX}/man/man1
 	${INSTALL_MAN} ${WRKSRC}/src/mailutil/mailutil.1 ${PREFIX}/man/man1
 	${INSTALL_MAN} ${WRKSRC}/src/tmail/tmail.1 ${PREFIX}/man/man1

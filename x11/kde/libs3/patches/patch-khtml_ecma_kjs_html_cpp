@@ -1,0 +1,52 @@
+$OpenBSD: patch-khtml_ecma_kjs_html_cpp,v 1.1.2.1 2003/04/10 18:59:40 brad Exp $
+--- khtml/ecma/kjs_html.cpp.orig	Sat Sep 28 14:30:38 2002
++++ khtml/ecma/kjs_html.cpp	Wed Apr  9 23:18:48 2003
+@@ -300,14 +300,9 @@ void KJS::HTMLDocument::putValue(ExecSta
+     doc.setCookie(value.toString(exec).string());
+     break;
+   case Location: {
+-    KHTMLView *view = static_cast<DOM::DocumentImpl *>( doc.handle() )->view();
+-    Q_ASSERT(view);
+-    if (view)
+-    {
+-      KHTMLPart *part = view->part();
+-      QString str = value.toString(exec).qstring();
+-      part->scheduleRedirection(0, str);
+-    }
++    KHTMLView *view = static_cast<DOM::DocumentImpl*>(doc.handle())->view();
++    if ( view )
++      Window::retrieveWindow(view->part())->goURL(exec, value.toString(exec).qstring());
+     break;
+   }
+   case BgColor:
+@@ -1435,7 +1430,8 @@ Value KJS::HTMLElement::getValueProperty
+     case ObjectBorder:          return getString(object.border());
+     case ObjectCodeBase:        return getString(object.codeBase());
+     case ObjectCodeType:        return getString(object.codeType());
+-    case ObjectContentDocument: return getDOMNode(exec, object.contentDocument());
++    case ObjectContentDocument: return checkNodeSecurity(exec,object.contentDocument()) ? 
++				       getDOMNode(exec, object.contentDocument()) : Undefined();
+     case ObjectData:            return getString(object.data());
+     case ObjectDeclare:         return Boolean(object.declare());
+     case ObjectHeight:          return getString(object.height());
+@@ -1625,7 +1621,8 @@ Value KJS::HTMLElement::getValueProperty
+   case ID_FRAME: {
+     DOM::HTMLFrameElement frameElement = element;
+     switch (token) {
+-    case FrameContentDocument: return getDOMNode(exec, frameElement.contentDocument());
++    case FrameContentDocument: return checkNodeSecurity(exec,frameElement.contentDocument()) ? 
++				      getDOMNode(exec, frameElement.contentDocument()) : Undefined();
+     case FrameFrameBorder:     return getString(frameElement.frameBorder());
+     case FrameLongDesc:        return getString(frameElement.longDesc());
+     case FrameMarginHeight:    return getString(frameElement.marginHeight());
+@@ -1642,8 +1639,8 @@ Value KJS::HTMLElement::getValueProperty
+     DOM::HTMLIFrameElement iFrame = element;
+     switch (token) {
+     case IFrameAlign:                return getString(iFrame.align());
+-      // ### security check ?
+-    case IFrameContentDocument:      return getDOMNode(exec, iFrame.contentDocument());
++    case IFrameContentDocument: return checkNodeSecurity(exec,iFrame.contentDocument()) ? 
++				       getDOMNode(exec, iFrame.contentDocument()) : Undefined();
+     case IFrameFrameBorder:     return getString(iFrame.frameBorder());
+     case IFrameHeight:          return getString(iFrame.height());
+     case IFrameLongDesc:        return getString(iFrame.longDesc());

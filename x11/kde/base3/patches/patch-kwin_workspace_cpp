@@ -1,0 +1,15 @@
+$OpenBSD: patch-kwin_workspace_cpp,v 1.1.2.1 2003/04/10 18:59:40 brad Exp $
+--- kwin/workspace.cpp.orig	Sun Dec 15 21:45:06 2002
++++ kwin/workspace.cpp	Wed Apr  9 23:27:35 2003
+@@ -1389,8 +1389,9 @@ void Workspace::setActiveClient( Client*
+     if ( menubar ) {
+         menubar->show();
+ 	// do not cover a client that wants to stay on top with the desktop menu
+-	if ( menubar->mainClient() == active_client->mainClient()
+-	     || !active_client->staysOnTop())
++	if ( active_client != NULL
++            && ( menubar->mainClient() == active_client->mainClient()
++	         || !active_client->staysOnTop()))
+ 	    menubar->raise(); // better for FocusFollowsMouse than raiseClient(menubar)
+ 
+         raiseElectricBorders();

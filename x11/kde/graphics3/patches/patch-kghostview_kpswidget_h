@@ -1,0 +1,26 @@
+$OpenBSD: patch-kghostview_kpswidget_h,v 1.1.2.1 2003/04/10 18:59:40 brad Exp $
+--- kghostview/kpswidget.h.orig	Sun Feb 17 12:38:24 2002
++++ kghostview/kpswidget.h	Thu Apr 10 02:05:05 2003
+@@ -134,10 +134,11 @@ public:
+     bool sendPS( FILE*, unsigned int begin, unsigned int end );
+    
+     /**
+-     * Sets the filename of the ghostscript input. Usually we use a pipe for
+-     * communication and no filename will be needed.
++     * Sets the filename of the ghostscript input. 
++     * @p usePipe indicates whether we use a pipe for
++     * communication or let ghoscript read the file itself.
+      */
+-    void setFileName( const QString& );
++    void setFileName( const QString&, bool usePipe );
+ 
+     /**
+      * Set the bounding box of the drawable. See my comment in the source
+@@ -249,6 +250,7 @@ private:
+     QString     _ghostscriptPath;
+     QStringList _ghostscriptArguments;
+     QString     _fileName;
++    bool        _usePipe;
+ 
+     /**
+      * Flag set when one of the properties _ghostscriptPath, 

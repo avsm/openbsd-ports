@@ -1,0 +1,27 @@
+$OpenBSD: patch-kdm_chooser_CXdmcp_cpp,v 1.1.2.1 2003/04/10 18:59:40 brad Exp $
+--- kdm/chooser/CXdmcp.cpp.orig	Sat Sep 28 14:22:22 2002
++++ kdm/chooser/CXdmcp.cpp	Wed Apr  9 23:27:35 2003
+@@ -663,7 +663,6 @@ int CXdmcp::initXDMCP()
+     XdmcpHeader header;
+     int i;
+ 
+-    memset(&header, 0, sizeof(header));
+     header.version = XDM_PROTOCOL_VERSION;
+     header.opcode = (CARD16) BROADCAST_QUERY;
+     header.length = 1;
+@@ -679,6 +678,7 @@ int CXdmcp::initXDMCP()
+ 	header.length += 2 + AuthenticationNames.data[i].length;
+     _XdmcpWriteHeader(&directBuffer, &header);
+     _XdmcpWriteARRAYofARRAY8(&directBuffer, &AuthenticationNames);
++
+ #if defined(STREAMSCONN)
+     if ((socketFD = t_open("/dev/udp", O_RDWR, 0)) < 0)
+ 	return 0;
+@@ -855,6 +855,7 @@ CXdmcp::CXdmcp()
+     clientAddress = CvtStringToARRAY8(args->getOption("clientaddress"));
+     connectionType = args->getOption("connectionType").toInt();
+ 
++    buffer.size = broadcastBuffer.size = directBuffer.size = 0;
+     initXDMCP();
+ 
+     for (int i = 0, n = args->count(); i < n; i++)

@@ -1,0 +1,35 @@
+$OpenBSD: patch-kcontrol_crypto_crypto_cpp,v 1.1.2.1 2003/04/10 18:59:40 brad Exp $
+--- kcontrol/crypto/crypto.cpp.orig	Mon Jun 24 07:55:37 2002
++++ kcontrol/crypto/crypto.cpp	Wed Apr  9 23:27:35 2003
+@@ -2282,9 +2282,13 @@ SSL_METHOD *meth;
+   for (i=0; ; i++) {
+     int j, k;
+     SSL_CIPHER *sc;
+-    QString cname;
+     sc = (meth->get_cipher)(i);
+-    if (!sc) break;
++    if (!sc)
++      break;
++    // Leak of sc*?
++    if (QString(sc->name).contains("ADH-")) {
++      continue;
++    }
+     k = SSL_CIPHER_get_bits(sc, &j);
+ 
+     item = new CipherItem( SSLv2Box, sc->name, k, j, this );
+@@ -2305,9 +2309,13 @@ SSL_METHOD *meth;
+   for (i=0; ; i++) {
+     int j, k;
+     SSL_CIPHER *sc;
+-    QString cname;
+     sc = (meth->get_cipher)(i);
+-    if (!sc) break;
++    if (!sc)
++      break;
++    // Leak of sc*?
++    if (QString(sc->name).contains("ADH-")) {
++      continue;
++    }
+     k = SSL_CIPHER_get_bits(sc, &j);
+ 
+     item = new CipherItem( SSLv3Box, sc->name, k, j, this );

@@ -1,0 +1,12 @@
+$OpenBSD: patch-kdecore_kurl_cpp,v 1.1.2.1 2003/04/10 18:59:40 brad Exp $
+--- kdecore/kurl.cpp.orig	Sat Sep 28 14:04:11 2002
++++ kdecore/kurl.cpp	Wed Apr  9 23:18:48 2003
+@@ -183,7 +183,7 @@ static QString decode( const QString& se
+   while( i < old_length )
+   {
+     unsigned int character = segment[ i++ ].unicode();
+-    if ((character == ' ') || (character > 255))
++    if ((character <= ' ') || (character > 255))
+        bKeepEncoded = false;
+     if (character == '%' )
+     {

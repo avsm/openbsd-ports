@@ -1,0 +1,11 @@
+$OpenBSD: patch-khtml_ecma_kjs_dom_h,v 1.1.2.1 2003/04/10 18:59:40 brad Exp $
+--- khtml/ecma/kjs_dom.h.orig	Mon Aug  5 11:10:40 2002
++++ khtml/ecma/kjs_dom.h	Wed Apr  9 23:18:48 2003
+@@ -246,6 +246,7 @@ namespace KJS {
+     static const ClassInfo info;
+   };
+ 
++  bool checkNodeSecurity(ExecState *exec, const DOM::Node& n);
+   Value getDOMNode(ExecState *exec, DOM::Node n);
+   Value getDOMNodeOrFrame(ExecState *exec, DOM::Node n);
+   Value getDOMNamedNodeMap(ExecState *exec, DOM::NamedNodeMap m);

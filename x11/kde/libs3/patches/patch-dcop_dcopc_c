@@ -1,0 +1,12 @@
+$OpenBSD: patch-dcop_dcopc_c,v 1.1.2.1 2003/04/10 18:59:40 brad Exp $
+--- dcop/dcopc.c.orig	Sun Dec 15 20:54:24 2002
++++ dcop/dcopc.c	Wed Apr  9 23:18:48 2003
+@@ -319,7 +319,7 @@ dcop_send_signal(
+ 
+   struct DCOPMsg * pMsgPtr = 0;
+ 
+-  static const char sAnonymous = "anonymous";
++  static const char* sAnonymous = "anonymous";
+ 
+   if (0 == dcop_ice_conn) {
+     fprintf(stderr, "Try running dcop_attach(), moron\n");

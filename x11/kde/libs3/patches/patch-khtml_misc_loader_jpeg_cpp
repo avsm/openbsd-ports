@@ -1,0 +1,12 @@
+$OpenBSD: patch-khtml_misc_loader_jpeg_cpp,v 1.1.2.1 2003/04/10 18:59:40 brad Exp $
+--- khtml/misc/loader_jpeg.cpp.orig	Tue Apr 17 04:56:22 2001
++++ khtml/misc/loader_jpeg.cpp	Wed Apr  9 23:18:49 2003
+@@ -60,7 +60,7 @@ extern "C" {
+         khtml_error_mgr* myerr = (khtml_error_mgr*) cinfo->err;
+         char buffer[JMSG_LENGTH_MAX];
+         (*cinfo->err->format_message)(cinfo, buffer);
+-        qWarning(buffer);
++        qWarning("%s", buffer);
+         longjmp(myerr->setjmp_buffer, 1);
+     }
+ }

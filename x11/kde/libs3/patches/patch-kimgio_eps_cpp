@@ -1,0 +1,21 @@
+$OpenBSD: patch-kimgio_eps_cpp,v 1.1.2.1 2003/04/10 18:59:40 brad Exp $
+--- kimgio/eps.cpp.orig	Sun Dec 15 20:56:09 2002
++++ kimgio/eps.cpp	Wed Apr  9 23:14:27 2003
+@@ -27,7 +27,7 @@ bool bbox ( QImageIO *imageio, int *x1, 
+                         // We don't support that currently, but at least we parse it
+                         float _x1, _y1, _x2, _y2;
+                         if ( sscanf (buf, "%*s %f %f %f %f", 
+-                                &_x1, &_y1, &_x2, &_y2) == 5) {
++                                &_x1, &_y1, &_x2, &_y2) == 4) {
+                                 *x1=(int)_x1; *y1=(int)_y1; *x2=(int)_x2; *y2=(int)_y2;
+                                 ret = true;
+                                 break;
+@@ -99,7 +99,7 @@ void kimgio_eps_read (QImageIO *image)
+         tmp.setNum( wantedHeight );
+         cmdBuf += "x";
+         cmdBuf += tmp;
+-        cmdBuf += " -dNOPAUSE -sDEVICE=ppm -c "
++        cmdBuf += " -dSAFER -dPARANOIDSAFER -dNOPAUSE -sDEVICE=ppm -c "
+                 "0 0 moveto "
+                 "1000 0 lineto "
+                 "1000 1000 lineto "

@@ -1,0 +1,12 @@
+$OpenBSD: patch-kioslave_thumbnail_gscreator_cpp,v 1.1.2.1 2003/04/10 18:59:40 brad Exp $
+--- kioslave/thumbnail/gscreator.cpp.orig	Thu Mar  7 20:16:52 2002
++++ kioslave/thumbnail/gscreator.cpp	Mon Apr  7 19:42:25 2003
+@@ -59,6 +59,8 @@ static const char *gsargs[] = {
+     "gs",
+     "-sDEVICE=png16m",
+     "-sOutputFile=-",
++    "-dSAFER",
++    "-dPARANOIDSAFER",
+     "-dNOPAUSE",
+     "-dFirstPage=1",
+     "-dLastPage=1",

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.29 2004/02/29 00:25:41 avsm Exp $
+# $OpenBSD: Makefile,v 1.29.2.1 2004/07/17 00:36:33 robert Exp $
 
 FULLPKGNAME=	php4-extensions-${V}
 COMMENT=	"informational package about PHP4 extensions"
@@ -251,17 +251,6 @@ MULTI_PACKAGES+=	-snmp
 COMMENT-snmp=		"snmp protocol extensions for php4"
 CONFIGURE_ARGS+=	--with-snmp=shared,${LOCALBASE} --enable-ucd-snmp-hack
 SNMP_DEPENDS=		snmp.42::net/ucd-snmp
-.endif
-
-# pspell
-PSEUDO_FLAVORS+=	no_pspell
-.if ${FLAVOR:L:Mno_pspell}
-CONFIGURE_ARGS+=	--without-pspell
-.else
-MULTI_PACKAGES+=	-pspell
-COMMENT-pspell=		"spell checking extensions for php4"
-CONFIGURE_ARGS+=	--with-pspell=shared,${LOCALBASE}
-LIB_DEPENDS+=		aspell.15::textproc/aspell/core
 .endif
 
 # sybase-ct

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.19.2.1 2000/11/20 17:00:19 espie Exp $
+# $OpenBSD: Makefile,v 1.19.2.2 2001/04/10 12:08:33 naddy Exp $
 # $FreeBSD: Makefile,v 1.26 1997/11/20 08:58:51 tg Exp $
 #
 
@@ -39,7 +39,6 @@
 #    SUBDIR += xcpustate
 #    SUBDIR += xdu
 #    SUBDIR += xloadface
-     SUBDIR += xntpd
      SUBDIR += xosview
 #    SUBDIR += xperfmon
 #    SUBDIR += xsysinfo

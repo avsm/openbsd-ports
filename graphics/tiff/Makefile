@@ -1,13 +1,13 @@
-# $OpenBSD: Makefile,v 1.29 2004/05/18 23:35:35 brad Exp $
+# $OpenBSD: Makefile,v 1.29.2.1 2005/03/31 22:08:46 sturm Exp $
 
 COMMENT=	"tools and library routines for working with TIFF images"
 
 VERSION=	3.6.1
 DISTNAME=	tiff-v${VERSION}
-PKGNAME=	tiff-${VERSION}p1
+PKGNAME=	tiff-${VERSION}p6
 CATEGORIES=	graphics
 
-MASTER_SITES=	ftp://ftp.remotesensing.org/pub/libtiff/
+MASTER_SITES=	ftp://ftp.remotesensing.org/pub/libtiff/old/
 
 HOMEPAGE=	http://www.libtiff.org/
 

@@ -1,4 +1,4 @@
-$OpenBSD: patch-libtiff_tiffiop_h,v 1.1 2004/10/20 20:37:48 brad Exp $
+$OpenBSD: patch-libtiff_tiffiop_h,v 1.1.6.1 2005/03/31 22:08:47 sturm Exp $
 --- libtiff/tiffiop.h.orig	Fri Dec 26 06:56:25 2003
 +++ libtiff/tiffiop.h	Wed Oct 20 14:38:11 2004
 @@ -198,8 +198,9 @@ struct tiff {

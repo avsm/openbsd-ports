@@ -1,4 +1,4 @@
-$OpenBSD: patch-pngerror_c,v 1.1 2004/05/03 05:13:04 robert Exp $
+$OpenBSD: patch-pngerror_c,v 1.1.4.1 2004/05/03 11:42:13 robert Exp $
 --- pngerror.c.orig	Sun May  2 22:47:58 2004
 +++ pngerror.c	Sun May  2 22:49:36 2004
 @@ -135,10 +135,14 @@

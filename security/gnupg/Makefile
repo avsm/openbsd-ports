@@ -1,25 +1,21 @@
-# $OpenBSD: Makefile,v 1.35 2002/07/19 19:27:42 fgsch Exp $
+# $OpenBSD: Makefile,v 1.35.2.1 2003/06/04 16:03:58 brad Exp $
 
 COMMENT=	'GNU privacy guard - a free PGP replacement'
 
 DISTNAME=	gnupg-1.0.7
-PKGNAME=	${DISTNAME}
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	security
-MASTER_SITES=	ftp://ftp.gnupg.org/pub/gcrypt/gnupg/ \
-		ftp://ftp.progsoc.uts.edu.au/pub/gnupg/gnupg/ \
-		ftp://openbsd.rug.ac.be/pub/gcrypt/gnupg/ \
-		ftp://sunsite.auc.dk/pub/security/gcrypt/gnupg/ \
+MASTER_SITES=	ftp://ftp.gnupg.org/gcrypt/gnupg/ \
+		ftp://gd.tuwien.ac.at/privacy/gnupg/gnupg/ \
+		ftp://crypto.yashy.com/pub/cryptography/gnupg/ \
+		ftp://ftp.planetmirror.com/pub/gnupg/gnupg/ \
+		ftp://sunsite.dk/pub/security/gcrypt/gnupg/ \
 		ftp://ftp.linux.it/pub/mirrors/gnupg/gnupg/ \
-		ftp://pgp.iijlab.net/pub/gnupg/gnupg/ \
-		ftp://ring.aist.go.jp/pub/net/gnupg/gnupg/ \
-		ftp://sunsite.icm.edu.pl/pub/security/gcrypt/gnupg/ \
-		ftp://ftp.stacken.kth.se/pub/crypto/gnupg/gnupg/ \
-		ftp://ftp.net.lut.ac.uk/gcrypt/gnupg/ \
-		ftp://gd.tuwien.ac.at/privacy/gnupg/gnupg/
+		ftp://pgp.iijlab.net/pub/pgp/gnupg/ \
+		ftp://ring.aist.go.jp/pub/net/gnupg/gnupg/
 
 MASTER_SITES0=	ftp://ftp.ruhr-uni-bochum.de/mirrors/ftp.gnupg.org/pub/gcrypt/contrib/ \
 	ftp://ftp.uni-bielefeld.de/pub/crypto/replay/mirror/ftp.pgp.net/gnupgp/contrib/ \
-	ftp://ftp.hacktic.nl/pub/crypto/mirror/ftp.gnupg.org/contrib/ \
 	ftp://ftp.fh-schmalkalden.de/pub/dfncert/crypt/gcrypt/contrib/
 
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}

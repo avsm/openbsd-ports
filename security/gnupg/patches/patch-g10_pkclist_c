@@ -1,0 +1,115 @@
+$OpenBSD: patch-g10_pkclist_c,v 1.1.2.1 2003/06/04 16:03:58 brad Exp $
+--- g10/pkclist.c.orig	Mon Apr 29 10:37:20 2002
++++ g10/pkclist.c	Wed Jun  4 11:56:41 2003
+@@ -488,17 +488,23 @@ do_we_trust_pre( PKT_public_key *pk, uns
+ 	return 0;
+ 
+     if( !opt.batch && !rc ) {
+-	char *p;
+ 	u32 keyid[2];
+-	size_t n;
+ 
+ 	keyid_from_pk( pk, keyid);
+ 	tty_printf( "%4u%c/%08lX %s \"",
+ 		  nbits_from_pk( pk ), pubkey_letter( pk->pubkey_algo ),
+ 		  (ulong)keyid[1], datestr_from_pk( pk ) );
+-	p = get_user_id( keyid, &n );
+-	tty_print_utf8_string( p, n ),
+-	m_free(p);
++	/* If the pk was chosen by a particular user ID, this is the
++	   one to ask about. */
++	if(pk->user_id)
++	  tty_print_utf8_string(pk->user_id->name,pk->user_id->len);
++	else
++	  {
++	    size_t n;
++	    char *p = get_user_id( keyid, &n );
++	    tty_print_utf8_string( p, n );
++	    m_free(p);
++	  }
+ 	tty_printf("\"\n");
+         print_fingerprint (pk, NULL, 2);
+ 	tty_printf("\n");
+@@ -794,7 +800,26 @@ build_pk_list( STRLIST remusr, PK_LIST *
+ 		else {
+ 		    int trustlevel;
+ 
+-		    trustlevel = get_validity (pk, NULL);
++		    /* Fill in the namehash so we can get the validity
++		       for this particular UID.  If we start using it
++		       in more places than here, it might be good to
++		       fill this in for all PKs. */
++
++		    if(pk->user_id)
++		      {
++			pk->namehash=m_alloc(20);
++
++			if( pk->user_id->attrib_data )
++			  rmd160_hash_buffer (pk->namehash,
++					      pk->user_id->attrib_data,
++					      pk->user_id->attrib_len);
++			else
++			  rmd160_hash_buffer (pk->namehash,
++					      pk->user_id->name,
++					      pk->user_id->len );
++		      }
++
++		    trustlevel = get_validity (pk, pk->namehash);
+ 		    if( (trustlevel & TRUST_FLAG_DISABLED) ) {
+ 			tty_printf(_("Public key is disabled.\n") );
+ 		    }
+@@ -807,8 +832,6 @@ build_pk_list( STRLIST remusr, PK_LIST *
+ 			}
+ 			else {
+ 			    PK_LIST r;
+-			    char *p;
+-			    size_t n;
+ 			    u32 keyid[2];
+ 
+ 			    keyid_from_pk( pk, keyid);
+@@ -817,9 +840,16 @@ build_pk_list( STRLIST remusr, PK_LIST *
+ 				       pubkey_letter( pk->pubkey_algo ),
+ 				       (ulong)keyid[1],
+ 				       datestr_from_pk( pk ) );
+-			    p = get_user_id( keyid, &n );
+-			    tty_print_utf8_string( p, n );
+-			    m_free(p);
++			    if(pk->user_id)
++			      tty_print_utf8_string(pk->user_id->name,
++						    pk->user_id->len);
++			    else
++			      {
++				size_t n;
++				char *p = get_user_id( keyid, &n );
++				tty_print_utf8_string( p, n );
++				m_free(p);
++			      }
+ 			    tty_printf("\"\n");
+ 
+ 			    r = m_alloc( sizeof *r );
+@@ -886,6 +916,25 @@ build_pk_list( STRLIST remusr, PK_LIST *
+ 	    }
+ 	    else if( !(rc=check_pubkey_algo2(pk->pubkey_algo, use )) ) {
+ 		int trustlevel;
++
++		/* Fill in the namehash so we can get the validity
++		   for this particular UID.  If we start using it
++		   in more places than here, it might be good to
++		   fill this in for all PKs. */
++
++		if(pk->user_id)
++		  {
++		    pk->namehash=m_alloc(20);
++
++		    if( pk->user_id->attrib_data )
++		      rmd160_hash_buffer (pk->namehash,
++					  pk->user_id->attrib_data,
++					  pk->user_id->attrib_len);
++		    else
++		      rmd160_hash_buffer (pk->namehash,
++					  pk->user_id->name,
++					  pk->user_id->len );
++		  }
+ 
+ 		trustlevel = get_validity (pk, pk->namehash);
+ 		if( (trustlevel & TRUST_FLAG_DISABLED) ) {

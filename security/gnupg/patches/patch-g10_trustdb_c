@@ -1,0 +1,38 @@
+$OpenBSD: patch-g10_trustdb_c,v 1.1.2.1 2003/06/04 16:03:58 brad Exp $
+--- g10/trustdb.c.orig	Mon Apr 29 10:41:06 2002
++++ g10/trustdb.c	Wed Jun  4 11:53:38 2003
+@@ -816,16 +816,27 @@ get_validity (PKT_public_key *pk, const 
+   while (recno)
+     {
+       read_record (recno, &vrec, RECTYPE_VALID);
+-      if ( validity < (vrec.r.valid.validity & TRUST_MASK) )
+-        validity = (vrec.r.valid.validity & TRUST_MASK);
+-      if ( namehash && !memcmp (vrec.r.valid.namehash, namehash, 20) )
+-        break;
++      if(namehash)
++	{
++	  /* If namehash is given we return the trust for that user ID
++	     ONLY.  If the namehash is not found, then there is no
++	     validity at all (i.e. the user ID wasn't signed). */
++	  if(memcmp(vrec.r.valid.namehash,namehash,20)==0)
++	    {
++	      validity=(vrec.r.valid.validity & TRUST_MASK);
++	      break;
++	    }
++	}
++      else
++	{
++	  /* If no namehash is given, we take the maximum validity
++	     over all user IDs */
++	  if ( validity < (vrec.r.valid.validity & TRUST_MASK) )
++	    validity = (vrec.r.valid.validity & TRUST_MASK);
++	}
+       recno = vrec.r.valid.next;
+     }
+   
+-  if (recno) /* okay, use the user ID associated one */
+-    validity = (vrec.r.valid.validity & TRUST_MASK);
+-
+   if ( (trec.r.trust.ownertrust & TRUST_FLAG_DISABLED) )
+     validity |= TRUST_FLAG_DISABLED;
+ 

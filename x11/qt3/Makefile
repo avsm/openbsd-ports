@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.29 2003/05/13 00:26:32 naddy Exp $
+# $OpenBSD: Makefile,v 1.29.2.1 2004/10/01 01:51:41 brad Exp $
 # $FreeBSD: Makefile,v 1.33 1999/02/27 03:09:57 andreas Exp $
 
 COMMENT=		"C++ X11 GUI toolkit"
@@ -59,7 +59,7 @@ CONFIGURE_ARGS=	-qt-gif -system-libmng -system-libpng -system-libjpeg \
 MULTI_PACKAGES+=-base -html
 
 .if ${FLAVOR:L:Mmt}
-FULLPKGNAME=		qt3-mt-${VERSION}
+FULLPKGNAME=		qt3-mt-${VERSION}p1
 CONFIGURE_ARGS+=-thread
 MULTI_PACKAGES+=	-examples
 .else
@@ -268,7 +268,7 @@ do-install:
 	    ${QT_PLUGINSDIR}/designer
 
 
-PKGNAME=		qt3-${VERSION}
+PKGNAME=		qt3-${VERSION}p1
 PKGNAME-mysql=		qt3-mysql-${VERSION}
 PKGNAME-postgresql=	qt3-postgresql-${VERSION}
 PKGNAME-examples=	qt3-examples-${VERSION}

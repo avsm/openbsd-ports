@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.80.2.1 2002/12/16 21:12:03 brad Exp $
+# $OpenBSD: Makefile,v 1.80.2.2 2003/01/30 15:44:54 brad Exp $
 # $FreeBSD: Makefile,v 1.44 1999/03/04 21:27:58 dirk Exp $
 # Uses pthreads
 
@@ -17,8 +17,7 @@ BROKEN=		"Support for ${MACHINE_ARCH} threads is currently broken and/or unteste
 .  endif
 .endfor
 
-
-VERSION=	3.23.54
+VERSION=	3.23.55
 DISTNAME=	mysql-${VERSION}
 FULLPKGNAME=	mysql-client-${VERSION}
 PKGNAME-server=	mysql-server-${VERSION}

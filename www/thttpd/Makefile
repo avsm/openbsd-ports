@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.7 2001/04/21 06:50:49 jakob Exp $
+# $OpenBSD: Makefile,v 1.7.2.1 2001/05/07 10:52:55 naddy Exp $
 
 COMMENT=	tiny/turbo/throttling HTTP server
 
-DISTNAME=	thttpd-2.21
+DISTNAME=	thttpd-2.21b
 CATEGORIES=    	www
 NEED_VERSION=	1.363
 

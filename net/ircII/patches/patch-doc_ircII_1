@@ -1,4 +1,4 @@
-$OpenBSD: patch-doc_ircII_1,v 1.1 2002/12/08 23:21:34 brad Exp $
+$OpenBSD: patch-doc_ircII_1,v 1.1.2.1 2003/03/15 02:44:06 brad Exp $
 --- doc/ircII.1.orig	Wed Oct 30 08:57:51 2002
 +++ doc/ircII.1	Sun Dec  8 18:02:52 2002
 @@ -3,7 +3,7 @@

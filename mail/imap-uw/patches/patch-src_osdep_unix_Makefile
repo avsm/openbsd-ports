@@ -1,8 +1,8 @@
-$OpenBSD: patch-src_osdep_unix_Makefile,v 1.2 2001/11/18 19:49:22 jakob Exp $
+$OpenBSD: patch-src_osdep_unix_Makefile,v 1.2.2.1 2002/12/09 20:26:26 jakob Exp $
 
---- src/osdep/unix/Makefile.orig	Tue Jul  3 08:02:10 2001
-+++ src/osdep/unix/Makefile	Sun Aug 26 12:49:37 2001
-@@ -28,8 +28,8 @@
+--- src/osdep/unix/Makefile.orig	Tue Oct  1 21:31:19 2002
++++ src/osdep/unix/Makefile	Sat Oct  5 17:12:58 2002
+@@ -28,8 +28,8 @@ SSLTYPE=nopwd
  
  # Extended flags needed for SSL.  You may need to modify.
  
@@ -13,7 +13,7 @@ $OpenBSD: patch-src_osdep_unix_Makefile,v 1.2 2001/11/18 19:49:22 jakob Exp $
  SSLINCLUDE=$(SSLDIR)/include
  SSLLIB=$(SSLDIR)/lib
  
-@@ -234,7 +237,7 @@
+@@ -234,7 +234,7 @@ bso:	# OpenBSD
  	 SPOOLDIR=/var \
  	 ACTIVEFILE=/usr/local/news/lib/active \
  	 RSHPATH=/usr/bin/rsh \

@@ -1,4 +1,4 @@
-$OpenBSD: patch-tmail_tmail_c,v 1.1 2002/09/18 08:19:06 jakob Exp $
+$OpenBSD: patch-tmail_tmail_c,v 1.1.4.1 2002/12/09 20:26:26 jakob Exp $
 --- src/tmail/tmail.c.orig	Mon Jul 15 00:49:28 2002
 +++ src/tmail/tmail.c	Sun Sep  8 20:51:54 2002
 @@ -189,7 +189,6 @@ int main (int argc,char *argv[])

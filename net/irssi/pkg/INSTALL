@@ -1,11 +1,10 @@
 #!/bin/sh
-# $OpenBSD: INSTALL,v 1.2 2002/02/23 10:29:55 reinhard Exp $
+# $OpenBSD: INSTALL,v 1.2.8.1 2003/12/14 04:14:31 margarida Exp $
 #
 # Pre/post-installation setup of irssi
 
 # exit on errors, use a sane path and install prefix
 #
-set -e
 PATH=/bin:/usr/bin:/sbin:/usr/sbin
 PREFIX=${PKG_PREFIX:-/usr/local}
 CONFIG_DIR=${SYSCONFDIR}/irssi

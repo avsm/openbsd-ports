@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.18 2003/01/02 11:03:44 reinhard Exp $
+# $OpenBSD: Makefile,v 1.18.4.1 2003/12/14 04:14:31 margarida Exp $
 # Original from: Timo Sirainen <tss@iki.fi>
 
 COMMENT=	"modular IRC client with many features (ipv6,socks,proxy)"
 
-DISTNAME=	irssi-0.8.6
+DISTNAME=	irssi-0.8.9
 CATEGORIES=	net
 
 MASTER_SITES=	${HOMEPAGE}/files/ \

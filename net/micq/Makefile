@@ -1,35 +1,27 @@
-# $OpenBSD: Makefile,v 1.18 2001/10/25 02:50:53 form Exp $
+# $OpenBSD: Makefile,v 1.18.4.1 2003/05/14 09:00:41 david Exp $
 # $FreeBSD: Makefile,v 1.6 1999/06/03 08:31:06 ache Exp $
 
 COMMENT=	"text-based ICQ implementation"
 
-DISTNAME=       micq-0.4.7
+DISTNAME=       micq-0.4.10.3
 CATEGORIES=	net
-NEED_VERSION=	1.425
 
-HOMEPAGE=	http://micq.ukeer.de/
+MAINTAINER=	David Krause <david@openbsd.org>
+HOMEPAGE=	http://www.micq.org/
 
+# GPL
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-MASTER_SITES=	${HOMEPAGE}/source/ \
+MASTER_SITES=	${HOMEPAGE}source/ \
 		http://micq.alpha345.com/source/ \
-		http://micq.probleme.net/source/
+		http://http.bg.micq.org/source/
 
 EXTRACT_SUFX=	.tgz
 
 USE_GMAKE=	Yes
 CONFIGURE_STYLE= gnu
-
-DOCS=	README README.SOCKS5 commands.txt icq091.txt
-
-post-install:
-	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/micq
-	${INSTALL_MAN} ${WRKSRC}/doc/micq.1 ${PREFIX}/man/man1
-	${INSTALL_MAN} ${WRKSRC}/doc/micqrc.5 ${PREFIX}/man/man5
-	${INSTALL_MAN} ${WRKSRC}/doc/micq.7 ${PREFIX}/man/man7
-	cd ${WRKSRC}/doc; ${INSTALL_DATA} ${DOCS} ${PREFIX}/share/doc/micq
 
 .include <bsd.port.mk>

@@ -1,0 +1,25 @@
+$OpenBSD: patch-khtml_ecma_kjs_html_cpp,v 1.1.2.1 2002/09/12 16:42:46 brad Exp $
+--- khtml/ecma/kjs_html.cpp.orig	Wed Sep 11 19:45:46 2002
++++ khtml/ecma/kjs_html.cpp	Wed Sep 11 19:48:24 2002
+@@ -858,7 +858,6 @@ KJSO KJS::HTMLElement::tryGet(const UStr
+     case ID_FRAME: {
+       DOM::HTMLFrameElement frameElement = element;
+ 
+-      // p == "document" ?
+       if (p == "frameBorder")          return getString(frameElement.frameBorder());
+       else if (p == "longDesc")        return getString(frameElement.longDesc());
+       else if (p == "marginHeight")    return getString(frameElement.marginHeight());
+@@ -873,9 +872,11 @@ KJSO KJS::HTMLElement::tryGet(const UStr
+     break;
+     case ID_IFRAME: {
+       DOM::HTMLIFrameElement iFrame = element;
++      KHTMLPart* part = iFrame.isNull() ? 0 : static_cast<DOM::HTMLIFrameElementImpl*>(iFrame.handle() )->frameDocument()->view()->part();
+       if (p == "align")                return getString(iFrame.align());
+-      // ### security check ?
+-      else if (p == "document") {
++      else if ((iFrame.src().isEmpty() || !part || originCheck(part->url(), Window::retrieveActive()->part()->url())) 
++
++               && p == "document") {
+         if ( !iFrame.isNull() )
+           return getDOMNode( static_cast<DOM::HTMLIFrameElementImpl*>(iFrame.handle() )->frameDocument() );
+ 

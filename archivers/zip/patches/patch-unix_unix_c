@@ -1,4 +1,4 @@
-$OpenBSD: patch-unix_unix_c,v 1.1 2004/12/04 15:36:36 robert Exp $
+$OpenBSD: patch-unix_unix_c,v 1.1.2.1 2004/12/05 11:41:32 robert Exp $
 --- unix/unix.c.orig	Sat Dec  4 16:25:31 2004
 +++ unix/unix.c	Sat Dec  4 16:26:56 2004
 @@ -319,9 +319,9 @@

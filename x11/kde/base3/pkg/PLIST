@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.7 2002/04/09 01:48:51 espie Exp $
+@comment $OpenBSD: PLIST,v 1.7.2.1 2002/09/19 14:29:30 brad Exp $
 bin/appletproxy
 bin/chooser
 bin/conttest
@@ -43,7 +43,7 @@ bin/kmenuedit
 bin/konqueror
 bin/konsole
 @owner root
-@chmod u+s
+@mode u+s
 bin/konsole_grantpty
 @mode
 @owner

@@ -1,0 +1,12 @@
+$OpenBSD: patch-playtree_c,v 1.1.4.1 2004/07/06 22:26:17 robert Exp $
+--- playtree.c.orig	Tue Jul  8 12:45:05 2003
++++ playtree.c	Sat Jul  3 05:30:36 2004
+@@ -936,7 +936,7 @@
+ 
+ void pt_add_gui_file(play_tree_t** ppt, char* path, char* file)
+ {
+-  char* wholename = malloc(strlen(path)+strlen(file)+3);
++  char* wholename = malloc(strlen(path)+strlen(file)+2);
+ 
+   if (wholename)
+   {

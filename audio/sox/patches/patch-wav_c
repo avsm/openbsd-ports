@@ -1,4 +1,4 @@
-$OpenBSD: patch-wav_c,v 1.1 2004/07/31 14:18:14 naddy Exp $
+$OpenBSD: patch-wav_c,v 1.1.4.1 2004/07/31 18:12:27 robert Exp $
 --- wav.c.orig	Fri Jul 30 19:33:34 2004
 +++ wav.c	Fri Jul 30 19:36:08 2004
 @@ -917,6 +917,8 @@ int st_wavstartread(ft_t ft) 

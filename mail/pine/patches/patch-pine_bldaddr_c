@@ -1,4 +1,4 @@
-$OpenBSD: patch-pine_bldaddr_c,v 1.1 2002/11/25 17:08:37 brad Exp $
+$OpenBSD: patch-pine_bldaddr_c,v 1.1.4.1 2002/11/25 17:38:06 brad Exp $
 --- pine/bldaddr.c.orig	Thu Jun 21 13:53:24 2001
 +++ pine/bldaddr.c	Mon Nov 25 11:55:38 2002
 @@ -7263,8 +7263,8 @@ est_size(a)

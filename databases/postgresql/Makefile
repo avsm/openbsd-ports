@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.68 2004/02/04 07:39:18 sturm Exp $
+# $OpenBSD: Makefile,v 1.68.2.1 2005/02/05 21:54:44 sturm Exp $
 
 COMMENT=	"PostgreSQL RDBMS"
 COMMENT-tcl=	"PostgreSQL RDBMS tcl libraries and utilities"
@@ -7,9 +7,10 @@ COMMENT-docs=	"PostgreSQL RDBMS documentation"
 
 VERSION=	7.3.5
 DISTNAME=	postgresql-${VERSION}
-PKGNAME-clients=postgresql-clients-${VERSION}
-PKGNAME-docs=	postgresql-docs-${VERSION}
-PKGNAME-tcl=	postgresql-tcl-${VERSION}
+PKGNAME=	${DISTNAME}p1
+PKGNAME-clients=postgresql-clients-${VERSION}p1
+PKGNAME-docs=	postgresql-docs-${VERSION}p1
+PKGNAME-tcl=	postgresql-tcl-${VERSION}p1
 CATEGORIES=	databases
 
 HOMEPAGE=	http://www.postgresql.org/

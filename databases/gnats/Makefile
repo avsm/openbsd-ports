@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.9.2.1 2003/08/26 00:33:35 brad Exp $
+# $OpenBSD: Makefile,v 1.9.2.2 2003/09/02 23:05:02 brad Exp $
 
 COMMENT=	"GNU Problem Report Management System"
 
 DISTNAME=	gnats-3.113.1
-PKGNAME=	${DISTNAME}p1
+PKGNAME=	${DISTNAME}p2
 CATEGORIES=	databases devel
 MASTER_SITES=	${MASTER_SITE_GNU:=gnats/}
 
@@ -37,6 +37,8 @@ post-install:
 .if ${FLAVOR:L:Mwww}
 	${INSTALL_PROGRAM} ${WRKDIST}/contrib/gnatsweb/gnatsweb.pl \
 		${PREFIX}/lib/gnatsweb
+	${INSTALL_DATA} ${WRKDIST}/contrib/gnatsweb/gnats.pm \
+		${PREFIX}/libdata/perl5/site_perl
 .endif
 
 .include <bsd.port.mk>

@@ -1,5 +1,5 @@
 #!/bin/sh
-# $OpenBSD: DEINSTALL,v 1.1.1.1.10.1 2003/08/26 00:33:35 brad Exp $
+# $OpenBSD: DEINSTALL,v 1.1.1.1.10.2 2003/09/02 23:05:02 brad Exp $
 #
 # De-installation setup of gnats
 
@@ -44,7 +44,6 @@ case $2 in
     DEINSTALL)
 	do_accts
 	do_configs
-	rm -f /var/www/cgi-bin/gnatsweb
 	;;
     *)
 	echo "Usage: `basename $0` distname DEINSTALL" >&2

@@ -1,5 +1,5 @@
 #!/bin/sh
-# $OpenBSD: INSTALL,v 1.1.1.1.10.1 2003/08/26 00:33:35 brad Exp $
+# $OpenBSD: INSTALL,v 1.1.1.1.10.2 2003/09/02 23:05:02 brad Exp $
 #
 # Pre/post-installation setup of gnats
 
@@ -69,8 +69,6 @@ case $2 in
     POST-INSTALL)
 	do_configs
 	echo "===>  See ${PREFIX}/share/doc/gnats/README.OpenBSD for further configuration"
-	test -f ${PREFIX}/lib/gnatsweb && \
-	    install -c -m 555 ${PREFIX}/lib/gnatsweb /var/www/cgi-bin
 	;;
     *)
 	echo "Usage: `basename $0` distname <PRE-INSTALL|POST-INSTALL>" >&2

@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.1.1.1 2001/01/06 15:58:22 kevlo Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.1 2001/05/10 21:42:55 naddy Exp $
 
 DISTNAME=	Twofish-1.0
 PKGNAME=	p5-Crypt-${DISTNAME}
 CATEGORIES=	security perl5
-NEED_VERSION=	1.348
+NEED_VERSION=	1.406
 
 MAINTAINER=	Kevin Lo <kevlo@openbsd.org>
 

@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.1.1.1 2001/01/09 05:46:45 kevlo Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.1 2001/05/10 21:42:49 naddy Exp $
 
 DISTNAME=	Algorithm-Permute-0.02
 PKGNAME=	p5-${DISTNAME}
 CATEGORIES=	devel perl5 
-NEED_VERSION=	1.351
+NEED_VERSION=	1.406
 
 MAINTAINER=	Kevin Lo <kevlo@openbsd.org>
 

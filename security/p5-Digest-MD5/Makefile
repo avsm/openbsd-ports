@@ -1,9 +1,9 @@
-#   $OpenBSD: Makefile,v 1.3 2000/09/28 22:19:01 brad Exp $
+#   $OpenBSD: Makefile,v 1.3.4.1 2001/05/10 21:42:55 naddy Exp $
 
 DISTNAME=	Digest-MD5-2.12
 PKGNAME=	p5-${DISTNAME}
 CATEGORIES=	security perl5
-NEED_VERSION=	1.336
+NEED_VERSION=	1.406
 MASTER_SITES=	${MASTER_SITE_PERL_CPAN}
 MASTER_SITE_SUBDIR= Digest
 

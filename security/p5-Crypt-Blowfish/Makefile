@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.1.1.1 2001/01/06 15:57:15 kevlo Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.1 2001/05/10 21:42:54 naddy Exp $
 
 DISTNAME=	Crypt-Blowfish-2.06
 PKGNAME=	p5-${DISTNAME}
 CATEGORIES=	security perl5
-NEED_VERSION=	1.348
+NEED_VERSION=	1.406
 
 MAINTAINER=	Kevin Lo <kevlo@openbsd.org>
 

@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.21 2001/04/20 17:35:35 brad Exp $
+# $OpenBSD: Makefile,v 1.21.2.1 2001/05/10 21:42:45 naddy Exp $
 
 DISTNAME=	Compress-Zlib-1.11
 PKGNAME=	p5-${DISTNAME}
 CATEGORIES=	archivers perl5
-NEED_VERSION=	1.384
+NEED_VERSION=	1.406
 
 MASTER_SITES=	${MASTER_SITE_PERL_CPAN}
 MASTER_SITE_SUBDIR= Compress

@@ -1,16 +1,16 @@
-# $OpenBSD: Makefile,v 1.23 2001/04/23 12:38:17 peter Exp $
+# $OpenBSD: Makefile,v 1.23.2.1 2001/05/10 21:42:48 naddy Exp $
 
 COMMENT=	"access to PostgreSQL databases through the DBI"
 
 DISTNAME=	DBD-Pg-0.95
 PKGNAME=	p5-DBD-Pg-0.95
 CATEGORIES=	databases perl5
-NEED_VERSION=	1.405
+NEED_VERSION=	1.406
 MASTER_SITES=	${MASTER_SITE_PERL_CPAN}
 MASTER_SITE_SUBDIR= DBD
 
 LIB_DEPENDS=	pq.2::databases/postgresql
-BUILD_DEPENDS=	${LOCALBASE}/libdata/perl5/site_perl/${ARCH}-openbsd/DBI.pm::databases/p5-DBI
+BUILD_DEPENDS=	${LOCALBASE}/libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd/DBI.pm::databases/p5-DBI
 
 MAINTAINER=	Peter Galbavy <peter.galbavy@knowledge.com>
 

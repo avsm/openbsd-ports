@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.2 2001/01/04 11:36:04 avsm Exp $
+# $OpenBSD: Makefile,v 1.2.2.1 2001/05/10 21:42:56 naddy Exp $
 
 DISTNAME=	MD5-1.7
 PKGNAME=	p5-${DISTNAME}
 CATEGORIES=	security perl5
-NEED_VERSION=	1.348
+NEED_VERSION=	1.406
 
 MAINTAINER=	Kevin Lo <kevlo@openbsd.org>
 

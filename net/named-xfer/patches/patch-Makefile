@@ -1,0 +1,11 @@
+--- Makefile.orig	Wed Oct 23 19:50:44 2002
++++ Makefile	Wed Oct 23 19:50:48 2002
+@@ -16,7 +16,7 @@
+ # $Id: Makefile,v 8.52 2000/11/21 12:54:37 marka Exp $
+ 
+ TOP=
+-SUBDIRS= include port lib bin
++SUBDIRS= include port lib
+ 
+ SH=sh
+ 

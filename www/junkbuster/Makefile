@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.6 2001/07/09 10:49:08 naddy Exp $
+# $OpenBSD: Makefile,v 1.6.2.1 2002/01/20 23:38:09 naddy Exp $
 
 COMMENT=	"banner-ad blocking proxy server"
 
-PKGNAME=	junkbuster-2.0.2
+PKGNAME=	junkbuster-2.0.2p1
 DISTNAME=	ijb20
 CATEGORIES=	www
 NEED_VERSION=	1.364

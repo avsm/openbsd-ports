@@ -1,9 +1,10 @@
-# $OpenBSD: Makefile,v 1.6 2002/09/13 22:54:28 naddy Exp $
+# $OpenBSD: Makefile,v 1.6.2.1 2002/11/05 21:25:01 mark Exp $
 
 COMMENT=	"graphical networked AD&D style game"
 
 VERSION=	1.3.0
 DISTNAME=	crossfire-client-${VERSION}
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	games x11
 
 HOMEPAGE=	http://crossfire.real-time.com/
@@ -20,7 +21,8 @@ MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=crossfire/}
 
 LIB_DEPENDS=   	gtk.1.2,gdk.1.2::x11/gtk+ \
 	        png.1::graphics/png \
-		SDL.1,SDL_image.1::devel/sdl
+		SDL.1::devel/sdl \
+		SDL_image.1::devel/sdl-image
 
 CONFIGURE_ARGS=	--disable-gnome	
 

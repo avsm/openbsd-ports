@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.20.2.2 2001/05/11 11:37:15 naddy Exp $
+# $OpenBSD: Makefile,v 1.20.2.3 2001/07/10 22:15:46 naddy Exp $
 
 COMMENT=	Berkeley Internet Name Daemon
 
-VERSION=	9.1.2
+VERSION=	9.1.3
 DISTNAME=	bind-${VERSION}
 CATEGORIES=	net
 NEED_VERSION=	1.363

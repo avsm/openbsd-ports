@@ -1,22 +1,23 @@
-# $OpenBSD: Makefile,v 1.2 2001/07/07 13:13:37 reinhard Exp $
+# $OpenBSD: Makefile,v 1.2.2.1 2001/11/23 23:59:51 naddy Exp $
 
 # Build just the Tomcat connector for our in-tree Apache
 COMMENT=	"Tomcat (Servlet/JSP) - Apache Connector"
 
-VER=		3.2.2
-PKGNAME=	jserv-${VER}
-DISTNAME=	jakarta-tomcat-${VER}-src
+V=		3.2.3
+PKGNAME=	jserv-${V}
+DISTNAME=	jakarta-tomcat-${V}-src
 CATEGORIES=	www
-NEED_VERSION=	1.419
-MASTER_SITES=	http://jakarta.apache.org/builds/jakarta-tomcat/release/v3.2.2/src/
+NEED_VERSION=	1.475
+MASTER_SITES=	http://jakarta.apache.org/builds/jakarta-tomcat/release/v${V}/src/
+EXTRACT_SUFX=	.zip
 
 HOMEPAGE=	http://jakarta.apache.org/
 
 MAINTAINER=	Reinhard J. Sammer <reinhard@openbsd.org>
 
-# XXX: USE_JAVA=TBD
-JAVA_HOME=	${LOCALBASE}/jdk1.2-blackdown
-BUILD_DEPENDS=	${JAVA_HOME}/bin/java::devel/jdk/1.2-blackdown 
+JDK_VERSION=	1.2-blackdown
+JAVA_HOME=	${LOCALBASE}/jdk${JDK_VERSION}
+BUILD_DEPENDS=	${JAVA_HOME}/bin/java::devel/jdk/${JDK_VERSION}
 RUN_DEPENDS=	${LOCALBASE}/tomcat/bin/tomcat.sh::www/jakarta-tomcat
 
 # Apache Software License

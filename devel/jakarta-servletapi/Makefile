@@ -1,19 +1,21 @@
-# $OpenBSD: Makefile,v 1.2 2001/07/07 13:09:44 reinhard Exp $
+# $OpenBSD: Makefile,v 1.2.2.1 2001/11/23 23:59:50 naddy Exp $
 
 COMMENT=	"implementation of the JSP and Java Servlet APIs"
 
-DISTNAME=	jakarta-servletapi-3.2.2
+V=		3.2.3
+DISTNAME=	jakarta-servletapi-${V}
 CATEGORIES=	www devel
-NEED_VERSION=	1.419
-MASTER_SITES=	http://jakarta.apache.org/builds/jakarta-tomcat/release/v3.2.2/bin/
+NEED_VERSION=	1.475
+MASTER_SITES=	http://jakarta.apache.org/builds/jakarta-tomcat/release/v${V}/bin/
+EXTRACT_SUFX=	.zip
 
 HOMEPAGE=	http://jakarta.apache.org/
 
 MAINTAINER=	Reinhard J. Sammer <reinhard@openbsd.org>
 
-# XXX: USE_JAVA=TBD
-JAVA_HOME=	${LOCALBASE}/jdk1.2-blackdown
-RUN_DEPENDS=    ${JAVA_HOME}/bin/java::devel/jdk/1.2-blackdown
+JDK_VERSION=    1.2-blackdown
+JAVA_HOME=	${LOCALBASE}/jdk${JDK_VERSION}
+RUN_DEPENDS= 	${JAVA_HOME}/bin/java::devel/jdk/${JDK_VERSION}
 
 # Apache Software License
 PERMIT_PACKAGE_CDROM=	Yes

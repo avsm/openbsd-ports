@@ -1,7 +1,8 @@
-#!y0y0y0/bin/tclsh8.3
+#!/bin/sh
 #
-# $Id$
+# $Id: xml2rfc,v 1.2 2001/04/09 18:45:20 jakob Exp $
 
-source y0y0y0/share/xml2rfc/xml2rfc.tcl
+tclsh=y0y0y0/bin/tclsh8.3
+xml2rfc=y0y0y0/share/xml2rfc/xml2rfc.tcl
 
-xml2rfc [lindex $argv 0] [lindex $argv 1]
+exec $tclsh $xml2rfc xml2rfc $@

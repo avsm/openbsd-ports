@@ -1,4 +1,4 @@
-$OpenBSD: patch-man_unzip_1,v 1.1 2003/08/17 23:48:40 brad Exp $
+$OpenBSD: patch-man_unzip_1,v 1.1.4.1 2003/08/18 00:04:42 brad Exp $
 --- man/unzip.1.orig	2002-02-10 17:09:20.000000000 -0500
 +++ man/unzip.1	2003-08-17 19:25:19.000000000 -0400
 @@ -396,7 +396,13 @@ version 5.50) prevents \fIunzip\fP from 

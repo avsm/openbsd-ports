@@ -1,0 +1,16 @@
+$OpenBSD: patch-mail_mail_h,v 1.1.2.1 2003/04/15 03:18:32 marcm Exp $
+--- mail/mail.h.orig	Sat Oct 27 11:21:05 2001
++++ mail/mail.h	Mon Apr  7 20:44:44 2003
+@@ -53,10 +53,11 @@ typedef gboolean (*MailMimeHandlerFn) (C
+ 				       const char *mime_type,
+ 				       MailDisplay *md);
+ typedef struct {
+-	gboolean generic;
+ 	OAF_ServerInfo *component;
+ 	GList *applications;
+ 	MailMimeHandlerFn builtin;
++	guint generic   : 1;
++	guint is_bonobo : 1;
+ } MailMimeHandler;
+ MailMimeHandler *mail_lookup_handler (const char *mime_type);
+ 

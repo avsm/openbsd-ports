@@ -1,0 +1,17 @@
+$OpenBSD: patch-mail_mail-display_c,v 1.1.2.1 2003/04/15 03:18:32 marcm Exp $
+--- mail/mail-display.c.orig	Fri Feb 15 16:34:32 2002
++++ mail/mail-display.c	Mon Apr  7 20:44:44 2003
+@@ -864,7 +864,12 @@ do_external_viewer (GtkHTML *html, GtkHT
+ 	GByteArray *ba;
+ 	CamelStream *cstream;
+ 	BonoboStream *bstream;
+-
++	MailMimeHandler *handler;
++	
++	handler = mail_lookup_handler (eb->type);
++	if (!handler || !handler->is_bonobo)
++		return FALSE;
++	
+ 	component = gnome_vfs_mime_get_default_component (eb->type);
+ 	if (!component)
+ 		return FALSE;

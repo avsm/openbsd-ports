@@ -1,0 +1,12 @@
+$OpenBSD: patch-camel_camel-mime-part_c,v 1.1.2.1 2003/04/15 03:18:32 marcm Exp $
+--- camel/camel-mime-part.c.orig	Thu Apr 11 23:43:56 2002
++++ camel/camel-mime-part.c	Mon Apr  7 20:45:05 2003
+@@ -227,7 +227,7 @@ process_header(CamelMedium *medium, cons
+ 		break;
+ 	case HEADER_CONTENT_ID:
+ 		g_free (mime_part->content_id);
+-		mime_part->content_id = header_msgid_decode (header_value);
++		mime_part->content_id = header_contentid_decode (header_value);
+ 		break;
+ 	case HEADER_ENCODING:
+ 		text = header_token_decode (header_value);

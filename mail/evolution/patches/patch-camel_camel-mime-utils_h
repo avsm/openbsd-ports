@@ -1,0 +1,11 @@
+$OpenBSD: patch-camel_camel-mime-utils_h,v 1.1.2.1 2003/04/15 03:18:32 marcm Exp $
+--- camel/camel-mime-utils.h.orig	Mon Dec 10 11:17:39 2001
++++ camel/camel-mime-utils.h	Mon Apr  7 20:45:05 2003
+@@ -168,6 +168,7 @@ char *header_format_date (time_t time, i
+ 
+ /* decode a message id */
+ char *header_msgid_decode (const char *in);
++char *header_contentid_decode (const char *in);
+ 
+ /* generate msg id */
+ char *header_msgid_generate (void);

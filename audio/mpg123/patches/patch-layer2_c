@@ -1,4 +1,4 @@
-$OpenBSD: patch-layer2_c,v 1.1 2004/09/07 21:23:24 pvalchev Exp $
+$OpenBSD: patch-layer2_c,v 1.1.2.1 2004/09/09 19:54:34 robert Exp $
 --- layer2.c.orig	Tue Sep  7 15:13:46 2004
 +++ layer2.c	Tue Sep  7 15:14:44 2004
 @@ -265,6 +265,11 @@ int do_layer2(struct frame *fr,int outmo

@@ -1,4 +1,4 @@
-$OpenBSD: patch-configure_in,v 1.1 2004/08/11 18:45:42 brad Exp $
+$OpenBSD: patch-configure_in,v 1.1.4.1 2004/08/11 20:09:45 brad Exp $
 --- configure.in.orig	Sat Apr 24 20:12:33 2004
 +++ configure.in	Sat Jul 31 17:19:04 2004
 @@ -159,6 +159,7 @@ AC_MSG_CHECKING([for libwrap])

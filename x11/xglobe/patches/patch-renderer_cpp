@@ -1,4 +1,4 @@
-$OpenBSD: patch-renderer_cpp,v 1.5 2002/11/23 15:45:19 espie Exp $
+$OpenBSD: patch-renderer_cpp,v 1.5.4.1 2003/04/19 19:38:52 brad Exp $
 --- renderer.cpp.orig	Sat Nov 23 16:34:35 2002
 +++ renderer.cpp	Sat Nov 23 16:34:49 2002
 @@ -91,6 +91,8 @@ Renderer::Renderer(const QSize &size, co

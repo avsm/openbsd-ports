@@ -1,4 +1,4 @@
-$OpenBSD: patch-parser_c,v 1.1 2002/04/17 16:17:45 danh Exp $
+$OpenBSD: patch-parser_c,v 1.1.4.1 2002/12/10 15:20:56 brad Exp $
 --- parser.c.orig	Wed Apr 17 11:26:51 2002
 +++ parser.c	Wed Apr 17 11:33:35 2002
 @@ -162,7 +162,7 @@ int parse_record_ftp(char *buffer)

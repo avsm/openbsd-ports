@@ -1,4 +1,4 @@
-$OpenBSD: patch-preserve_c,v 1.1 2002/04/17 16:17:45 danh Exp $
+$OpenBSD: patch-preserve_c,v 1.1.4.1 2002/12/10 15:20:56 brad Exp $
 --- preserve.c.orig	Wed Apr 17 11:52:17 2002
 +++ preserve.c	Wed Apr 17 11:58:14 2002
 @@ -196,38 +196,38 @@ int save_state()

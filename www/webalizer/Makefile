@@ -1,11 +1,10 @@
-# $OpenBSD: Makefile,v 1.13 2002/03/30 23:20:24 brad Exp $
+# $OpenBSD: Makefile,v 1.13.2.1 2002/12/10 15:20:56 brad Exp $
 
 COMMENT=	"web server log file analysis program"
 
-DISTNAME=	webalizer-2.01-09-src
-PKGNAME=	webalizer-2.01.09
+DISTNAME=	webalizer-2.01-10-src
+PKGNAME=	webalizer-2.01.10
 CATEGORIES=     www
-NEED_VERSION=	1.475
 MASTER_SITES=	ftp://ftp.mrunix.net/pub/webalizer/
 EXTRACT_SUFX=	.tgz
 
@@ -20,7 +19,7 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes 
 PERMIT_DISTFILES_FTP=	Yes 
 
-WRKDIST=	${WRKDIR}/webalizer-2.01-09
+WRKDIST=	${WRKDIR}/webalizer-2.01-10
 
 CONFIGURE_STYLE= gnu dest
 CONFIGURE_ARGS=	--enable-dns
@@ -32,10 +31,11 @@ NO_REGRESS=	Yes
 post-install:
 	cd ${PREFIX}/bin && ln -s webalizer webazolver
 	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/webalizer
-	${INSTALL_DATA} ${WRKSRC}/README ${PREFIX}/share/doc/webalizer
-	${INSTALL_DATA} ${WRKSRC}/README.FIRST ${PREFIX}/share/doc/webalizer
+	${INSTALL_DATA} ${WRKSRC}/DNS.README ${PREFIX}/share/doc/webalizer/
+	${INSTALL_DATA} ${WRKSRC}/README ${PREFIX}/share/doc/webalizer/
+	${INSTALL_DATA} ${WRKSRC}/README.FIRST ${PREFIX}/share/doc/webalizer/
 	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/webalizer
 	${INSTALL_DATA} ${WRKSRC}/sample.conf \
-		${PREFIX}/share/examples/webalizer
+		${PREFIX}/share/examples/webalizer/
 
 .include <bsd.port.mk>

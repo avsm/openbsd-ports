@@ -1,5 +1,5 @@
-#!/bin/sh2
-# $OpenBSD: DEINSTALL,v 1.2 2000/07/19 09:31:23 brad Exp $
+#!/bin/sh
+# $OpenBSD: DEINSTALL,v 1.2.2.1 2000/12/12 18:02:39 naddy Exp $
 #
 # bash2 de-installation
 

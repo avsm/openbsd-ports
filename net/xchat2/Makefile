@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.7.2.1 2004/08/19 02:12:03 brad Exp $
+# $OpenBSD: Makefile,v 1.7.2.2 2004/08/21 13:24:44 wilfried Exp $
 
 COMMENT=	"GTK+2 IRC client"
 
@@ -22,6 +22,7 @@ MASTER_SITES0=	${MASTER_SITE_SOURCEFORGE:=xchat/}
 
 EXTRACT_SUFX=	.tar.bz2
 
+BUILD_DEPENDS=	:pkgconfig-*:devel/pkgconfig
 LIB_DEPENDS=	gtk-x11-2.0.0.0,gdk-x11-2.0.0.0,gdk_pixbuf-2.0.0.0::x11/gtk+2
 
 MODULES=	gettext

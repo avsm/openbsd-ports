@@ -1,49 +1,46 @@
-$OpenBSD: patch-coders_bmp_c,v 1.1 2004/09/21 18:39:15 brad Exp $
---- coders/bmp.c.orig	Fri Apr  9 19:13:24 2004
-+++ coders/bmp.c	Tue Sep 21 04:05:37 2004
-@@ -178,6 +178,7 @@ static unsigned int DecodeImage(Image *i
+$OpenBSD: patch-coders_bmp_c,v 1.1.2.1 2004/12/30 19:31:15 sturm Exp $
+--- coders/bmp.c.orig	2004-12-27 20:48:34.000000000 +0100
++++ coders/bmp.c	2004-12-27 20:53:50.000000000 +0100
+@@ -151,6 +151,7 @@ static unsigned int DecodeImage(Image *i
      x;
  
    register unsigned char
 +    *p,
      *q;
  
-   unsigned char
-@@ -191,9 +192,12 @@ static unsigned int DecodeImage(Image *i
-   (void) ResetMagickMemory(pixels,0,(size_t) image->columns*image->rows);
+   assert(image != (Image *) NULL);
+@@ -159,9 +160,12 @@ static unsigned int DecodeImage(Image *i
+     pixels[i]=0;
    byte=0;
    x=0;
 -  q=pixels;
 +  p=pixels;
 +  q=pixels+(size_t) image->columns*image->rows;
-   for (y=0; y < (long) image->rows; )
+   for (y=0; y < (int) image->rows; )
    {
 +    if ((p < pixels) || (p >= q))
 +      break;
      count=ReadBlobByte(image);
      if (count == EOF)
        break;
-@@ -202,16 +206,17 @@ static unsigned int DecodeImage(Image *i
+@@ -170,13 +174,14 @@ static unsigned int DecodeImage(Image *i
          /*
            Encoded mode.
          */
 +        count=Min(count,q-p);
-         byte=(unsigned char) ReadBlobByte(image);
-         if (compression == BI_RLE8)
-           {
-             for (i=count; i != 0; i--)
--              *q++=(unsigned char) byte;
-+              *p++=(unsigned char) byte;
-           }
-         else
-           {
-             for (i=0; i < count; i++)
--              *q++=(unsigned char)
-+              *p++=(unsigned char)
-                 ((i & 0x01) != 0 ? (byte & 0x0f) : ((byte >> 4) & 0x0f));
-           }
-         x+=count;
-@@ -233,7 +238,7 @@ static unsigned int DecodeImage(Image *i
+         byte=ReadBlobByte(image);
+         for (i=0; i < count; i++)
+         {
+           if (compression == 1)
+-            *q++=(unsigned char) byte;
++            *p++=(unsigned char) byte;
+           else
+-            *q++=(i & 0x01) ? (byte & 0x0f) : ((byte >> 4) & 0x0f);
++            *p++=(i & 0x01) ? (byte & 0x0f) : ((byte >> 4) & 0x0f);
+           x++;
+         }
+       }
+@@ -197,7 +202,7 @@ static unsigned int DecodeImage(Image *i
              */
              x=0;
              y++;
@@ -52,7 +49,7 @@ $OpenBSD: patch-coders_bmp_c,v 1.1 2004/09/21 18:39:15 brad Exp $
              break;
            }
            case 0x02:
-@@ -243,7 +248,7 @@ static unsigned int DecodeImage(Image *i
+@@ -207,7 +212,7 @@ static unsigned int DecodeImage(Image *i
              */
              x+=ReadBlobByte(image);
              y+=ReadBlobByte(image);
@@ -61,22 +58,22 @@ $OpenBSD: patch-coders_bmp_c,v 1.1 2004/09/21 18:39:15 brad Exp $
              break;
            }
            default:
-@@ -251,15 +256,16 @@ static unsigned int DecodeImage(Image *i
+@@ -215,15 +220,16 @@ static unsigned int DecodeImage(Image *i
              /*
                Absolute mode.
              */
 +            count=Min(count,q-p);
-             if (compression == BI_RLE8)
-               for (i=(long) count; i != 0; --i)
--                *q++=(unsigned char) ReadBlobByte(image);
-+                *p++=(unsigned char) ReadBlobByte(image);
-             else
-               for (i=0; i < count; i++)
-               {
-                 if ((i & 0x01) == 0)
-                   byte=(unsigned char) ReadBlobByte(image);
--                *q++=(unsigned char)
-+                *p++=(unsigned char)
-                   ((i & 0x01) != 0 ? (byte & 0x0f) : ((byte >> 4) & 0x0f));
-               }
-             x+=count;
+             for (i=0; i < count; i++)
+             {
+               if (compression == 1)
+-                *q++=ReadBlobByte(image);
++                *p++=ReadBlobByte(image);
+               else
+                 {
+                   if ((i & 0x01) == 0)
+                     byte=ReadBlobByte(image);
+-                  *q++=(i & 0x01) ? (byte & 0x0f) : ((byte >> 4) & 0x0f);
++                  *p++=(i & 0x01) ? (byte & 0x0f) : ((byte >> 4) & 0x0f);
+                 }
+               x++;
+             }

@@ -1,16 +1,16 @@
-$OpenBSD: patch-coders_gif_c,v 1.1 2004/09/21 18:39:15 brad Exp $
---- coders/gif.c.orig	Tue Sep 21 03:42:27 2004
-+++ coders/gif.c	Tue Sep 21 03:43:39 2004
-@@ -261,6 +261,8 @@ static unsigned int DecodeImage(Image *i
+$OpenBSD: patch-coders_gif_c,v 1.1.2.1 2004/12/30 19:31:15 sturm Exp $
+--- coders/gif.c.orig	2004-12-27 21:02:45.000000000 +0100
++++ coders/gif.c	2004-12-27 21:04:26.000000000 +0100
+@@ -249,6 +249,8 @@ static unsigned int DecodeImage(Image *i
              }
            while (code >= clear)
            {
 +            if ((top_stack-pixel_stack) >= MaxStackSize)
 +              break;
              *top_stack++=suffix[code];
-             code=(unsigned long) prefix[code];
+             code=prefix[code];
            }
-@@ -268,6 +270,8 @@ static unsigned int DecodeImage(Image *i
+@@ -256,6 +258,8 @@ static unsigned int DecodeImage(Image *i
            /*
              Add a new string to the string table,
            */
@@ -18,4 +18,4 @@ $OpenBSD: patch-coders_gif_c,v 1.1 2004/09/21 18:39:15 brad Exp $
 +            break;
            if (available >= MaxStackSize)
              break;
-           *top_stack++=(unsigned char) first;
+           *top_stack++=first;

@@ -1,4 +1,4 @@
-$OpenBSD: patch-source_file_c,v 1.1 2002/10/04 18:29:14 brad Exp $
+$OpenBSD: patch-source_file_c,v 1.1.4.1 2002/10/07 00:08:32 brad Exp $
 --- source/file.c.orig	Fri Jun  6 18:00:00 1997
 +++ source/file.c	Fri Oct  4 14:20:31 2002
 @@ -285,6 +285,22 @@ file_fileIsNotUseful(fn)

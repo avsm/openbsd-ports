@@ -1,4 +1,4 @@
-$OpenBSD: patch-libs_xpdf_xpdf_GfxState_cc,v 1.1 2004/12/25 23:14:29 sturm Exp $
+$OpenBSD: patch-libs_xpdf_xpdf_GfxState_cc,v 1.1.4.1 2004/12/25 23:25:39 sturm Exp $
 --- libs/xpdf/xpdf/GfxState.cc.orig	Tue Jan  7 17:33:35 2003
 +++ libs/xpdf/xpdf/GfxState.cc	Sat Dec 25 23:44:41 2004
 @@ -708,6 +708,11 @@ GfxColorSpace *GfxICCBasedColorSpace::pa

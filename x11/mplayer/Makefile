@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.58.2.1 2003/11/08 00:23:06 margarida Exp $
+# $OpenBSD: Makefile,v 1.58.2.2 2004/04/16 00:48:45 brad Exp $
 
 # May not be hard to add more.
 ONLY_FOR_ARCHS=		i386 macppc
@@ -7,7 +7,7 @@ COMMENT=		"Movie player supporting MPEG, DivX, AVI, ASF, MOV & more"
 
 DISTNAME=		MPlayer-0.90
 DIST_SUBDIR=		mplayer
-PKGNAME=		${DISTNAME:L}p2
+PKGNAME=		${DISTNAME:L}p3
 CATEGORIES=		x11
 EXTRACT_SUFX=		.tar.bz2
 

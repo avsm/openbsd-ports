@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.3 2001/10/09 22:58:50 matt Exp $
+# $OpenBSD: Makefile,v 1.3.2.1 2002/03/05 00:39:53 matt Exp $
 
 COMMENT=	"object-oriented web application server"
 
 VERSION=	2.4.1
 DISTNAME=	Zope-${VERSION}-src
-PKGNAME=	zope-${VERSION}.1
+PKGNAME=	zope-${VERSION}.2
 CATEGORIES=     www
 NEED_VERSION=	1.419
 
@@ -23,8 +23,11 @@ EXTRACT_CASES=	*.tgz) gtar zxf ${FULLDISTDIR}/$$archive ;;
 
 HOTFIX_DATE0=	2001-09-28
 MASTER_SITES0=	http://www.zope.org/Products/Zope/Hotfix_${HOTFIX_DATE0}/
+HOTFIX_DATE1=	2002-03-01
+MASTER_SITES1=	http://www.zope.org/Products/Zope/Hotfix_${HOTFIX_DATE1}/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} \
-		Hotfix_${HOTFIX_DATE0}.tgz:0
+		Hotfix_${HOTFIX_DATE0}.tgz:0 \
+		Hotfix_${HOTFIX_DATE1}.tgz:1
 
 BUILD_DEPENDS=	python2.1:python-2.1*-threads:lang/python \
 		gtar::archivers/gtar					
@@ -76,6 +79,10 @@ do-install:
 	${INSTALL_DATA} \
 		${WRKDIR}/lib/python/Products/Hotfix_${HOTFIX_DATE0}/* \
 		${PRODUCTSDIR}/Hotfix_${HOTFIX_DATE0}
+	${INSTALL_DATA_DIR} ${PRODUCTSDIR}/Hotfix_${HOTFIX_DATE1}
+	${INSTALL_DATA} \
+		${WRKDIR}/lib/python/Products/Hotfix_${HOTFIX_DATE1}/* \
+		${PRODUCTSDIR}/Hotfix_${HOTFIX_DATE1}
 
 .include <bsd.port.mk>
 

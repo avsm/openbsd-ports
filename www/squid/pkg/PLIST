@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.16.2.1 2005/02/12 09:16:03 sturm Exp $
+@comment $OpenBSD: PLIST,v 1.16.2.2 2005/02/19 09:12:40 sturm Exp $
 bin/RunAccel
 bin/RunCache
 bin/squidclient
@@ -449,6 +449,7 @@ share/examples/squid/errors/Korean/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Korean/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Korean/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Korean/ERR_INVALID_REQ
+share/examples/squid/errors/Korean/ERR_INVALID_RESP
 share/examples/squid/errors/Korean/ERR_INVALID_URL
 share/examples/squid/errors/Korean/ERR_LIFETIME_EXP
 share/examples/squid/errors/Korean/ERR_NO_RELAY
@@ -478,6 +479,7 @@ share/examples/squid/errors/Lithuanian/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Lithuanian/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Lithuanian/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Lithuanian/ERR_INVALID_REQ
+share/examples/squid/errors/Lithuanian/ERR_INVALID_RESP
 share/examples/squid/errors/Lithuanian/ERR_INVALID_URL
 share/examples/squid/errors/Lithuanian/ERR_LIFETIME_EXP
 share/examples/squid/errors/Lithuanian/ERR_NO_RELAY
@@ -507,6 +509,7 @@ share/examples/squid/errors/Polish/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Polish/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Polish/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Polish/ERR_INVALID_REQ
+share/examples/squid/errors/Polish/ERR_INVALID_RESP
 share/examples/squid/errors/Polish/ERR_INVALID_URL
 share/examples/squid/errors/Polish/ERR_LIFETIME_EXP
 share/examples/squid/errors/Polish/ERR_NO_RELAY
@@ -536,6 +539,7 @@ share/examples/squid/errors/Portuguese/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Portuguese/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Portuguese/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Portuguese/ERR_INVALID_REQ
+share/examples/squid/errors/Portuguese/ERR_INVALID_RESP
 share/examples/squid/errors/Portuguese/ERR_INVALID_URL
 share/examples/squid/errors/Portuguese/ERR_LIFETIME_EXP
 share/examples/squid/errors/Portuguese/ERR_NO_RELAY
@@ -565,6 +569,7 @@ share/examples/squid/errors/Romanian/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Romanian/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Romanian/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Romanian/ERR_INVALID_REQ
+share/examples/squid/errors/Romanian/ERR_INVALID_RESP
 share/examples/squid/errors/Romanian/ERR_INVALID_URL
 share/examples/squid/errors/Romanian/ERR_LIFETIME_EXP
 share/examples/squid/errors/Romanian/ERR_NO_RELAY

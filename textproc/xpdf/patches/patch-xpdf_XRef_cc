@@ -1,7 +1,7 @@
-$OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2004/12/27 12:19:00 robert Exp $
---- xpdf/XRef.cc.orig	Wed Jan 21 20:26:45 2004
-+++ xpdf/XRef.cc	Fri Oct 22 21:54:48 2004
-@@ -96,7 +96,7 @@ ObjectStream::ObjectStream(XRef *xref, i
+$OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.2 2005/01/20 21:17:02 robert Exp $
+--- xpdf/XRef.cc.orig	Thu Jan 22 02:26:45 2004
++++ xpdf/XRef.cc	Wed Jan 19 23:00:46 2005
+@@ -96,7 +96,7 @@
    }
    nObjects = obj1.getInt();
    obj1.free();
@@ -10,7 +10,7 @@ $OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2004/12/27 12:19:00 robert Exp $
      goto err1;
    }
  
-@@ -106,7 +106,14 @@ ObjectStream::ObjectStream(XRef *xref, i
+@@ -106,7 +106,14 @@
    }
    first = obj1.getInt();
    obj1.free();
@@ -25,7 +25,7 @@ $OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2004/12/27 12:19:00 robert Exp $
    objs = new Object[nObjects];
    objNums = (int *)gmalloc(nObjects * sizeof(int));
    offsets = (int *)gmalloc(nObjects * sizeof(int));
-@@ -130,6 +137,12 @@ ObjectStream::ObjectStream(XRef *xref, i
+@@ -130,6 +137,12 @@
      offsets[i] = obj2.getInt();
      obj1.free();
      obj2.free();
@@ -38,7 +38,7 @@ $OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2004/12/27 12:19:00 robert Exp $
    }
    while (str->getChar() != EOF) ;
    delete parser;
-@@ -369,10 +382,20 @@ GBool XRef::readXRefTable(Parser *parser
+@@ -369,10 +382,20 @@
      }
      n = obj.getInt();
      obj.free();
@@ -60,7 +60,7 @@ $OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2004/12/27 12:19:00 robert Exp $
        entries = (XRefEntry *)grealloc(entries, newSize * sizeof(XRefEntry));
        for (i = size; i < newSize; ++i) {
  	entries[i].offset = 0xffffffff;
-@@ -443,7 +466,7 @@ GBool XRef::readXRefTable(Parser *parser
+@@ -443,7 +466,7 @@
  
    // check for an 'XRefStm' key
    if (obj.getDict()->lookup("XRefStm", &obj2)->isInt()) {
@@ -69,7 +69,7 @@ $OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2004/12/27 12:19:00 robert Exp $
      readXRef(&pos2);
      if (!ok) {
        goto err1;
-@@ -474,7 +497,14 @@ GBool XRef::readXRefStream(Stream *xrefS
+@@ -474,7 +497,14 @@
    }
    newSize = obj.getInt();
    obj.free();
@@ -84,7 +84,7 @@ $OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2004/12/27 12:19:00 robert Exp $
      entries = (XRefEntry *)grealloc(entries, newSize * sizeof(XRefEntry));
      for (i = size; i < newSize; ++i) {
        entries[i].offset = 0xffffffff;
-@@ -494,6 +524,9 @@ GBool XRef::readXRefStream(Stream *xrefS
+@@ -494,6 +524,9 @@
      }
      w[i] = obj2.getInt();
      obj2.free();
@@ -94,7 +94,7 @@ $OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2004/12/27 12:19:00 robert Exp $
    }
    obj.free();
  
-@@ -513,13 +546,14 @@ GBool XRef::readXRefStream(Stream *xrefS
+@@ -513,13 +546,14 @@
        }
        n = obj.getInt();
        obj.free();
@@ -111,7 +111,7 @@ $OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2004/12/27 12:19:00 robert Exp $
        idx.free();
        goto err0;
      }
-@@ -551,10 +585,20 @@ GBool XRef::readXRefStreamSection(Stream
+@@ -551,10 +585,20 @@
    Guint offset;
    int type, gen, c, newSize, i, j;
  
@@ -133,7 +133,7 @@ $OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2004/12/27 12:19:00 robert Exp $
      entries = (XRefEntry *)grealloc(entries, newSize * sizeof(XRefEntry));
      for (i = size; i < newSize; ++i) {
        entries[i].offset = 0xffffffff;
-@@ -585,24 +629,26 @@ GBool XRef::readXRefStreamSection(Stream
+@@ -585,24 +629,26 @@
        }
        gen = (gen << 8) + c;
      }
@@ -178,7 +178,7 @@ $OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2004/12/27 12:19:00 robert Exp $
      }
    }
  
-@@ -664,39 +710,49 @@ GBool XRef::constructXRef() {
+@@ -664,39 +710,49 @@
      // look for object
      } else if (isdigit(*p)) {
        num = atoi(p);
@@ -253,7 +253,7 @@ $OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2004/12/27 12:19:00 robert Exp $
  	    }
  	  }
  	}
-@@ -705,6 +761,10 @@ GBool XRef::constructXRef() {
+@@ -705,6 +761,10 @@
      } else if (!strncmp(p, "endstream", 9)) {
        if (streamEndsLen == streamEndsSize) {
  	streamEndsSize += 64;
@@ -264,3 +264,13 @@ $OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2004/12/27 12:19:00 robert Exp $
  	streamEnds = (Guint *)grealloc(streamEnds,
  				       streamEndsSize * sizeof(int));
        }
+@@ -756,6 +816,9 @@
+ 	  keyLength = lengthObj.getInt() / 8;
+ 	} else {
+ 	  keyLength = 5;
++	}
++	if (keyLength > 16) {
++	  keyLength = 16;
+ 	}
+ 	permFlags = permissions.getInt();
+ 	if (encVersion >= 1 && encVersion <= 2 &&

@@ -1,4 +1,4 @@
-$OpenBSD: patch-receiver_c,v 1.1 2002/01/24 23:25:32 naddy Exp $
+$OpenBSD: patch-receiver_c,v 1.1.2.1 2002/01/24 23:31:37 naddy Exp $
 --- receiver.c.orig	Fri Nov 30 01:21:09 2001
 +++ receiver.c	Thu Jan 24 23:35:43 2002
 @@ -206,7 +206,8 @@ static int get_tmpname(char *fnametmp, c

@@ -1,14 +1,12 @@
-# $OpenBSD: Makefile,v 1.27 2001/07/13 11:24:31 naddy Exp $
+# $OpenBSD: Makefile,v 1.27.2.1 2002/01/24 23:31:37 naddy Exp $
 
 COMMENT=	"mirroring/synchronization over low bandwidth links"
-DISTNAME=	rsync-2.4.6
-CATEGORIES=	net
-NEED_VERSION=	1.387
-MASTER_SITES=	ftp://ftp.samba.org/pub/rsync/
-MASTER_SITES+=	ftp://ftp.samba.org/pub/rsync/old-versions/
-MASTER_SITES+=	ftp://ftp.funet.fi/pub/mirrors/rsync.samba.org/pub/rsync/
-HOMEPAGE=	http://rsync.samba.org/
 
+PKGNAME=	${DISTNAME}p1
+DISTNAME=	rsync-2.5.1
+CATEGORIES=	net
+NEED_VERSION=	1.475
+HOMEPAGE=	http://rsync.samba.org/
 
 MAINTAINER=	Marc Espie <espie@openbsd.org>
 
@@ -17,14 +15,15 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
+MASTER_SITES=	ftp://ftp.samba.org/pub/rsync/ \
+		ftp://ftp.samba.org/pub/rsync/old-versions/ \
+		ftp://ftp.funet.fi/pub/mirrors/rsync.samba.org/pub/rsync/
+
 SEPARATE_BUILD=		concurrent
 CONFIGURE_STYLE=	gnu
+CONFIGURE_ARGS=		--disable-ipv6
 
 DOCDIR=	${PREFIX}/share/doc/rsync
-
-# not MESSAGE, explains the build warning
-post-build:
-	@echo "(this use of mktemp is actually correct)"
 
 do-install:
 	${INSTALL_DATA_DIR} ${DOCDIR}
@@ -34,5 +33,7 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/tech_report.tex ${DOCDIR}
 	${INSTALL_DATA} ${WRKSRC}/test.sh ${DOCDIR}
 	${INSTALL_DATA} ${WRKSRC}/rsyncstats ${DOCDIR}
+
+NO_REGRESS=	Yes
 
 .include <bsd.port.mk>

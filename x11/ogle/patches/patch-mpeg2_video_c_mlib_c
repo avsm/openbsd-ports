@@ -1,4 +1,4 @@
-$OpenBSD: patch-mpeg2_video_c_mlib_c,v 1.1 2002/01/08 10:51:23 espie Exp $
+$OpenBSD: patch-mpeg2_video_c_mlib_c,v 1.1.2.1 2002/01/08 10:53:36 espie Exp $
 --- mpeg2_video/c_mlib.c.orig	Wed Nov 21 18:26:10 2001
 +++ mpeg2_video/c_mlib.c	Wed Nov 21 18:26:25 2001
 @@ -510,7 +510,7 @@ mlib_VideoInterpXY_U8_U8_8x4(uint8_t *cu

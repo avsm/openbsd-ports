@@ -1,4 +1,4 @@
-$OpenBSD: patch-mpeg2_video_video_output_x11_c,v 1.2 2001/11/02 17:38:04 espie Exp $
+$OpenBSD: patch-mpeg2_video_video_output_x11_c,v 1.2.2.1 2002/01/08 10:53:36 espie Exp $
 --- mpeg2_video/video_output_x11.c.orig	Tue Oct  9 01:10:59 2001
 +++ mpeg2_video/video_output_x11.c	Mon Oct 22 16:44:44 2001
 @@ -291,6 +291,7 @@ static void display_init_xv(yuv_image_t 

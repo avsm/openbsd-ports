@@ -1,4 +1,4 @@
-$OpenBSD: patch-ctrl_ctrl_c,v 1.1 2001/10/24 12:54:33 espie Exp $
+$OpenBSD: patch-ctrl_ctrl_c,v 1.1.2.1 2002/01/08 10:53:36 espie Exp $
 --- ctrl/ctrl.c.orig	Mon Oct 22 15:16:00 2001
 +++ ctrl/ctrl.c	Mon Oct 22 15:26:03 2001
 @@ -175,21 +175,29 @@ int search_capabilities(int caps, MsgEve

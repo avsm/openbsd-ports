@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.84.2.1 2003/09/03 00:26:22 brad Exp $
+# $OpenBSD: Makefile,v 1.84.2.2 2003/12/30 01:18:14 brad Exp $
 # $FreeBSD: Makefile,v 1.44 1999/03/04 21:27:58 dirk Exp $
 # Uses pthreads
 
@@ -13,8 +13,7 @@ PKGNAME-server=	mysql-server-${VERSION}
 FULLPKGNAME-tests= mysql-tests-${VERSION}
 CATEGORIES=	databases
 V=		MySQL-3.23
-MASTER_SITES=	http://mysql.secsup.org/Downloads/$V/ \
-		http://mysql.mirrors.pair.com/Downloads/$V/
+MASTER_SITES=	http://mysql.mirrors.pair.com/Downloads/$V/
 
 HOMEPAGE=	http://www.mysql.com/
 

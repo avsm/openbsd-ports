@@ -1,0 +1,13 @@
+$OpenBSD: patch-modules_default-modules_conf,v 1.1.2.1 2005/01/02 15:18:16 sturm Exp $
+--- modules/default-modules.conf.orig	2005-01-02 11:06:56.000000000 +0100
++++ modules/default-modules.conf	2005-01-02 11:07:05.000000000 +0100
+@@ -32,9 +32,6 @@ pipe: vfs-pipe
+ 
+ ssh: ssh
+ 
+-# The various access methods implemented by the extfs system.
+-a ar arj cpio deb hp48 lha mailfs patchfs rar rpm rpms trpm zip zoo: extfs
+-
+ # vfolder desktop method
+ applications:           vfolder-desktop
+ applications-all-users: vfolder-desktop

@@ -1,0 +1,34 @@
+$OpenBSD: patch-modules_Makefile_in,v 1.1.2.1 2005/01/02 15:18:16 sturm Exp $
+--- modules/Makefile.in.orig	2005-01-02 11:06:02.000000000 +0100
++++ modules/Makefile.in	2005-01-02 11:06:45.000000000 +0100
+@@ -190,7 +190,7 @@ WARN_CXXFLAGS = @WARN_CXXFLAGS@
+ XML_REQUIRED = @XML_REQUIRED@
+ 
+ NULL = 
+-SUBDIRS = extfs vfolder
++SUBDIRS = vfolder
+ 
+ INCLUDES =  	-I$(top_srcdir)					-I$(top_builddir)				$(MODULES_XML_GCONF_CFLAGS)			$(MODULES_FILE_CFLAGS) 				$(LIBEFS_CFLAGS)				$(VFS_CFLAGS)					-D_FILE_OFFSET_BITS=64				-D_BSD_SOURCE					-D_GNU_SOURCE					-D_LARGEFILE64_SOURCE				-D_POSIX_PTHREAD_SEMANTICS			-D_REENTRANT					-DG_DISABLE_DEPRECATED				-DDATADIR=\"$(datadir)\"			-DPREFIX=\"$(prefix)\"				-DLIBDIR=\"$(libdir)\"				-DSYSCONFDIR=\"$(sysconfdir)\"			-DG_LOG_DOMAIN=\"gnome-vfs-modules\"		$(NULL)
+ 
+@@ -205,7 +205,7 @@ EXTRA_DIST =  	default-modules.conf				c
+ module_flags = -export_dynamic -avoid-version -module -no-undefined
+ modulesdir = $(libdir)/gnome-vfs-2.0/modules
+ 
+-modules_LTLIBRARIES =  	$(CDDA_LTLIBS)					libextfs.la					libfile.la					libnntp.la					libvfs-test.la					$(HTTP_LTLIBS)					libbzip2.la					libgzip.la					libftp.la					libvfs-pipe.la					libvfs-translate.la				$(CDEMENU_LTLIBS)                       	libssh.la					libtar.la					$(NULL)
++modules_LTLIBRARIES =  	$(CDDA_LTLIBS)					libfile.la					libnntp.la					libvfs-test.la					$(HTTP_LTLIBS)					libbzip2.la					libgzip.la					libftp.la					libvfs-pipe.la					libvfs-translate.la				$(CDEMENU_LTLIBS)                       	libssh.la					libtar.la					$(NULL)
+ 
+ 
+ # Not currently supported
+@@ -225,12 +225,6 @@ libcdda_la_SOURCES =  	cdda-method.c 			
+ libcdda_la_LDFLAGS = $(module_flags)
+ libcdda_la_LIBADD = -lcdda_paranoia -lcdda_interface ../libgnomevfs/libgnomevfs-2.la
+ 
+-###  `extfs' method
+-
+-libextfs_la_SOURCES = extfs-method.c
+-libextfs_la_LDFLAGS = $(module_flags)
+-libextfs_la_LIBADD = $(MODULES_FILE_LIBS) ../libgnomevfs/libgnomevfs-2.la
+-
+ ###  `file' method
+ 
+ libfile_la_SOURCES = file-method.c fstype.c

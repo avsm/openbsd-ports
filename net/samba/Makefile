@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.37.2.1 2001/05/09 14:59:52 naddy Exp $
+# $OpenBSD: Makefile,v 1.37.2.2 2001/07/04 08:46:47 naddy Exp $
 
 COMMENT=	"SMB and CIFS client and server for UNIX"
 
-DISTNAME=	samba-2.0.9
+DISTNAME=	samba-2.0.10
 CATEGORIES=	net
 NEED_VERSION=	1.384
 MASTER_SITES=	ftp://ftp.samba.org/pub/samba/ \

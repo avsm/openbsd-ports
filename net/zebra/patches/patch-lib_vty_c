@@ -1,6 +1,6 @@
-$OpenBSD: patch-lib_vty_c,v 1.1 2003/11/18 19:26:08 david Exp $
---- lib/vty.c.orig	2002-07-07 03:12:47.000000000 -0500
-+++ lib/vty.c	2003-11-17 19:12:07.000000000 -0600
+$OpenBSD: patch-lib_vty_c,v 1.1.2.1 2003/11/28 00:14:18 margarida Exp $
+--- lib/vty.c.orig	2002-07-07 09:12:47.000000000 +0100
++++ lib/vty.c	2003-11-13 13:55:54.000000000 +0000
 @@ -1136,13 +1136,16 @@ vty_telnet_option (struct vty *vty, unsi
        break;
      case SE: 

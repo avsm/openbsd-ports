@@ -1,22 +1,24 @@
-# $OpenBSD: Makefile,v 1.6.2.1 2001/05/05 21:34:23 espie Exp $
+# $OpenBSD: Makefile,v 1.6.2.2 2001/06/05 20:24:42 naddy Exp $
+
+COMMENT=	"ftp client for X window system"
 
 DISTNAME=	axyftp-0.5.1
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	net
-NEED_VERSION=   1.400
+NEED_VERSION=	1.402
 MASTER_SITES=	ftp://ftp.wxftp.seul.org/pub/wxftp/0.5.1/
 
 HOMEPAGE=	http://www.wxftp.seul.org/
 
-MAINTAINER=     Kevin Lo <kevlo@openbsd.org>
+MAINTAINER=	Kevin Lo <kevlo@openbsd.org>
 
-PERMIT_PACKAGE_CDROM=   "no fee"
-PERMIT_PACKAGE_FTP=     Yes
-PERMIT_DISTFILES_CDROM="no fee"
-PERMIT_DISTFILES_FTP=   Yes
+PERMIT_PACKAGE_CDROM=	"no fee"
+PERMIT_PACKAGE_FTP=	Yes
+PERMIT_DISTFILES_CDROM=	"no fee"
+PERMIT_DISTFILES_FTP=	Yes
 
-CONFIGURE_STYLE=	gnu
-
-USE_MOTIF=	any
+USE_X11=	Yes
+CONFIGURE_STYLE= gnu
 
 FLAVORS=	gtk
 FLAVOR?=
@@ -24,6 +26,8 @@ FLAVOR?=
 .if ${FLAVOR:L:Mgtk}
 LIB_DEPENDS=    gtk.1.2::x11/gtk+
 CONFIGURE_ARGS=	--with-gui=gtk
+.else
+USE_MOTIF=	any
 .endif
 
 .include <bsd.port.mk>

@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.12.2.2 2002/12/29 22:09:25 margarida Exp $
+# $OpenBSD: Makefile,v 1.12.2.3 2003/04/22 02:17:14 margarida Exp $
 
 COMMENT=		"highly customizable e-mail to HTML converter"
 
-VERSION=		2.5.14
+VERSION=		2.6.3
 DISTNAME=		MHonArc${VERSION}
 PKGNAME=		mhonarc-${VERSION}
 CATEGORIES=     	www mail
@@ -31,6 +31,7 @@ CONFIGURE_STYLE=	perl
 ALL_TARGET=		default
 
 EXAMPLES=		mha-preview mhasiteinit.pl mhonarc.vim *.mrc
+EXTRAS=			mha-mhedit/*
 
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/mhonarc
@@ -38,7 +39,8 @@ post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/mhonarc/extras
 	cd ${WRKSRC}/examples && ${INSTALL_DATA} ${EXAMPLES} \
 	  ${PREFIX}/share/examples/mhonarc/examples
-	cd ${WRKSRC}/extras && ${INSTALL_DATA} HtmlMail MosaicMail \
+	cd ${WRKSRC}/extras && ${INSTALL_DATA} ${EXTRAS} \
 	  ${PREFIX}/share/examples/mhonarc/extras
- 
+
+
 .include <bsd.port.mk>

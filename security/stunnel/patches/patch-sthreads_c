@@ -1,0 +1,26 @@
+$OpenBSD: patch-sthreads_c,v 1.1.2.1 2003/07/26 19:53:18 brad Exp $
+--- sthreads.c.orig	Sun Nov 11 10:06:22 2001
++++ sthreads.c	Sat Jul 26 15:37:07 2003
+@@ -180,6 +180,11 @@ unsigned long thread_id() {
+     return 0L;
+ }
+ 
++extern int signal_pipe[2];
++static void null_handler(int signum) {
++    signal(SIGCHLD, null_handler);
++}
++
+ int create_client(int ls, int s, void *(*cli)(void *)) {
+     switch(fork()) {
+     case -1:    /* error */
+@@ -187,7 +192,9 @@ int create_client(int ls, int s, void *(
+         return -1;
+     case  0:    /* child */
+         closesocket(ls);
+-        signal(SIGCHLD, local_handler);
++        signal(SIGCHLD, null_handler);
++        close(signal_pipe[0]);
++        close(signal_pipe[1]);
+         cli((void *)s);
+         exit(0);
+     default:    /* parent */

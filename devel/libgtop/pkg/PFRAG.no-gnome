@@ -1,9 +1,9 @@
-@comment $OpenBSD: PFRAG.no-gnome,v 1.2 2001/10/11 21:47:12 espie Exp $
+@comment $OpenBSD: PFRAG.no-gnome,v 1.2.2.1 2001/12/03 01:08:38 naddy Exp $
 @pkgcfl gnome-libs-*
 include/popt-gnome.h
 lib/libgnomesupport.a
 lib/libgnomesupport.la
 lib/libgtop/include/gnomesupport.h
-lib/libgnomesupport.so.0.0
 @dirrm lib/libgtop/include
 @dirrm lib/libgtop
+%%SHARED-no-gnome%%

@@ -1,7 +1,7 @@
-# $OpenBSD: Makefile,v 1.8 2001/10/11 21:47:12 espie Exp $
+# $OpenBSD: Makefile,v 1.8.2.1 2001/12/03 01:08:38 naddy Exp $
 
 COMMENT=		"portable library for obtaining system information"
-V=			1.0.12
+V=			1.0.13
 DISTNAME=		libgtop-${V}
 CATEGORIES=		devel
 NEED_VERSION=   	1.473
@@ -10,10 +10,6 @@ MAINTAINER=		Nils Nordman <nino@nforced.com>
 
 MASTER_SITES=		${MASTER_SITE_GNOME}
 MASTER_SITE_SUBDIR= 	stable/sources/libgtop
-
-PATCH_LIST=	${PORTSDIR}/infrastructure/patches/patch-lt1.3.5-ltconfig \
-		${PORTSDIR}/infrastructure/patches/patch-lt1.3.5-ltmain_sh \
-		patch-*
 
 FLAVORS= 		gnome guile
 FLAVOR?=
@@ -46,3 +42,15 @@ CONFIGURE_ARGS+=	--with-libgtop-guile=no
 .endif
 
 .include <bsd.port.mk>
+
+.if ${FLAVOR:L:Mguile} && !defined(NO_SHARED_LIBS)
+SED_PLIST+=-e '/%%SHARED-guile%%/r${PKGDIR}/PFRAG.shared.guile' -e '//d'
+.elif ${FLAVOR:L:Mguile}
+SED_PLIST+=-e '/%%SHARED-guile%%/d'
+.endif
+
+.if !${FLAVOR:L:Mgnome} && !defined(NO_SHARED_LIBS)
+SED_PLIST+=-e '/%%SHARED-no-gnome%%/r${PKGDIR}/PFRAG.shared.no-gnome' -e '//d'
+.elif !${FLAVOR:L:Mgnome}
+SED_PLIST+=-e '/%%SHARED-no-gnome%%/d'
+.endif

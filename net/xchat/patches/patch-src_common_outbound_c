@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_common_outbound_c,v 1.1 2002/12/30 09:15:26 pvalchev Exp $
+$OpenBSD: patch-src_common_outbound_c,v 1.1.4.1 2003/06/01 08:57:11 couderc Exp $
 --- src/common/outbound.c.orig	Mon Dec 30 00:53:29 2002
 +++ src/common/outbound.c	Mon Dec 30 00:53:37 2002
 @@ -1879,7 +1879,7 @@ cmd_exec (struct session *sess, char *tb

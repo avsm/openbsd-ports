@@ -1,5 +1,5 @@
 #!/bin/sh
-# $OpenBSD: INSTALL,v 1.15 2003/07/08 20:43:21 brad Exp $
+# $OpenBSD: INSTALL,v 1.15.6.1 2005/03/27 15:08:02 sturm Exp $
 #
 # Pre/post-installation setup of Squid
 
@@ -111,7 +111,7 @@ case $2 in
 	fi
 	if [ ! -d $PREFIX/share/squid/errors ]; then
 	   do_install_errors_and_icons $1
-	elif [ ! -f $PREFIX/share/squid/errors/English/ERR_TOO_BIG ]; then
+	elif [ ! -f $PREFIX/share/squid/errors/English/ERR_INVALID_RESP ]; then
 	   do_install_errors_and_icons $1
 	else
 	   do_notice_errors_and_icons $1

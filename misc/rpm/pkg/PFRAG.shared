@@ -1,0 +1,4 @@
+@comment $OpenBSD: PFRAG.shared,v 1.2 2000/07/04 00:24:53 krw Exp $
+lib/libpopt.so.0.0
+lib/librpm.so.0.0
+DYNLIBDIR(%D/lib)

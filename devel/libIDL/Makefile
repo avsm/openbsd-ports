@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.7 2000/03/24 23:28:05 espie Exp $
+# $OpenBSD: Makefile,v 1.7.2.1 2000/09/15 04:49:09 marc Exp $
 
 DISTNAME=	libIDL-0.6.5
 CATEGORIES=	devel
-NEED_VERSION=	 1.230
+NEED_VERSION=	1.310
 MASTER_SITES=	ftp://ftp.mozilla.org/pub/mozilla/libraries/source/ \
 	http://atv.ne.mediaone.net/libIDL/
 
@@ -18,7 +18,7 @@ LIB_DEPENDS=	glib.1.2::devel/glib
 
 FAKE=		Yes
 USE_GMAKE=	Yes
-GNU_CONFIGURE=	Yes
+CONFIGURE_STYLE=gnu
 
 post-install:
 	@${INSTALL_DATA_DIR} ${PREFIX}/share/doc/libIDL

@@ -1,11 +1,12 @@
-# $OpenBSD: Makefile,v 1.3 2000/03/30 09:27:02 espie Exp $
+# $OpenBSD: Makefile,v 1.3.2.1 2000/09/15 04:49:05 marc Exp $
 #
 # See http://www.freebsd.org/java/ for software updates, etc.
 
 DISTNAME=	jdk-${JDK_VERSION}
 CATEGORIES=	devel
-MASTER_SITES=	ftp://ftp.sc.sri.com/pub/FreeBSD/JDK/ \
-		${HOMEPAGE}
+MASTER_SITES=	http://www.freebsd.org/~patrick/ \
+		ftp://ftp.nuxi.com/pub/FreeBSD/JDK/ \
+		http://ftp7.de.freebsd.org/pub/FreeBSD/JDK/
 
 HOMEPAGE=	http://www.freebsd.org/java/
 
@@ -25,10 +26,7 @@ PERMIT_DISTFILES_FTP=	No
 ONLY_FOR_ARCHS=	i386
 
 NO_BUILD=	Yes
-NO_CONFIGURE=	Yes
-NO_PATCH=	Yes
 EXTRACT_ONLY=
-FAKE=		Yes
 
 DISTFILES=	jdk${JDK_VERSION}_AOUT.V1999-11-9.tar.gz
 

@@ -1,6 +1,6 @@
+@comment $OpenBSD: PLIST,v 1.9.2.1 2000/09/15 04:49:17 marc Exp $
 lib/libslang.a
-lib/libslang.so.14.0
-@exec /sbin/ldconfig -m %B
+%%SHARED%%
 include/slcurses.h
 include/slang.h
 share/doc/slang/COPYING

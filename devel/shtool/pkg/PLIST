@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.2.4.1 2000/09/15 04:49:26 marc Exp $
 bin/shtool
 bin/shtoolize
 man/man1/shtool.1

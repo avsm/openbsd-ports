@@ -1,11 +1,13 @@
-# $OpenBSD: Makefile,v 1.13 2000/04/07 18:45:06 jasoni Exp $
+# $OpenBSD: Makefile,v 1.13.2.1 2000/09/15 04:49:13 marc Exp $
 
 DISTNAME=	libPropList-0.10.1
 PKGNAME=	libproplist-0.10.1
 CATEGORIES=	devel
-NEED_VERSION=	1.223
+NEED_VERSION=	1.310
 MASTER_SITES=	${MASTER_SITE_WINDOWMAKER}
 MASTER_SITE_SUBDIR= libs
+
+HOMEPAGE=	http://www.windowmaker.org/
 
 MAINTAINER=	jasoni@openbsd.org
 
@@ -16,8 +18,7 @@ PERMIT_DISTFILES_FTP=	Yes
 
 USE_GMAKE=	Yes
 SEPARATE_BUILD=	concurrent
-GNU_CONFIGURE=	Yes
-FAKE=		Yes
+CONFIGURE_STYLE= gnu
 CONFIGURE_ARGS+= ${CONFIGURE_SHARED}
 CONFIGURE_ARGS+= --enable-static
 

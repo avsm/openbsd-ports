@@ -1,9 +1,8 @@
-# $OpenBSD: Makefile,v 1.15 2000/04/09 17:36:15 espie Exp $
+# $OpenBSD: Makefile,v 1.15.2.1 2000/09/15 04:48:52 marc Exp $
 
 DISTNAME=	ORBit-0.5.0
 CATEGORIES=	devel
-NEED_VERSION=	 1.230
-FAKE=No
+NEED_VERSION=	1.310
 MASTER_SITES=	${MASTER_SITE_GNOME}
 MASTER_SITE_SUBDIR= stable/sources/ORBit
 
@@ -19,11 +18,11 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-USE_GMAKE=	Yes
-GNU_CONFIGURE=	Yes
-CONFIGURE_ARGS+= ${CONFIGURE_SHARED}
-CONFIGURE_ARGS+= --enable-static --disable-indent
-CONFIGURE_ENV=	GLIB_CONFIG="${LOCALBASE}/bin/glib-config"
+USE_GMAKE=		Yes
+CONFIGURE_STYLE=	gnu
+CONFIGURE_ARGS+= 	${CONFIGURE_SHARED}
+CONFIGURE_ARGS+= 	--enable-static --disable-indent
+CONFIGURE_ENV=		GLIB_CONFIG="${LOCALBASE}/bin/glib-config"
 
 # People that installed an older version of ORBit 0.4.x wound up with
 # shared libs with a major/minor of 4.0 ... these files
@@ -42,8 +41,5 @@ pre-extract:
 	   echo "+-------------------"; \
 	   exit 1; \
 	fi
-
-post-install:
-	@install-info ${PREFIX}/info/libIDL.info ${PREFIX}/info/dir
 
 .include <bsd.port.mk>

@@ -1,14 +1,15 @@
-# $OpenBSD: Makefile,v 1.17 2000/03/24 23:28:05 espie Exp $
+# $OpenBSD: Makefile,v 1.17.2.1 2000/09/15 04:49:07 marc Exp $
 
-DISTNAME=	lclint-2.4b
+DISTNAME=	lclint-2.5q
 CATEGORIES=	devel
 NEED_VERSION=	 1.230
-MASTER_SITES=	ftp://ftp.sds.lcs.mit.edu/pub/lclint/
+MASTER_SITES=	http://lclint.cs.virginia.edu/
+MASTER_SITES0=	http://lclint.cs.virginia.edu/guide/
 
 DIST_SUBDIR=	lclint
 EXTRACT_ONLY=	${DISTNAME}.src.tar.gz
-GUIDE=		guide.tar.gz
-DISTFILES=	${EXTRACT_ONLY} ${GUIDE}
+GUIDE=		lclint-guide.tar.gz
+DISTFILES=	${EXTRACT_ONLY} ${GUIDE}:0
 
 MAINTAINER=	espie@cvs.openbsd.org
 
@@ -48,7 +49,7 @@ post-build:
 	cd ${LIBSRC} && $(LCLINT) -DSTRICT -nolib ansi.h posix.h unix.h -dump unixstrict
 post-install:
 	@mkdir -p ${DOCDIR}
-	@cd ${DOCDIR} && tar zxf ${FULLDISTDIR}/${GUIDE}
+	cd ${DOCDIR} && tar -zxv -s ,lclint-guide/,, -f ${FULLDISTDIR}/${GUIDE} 
 
 test: install
 	@cd ${WRKSRC} && gmake test

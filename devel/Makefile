@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.29 2000/04/21 18:45:11 espie Exp $
+# $OpenBSD: Makefile,v 1.29.2.1 2000/09/15 04:48:50 marc Exp $
 # $FreeBSD: Makefile,v 1.85 1997/11/20 05:22:14 asami Exp $
 #
 
@@ -14,6 +14,7 @@
      SUBDIR += boehm-gc
 #    SUBDIR += cccc
 #    SUBDIR += cflow
+     SUBDIR += cook
 #    SUBDIR += crossgo32
 #    SUBDIR += crossgo32-djgpp2
 #    SUBDIR += crossgo32-djgpp2-pdcurses
@@ -21,6 +22,7 @@
 #    SUBDIR += cs
      SUBDIR += ctm
 #    SUBDIR += cutils
+     SUBDIR += cvs2cl 
 #    SUBDIR += cxref
      SUBDIR += ddd
      SUBDIR += dejagnu
@@ -39,6 +41,7 @@
      SUBDIR += id-utils
 #    SUBDIR += ilu
      SUBDIR += jdk
+     SUBDIR += jfc
      SUBDIR += kdbg
      SUBDIR += lclint
      SUBDIR += libaudiofile
@@ -47,6 +50,7 @@
      SUBDIR += libIDL
 #    SUBDIR += libmalloc
      SUBDIR += libproplist
+     SUBDIR += libsigc++
      SUBDIR += libslang
      SUBDIR += libtool
 #    SUBDIR += linux_devel
@@ -95,10 +99,12 @@
 #    SUBDIR += p5-Time
 #    SUBDIR += p5-TimeDate
 #    SUBDIR += p5-TraceFuncs
-#    SUBDIR += pccts
+     SUBDIR += pccts
+     SUBDIR += pcre
 #    SUBDIR += portlint
      SUBDIR += prc-tools
 #    SUBDIR += prcs
+     SUBDIR += pth
 #    SUBDIR += sawt
 #    SUBDIR += scogdb
 #    SUBDIR += sfio

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.80.2.2 2003/01/30 15:44:54 brad Exp $
+# $OpenBSD: Makefile,v 1.80.2.3 2003/09/01 22:54:03 brad Exp $
 # $FreeBSD: Makefile,v 1.44 1999/03/04 21:27:58 dirk Exp $
 # Uses pthreads
 
@@ -17,15 +17,15 @@ BROKEN=		"Support for ${MACHINE_ARCH} threads is currently broken and/or unteste
 .  endif
 .endfor
 
-VERSION=	3.23.55
+VERSION=	3.23.57
 DISTNAME=	mysql-${VERSION}
 FULLPKGNAME=	mysql-client-${VERSION}
 PKGNAME-server=	mysql-server-${VERSION}
 FULLPKGNAME-tests= mysql-tests-${VERSION}
 CATEGORIES=	databases
 V=		MySQL-3.23
-MASTER_SITES=	ftp://ftp.sunet.se/pub/unix/databases/relational/mysql/Downloads/$V/ \
-		ftp://ftp.shellhung.org/pub/Mirror/mysql/Downloads/$V/
+MASTER_SITES=	http://mysql.secsup.org/Downloads/$V/ \
+		http://mysql.mirrors.pair.com/Downloads/$V/
 
 HOMEPAGE=	http://www.mysql.com/
 

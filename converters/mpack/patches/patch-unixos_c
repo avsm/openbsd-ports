@@ -1,4 +1,4 @@
-$OpenBSD: patch-unixos_c,v 1.1 2002/08/09 01:15:19 naddy Exp $
+$OpenBSD: patch-unixos_c,v 1.1.2.1 2002/08/09 21:01:50 naddy Exp $
 --- unixos.c.orig	Thu Feb 16 22:39:50 1995
 +++ unixos.c	Fri Aug  9 02:58:47 2002
 @@ -36,7 +36,9 @@

@@ -1,15 +1,12 @@
-# $OpenBSD: Makefile,v 1.9 2000/03/24 22:11:44 espie Exp $
+# $OpenBSD: Makefile,v 1.9.2.1 2000/09/15 04:53:01 marc Exp $
 # $FreeBSD: Makefile,v 1.30 1998/11/11 05:37:18 asami Exp $
 
-PKGNAME=	Mesa-3.0
+DISTNAME=	Mesa-3.2.1
 CATEGORIES=	graphics
-NEED_VERSION=	1.218
-MASTER_SITES=	ftp://iris.ssec.wisc.edu/pub/Mesa/ \
-		ftp://ftp.enst.fr/distfiles/ \
-		ftp://ftp.fu-berlin.de/pub/unix/X11/graphics/Mesa/ \
-		ftp://ftp.mesa3d.org/mesa/
-DISTFILES=	MesaLib-3.0.tar.gz MesaDemos-3.0.tar.gz
-
+NEED_VERSION=	1.310
+MASTER_SITES=	${MASTER_SITE_SOURCEFORGE}
+MASTER_SITE_SUBDIR= mesa3d
+DISTFILES=	MesaLib-3.2.1.tar.gz MesaDemos-3.2.1.tar.gz
 
 HOMEPAGE=	http://www.mesa3d.org/
 
@@ -20,42 +17,17 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-FAKE=	Yes
+CONFIGURE_STYLE= gnu
+CONFIGURE_ARGS+= ${CONFIGURE_SHARED}
+CONFIGURE_ARGS+= --enable-static
 
-NO_CONFIGURE=	Yes
-
-WRKDIST=	${WRKDIR}/Mesa-3.0
-
-SHLIB_VERSION=	3.0
+SHLIB_VERSION=	3.2
 GLUT_VERSION=	3.7
 
-post-extract:
-	@cp ${FILESDIR}/mklib.openbsd-static ${WRKSRC}
-
-do-install:
-	${INSTALL_DATA_DIR} ${PREFIX}/include/GL
-	${INSTALL_DATA} ${WRKSRC}/lib/libMesaGL.a ${PREFIX}/lib
-	${INSTALL_DATA} ${WRKSRC}/lib/libMesaGLU.a ${PREFIX}/lib
-	${INSTALL_DATA} ${WRKSRC}/lib/libglut.a ${PREFIX}/lib
-	@cd ${PREFIX}/lib; ln -fs libMesaGL.a libGL.a; \
-			ln -fs libMesaGLU.a libGLU.a
-	${INSTALL_DATA} ${WRKSRC}/include/GL/* ${PREFIX}/include/GL
-	@if [ -f ${WRKSRC}/lib/libMesaGL.so.${SHLIB_VERSION} ]; then \
-	 ${INSTALL_DATA} ${WRKSRC}/lib/libMesaGL.so.${SHLIB_VERSION} ${PREFIX}/lib; \
-	 cd ${PREFIX}/lib; ln -fs libMesaGL.so.${SHLIB_VERSION} libGL.so.${SHLIB_VERSION}; \
-	fi
-	@if [ -f ${WRKSRC}/lib/libMesaGLU.so.${SHLIB_VERSION} ]; then \
-	 ${INSTALL_DATA} ${WRKSRC}/lib/libMesaGLU.so.${SHLIB_VERSION} ${PREFIX}/lib; \
-	 cd ${PREFIX}/lib; ln -fs libMesaGLU.so.${SHLIB_VERSION} libGLU.so.${SHLIB_VERSION}; \
-	fi
-	@if [ -f ${WRKSRC}/lib/libglut.so.${GLUT_VERSION} ]; then \
-	 ${INSTALL_DATA} ${WRKSRC}/lib/libglut.so.${GLUT_VERSION} ${PREFIX}/lib; \
-	fi
+post-install:
+.for lib in GL GLU
+	@cd ${PREFIX}/lib && ln -fs lib${lib}.a libMesa${lib}.a && \
+	 ln -fs lib${lib}.so.${SHLIB_VERSION} libMesa${lib}.so.${SHLIB_VERSION}
+.endfor
 
 .include <bsd.port.mk>
-
-.if defined(NO_SHARED_LIBS) && ${NO_SHARED_LIBS:U} == YES
-ALL_TARGET=     openbsd-static
-.else
-ALL_TARGET=	openbsd
-.endif

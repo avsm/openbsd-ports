@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.38 2000/01/20 22:17:35 jakob Exp $
+# $OpenBSD: Makefile,v 1.38.2.1 2000/09/15 04:52:57 marc Exp $
 # $FreeBSD: Makefile,v 1.55 1997/11/03 12:12:27 tg Exp $
 #
 
@@ -13,6 +13,7 @@
      SUBDIR += fnlib
      SUBDIR += fxtv
      SUBDIR += gd
+     SUBDIR += gd:no_x11
 #    SUBDIR += geomview
 #    SUBDIR += gfont
      SUBDIR += ggi
@@ -58,6 +59,7 @@
 #    SUBDIR += splitmpg
      SUBDIR += tgif
      SUBDIR += tiff
+     SUBDIR += tiff2png
 #    SUBDIR += txtmerge
 #    SUBDIR += urt
 #    SUBDIR += vcg

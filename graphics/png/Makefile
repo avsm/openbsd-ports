@@ -1,26 +1,26 @@
-# $OpenBSD: Makefile,v 1.16 2000/03/19 00:31:33 espie Exp $
+# $OpenBSD: Makefile,v 1.16.2.1 2000/09/15 04:53:38 marc Exp $
 
-DISTNAME=       libpng-1.0.3
-PKGNAME=        png-1.0.3
-CATEGORIES=     graphics
-NEED_VERSION=	1.223
-MASTER_SITES=   ftp://ftp.uu.net/graphics/png/src/
+DISTNAME=	libpng-1.0.8
+PKGNAME=	png-1.0.8
+CATEGORIES=	graphics
+NEED_VERSION=	1.310
+MASTER_SITES=	ftp://ftp.libpng.org/pub/png/src/ \
+		${MASTER_SITE_SOURCEFORGE}
+MASTER_SITE_SUBDIR= libpng
 
+HOMEPAGE=	http://www.libpng.org/pub/png/
 
-MAINTAINER=     angelos@openbsd.org
+MAINTAINER=	brad@openbsd.org
 
-LICENSE_TYPE=		BSD
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
-FAKE=			Yes
 
-post-extract:
-	@chmod +w ${WRKSRC}/scripts
+USE_LIBTOOL=	Yes
+MAKE_FLAGS=	CC="${CC}" CFLAGS="${CFLAGS}" LDFLAGS="libpng.la -lz -lm"
 
-pre-patch:
-	@cd ${WRKSRC} && cp scripts/makefile.std Makefile
+MAKE_FILE=	scripts/makefile.std
 
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/png
@@ -28,13 +28,8 @@ post-install:
 	${INSTALL_MAN} ${WRKSRC}/png.5 ${PREFIX}/man/man5
 	${INSTALL_DATA} ${WRKSRC}/README ${PREFIX}/share/doc/png
 	${INSTALL_DATA} ${WRKSRC}/libpng.txt ${PREFIX}/share/doc/png
-	@${LDCONFIG} -m ${PREFIX}/lib
+
+test:	build
+	@cd ${WRKBUILD} && ${SETENV} ${MAKE_ENV} ${MAKE} ${MAKE_FLAGS} -f ${MAKE_FILE} test
 
 .include <bsd.port.mk>
-
-# The patches assumed shared libs would be build.  If building
-# on a host that does not support shared libs, e.g. the alpha,
-# apply one more patch.
-.if defined(NO_SHARED_LIBS)
-PATCH_LIST+=noshared-patch
-.endif

@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.6.2.1 2000/09/15 04:53:13 marc Exp $
 bin/bdftogd
 bin/pngtogd
 bin/pngtogd2
@@ -15,8 +16,8 @@ include/gdfontmb.h
 include/gdfontl.h
 include/gdfontg.h
 lib/libgd.a
-lib/libgd.so.18.1
-@exec /sbin/ldconfig -m %B
+lib/libgd.la
+%%SHARED%%
 share/examples/gd/demoin.png
 share/examples/gd/demoout.png
 share/examples/gd/index.html

@@ -1,6 +1,6 @@
-# $OpenBSD: Makefile,v 1.33 2000/07/22 00:58:28 brad Exp $
+# $OpenBSD: Makefile,v 1.33.2.1 2001/04/18 12:48:39 naddy Exp $
 
-DISTNAME=	samba-2.0.7
+DISTNAME=	samba-2.0.8
 CATEGORIES=	net
 NEED_VERSION=	1.310
 MASTER_SITES=	ftp://ftp.samba.org/pub/samba/ \
@@ -11,7 +11,7 @@ MASTER_SITES=	ftp://ftp.samba.org/pub/samba/ \
 
 HOMEPAGE=	http://www.samba.org/
 
-MAINTAINER=	Peter.Galbavy@knowledge.com
+MAINTAINER=	ports@openbsd.org
 
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes

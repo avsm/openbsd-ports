@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_lhext_c,v 1.1 2004/05/06 23:07:57 naddy Exp $
+$OpenBSD: patch-src_lhext_c,v 1.1.4.1 2004/05/08 11:06:56 robert Exp $
 --- src/lhext.c.orig	2000-10-04 16:57:38.000000000 +0200
 +++ src/lhext.c	2004-05-07 01:00:10.000000000 +0200
 @@ -190,8 +190,13 @@ extract_one(afp, hdr)

@@ -1,4 +1,4 @@
-$OpenBSD: patch-po_zh_TW_Big5_po,v 1.3 2002/07/23 07:58:05 wilfried Exp $
+$OpenBSD: patch-po_zh_TW_Big5_po,v 1.3.4.1 2003/01/04 12:48:48 wilfried Exp $
 --- po/zh_TW.Big5.po.orig	Tue Jan  8 14:45:06 2002
 +++ po/zh_TW.Big5.po	Tue Jul 23 08:19:00 2002
 @@ -519,8 +519,8 @@ msgid ""

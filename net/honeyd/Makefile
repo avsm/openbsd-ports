@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.2.2.1 2004/06/22 06:45:59 robert Exp $
+# $OpenBSD: Makefile,v 1.2.2.2 2004/06/28 21:54:14 wilfried Exp $
 
 COMMENT=	"utility to create virtual hosts on a network"
 DISTNAME=	honeyd-0.8a
@@ -20,5 +20,6 @@ USE_LIBTOOL=	Yes
 BUILD_DEPENDS=	${LOCALBASE}/lib/libdnet.a::net/libdnet
 
 CONFIGURE_STYLE=gnu
+CONFIGURE_ARGS=--without-libedit
 
 .include <bsd.port.mk>

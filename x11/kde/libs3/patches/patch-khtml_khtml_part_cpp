@@ -1,0 +1,54 @@
+$OpenBSD: patch-khtml_khtml_part_cpp,v 1.1.2.1 2003/08/06 14:23:02 brad Exp $
+--- khtml/khtml_part.cpp.orig	Wed Jan 22 17:29:06 2003
++++ khtml/khtml_part.cpp	Mon Aug  4 22:25:57 2003
+@@ -1316,9 +1316,12 @@ void KHTMLPart::begin( const KURL &url, 
+   args.yOffset = yOffset;
+   d->m_extension->setURLArgs( args );
+ 
++  if ( d->m_referrer != url.url() )
++      d->m_pageReferrer = d->m_referrer;
++
+   KURL ref(url);
+   ref.setRef(QString::null);
+-  d->m_referrer = ref.protocol().startsWith("http") ? ref.url() : QString::null;
++  d->m_referrer = ref.protocol().startsWith("http") ? ref.url() : QString::fromLatin1( "" );
+ 
+   m_url = url;
+   KURL baseurl;
+@@ -1735,7 +1738,8 @@ void KHTMLPart::slotRedirect()
+   QString u = d->m_redirectURL;
+   d->m_delayRedirect = 0;
+   d->m_redirectURL = QString::null;
+-  d->m_referrer = QString::null;
++  d->m_pageReferrer = d->m_referrer = "";
++  // SYNC check with ecma/kjs_window.cpp::goURL !
+   if ( u.find( QString::fromLatin1( "javascript:" ), 0, false ) == 0 )
+   {
+     QString script = KURL::decode_string( u.right( u.length() - 11 ) );
+@@ -4149,6 +4153,26 @@ QString KHTMLPart::jsDefaultStatusBarTex
+ QString KHTMLPart::referrer() const
+ {
+    return d->m_referrer;
++}
++
++QString KHTMLPart::pageReferrer() const
++{
++   KURL referrerURL = d->m_pageReferrer;
++   if (referrerURL.isValid())
++   {
++      QString protocol = referrerURL.protocol();
++
++      if ((protocol == "http") ||
++         ((protocol == "https") && (m_url.protocol() == "https")))
++      {
++          referrerURL.setRef(QString::null);
++          referrerURL.setUser(QString::null);
++          referrerURL.setPass(QString::null);
++          return referrerURL.url();
++      }
++   }
++
++   return QString::null;
+ }
+ 
+ QString KHTMLPart::lastModified() const

@@ -1,0 +1,11 @@
+$OpenBSD: patch-khtml_khtmlpart_p_h,v 1.1.2.1 2003/08/06 14:23:02 brad Exp $
+--- khtml/khtmlpart_p.h.orig	Tue Aug  5 00:07:44 2003
++++ khtml/khtmlpart_p.h	Tue Aug  5 00:08:15 2003
+@@ -297,6 +297,7 @@ public:
+   QString m_strSelectedURL;
+   QString m_strSelectedURLTarget;
+   QString m_referrer;
++  QString m_pageReferrer;
+ 
+   struct SubmitForm
+   {

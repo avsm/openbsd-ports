@@ -1,0 +1,12 @@
+$OpenBSD: patch-khtml_html_html_documentimpl_cpp,v 1.1.4.1 2003/08/06 14:23:02 brad Exp $
+--- khtml/html/html_documentimpl.cpp.orig	Mon Jan 13 18:51:48 2003
++++ khtml/html/html_documentimpl.cpp	Sun Aug  3 21:41:55 2003
+@@ -84,7 +84,7 @@ HTMLDocumentImpl::~HTMLDocumentImpl()
+ DOMString HTMLDocumentImpl::referrer() const
+ {
+     if ( view() )
+-        return view()->part()->referrer();
++        return view()->part()->pageReferrer();
+     return DOMString();
+ }
+ 

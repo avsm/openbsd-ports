@@ -1,0 +1,15 @@
+$OpenBSD: patch-khtml_khtml_part_h,v 1.1.2.1 2003/08/06 14:23:02 brad Exp $
+--- khtml/khtml_part.h.orig	Fri Jan  3 17:25:25 2003
++++ khtml/khtml_part.h	Sun Aug  3 21:41:55 2003
+@@ -701,6 +701,11 @@ public:
+   QString referrer() const;
+ 
+   /**
++   * Referrer used to obtain this page.
++   */
++  QString pageReferrer() const;
++
++  /**
+    * Last-modified date (in raw string format), if received in the [HTTP] headers.
+    */
+   QString lastModified() const;

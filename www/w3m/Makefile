@@ -1,15 +1,14 @@
-# $OpenBSD: Makefile,v 1.44 2002/04/07 00:54:46 naddy Exp $
+# $OpenBSD: Makefile,v 1.44.2.1 2002/11/30 02:54:32 brad Exp $
 
 ONLY_FOR_ARCHS=	alpha i386 m68k powerpc sparc
 
 COMMENT=	"pager/text-based web browser"
 
-VERSION=	0.3
-M17N_VERSION=	20020311
+VERSION=	0.3.2.1
+M17N_VERSION=	20021127
 
 DISTNAME=	w3m-${VERSION}
 CATEGORIES=	www
-NEED_VERSION=	1.504
 HOMEPAGE=	http://w3m.sourceforge.net/
 
 MAINTAINER=	Christian Weisgerber <naddy@openbsd.org>
@@ -29,6 +28,8 @@ SUPDISTFILES=	w3m-${VERSION}${EXTRACT_SUFX} \
 FLAVORS=	image japanese m17n
 FLAVOR?=
 
+PATCH_LIST=	patch-*
+
 CONFIGURE_STYLE= simple
 CONFIGURE_ARGS=	--nonstop \
 		--prefix="${PREFIX}" \
@@ -44,11 +45,8 @@ DOCS=	FAQ.html HISTORY MANUAL.html \
 	README README.dict README.func STORY.html \
 	keymap.default keymap.lynx menu.default menu.submenu
 
-PATCH_LIST=	patch-gc_dyn_load_c \
-		patch-gc_include_private_gcconfig_h
-
 .if ${FLAVOR:L:Mimage}
-LIB_DEPENDS=	Imlib.19::graphics/imlib
+LIB_DEPENDS+=	Imlib.19::graphics/imlib
 CONFIGURE_ENV+=	use_image=y
 DOCS+=		README.img
 .endif
@@ -71,12 +69,7 @@ PKGNAME=	w3m-${VERSION}.${M17N_VERSION}
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:0
 CONFIGURE_ARGS+= --suffix="" --charset=UTF-8
 DOCS+=		README.m17n
-PATCH_LIST+=	patch-m17n-configure
-.else
-PATCH_LIST+=	patch-configure \
-		patch-etc_c \
-		patch-image_c \
-		patch-search_c
+PATCH_LIST+=	m17n-patch-*
 .endif
 
 post-install:

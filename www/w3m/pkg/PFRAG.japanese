@@ -1,5 +1,6 @@
-@comment $OpenBSD: PFRAG.japanese,v 1.1 2001/11/16 21:35:45 naddy Exp $
+@comment $OpenBSD: PFRAG.japanese,v 1.1.2.1 2002/11/30 02:54:33 brad Exp $
 @pkgcfl w3m-*
+man/ja_JP.EUC/man1/w3m.1
 share/doc/w3m/README.SSL
 share/doc/w3m/README.cookie
 share/doc/w3m/README.keymap

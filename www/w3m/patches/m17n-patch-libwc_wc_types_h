@@ -1,4 +1,4 @@
-$OpenBSD: m17n-patch-libwc_wc_types_h,v 1.1 2002/11/27 22:25:02 naddy Exp $
+$OpenBSD: m17n-patch-libwc_wc_types_h,v 1.1.4.1 2002/11/30 02:54:33 brad Exp $
 --- libwc/wc_types.h.orig	Wed Nov 27 21:09:03 2002
 +++ libwc/wc_types.h	Wed Nov 27 21:09:14 2002
 @@ -7,7 +7,7 @@

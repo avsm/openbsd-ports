@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.20 2004/02/22 16:47:58 naddy Exp $
+# $OpenBSD: Makefile,v 1.20.2.1 2004/09/30 04:54:26 brad Exp $
 
 COMMENT=	"Motif toolkit"
 COMMENT-debuglibs="Motif toolkit debug libraries"
@@ -6,7 +6,7 @@ COMMENT-demos=	"Motif toolkit demos"
 VERSION=	2.1.30
 DISTNAME=	motif
 PATCHLEVEL=	5
-PKGNAME=	openmotif-${VERSION}.${PATCHLEVEL}
+PKGNAME=	openmotif-${VERSION}.${PATCHLEVEL}p1
 PKGNAME-demos=	openmotif-demos-${VERSION}.${PATCHLEVEL}
 PKGNAME-debuglibs=openmotif-debuglibs-${VERSION}.${PATCHLEVEL}
 

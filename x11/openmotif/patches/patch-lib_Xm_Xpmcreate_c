@@ -1,4 +1,4 @@
-$OpenBSD: patch-lib_Xm_Xpmcreate_c,v 1.1 2004/09/01 22:57:36 pvalchev Exp $
+$OpenBSD: patch-lib_Xm_Xpmcreate_c,v 1.1.6.1 2004/09/30 04:54:26 brad Exp $
 --- lib/Xm/Xpmcreate.c.orig	Fri Apr 28 09:05:21 2000
 +++ lib/Xm/Xpmcreate.c	Wed Sep  1 01:39:33 2004
 @@ -1,4 +1,5 @@

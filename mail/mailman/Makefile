@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.1.1.1 2001/08/29 02:13:04 shell Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.1 2001/11/12 14:44:28 wilfried Exp $
 
 COMMENT=	"mailing list manager with web interface"
 
-DISTNAME=	mailman-2.0.6
+DISTNAME=	mailman-2.0.7
 CATEGORIES=     mail
 NEED_VERSION=	1.448
 

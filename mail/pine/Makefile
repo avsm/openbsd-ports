@@ -1,5 +1,6 @@
-# $OpenBSD: Makefile,v 1.17.2.1 2000/09/15 05:01:53 marc Exp $
+# $OpenBSD: Makefile,v 1.17.2.2 2000/10/05 00:16:24 marc Exp $
 
+BROKEN=		"remote access exploit"
 DISTNAME=	pine4.21
 PKGNAME=	pine-4.21
 CATEGORIES=	mail news

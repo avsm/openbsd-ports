@@ -1,4 +1,4 @@
-$OpenBSD: patch-t_GD_t,v 1.1 2002/11/30 05:31:47 brad Exp $
+$OpenBSD: patch-t_GD_t,v 1.1.2.1 2002/12/01 20:55:47 brad Exp $
 --- t/GD.t.orig	Mon Jul 22 14:26:26 2002
 +++ t/GD.t	Sun Nov 24 14:50:08 2002
 @@ -284,9 +284,9 @@ sub test7 {

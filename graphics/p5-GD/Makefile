@@ -1,9 +1,9 @@
-#	$OpenBSD: Makefile,v 1.13 2002/09/21 11:52:08 avsm Exp $
+#	$OpenBSD: Makefile,v 1.13.2.1 2002/12/01 20:55:47 brad Exp $
 
 COMMENT=	"module to interface with the GD graphics library"
 
 DISTNAME=	GD-1.41
-PKGNAME=	p5-${DISTNAME}
+PKGNAME=	p5-${DISTNAME}p1
 CATEGORIES=	graphics perl5
 
 HOMEPAGE=	http://stein.cshl.org/WWW/software/GD
@@ -16,17 +16,10 @@ PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
 MASTER_SITES=	${MASTER_SITE_PERL_CPAN:=GD/}
+
 LIB_DEPENDS=	gd.18::graphics/gd
+
 CONFIGURE_STYLE= perl
-
-FLAVORS=	no_x11
-FLAVOR?=
-
-.if ${FLAVOR:Mno_x11}
-PATCH_LIST=	patch-MakeMaker.PL-no_x11
-.else
-PATCH_LIST=	patch-MakeMaker.PL
-.endif
 
 REGRESS_DEPENDS=	::devel/p5-Test-Harness
 

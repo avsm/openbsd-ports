@@ -1,4 +1,4 @@
-$OpenBSD: patch-libtiff_tif_dirwrite_c,v 1.1 2004/10/20 20:37:48 brad Exp $
+$OpenBSD: patch-libtiff_tif_dirwrite_c,v 1.1.4.1 2005/03/31 22:02:44 sturm Exp $
 --- libtiff/tif_dirwrite.c.orig	Mon Dec 22 03:22:15 2003
 +++ libtiff/tif_dirwrite.c	Wed Oct 20 14:38:11 2004
 @@ -692,8 +692,14 @@ TIFFWritePerSampleShorts(TIFF* tif, ttag

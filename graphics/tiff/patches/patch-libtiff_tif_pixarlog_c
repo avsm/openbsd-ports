@@ -1,4 +1,4 @@
-$OpenBSD: patch-libtiff_tif_pixarlog_c,v 1.2 2005/03/27 05:12:15 brad Exp $
+$OpenBSD: patch-libtiff_tif_pixarlog_c,v 1.2.2.1 2005/03/31 22:02:44 sturm Exp $
 --- libtiff/tif_pixarlog.c.orig	Tue Jul  8 02:50:09 2003
 +++ libtiff/tif_pixarlog.c	Sat Mar 26 23:07:59 2005
 @@ -630,11 +630,23 @@ PixarLogGuessDataFmt(TIFFDirectory *td)

@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.4 2000/04/08 22:04:33 espie Exp $
+# $OpenBSD: Makefile,v 1.4.2.1 2000/09/15 05:03:04 marc Exp $
 #
 
 DISTNAME=	xspread2.1
 PKGNAME=	xspread-2.1
 CATEGORIES=	math
 
-MAINTAINER=	angelos@openbsd.org
+MAINTAINER=	ports@openbsd.org
 
 LICENSE_TYPE=		GPL
 PERMIT_PACKAGE_CDROM=	Yes

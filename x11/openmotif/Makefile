@@ -1,7 +1,7 @@
-# $OpenBSD: Makefile,v 1.18 2003/09/02 22:07:17 pvalchev Exp $
+# $OpenBSD: Makefile,v 1.18.2.1 2004/09/30 04:52:10 brad Exp $
 
 .if ${MACHINE_ARCH} == "sparc64"
-BROKEN=		"programs compiled with this miss menus, fonts, etc."
+#BROKEN=		"programs compiled with this miss menus, fonts, etc."
 .endif
 
 COMMENT=	"Motif toolkit"
@@ -10,7 +10,7 @@ COMMENT-demos=	"Motif toolkit demos"
 VERSION=	2.1.30
 DISTNAME=	motif
 PATCHLEVEL=	5
-PKGNAME=	openmotif-${VERSION}.${PATCHLEVEL}
+PKGNAME=	openmotif-${VERSION}.${PATCHLEVEL}p1
 PKGNAME-demos=	openmotif-demos-${VERSION}.${PATCHLEVEL}
 PKGNAME-debuglibs=openmotif-debuglibs-${VERSION}.${PATCHLEVEL}
 

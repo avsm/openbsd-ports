@@ -1,4 +1,4 @@
-$OpenBSD: patch-lib_Xm_XpmI_h,v 1.1 2004/09/01 22:57:36 pvalchev Exp $
+$OpenBSD: patch-lib_Xm_XpmI_h,v 1.1.4.1 2004/09/30 04:52:10 brad Exp $
 --- lib/Xm/XpmI.h.orig	Wed Sep  1 01:25:27 2004
 +++ lib/Xm/XpmI.h	Wed Sep  1 01:31:33 2004
 @@ -179,6 +179,18 @@ extern FILE *popen();

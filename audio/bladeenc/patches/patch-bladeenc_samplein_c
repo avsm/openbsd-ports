@@ -1,4 +1,4 @@
-$OpenBSD: patch-bladeenc_samplein_c,v 1.2 2003/02/12 00:35:21 brad Exp $
+$OpenBSD: patch-bladeenc_samplein_c,v 1.2.2.1 2003/02/12 00:40:49 brad Exp $
 --- bladeenc/samplein.c.orig	Tue May  8 08:11:53 2001
 +++ bladeenc/samplein.c	Tue Feb 11 19:22:35 2003
 @@ -31,6 +31,7 @@

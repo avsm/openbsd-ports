@@ -1,15 +1,47 @@
-$OpenBSD: patch-mp3lib_layer2_c,v 1.1 2004/10/18 06:48:20 biorn Exp $
---- mp3lib/layer2.c.orig	Tue Apr  6 03:06:21 2004
-+++ mp3lib/layer2.c	Fri Sep 17 23:30:00 2004
-@@ -288,6 +288,11 @@ static int do_layer2(struct frame *fr,in
-   fr->jsbound = (fr->mode == MPG_MD_JOINT_STEREO) ?
-      (fr->mode_ext<<2)+4 : fr->II_sblimit;
+$OpenBSD: patch-mp3lib_layer2_c,v 1.1.4.1 2005/01/22 10:50:59 robert Exp $
+--- mp3lib/layer2.c.orig	Wed Jan 29 11:00:40 2003
++++ mp3lib/layer2.c	Wed Dec 29 14:51:46 2004
+@@ -80,12 +80,12 @@ static void II_step_one(unsigned int *bi
+     bita = bit_alloc;
+     if(stereo)
+     {
+-      for (i=jsbound;i;i--,alloc1+=(1<<step))
++      for (i=jsbound;i>0;i--,alloc1+=(1<<step))
+       {
+         *bita++ = (char) getbits(step=alloc1->bits);
+         *bita++ = (char) getbits(step);
+       }
+-      for (i=sblimit-jsbound;i;i--,alloc1+=(1<<step))
++      for (i=sblimit-jsbound;i>0;i--,alloc1+=(1<<step))
+       {
+         bita[0] = (char) getbits(step=alloc1->bits);
+         bita[1] = bita[0];
+@@ -93,24 +93,24 @@ static void II_step_one(unsigned int *bi
+       }
+       bita = bit_alloc;
+       scfsi=scfsi_buf;
+-      for (i=sblimit2;i;i--)
++      for (i=sblimit2;i>0;i--)
+         if (*bita++)
+           *scfsi++ = (char) getbits_fast(2);
+     }
+     else /* mono */
+     {
+-      for (i=sblimit;i;i--,alloc1+=(1<<step))
++      for (i=sblimit;i>0;i--,alloc1+=(1<<step))
+         *bita++ = (char) getbits(step=alloc1->bits);
+       bita = bit_alloc;
+       scfsi=scfsi_buf;
+-      for (i=sblimit;i;i--)
++      for (i=sblimit;i>0;i--)
+         if (*bita++)
+           *scfsi++ = (char) getbits_fast(2);
+     }
  
-+  if (fr->jsbound > fr->II_sblimit) {
-+         fprintf(stderr, "Truncating stereo boundary to sideband limit.\n");
-+         fr->jsbound=fr->II_sblimit;
-+  }
-+
-   if(stereo == 1 || single == 3)
-     single = 0;
- 
+     bita = bit_alloc;
+     scfsi=scfsi_buf;
+-    for (i=sblimit2;i;i--) 
++    for (i=sblimit2;i>0;i--) 
+       if (*bita++)
+         switch (*scfsi++) 
+         {

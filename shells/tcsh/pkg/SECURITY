@@ -1,4 +1,4 @@
-$OpenBSD: SECURITY,v 1.1 2000/11/15 15:57:04 brad Exp $
+$OpenBSD: SECURITY,v 1.1.2.1 2000/11/20 15:16:05 espie Exp $
 
 patches/patch-sh.dol.c
 ${WRKDIR}/sh.dol.c

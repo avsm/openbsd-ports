@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.24 2000/09/24 07:04:13 brad Exp $
+# $OpenBSD: Makefile,v 1.24.2.1 2000/11/20 15:16:04 espie Exp $
 
 DISTNAME=	tcsh-6.09.03
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	shells
-NEED_VERSION=	1.330
+NEED_VERSION=	1.336
 MASTER_SITES=	http://www2.wbs.ne.jp/~znc/tcsh/
 
 MAINTAINER=	Brad Smith <brad@openbsd.org>
@@ -14,14 +15,11 @@ PERMIT_DISTFILES_FTP=	Yes
 
 CONFIGURE_STYLE= gnu
 
-FLAVORS=static
+FLAVORS=	static
 FLAVOR?=
 
-.if defined(STATIC) && ${STATIC:U} == YES
-FLAVOR=static
-.endif
 .if ${FLAVOR:L} == "static"
-CONFIGURE_ENV+=	LDFLAGS=-static
+CONFIGURE_ENV+=	LDFLAGS="-static"
 .endif
 
 ALL_TARGET=	all catalogs

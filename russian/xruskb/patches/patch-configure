@@ -1,4 +1,4 @@
-$OpenBSD: patch-configure,v 1.1 2001/08/13 04:10:02 form Exp $
+$OpenBSD: patch-configure,v 1.1.2.1 2001/08/13 22:40:16 naddy Exp $
 --- configure.orig	Fri May 25 18:58:36 2001
 +++ configure	Mon Aug 13 11:06:04 2001
 @@ -2794,7 +2794,7 @@ else

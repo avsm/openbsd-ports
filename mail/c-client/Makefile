@@ -1,7 +1,7 @@
-# $OpenBSD: Makefile,v 1.5.2.3 2001/01/19 01:11:55 brad Exp $
+# $OpenBSD: Makefile,v 1.5.2.4 2001/02/02 17:18:19 brad Exp $
 
-DISTNAME=	imap-2000b
-PKGNAME=	c-client-2000b
+DISTNAME=	imap-2000c
+PKGNAME=	c-client-2000c
 CATEGORIES=	mail devel
 NEED_VERSION=	1.336
 MASTER_SITES=	ftp://ftp.cac.washington.edu/imap/

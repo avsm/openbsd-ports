@@ -1,14 +1,14 @@
-# $OpenBSD: Makefile,v 1.7 2002/04/07 22:30:23 matt Exp $
+# $OpenBSD: Makefile,v 1.7.2.1 2002/05/23 16:51:02 naddy Exp $
 
 COMMENT=	"mailing list manager with web interface"
 
-DISTNAME=	mailman-2.0.8
+DISTNAME=	mailman-2.0.11
 CATEGORIES=     mail
-NEED_VERSION=	1.500
+NEED_VERSION=	1.522
 
 HOMEPAGE=	http://www.gnu.org/software/mailman/mailman.html
 
-MAINTAINER=	Nikolay Sturm <nikolay.sturm@desy.de>
+MAINTAINER=	Nikolay Sturm <sturm@sec.informatik.tu-darmstadt.de>
 
 # GPL
 PERMIT_PACKAGE_CDROM=	Yes
@@ -16,8 +16,7 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-MASTER_SITES=		${MASTER_SITE_SOURCEFORGE}
-MASTER_SITE_SUBDIR=	mailman
+MASTER_SITES=		${MASTER_SITE_SOURCEFORGE:=mailman/}
 EXTRACT_SUFX=		.tgz
 
 PYTHON_VER=		2.1

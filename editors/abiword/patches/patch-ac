@@ -1,9 +1,9 @@
---- ./src/config/abi_defs.mk.orig	Sun Nov  7 03:55:53 1999
-+++ ./src/config/abi_defs.mk	Sun Nov  7 09:39:28 1999
-@@ -328,6 +328,9 @@
- ifeq ($(ABI_NATIVE),unix)
- CFLAGS 		+=	`$(GTK_CONFIG) --cflags`
- EXTRA_LIBS	+=	`$(GTK_CONFIG) --libs`
+--- src/config/abi_defs.mk.orig	Fri Jun  9 18:48:49 2000
++++ src/config/abi_defs.mk	Sun Jul 16 05:24:11 2000
+@@ -419,6 +419,9 @@
+ EXTRA_LIBS	+=	$(GTK_LIBS)
+ ABI_OPTIONS+=Gnome:Off
+ endif
 +
 +# Refer to installed packages
 +CFLAGS		+=	-I/usr/local/include -I/usr/local/include/xml

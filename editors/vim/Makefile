@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.27 2000/05/04 13:56:04 jasoni Exp $
+# $OpenBSD: Makefile,v 1.27.2.1 2000/09/15 04:50:18 marc Exp $
 
-DISTNAME=	vim-5.6
+DISTNAME=	vim-5.7
 CATEGORIES=	editors
-NEED_VERSION=	1.251
+NEED_VERSION=	1.301
 MASTER_SITES=	ftp://nuxi.ucdavis.edu/pub/vim/unix/ \
 		ftp://ftp.nuxi.com/pub/vim/unix/ \
 		ftp://ftp.oce.nl/pub/vim/unix/  \
@@ -15,15 +15,15 @@ DIST_SUBDIR=	vim
 
 HOMEPAGE=	http://www.vim.org
 
-.for p in 01 02 03 05 06 10 11 12 13 14 15 16 17 18 19 21 22 25 27 28 29 30 \
-	  31 32 33 35 36 37 38 39 40 41 42 46 47
-PATCHFILES+=	5.6.0${p}:0
+.for p in 01 02
+PATCHFILES+=	5.7.0${p}:0
 .endfor
 .if defined(PATCH_DEBUG)
 PATCH_DIST_ARGS=-d ${WRKDIR}/${DISTNAME} -E ${PATCH_DIST_STRIP}
 .else
 PATCH_DIST_ARGS=-d ${WRKDIR}/${DISTNAME} --forward --quiet -E ${PATCH_DIST_STRIP}
 .endif
+
 
 MAINTAINER=	jasoni@openbsd.org
 
@@ -32,13 +32,10 @@ PERMIT_PACKAGE_FTP=     Yes
 PERMIT_DISTFILES_CDROM= Yes
 PERMIT_DISTFILES_FTP=   Yes
 
-FLAVORS=	gtk athena motif light
+FLAVORS=	gtk athena motif no_x11
 FLAVOR?=	gtk
 
-FAKE=		Yes
-HAS_CONFIGURE=	Yes
-CONFIGURE_ARGS=	--prefix='$${DESTDIR}${PREFIX}'
-CONFIGURE_ARGS+=--sysconfdir='$${DESTDIR}${PREFIX}'
+CONFIGURE_STYLE=	gnu dest
 CONFIGURE_ARGS+=--with-tliba="curses"
 
 # Internal Compiler Error
@@ -46,20 +43,22 @@ CONFIGURE_ARGS+=--with-tliba="curses"
 PATCH_LIST=	patch-* sup-m68k
 .endif
 
-.if ${FLAVOR:L:Mlight}
-PLIST=		${PKGDIR}/PLIST-light
+.if ${FLAVOR:L} == "light"
+FLAVOR=no_x11
+.endif
+.if ${FLAVOR:L} == "no_x11"
 CONFIGURE_ARGS+=--disable-gui --without-x
-.elif ${FLAVOR:L:Mmotif}
+.elif ${FLAVOR:L} == "motif"
 CONFIGURE_ARGS+=--enable-gui="motif"
 CONFIGURE_ENV+=	MOTIFHOME=${X11BASE}
 USE_MOTIF=Yes
-.elif ${FLAVOR:L:Mathena}
+.elif ${FLAVOR:L} == "athena"
 CONFIGURE_ARGS+=--enable-gui="athena"
-.elif ${FLAVOR:L:Mgtk}
+.elif ${FLAVOR:L} == "gtk"
 LIB_DEPENDS=	gtk.1.2::x11/gtk+
 CONFIGURE_ARGS+=--enable-gui="gtk" 
 .endif
 
-WRKDIST=	${WRKDIR}/${DISTNAME}/src
+WRKDIST=		${WRKDIR}/${DISTNAME}/src
 
 .include <bsd.port.mk>

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.18 2000/04/22 13:03:59 espie Exp $
+# $OpenBSD: Makefile,v 1.18.2.1 2000/09/15 04:50:11 marc Exp $
 # $FreeBSD: Makefile,v 1.44 1997/09/13 20:19:28 chuckr Exp $
 #
 
@@ -11,12 +11,16 @@
 #    SUBDIR += e93
      SUBDIR += emacs
      SUBDIR += emacs:no_X11
+     SUBDIR += elvis
+     SUBDIR += elvis:no_x11
      SUBDIR += hexedit
      SUBDIR += jed
      SUBDIR += joe
      SUBDIR += jove
 #    SUBDIR += mule
 #    SUBDIR += mule-common
+     SUBDIR += nano
+     SUBDIR += nano:slang
      SUBDIR += nedit
 #    SUBDIR += nvi
      SUBDIR += nvi-m17n
@@ -28,7 +32,7 @@
 #    SUBDIR += uzap
 #    SUBDIR += vile
      SUBDIR += vim
-     SUBDIR += vim:light
+     SUBDIR += vim:no_x11
      SUBDIR += wordperfect
 #    SUBDIR += xcoral
 #    SUBDIR += xed

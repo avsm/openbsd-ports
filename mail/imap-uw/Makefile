@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.20 2001/09/24 22:01:49 jakob Exp $
+# $OpenBSD: Makefile,v 1.20.2.1 2002/01/16 23:49:29 brad Exp $
 
 COMMENT=	University of Washington IMAP4rev1/POP2/POP3 mail servers
 
@@ -6,14 +6,15 @@ VERSION=	2001.313
 DISTNAME=	pine4.40
 PKGNAME=	imap-uw-${VERSION}
 CATEGORIES=	mail
-NEED_VERSION=	1.460
+NEED_VERSION=	1.475
+EXTRACT_SUFX=	.tar.Z
 
 HOMEPAGE=	http://www.washington.edu/imap/
 
 MAINTAINER=     Jakob Schlyter <jakob@openbsd.org>
 
-MASTER_SITES=	ftp://ftp.cac.washington.edu/pine/ \
-		ftp://ftp.sunet.se/pub/unix/mail/pine/
+MASTER_SITES=	ftp://ftp.cac.washington.edu/pine/old/ \
+		ftp://ftp.sunet.se/pub/unix/mail/pine/old/
 
 PERMIT_PACKAGE_CDROM=	no
 PERMIT_PACKAGE_FTP=	yes

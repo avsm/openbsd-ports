@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile.inc,v 1.14 2001/11/10 15:00:52 espie Exp $
+# $OpenBSD: Makefile.inc,v 1.14.2.1 2002/08/28 12:18:01 naddy Exp $
 #
 # Relevant URLs:	http://www.bsdi.com/netscape/
 #			http://www.fortify.net/
@@ -9,7 +9,7 @@
 
 .if ${EMUL_TYPE} == "linux"
 MAINTAINER=	Kevin Lo <kevlo@openbsd.org>
-BUILD_DEPENDS=	::emulators/redhat/base 
+BUILD_DEPENDS=	:redhat_base-*:emulators/redhat/base 
 RUN_DEPENDS=	${BUILD_DEPENDS}
 SUPPORTED=	supported
 ONLY_FOR_ARCHS=	i386
@@ -32,22 +32,21 @@ SUPPORTED?=	unsupported
 
 
 CATEGORIES=     www
-NEED_VERSION=	1.489
 MASTER_SITES= \
-	ftp://ftp.netscape.com/pub/%SUBDIR%/ \
-	ftp://uiarchive.uiuc.edu/pub/www/netscape/%SUBDIR%/ \
-	ftp://netscape.Mirror.McGill.CA/pub/mirrors/ftp.netscape.com/pub/%SUBDIR%/ \
-	ftp://ftp.the.net/pub/mirrors/ftp.netscape.com/pub/%SUBDIR%/ \
-	ftp://sunsite.doc.ic.ac.uk/packages/netscape/pub/%SUBDIR%/ \
-	ftp://ftp-de.netscape.com/pub/%SUBDIR%/ \
-	ftp://nic.funet.fi/pub/mirrors/ftp.netscape.com/pub/%SUBDIR%/
+	ftp://ftp.netscape.com/pub/$S/ \
+	ftp://uiarchive.uiuc.edu/pub/www/netscape/$S/ \
+	ftp://netscape.Mirror.McGill.CA/pub/mirrors/ftp.netscape.com/pub/$S/ \
+	ftp://ftp.the.net/pub/mirrors/ftp.netscape.com/pub/$S/ \
+	ftp://sunsite.doc.ic.ac.uk/packages/netscape/pub/$S/ \
+	ftp://ftp-de.netscape.com/pub/$S/ \
+	ftp://nic.funet.fi/pub/mirrors/ftp.netscape.com/pub/$S/
 MASTER_SITES0= \
-	ftp://archive.netscape.com/pub/%SUBDIR%/
+	ftp://archive.netscape.com/pub/$S/
 MASTER_SITES1=	ftp://ftp.fortify.net/pub/Fortify/ \
 		ftp://ftp.sunet.se/pub/security/tools/net/Fortify/ \
 		ftp://ftp.funet.fi/pub/crypt/mirrors/fortify/ \
 		ftp://ftp.it.net.au/mirrors/Fortify/
-MASTER_SITE_SUBDIR= communicator/english/${PROGRAM_V}/unix/${SUPPORTED}/${LOCATION}
+S= communicator/english/${PROGRAM_V}/unix/${SUPPORTED}/${LOCATION}
 DIST_SUBDIR=	netscape
 
 HOMEPAGE=	http://www.netscape.com/
@@ -112,5 +111,6 @@ post-install:
 	| src/cmdline/fortify >/dev/null ${PREFIX}/netscape/netscape_nis
 .endif
 	@sed -e 's#@netscape_home@#${TRUEPREFIX}/netscape#' \
+	     -e 's#@prefix@#${TRUEPREFIX}#' \
 	 ${FILESDIR}/netscape.${MACHINE_ARCH} > ${WRKDIR}/netscape
 	${INSTALL_SCRIPT} ${WRKDIR}/netscape ${PREFIX}/bin

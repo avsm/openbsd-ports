@@ -1,9 +1,8 @@
-# $OpenBSD: Makefile,v 1.37 2003/02/05 18:35:03 reinhard Exp $
+# $OpenBSD: Makefile,v 1.37.2.1 2003/07/10 23:26:18 brad Exp $
 
-COMMENT=	'GNU privacy guard - a free PGP replacement'
+COMMENT=	"GNU privacy guard - a free PGP replacement"
 
-DISTNAME=	gnupg-1.2.1
-PKGNAME=	${DISTNAME}
+DISTNAME=	gnupg-1.2.2
 CATEGORIES=	security
 MASTER_SITES=	ftp://ftp.gnupg.org/gcrypt/gnupg/ \
 		ftp://gd.tuwien.ac.at/privacy/gnupg/gnupg/ \
@@ -14,26 +13,29 @@ MASTER_SITES=	ftp://ftp.gnupg.org/gcrypt/gnupg/ \
 		ftp://pgp.iijlab.net/pub/pgp/gnupg/ \
 		ftp://ring.aist.go.jp/pub/net/gnupg/gnupg/
 
-DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
-EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
-
 HOMEPAGE=	http://www.gnupg.org/
 
 MAINTAINER=	Reinhard J. Sammer <reinhard@openbsd.org>
 
+# GPL
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-.include <bsd.own.mk>
+# XXX workaround gcc bugs on sparc64
+.if ${MACHINE_ARCH:Msparc64}
+PATCH_LIST= patch-* gcc-*
+.endif
 
-MODULES=	gettext
+MODULES= gettext
 
-CONFIGURE_STYLE=	gnu
-MODGNU_CONFIG_GUESS_DIRS=	${WRKSRC} ${WRKSRC}/scripts
-
-REGRESS_TARGET=	check
+CONFIGURE_STYLE= autoconf
+AUTOCONF_VERSION= 2.52
+MODGNU_CONFIG_GUESS_DIRS= ${WRKSRC} ${WRKSRC}/scripts
+CONFIGURE_ARGS+= --disable-ldap
+CONFIGURE_ENV=	CPPFLAGS="-I${LOCALBASE}/include" \
+		LDFLAGS="-L${LOCALBASE}/lib"
 
 GNUPGDOCFILES=	README AUTHORS COPYING THANKS TODO BUGS \
 		doc/DETAILS doc/FAQ doc/OpenPGP doc/HACKING doc/faq.html
@@ -43,9 +45,7 @@ post-install:
 	cd ${WRKSRC}; ${INSTALL_DATA} ${GNUPGDOCFILES} \
 		${PREFIX}/share/doc/gnupg
 
-# XXX workaround gcc bugs on sparc64
-.if ${MACHINE_ARCH:Msparc64}
-CFLAGS+=-O0
-.endif
+do-regress:
+	@cd ${WRKSRC}/checks && ${MAKE_PROGRAM}
 
 .include <bsd.port.mk>

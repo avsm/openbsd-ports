@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.48.2.2 2002/12/02 03:21:32 brad Exp $
+# $OpenBSD: Makefile,v 1.48.2.3 2002/12/13 02:27:53 naddy Exp $
 
 COMMENT=	"pager/text-based web browser"
 
-VERSION=	0.3.2.1
-M17N_VERSION=	20021127
-REVISION=	p1
+VERSION=	0.3.2.2
+M17N_VERSION=	20021207
+REVISION=
 
 DISTNAME=	w3m-${VERSION}
 PKGNAME=	${DISTNAME}${REVISION}
@@ -22,14 +22,12 @@ MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=w3m/}
 MASTER_SITES0=	http://www2u.biglobe.ne.jp/~hsaka/w3m/patch/
 
 SUPDISTFILES=	w3m-${VERSION}${EXTRACT_SUFX} \
-		w3m-${VERSION}-m17n-${M17N_VERSION}${EXTRACT_SUFX}:0
+		w3m-${VERSION}-stable-m17n-${M17N_VERSION}${EXTRACT_SUFX}:0
 
 LIB_DEPENDS=	gc.1::devel/boehm-gc
 
 FLAVORS=	image japanese m17n
 FLAVOR?=
-
-PATCH_LIST=	patch-*
 
 CONFIGURE_STYLE= simple
 CONFIGURE_ARGS=	--nonstop \
@@ -68,17 +66,15 @@ DOCSRC=		${WRKSRC}/doc
 .endif
 
 .if ${FLAVOR:L:Mm17n}
-DISTNAME=	w3m-${VERSION}-m17n-${M17N_VERSION}
+DISTNAME=	w3m-${VERSION}-stable-m17n-${M17N_VERSION}
 PKGNAME=	w3m-${VERSION}.${M17N_VERSION}${REVISION}
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:0
 CONFIGURE_ARGS+= --suffix="" --charset=UTF-8
 DOCS+=		README.m17n
-PATCH_LIST+=	m17n-patch-*
 .endif
 
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/w3m
-	${INSTALL_MAN} ${DOCSRC}/w3m.1 ${PREFIX}/man/man1
 	cd ${DOCSRC}; ${INSTALL_DATA} ${DOCS} ${PREFIX}/share/doc/w3m
 
 .include <bsd.port.mk>

@@ -1,7 +1,7 @@
-$OpenBSD: patch-kio_kssl_kopenssl_cc,v 1.1.2.1 2002/08/16 20:05:08 brad Exp $
---- kio/kssl/kopenssl.cc.orig	Wed Apr 10 18:00:44 2002
-+++ kio/kssl/kopenssl.cc	Wed Aug 14 13:05:38 2002
-@@ -105,6 +105,7 @@ static int (*K_SSL_CTX_use_certificate) 
+$OpenBSD: patch-kio_kssl_kopenssl_cc,v 1.1.2.2 2002/08/16 23:21:45 brad Exp $
+--- kio/kssl/kopenssl.cc.orig	Thu Mar 21 21:25:46 2002
++++ kio/kssl/kopenssl.cc	Fri Aug 16 19:19:55 2002
+@@ -104,6 +104,7 @@ static int (*K_SSL_CTX_use_certificate) 
  static int (*K_SSL_get_error) (SSL*, int) = NULL;
  static STACK_OF(X509)* (*K_SSL_get_peer_cert_chain) (SSL*) = NULL;
  static void (*K_X509_STORE_CTX_set_chain) (X509_STORE_CTX *, STACK_OF(X509)*) = NULL;
@@ -9,7 +9,7 @@ $OpenBSD: patch-kio_kssl_kopenssl_cc,v 1.1.2.1 2002/08/16 20:05:08 brad Exp $
  static void (*K_sk_free) (STACK*) = NULL;
  static int (*K_sk_num) (STACK*) = NULL;
  static char* (*K_sk_pop) (STACK*) = NULL;
-@@ -348,6 +349,7 @@ KConfig *cfg;
+@@ -346,6 +347,7 @@ KConfig *cfg;
        K_X509_REQ_free = (void (*)(X509_REQ*)) _cryptoLib->symbol("X509_REQ_free");
        K_X509_REQ_new = (X509_REQ* (*)()) _cryptoLib->symbol("X509_REQ_new");
        K_X509_STORE_CTX_set_chain = (void (*)(X509_STORE_CTX *, STACK_OF(X509)*)) _cryptoLib->symbol("X509_STORE_CTX_set_chain");
@@ -17,7 +17,7 @@ $OpenBSD: patch-kio_kssl_kopenssl_cc,v 1.1.2.1 2002/08/16 20:05:08 brad Exp $
        K_sk_free = (void (*) (STACK *)) _cryptoLib->symbol("sk_free");
        K_sk_num = (int (*) (STACK *)) _cryptoLib->symbol("sk_num");
        K_sk_pop = (char* (*) (STACK *)) _cryptoLib->symbol("sk_pop");
-@@ -930,6 +932,10 @@ char *KOpenSSLProxy::sk_value(STACK *s, 
+@@ -920,6 +922,10 @@ char *KOpenSSLProxy::sk_value(STACK *s, 
  
  void KOpenSSLProxy::X509_STORE_CTX_set_chain(X509_STORE_CTX *v, STACK_OF(X509)* x) {
     if (K_X509_STORE_CTX_set_chain) (K_X509_STORE_CTX_set_chain)(v,x);

@@ -1,4 +1,4 @@
-$OpenBSD: patch-Mailman_Utils_py,v 1.1 2005/02/11 19:33:55 jakob Exp $
+$OpenBSD: patch-Mailman_Utils_py,v 1.1.4.1 2005/02/13 16:50:38 sturm Exp $
 --- Mailman/Utils.py.orig	Fri Dec 26 23:50:04 2003
 +++ Mailman/Utils.py	Fri Feb 11 20:23:16 2005
 @@ -1,4 +1,4 @@

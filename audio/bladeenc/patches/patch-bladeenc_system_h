@@ -1,4 +1,4 @@
-$OpenBSD: patch-bladeenc_system_h,v 1.1 2003/02/12 00:22:21 brad Exp $
+$OpenBSD: patch-bladeenc_system_h,v 1.1.4.1 2003/02/12 00:43:08 brad Exp $
 --- bladeenc/system.h.orig	Tue Feb 11 19:16:31 2003
 +++ bladeenc/system.h	Tue Feb 11 19:17:06 2003
 @@ -321,10 +321,4 @@

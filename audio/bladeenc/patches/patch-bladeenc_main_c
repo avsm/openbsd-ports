@@ -1,4 +1,4 @@
-$OpenBSD: patch-bladeenc_main_c,v 1.1 2003/02/12 00:22:21 brad Exp $
+$OpenBSD: patch-bladeenc_main_c,v 1.1.4.1 2003/02/12 00:43:08 brad Exp $
 --- bladeenc/main.c.orig	Tue Feb 11 19:15:37 2003
 +++ bladeenc/main.c	Tue Feb 11 19:15:57 2003
 @@ -41,6 +41,7 @@

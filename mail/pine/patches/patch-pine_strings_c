@@ -1,0 +1,70 @@
+$OpenBSD: patch-pine_strings_c,v 1.1.2.1 2003/11/12 17:33:49 margarida Exp $
+--- pine/strings.c.orig	2003-05-20 19:07:15.000000000 -0400
++++ pine/strings.c	2003-11-11 07:30:08.000000000 -0500
+@@ -4094,7 +4094,8 @@ rfc2231_get_param(parms, name, charset, 
+     char      *name, **charset, **lang;
+ {
+     char *buf, *p;
+-    int	  decode = 0, name_len, i, n;
++    int	  decode = 0, name_len, i;
++    unsigned n;
+ 
+     name_len = strlen(name);
+     for(; parms ; parms = parms->next)
+@@ -4115,15 +4116,19 @@ rfc2231_get_param(parms, name, charset, 
+ 		    n = 0;
+ 		    do
+ 		      n = (n * 10) + (*p - '0');
+-		    while(isdigit(*++p));
++		    while(isdigit(*++p) && n < RFC2231_MAX);
+ 
+ 		    if(n < RFC2231_MAX){
+ 			pieces[n] = parms->value;
+ 			if(n > count)
+ 			  count = n;
+ 		    }
+-		    else
++		    else {
++			q_status_message1(SM_ORDER | SM_DING, 0, 3,
++			"Invalid attachment parameter segment number: %.25s",
++					 name);
+ 		      return(NULL);		/* Too many segments! */
++		    }
+ 
+ 		    while(parms = parms->next)
+ 		      if(!struncmp(name, parms->attribute, name_len)){
+@@ -4138,8 +4143,12 @@ rfc2231_get_param(parms, name, charset, 
+ 		for(i = len = 0; i <= count; i++)
+ 		  if(pieces[i])
+ 		    len += strlen(pieces[i]);
+-		  else
++		  else{
++		      q_status_message1(SM_ORDER | SM_DING, 0, 3,
++			     "Missing attachment parameter sequence: %.25s",
++					 name);
+ 		    return(NULL);		/* hole! */
++		  }
+ 
+ 		buf = (char *) fs_get((len + 1) * sizeof(char));
+ 
+@@ -4315,7 +4324,7 @@ rfc2231_list_params(plist)
+     if(plist->value)
+       fs_give((void **) &plist->value);
+ 
+-    for(pp = plist->list; pp; pp = pp->next)
++    for(pp = plist->list; pp; pp = pp->next){
+       /* get a name */
+       for(i = 0; i < 32; i++)
+ 	if(!(plist->attrib[i] = pp->attribute[i]) ||  pp->attribute[i] == '*'){
+@@ -4336,6 +4345,11 @@ rfc2231_list_params(plist)
+ 
+ 	    break;
+ 	}
++      if(i >= 32)
++	q_status_message1(SM_ORDER | SM_DING, 0, 3,
++			  "Overly long attachment parameter ignored: %.25s...",
++			  pp->attribute);
++    }
+ 
+     return(FALSE);
+ }

@@ -1,14 +1,14 @@
-# $OpenBSD: Makefile,v 1.3 2003/06/01 23:14:16 margarida Exp $
+# $OpenBSD: Makefile,v 1.3.2.1 2004/07/29 13:30:54 robert Exp $
 
 COMMENT=	"monitoring and managing daemons utility"
 
-VERSION=	3.2
+VERSION=	4.2.1
 DISTNAME=	monit-${VERSION}
 CATEGORIES=	sysutils
 
 HOMEPAGE=	http://www.tildeslash.com/monit/
 
-MASTER_SITES=	${HOMEPAGE}dist/
+MASTER_SITES=	${HOMEPAGE}dist/old/
 
 MAINTAINER=	Margarida Sequeira <margarida@openbsd.org>
 

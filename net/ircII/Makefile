@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.21.2.1 2003/03/15 02:44:06 brad Exp $
+# $OpenBSD: Makefile,v 1.21.2.2 2003/03/16 17:43:14 brad Exp $
 # $FreeBSD: Makefile,v 1.15 1998/01/25 20:40:00 torstenb Exp $
 
 COMMENT=	"Internet Relay Chat client"
@@ -7,8 +7,8 @@ VERSION=	20030314
 DISTNAME=	ircii-${VERSION}
 PKGNAME=	ircII-${VERSION}
 CATEGORIES=	net
-MASTER_SITES=	ftp://ftp.warped.com/pub/ircII/ \
-		ftp://ircftp.au.eterna.com.au/pub/ircII/
+MASTER_SITES=	ftp://ftp.warped.com/pub/ircII/old/ \
+		ftp://ircftp.au.eterna.com.au/pub/ircII/old/
 
 MAINTAINER=	Brad Smith <brad@openbsd.org>
 

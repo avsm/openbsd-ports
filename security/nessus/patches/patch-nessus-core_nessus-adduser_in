@@ -1,6 +1,6 @@
-$OpenBSD: patch-nessus-core_nessus-adduser_in,v 1.1 2004/08/13 06:14:57 brad Exp $
+$OpenBSD: patch-nessus-core_nessus-adduser_in,v 1.1.4.1 2004/08/15 23:26:32 brad Exp $
 --- nessus-core/nessus-adduser.in.orig	Wed May 29 05:17:54 2002
-+++ nessus-core/nessus-adduser.in	Thu Aug 12 21:48:15 2004
++++ nessus-core/nessus-adduser.in	Sun Aug 15 17:36:26 2004
 @@ -202,14 +202,16 @@ echo "Enter the rules for this user, and
  
  # we do not leave any temporary files, hanging around

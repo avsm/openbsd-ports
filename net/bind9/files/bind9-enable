@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-#	$OpenBSD: bind9-enable,v 1.5 2001/02/12 17:15:53 brad Exp $
+#	$OpenBSD: bind9-enable,v 1.5.2.1 2001/03/30 22:50:38 naddy Exp $
 #
 #	this script replaces OpenBSD named files with the corresponding
 #	files from BIND v9.

@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.16 2004/06/11 08:00:36 brad Exp $
+@comment $OpenBSD: PLIST,v 1.16.2.1 2005/02/12 09:16:03 sturm Exp $
 bin/RunAccel
 bin/RunCache
 bin/squidclient
@@ -29,6 +29,7 @@ share/examples/squid/errors/Bulgarian/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Bulgarian/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Bulgarian/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Bulgarian/ERR_INVALID_REQ
+share/examples/squid/errors/Bulgarian/ERR_INVALID_RESP
 share/examples/squid/errors/Bulgarian/ERR_INVALID_URL
 share/examples/squid/errors/Bulgarian/ERR_LIFETIME_EXP
 share/examples/squid/errors/Bulgarian/ERR_NO_RELAY
@@ -58,6 +59,7 @@ share/examples/squid/errors/Catalan/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Catalan/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Catalan/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Catalan/ERR_INVALID_REQ
+share/examples/squid/errors/Catalan/ERR_INVALID_RESP
 share/examples/squid/errors/Catalan/ERR_INVALID_URL
 share/examples/squid/errors/Catalan/ERR_LIFETIME_EXP
 share/examples/squid/errors/Catalan/ERR_NO_RELAY
@@ -87,6 +89,7 @@ share/examples/squid/errors/Czech/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Czech/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Czech/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Czech/ERR_INVALID_REQ
+share/examples/squid/errors/Czech/ERR_INVALID_RESP
 share/examples/squid/errors/Czech/ERR_INVALID_URL
 share/examples/squid/errors/Czech/ERR_LIFETIME_EXP
 share/examples/squid/errors/Czech/ERR_NO_RELAY
@@ -116,6 +119,7 @@ share/examples/squid/errors/Danish/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Danish/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Danish/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Danish/ERR_INVALID_REQ
+share/examples/squid/errors/Danish/ERR_INVALID_RESP
 share/examples/squid/errors/Danish/ERR_INVALID_URL
 share/examples/squid/errors/Danish/ERR_LIFETIME_EXP
 share/examples/squid/errors/Danish/ERR_NO_RELAY
@@ -145,6 +149,7 @@ share/examples/squid/errors/Dutch/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Dutch/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Dutch/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Dutch/ERR_INVALID_REQ
+share/examples/squid/errors/Dutch/ERR_INVALID_RESP
 share/examples/squid/errors/Dutch/ERR_INVALID_URL
 share/examples/squid/errors/Dutch/ERR_LIFETIME_EXP
 share/examples/squid/errors/Dutch/ERR_NO_RELAY
@@ -174,6 +179,7 @@ share/examples/squid/errors/English/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/English/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/English/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/English/ERR_INVALID_REQ
+share/examples/squid/errors/English/ERR_INVALID_RESP
 share/examples/squid/errors/English/ERR_INVALID_URL
 share/examples/squid/errors/English/ERR_LIFETIME_EXP
 share/examples/squid/errors/English/ERR_NO_RELAY
@@ -203,6 +209,7 @@ share/examples/squid/errors/Estonian/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Estonian/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Estonian/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Estonian/ERR_INVALID_REQ
+share/examples/squid/errors/Estonian/ERR_INVALID_RESP
 share/examples/squid/errors/Estonian/ERR_INVALID_URL
 share/examples/squid/errors/Estonian/ERR_LIFETIME_EXP
 share/examples/squid/errors/Estonian/ERR_NO_RELAY
@@ -232,6 +239,7 @@ share/examples/squid/errors/Finnish/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Finnish/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Finnish/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Finnish/ERR_INVALID_REQ
+share/examples/squid/errors/Finnish/ERR_INVALID_RESP
 share/examples/squid/errors/Finnish/ERR_INVALID_URL
 share/examples/squid/errors/Finnish/ERR_LIFETIME_EXP
 share/examples/squid/errors/Finnish/ERR_NO_RELAY
@@ -261,6 +269,7 @@ share/examples/squid/errors/French/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/French/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/French/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/French/ERR_INVALID_REQ
+share/examples/squid/errors/French/ERR_INVALID_RESP
 share/examples/squid/errors/French/ERR_INVALID_URL
 share/examples/squid/errors/French/ERR_LIFETIME_EXP
 share/examples/squid/errors/French/ERR_NO_RELAY
@@ -290,6 +299,7 @@ share/examples/squid/errors/German/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/German/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/German/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/German/ERR_INVALID_REQ
+share/examples/squid/errors/German/ERR_INVALID_RESP
 share/examples/squid/errors/German/ERR_INVALID_URL
 share/examples/squid/errors/German/ERR_LIFETIME_EXP
 share/examples/squid/errors/German/ERR_NO_RELAY
@@ -319,6 +329,7 @@ share/examples/squid/errors/Hebrew/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Hebrew/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Hebrew/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Hebrew/ERR_INVALID_REQ
+share/examples/squid/errors/Hebrew/ERR_INVALID_RESP
 share/examples/squid/errors/Hebrew/ERR_INVALID_URL
 share/examples/squid/errors/Hebrew/ERR_LIFETIME_EXP
 share/examples/squid/errors/Hebrew/ERR_NO_RELAY
@@ -348,6 +359,7 @@ share/examples/squid/errors/Hungarian/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Hungarian/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Hungarian/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Hungarian/ERR_INVALID_REQ
+share/examples/squid/errors/Hungarian/ERR_INVALID_RESP
 share/examples/squid/errors/Hungarian/ERR_INVALID_URL
 share/examples/squid/errors/Hungarian/ERR_LIFETIME_EXP
 share/examples/squid/errors/Hungarian/ERR_NO_RELAY
@@ -377,6 +389,7 @@ share/examples/squid/errors/Italian/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Italian/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Italian/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Italian/ERR_INVALID_REQ
+share/examples/squid/errors/Italian/ERR_INVALID_RESP
 share/examples/squid/errors/Italian/ERR_INVALID_URL
 share/examples/squid/errors/Italian/ERR_LIFETIME_EXP
 share/examples/squid/errors/Italian/ERR_NO_RELAY
@@ -406,6 +419,7 @@ share/examples/squid/errors/Japanese/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Japanese/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Japanese/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Japanese/ERR_INVALID_REQ
+share/examples/squid/errors/Japanese/ERR_INVALID_RESP
 share/examples/squid/errors/Japanese/ERR_INVALID_URL
 share/examples/squid/errors/Japanese/ERR_LIFETIME_EXP
 share/examples/squid/errors/Japanese/ERR_NO_RELAY
@@ -580,6 +594,7 @@ share/examples/squid/errors/Russian-1251/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Russian-1251/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Russian-1251/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Russian-1251/ERR_INVALID_REQ
+share/examples/squid/errors/Russian-1251/ERR_INVALID_RESP
 share/examples/squid/errors/Russian-1251/ERR_INVALID_URL
 share/examples/squid/errors/Russian-1251/ERR_LIFETIME_EXP
 share/examples/squid/errors/Russian-1251/ERR_NO_RELAY
@@ -609,6 +624,7 @@ share/examples/squid/errors/Russian-koi8-r/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Russian-koi8-r/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Russian-koi8-r/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Russian-koi8-r/ERR_INVALID_REQ
+share/examples/squid/errors/Russian-koi8-r/ERR_INVALID_RESP
 share/examples/squid/errors/Russian-koi8-r/ERR_INVALID_URL
 share/examples/squid/errors/Russian-koi8-r/ERR_LIFETIME_EXP
 share/examples/squid/errors/Russian-koi8-r/ERR_NO_RELAY
@@ -638,6 +654,7 @@ share/examples/squid/errors/Serbian/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Serbian/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Serbian/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Serbian/ERR_INVALID_REQ
+share/examples/squid/errors/Serbian/ERR_INVALID_RESP
 share/examples/squid/errors/Serbian/ERR_INVALID_URL
 share/examples/squid/errors/Serbian/ERR_LIFETIME_EXP
 share/examples/squid/errors/Serbian/ERR_NO_RELAY
@@ -667,6 +684,7 @@ share/examples/squid/errors/Simplify_Chinese/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Simplify_Chinese/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Simplify_Chinese/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Simplify_Chinese/ERR_INVALID_REQ
+share/examples/squid/errors/Simplify_Chinese/ERR_INVALID_RESP
 share/examples/squid/errors/Simplify_Chinese/ERR_INVALID_URL
 share/examples/squid/errors/Simplify_Chinese/ERR_LIFETIME_EXP
 share/examples/squid/errors/Simplify_Chinese/ERR_NO_RELAY
@@ -696,6 +714,7 @@ share/examples/squid/errors/Slovak/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Slovak/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Slovak/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Slovak/ERR_INVALID_REQ
+share/examples/squid/errors/Slovak/ERR_INVALID_RESP
 share/examples/squid/errors/Slovak/ERR_INVALID_URL
 share/examples/squid/errors/Slovak/ERR_LIFETIME_EXP
 share/examples/squid/errors/Slovak/ERR_NO_RELAY
@@ -725,6 +744,7 @@ share/examples/squid/errors/Spanish/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Spanish/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Spanish/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Spanish/ERR_INVALID_REQ
+share/examples/squid/errors/Spanish/ERR_INVALID_RESP
 share/examples/squid/errors/Spanish/ERR_INVALID_URL
 share/examples/squid/errors/Spanish/ERR_LIFETIME_EXP
 share/examples/squid/errors/Spanish/ERR_NO_RELAY
@@ -754,6 +774,7 @@ share/examples/squid/errors/Swedish/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Swedish/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Swedish/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Swedish/ERR_INVALID_REQ
+share/examples/squid/errors/Swedish/ERR_INVALID_RESP
 share/examples/squid/errors/Swedish/ERR_INVALID_URL
 share/examples/squid/errors/Swedish/ERR_LIFETIME_EXP
 share/examples/squid/errors/Swedish/ERR_NO_RELAY
@@ -783,6 +804,7 @@ share/examples/squid/errors/Traditional_Chinese/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Traditional_Chinese/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Traditional_Chinese/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Traditional_Chinese/ERR_INVALID_REQ
+share/examples/squid/errors/Traditional_Chinese/ERR_INVALID_RESP
 share/examples/squid/errors/Traditional_Chinese/ERR_INVALID_URL
 share/examples/squid/errors/Traditional_Chinese/ERR_LIFETIME_EXP
 share/examples/squid/errors/Traditional_Chinese/ERR_NO_RELAY
@@ -812,6 +834,7 @@ share/examples/squid/errors/Turkish/ERR_FTP_PUT_ERROR
 share/examples/squid/errors/Turkish/ERR_FTP_PUT_MODIFIED
 share/examples/squid/errors/Turkish/ERR_FTP_UNAVAILABLE
 share/examples/squid/errors/Turkish/ERR_INVALID_REQ
+share/examples/squid/errors/Turkish/ERR_INVALID_RESP
 share/examples/squid/errors/Turkish/ERR_INVALID_URL
 share/examples/squid/errors/Turkish/ERR_LIFETIME_EXP
 share/examples/squid/errors/Turkish/ERR_NO_RELAY

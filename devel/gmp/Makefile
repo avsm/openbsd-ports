@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.6.2.1 2002/10/14 16:29:26 naddy Exp $
+# $OpenBSD: Makefile,v 1.6.2.2 2002/12/11 01:04:07 naddy Exp $
 
 COMMENT=	library for arbitrary precision arithmetic
 
@@ -9,7 +9,7 @@ MASTER_SITES=	${MASTER_SITE_GNU:=gmp/}
 
 HOMEPAGE=	http://www.swox.com/gmp/
 
-MAINTAINER=	Jakob Schlyter <jakob@openbsd.org>
+MAINTAINER=	Christian Weisgerber <naddy@openbsd.org>
 
 # (L)GPL
 PERMIT_PACKAGE_CDROM=	Yes
@@ -18,8 +18,8 @@ PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
 # work around optimizer bug in gcc 2.95
-.if ${MACHINE_ARCH} == "sparc64"
-PATCH_LIST=	patch-* gcc-patch-*
+.if ${MACHINE_ARCH} == "sparc64" || ${MACHINE_ARCH} == "m68k"
+PATCH_LIST=	patch-* ${MACHINE_ARCH}-patch-*
 .endif
 
 CONFIGURE_STYLE= gnu

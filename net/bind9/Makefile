@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.6.2.3 2001/05/07 02:03:47 naddy Exp $
+# $OpenBSD: Makefile,v 1.6.2.4 2001/05/11 11:38:10 naddy Exp $
 
 VERSION=	9.1.2
 DISTNAME=	bind-${VERSION}
@@ -6,7 +6,7 @@ CATEGORIES=	net
 NEED_VERSION=	1.340
 
 MASTER_SITES=	ftp://ftp.isc.org/isc/bind9/${VERSION}/ \
-		ftp://ftp.sunet.se/pub/network/isc/bind9/${VERSION}
+		ftp://ftp.sunet.se/pub/network/isc/bind9/${VERSION}/
 
 HOMEPAGE=	http://www.isc.org/products/BIND/
 

@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.29.2.1 2003/11/13 20:53:25 margarida Exp $
+# $OpenBSD: Makefile,v 1.29.2.2 2004/09/09 19:55:22 robert Exp $
 
 COMMENT=	"mpeg audio 1/2 layer 1, 2 and 3 player"
 
 DISTNAME=	mpg123-0.59r
-PKGNAME=	${DISTNAME}p2
+PKGNAME=	${DISTNAME}p3
 CATEGORIES=	audio
 HOMEPAGE=	http://www.mpg123.de/
 

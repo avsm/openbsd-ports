@@ -1,0 +1,10 @@
+--- tkcvs/cvscheck.blank.orig	Sun Apr 26 19:17:07 1998
++++ tkcvs/cvscheck.blank	Sun Apr 26 19:17:33 1998
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ # \
+-	exec tclsh $0 ${1+"$@"}
++	exec tclsh8.0 $0 ${1+"$@"}
+ 
+ # $Id: cvscheck.blank,v 1.8 1995/11/20 06:08:35 davide Exp $
+ #

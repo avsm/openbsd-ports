@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.79 2002/01/06 18:33:17 espie Exp $
+# $OpenBSD: Makefile,v 1.79.2.1 2002/09/30 19:53:38 brad Exp $
 
 COMMENT=	"mail retrieval utility for POP2, POP3, KPOP, IMAP and more"
 
-DISTNAME=	fetchmail-5.9.6
+DISTNAME=	fetchmail-6.1.0
 CATEGORIES=	mail
 NEED_VERSION=	1.500
 MASTER_SITES=	http://www.tuxedo.org/~esr/fetchmail/ \
@@ -17,11 +17,14 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
+MODULES=	gettext
+
 SEPARATE_BUILD=	concurrent
-CONFIGURE_STYLE= autoconf
-AUTOCONF_NEW=	Yes
+CONFIGURE_STYLE= gnu
 CONFIGURE_ARGS=	--disable-nls --enable-inet6 --with-ssl \
-		--with-kerberos --with-kerberos5
+		--with-kerberos --with-kerberos5 --enable-NTLM
+CONFIGURE_ENV=	CPPFLAGS="-I${LOCALBASE}/include" \
+		LDFLAGS="-L${LOCALBASE}/lib"
 
 DOCS=	FAQ NOTES FEATURES README COPYING fetchmail-FAQ.html \
 	fetchmail-features.html design-notes.html todo.html

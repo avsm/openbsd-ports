@@ -1,4 +1,4 @@
-$OpenBSD: patch-intl_Makefile_in,v 1.1 2002/05/01 22:19:37 fgsch Exp $
+$OpenBSD: patch-intl_Makefile_in,v 1.1.2.1 2002/09/30 19:53:38 brad Exp $
 --- intl/Makefile.in.orig	Wed May  1 14:14:59 2002
 +++ intl/Makefile.in	Wed May  1 14:15:31 2002
 @@ -204,12 +204,10 @@ Makefile: Makefile.in ../config.status

@@ -1,4 +1,4 @@
-$OpenBSD: patch-configure,v 1.4 2002/09/10 10:14:24 fgsch Exp $
+$OpenBSD: patch-configure,v 1.4.2.1 2002/09/30 19:53:38 brad Exp $
 --- configure.orig	Wed Sep  4 10:43:37 2002
 +++ configure	Tue Sep 10 06:29:13 2002
 @@ -6982,7 +6982,7 @@ echo "configure:6981: checking kerberosI

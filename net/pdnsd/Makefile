@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.4.2.1 2002/01/08 00:56:04 naddy Exp $
+# $OpenBSD: Makefile,v 1.4.2.2 2002/01/17 14:55:00 naddy Exp $
 # Uses pthreads
 
 COMMENT=		"threaded DNS daemon, optimized for caching"
@@ -7,7 +7,7 @@ COMMENT=		"threaded DNS daemon, optimized for caching"
 # good enough shape to run this app.
 ONLY_FOR_ARCHS=	i386
 
-DISTNAME=		pdnsd-1.1.7
+DISTNAME=		pdnsd-1.1.7a
 CATEGORIES=     	net
 NEED_VERSION=		1.435
 HOMEPAGE=		http://home.t-online.de/home/Moestl/

@@ -1,13 +1,13 @@
-# $OpenBSD: Makefile,v 1.3 2000/04/20 00:53:56 kevlo Exp $
+# $OpenBSD: Makefile,v 1.3.2.1 2000/09/15 05:18:26 marc Exp $
 
-DISTNAME=       webmin-0.79
+DISTNAME=       webmin-0.80
 CATEGORIES=     sysutils
+NEED_VERSION=	1.310
 FAKE=No
 MASTER_SITES=   http://www.webmin.com/webmin/download/
 
 MAINTAINER=     kevlo@openbsd.org
 
-LICENSE_TYPE=           BSD
 PERMIT_PACKAGE_CDROM=   Yes
 PERMIT_PACKAGE_FTP=     Yes
 PERMIT_DISTFILES_CDROM= Yes
@@ -15,6 +15,7 @@ PERMIT_DISTFILES_FTP=   Yes
 
 NO_BUILD=       Yes
 IS_INTERACTIVE= Yes
+NO_PACKAGE=     "interactive port"
 
 do-install:
 	sh ${WRKSRC}/setup.sh

@@ -1,4 +1,6 @@
+@comment $OpenBSD: PLIST,v 1.2.2.1 2000/09/15 05:18:24 marc Exp $
+lib/upsd/upsd.conf.sample
+@exec if [ -f /etc/upsd.conf ]; then echo "Update /etc/upsd.conf manually"; else cp %D/%F /etc/upsd.conf; fi
+@unexec echo "Remove the /etc/upsd.conf file manually"
 sbin/upsd
-@cwd /etc
-@cwd /etc
-upsd.conf
+@dirrm lib/upsd

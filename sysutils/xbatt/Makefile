@@ -3,14 +3,14 @@
 # Date created:		22 July 1998
 # Whom:			Niklas Hallqvist <niklas@openbsd.org>
 #
-# $OpenBSD: Makefile,v 1.3 2000/04/09 17:38:22 espie Exp $
+# $OpenBSD: Makefile,v 1.3.2.1 2000/09/15 05:18:30 marc Exp $
 # $FreeBSD: Makefile,v 1.4 1997/03/10 12:07:35 asami Exp $
 #
 
-DISTNAME=	xbatt-1.2
+DISTNAME=	xbatt-1.2.1
 CATEGORIES=	sysutils x11
-FAKE=No
-MASTER_SITES=	http://www.coara.or.jp/~eto/xbatt/
+NEED_VERSION=	1.307
+MASTER_SITES=	http://www.clave.gr.jp/~eto/xbatt/
 
 MAINTAINER=	niklas@openbsd.org
 
@@ -19,8 +19,7 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-USE_IMAKE=	yes
-NO_INSTALL_MANPAGES=	yes
+CONFIGURE_STYLE=	imake noman
 ONLY_FOR_ARCHS=	i386
 
 .include <bsd.port.mk>

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.15 2000/04/21 18:45:13 espie Exp $
+# $OpenBSD: Makefile,v 1.15.2.1 2000/09/15 05:18:03 marc Exp $
 # $FreeBSD: Makefile,v 1.26 1997/11/20 08:58:51 tg Exp $
 #
 
@@ -12,6 +12,7 @@
      SUBDIR += contool
      SUBDIR += daemontools
      SUBDIR += idled
+     SUBDIR += libretto-config
      SUBDIR += lsof
 #    SUBDIR += manck
 #    SUBDIR += mei
@@ -19,6 +20,7 @@
 #    SUBDIR += mkisofs
      SUBDIR += mtools
 #    SUBDIR += pib
+     SUBDIR += radiusreport
      SUBDIR += rtty
      SUBDIR += sdd
      SUBDIR += setquota
@@ -34,6 +36,7 @@
      SUBDIR += usbutil
      SUBDIR += xbatt
      SUBDIR += webmin
+     SUBDIR += whowatch
 #    SUBDIR += xcpustate
 #    SUBDIR += xdu
 #    SUBDIR += xloadface

@@ -1,8 +1,7 @@
-# $OpenBSD: Makefile,v 1.7 2000/04/09 17:38:16 espie Exp $
+# $OpenBSD: Makefile,v 1.7.2.1 2000/09/15 05:18:08 marc Exp $
 
 DISTNAME=	idled-1.16
 CATEGORIES=	sysutils
-FAKE=No
 MASTER_SITES=	http://www.darkwing.com/idled/download/ \
 		ftp://ftp.cs.hope.edu/pub/idled/
 
@@ -14,6 +13,7 @@ PERMIT_DISTFILES_CDROM=	"no fee"
 PERMIT_DISTFILES_FTP=	Yes
 
 post-extract:
-	@(cd ${WRKSRC}; make clean)
+	@cd ${WRKSRC}; make clean
 
+FAKE_FLAGS=PREFIX=${PREFIX} DESTDIR=${WRKINST}
 .include <bsd.port.mk>

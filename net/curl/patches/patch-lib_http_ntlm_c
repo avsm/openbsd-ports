@@ -1,6 +1,6 @@
-$OpenBSD: patch-lib_http_ntlm_c,v 1.1 2005/03/14 22:52:20 naddy Exp $
---- lib/http_ntlm.c.orig	Mon Mar 14 21:15:15 2005
-+++ lib/http_ntlm.c	Mon Mar 14 21:16:43 2005
+$OpenBSD: patch-lib_http_ntlm_c,v 1.1.6.1 2005/03/29 20:25:38 sturm Exp $
+--- lib/http_ntlm.c.orig	2005-03-29 19:40:02.000000000 +0200
++++ lib/http_ntlm.c	2005-03-29 19:41:34.000000000 +0200
 @@ -105,7 +105,6 @@ CURLntlm Curl_input_ntlm(struct connectd
      header++;
  
@@ -13,7 +13,7 @@ $OpenBSD: patch-lib_http_ntlm_c,v 1.1 2005/03/14 22:52:20 naddy Exp $
           32 (48) start of data block
        */
  
--      size_t size = Curl_base64_decode(header, (char *)buffer);
+-      int size = Curl_base64_decode(header, buffer);
 +      size_t size;
 +      unsigned char *buffer = (unsigned char *)malloc(strlen(header));
 +      if (buffer == NULL)

@@ -1,0 +1,21 @@
+$OpenBSD: patch-src_acct_c,v 1.1 2000/07/13 00:25:52 danh Exp $
+--- src/acct.c.orig	Thu Mar  2 08:24:45 2000
++++ src/acct.c	Wed Jul 12 01:28:45 2000
+@@ -598,7 +598,7 @@ int rad_accounting_orig(AUTH_REQ *authre
+ 	VALUE_PAIR	*pair;
+ 	UINT4		nas;
+ 	NAS		*cl;
+-	long		curtime;
++	time_t		curtime;
+ 	int		ret = 0;
+ 	struct stat	st;
+ 
+@@ -670,7 +670,7 @@ int rad_accounting_orig(AUTH_REQ *authre
+ 		/*
+ 		 *	Add non-protocol attibutes.
+ 		 */
+-		fprintf(outfd, "\tTimestamp = %ld\n", curtime);
++		fprintf(outfd, "\tTimestamp = %ld\n", (long) curtime);
+ 		switch(authtype) {
+ 		    case 0:
+ 			fputs("\tRequest-Authenticator = Verified\n", outfd);

@@ -1,6 +1,7 @@
-# $OpenBSD: Makefile,v 1.6.2.1 2000/12/19 12:40:33 naddy Exp $
+# $OpenBSD: Makefile,v 1.6.2.2 2001/01/19 20:45:36 naddy Exp $
 
 DISTNAME=	stunnel-3.9
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	security
 NEED_VERSION=	1.305
 

@@ -1,4 +1,4 @@
-$OpenBSD: patch-radius_src_radius_h,v 1.1 2001/08/14 18:05:19 danh Exp $
+$OpenBSD: patch-radius_src_radius_h,v 1.1.2.1 2001/08/16 12:47:40 danh Exp $
 --- radius/src/radius.h.orig	Tue Aug 14 13:20:45 2001
 +++ radius/src/radius.h	Tue Aug 14 13:20:46 2001
 @@ -255,7 +255,7 @@ typedef struct pw_auth_hdr {

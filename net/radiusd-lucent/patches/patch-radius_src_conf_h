@@ -1,4 +1,4 @@
-$OpenBSD: patch-radius_src_conf_h,v 1.1 2001/08/14 18:05:19 danh Exp $
+$OpenBSD: patch-radius_src_conf_h,v 1.1.2.1 2001/08/16 12:47:40 danh Exp $
 --- radius/src/conf.h.orig	Tue Aug 14 13:20:44 2001
 +++ radius/src/conf.h	Tue Aug 14 13:20:46 2001
 @@ -72,7 +72,8 @@ typedef unsigned long	UINT4;

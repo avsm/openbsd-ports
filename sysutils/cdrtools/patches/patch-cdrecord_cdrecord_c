@@ -1,6 +1,6 @@
-$OpenBSD: patch-cdrecord_cdrecord_c,v 1.1 2004/09/16 02:13:34 brad Exp $
---- cdrecord/cdrecord.c.orig	Wed May 28 08:06:37 2003
-+++ cdrecord/cdrecord.c	Wed Sep 15 17:44:48 2004
+$OpenBSD: patch-cdrecord_cdrecord_c,v 1.1.4.1 2004/09/30 06:11:21 brad Exp $
+--- cdrecord/cdrecord.c.orig	Tue Dec 24 08:16:39 2002
++++ cdrecord/cdrecord.c	Thu Sep 30 01:27:42 2004
 @@ -391,6 +391,9 @@ main(ac, av)
  		scg_help(stderr);
  		exit(0);

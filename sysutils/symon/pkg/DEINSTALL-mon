@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: DEINSTALL-mon,v 1.2 2002/11/29 10:50:32 dijkstra Exp $
+# $OpenBSD: DEINSTALL-mon,v 1.2 2003/02/17 23:54:49 naddy Exp $
 #
 # symon de-installation
 

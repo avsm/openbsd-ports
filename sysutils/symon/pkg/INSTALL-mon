@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: INSTALL-mon,v 1.1 2002/10/18 12:26:28 dijkstra Exp $
+# $OpenBSD: INSTALL-mon,v 1.2 2003/02/17 23:54:49 naddy Exp $
 #
 # Pre/post-installation setup of symon monitor
 

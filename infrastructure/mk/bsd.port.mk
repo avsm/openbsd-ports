@@ -1,6 +1,6 @@
 #-*- mode: Fundamental; tab-width: 4; -*-
 # ex:ts=4 sw=4 filetype=make:
-FULL_REVISION=$$OpenBSD: bsd.port.mk,v 1.273.2.1 2000/09/15 04:38:08 marc Exp $$
+FULL_REVISION=$$OpenBSD: bsd.port.mk,v 1.273.2.2 2000/09/15 06:51:08 marc Exp $$
 #	$FreeBSD: bsd.port.mk,v 1.264 1996/12/25 02:27:44 imp Exp $
 #	$NetBSD: bsd.port.mk,v 1.62 1998/04/09 12:47:02 hubertf Exp $
 #
@@ -36,16 +36,19 @@ OpenBSD_MAINTAINER= ports-maintainers@openbsd.org
 .if defined(NEED_VERSION)
 _VERSION_REVISION=${FULL_REVISION:M[0-9]*.*}
 
-_VERSION=${_VERSION_REVISION:C/\..*//}
-_REVISION=${_VERSION_REVISION:C/.*\.//}
+#_VERSION=${_VERSION_REVISION:C/\..*//}
+#_REVISION=${_VERSION_REVISION:C/.*\.//}
+_VERSION=1
+_REVISION=319
 
 _VERSION_NEEDED=${NEED_VERSION:C/\..*//}
 _REVISION_NEEDED=${NEED_VERSION:C/.*\.//}
 .  if ${_VERSION_NEEDED} > ${_VERSION} || \
-   (${_VERSION_NEEDED} == ${_VERSION} && ${_REVISION_NEEDED} > ${_REVISION})
+(${_VERSION_NEEDED} == ${_VERSION} && ${_REVISION_NEEDED} > ${_REVISION})
 .BEGIN:
-	echo "Need version ${NEED_VERSION} of bsd.port.mk"; \
-	exit 1;
+echo "Need version ${NEED_VERSION} of bsd.port.mk"; \
+echo "Have version ${_VERSION} . ${_REVISION}; \
+exit 1;
 .  endif
 .endif
 

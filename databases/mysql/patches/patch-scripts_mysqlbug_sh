@@ -1,4 +1,4 @@
-$OpenBSD: patch-scripts_mysqlbug_sh,v 1.1 2004/04/16 00:14:03 brad Exp $
+$OpenBSD: patch-scripts_mysqlbug_sh,v 1.1.4.1 2004/05/06 00:59:30 brad Exp $
 --- scripts/mysqlbug.sh.orig	Thu Apr 15 16:09:01 2004
 +++ scripts/mysqlbug.sh	Thu Apr 15 16:09:31 2004
 @@ -254,9 +254,9 @@

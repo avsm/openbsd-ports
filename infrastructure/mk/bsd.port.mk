@@ -1,6 +1,9 @@
 #-*- mode: Fundamental; tab-width: 4; -*-
 # ex:ts=4 sw=4 filetype=make:
-FULL_REVISION=$$OpenBSD: bsd.port.mk,v 1.405.2.2 2001/05/07 23:21:19 miod Exp $$
+# XXX REMEMBER TO CHANGE THIS NUMBER EVERYTIME YOU BACKPORT INCOMPATIBLE
+# XXX CHANGES TO BSD.PORT.MK PORTS RELY UPON !
+FULL_REVISION=1.406
+#FULL_REVISION=$$OpenBSD: bsd.port.mk,v 1.405.2.3 2001/05/07 23:33:26 miod Exp $$
 #	$FreeBSD: bsd.port.mk,v 1.264 1996/12/25 02:27:44 imp Exp $
 #	$NetBSD: bsd.port.mk,v 1.62 1998/04/09 12:47:02 hubertf Exp $
 #

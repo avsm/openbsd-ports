@@ -1,4 +1,4 @@
-$OpenBSD: patch-xpdf_Catalog_cc,v 1.1 2004/10/23 02:24:37 brad Exp $
+$OpenBSD: patch-xpdf_Catalog_cc,v 1.1.4.1 2004/12/27 12:21:44 robert Exp $
 --- xpdf/Catalog.cc.orig	Wed Jan 21 20:26:45 2004
 +++ xpdf/Catalog.cc	Fri Oct 22 21:54:48 2004
 @@ -64,6 +64,15 @@ Catalog::Catalog(XRef *xrefA) {

@@ -1,15 +1,15 @@
-# $OpenBSD: Makefile,v 1.3 2001/04/17 10:07:12 reinhard Exp $
+# $OpenBSD: Makefile,v 1.3.2.1 2001/05/10 12:24:08 naddy Exp $
 
-COMMENT=	'module for generating images'
+COMMENT=	"module for generating images"
 
 DISTNAME=	Imager-0.37
 PKGNAME=	p5-${DISTNAME}
 CATEGORIES=	graphics perl5
-NEED_VERSION=	1.397
+NEED_VERSION=	1.406
 
 HOMEPAGE=	http://www.eecs.umich.edu/~addi/perl/Imager/
 
-MAINTAINER=	Peter Valchev <pvalchev@home.com>
+MAINTAINER=	Peter Valchev <pvalchev@openbsd.org>
 
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
@@ -30,8 +30,8 @@ LIB_DEPENDS=	t1.::devel/t1lib \
 		gif.::graphics/giflib \
 		jpeg.::graphics/jpeg \
 		tiff.::graphics/tiff
-CONFIGURE_ENV=	IM_LIBPATH="/usr/local/lib:/usr/X11R6/lib" \
-		IM_INCPATH="/usr/local/include:/usr/X11R6/include"
+CONFIGURE_ENV=	IM_LIBPATH="${LOCALBASE}/lib:${X11BASE}/lib" \
+		IM_INCPATH="${LOCALBASE}/include:${X11BASE}/include"
 PATCH_LIST=
 USE_X11=	Yes
 .else

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.1.1.1 2001/03/19 04:35:55 danh Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.1 2001/05/10 12:24:09 naddy Exp $
 
 COMMENT= 	"interface to the DES encryption alogorithm"
 
@@ -6,7 +6,7 @@ VERSION=	2.03
 DISTNAME=	Crypt-DES-${VERSION}
 PKGNAME=	p5-${DISTNAME}
 CATEGORIES=	security perl5
-NEED_VERSION=	1.362
+NEED_VERSION=	1.406
 MASTER_SITES=	${MASTER_SITE_PERL_CPAN}
 MASTER_SITE_SUBDIR= Crypt
 

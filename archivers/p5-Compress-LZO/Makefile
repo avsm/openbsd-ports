@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.11 2001/04/20 17:35:35 brad Exp $
+# $OpenBSD: Makefile,v 1.11.2.1 2001/05/10 12:24:06 naddy Exp $
 
 COMMENT=	"interface to lzo compression library"
 
 DISTNAME=	perl-lzo-1.00
 PKGNAME=	p5-Compress-LZO-1.00
 CATEGORIES=	archivers perl5
-NEED_VERSION=	1.384
+NEED_VERSION=	1.406
 MASTER_SITES=	http://wildsau.idv.uni-linz.ac.at/mfx/lzo-download/
 
 HOMEPAGE=	http://wildsau.idv.uni-linz.ac.at/mfx/lzo.html

@@ -1,7 +1,7 @@
-@comment $OpenBSD: PLIST,v 1.2 2001/01/08 23:41:09 avsm Exp $
-libdata/perl5/site_perl/${ARCH}-openbsd/Compress/LZO.pm
-libdata/perl5/site_perl/${ARCH}-openbsd/auto/Compress/LZO/LZO.bs
-libdata/perl5/site_perl/${ARCH}-openbsd/auto/Compress/LZO/LZO.so
-libdata/perl5/site_perl/${ARCH}-openbsd/auto/Compress/LZO/autosplit.ix
+@comment $OpenBSD: PLIST,v 1.2.2.1 2001/05/10 12:24:07 naddy Exp $
+libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd/Compress/LZO.pm
+libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd/auto/Compress/LZO/LZO.bs
+libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd/auto/Compress/LZO/LZO.so
+libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd/auto/Compress/LZO/autosplit.ix
 man/man3/Compress::LZO.3p
-@dirrm libdata/perl5/site_perl/${ARCH}-openbsd/auto/Compress/LZO
+@dirrm libdata/perl5/site_perl/${MACHINE_ARCH}-openbsd/auto/Compress/LZO

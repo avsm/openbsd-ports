@@ -1,0 +1,52 @@
+--- config-test.orig	Wed Aug 27 12:17:13 1997
++++ config-test	Tue May 23 16:32:22 2000
+@@ -117,6 +117,8 @@
+ print "\n\tNon obvious things that cause headaches:\n\n";
+ &header('');
+ 
++$ARGV[0] = ($ARGV[0] && $ARGV[0] !~ /\//) ? 
++    "$ENV{'MAJORDOMO_CFDIR'}/$ARGV[0]" : '';
+ $cf = $ARGV[0] || $ENV{'MAJORDOMO_CF'};
+ 
+ if (eval "require '$cf'") { 
+@@ -125,6 +127,7 @@
+     &bad("something's wrong with $cf: $@");
+ }
+ 
++unshift(@INC, $homedir);
+ foreach (@requires) {
+     if (require $_) {
+ 	&good("found $_ okay.");
+@@ -237,9 +240,9 @@
+ else {
+     print "You have defined neither \$mailer, nor \$sendmail_command.\n";
+     print "Majordomo will use\n";
+-    print "/usr/lib/sendmail -f\\\$sender\n";
++    print "/usr/sbin/sendmail -f\\\$sender\n";
+     print "to deliver mail to the list.\n";
+-    $x = "/usr/lib/sendmail";
++    $x = "/usr/sbin/sendmail";
+ }
+     
+ print "Attempting to verify that this is a valid mailer...";
+@@ -266,9 +269,9 @@
+ else {
+     print "You have defined neither \$mailer, nor \$sendmail_command.\n";
+     print "Majordomo will use\n";
+-    print "/usr/lib/sendmail -f\\\$sender -t\n";
++    print "/usr/sbin/sendmail -f\\\$sender -t\n";
+     print "to deliver administrative mail.\n";
+-    $x = "/usr/lib/sendmail";
++    $x = "/usr/sbin/sendmail";
+ }
+     
+ print "Attempting to verify that this is a valid mailer...";
+@@ -375,7 +378,7 @@
+ 	    print RF $majordomo_version;
+ 	    close RF;
+ 
+-	    $sendmail_command = "/usr/lib/sendmail"
++	    $sendmail_command = "/usr/sbin/sendmail"
+ 		unless defined $sendmail_command;
+ 	    $bounce_mailer = "$sendmail_command -f\$sender -t"
+ 		unless defined $bounce_mailer;

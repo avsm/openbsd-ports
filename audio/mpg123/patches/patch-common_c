@@ -1,4 +1,4 @@
-$OpenBSD: patch-common_c,v 1.1 2003/07/17 23:58:33 brad Exp $
+$OpenBSD: patch-common_c,v 1.1.2.1 2003/07/18 00:25:20 brad Exp $
 --- common.c.orig	Thu Jul 17 19:20:43 2003
 +++ common.c	Thu Jul 17 19:22:04 2003
 @@ -123,7 +123,7 @@ int head_check(unsigned long head)

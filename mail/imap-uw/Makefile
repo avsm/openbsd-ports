@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.37 2003/01/10 08:36:10 jakob Exp $
+# $OpenBSD: Makefile,v 1.37.2.1 2003/08/05 08:14:01 jakob Exp $
 
 COMMENT=		"University of Washington IMAP4rev1/POP2/POP3 mail servers"
 COMMENT-mailutil=	"University of Washington IMAP4rev1/POP2/POP3 mail utility"
@@ -16,7 +16,9 @@ HOMEPAGE=	http://www.washington.edu/imap/
 MAINTAINER=     Jakob Schlyter <jakob@openbsd.org>
 
 MASTER_SITES=	ftp://ftp.cac.washington.edu/imap/ \
-		ftp://ftp.sunet.se/pub/unix/mail/imap/
+		ftp://ftp.cac.washington.edu/imap/old/ \
+		ftp://ftp.sunet.se/pub/unix/mail/imap/ \
+		ftp://ftp.sunet.se/pub/unix/mail/imap/old/
 
 PERMIT_PACKAGE_CDROM=	no
 PERMIT_PACKAGE_FTP=	yes

@@ -1,4 +1,4 @@
-$OpenBSD: patch-camel_camel_lock_helper_c,v 1.1 2005/01/30 14:44:46 robert Exp $
+$OpenBSD: patch-camel_camel_lock_helper_c,v 1.1.2.1 2005/02/05 17:56:42 robert Exp $
 --- camel/camel-lock-helper.c.orig	Wed Jan 26 15:34:53 2005
 +++ camel/camel-lock-helper.c	Wed Jan 26 15:37:15 2005
 @@ -360,8 +360,9 @@

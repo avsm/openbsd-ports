@@ -1,4 +1,4 @@
-$OpenBSD: patch-Makefile_in,v 1.1 2003/01/14 15:06:25 jakob Exp $
+$OpenBSD: patch-Makefile_in,v 1.1.4.1 2003/01/18 23:33:00 jakob Exp $
 --- Makefile.in.orig	Sat Dec  7 22:38:28 2002
 +++ Makefile.in	Sat Jan 11 19:09:26 2003
 @@ -224,7 +224,7 @@ sysconf_DATA = manuf

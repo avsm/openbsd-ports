@@ -1,4 +1,4 @@
-$OpenBSD: patch-configure,v 1.1 2003/01/14 15:06:25 jakob Exp $
+$OpenBSD: patch-configure,v 1.1.4.1 2003/01/18 23:33:00 jakob Exp $
 --- configure.orig	Sat Jan 11 17:25:07 2003
 +++ configure	Sat Jan 11 17:25:27 2003
 @@ -8242,7 +8242,7 @@ echo "${ECHO_T}no" >&6

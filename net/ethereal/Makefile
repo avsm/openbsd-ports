@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.62.2.3 2002/08/29 20:06:03 naddy Exp $
+# $OpenBSD: Makefile,v 1.62.2.4 2003/01/18 23:32:22 jakob Exp $
 
 COMMENT=	network protocol analyzer
 
-VERSION=	0.9.6
+VERSION=	0.9.8
 DISTNAME=	ethereal-${VERSION}
 CATEGORIES=	net x11
 
@@ -17,17 +17,17 @@ HOMEPAGE=	http://www.ethereal.com/
 
 MAINTAINER=     Jakob Schlyter <jakob@openbsd.org>
 
+# GPL
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-SYSCONFDIR=		${PREFIX}/share/ethereal
 CONFIGURE_STYLE=	gnu
 USE_GMAKE=		Yes
 USE_LIBTOOL=		Yes
 SUBST_VARS+=		VERSION
-SEPARATE_BUILD=		yes
+SEPARATE_BUILD=		concurrent
 
 FLAVORS=	no_x11 snmp
 FLAVOR?=

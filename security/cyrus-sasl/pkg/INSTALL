@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $Id$
+# $OpenBSD: INSTALL,v 1.2 2003/02/04 22:59:48 naddy Exp $
 
 PATH=/bin:/usr/bin:/sbin:/usr/sbin
 PREFIX=${PKG_PREFIX:-/usr/local}

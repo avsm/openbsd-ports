@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.19 2001/03/29 03:11:38 kevlo Exp $
+# $OpenBSD: Makefile,v 1.19.2.1 2001/05/18 01:05:18 naddy Exp $
 
 COMMENT=	"CAD drawing program for X11"
 
 VERSION=	3.2.3c
 DISTNAME=	xfig.${VERSION}.full
-PKGNAME=	xfig-${VERSION}
+PKGNAME=	xfig-${VERSION}p1
 CATEGORIES=	graphics x11
 NEED_VERSION=	1.364
 

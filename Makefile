@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.24 2000/04/18 13:40:27 espie Exp $
+# $OpenBSD: Makefile,v 1.24.2.1 2000/09/15 04:39:30 marc Exp $
 # $FreeBSD: Makefile,v 1.36 1997/10/04 15:54:31 jkh Exp $
 #
 
-
+PKGPATH=
 .if defined(key) || defined(category) || defined(author)
 
 # set up subdirs from the index, assume it's up-to-date
@@ -87,11 +87,13 @@ MIRROR_MK?= ${.CURDIR}/distfiles/Makefile
 
 mirror-maker:
 	@mkdir -p ${MIRROR_MK:H}
-	@echo "default:: ftp cdrom" >${MIRROR_MK}
+# Indirection needed for broken OSes that don't grok this exec
+	@echo "EXEC=exec" >${MIRROR_MK}
+	@echo "default:: ftp cdrom" >>${MIRROR_MK}
 	@echo ".PHONY: default all ftp cdrom" >>${MIRROR_MK}
 	@make fetch-makefile \
 		ECHO_MSG='echo >&2' \
-		FULL_PACKAGE_NAME=Yes >>${MIRROR_MK}
+		>>${MIRROR_MK}
 
 DISTFILES_DB?=${.CURDIR}/infrastructure/db/locate.database
 

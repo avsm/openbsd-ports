@@ -1,5 +1,5 @@
---- tkcvs/doinstall.orig	Tue Jan  9 22:17:52 1996
-+++ tkcvs/doinstall	Mon Mar 20 20:18:00 2000
+--- tkcvs/doinstall.orig	Wed Jan 10 05:17:52 1996
++++ tkcvs/doinstall	Tue Mar 28 06:46:46 2000
 @@ -2,10 +2,10 @@
  #
  # $Id: doinstall,v 1.9 1996/01/09 21:17:52 del Exp $
@@ -24,7 +24,7 @@
   
 -WISH=`which wish4.0`
 -if [ ! -f $WISH ]; then
-+WISH=`which wish8.2`
++WISH=`which wish8.3`
 +if [ ! -f ${WISH} ]
 +then
 +  WISH=`which wish4.2`

@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.25 2002/03/30 21:48:27 brad Exp $
+# $OpenBSD: Makefile,v 1.25.2.1 2002/12/30 00:09:30 brad Exp $
 
 COMMENT=	"PDF viewer for X"
 
 DISTNAME=	xpdf-0.93
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	textproc x11
-NEED_VERSION=	1.500
 MASTER_SITES=	${MASTER_SITE_BACKUP}
 EXTRACT_SUFX=	.tgz
 
@@ -15,6 +15,7 @@ LIB_DEPENDS=	t1x.3,t1.3::devel/t1lib \
 
 MAINTAINER=	Brad Smith <brad@openbsd.org>
 
+# GPL
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
@@ -30,6 +31,8 @@ CONFIGURE_ARGS=	--with-gzip \
 		--with-t1-includes="${LOCALBASE}/include" \
 		--with-freetype-library="${LOCALBASE}/lib" \
 		--with-freetype-includes="${LOCALBASE}/include/freetype"
+
+NO_REGRESS=	Yes
 
 post-install:
 	@cd ${PREFIX}/bin && \

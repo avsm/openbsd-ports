@@ -1,4 +1,4 @@
-$OpenBSD: patch-libexif_exif_data_c,v 1.1 2005/03/13 21:25:38 robert Exp $
+$OpenBSD: patch-libexif_exif_data_c,v 1.1.2.1 2005/03/15 22:16:24 robert Exp $
 --- libexif/exif-data.c.orig	Fri Mar 11 15:56:37 2005
 +++ libexif/exif-data.c	Fri Mar 11 15:59:15 2005
 @@ -550,7 +550,7 @@

@@ -1,7 +1,5 @@
-# $OpenBSD: Makefile,v 1.18 2002/04/03 14:22:02 fgsch Exp $
+# $OpenBSD: Makefile,v 1.18.2.1 2002/06/01 00:29:15 naddy Exp $
 # Uses pthreads
-
-BROKEN=		"security problem"
 
 COMMENT=	"Internet based broadcasting system"
 
@@ -9,9 +7,9 @@ COMMENT=	"Internet based broadcasting system"
 # good enough shape to run this app.
 ONLY_FOR_ARCHS=	i386 sparc
 
-DISTNAME=	icecast-1.3.11
+DISTNAME=	icecast-1.3.12
 CATEGORIES=	net audio
-NEED_VERSION=	1.500
+NEED_VERSION=	1.522
 MASTER_SITES=	http://www.icecast.org/releases/
 
 HOMEPAGE=	http://www.icecast.org/

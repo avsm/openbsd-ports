@@ -1,6 +1,7 @@
-@comment $OpenBSD: PLIST,v 1.33 2004/07/08 18:27:41 brad Exp $
+@comment $OpenBSD: PLIST,v 1.33.2.1 2005/03/27 15:15:35 sturm Exp $
 bin/gaim
 bin/gaim-remote
+include/gaim/
 include/gaim/account.h
 include/gaim/accountopt.h
 include/gaim/away.h
@@ -23,11 +24,12 @@ include/gaim/gtkcellrendererprogress.h
 include/gaim/gtkconn.h
 include/gaim/gtkconv.h
 include/gaim/gtkdebug.h
+include/gaim/gtkdialogs.h
 include/gaim/gtkeventloop.h
 include/gaim/gtkft.h
+include/gaim/gtkgaim.h
 include/gaim/gtkimhtml.h
 include/gaim/gtkimhtmltoolbar.h
-include/gaim/gtkinternal.h
 include/gaim/gtklog.h
 include/gaim/gtknotify.h
 include/gaim/gtkplugin.h
@@ -44,12 +46,12 @@ include/gaim/imgstore.h
 include/gaim/internal.h
 include/gaim/log.h
 include/gaim/md5.h
-include/gaim/multi.h
 include/gaim/network.h
 include/gaim/notify.h
 include/gaim/plugin.h
 include/gaim/pluginpref.h
 include/gaim/pounce.h
+include/gaim/prefix.h
 include/gaim/prefs.h
 include/gaim/privacy.h
 include/gaim/proxy.h
@@ -66,9 +68,9 @@ include/gaim/sslconn.h
 include/gaim/status.h
 include/gaim/stock.h
 include/gaim/stringref.h
-include/gaim/ui.h
 include/gaim/util.h
 include/gaim/value.h
+include/gaim/version.h
 include/gaim/xmlnode.h
 @comment lib/gaim/autorecon.la
 @comment lib/gaim/docklet.la
@@ -99,28 +101,51 @@ include/gaim/xmlnode.h
 @comment lib/gaim/ticker.la
 @comment lib/gaim/timestamp.la
 @comment lib/libgaim-remote.la
+lib/pkgconfig/
 lib/pkgconfig/gaim.pc
-man/man1/gaim-remote.1
-man/man1/gaim.1
+@man man/man1/gaim-remote.1
+@man man/man1/gaim.1
+share/applications/
 share/applications/gaim.desktop
+share/locale/am/
+share/locale/am/LC_MESSAGES/
 share/locale/am/LC_MESSAGES/gaim.mo
 share/locale/bg/LC_MESSAGES/gaim.mo
+share/locale/ca/
+share/locale/ca/LC_MESSAGES/
 share/locale/ca/LC_MESSAGES/gaim.mo
 share/locale/cs/LC_MESSAGES/gaim.mo
 share/locale/da/LC_MESSAGES/gaim.mo
 share/locale/de/LC_MESSAGES/gaim.mo
+share/locale/en_AU/
+share/locale/en_AU/LC_MESSAGES/
+share/locale/en_AU/LC_MESSAGES/gaim.mo
+share/locale/en_CA/
+share/locale/en_CA/LC_MESSAGES/
 share/locale/en_CA/LC_MESSAGES/gaim.mo
+share/locale/en_GB/
+share/locale/en_GB/LC_MESSAGES/
 share/locale/en_GB/LC_MESSAGES/gaim.mo
 share/locale/es/LC_MESSAGES/gaim.mo
 share/locale/fi/LC_MESSAGES/gaim.mo
 share/locale/fr/LC_MESSAGES/gaim.mo
 share/locale/he/LC_MESSAGES/gaim.mo
+share/locale/hi/
+share/locale/hi/LC_MESSAGES/
 share/locale/hi/LC_MESSAGES/gaim.mo
 share/locale/hu/LC_MESSAGES/gaim.mo
 share/locale/it/LC_MESSAGES/gaim.mo
 share/locale/ja/LC_MESSAGES/gaim.mo
 share/locale/ko/LC_MESSAGES/gaim.mo
+share/locale/lt/
+share/locale/lt/LC_MESSAGES/
+share/locale/lt/LC_MESSAGES/gaim.mo
+share/locale/mk/
+share/locale/mk/LC_MESSAGES/
 share/locale/mk/LC_MESSAGES/gaim.mo
+share/locale/my_MM/
+share/locale/my_MM/LC_MESSAGES/
+share/locale/my_MM/LC_MESSAGES/gaim.mo
 share/locale/nl/LC_MESSAGES/gaim.mo
 share/locale/no/LC_MESSAGES/gaim.mo
 share/locale/pl/LC_MESSAGES/gaim.mo
@@ -130,13 +155,27 @@ share/locale/ro/LC_MESSAGES/gaim.mo
 share/locale/ru/LC_MESSAGES/gaim.mo
 share/locale/sk/LC_MESSAGES/gaim.mo
 share/locale/sl/LC_MESSAGES/gaim.mo
+share/locale/sq/
+share/locale/sq/LC_MESSAGES/
+share/locale/sq/LC_MESSAGES/gaim.mo
+share/locale/sr/
+share/locale/sr/LC_MESSAGES/
 share/locale/sr/LC_MESSAGES/gaim.mo
+share/locale/sr@Latn/
+share/locale/sr@Latn/LC_MESSAGES/
 share/locale/sr@Latn/LC_MESSAGES/gaim.mo
 share/locale/sv/LC_MESSAGES/gaim.mo
+share/locale/tr/LC_MESSAGES/gaim.mo
+share/locale/uk/LC_MESSAGES/gaim.mo
+share/locale/vi/
+share/locale/vi/LC_MESSAGES/
 share/locale/vi/LC_MESSAGES/gaim.mo
 share/locale/zh_CN/LC_MESSAGES/gaim.mo
 share/locale/zh_TW/LC_MESSAGES/gaim.mo
+share/pixmaps/
+share/pixmaps/gaim/
 share/pixmaps/gaim.png
+share/pixmaps/gaim/buttons/
 share/pixmaps/gaim/buttons/about_menu.png
 share/pixmaps/gaim/buttons/accounts.png
 share/pixmaps/gaim/buttons/change-bgcolor-small.png
@@ -150,12 +189,14 @@ share/pixmaps/gaim/buttons/send-im.png
 share/pixmaps/gaim/buttons/text_bigger.png
 share/pixmaps/gaim/buttons/text_normal.png
 share/pixmaps/gaim/buttons/text_smaller.png
+share/pixmaps/gaim/dialogs/
 share/pixmaps/gaim/dialogs/gaim_auth.png
 share/pixmaps/gaim/dialogs/gaim_cool.png
 share/pixmaps/gaim/dialogs/gaim_error.png
 share/pixmaps/gaim/dialogs/gaim_info.png
 share/pixmaps/gaim/dialogs/gaim_question.png
 share/pixmaps/gaim/dialogs/gaim_warning.png
+share/pixmaps/gaim/icons/
 share/pixmaps/gaim/icons/away.png
 share/pixmaps/gaim/icons/connect.png
 share/pixmaps/gaim/icons/info.png
@@ -164,6 +205,8 @@ share/pixmaps/gaim/icons/msgunread.png
 share/pixmaps/gaim/icons/offline.png
 share/pixmaps/gaim/icons/online.png
 share/pixmaps/gaim/logo.png
+share/pixmaps/gaim/smileys/
+share/pixmaps/gaim/smileys/default/
 share/pixmaps/gaim/smileys/default/angel.png
 share/pixmaps/gaim/smileys/default/bigsmile.png
 share/pixmaps/gaim/smileys/default/burp.png
@@ -349,20 +392,27 @@ share/pixmaps/gaim/smileys/default/yahoo_worship.gif
 share/pixmaps/gaim/smileys/default/yahoo_yingyang.gif
 share/pixmaps/gaim/smileys/default/yahoo_youkiddingme.gif
 share/pixmaps/gaim/smileys/default/yell.png
+share/pixmaps/gaim/smileys/none/
 share/pixmaps/gaim/smileys/none/theme
+share/pixmaps/gaim/status/
+share/pixmaps/gaim/status/default/
 share/pixmaps/gaim/status/default/activebuddy.png
 share/pixmaps/gaim/status/default/admin.png
 share/pixmaps/gaim/status/default/aim.png
 share/pixmaps/gaim/status/default/aol.png
 share/pixmaps/gaim/status/default/away.png
+share/pixmaps/gaim/status/default/blocked.png
 share/pixmaps/gaim/status/default/dnd.png
 share/pixmaps/gaim/status/default/extendedaway.png
 share/pixmaps/gaim/status/default/female.png
+share/pixmaps/gaim/status/default/founder.png
 share/pixmaps/gaim/status/default/freeforchat.png
 share/pixmaps/gaim/status/default/gadu-gadu.png
 share/pixmaps/gaim/status/default/game.png
+share/pixmaps/gaim/status/default/halfop.png
 share/pixmaps/gaim/status/default/hiptop.png
 share/pixmaps/gaim/status/default/icq.png
+share/pixmaps/gaim/status/default/ignored.png
 share/pixmaps/gaim/status/default/invisible.png
 share/pixmaps/gaim/status/default/irc.png
 share/pixmaps/gaim/status/default/jabber.png
@@ -374,12 +424,15 @@ share/pixmaps/gaim/status/default/na.png
 share/pixmaps/gaim/status/default/napster.png
 share/pixmaps/gaim/status/default/notauthorized.png
 share/pixmaps/gaim/status/default/novell.png
+share/pixmaps/gaim/status/default/nr.png
 share/pixmaps/gaim/status/default/occupied.png
 share/pixmaps/gaim/status/default/offline.png
+share/pixmaps/gaim/status/default/op.png
 share/pixmaps/gaim/status/default/rendezvous.png
 share/pixmaps/gaim/status/default/secure.png
 share/pixmaps/gaim/status/default/silc.png
 share/pixmaps/gaim/status/default/trepia.png
+share/pixmaps/gaim/status/default/voice.png
 share/pixmaps/gaim/status/default/wireless.png
 share/pixmaps/gaim/status/default/yahoo.png
 share/pixmaps/gaim/status/default/zephyr.png
@@ -389,23 +442,11 @@ share/pixmaps/gaim/tb_drag_arrow_right.xpm
 share/pixmaps/gaim/tb_drag_arrow_up.xpm
 share/pixmaps/gaim/typed.png
 share/pixmaps/gaim/typing.png
+share/sounds/
+share/sounds/gaim/
 share/sounds/gaim/arrive.wav
 share/sounds/gaim/leave.wav
 share/sounds/gaim/receive.wav
 share/sounds/gaim/redalert.wav
 share/sounds/gaim/send.wav
 %%SHARED%%
-@dirrm share/sounds/gaim
-@dirrm share/sounds
-@dirrm share/pixmaps/gaim/status/default
-@dirrm share/pixmaps/gaim/status
-@dirrm share/pixmaps/gaim/smileys/none
-@dirrm share/pixmaps/gaim/smileys/default
-@dirrm share/pixmaps/gaim/smileys
-@dirrm share/pixmaps/gaim/icons
-@dirrm share/pixmaps/gaim/dialogs
-@dirrm share/pixmaps/gaim/buttons
-@dirrm share/pixmaps/gaim
-@dirrm share/pixmaps
-@dirrm share/applications
-@dirrm include/gaim

@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.63 2004/08/10 09:38:34 xsa Exp $
+# $OpenBSD: Makefile,v 1.63.2.1 2005/03/27 15:15:35 sturm Exp $
 
 NOT_FOR_ARCHS=	${NO_SHARED_ARCHS}
 
 COMMENT=	"Gtk AIM, ICQ, IRC, Jabber, MSN, Yahoo, SILC and Zephyr client"
 
-DISTNAME=	gaim-0.79
+DISTNAME=	gaim-1.1.4
 CATEGORIES=	net
 
 HOMEPAGE=	http://gaim.sourceforge.net/
@@ -23,7 +23,7 @@ MODULES=	devel/gettext
 
 LIB_DEPENDS+=	gdk-x11-2.0.0.0,gdk_pixbuf-2.0.0.0,gtk-x11-2.0.0.0::x11/gtk+2 \
 		startup-notification-1.0.0::devel/startup-notification \
-		silc::devel/silc-toolkit
+		silc,silcclient::devel/silc-toolkit
 BUILD_DEPENDS+=	:pkgconfig-*:devel/pkgconfig
 
 USE_X11=	Yes
@@ -36,8 +36,9 @@ CONFIGURE_ARGS+= --disable-gevolution \
 		 --disable-perl \
 		 --disable-tcl \
 		 --disable-tk \
-		 --enable-openssl
-CONFIGURE_ENV=	CPPFLAGS="-I${LOCALBASE}/include/silc -I${LOCALBASE}/include" \
+		 --enable-openssl \
+		 --with-silc-includes="${LOCALBASE}/include/silc"
+CONFIGURE_ENV=	CPPFLAGS="-I${LOCALBASE}/include" \
 		LDFLAGS="-L${LOCALBASE}/lib"
 
 FLAVORS=	audio debug gtkspell

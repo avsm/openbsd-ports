@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.35.2.1 2003/05/03 03:00:14 brad Exp $
+# $OpenBSD: Makefile,v 1.35.2.2 2003/05/14 00:56:02 brad Exp $
 # $FreeBSD: Makefile,v 1.3 1998/07/21 11:38:44 eivind Exp $
 
 COMMENT=	"alternative ircII color client"
 
 VERSION=	1.0c18
 DISTNAME=	ircii-pana-${VERSION}
-PKGNAME=	BitchX-${VERSION}p1
+PKGNAME=	BitchX-${VERSION}p2
 CATEGORIES=	net
 
 MASTER_SITES=	ftp://ftp.bitchx.com/pub/BitchX/source/old/ \

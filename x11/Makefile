@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.54 2000/04/21 18:45:14 espie Exp $
+# $OpenBSD: Makefile,v 1.54.2.1 2000/09/15 05:24:35 marc Exp $
 # $FreeBSD: Makefile,v 1.178 1997/11/24 05:32:52 fenner Exp $
 #
 
@@ -46,10 +46,11 @@
      SUBDIR += flwm
 #    SUBDIR += fvwm
 #    SUBDIR += fvwm2-english
-#    SUBDIR += fvwm95
-     SUBDIR += getbdf
+     SUBDIR += fvwm95
+     SUBDIR += fsv
      SUBDIR += gtk+
      SUBDIR += gtkglarea
+     SUBDIR += gtkmm
 #    SUBDIR += gwm
      SUBDIR += icewm
 #    SUBDIR += iv
@@ -63,13 +64,19 @@
      SUBDIR += mxconns
 #    SUBDIR += neXtaw
      SUBDIR += olvwm
+     SUBDIR += openmotif
 #    SUBDIR += p5-Tcl-Tk
-#    SUBDIR += p5-Tk
+     SUBDIR += p5-Tk
      SUBDIR += piewm
 #    SUBDIR += pythonqt
      SUBDIR += qt
-#    SUBDIR += qvwm
+     SUBDIR += qt2
+     SUBDIR += qvwm
+     SUBDIR += qvwm:esound
+     SUBDIR += qvwm:esound,imlib
+     SUBDIR += qvwm:imlib
      SUBDIR += rclock
+     SUBDIR += root-tail
      SUBDIR += rxvt
      SUBDIR += sliderule
 #    SUBDIR += slingshot
@@ -84,6 +91,7 @@
 #    SUBDIR += tkdesk
 #    SUBDIR += tkgoodstuff
 #    SUBDIR += tkstep80
+     SUBDIR += tktable
      SUBDIR += tvtwm
 #    SUBDIR += tycoon
      SUBDIR += viewfax
@@ -113,7 +121,9 @@
      SUBDIR += xforms
      SUBDIR += xfstt
      SUBDIR += xgrab
-#    SUBDIR += xkeycaps
+     SUBDIR += xglobe
+     SUBDIR += xglobe,no_map,gfx
+     SUBDIR += xkeycaps
      SUBDIR += xloadimage
      SUBDIR += xlockmore
      SUBDIR += xlogout
@@ -128,6 +138,7 @@
      SUBDIR += xsnow
      SUBDIR += xtacy
      SUBDIR += xtattr
+     SUBDIR += xterm
      SUBDIR += xtestpicture
 #    SUBDIR += xtide
      SUBDIR += xtoolwait

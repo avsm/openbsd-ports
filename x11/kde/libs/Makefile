@@ -1,18 +1,20 @@
-# $OpenBSD: Makefile,v 1.12 2000/04/16 17:17:57 brad Exp $
+# $OpenBSD: Makefile,v 1.12.2.1 2000/09/15 05:25:11 marc Exp $
 # Original Author: Yanick Cote <yanick@fries.net>
 
 DISTNAME=	kdelibs-1.1.2
 CATEGORIES=	x11
-NEED_VERSION=	1.234
+NEED_VERSION=	1.310
 MASTER_SITES=	${MASTER_SITE_KDE}
 MASTER_SITE_SUBDIR= stable/1.1.2/distribution/tar/generic/source/bz2
 DIST_SUBDIR=	kde
+
+HOMEPAGE=	http://www.kde.org/
 
 BUILD_DEPENDS=	msgfmt::devel/gettext
 LIB_DEPENDS=	qt.1.45::x11/qt \
 		gif.4.1::graphics/giflib \
 		jpeg.62::graphics/jpeg \
-		png.1.3::graphics/png \
+		png.1::graphics/png \
 		tiff.35::graphics/tiff
 
 MAINTAINER=	brad@openbsd.org
@@ -22,11 +24,9 @@ PERMIT_PACKAGE_FTP=     Yes
 PERMIT_DISTFILES_CDROM= Yes
 PERMIT_DISTFILES_FTP=   Yes
 
-FAKE=	Yes
-
 USE_BZIP2=	Yes
 USE_GMAKE=	Yes
-GNU_CONFIGURE=	Yes
+CONFIGURE_STYLE= gnu
 CONFIGURE_ARGS+= ${CONFIGURE_SHARED}
 CONFIGURE_ARGS+= --enable-static \
 		 --with-qt-includes="${LOCALBASE}/include/X11/qt" \

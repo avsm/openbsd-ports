@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.6 2000/03/31 21:35:49 espie Exp $
+# $OpenBSD: Makefile,v 1.6.2.1 2000/09/15 05:24:46 marc Exp $
 
-DISTNAME=	ctwm-3.5
+DISTNAME=	ctwm-3.5.2
 CATEGORIES=	x11
-MASTER_SITES=	ftp://slhp1.epfl.ch/pub/
+NEED_VERSION=	1.313
+MASTER_SITES=	http://ctwm.dl.nu/
 
 MAINTAINER=	ports@OpenBSD.ORG
 
@@ -11,7 +12,6 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-USE_IMAKE=	Yes
-FAKE=		Yes
+CONFIGURE_STYLE=	imake
 
 .include <bsd.port.mk>

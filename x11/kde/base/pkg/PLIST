@@ -1,3 +1,5 @@
+@comment $OpenBSD: PLIST,v 1.3.2.1 2000/09/15 05:25:09 marc Exp $
+@pkgcfl rman-*
 bin/kappfinder
 bin/kappfinder_restart
 bin/kaudioserver

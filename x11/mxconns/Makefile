@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.3 2000/03/24 23:28:42 espie Exp $
+# $OpenBSD: Makefile,v 1.3.2.1 2000/09/15 05:25:18 marc Exp $
 
 DISTNAME=	mxconns-3.1.4
 CATEGORIES=	x11 security
 NEED_VERSION=	1.230
-MASTER_SITES=	http://home.cern.ch/c/cons/www/mxconns/
+MASTER_SITES=	http://c.home.cern.ch/c/cons/www/mxconns/
 
 MAINTAINER=	dbt@meat.net
 

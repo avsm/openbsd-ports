@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.6 2000/03/11 16:15:11 kevlo Exp $
+# $OpenBSD: Makefile,v 1.6.2.1 2000/09/15 05:25:45 marc Exp $
 
 DISTNAME=	xco
 PKGNAME=	xco-1.3
 CATEGORIES=	x11
 MASTER_SITES=	ftp://ftp.cs.purdue.edu/pub/bingle/
 
-MAINTAINER=	angelos@openbsd.org
+MAINTAINER=	ports@openbsd.org
 
 LICENSE_TYPE=		BSD
 PERMIT_PACKAGE_CDROM=	YES

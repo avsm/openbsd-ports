@@ -1,4 +1,5 @@
-LessTif/FAQ
+@comment $OpenBSD: PLIST,v 1.18.2.1 2000/09/15 05:25:15 marc Exp $
+@pkgcfl openmotif-*
 LessTif/Motif1.2/include/Mrm/MrmAppl.h
 LessTif/Motif1.2/include/Mrm/MrmDecls.h
 LessTif/Motif1.2/include/Mrm/MrmPrivate.h
@@ -124,10 +125,8 @@ LessTif/Motif1.2/include/Xm/XmStrDefs.h
 LessTif/Motif1.2/include/Xm/XmosP.h
 LessTif/Motif1.2/lib/libXm.a
 LessTif/Motif1.2/lib/libXm.la
-LessTif/Motif1.2/lib/libXm.so.1.2
 LessTif/Motif1.2/lib/libMrm.a
 LessTif/Motif1.2/lib/libMrm.la
-LessTif/Motif1.2/lib/libMrm.so.1.2
 bin/mxmkmf
 bin/mwm
 bin/uil
@@ -142,11 +141,9 @@ lib/X11/mwm/alt.map
 lib/X11/mwm/system.mwmrc
 lib/libXm.a
 lib/libXm.la
-lib/libXm.so.1.2
 lib/libMrm.a
 lib/libMrm.la
-lib/libMrm.so.1.2
-@exec /sbin/ldconfig -m %B
+%%SHARED%%
 man/man1/lesstif.1
 man/man1/mwm.1
 man/man1/xmbind.1
@@ -212,7 +209,8 @@ share/LessTif/BUG-REPORTING
 share/LessTif/COPYING
 share/LessTif/COPYING.LIB
 share/LessTif/CREDITS
-share/LessTif/INSTALL
+share/LessTif/Install
+share/LessTif/FAQ
 share/LessTif/KNOWN_BUGS
 share/LessTif/NEWS
 share/LessTif/README
@@ -228,7 +226,6 @@ share/LessTif/doc/html/images/ltsunlogo.png
 share/LessTif/doc/html/COPYING.LIB.html
 share/LessTif/doc/html/FAQ.html
 share/LessTif/doc/html/INSTALL.html
-share/LessTif/doc/html/NOTES
 share/LessTif/doc/html/UIL.txt
 share/LessTif/doc/html/Advocacy.html
 share/LessTif/doc/html/All.html

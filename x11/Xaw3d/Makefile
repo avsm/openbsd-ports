@@ -1,21 +1,19 @@
-# $OpenBSD: Makefile,v 1.9 2000/03/24 22:12:03 espie Exp $
+# $OpenBSD: Makefile,v 1.9.2.1 2000/09/15 05:24:36 marc Exp $
 
 DISTNAME=	Xaw3d-1.5
 CATEGORIES=	x11
-NEED_VERSION=	1.219
+NEED_VERSION=	1.310
 MASTER_SITES=	${MASTER_SITE_XCONTRIB}
 MASTER_SITE_SUBDIR= widgets/Xaw3d/R6.3
 
-
-MAINTAINER=	angelos@openbsd.org
+MAINTAINER=	ports@openbsd.org
 
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-USE_IMAKE=	Yes
-FAKE=		Yes
+CONFIGURE_STYLE= imake
 
 WRKDIST=	${WRKDIR}/xc/lib/Xaw3d
 
@@ -24,8 +22,7 @@ post-extract:
 	@cd ${WRKSRC}/X11/Xaw3d; ln -sf ../../*.h .
 
 post-install:
-	@${INSTALL_DATA_DIR} ${PREFIX}/share/doc/Xaw3d
+	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/Xaw3d
 	${INSTALL_DATA} ${WRKSRC}/README.XAW3D ${PREFIX}/share/doc/Xaw3d
-	${LDCONFIG} -m ${PREFIX}/lib
 
 .include <bsd.port.mk>

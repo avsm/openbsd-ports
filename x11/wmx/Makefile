@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.6 2000/03/12 11:45:14 jakob Exp $
+# $OpenBSD: Makefile,v 1.6.2.1 2000/09/15 05:25:36 marc Exp $
 
-DISTNAME=	wmx-6pre1
-PKGNAME=        wmx-6pre1
-
+DISTNAME=	wmx-6pre6
+PKGNAME=        wmx-6pre6
 CATEGORIES=	x11
+NEED_VERSION=	1.302
 
-MASTER_SITES=	ftp://ftp.42.org/pub/wmx/
+MASTER_SITES=	http://www.all-day-breakfast.com/wmx/
 HOMEPAGE=	http://www.all-day-breakfast.com/wmx/
 
 MAINTAINER=	jakob@openbsd.org
@@ -15,8 +15,7 @@ PERMIT_PACKAGE_FTP=	YES
 PERMIT_DISTFILES_CDROM=	YES
 PERMIT_DISTFILES_FTP=	YES
 
-FAKE=		yes
-USE_X11=	yes
+CONFIGURE_STYLE=	gnu
 
 do-install:
 	@${INSTALL_PROGRAM} ${WRKSRC}/wmx ${PREFIX}/bin

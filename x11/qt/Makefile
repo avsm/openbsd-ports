@@ -1,10 +1,16 @@
-# $OpenBSD: Makefile,v 1.34 2000/03/26 21:36:09 brad Exp $
+# $OpenBSD: Makefile,v 1.34.2.1 2000/09/15 05:25:19 marc Exp $
 # $FreeBSD: Makefile,v 1.33 1999/02/27 03:09:57 andreas Exp $
 
 DISTNAME=	qt-1.45
 CATEGORIES=	x11
-NEED_VERSION=	1.218
+NEED_VERSION=	1.310
 MASTER_SITES=	ftp://ftp.troll.no/qt/source/
+
+HOMEPAGE=	http://www.trolltech.com/products/qt/
+
+# for the qt image extension
+BUILD_DEPENDS=	${PREFIX}/include/jpeglib.h::graphics/jpeg \
+		${PREFIX}/include/png.h::graphics/png
 
 MAINTAINER=	brad@openbsd.org
 
@@ -13,53 +19,93 @@ PERMIT_PACKAGE_FTP=
 PERMIT_DISTFILES_CDROM=
 PERMIT_DISTFILES_FTP=
 
-FAKE=	Yes
+MULTI_PACKAGES=-examples -html
 
-USE_X11=	Yes
+SUBPACKAGE?=
+
 USE_GMAKE=	Yes
 MAKE_ENV=	QTDIR="${WRKSRC}" SYS_CXX="${CXX}" SYS_CXXFLAGS="${CXXFLAGS}"
 MAKE_FLAGS=	VER_MAJ="1" VER_MIN="45"
 
-EXAMPLES=aclock application biff connect cursor dclock desktop dirview \
-	dragdrop drawdemo forever hello layout life menu movies pref \
-	progress qdir qmag qwerty scrollview showimg splitter table \
-	tetrix tictac timestmp tooltip validator widgets xform
+QT_INCDIR=	${PREFIX}/include/X11/qt
+QT_LIBDIR=	${PREFIX}/lib/qt
+QT_MANDIR=	${QT_LIBDIR}/man
+QT_EXAMPLES=	${QT_LIBDIR}/examples
+QT_TUTORIAL=	${QT_LIBDIR}/tutorial
+QT_DOC=		${PREFIX}/share/doc/qt
+
+# for manpages in MESSAGE
+SUBST_VARS=	QT_LIBDIR QT_DOC
+
+IMAGEIODIR=	${WRKSRC}/extensions/imageio/src
+
+post-patch:
+	@cd ${WRKSRC}/configs; for i in openbsd-*; do \
+	    mv -f $$i $$i.bak && \
+		sed -e s,/usr/local,${LOCALBASE}, \
+		-e s,/usr/X11R6,${X11BASE}, <$$i.bak >$$i; \
+	done
 
 do-configure:
-	@cd ${WRKSRC} && env ${MAKE_ENV} make ${USE_TARGET}
+	@cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE} ${USE_TARGET}
+
+post-configure:
+	@cd ${WRKSRC} && cp -R examples examples-src
+	@cd ${WRKSRC} && cp -R tutorial tutorial-src
+
+post-build:
+	@cd ${IMAGEIODIR} && \
+		${SETENV} ${MAKE_ENV} SYS_CXXFLAGS='-I$(LOCALBASE)/include ${CXXFLAGS}' ${MAKE} ${MAKE_FLAGS}
 
 do-install:
-	${INSTALL_DATA_DIR} ${PREFIX}/include/X11/qt
-	${INSTALL_DATA_DIR} ${PREFIX}/lib/qt/examples
-	${INSTALL_DATA_DIR} ${PREFIX}/lib/qt/tutorial
-	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/qt
-	@if [ -f ${WRKSRC}/lib/libqt.a ]; then \
-	 ${INSTALL_DATA} ${WRKSRC}/lib/libqt.a ${PREFIX}/lib; \
+	${INSTALL_DATA_DIR} ${QT_INCDIR}
+	${INSTALL_DATA_DIR} ${QT_MANDIR}/man1
+	${INSTALL_DATA_DIR} ${QT_MANDIR}/man3
+	${INSTALL_DATA_DIR} ${QT_EXAMPLES}
+	${INSTALL_DATA_DIR} ${QT_TUTORIAL}
+	${INSTALL_DATA_DIR} ${QT_DOC}/html
+	@if [ -f ${WRKBUILD}/lib/libqt.a ]; then \
+	 ${INSTALL_DATA} ${WRKBUILD}/lib/libqt.a ${PREFIX}/lib; \
 	fi
-	@if [ -f ${WRKSRC}/lib/libqt.so.1.45 ]; then \
-	 ${INSTALL_DATA} ${WRKSRC}/lib/libqt.so.1.45 ${PREFIX}/lib; \
+	@if [ -f ${WRKBUILD}/lib/libqt.so.1.45 ]; then \
+	 ${INSTALL_DATA} ${WRKBUILD}/lib/libqt.so.1.45 ${PREFIX}/lib; \
 	fi
-	${INSTALL_PROGRAM} ${WRKSRC}/bin/moc ${PREFIX}/bin
-	${INSTALL_DATA} ${WRKSRC}/include/* ${PREFIX}/include/X11/qt
-	${INSTALL_MAN} ${WRKSRC}/man/man1/* ${PREFIX}/man/man1
-	${INSTALL_MAN} ${WRKSRC}/man/man3/* ${PREFIX}/man/man3
-	${INSTALL_DATA} ${WRKSRC}/README ${PREFIX}/share/doc/qt
-	${INSTALL_DATA} ${WRKSRC}/README.QT ${PREFIX}/share/doc/qt
-	@echo -n "Installing tutorials:"
-.for n in 1 2 3 4 5 6 7 8 9 10 11 12 13 14
-	@echo -n " ${n}"
-	@${INSTALL_PROGRAM} ${WRKSRC}/tutorial/t${n}/t${n} ${PREFIX}/lib/qt/tutorial
-.endfor
-	@echo "."
-	@echo -n "Installing examples:"
-.for f in ${EXAMPLES}
-	@echo -n " ${f}"
-	@${INSTALL_PROGRAM} ${WRKSRC}/examples/${f}/${f} ${PREFIX}/lib/qt/examples
-.endfor
-	@echo "."
-	${INSTALL_DATA} ${WRKSRC}/examples/README ${PREFIX}/lib/qt/examples
+	@if [ -f ${WRKBUILD}/lib/libqimgio.a ]; then \
+	 ${INSTALL_DATA} ${WRKBUILD}/lib/libqimgio.a ${PREFIX}/lib; \
+	fi
+	@if [ -f ${WRKBUILD}/lib/libqimgio.so.1.45 ]; then \
+	 ${INSTALL_DATA} ${WRKBUILD}/lib/libqimgio.so.1.45 ${PREFIX}/lib; \
+	fi
+	${INSTALL_PROGRAM} ${WRKBUILD}/bin/moc ${PREFIX}/bin
+	${INSTALL_DATA} ${WRKSRC}/include/* ${QT_INCDIR}
+	${INSTALL_MAN} ${WRKSRC}/man/man1/* ${QT_MANDIR}/man1
+	@for i in ${WRKSRC}/man/man3/*; do \
+	  j=$${i%qt}; \
+	  sed -e 's,\.3qt,\.3,g' <$$i >$$j && \
+	  	${INSTALL_MAN} $$j ${QT_MANDIR}/man3; \
+	done
+	cp -R ${WRKSRC}/examples-src/* ${QT_EXAMPLES}
+	@cd ${WRKSRC}/examples; for i in *; do \
+	if [ -x $$i/$$i ]; then \
+	    ${INSTALL_PROGRAM} $$i/$$i ${QT_EXAMPLES}/$$i; \
+	fi; done
+	cp -R ${WRKSRC}/tutorial-src/* ${QT_TUTORIAL}
+	@cd ${WRKSRC}/tutorial; for i in *; do \
+	if [ -x $$i/$$i ]; then \
+	    ${INSTALL_PROGRAM} $$i/$$i ${QT_TUTORIAL}/$$i; \
+	fi; done
+	cd ${WRKSRC}; ${INSTALL_DATA} ANNOUNCE FAQ LICENSE README \
+	    README.QT changes-1.40 changes-1.41 changes-1.42 changes-1.43 \
+	    changes-1.44 changes-1.45 ${QT_DOC}
+	cp -R ${WRKSRC}/html/* ${QT_DOC}/html
 
 .include <bsd.port.mk>
+
+.if ${SUBPACKAGE} =="-examples"
+PKGNAME:=qt-examples-1.45
+.elif ${SUBPACKAGE} =="-html"
+PKGNAME:=qt-html-1.45
+.endif
 
 .if defined(NO_SHARED_LIBS) && ${NO_SHARED_LIBS:U} == YES
 USE_TARGET=	openbsd-g++-static

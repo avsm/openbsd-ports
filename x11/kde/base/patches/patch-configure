@@ -1,6 +1,6 @@
---- configure.orig	Tue Mar  7 23:52:45 2000
-+++ configure	Tue Mar  7 23:53:04 2000
-@@ -1783,7 +1783,7 @@
+--- configure.orig	Tue Sep  7 17:21:06 1999
++++ configure	Fri Jun 30 22:43:24 2000
+@@ -1783,7 +1783,7 @@ case "$host_os" in
  aix*)
    ac_symcode='[BCDTU]'
    ;;
@@ -9,3 +9,18 @@
    ac_sympat='_\([_A-Za-z][_A-Za-z0-9]*\)'
    ac_symxfrm='_\1 \1'
    ;;
+@@ -3868,13 +3868,13 @@ do
+   done
+ done
+ 
++ac_kde_libraries="$kde_libdir"
+ 
+ if test -n "$ac_kde_libraries" && test ! -r "$ac_kde_libraries/libkdecore.la"; then
+ { echo "configure: error: 
+ in the prefix, you've chosen, are no KDE libraries installed. This will fail.
+ So, check this please and use another prefix!" 1>&2; exit 1; }
+ fi
+-ac_kde_libraries="$kde_libdir"
+ 
+ if test "$ac_kde_includes" = NO || test "$ac_kde_libraries" = NO; then
+   ac_cv_have_kde="have_kde=no"

@@ -1,15 +1,16 @@
+@comment $OpenBSD: PLIST,v 1.1.1.1.2.1 2000/09/15 05:24:52 marc Exp $
 bin/Esetroot
 bin/Etbg
 bin/Etcolors.sh
+@mode 4755
 bin/Eterm
+@mode
 bin/Etmenu.sh
-lib/libEterm.so.0.8
 lib/libEterm.a
 lib/libEterm.la
-lib/libmej.so.0.8
 lib/libmej.a
 lib/libmej.la
-@exec /sbin/ldconfig -m %B
+%%SHARED%%
 man/man1/Eterm.1
 share/Eterm/pix/014.png
 share/Eterm/pix/40.png

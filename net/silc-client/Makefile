@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.5.2.1 2002/06/13 19:11:33 naddy Exp $
+# $OpenBSD: Makefile,v 1.5.2.2 2002/10/03 02:36:07 brad Exp $
 
 COMMENT=	"Secure Live Internet Conferencing (SILC) client"
 
-DISTNAME=	silc-client-0.9.1
+DISTNAME=	silc-client-0.9.5.1
 CATEGORIES=	net
 NEED_VERSION=	1.507
 HOMEPAGE=	http://www.silcnet.org/
@@ -23,13 +23,15 @@ MASTER_SITES=	http://ftp.silcnet.org/client/sources/ \
 		http://the.wiretapped.net/security/network-security/silc/client/sources/ \
 		ftp://ftp.wiretapped.net/pub/security/network-security/silc/client/sources/
 
-LIB_DEPENDS=    glib.1.2,gmodule.1.2::devel/glib
+LIB_DEPENDS=	glib.1.2,gmodule.1.2::devel/glib
 
-USE_LIBTOOL=            yes
+USE_LIBTOOL=	yes
+
+MODULES=	iconv
 
 # XXX workaround gcc bugs on sparc64
 .if ${MACHINE_ARCH:Msparc64}
-PATCH_LIST=     gcc-* patch-*
+PATCH_LIST=	gcc-* patch-*
 .endif
 
 CONFIGURE_STYLE= gnu
@@ -38,18 +40,20 @@ CONFIGURE_ARGS=	${CONFIGURE_SHARED} \
 		--with-docdir=${PREFIX}/share/doc/silc \
 		--with-etcdir=${SYSCONFDIR}/silc \
 		--with-perl-lib=${DESTDIR}${PREFIX}/libdata/perl5/site_perl \
-		--enable-ipv6 \
-		--disable-asm
+		--enable-ipv6
+
+.if ${MACHINE_ARCH} != "i386"
+CONFIGURE_ARGS+= --disable-asm
+.endif
 
 # If you want to help with testing silc-client, uncomment this
 # and subscribe to silc-devel at lists.sourceforge.net
 #
-#CONFIGURE_ARGS+=       --enable-debug
+#CONFIGURE_ARGS+=	--enable-debug
 
 MODGNU_CONFIG_GUESS_DIRS= ${WRKSRC} ${WRKSRC}/irssi ${WRKSRC}/lib/silcmath/mpi
 FAKE_FLAGS=	${DESTDIRNAME}=${WRKINST} \
 		silc_etcdir=${PREFIX}/share/examples/silc-client \
 		${INSTALLARCHLIB}=${WRKINST}/${INSTALLARCHLIB}
-
 
 .include <bsd.port.mk>

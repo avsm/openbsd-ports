@@ -1,4 +1,4 @@
-$OpenBSD: patch-irssi_src_core_Makefile_in,v 1.1 2002/09/24 17:20:10 fgsch Exp $
+$OpenBSD: patch-irssi_src_core_Makefile_in,v 1.1.2.1 2002/10/03 02:36:07 brad Exp $
 --- irssi/src/core/Makefile.in.orig	Sat Sep  7 14:05:05 2002
 +++ irssi/src/core/Makefile.in	Tue Sep 24 02:28:01 2002
 @@ -196,8 +196,7 @@ libcore_a_SOURCES = \

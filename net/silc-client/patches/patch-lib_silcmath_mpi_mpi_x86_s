@@ -1,4 +1,4 @@
-$OpenBSD: patch-lib_silcmath_mpi_mpi_x86_s,v 1.1 2002/07/17 19:10:40 fgsch Exp $
+$OpenBSD: patch-lib_silcmath_mpi_mpi_x86_s,v 1.1.2.1 2002/10/03 02:36:07 brad Exp $
 --- lib/silcmath/mpi/mpi_x86.s.orig	Fri Apr  5 13:54:43 2002
 +++ lib/silcmath/mpi/mpi_x86.s	Wed Jul 17 09:05:01 2002
 @@ -56,9 +56,9 @@

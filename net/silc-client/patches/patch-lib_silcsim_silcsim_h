@@ -1,4 +1,4 @@
-$OpenBSD: patch-lib_silcsim_silcsim_h,v 1.1 2002/09/24 17:20:10 fgsch Exp $
+$OpenBSD: patch-lib_silcsim_silcsim_h,v 1.1.2.1 2002/10/03 02:36:07 brad Exp $
 --- lib/silcsim/silcsim.h.orig	Fri Apr  5 13:54:42 2002
 +++ lib/silcsim/silcsim.h	Tue Sep 24 02:30:33 2002
 @@ -34,8 +34,13 @@ typedef enum {

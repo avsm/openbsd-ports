@@ -1,4 +1,4 @@
-$OpenBSD: patch-irssi_src_silc_core_silc-servers_c,v 1.1 2002/09/24 17:20:10 fgsch Exp $
+$OpenBSD: patch-irssi_src_silc_core_silc-servers_c,v 1.1.2.1 2002/10/03 02:36:07 brad Exp $
 --- irssi/src/silc/core/silc-servers.c.orig	Sat Jul  6 05:42:27 2002
 +++ irssi/src/silc/core/silc-servers.c	Tue Sep 24 02:28:01 2002
 @@ -69,8 +69,6 @@ static void silc_send_channel(SILC_SERVE

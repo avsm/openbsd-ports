@@ -1,0 +1,11 @@
+--- Makefile.in.orig	Tue Feb 22 13:34:06 2000
++++ Makefile.in	Wed Mar 15 09:39:20 2000
+@@ -80,7 +80,7 @@
+ RANLIB = @RANLIB@
+ VERSION = @VERSION@
+ 
+-SUBDIRS = gtkgl examples docs
++SUBDIRS = gtkgl docs # examples
+ 
+ EXTRA_DIST =  	gtkgl.m4 	gtkglarea.spec.in 	makefile.cygwin
+ 

@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.1.1.1.2.1 2000/09/15 05:09:06 marc Exp $
 man/man8/fping.8
 sbin/fping
 share/doc/fping/README

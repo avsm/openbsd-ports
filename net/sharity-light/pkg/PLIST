@@ -1,6 +1,7 @@
+@comment $OpenBSD: PLIST,v 1.1.1.1.6.1 2000/09/15 05:10:16 marc Exp $
 sbin/shlight
 sbin/unshlight
-man/man8/smbmount.8
+man/man8/sh-smbmount.8
 share/doc/Sharity-Light/README
 share/doc/Sharity-Light/FAQ
 @dirrm share/doc/Sharity-Light

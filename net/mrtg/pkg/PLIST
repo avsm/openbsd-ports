@@ -1,13 +1,14 @@
+@comment $OpenBSD: PLIST,v 1.7.2.1 2000/09/15 05:09:37 marc Exp $
 bin/rateup
 bin/cfgmaker
 bin/cfgmaker_ip
 bin/indexmaker
 bin/mrtg
-lib/mrtg/locales_mrtg.pm
-lib/mrtg/BER.pm
-lib/mrtg/SNMP_Session.pm
-lib/mrtg/SNMP_util.pm
 lib/mrtg/mrtg.cfg.sample
+libdata/perl5/site_perl/BER.pm
+libdata/perl5/site_perl/SNMP_Session.pm
+libdata/perl5/site_perl/SNMP_util.pm
+libdata/perl5/site_perl/locales_mrtg.pm
 share/doc/mrtg/config.html
 share/doc/mrtg/config.pod
 share/doc/mrtg/config.txt

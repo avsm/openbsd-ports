@@ -1,3 +1,12 @@
+@comment $OpenBSD: PLIST,v 1.2.6.1 2000/09/15 05:09:43 marc Exp $
 bin/ncftp
+bin/ncftpbatch
+bin/ncftpbookmarks
+bin/ncftpget
+bin/ncftpls
+bin/ncftpput
 man/man1/ncftp.1
-
+man/man1/ncftpbatch.1
+man/man1/ncftpget.1
+man/man1/ncftpls.1
+man/man1/ncftpput.1

@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.16 2000/04/23 15:40:01 jakob Exp $
+# $OpenBSD: Makefile,v 1.16.2.1 2000/09/15 05:08:46 marc Exp $
 
 DISTNAME=	bind-openbsd-8.2.2-P6-19991217
 PKGNAME=	bind-8.2.2-P6
 CATEGORIES=	net
-NEED_VERSION=	1.197
+NEED_VERSION=	1.317
 MASTER_SITES=	ftp://ftp.gsnig.org/pub/openbsd-bind/ \
 		ftp://ftp.sekure.net/pub/gsnig/openbsd-bind/
 
@@ -11,9 +11,6 @@ MAINTAINER=	ho@openbsd.org,jakob@openbsd.org
 
 WRKDIST=	${WRKDIR}/named
 PREFIX=		/
-FAKE=		yes
-NO_MTREE=	yes
-NO_CONFIGURE=	yes
 SAMPLEDIR=	${DESTDIR}/usr/local/share/examples/bind8
 
 RESTRICTED=		"Unclear status of crypto components."
@@ -23,7 +20,7 @@ PERMIT_PACKAGE_FTP=     "Unclear status of crypto components."
 PERMIT_DISTFILES_CDROM= "Unclear status of crypto components."
 PERMIT_DISTFILES_FTP=   "Unclear status of crypto components."
 
-pre-install pre-package:
+pre-install:
 	@${SH} ${PKGDIR}/INSTALL ${DISTNAME} PRE-INSTALL
 
 post-install:
@@ -35,4 +32,3 @@ pre-fake:
 	@mkdir -p ${WRKINST}/usr/sbin ${WRKINST}/usr/libexec
 
 .include <bsd.port.mk>
-

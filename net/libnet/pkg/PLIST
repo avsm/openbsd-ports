@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.5.4.1 2000/09/15 05:09:26 marc Exp $
 bin/libnet-config
 lib/libnet.a
 include/libnet.h

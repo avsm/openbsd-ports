@@ -1,4 +1,5 @@
-# $OpenBSD: DEINSTALL,v 1.1 2000/03/06 13:34:10 camield Exp $
+#!/bin/sh
+# $OpenBSD: DEINSTALL,v 1.1.2.1 2000/09/15 05:10:08 marc Exp $
 #
 # proxy-suite de-installation
 

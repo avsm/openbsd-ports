@@ -1,4 +1,6 @@
-# $OpenBSD: Makefile,v 1.9 2000/04/09 17:37:39 espie Exp $
+# $OpenBSD: Makefile,v 1.9.2.1 2000/09/15 05:10:43 marc Exp $
+
+BROKEN=		Never update anything in /etc without asking the user first.
 
 DISTNAME=       dhcp-1.4.0p3
 PKGNAME=        wide-dhcp-1.4.0.3

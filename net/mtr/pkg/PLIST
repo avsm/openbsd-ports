@@ -1,3 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.2.2.1 2000/09/15 05:09:39 marc Exp $
 sbin/mtr
 man/man8/mtr.8
 @exec chmod 4555 %D/sbin/mtr

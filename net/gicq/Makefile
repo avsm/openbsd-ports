@@ -1,10 +1,9 @@
-# $OpenBSD: Makefile,v 1.9 2000/04/09 17:37:23 espie Exp $
+# $OpenBSD: Makefile,v 1.9.2.1 2000/09/15 05:09:11 marc Exp $
 # $FreeBSD: Makefile,v 1.6 1999/04/06 12:02:41 flathill Exp $
 
 DISTNAME=	gicq-0.33
 CATEGORIES=	net
 NEED_VERSION=	 1.230
-FAKE=No
 MASTER_SITES=	ftp://ftp.korsoft.com/pub/gicq/
 
 MAINTAINER=	brad@openbsd.org

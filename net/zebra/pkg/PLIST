@@ -1,4 +1,4 @@
-@comment $NetBSD$
+@comment $OpenBSD: PLIST,v 1.4.2.1 2000/09/15 05:10:55 marc Exp $
 sbin/bgpd
 sbin/ospfd
 sbin/ospf6d
@@ -10,7 +10,7 @@ info/zebra.info
 info/zebra.info-1
 info/zebra.info-2
 info/zebra.info-3
-@exec   install-info          %D/info/zebra.info %D/info/dir
+@exec install-info %D/info/zebra.info %D/info/dir
 lib/zebra/bgpd.conf.sample
 lib/zebra/bgpd.conf.sample2
 lib/zebra/ripd.conf.sample

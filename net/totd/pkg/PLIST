@@ -1,2 +1,4 @@
+@comment $OpenBSD: PLIST,v 1.2.2.1 2000/09/15 05:10:27 marc Exp $
 sbin/totd
-etc/totd.conf.sample
+share/totd/totd.conf.sample
+@dirrm share/totd

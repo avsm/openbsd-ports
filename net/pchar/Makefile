@@ -1,15 +1,15 @@
 # Ports collection makefile for:  pchar
-# Version required:     	  1.1.1
+# Version required:     	  1.2
 # Date created:			  Thu Dec 16, 1999
 # Whom:				  Angelos D. Keromytis
 #
-# $OpenBSD: Makefile,v 1.6 2000/04/21 16:07:26 kevlo Exp $
+# $OpenBSD: Makefile,v 1.6.2.1 2000/09/15 05:10:03 marc Exp $
 # $FreeBSD: ports/net/pchar/Makefile,v 1.1.1.1 1999/11/04 08:33:26 obrien Exp $
 #
 
-DISTNAME=	pchar-1.1.1
+DISTNAME=	pchar-1.2
 CATEGORIES=	net
-MASTER_SITES=	http://www.ca.sandia.gov/~bmah/Software/pchar/
+MASTER_SITES=	http://www.employees.org/~bmah/Software/pchar/
 
 MAINTAINER=     angelos@openbsd.org
 

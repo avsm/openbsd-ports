@@ -1,16 +1,13 @@
-# Makefile for:		libnids
-# Version required:	1.12
-# Date created:		Halloween 1999
-# Whom:			dugsong@monkey.org
-#
-# $OpenBSD: Makefile,v 1.10 2000/04/21 14:50:46 kevlo Exp $
+# $OpenBSD: Makefile,v 1.10.2.1 2000/09/15 05:09:27 marc Exp $
 
-DISTNAME=	libnids-1.13
-
+DISTNAME=	libnids-1.14
 CATEGORIES=	net
-NEED_VERSION=	 1.230
+NEED_VERSION=	1.310
+MASTER_SITES=	http://www.packetfactory.net/Projects/Libnids/dist/
 
-MASTER_SITES=	http://www.packetfactory.net/Projects/libnids/dist/
+HOMEPAGE=	http://www.packetfactory.net/Projects/Libnids/
+
+BUILD_DEPENDS=	${LOCALBASE}/lib/libnet.a::net/libnet
 
 MAINTAINER=	dugsong@monkey.org
 
@@ -19,17 +16,8 @@ PERMIT_PACKAGE_FTP=     Yes
 PERMIT_DISTFILES_CDROM= Yes
 PERMIT_DISTFILES_FTP=   Yes  
 
-BUILD_DEPENDS=	${PREFIX}/lib/libnet.a::net/libnet
+CONFIGURE_STYLE= gnu
 
-GNU_CONFIGURE=	Yes
-FAKE=		Yes
-
-post-install:
-	${INSTALL} ${WRKSRC}/src/libnids.a \
-			${PREFIX}/lib
-	${INSTALL_DATA} ${WRKSRC}/src/nids.h \
-			${PREFIX}/include
-	${INSTALL_DATA} ${WRKSRC}/src/libnids.3.mdoc \
-			${PREFIX}/man/man3/libnids.3
+FAKE_FLAGS=	AM_MAKEFLAGS="install_prefix=\"${WRKINST}\""
 
 .include <bsd.port.mk>

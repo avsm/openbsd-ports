@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.25 2003/08/05 08:36:16 jakob Exp $
+# $OpenBSD: Makefile,v 1.25.6.1 2005/02/12 12:16:22 robert Exp $
 
 COMMENT=	"SOCKS client and server"
 
-DISTNAME=	dante-1.1.14
+DISTNAME=	dante-1.1.15
 CATEGORIES=	security
 MASTER_SITES=	ftp://ftp.inet.no/pub/socks/
 

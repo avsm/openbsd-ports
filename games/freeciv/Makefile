@@ -1,8 +1,11 @@
-# $OpenBSD: Makefile,v 1.25 2000/10/04 05:39:18 brad Exp $
+# $OpenBSD: Makefile,v 1.25.4.1 2001/06/05 21:42:34 naddy Exp $
+
+COMMENT=	"Civilization clone for X; multiplayer"
 
 DISTNAME=	freeciv-1.11.4
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	games
-NEED_VERSION=	1.336
+NEED_VERSION=	1.402
 MASTER_SITES=	ftp://ftp.freeciv.org/pub/freeciv/stable/
 
 HOMEPAGE=	http://www.freeciv.org/
@@ -24,8 +27,7 @@ FLAVORS=	gtk
 FLAVOR?=
 
 .if ${FLAVOR:L} == "gtk"
-LIB_DEPENDS+=	gtk.1.2::x11/gtk+ \
-		Imlib.19::graphics/imlib
+LIB_DEPENDS+=	Imlib.19::graphics/imlib
 .else
 CONFIGURE_ARGS=	--with-xaw
 .endif

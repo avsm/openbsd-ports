@@ -1,4 +1,4 @@
-$OpenBSD: patch-ext_bcmath_libbcmath_src_rt_c,v 1.1 2003/11/15 18:11:35 avsm Exp $
+$OpenBSD: patch-ext_bcmath_libbcmath_src_rt_c,v 1.1.4.1 2004/07/20 23:23:07 robert Exp $
 --- ext/bcmath/libbcmath/src/rt.c.orig	2000-11-22 20:20:02.000000000 +0000
 +++ ext/bcmath/libbcmath/src/rt.c	2003-11-14 08:30:51.000000000 +0000
 @@ -45,7 +45,7 @@ void bc_rt_warn (char *mesg ,...)

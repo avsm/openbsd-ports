@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.24.2.1 2003/11/14 15:22:23 avsm Exp $
+# $OpenBSD: Makefile,v 1.24.2.2 2004/07/20 23:23:07 robert Exp $
 
 FULLPKGNAME=	php4-extensions-${V}
 COMMENT=	"informational package about PHP4 extensions"
@@ -25,7 +25,8 @@ GRAPHIC_DEPENDS=	jpeg.62::graphics/jpeg \
 
 GRAPHIC_CONFIG=		--with-jpeg-dir=${LOCALBASE} \
 			--with-png-dir=${LOCALBASE} \
-			--with-tiff-dir=${LOCALBASE}
+			--with-tiff-dir=${LOCALBASE} \
+			--with-zlib-dir=/usr 
 
 # bz2
 PSEUDO_FLAVORS+=	no_bz2
@@ -185,7 +186,7 @@ CONFIGURE_ARGS+=	--without-mysql
 MULTI_PACKAGES+=	-mysql
 COMMENT-mysql=		"mysql database access extensions for php4"
 CONFIGURE_ARGS+=	--with-mysql=shared,${LOCALBASE}
-MYSQL_DEPENDS=		lib/mysql/mysqlclient.10:mysql-client-3.23.*:databases/mysql
+MYSQL_DEPENDS=		lib/mysql/mysqlclient.10::databases/mysql
 .endif
 
 # ncurses
@@ -252,17 +253,6 @@ CONFIGURE_ARGS+=	--with-snmp=shared,${LOCALBASE} --enable-ucd-snmp-hack
 SNMP_DEPENDS=		snmp.42::net/ucd-snmp
 .endif
 
-# pspell
-PSEUDO_FLAVORS+=	no_pspell
-.if ${FLAVOR:L:Mno_pspell}
-CONFIGURE_ARGS+=	--without-pspell
-.else
-MULTI_PACKAGES+=	-pspell
-COMMENT-pspell=		"spell checking extensions for php4"
-CONFIGURE_ARGS+=	--with-pspell=shared,${LOCALBASE}
-LIB_DEPENDS+=		aspell.15::textproc/aspell
-.endif
-
 # sybase-ct
 PSEUDO_FLAVORS+=	no_sybase_ct
 .if ${FLAVOR:L:Mno_sybase_ct}
@@ -272,6 +262,17 @@ MULTI_PACKAGES+=	-sybase_ct
 COMMENT-sybase_ct=	"sybase database access extensions for php4"
 CONFIGURE_ARGS+=        --with-sybase-ct=shared,${LOCALBASE}
 SYBASE_CT_DEPENDS=	tds.0,ct.0::databases/freetds
+.endif
+
+# xml-rpc
+PSEUDO_FLAVORS+=	no_xmlrpc
+.if ${FLAVOR:L:Mno_xmlrpc}
+CONFIGURE_ARGS+=	--without-xmlrpc
+.else
+MULTI_PACKAGES+=	-xmlrpc
+COMMENT-xmlrpc=		"XML RPC functions for php4"
+CONFIGURE_ARGS+=	--with-xmlrpc=shared
+XMLRPC_DEPENDS=		expat.2::textproc/expat
 .endif
 
 # xslt

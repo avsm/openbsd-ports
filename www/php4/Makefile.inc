@@ -1,14 +1,14 @@
-# $OpenBSD: Makefile.inc,v 1.15 2003/08/28 22:30:38 avsm Exp $
+# $OpenBSD: Makefile.inc,v 1.15.2.1 2004/07/20 23:23:06 robert Exp $
 
 # This port currently only works with archs supporting dynamic loading
 # and has Apache that supports DSO's.
 NOT_FOR_ARCHS=	${NO_SHARED_ARCHS}
 
-V=		4.3.3
+V=		4.3.8
 DISTNAME=	php-${V}
 CATEGORIES=	www lang
 
-MAINTAINER=     Anil Madhavapeddy <avsm@openbsd.org>
+MAINTAINER=     Robert Nagy <robert@openbsd.org>
 HOMEPAGE=	http://www.php.net/
 
 MASTER_SITES=	http://us2.php.net/distributions/ \
@@ -37,10 +37,16 @@ PEAR_DIR?=		${CHROOT_DIR}/pear
 MODULES_SUBDIR=		lib/php/modules
 MODULES_DIR=		${CHROOT_DIR}/${MODULES_SUBDIR}
 
+.if defined(USE_GCC3)
+PHP_LDFLAGS=		-lstdc++ -lm
+.else
+PHP_LDFLAGS=		# nothing for now
+.endif
+
 CONFIGURE_STYLE=	autoconf
 AUTOCONF_VERSION=	2.52
 CONFIGURE_ENV=          CFLAGS="${CFLAGS} -I${LOCALBASE}/include" \
-                        LDFLAGS="-L${LOCALBASE}/lib" \
+                        LDFLAGS="-L${LOCALBASE}/lib ${PHP_LDFLAGS}" \
 			EXTENSION_DIR=${MODULES_DIR} 
 MAKE_ENV=               ${CONFIGURE_ENV}
 

@@ -1,4 +1,4 @@
-$OpenBSD: patch-ext_calendar_calendar_c,v 1.1 2003/11/15 18:11:35 avsm Exp $
+$OpenBSD: patch-ext_calendar_calendar_c,v 1.1.4.1 2004/07/20 23:23:07 robert Exp $
 --- ext/calendar/calendar.c.orig	2003-11-14 08:29:51.000000000 +0000
 +++ ext/calendar/calendar.c	2003-11-14 08:30:16.000000000 +0000
 @@ -276,7 +276,7 @@ PHP_FUNCTION(cal_from_jd)

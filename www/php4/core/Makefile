@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.16 2003/08/28 22:30:38 avsm Exp $
+# $OpenBSD: Makefile,v 1.16.2.1 2004/07/20 23:23:06 robert Exp $
 
 MULTI_PACKAGES=	-pear
 SUBPACKAGE?=
@@ -28,7 +28,8 @@ CONFIGURE_ARGS+= --with-apxs=/usr/sbin/apxs \
 		--enable-sockets \
 		--enable-sysvsem \
 		--enable-sysvshm \
-		--enable-yp
+		--enable-yp \
+		--enable-exif
 
 MODULES=	gettext iconv
 

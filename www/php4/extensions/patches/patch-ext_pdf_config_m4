@@ -1,4 +1,4 @@
-$OpenBSD: patch-ext_pdf_config_m4,v 1.4 2004/01/05 17:02:33 avsm Exp $
+$OpenBSD: patch-ext_pdf_config_m4,v 1.4.4.1 2004/07/20 23:23:07 robert Exp $
 --- ext/pdf/config.m4.orig	2004-01-05 09:30:28.000000000 +0000
 +++ ext/pdf/config.m4	2004-01-05 09:32:53.000000000 +0000
 @@ -72,7 +72,7 @@ if test "$PHP_PDFLIB" != "no"; then

@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.36 2003/09/03 17:21:05 brad Exp $
+# $OpenBSD: Makefile,v 1.36.2.1 2004/05/10 08:50:41 brad Exp $
 
 COMMENT=	"flexible mail transfer agent"
 
 VERSION=	3.36
 VERSION_DOC=	3.30
 DISTNAME=	exim-${VERSION}
-PKGNAME=	${DISTNAME}p2
+PKGNAME=	${DISTNAME}p3
 CATEGORIES=	mail
 
 MASTER_SITES=	ftp://ftp.csx.cam.ac.uk/pub/software/email/exim/exim3/ \
@@ -27,10 +27,11 @@ FLAVORS=	no_x11 no_perl mysql postgresql ldap no_ssl
 FLAVOR?=
 
 MAKE_ENV=	FLAVOR="${FLAVOR}"
+MAKE_FLAGS=	CC="${CC}" CFLAGS="${CFLAGS}"
 
 EXIM_MAKECAT=
 EXIM_LOOKUP_INCLUDE=
-EXIM_LOOKUP_LIB=
+EXIM_LOOKUP_LIBS=
 
 .if !${FLAVOR:L:Mno_x11}
 USE_X11=	Yes
@@ -49,8 +50,7 @@ EXIM_LOOKUP_LIBS+=	-L${LOCALBASE}/lib -lldap -llber
 .endif
 
 .if ${FLAVOR:L:Mmysql}
-LIBS+=		${LOCALBASE}/lib/mysql
-LIB_DEPENDS+=	lib/mysql/mysqlclient.10:mysql-client-3.23.*:databases/mysql
+LIB_DEPENDS+=	lib/mysql/mysqlclient.10::databases/mysql
 EXIM_MAKECAT+=	"LOOKUP_MYSQL=yes\n"
 EXIM_LOOKUP_INCLUDE+=	-I${LOCALBASE}/include/mysql
 EXIM_LOOKUP_LIBS+=	-L${LOCALBASE}/lib/mysql -lmysqlclient

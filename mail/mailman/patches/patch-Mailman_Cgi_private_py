@@ -1,4 +1,4 @@
-$OpenBSD: patch-Mailman_Cgi_private_py,v 1.1 2005/02/10 14:58:06 jakob Exp $
+$OpenBSD: patch-Mailman_Cgi_private_py,v 1.1.2.1 2005/02/12 12:07:38 robert Exp $
 --- Mailman/Cgi/private.py.orig	Sat Feb  8 08:13:50 2003
 +++ Mailman/Cgi/private.py	Thu Feb 10 15:50:22 2005
 @@ -1,4 +1,4 @@

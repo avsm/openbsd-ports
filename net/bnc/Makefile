@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.5 2004/04/18 06:41:11 robert Exp $
+# $OpenBSD: Makefile,v 1.5.2.1 2004/11/21 18:30:45 robert Exp $
 
 COMMENT=	"simple IRC relay proxy with support for virtual hosting"
 
 DISTNAME=	${PKGNAME:S,-,,}
-PKGNAME=	bnc-2.8.6
+PKGNAME=	bnc-2.9.1
 CATEGORIES=	net
 MASTER_SITES=	${HOMEPAGE}files/
 
@@ -17,6 +17,7 @@ PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
 CONFIGURE_STYLE= gnu
+ALL_TARGET=	ALL
 
 post-patch:
 	@sed -e s#!!PREFIX!!#${PREFIX}#g \

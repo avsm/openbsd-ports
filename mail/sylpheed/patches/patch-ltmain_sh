@@ -1,7 +1,7 @@
-$OpenBSD: patch-ltmain_sh,v 1.2 2003/11/08 17:15:00 sturm Exp $
---- ltmain.sh.orig	Fri Mar  7 05:01:54 2003
-+++ ltmain.sh	Mon Apr 28 16:48:12 2003
-@@ -1082,6 +1082,17 @@ compiler."
+$OpenBSD: patch-ltmain_sh,v 1.2.2.1 2005/04/07 06:20:06 sturm Exp $
+--- ltmain.sh.orig	2004-05-29 14:33:49.000000000 +0200
++++ ltmain.sh	2004-05-31 14:45:19.000000000 +0200
+@@ -1371,6 +1371,17 @@ EOF
  	continue
  	;;
  
@@ -19,7 +19,7 @@ $OpenBSD: patch-ltmain_sh,v 1.2 2003/11/08 17:15:00 sturm Exp $
        -module)
  	module=yes
  	continue
-@@ -1522,6 +1533,10 @@ compiler."
+@@ -2024,6 +2035,10 @@ EOF
  	  fi
  	  continue
  	  ;;

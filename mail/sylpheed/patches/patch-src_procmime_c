@@ -1,7 +1,7 @@
-$OpenBSD: patch-src_procmime_c,v 1.4 2004/04/10 19:13:50 couderc Exp $
---- src/procmime.c.orig	2004-02-10 04:31:26.000000000 +0100
-+++ src/procmime.c	2004-04-09 17:07:33.000000000 +0200
-@@ -937,7 +937,7 @@ static GHashTable *procmime_get_mime_typ
+$OpenBSD: patch-src_procmime_c,v 1.4.2.1 2005/04/07 06:21:48 sturm Exp $
+--- src/procmime.c.orig	Thu Mar 24 05:42:42 2005
++++ src/procmime.c	Wed Apr  6 21:57:37 2005
+@@ -953,7 +953,7 @@ static GHashTable *procmime_get_mime_typ
  		mime_type_list =
  			procmime_get_mime_type_list(SYSCONFDIR "/mime.types");
  		if (!mime_type_list) {

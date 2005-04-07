@@ -1,6 +1,6 @@
-$OpenBSD: patch-ltmain_sh,v 1.4 2004/05/31 12:54:32 couderc Exp $
---- ltmain.sh.orig	2004-05-29 14:33:49.000000000 +0200
-+++ ltmain.sh	2004-05-31 14:45:19.000000000 +0200
+$OpenBSD: patch-ltmain_sh,v 1.4.2.1 2005/04/07 06:21:48 sturm Exp $
+--- ltmain.sh.orig	Thu Mar 24 08:26:09 2005
++++ ltmain.sh	Wed Apr  6 21:57:36 2005
 @@ -1371,6 +1371,17 @@ EOF
  	continue
  	;;
@@ -19,7 +19,7 @@ $OpenBSD: patch-ltmain_sh,v 1.4 2004/05/31 12:54:32 couderc Exp $
        -module)
  	module=yes
  	continue
-@@ -2024,6 +2035,10 @@ EOF
+@@ -2020,6 +2031,10 @@ EOF
  	  fi
  	  continue
  	  ;;

@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.33.2.1 2005/03/27 15:15:35 sturm Exp $
+@comment $OpenBSD: PLIST,v 1.33.2.2 2005/04/10 09:23:01 sturm Exp $
 bin/gaim
 bin/gaim-remote
 include/gaim/
@@ -147,7 +147,7 @@ share/locale/my_MM/
 share/locale/my_MM/LC_MESSAGES/
 share/locale/my_MM/LC_MESSAGES/gaim.mo
 share/locale/nl/LC_MESSAGES/gaim.mo
-share/locale/no/LC_MESSAGES/gaim.mo
+@comment share/locale/no/LC_MESSAGES/gaim.mo
 share/locale/pl/LC_MESSAGES/gaim.mo
 share/locale/pt/LC_MESSAGES/gaim.mo
 share/locale/pt_BR/LC_MESSAGES/gaim.mo

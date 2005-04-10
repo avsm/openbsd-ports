@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.56.2.1 2005/03/27 15:16:43 sturm Exp $
+# $OpenBSD: Makefile,v 1.56.2.2 2005/04/10 09:23:52 sturm Exp $
 
 NOT_FOR_ARCHS=	${NO_SHARED_ARCHS}
 
-DISTNAME=	gaim-1.1.4
+DISTNAME=	gaim-1.2.1
 CATEGORIES=	net
 
 # GPL

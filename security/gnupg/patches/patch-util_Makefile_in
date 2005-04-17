@@ -1,4 +1,4 @@
-$OpenBSD: patch-util_Makefile_in,v 1.1 2005/02/19 12:10:03 alek Exp $
+$OpenBSD: patch-util_Makefile_in,v 1.1.4.1 2005/04/17 08:16:06 robert Exp $
 --- util/Makefile.in.orig	Sat Feb 19 11:14:27 2005
 +++ util/Makefile.in	Sat Feb 19 11:14:34 2005
 @@ -260,7 +260,7 @@ sbindir = @sbindir@

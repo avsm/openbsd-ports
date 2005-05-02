@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.64.2.1 2004/12/30 19:31:15 sturm Exp $
+# $OpenBSD: Makefile,v 1.64.2.2 2005/05/02 15:33:22 robert Exp $
 
 COMMENT=	"display and manipulate images under X11"
 
 DISTNAME=	ImageMagick-5.2.9
-PKGNAME=	${DISTNAME}p1
+PKGNAME=	${DISTNAME}p2
 CATEGORIES=     graphics
 MASTER_SITES=	${MASTER_SITE_BACKUP}
 

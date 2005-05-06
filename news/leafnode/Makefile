@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.31 2004/01/12 21:33:12 sturm Exp $
+# $OpenBSD: Makefile,v 1.31.2.1 2005/05/06 14:46:44 robert Exp $
 
 COMMENT=		"USENET software package designed for small sites"
 
-VERSION=		1.9.49
+VERSION=		1.11.2
 DISTNAME=		leafnode-${VERSION}.rel
 PKGNAME=		leafnode-${VERSION}
 CATEGORIES=		news
@@ -25,7 +25,7 @@ LIB_DEPENDS=		pcre::devel/pcre
 CONFIGURE_STYLE=	gnu
 CONFIGURE_ARGS+=	--localstatedir=/var
 CONFIGURE_ARGS+=	--with-lockfile=/var/spool/news/fetchnews.lck
-CONFIGURE_ARGS+=	--with-ipv6
+CONFIGURE_ARGS+=	--with-ipv6 --with-user=_news
 
 DOCS=		README README-FQDN INSTALL FAQ.txt
 

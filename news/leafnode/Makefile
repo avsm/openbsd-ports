@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.40 2005/01/24 11:48:30 sturm Exp $
+# $OpenBSD: Makefile,v 1.40.2.1 2005/05/23 04:01:30 robert Exp $
 
 COMMENT=		"USENET software package designed for small sites"
 
-VERSION=		1.10.8
+VERSION=		1.11.2
 DISTNAME=		leafnode-${VERSION}.rel
 PKGNAME=		leafnode-${VERSION}
 CATEGORIES=		news

@@ -1,10 +1,9 @@
-# $OpenBSD: Makefile,v 1.8 2005/02/21 17:15:43 alek Exp $
+# $OpenBSD: Makefile,v 1.8.2.1 2005/05/23 22:40:58 robert Exp $
 
 COMMENT=		"GNU Transport Layer Security library"
 
-VERSION=		1.0.20
+VERSION=		1.0.25
 DISTNAME=		gnutls-${VERSION}
-PKGNAME=		${DISTNAME}p0
 CATEGORIES=		security
 
 HOMEPAGE=		http://www.gnutls.org/

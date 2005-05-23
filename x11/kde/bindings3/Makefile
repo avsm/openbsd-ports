@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.20 2004/12/31 19:47:23 sturm Exp $
+# $OpenBSD: Makefile,v 1.20.2.1 2005/05/23 20:15:34 sturm Exp $
 
 .if ${MACHINE_ARCH} == "powerpc"
 BROKEN=			"gcc spins on x_20.cpp"
@@ -22,4 +22,8 @@ MAKE_FLAGS+=TMAKEPATH=${LOCALBASE}/share/tmake/openbsd-g++/
 SEPARATE_BUILD=flavored
 
 CONFIGURE_ENV+=DO_NOT_COMPILE=python
+
+GNU_ARCH=${MACHINE_ARCH:S/amd64/x86_64/}
+SUBST_VARS=GNU_ARCH OSREV
+
 .include <bsd.port.mk>

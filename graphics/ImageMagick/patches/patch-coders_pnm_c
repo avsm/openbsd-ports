@@ -1,0 +1,12 @@
+$OpenBSD: patch-coders_pnm_c,v 1.1.6.1 2005/05/25 05:50:19 robert Exp $
+--- coders/pnm.c.orig	Tue May 24 23:46:41 2005
++++ coders/pnm.c	Tue May 24 23:46:52 2005
+@@ -330,7 +330,7 @@
+         */
+         if (AllocateImageColormap(image,image->colors) == False)
+           ThrowReaderException(ResourceLimitError,"MemoryAllocationFailed");
+-        if (format == '7')
++        if ((format == '7') && (image->colors == 256))
+           {
+             /*
+               Initialize 332 colormap.

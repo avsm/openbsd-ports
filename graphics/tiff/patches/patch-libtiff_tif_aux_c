@@ -1,4 +1,4 @@
-$OpenBSD: patch-libtiff_tif_aux_c,v 1.1 2004/10/20 20:37:48 brad Exp $
+$OpenBSD: patch-libtiff_tif_aux_c,v 1.1.2.1 2005/05/25 05:37:32 robert Exp $
 --- libtiff/tif_aux.c.orig	Sun Dec  7 06:58:36 2003
 +++ libtiff/tif_aux.c	Wed Oct 20 14:38:11 2004
 @@ -33,36 +33,59 @@

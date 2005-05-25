@@ -1,4 +1,4 @@
-$OpenBSD: patch-libtiff_tif_dir_c,v 1.1 2004/10/20 20:37:48 brad Exp $
+$OpenBSD: patch-libtiff_tif_dir_c,v 1.1.2.1 2005/05/25 05:37:32 robert Exp $
 --- libtiff/tif_dir.c.orig	Fri Dec 26 06:56:25 2003
 +++ libtiff/tif_dir.c	Wed Oct 20 14:38:11 2004
 @@ -40,26 +40,33 @@

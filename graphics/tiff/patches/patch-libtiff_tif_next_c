@@ -1,4 +1,4 @@
-$OpenBSD: patch-libtiff_tif_next_c,v 1.1 2004/10/20 20:37:48 brad Exp $
+$OpenBSD: patch-libtiff_tif_next_c,v 1.1.2.1 2005/05/25 05:37:32 robert Exp $
 --- libtiff/tif_next.c.orig	Fri Jul 11 02:25:25 2003
 +++ libtiff/tif_next.c	Wed Oct 20 14:36:37 2004
 @@ -87,7 +87,7 @@ NeXTDecode(TIFF* tif, tidata_t buf, tsiz

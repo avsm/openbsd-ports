@@ -1,4 +1,4 @@
-$OpenBSD: patch-tools_tiffdump_c,v 1.1 2005/03/27 03:41:26 brad Exp $
+$OpenBSD: patch-tools_tiffdump_c,v 1.1.6.1 2005/05/25 05:37:32 robert Exp $
 --- tools/tiffdump.c.orig	Sat Mar 26 22:06:37 2005
 +++ tools/tiffdump.c	Sat Mar 26 22:07:43 2005
 @@ -316,6 +316,10 @@ ReadDirectory(int fd, unsigned ix, uint3

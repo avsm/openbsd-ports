@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.16.2.2 2005/02/19 09:12:40 sturm Exp $
+@comment $OpenBSD: PLIST,v 1.16.2.3 2005/05/26 03:53:29 robert Exp $
 bin/RunAccel
 bin/RunCache
 bin/squidclient
@@ -10,6 +10,7 @@ libexec/ncsa_auth
 libexec/squid_unix_group
 libexec/unlinkd
 libexec/yp_auth
+man/man8/cachemgr.cgi.8
 man/man8/squid.8
 man/man8/squid_unix_group.8
 sbin/squid
@@ -883,6 +884,7 @@ share/examples/squid/icons/anthony-xpm.gif
 share/examples/squid/mib.txt
 share/examples/squid/mime.conf
 @comment share/examples/squid/mime.conf.default
+share/examples/squid/cachemgr.conf
 share/examples/squid/squid.conf
 @comment share/examples/squid/squid.conf.default
 @dirrm share/examples/squid/icons

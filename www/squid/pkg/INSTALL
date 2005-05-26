@@ -1,5 +1,5 @@
 #!/bin/sh
-# $OpenBSD: INSTALL,v 1.15.6.1 2005/03/27 15:08:02 sturm Exp $
+# $OpenBSD: INSTALL,v 1.15.6.2 2005/05/26 03:53:29 robert Exp $
 #
 # Pre/post-installation setup of Squid
 
@@ -52,6 +52,7 @@ do_notice_conf()
 do_install_conf()
 {
   install -d -o root -g wheel -m 755 $CONFIG_DIR
+  install -o root -g wheel -m 644 $SAMPLE_CONFIG_DIR/cachemgr.conf $CONFIG_DIR
   install -o root -g wheel -m 644 $SAMPLE_CONFIG_DIR/squid.conf $CONFIG_DIR
   install -o root -g wheel -m 644 $SAMPLE_CONFIG_DIR/mime.conf $CONFIG_DIR
   install -o root -g wheel -m 644 $SAMPLE_CONFIG_DIR/mib.txt $CONFIG_DIR

@@ -1,4 +1,4 @@
-$OpenBSD: patch-local_fixproc,v 1.1 2005/05/26 03:34:21 robert Exp $
+$OpenBSD: patch-local_fixproc,v 1.1.2.1 2005/05/26 04:01:57 robert Exp $
 --- local/fixproc.orig	Wed May 25 19:21:01 2005
 +++ local/fixproc	Wed May 25 19:24:51 2005
 @@ -129,6 +129,8 @@

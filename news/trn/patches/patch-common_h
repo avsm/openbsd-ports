@@ -1,4 +1,4 @@
-$OpenBSD: patch-common_h,v 1.1 2005/05/29 14:19:08 espie Exp $
+$OpenBSD: patch-common_h,v 1.1.2.1 2005/05/31 19:29:52 sturm Exp $
 --- common.h.orig	Sat Nov 11 18:35:40 2000
 +++ common.h	Sun May 29 15:59:06 2005
 @@ -15,10 +15,9 @@

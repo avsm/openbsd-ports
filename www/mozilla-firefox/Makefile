@@ -1,12 +1,15 @@
-# $OpenBSD: Makefile,v 1.21 2005/03/16 08:59:04 wilfried Exp $
+# $OpenBSD: Makefile,v 1.21.2.1 2005/06/06 20:30:29 robert Exp $
 
 ONLY_FOR_ARCHS=	alpha amd64 i386 powerpc sparc sparc64
 
 COMMENT=	"redesign of Mozilla's browser component"
 
-VER=		1.0.1
+VER=		1.0.4
 DISTNAME=	mozilla
-PKGNAME=	mozilla-firefox-${VER}p1
+PKGNAME=	mozilla-firefox-${VER}
+SO_VERSION=	3.0
+# NOTE: Must bump minor version if any shlib's are removed from the
+# components dir to avoid pkg_add -r issues.
 
 CATEGORIES=	www
 
@@ -18,7 +21,10 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 WANTLIB=		X11 Xext Xft Xi Xp Xrender Xt c fontconfig freetype \
-			m pthread stdc++ z
+			m pthread z
+.if empty(MACHINE_ARCH:Malpha)
+WANTLIB+=		stdc++
+.endif
 
 MASTER_SITES=	http://ftp.eu.mozilla.org/pub/mozilla.org/firefox/releases/${VER}/source/ \
 		http://ftp.mozilla.org/pub/firefox/releases/${VER}/source/
@@ -27,14 +33,14 @@ DISTFILES=	firefox-${VER}-source.tar.bz2
 MODULES=	gcc3 devel/gettext
 MODGCC3_ARCHES=	alpha
 MODGCC3_LANGS=	C++
-BUILD_DEPENDS=	:zip->=2.3:archivers/zip \
+RUN_DEPENDS=	:esound-*:audio/esound
+BUILD_DEPENDS=	:ORBit-*:devel/ORBit \
+		:zip->=2.3:archivers/zip \
 		:pkgconfig-*:devel/pkgconfig
 LIB_DEPENDS=	gtk.1,gdk.1::x11/gtk+ \
 		glib.1,gmodule.1::devel/glib \
-		IDL.4::devel/ORBit \
 		jpeg.62::graphics/jpeg \
 		png.3::graphics/png
-RUN_DEPENDS=	:esound-0.2.*:audio/esound
 
 VMEM_WARNING=	Yes
 
@@ -42,11 +48,10 @@ USE_X11=	Yes
 USE_GMAKE=	Yes
 # Regression tests are too hard to adapt to run here
 NO_REGRESS=	Yes
-SUBST_VARS=	LOCALBASE
+SUBST_VARS=	LOCALBASE SO_VERSION
 
 MODGNU_CONFIG_GUESS_DIRS=	${WRKSRC}/build/autoconf \
-				${WRKSRC}/nsprpub/build/autoconf \
-				${WRKSRC}/directory/c-sdk/config/autoconf
+				${WRKSRC}/nsprpub/build/autoconf
 
 AUTOCONF_VERSION= 2.13
 CONFIGURE_STYLE= autoconf no-autoheader
@@ -72,9 +77,15 @@ CONFIGURE_ARGS+=--disable-ldap			\
 		--disable-profilesharing
 
 CONFIGURE_ENV=	MOZ_PHOENIX=1 \
-		PKG_CONFIG_PATH="${LOCALBASE}/lib/pkgconfig:${X11BASE}/lib/pkgconfig"
+		PKG_CONFIG_PATH="${LOCALBASE}/lib/pkgconfig:${X11BASE}/lib/pkgconfig" \
+		BUILD_OFFICIAL=1 \
+		MOZILLA_OFFICIAL=1 \
+		SO_VERSION="${SO_VERSION}"
 MAKE_ENV=	MOZ_PHOENIX=1 \
-		LD_LIBRARY_PATH="${WRKSRC}/dist/bin"
+		LD_LIBRARY_PATH="${WRKSRC}/dist/bin" \
+		BUILD_OFFICIAL=1 \
+		MOZILLA_OFFICIAL=1 \
+		SO_VERSION="${SO_VERSION}"
 
 MOB=		${WRKSRC}/dist/bin
 MOZ=		${PREFIX}/mozilla-firefox
@@ -85,9 +96,11 @@ post-extract:
 
 pre-configure:
 	@cd ${WRKSRC}/nsprpub && ${SETENV} ${AUTOCONF_ENV} ${AUTOCONF}
-	@cd ${WRKSRC}/directory/c-sdk && ${SETENV} ${AUTOCONF_ENV} ${AUTOCONF}
 	@perl -pi -e 's|_LOCALBASE_|${LOCALBASE}|g; s|_X11BASE_|${X11BASE}|g' \
 		${WRKSRC}/browser/app/mozilla.in
+	@perl -pi -e 's|_SO_VERSION_|${SO_VERSION}|g' \
+		${WRKSRC}/nsprpub/pr/include/md/_openbsd.h \
+		${WRKSRC}/xpcom/components/nsNativeComponentLoader.cpp
 
 do-install:
 .for dir in chrome components defaults greprefs res searchplugins
@@ -95,15 +108,15 @@ do-install:
 	@cd ${MOB} && ${TAR} -chf - ${dir} | \
 		${TAR} -xf - -C ${MOZ}
 .endfor
-	@cd ${MOB} && ${TAR} -chf - *.so.1.0 | \
+	@cd ${MOB} && ${TAR} -chf - *.so.?.? | \
 		${TAR} -xf - -C ${MOZ}
-	@chmod 444 ${MOZ}/*.so.1.0 ${MOZ}/components/*.so.1.0 ${MOZ}/components/*.js
+	@chmod 444 ${MOZ}/*.so.?.? ${MOZ}/components/*.so.?.? ${MOZ}/components/*.js
 	${INSTALL_DATA} ${WRKSRC}/LICENSE ${MOZ}
 	${INSTALL_DATA} ${WRKSRC}/browser/app/mozicon16.xpm ${WRKSRC}/browser/app/mozicon50.xpm ${MOZ}
-	${INSTALL_SCRIPT} ${MOB}/firefox ${PREFIX}/bin/
+	${INSTALL_SCRIPT} ${MOB}/firefox ${MOB}/firefox-config ${PREFIX}/bin/
 	ln -f ${PREFIX}/bin/firefox ${PREFIX}/bin/mozilla-firefox
-	${INSTALL_SCRIPT} ${MOB}/run-mozilla.sh ${MOB}/firefox-config ${MOZ}
-	${INSTALL_PROGRAM} ${MOB}/regchrome ${MOB}/regxpcom ${MOB}/firefox-bin ${MOZ}
+	${INSTALL_SCRIPT} ${MOB}/run-mozilla.sh ${MOZ}
+	${INSTALL_PROGRAM} ${MOB}/regchrome ${MOB}/regxpcom ${MOB}/firefox-bin ${MOB}/mozilla-xremote-client ${MOZ}
 	ln -f ${MOZ}/firefox-bin ${MOZ}/mozilla-firefox-bin
 
 	${INSTALL_DATA_DIR} ${MOZ}/extensions

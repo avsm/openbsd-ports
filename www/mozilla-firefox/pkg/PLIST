@@ -1,7 +1,8 @@
-@comment $OpenBSD: PLIST,v 1.5 2005/03/16 08:59:04 wilfried Exp $
+@comment $OpenBSD: PLIST,v 1.5.2.1 2005/06/06 20:30:30 robert Exp $
 @conflict mozilla-firebird-*
 %%SHARED%%
 bin/firefox
+bin/firefox-config
 bin/mozilla-firefox
 mozilla-firefox/
 mozilla-firefox/LICENSE
@@ -354,7 +355,6 @@ mozilla-firefox/extensions/installed-extensions-processed.txt
 mozilla-firefox/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/
 mozilla-firefox/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/install.rdf
 mozilla-firefox/firefox-bin
-mozilla-firefox/firefox-config
 mozilla-firefox/greprefs/
 mozilla-firefox/greprefs/all.js
 mozilla-firefox/greprefs/security-prefs.js
@@ -362,6 +362,7 @@ mozilla-firefox/greprefs/xpinstall.js
 mozilla-firefox/mozicon16.xpm
 mozilla-firefox/mozicon50.xpm
 mozilla-firefox/mozilla-firefox-bin
+mozilla-firefox/mozilla-xremote-client
 mozilla-firefox/regchrome
 mozilla-firefox/regxpcom
 mozilla-firefox/res/
@@ -549,3 +550,12 @@ mozilla-firefox/searchplugins/google.gif
 mozilla-firefox/searchplugins/google.src
 mozilla-firefox/searchplugins/yahoo.gif
 mozilla-firefox/searchplugins/yahoo.src
+@cwd ${LOCALBASE}/mozilla-firefox
+@exec rm -rf /tmp/.mozilla
+@exec cd %D && env HOME=/tmp LD_LIBRARY_PATH=%D ./regxpcom
+@exec cd %D && env HOME=/tmp LD_LIBRARY_PATH=%D ./regchrome
+@exec rm -rf /tmp/.mozilla
+@unexec rm -f %D/components/compreg.dat
+@unexec rm -f %D/components/xpti.dat
+@unexec rm -f %D/chrome/chrome.rdf
+@unexec rm -rf %D/chrome/overlayinfo

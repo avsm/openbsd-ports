@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.33.2.2 2005/04/10 09:23:01 sturm Exp $
+@comment $OpenBSD: PLIST,v 1.33.2.3 2005/06/19 17:03:42 sturm Exp $
 bin/gaim
 bin/gaim-remote
 include/gaim/
@@ -110,6 +110,9 @@ share/applications/gaim.desktop
 share/locale/am/
 share/locale/am/LC_MESSAGES/
 share/locale/am/LC_MESSAGES/gaim.mo
+share/locale/az/
+share/locale/az/LC_MESSAGES/
+share/locale/az/LC_MESSAGES/gaim.mo
 share/locale/bg/LC_MESSAGES/gaim.mo
 share/locale/ca/
 share/locale/ca/LC_MESSAGES/
@@ -127,6 +130,7 @@ share/locale/en_GB/
 share/locale/en_GB/LC_MESSAGES/
 share/locale/en_GB/LC_MESSAGES/gaim.mo
 share/locale/es/LC_MESSAGES/gaim.mo
+share/locale/et/LC_MESSAGES/gaim.mo
 share/locale/fi/LC_MESSAGES/gaim.mo
 share/locale/fr/LC_MESSAGES/gaim.mo
 share/locale/he/LC_MESSAGES/gaim.mo
@@ -136,6 +140,9 @@ share/locale/hi/LC_MESSAGES/gaim.mo
 share/locale/hu/LC_MESSAGES/gaim.mo
 share/locale/it/LC_MESSAGES/gaim.mo
 share/locale/ja/LC_MESSAGES/gaim.mo
+share/locale/ka/
+share/locale/ka/LC_MESSAGES/
+share/locale/ka/LC_MESSAGES/gaim.mo
 share/locale/ko/LC_MESSAGES/gaim.mo
 share/locale/lt/
 share/locale/lt/LC_MESSAGES/
@@ -146,8 +153,11 @@ share/locale/mk/LC_MESSAGES/gaim.mo
 share/locale/my_MM/
 share/locale/my_MM/LC_MESSAGES/
 share/locale/my_MM/LC_MESSAGES/gaim.mo
+share/locale/nb/LC_MESSAGES/gaim.mo
 share/locale/nl/LC_MESSAGES/gaim.mo
-@comment share/locale/no/LC_MESSAGES/gaim.mo
+share/locale/pa/
+share/locale/pa/LC_MESSAGES/
+share/locale/pa/LC_MESSAGES/gaim.mo
 share/locale/pl/LC_MESSAGES/gaim.mo
 share/locale/pt/LC_MESSAGES/gaim.mo
 share/locale/pt_BR/LC_MESSAGES/gaim.mo

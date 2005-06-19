@@ -1,4 +1,4 @@
-$OpenBSD: patch-plugins_ssl_Makefile_am,v 1.1.4.1 2005/05/14 07:45:53 robert Exp $
+$OpenBSD: patch-plugins_ssl_Makefile_am,v 1.1.4.2 2005/06/19 17:03:42 sturm Exp $
 --- plugins/ssl/Makefile.am.orig	Fri Apr 29 13:02:03 2005
 +++ plugins/ssl/Makefile.am	Thu May 12 21:48:07 2005
 @@ -4,6 +4,7 @@ EXTRA_DIST = \

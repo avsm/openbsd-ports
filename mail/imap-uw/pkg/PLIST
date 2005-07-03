@@ -1,6 +1,5 @@
-@comment $OpenBSD: PLIST,v 1.8 2004/09/18 12:54:10 espie Exp $
+@comment $OpenBSD: PLIST,v 1.8.2.1 2005/07/03 07:19:45 sturm Exp $
 @conflict imaputils-uw-*
-@conflict mailutil-uw-*
 @conflict courier-imap-*
 @conflict courier-pop3-*
 bin/dmail

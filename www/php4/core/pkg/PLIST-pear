@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-pear,v 1.10.2.2 2005/04/20 12:23:45 robert Exp $
+@comment $OpenBSD: PLIST-pear,v 1.10.2.3 2005/07/23 13:37:20 robert Exp $
 pear/
 pear/build/
 pear/build/Makefile.global
@@ -81,6 +81,15 @@ pear/include/Zend/zend_types.h
 pear/include/Zend/zend_variables.h
 pear/include/acconfig.h
 pear/include/ext/
+pear/include/ext/iconv/
+pear/include/ext/iconv/php_have_bsd_iconv.h
+pear/include/ext/iconv/php_have_glibc_iconv.h
+pear/include/ext/iconv/php_have_iconv.h
+pear/include/ext/iconv/php_have_libiconv.h
+pear/include/ext/iconv/php_iconv.h
+pear/include/ext/iconv/php_iconv_supports_errno.h
+pear/include/ext/iconv/php_php_iconv_h_path.h
+pear/include/ext/iconv/php_php_iconv_impl.h
 pear/include/ext/mbstring/
 pear/include/ext/mbstring/libmbfl/
 pear/include/ext/mbstring/libmbfl/mbfl/
@@ -184,6 +193,8 @@ pear/include/ext/xml/expat/xmlrole.h
 pear/include/ext/xml/expat/xmltok.h
 pear/include/ext/xml/expat/xmltok_impl.h
 pear/include/ext/xml/php_xml.h
+pear/include/include/
+pear/include/include/php_sab_info.h
 pear/include/main/
 pear/include/main/SAPI.h
 pear/include/main/build-defs.h

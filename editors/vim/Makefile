@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.47 2004/08/05 11:56:30 espie Exp $
+# $OpenBSD: Makefile,v 1.47.2.1 2005/07/29 19:49:59 sturm Exp $
 
 COMMENT=	"vi clone, many additional features"
 COMMENT-lang=	"vi clone, NLS subpackage"
 
 DISTNAME=	vim-6.3
-REVISION=	13
+REVISION=	85
 VERSION=	6.3.${REVISION}
 PKGNAME=	vim-${VERSION}
 P=		${DISTNAME:C/[-\.]//g}
@@ -62,6 +62,8 @@ FLAVORS=	huge gtk gtk2 athena motif no_x11 perl python ruby
 FLAVOR?=	gtk
 
 CONFIGURE_STYLE= gnu
+CONFIGURE_ENV=	CPPFLAGS="-I${LOCALBASE}/include" \
+		LDFLAGS="-L${LOCALBASE}/lib"
 CONFIGURE_ARGS+=--with-tlib="curses" --enable-multibyte
 
 .if ${FLAVOR:L:Mhuge}
@@ -104,6 +106,7 @@ CONFIGURE_ARGS+=--enable-gui="gtk" --with-x --enable-fontset --enable-xim --disa
 .elif ${FLAVOR:L:Mgtk2} && \
 	        !${FLAVOR:L:Mmotif} && !${FLAVOR:L:Mno_x11} && !${FLAVOR:L:Mathena} && !${FLAVOR:L:Mgtk}
 LIB_DEPENDS+=   gdk-x11-2.0.0.11,gdk_pixbuf-2.0.0.11,gtk-x11-2.0.0.11::x11/gtk+2
+BUILD_DEPENDS+=	:pkgconfig-*:devel/pkgconfig
 CONFIGURE_ARGS+=--enable-gui="gtk2" --with-x --enable-fontset --enable-xim --disable-gtk-check --enable-gtk2-check
 .else
 ERRORS+="Fatal: You must select one GUI interface: no_x11, gtk, athena or motif"

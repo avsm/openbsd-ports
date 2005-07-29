@@ -1,6 +1,6 @@
-$OpenBSD: patch-libtiff_tif_tile_c,v 1.1.2.1 2005/05/25 05:37:32 robert Exp $
+$OpenBSD: patch-libtiff_tif_tile_c,v 1.1.2.2 2005/07/29 17:38:59 brad Exp $
 --- libtiff/tif_tile.c.orig	Tue Nov 11 10:43:10 2003
-+++ libtiff/tif_tile.c	Wed Oct 20 14:38:11 2004
++++ libtiff/tif_tile.c	Fri Jul 29 13:12:38 2005
 @@ -31,6 +31,32 @@
   */
  #include "tiffiop.h"
@@ -68,7 +68,7 @@ $OpenBSD: patch-libtiff_tif_tile_c,v 1.1.2.1 2005/05/25 05:37:32 robert Exp $
  }
  
  /*
-@@ -170,16 +200,24 @@ TIFFVTileSize(TIFF* tif, uint32 nrows)
+@@ -170,16 +200,28 @@ TIFFVTileSize(TIFF* tif, uint32 nrows)
  		 */
  		tsize_t w =
  		    TIFFroundup(td->td_tilewidth, td->td_ycbcrsubsampling[0]);
@@ -78,6 +78,10 @@ $OpenBSD: patch-libtiff_tif_tile_c,v 1.1.2.1 2005/05/25 05:37:32 robert Exp $
 +					  "TIFFVTileSize"));
  		tsize_t samplingarea =
  		    td->td_ycbcrsubsampling[0]*td->td_ycbcrsubsampling[1];
++		if (samplingarea == 0) {
++			TIFFError(tif->tif_name, "Invalid YCbCr subsampling");
++			return 0;
++		}
  		nrows = TIFFroundup(nrows, td->td_ycbcrsubsampling[1]);
  		/* NB: don't need TIFFhowmany here 'cuz everything is rounded */
 -		tilesize = nrows*rowsize + 2*(nrows*rowsize / samplingarea);

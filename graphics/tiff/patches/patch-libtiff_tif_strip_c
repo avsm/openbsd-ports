@@ -1,6 +1,6 @@
-$OpenBSD: patch-libtiff_tif_strip_c,v 1.1.6.1 2005/03/31 22:08:47 sturm Exp $
+$OpenBSD: patch-libtiff_tif_strip_c,v 1.1.6.2 2005/07/29 17:51:26 brad Exp $
 --- libtiff/tif_strip.c.orig	Tue Nov 11 10:43:10 2003
-+++ libtiff/tif_strip.c	Wed Oct 20 14:38:11 2004
++++ libtiff/tif_strip.c	Fri Jul 29 13:07:34 2005
 @@ -31,6 +31,32 @@
   */
  #include "tiffiop.h"
@@ -44,14 +44,21 @@ $OpenBSD: patch-libtiff_tif_strip_c,v 1.1.6.1 2005/03/31 22:08:47 sturm Exp $
  	return (nstrips);
  }
  
-@@ -100,15 +127,20 @@ TIFFVStripSize(TIFF* tif, uint32 nrows)
+@@ -99,16 +126,26 @@ TIFFVStripSize(TIFF* tif, uint32 nrows)
+                               ycbcrsubsampling + 0, 
                                ycbcrsubsampling + 1 );
  
- 		w = TIFFroundup(td->td_imagewidth, ycbcrsubsampling[0]);
+-		w = TIFFroundup(td->td_imagewidth, ycbcrsubsampling[0]);
 -		scanline = TIFFhowmany(w*td->td_bitspersample, 8);
+ 		samplingarea = ycbcrsubsampling[0]*ycbcrsubsampling[1];
++		if (samplingarea == 0) {
++			TIFFError(tif->tif_name, "Invalid YCbCr subsampling");
++			return 0;
++		}
++
++		w = TIFFroundup(td->td_imagewidth, ycbcrsubsampling[0]);
 +		scanline = TIFFhowmany8(multiply(tif, w, td->td_bitspersample,
 +						 "TIFFVStripSize"));
- 		samplingarea = ycbcrsubsampling[0]*ycbcrsubsampling[1];
  		nrows = TIFFroundup(nrows, ycbcrsubsampling[1]);
  		/* NB: don't need TIFFhowmany here 'cuz everything is rounded */
 +		scanline = multiply(tif, nrows, scanline, "TIFFVStripSize");
@@ -68,7 +75,7 @@ $OpenBSD: patch-libtiff_tif_strip_c,v 1.1.6.1 2005/03/31 22:08:47 sturm Exp $
  }
  
  
-@@ -189,10 +221,12 @@ TIFFScanlineSize(TIFF* tif)
+@@ -189,10 +226,12 @@ TIFFScanlineSize(TIFF* tif)
  	TIFFDirectory *td = &tif->tif_dir;
  	tsize_t scanline;
  	
@@ -84,7 +91,7 @@ $OpenBSD: patch-libtiff_tif_strip_c,v 1.1.6.1 2005/03/31 22:08:47 sturm Exp $
  }
  
  /*
-@@ -207,11 +241,14 @@ TIFFRasterScanlineSize(TIFF* tif)
+@@ -207,11 +246,14 @@ TIFFRasterScanlineSize(TIFF* tif)
  	TIFFDirectory *td = &tif->tif_dir;
  	tsize_t scanline;
  	

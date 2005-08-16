@@ -1,4 +1,4 @@
-$OpenBSD: patch-xpdf_SplashOutputDev_cc,v 1.1 2005/08/11 14:18:47 naddy Exp $
+$OpenBSD: patch-xpdf_SplashOutputDev_cc,v 1.1.2.1 2005/08/16 18:00:50 sturm Exp $
 --- xpdf/SplashOutputDev.cc.orig	Thu Jan 22 02:26:45 2004
 +++ xpdf/SplashOutputDev.cc	Wed Aug 10 22:25:23 2005
 @@ -621,16 +621,19 @@ void SplashOutputDev::updateFont(GfxStat

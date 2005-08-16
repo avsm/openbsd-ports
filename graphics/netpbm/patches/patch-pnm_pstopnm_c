@@ -1,4 +1,4 @@
-$OpenBSD: patch-pnm_pstopnm_c,v 1.1 2005/08/11 15:54:46 naddy Exp $
+$OpenBSD: patch-pnm_pstopnm_c,v 1.1.2.1 2005/08/16 18:02:11 sturm Exp $
 --- pnm/pstopnm.c.orig	Thu Aug 11 16:40:29 2005
 +++ pnm/pstopnm.c	Thu Aug 11 16:40:52 2005
 @@ -478,7 +478,7 @@ execute_ghostscript(const char pstrans[]

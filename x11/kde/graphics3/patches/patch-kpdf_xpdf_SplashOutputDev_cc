@@ -1,0 +1,29 @@
+$OpenBSD: patch-kpdf_xpdf_SplashOutputDev_cc,v 1.1.2.1 2005/08/17 18:40:07 sturm Exp $
+--- kpdf/xpdf/SplashOutputDev.cc.orig	Mon Aug 15 18:36:46 2005
++++ kpdf/xpdf/SplashOutputDev.cc	Mon Aug 15 18:46:58 2005
+@@ -621,16 +621,20 @@ void SplashOutputDev::updateFont(GfxStat
+       }
+       break;
+     case fontTrueType:
+-      if (!(ff = FoFiTrueType::load(fileName->getCString()))) {
+-	goto err2;
++      ff = FoFiTrueType::load(fileName->getCString());
++      if (ff) {
++	codeToGID = ((Gfx8BitFont *)gfxFont)->getCodeToGIDMap(ff);
++	n = 256;
++	delete ff;
++      } else {
++	codeToGID = NULL;
++	n = 0;
+       }
+-      codeToGID = ((Gfx8BitFont *)gfxFont)->getCodeToGIDMap(ff);
+-      delete ff;
+       if (!(fontFile = fontEngine->loadTrueTypeFont(
+ 			   id,
+ 			   fileName->getCString(),
+ 			   fileName == tmpFileName,
+-			   codeToGID, 256))) {
++			   codeToGID, n))) {
+ 	error(-1, "Couldn't create a font for '%s'",
+ 	      gfxFont->getName() ? gfxFont->getName()->getCString()
+ 	                         : "(unnamed)");

@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.12 2004/01/14 17:21:52 jakob Exp $
+# $OpenBSD: Makefile,v 1.12.4.1 2005/08/23 21:35:14 robert Exp $
 
 COMMENT=	"perl-compatible regular expression library"
 
 DISTNAME=	pcre-4.5
+PKGNAME=	${DISTNAME}p0
 CATEGORIES=	devel
 
 MASTER_SITES=	ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/ \

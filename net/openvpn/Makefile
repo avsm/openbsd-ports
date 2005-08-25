@@ -1,13 +1,13 @@
-# $OpenBSD: Makefile,v 1.3 2004/08/08 18:48:38 sturm Exp $
+# $OpenBSD: Makefile,v 1.3.2.1 2005/08/25 19:47:24 robert Exp $
 # Original from: Jorge A. Cortes Montiel <jcortes@bsdcoders.org>
 
 COMMENT=	"easy-to-use, robust, and highly configurable VPN"
 
-VERSION=	1.6.0
+VERSION=	2.0.1	
 DISTNAME=	openvpn-${VERSION}
 CATEGORIES=	net security
 
-HOMEPAGE=	http://openvpn.sourceforge.net/
+HOMEPAGE=	http://openvpn.net/
 
 MAINTAINER=	Thomas Delaet <thomas@delaet.org>	
 
@@ -17,7 +17,7 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM= Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=openvpn/}
+MASTER_SITES=	${HOMEPAGE}release/
 
 LIB_DEPENDS=	lzo::archivers/lzo
 
@@ -37,11 +37,11 @@ post-install:
 	${INSTALL_DATA_DIR} ${SAMPLES_DIR}/sample-config-files
 	${INSTALL_DATA_DIR} ${SAMPLES_DIR}/sample-keys
 	${INSTALL_DATA_DIR} ${SAMPLES_DIR}/sample-scripts
-	@perl -pi -e 's,#!/bin/bash,#!/bin/sh,g' ${WRKSRC}/easy-rsa/*
 	${INSTALL_DATA_DIR} ${SAMPLES_DIR}/easy-rsa
 	${INSTALL_DATA} ${WRKSRC}/sample-config-files/* ${SAMPLES_DIR}/sample-config-files/
 	${INSTALL_DATA} ${WRKSRC}/sample-keys/* ${SAMPLES_DIR}/sample-keys/
 	${INSTALL_DATA} ${WRKSRC}/sample-scripts/* ${SAMPLES_DIR}/sample-scripts/
-	${INSTALL_DATA} ${WRKSRC}/easy-rsa/* ${SAMPLES_DIR}/easy-rsa/
+	@find ${WRKSRC}/easy-rsa -type f -exec perl -pi -e 's,#!/bin/bash,#!/bin/sh,g' {} \;
+	@cp -pR ${WRKSRC}/easy-rsa/* ${SAMPLES_DIR}/easy-rsa/
 
 .include <bsd.port.mk>

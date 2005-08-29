@@ -1,4 +1,4 @@
-$OpenBSD: patch-xpdf_GPOutputDev_cc,v 1.1 2005/08/22 22:37:12 naddy Exp $
+$OpenBSD: patch-xpdf_GPOutputDev_cc,v 1.1.2.1 2005/08/29 19:49:57 sturm Exp $
 --- xpdf/GPOutputDev.cc.orig	Sat Aug 20 22:36:27 2005
 +++ xpdf/GPOutputDev.cc	Sat Aug 20 22:38:32 2005
 @@ -257,26 +257,14 @@ GnomeFontFace *GPOFontMap::getFontFaceEm

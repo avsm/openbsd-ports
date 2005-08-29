@@ -1,7 +1,7 @@
-$OpenBSD: patch-xpdf_XRef_cc,v 1.1 2005/08/22 22:37:12 naddy Exp $
---- xpdf/XRef.cc.orig	Sat Aug 20 22:14:19 2005
-+++ xpdf/XRef.cc	Sat Aug 20 22:16:10 2005
-@@ -819,6 +819,9 @@ GBool XRef::checkEncrypted(GString *owne
+$OpenBSD: patch-xpdf_XRef_cc,v 1.1.2.1 2005/08/29 19:47:58 sturm Exp $
+--- xpdf/XRef.cc.orig	Sun Aug 28 06:09:17 2005
++++ xpdf/XRef.cc	Sun Aug 28 06:10:18 2005
+@@ -486,6 +486,9 @@ GBool XRef::checkEncrypted(GString *owne
  	} else {
  	  keyLength = 5;
  	}

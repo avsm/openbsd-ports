@@ -1,4 +1,4 @@
-$OpenBSD: patch-xpdf_GfxState_cc,v 1.1 2005/08/22 22:37:12 naddy Exp $
+$OpenBSD: patch-xpdf_GfxState_cc,v 1.1.2.1 2005/08/29 19:47:58 sturm Exp $
 --- xpdf/GfxState.cc.orig	Sat Aug 20 22:10:30 2005
 +++ xpdf/GfxState.cc	Sat Aug 20 22:12:38 2005
 @@ -714,6 +714,11 @@ GfxColorSpace *GfxICCBasedColorSpace::pa
@@ -13,12 +13,3 @@ $OpenBSD: patch-xpdf_GfxState_cc,v 1.1 2005/08/22 22:37:12 naddy Exp $
    if (dict->lookup("Alternate", &obj2)->isNull() ||
        !(altA = GfxColorSpace::parse(&obj2))) {
      switch (nCompsA) {
-@@ -1060,7 +1065,7 @@ GfxColorSpace *GfxDeviceNColorSpace::par
-   }
-   nCompsA = obj1.arrayGetLength();
-   if (nCompsA > gfxColorMaxComps) {
--    error(-1, "DeviceN color space with more than %d > %d components",
-+    error(-1, "DeviceN color space with too many (%d > %d) components",
- 	  nCompsA, gfxColorMaxComps);
-     nCompsA = gfxColorMaxComps;
-   }

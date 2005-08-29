@@ -1,4 +1,4 @@
-$OpenBSD: patch-xpdf_Gfx_cc,v 1.1 2005/08/22 22:37:12 naddy Exp $
+$OpenBSD: patch-xpdf_Gfx_cc,v 1.1.2.1 2005/08/29 19:47:58 sturm Exp $
 --- xpdf/Gfx.cc.orig	Sat Aug 20 22:09:21 2005
 +++ xpdf/Gfx.cc	Sat Aug 20 22:10:22 2005
 @@ -2654,7 +2654,9 @@ void Gfx::doImage(Object *ref, Stream *s

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.30.4.1 2005/08/16 18:03:02 sturm Exp $
+# $OpenBSD: Makefile,v 1.30.4.2 2005/08/31 19:46:33 sturm Exp $
 # $NetBSD: Makefile,v 1.25 1999/03/04 14:18:54 tron Exp $
 
 COMMENT=	"toolkit for converting images between different formats"
@@ -6,7 +6,7 @@ COMMENT-hpcd=	"convert photo CD images into ppm format"
 
 VERSION=	9.24
 DISTNAME=	netpbm-${VERSION}
-PKGNAME=	${DISTNAME}p2
+PKGNAME=	${DISTNAME}p3
 PKGNAME-hpcd=	hpcdtoppm-${VERSION}p1
 CATEGORIES=	graphics
 MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=netpbm/}

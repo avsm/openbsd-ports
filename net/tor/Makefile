@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.6.2.3 2005/08/09 15:04:23 robert Exp $
+# $OpenBSD: Makefile,v 1.6.2.4 2005/08/31 19:51:42 sturm Exp $
 
 COMMENT=	"anonymity service using onion routing"
 
 DISTNAME=	tor-0.1.0.14
+PKGNAME=	${DISTNAME}p0
 CATEGORIES=	net
 HOMEPAGE=	http://www.freehaven.net/tor/
 

@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_util_c,v 1.3 2005/08/05 18:55:41 fgsch Exp $
+$OpenBSD: patch-src_util_c,v 1.3.4.1 2005/09/04 20:20:29 sturm Exp $
 --- src/util.c.orig	Thu Aug  4 16:46:10 2005
 +++ src/util.c	Thu Aug  4 16:49:20 2005
 @@ -2745,7 +2745,7 @@ url_fetched_cb(gpointer url_data, gint s

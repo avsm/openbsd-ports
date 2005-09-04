@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.10 2005/02/20 11:18:55 sturm Exp $
+# $OpenBSD: Makefile,v 1.10.2.1 2005/09/04 20:24:36 sturm Exp $
 # $FreeBSD: ports/java/jdk12/Makefile,v 1.11 2002/08/19 20:47:04 glewis Exp $
 
 # Requires existing JDK 1.3 to build
@@ -8,8 +8,8 @@ COMMENT=		"Java2(TM) Standard Edition Dev Kit v${V}"
 COMMENT-jre=		"Java2(TM) Standard Edition Runtime Environment v${V}"
 V=			1.3.1
 DISTNAME=		j2sdk-1_3_1-src
-PKGNAME=		jdk-${V}
-PKGNAME-jre=		jre-${V}
+PKGNAME=		jdk-${V}p2
+PKGNAME-jre=		jre-${V}p2
 
 CATEGORIES=		devel/jdk java
 

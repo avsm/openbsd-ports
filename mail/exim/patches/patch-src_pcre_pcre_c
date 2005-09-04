@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_pcre_pcre_c,v 1.1 2005/08/27 15:57:31 naddy Exp $
+$OpenBSD: patch-src_pcre_pcre_c,v 1.1.6.1 2005/09/04 20:28:27 sturm Exp $
 --- src/pcre/pcre.c.orig	Tue Jan 11 13:54:54 2005
 +++ src/pcre/pcre.c	Fri Aug 26 19:59:53 2005
 @@ -1245,14 +1245,30 @@ read_repeat_counts(const uschar *p, int 

@@ -1,4 +1,4 @@
-$OpenBSD: patch-Modules_pypcre_c,v 1.1 2005/08/27 15:57:31 naddy Exp $
+$OpenBSD: patch-Modules_pypcre_c,v 1.1.6.1 2005/09/04 20:28:27 sturm Exp $
 --- Modules/pypcre.c.orig	Fri Aug 26 20:41:33 2005
 +++ Modules/pypcre.c	Fri Aug 26 20:44:56 2005
 @@ -1163,7 +1163,18 @@ read_repeat_counts(const uschar *p, int 

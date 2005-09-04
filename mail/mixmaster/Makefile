@@ -1,9 +1,10 @@
-# $OpenBSD: Makefile,v 1.12 2005/01/02 12:56:05 alek Exp $
+# $OpenBSD: Makefile,v 1.12.2.1 2005/09/04 20:28:27 sturm Exp $
 
 COMMENT=	"client for anonymous remailing"
 
 VERSION=	2.9.1
 DISTNAME=	mixmaster-${VERSION}
+PKGNAME=	${DISTNAME}p0
 CATEGORIES=	mail security
 
 MAINTAINER=	Nikolay Sturm <sturm@openbsd.org>

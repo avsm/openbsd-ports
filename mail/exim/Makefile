@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.48 2005/01/26 19:33:20 sturm Exp $
+# $OpenBSD: Makefile,v 1.48.2.1 2005/09/04 20:28:27 sturm Exp $
 
 COMMENT=	"Flexible mail transfer agent"
 VERSION=	4.44
 DISTNAME=	exim-${VERSION}
+PKGNAME=	${DISTNAME}p0
 CATEGORIES=	mail
 MASTER_SITES=	ftp://ftp.csx.cam.ac.uk/pub/software/email/exim/exim4/ \
 		http://ftp.planetmirror.com/pub/exim/exim4/ \

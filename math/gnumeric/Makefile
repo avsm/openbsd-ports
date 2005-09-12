@@ -1,9 +1,10 @@
-# $OpenBSD: Makefile,v 1.8 2004/08/10 09:14:48 xsa Exp $
+# $OpenBSD: Makefile,v 1.8.2.1 2005/09/12 19:21:42 sturm Exp $
 
 COMMENT=		"spreadsheet application for GNOME"
 
 VERSION=		1.2.13
 DISTNAME=		gnumeric-${VERSION}
+PKGNAME=		${DISTNAME}p0
 CATEGORIES=    		math x11/gnome
 
 HOMEPAGE=		http://www.gnome.org/projects/gnumeric/

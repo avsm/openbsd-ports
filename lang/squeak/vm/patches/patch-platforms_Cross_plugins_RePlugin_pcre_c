@@ -1,4 +1,4 @@
-$OpenBSD: patch-platforms_Cross_plugins_RePlugin_pcre_c,v 1.1 2005/08/27 19:27:57 pvalchev Exp $
+$OpenBSD: patch-platforms_Cross_plugins_RePlugin_pcre_c,v 1.1.6.1 2005/09/12 19:26:55 sturm Exp $
 --- platforms/Cross/plugins/RePlugin/pcre.c.orig	Fri Aug 26 15:30:02 2005
 +++ platforms/Cross/plugins/RePlugin/pcre.c	Fri Aug 26 15:30:05 2005
 @@ -715,14 +715,30 @@ read_repeat_counts(const uschar *p, int 

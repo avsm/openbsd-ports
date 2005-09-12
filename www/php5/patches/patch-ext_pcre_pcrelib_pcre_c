@@ -1,4 +1,4 @@
-$OpenBSD: patch-ext_pcre_pcrelib_pcre_c,v 1.1 2005/08/31 22:13:43 robert Exp $
+$OpenBSD: patch-ext_pcre_pcrelib_pcre_c,v 1.1.4.1 2005/09/12 19:29:43 sturm Exp $
 --- ext/pcre/pcrelib/pcre.c.orig	Fri May 27 20:12:42 2005
 +++ ext/pcre/pcrelib/pcre.c	Mon Aug 29 00:33:37 2005
 @@ -1245,14 +1245,30 @@

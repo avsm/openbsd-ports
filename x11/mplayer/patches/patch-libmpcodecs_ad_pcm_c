@@ -1,4 +1,4 @@
-$OpenBSD: patch-libmpcodecs_ad_pcm_c,v 1.1 2005/08/29 06:53:54 biorn Exp $
+$OpenBSD: patch-libmpcodecs_ad_pcm_c,v 1.1.6.1 2005/09/12 19:27:58 sturm Exp $
 --- libmpcodecs/ad_pcm.c.orig	Sun Feb 27 00:02:09 2005
 +++ libmpcodecs/ad_pcm.c	Sat Aug 27 23:38:30 2005
 @@ -96,8 +96,8 @@ static int control(sh_audio_t *sh,int cm

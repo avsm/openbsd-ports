@@ -1,7 +1,7 @@
-$OpenBSD: patch-libmpcodecs_ad_pcm_c,v 1.1 2005/08/29 06:53:54 biorn Exp $
---- libmpcodecs/ad_pcm.c.orig	Sun Feb 27 00:02:09 2005
-+++ libmpcodecs/ad_pcm.c	Sat Aug 27 23:38:30 2005
-@@ -96,8 +96,8 @@ static int control(sh_audio_t *sh,int cm
+$OpenBSD: patch-libmpcodecs_ad_pcm_c,v 1.1.4.1 2005/09/12 19:22:18 sturm Exp $
+--- libmpcodecs/ad_pcm.c.orig	Mon Mar 29 00:03:37 2004
++++ libmpcodecs/ad_pcm.c	Tue Sep  6 21:18:53 2005
+@@ -71,8 +71,8 @@ static int control(sh_audio_t *sh,int cm
  
  static int decode_audio(sh_audio_t *sh_audio,unsigned char *buf,int minlen,int maxlen)
  {
@@ -10,5 +10,5 @@ $OpenBSD: patch-libmpcodecs_ad_pcm_c,v 1.1 2005/08/29 06:53:54 biorn Exp $
 +  unsigned len = sh_audio->channels*sh_audio->samplesize;
 +  len = maxlen - maxlen % len; // sample align
    len=demux_read_data(sh_audio->ds,buf,len);
-   return len;
- }
+ #ifdef WORDS_BIGENDIAN
+   if(sh_audio->format!=0x736F7774){

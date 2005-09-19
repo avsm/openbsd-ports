@@ -1,0 +1,28 @@
+$OpenBSD: patch-silcd_silcd_c,v 1.1.2.1 2005/09/19 06:43:51 sturm Exp $
+--- silcd/silcd.c.orig	Sun Sep 18 10:46:43 2005
++++ silcd/silcd.c	Sun Sep 18 10:48:22 2005
+@@ -260,13 +260,21 @@ SILC_TASK_CALLBACK(stop_server)
+ SILC_TASK_CALLBACK(dump_stats)
+ {
+   FILE *fdd;
++  int fild;
+   char filename[256];
+ 
+   memset(filename, 0, sizeof(filename));
+-  snprintf(filename, sizeof(filename) - 1, "/tmp/silcd.%d.stats", getpid());
+-  fdd = fopen(filename, "w+");
+-  if (!fdd)
++  snprintf(filename, sizeof(filename) - 1, "/tmp/silcd.%d.stats-XXXXXX", getpid());
++  fild = mkstemp(filename);
++  if (fild == -1)
+     return;
++
++  fdd = fdopen(fild, "w");
++  if (fdd == NULL) {
++    close(fild);
++    unlink(filename);
++    return;
++  }
+ 
+ #define STAT_OUTPUT(fmt, stat) fprintf(fdd, fmt "\n", (int)stat);
+ 

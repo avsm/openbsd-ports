@@ -1,0 +1,16 @@
+$OpenBSD: patch-libmpdemux_asf_mmst_streaming_c,v 1.2.6.1 2005/09/22 20:43:25 robert Exp $
+--- libmpdemux/asf_mmst_streaming.c.orig	Wed Dec 15 20:12:46 2004
++++ libmpdemux/asf_mmst_streaming.c	Fri May  6 19:45:33 2005
+@@ -334,8 +334,12 @@ static int interp_header (uint8_t *heade
+ 
+       printf ("stream object, stream id: %d\n", stream_id);
+ 
++      if (num_stream_ids < 20) {
+       stream_ids[num_stream_ids] = stream_id;
+       num_stream_ids++;
++      } else {
++        printf ("too many id, stream skipped");
++      }
+       
+     } else {
+       printf ("unknown object\n");

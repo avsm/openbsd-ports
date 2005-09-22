@@ -1,6 +1,6 @@
-$OpenBSD: patch-libmpdemux_asf_mmst_streaming_c,v 1.2.2.1 2005/01/22 10:44:54 robert Exp $
---- libmpdemux/asf_mmst_streaming.c.orig	Mon Apr  5 23:31:27 2004
-+++ libmpdemux/asf_mmst_streaming.c	Wed Dec 29 15:34:38 2004
+$OpenBSD: patch-libmpdemux_asf_mmst_streaming_c,v 1.2.2.2 2005/09/22 20:46:25 robert Exp $
+--- libmpdemux/asf_mmst_streaming.c.orig	Fri May  6 20:02:47 2005
++++ libmpdemux/asf_mmst_streaming.c	Fri May  6 20:02:55 2005
 @@ -35,6 +35,7 @@
  #include "network.h"
  
@@ -34,7 +34,20 @@ $OpenBSD: patch-libmpdemux_asf_mmst_streaming_c,v 1.2.2.1 2005/01/22 10:44:54 ro
        
        if (!get_data (s, data, packet_len)) {
  	printf ("command data read failed\n");
-@@ -354,6 +366,12 @@ static int get_media_packet (int s, int 
+@@ -315,8 +327,12 @@ static int interp_header (uint8_t *heade
+ 
+       printf ("stream object, stream id: %d\n", stream_id);
+ 
++      if (num_stream_ids < 20) {
+       stream_ids[num_stream_ids] = stream_id;
+       num_stream_ids++;
++      } else {
++        printf ("too many id, stream skipped");
++      }
+       
+     } else {
+       printf ("unknown object\n");
+@@ -354,6 +370,12 @@ static int get_media_packet (int s, int 
  
  //    printf ("asf media packet detected, len=%d\n", packet_len);
  
@@ -47,7 +60,7 @@ $OpenBSD: patch-libmpdemux_asf_mmst_streaming_c,v 1.2.2.1 2005/01/22 10:44:54 ro
      if (!get_data (s, data, packet_len)) {
        printf ("media data read failed\n");
        return 0;
-@@ -373,6 +391,12 @@ static int get_media_packet (int s, int 
+@@ -373,6 +395,12 @@ static int get_media_packet (int s, int 
  
      packet_len = get_32 ((unsigned char*)&packet_len, 0) + 4;
  
@@ -60,7 +73,7 @@ $OpenBSD: patch-libmpdemux_asf_mmst_streaming_c,v 1.2.2.1 2005/01/22 10:44:54 ro
      if (!get_data (s, data, packet_len)) {
        printf ("command data read failed\n");
        return 0;
-@@ -457,7 +481,7 @@ int asf_mmst_streaming_start(stream_t *s
+@@ -457,7 +485,7 @@ int asf_mmst_streaming_start(stream_t *s
  {
    char                 str[1024];
    char                 data[BUF_SIZE];

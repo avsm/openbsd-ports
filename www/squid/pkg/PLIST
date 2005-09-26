@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.16.2.3 2005/05/26 03:53:29 robert Exp $
+@comment $OpenBSD: PLIST,v 1.16.2.4 2005/09/26 20:34:09 sturm Exp $
 bin/RunAccel
 bin/RunCache
 bin/squidclient
@@ -314,6 +314,36 @@ share/examples/squid/errors/German/ERR_UNSUP_REQ
 share/examples/squid/errors/German/ERR_URN_RESOLVE
 share/examples/squid/errors/German/ERR_WRITE_ERROR
 share/examples/squid/errors/German/ERR_ZERO_SIZE_OBJECT
+share/examples/squid/errors/Greek/ERR_ACCESS_DENIED
+share/examples/squid/errors/Greek/ERR_CACHE_ACCESS_DENIED
+share/examples/squid/errors/Greek/ERR_CACHE_MGR_ACCESS_DENIED
+share/examples/squid/errors/Greek/ERR_CANNOT_FORWARD
+share/examples/squid/errors/Greek/ERR_CONNECT_FAIL
+share/examples/squid/errors/Greek/ERR_DNS_FAIL
+share/examples/squid/errors/Greek/ERR_FORWARDING_DENIED
+share/examples/squid/errors/Greek/ERR_FTP_DISABLED
+share/examples/squid/errors/Greek/ERR_FTP_FAILURE
+share/examples/squid/errors/Greek/ERR_FTP_FORBIDDEN
+share/examples/squid/errors/Greek/ERR_FTP_NOT_FOUND
+share/examples/squid/errors/Greek/ERR_FTP_PUT_CREATED
+share/examples/squid/errors/Greek/ERR_FTP_PUT_ERROR
+share/examples/squid/errors/Greek/ERR_FTP_PUT_MODIFIED
+share/examples/squid/errors/Greek/ERR_FTP_UNAVAILABLE
+share/examples/squid/errors/Greek/ERR_INVALID_REQ
+share/examples/squid/errors/Greek/ERR_INVALID_RESP
+share/examples/squid/errors/Greek/ERR_INVALID_URL
+share/examples/squid/errors/Greek/ERR_LIFETIME_EXP
+share/examples/squid/errors/Greek/ERR_NO_RELAY
+share/examples/squid/errors/Greek/ERR_ONLY_IF_CACHED_MISS
+share/examples/squid/errors/Greek/ERR_READ_ERROR
+share/examples/squid/errors/Greek/ERR_READ_TIMEOUT
+share/examples/squid/errors/Greek/ERR_SHUTTING_DOWN
+share/examples/squid/errors/Greek/ERR_SOCKET_FAILURE
+share/examples/squid/errors/Greek/ERR_TOO_BIG
+share/examples/squid/errors/Greek/ERR_UNSUP_REQ
+share/examples/squid/errors/Greek/ERR_URN_RESOLVE
+share/examples/squid/errors/Greek/ERR_WRITE_ERROR
+share/examples/squid/errors/Greek/ERR_ZERO_SIZE_OBJECT
 share/examples/squid/errors/Hebrew/ERR_ACCESS_DENIED
 share/examples/squid/errors/Hebrew/ERR_CACHE_ACCESS_DENIED
 share/examples/squid/errors/Hebrew/ERR_CACHE_MGR_ACCESS_DENIED

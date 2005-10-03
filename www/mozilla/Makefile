@@ -1,14 +1,18 @@
-# $OpenBSD: Makefile,v 1.83 2005/03/13 05:02:16 kurt Exp $
+# $OpenBSD: Makefile,v 1.83.2.1 2005/10/03 13:39:31 sturm Exp $
 
 ONLY_FOR_ARCHS= alpha i386 sparc sparc64 amd64 powerpc
 
 COMMENT=	"open source version of the Netscape browser"
 COMMENT-devel=	"devel files for Gecko"
 
-VER=		1.7.5
+VER=		1.7.12
 DISTNAME=	mozilla
 PKGNAME=	mozilla-${VER}
-DISTFILES=	mozilla-source-${VER}.tar.bz2
+PKGNAME-devel=	mozilla-devel-${VER}
+DISTFILES=	mozilla-${VER}-source.tar.bz2
+SO_VERSION=	5.0
+# NOTE: Must bump minor version if any shlib's are removed from the
+# components dir to avoid pkg_add -r issues.
 
 CATEGORIES=	www
 
@@ -23,14 +27,9 @@ PERMIT_DISTFILES_FTP=	Yes
 MASTER_SITES=	http://ftp.eu.mozilla.org/pub/mozilla.org/mozilla/releases/mozilla${VER}/source/ \
 		http://ftp.mozilla.org/pub/mozilla.org/mozilla/releases/mozilla${VER}/source/
 
-MULTI_PACKAGES=	-devel
-
 VMEM_WARNING=yes
 
-.for i in ${MULTI_PACKAGES}
-PKGNAME$i=	mozilla${i}-${VER}
-.endfor
-
+MULTI_PACKAGES=	-devel
 SUBPACKAGE?=
 
 FLAVORS=	gtk2
@@ -47,6 +46,7 @@ LIB_DEPENDS=	jpeg.62::graphics/jpeg \
 .if defined(PACKAGING) && ${SUBPACKAGE} == "-devel"
 LIB_DEPENDS=
 WANTLIB=	X11 Xt m Xext
+MODULES=	devel/gettext
 .  if ${FLAVOR:L:Mgtk2}
 RUN_DEPENDS=	:${PKGNAME}-gtk2:www/mozilla,gtk2
 WANTLIB+=	Xft Xrender fontconfig freetype
@@ -55,19 +55,17 @@ RUN_DEPENDS=	:${PKGNAME}:www/mozilla
 .  endif
 .else
 RUN_DEPENDS=	:esound-0.2.*:audio/esound
-WANTLIB=	X11 Xext Xp Xt c m pthread stdc++ z
-.  if ${FLAVOR:L:Mgtk2}
-LIB_DEPENDS+=	gnomevfs-2::x11/gnome/vfs2
-WANTLIB+=	ORBit-2 bonobo-2 bonobo-activation gconf-2 gthread-2.0.0.0
+WANTLIB=	X11 Xext Xft Xp Xrender Xt c fontconfig freetype m pthread z
+.  if empty(MACHINE_ARCH:Malpha)
+WANTLIB+=	stdc++
 .  endif
 .endif
 
 .if ${FLAVOR:L:Mgtk2}
 BUILD_DEPENDS+=	:libIDL-*:devel/libIDL
 LIB_DEPENDS+=	gdk-x11-2.0.0.0,gdk_pixbuf-2.0.0.0,gtk-x11-2.0.0.0::x11/gtk+2
-WANTLIB+=	Xcursor Xft Xinerama Xrender atk-1.0.0.0 fontconfig freetype \
-		glib-2.0.0.0 gmodule-2.0.0.0 gobject-2.0.0.0 \
-		pango-1.0.0.0 pangox-1.0.0.0 pangoxft-1.0.0.0
+WANTLIB+=	Xcursor Xinerama atk-1.0.0.0 glib-2.0.0.0 gmodule-2.0.0.0 \
+		gobject-2.0.0.0 pango-1.0.0.0 pangox-1.0.0.0 pangoxft-1.0.0.0
 .else
 BUILD_DEPENDS+=	:ORBit-*:devel/ORBit
 LIB_DEPENDS+=	gtk.1,gdk.1::x11/gtk+
@@ -78,7 +76,7 @@ USE_X11=	Yes
 USE_GMAKE=	Yes
 # Regression tests are too hard to adapt to run here
 NO_REGRESS=	Yes
-SUBST_VARS=	LOCALBASE
+SUBST_VARS=	LOCALBASE SO_VERSION
 
 MODGNU_CONFIG_GUESS_DIRS=	${WRKSRC}/build/autoconf \
 				${WRKSRC}/nsprpub/build/autoconf \
@@ -92,26 +90,30 @@ CONFIGURE_ARGS=					\
 		--with-system-zlib=/usr/lib	\
 		--with-pthreads			\
 		--without-system-nspr		\
+		--enable-xft			\
 		--enable-optimize=-Os		\
 		--enable-crypto			\
 		--enable-extensions=default	\
 		--disable-pedantic		\
 		--disable-debug			\
 		--disable-tests			\
-		--disable-ldap
+		--disable-ldap			\
+		--disable-gnomevfs
 
 .if ${FLAVOR:L:Mgtk2}
-CONFIGURE_ARGS+=--enable-default-toolkit=gtk2	\
-		--enable-xft			\
-		--disable-freetype2
+CONFIGURE_ARGS+=--enable-default-toolkit=gtk2
 .else
-CONFIGURE_ARGS+=--enable-default-toolkit=gtk	\
-		--disable-xft			\
-		--enable-freetype2
+CONFIGURE_ARGS+=--enable-default-toolkit=gtk
 .endif
 
-CONFIGURE_ENV=	PKG_CONFIG_PATH="${LOCALBASE}/lib/pkgconfig:${X11BASE}/lib/pkgconfig"
-MAKE_ENV=	LD_LIBRARY_PATH="${WRKSRC}/dist/bin"
+CONFIGURE_ENV=	PKG_CONFIG_PATH="${LOCALBASE}/lib/pkgconfig:${X11BASE}/lib/pkgconfig" \
+		BUILD_OFFICIAL=1 \
+		MOZILLA_OFFICIAL=1 \
+		SO_VERSION=${SO_VERSION}
+MAKE_ENV=	LD_LIBRARY_PATH="${WRKSRC}/dist/bin" \
+		BUILD_OFFICIAL=1 \
+		MOZILLA_OFFICIAL=1 \
+		SO_VERSION=${SO_VERSION}
 
 MOB=		${WRKSRC}/dist
 MOZ=		${PREFIX}/mozilla
@@ -124,6 +126,9 @@ pre-configure:
 	@cd ${WRKSRC}/directory/c-sdk && ${SETENV} ${AUTOCONF_ENV} ${AUTOCONF}
 	@perl -pi -e 's|_LOCALBASE_|${LOCALBASE}|g; s|_X11BASE_|${X11BASE}|g' \
 		${WRKSRC}/xpfe/bootstrap/mozilla.in
+	@perl -pi -e 's|_SO_VERSION_|${SO_VERSION}|g' \
+		${WRKSRC}/nsprpub/pr/include/md/_openbsd.h \
+		${WRKSRC}/xpcom/components/nsNativeComponentLoader.cpp
 
 do-install:
 .for dir in include lib
@@ -138,13 +143,13 @@ do-install:
 	@cd ${MOB}/bin && ${TAR} -chf - ${dir} | \
 		${TAR} -xf - -C ${MOZ}
 .endfor
-	@cd ${MOB}/bin && ${TAR} -chf - *.so.1.0 | \
+	@cd ${MOB}/bin && ${TAR} -chf - *.so.?.? | \
 		${TAR} -xf - -C ${MOZ}
-	@chmod 444 ${MOZ}/*.so.1.0 ${MOZ}/components/*.so.1.0 ${MOZ}/components/*.js
+	@chmod 444 ${MOZ}/*.so.?.? ${MOZ}/components/*.so.?.? ${MOZ}/components/*.js
 	${INSTALL_DATA} ${MOB}/bin/LICENSE ${MOZ}
 	${INSTALL_SCRIPT} ${MOB}/bin/mozilla ${PREFIX}/bin
 	${INSTALL_SCRIPT} ${MOB}/bin/run-mozilla.sh ${MOB}/bin/mozilla-config ${MOZ}
-	${INSTALL_PROGRAM} ${MOB}/bin/regchrome ${MOB}/bin/regxpcom ${MOB}/bin/mozilla-bin ${MOZ}
+	${INSTALL_PROGRAM} ${MOB}/bin/regchrome ${MOB}/bin/regxpcom ${MOB}/bin/mozilla-bin ${MOB}/bin/mozilla-xremote-client ${MOZ}
 	${INSTALL_DATA_DIR} ${PREFIX}/share/applications
 	${INSTALL_DATA_DIR} ${PREFIX}/share/pixmaps
 	${INSTALL_DATA_DIR} ${PREFIX}/lib/pkgconfig

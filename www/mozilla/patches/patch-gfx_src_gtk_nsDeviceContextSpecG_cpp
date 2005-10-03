@@ -1,4 +1,4 @@
-$OpenBSD: patch-gfx_src_gtk_nsDeviceContextSpecG_cpp,v 1.1 2005/04/11 15:03:18 kurt Exp $
+$OpenBSD: patch-gfx_src_gtk_nsDeviceContextSpecG_cpp,v 1.1.4.1 2005/10/03 13:39:31 sturm Exp $
 --- gfx/src/gtk/nsDeviceContextSpecG.cpp.orig	Thu Feb 17 16:24:34 2005
 +++ gfx/src/gtk/nsDeviceContextSpecG.cpp	Mon Apr  4 12:56:30 2005
 @@ -68,6 +68,8 @@

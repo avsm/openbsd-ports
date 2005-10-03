@@ -1,8 +1,8 @@
-@comment $OpenBSD: PFRAG.no-gtk2-devel,v 1.2 2005/03/13 05:02:17 kurt Exp $
+@comment $OpenBSD: PFRAG.no-gtk2-devel,v 1.2.2.1 2005/10/03 13:39:31 sturm Exp $
 lib/pkgconfig/
 mozilla/include/widget/gdksuperwin.h
 mozilla/include/widget/gtkmozarea.h
 mozilla/include/widget/gtkmozbox.h
-@comment @lib mozilla/lib/components/libwidget_gtk.so.1.0
+@comment @lib mozilla/lib/components/libwidget_gtk.so.${SO_VERSION}
 mozilla/lib/libgfxft2_s.a
-@lib mozilla/lib/libgtksuperwin.so.1.0
+@lib mozilla/lib/libgtksuperwin.so.${SO_VERSION}

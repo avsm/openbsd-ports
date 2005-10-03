@@ -1,4 +1,4 @@
-$OpenBSD: patch-modules_libpref_src_init_all_js,v 1.1 2005/04/11 15:03:18 kurt Exp $
+$OpenBSD: patch-modules_libpref_src_init_all_js,v 1.1.4.1 2005/10/03 13:39:31 sturm Exp $
 --- modules/libpref/src/init/all.js.orig	Thu Mar 10 17:06:56 2005
 +++ modules/libpref/src/init/all.js	Fri Apr  1 16:50:17 2005
 @@ -1669,7 +1669,7 @@ pref("font.scale.outline.min",      6);

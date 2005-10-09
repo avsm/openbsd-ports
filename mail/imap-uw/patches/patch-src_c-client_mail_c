@@ -1,0 +1,14 @@
+$OpenBSD: patch-src_c-client_mail_c,v 1.1.2.1 2005/10/09 10:54:24 sturm Exp $
+--- src/c-client/mail.c.orig	Sat Oct  8 15:56:05 2005
++++ src/c-client/mail.c	Sat Oct  8 15:56:54 2005
+@@ -691,8 +691,10 @@ long mail_valid_net_parse_work (char *na
+       if (c == '=') {		/* parse switches which take arguments */
+ 	if (*t == '"') {	/* quoted string? */
+ 	  for (v = arg,i = 0,++t; (c = *t++) != '"';) {
++	    if (!c) return NIL; /* unterminated string */
+ 				/* quote next character */
+ 	    if (c == '\\') c = *t++;
++	    if (!c) return NIL; /* can't quote NUL either */
+ 	    arg[i++] = c;
+ 	  }
+ 	  c = *t++;		/* remember delimiter for later */

@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.37 2005/02/21 13:41:37 couderc Exp $
+# $OpenBSD: Makefile,v 1.37.2.1 2005/10/13 20:27:37 robert Exp $
 
 COMMENT=		"open-source, cross-platform WYSIWYG word processor"
 
-VERSION=		2.0.7
+VERSION=		2.2.10
 DISTNAME=		abiword-${VERSION}
 CATEGORIES=		editors
 
@@ -29,13 +29,12 @@ WANTLIB=		ICE SM X11 Xext Xft Xinerama Xrender \
 			pangox-1.0.0.0 pangoxft-1.0.0.0 png pthread \
 			stdc++ xml2.0.0 z Xcursor
 
-MASTER_SITES=   	${MASTER_SITE_SOURCEFORGE:=abiword/}
-EXTRACT_SUFX=		.tar.bz2
+MASTER_SITES=		${HOMEPAGE}/downloads/abiword/${VERSION}/source/
 
 USE_GMAKE=		Yes
 
 CONFIGURE_STYLE=	gnu
-CONFIGURE_ARGS=		--without-pspell
+CONFIGURE_ARGS=		--without-pspell --disable-gucharmap --disable-enchant
 CONFIGURE_ENV=		CPPFLAGS="-I${LOCALBASE}/include -I${LOCALBASE}/include/libpng" \
 			LDFLAGS="-L${LOCALBASE}/lib" \
 			PKG_CONFIG_PATH="${LOCALBASE}/lib/pkgconfig:${X11BASE}/lib/pkgconfig"
@@ -60,8 +59,17 @@ MAKE_FILE=		GNUmakefile
 WRKDIST=		${WRKDIR}/abiword-${VERSION}
 WRKSRC=			${WRKDIST}/abi
 
+pre-configure:
+		@perl -pi -e "s|libpng12|libpng|g" ${WRKSRC}/configure
+
 post-install:
-	${INSTALL_DATA_DIR} ${PREFIX}/share/applications
-	${INSTALL_DATA} ${WRKSRC}/src/pkg/linux/rpm/data/abiword.desktop ${PREFIX}/share/applications/
+		${INSTALL_DATA_DIR} ${PREFIX}/share/doc/abiword/Manual
+		${INSTALL_DATA_DIR} ${PREFIX}/share/doc/abiword/Tutorials
+		${INSTALL_MAN} ${WRKDIST}/abiword-docs/man/abiword.1 \
+			${PREFIX}/man/man1
+		${INSTALL_DATA} ${WRKDIST}/abiword-docs/Manual/en/Abiword_Manual.abw \
+			${PREFIX}/share/doc/abiword/Manual
+		cd ${WRKDIST}/abiword-docs/Tutorials && tar cf - jmp klw | \
+			tar xf - -C ${PREFIX}/share/doc/abiword/Tutorials
 
 .include <bsd.port.mk>

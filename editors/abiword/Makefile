@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.37.2.1 2005/10/13 20:27:37 robert Exp $
+# $OpenBSD: Makefile,v 1.37.2.2 2005/10/21 14:45:09 sturm Exp $
 
 COMMENT=		"open-source, cross-platform WYSIWYG word processor"
 
-VERSION=		2.2.10
+VERSION=		2.2.11
 DISTNAME=		abiword-${VERSION}
 CATEGORIES=		editors
 
@@ -43,6 +43,8 @@ FLAVORS=		gnome
 FLAVOR?=
 
 .if ${FLAVOR:L:Mgnome}
+BROKEN=			"Crash when exiting (canvas)"
+
 LIB_DEPENDS+=		gnomeprintui-2-2::x11/gnome/libgnomeprintui \
 			nautilus::x11/gnome/nautilus
 WANTLIB+=		ORBit-2.0.0 art_lgpl_2.0.0 bonobo-2.0.0 \

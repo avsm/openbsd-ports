@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.6 2004/12/21 11:40:40 espie Exp $
+# $OpenBSD: Makefile,v 1.6.2.1 2005/10/27 20:06:08 sturm Exp $
 
 COMMENT=		"Tcl bindings for Curl"
 NOT_FOR_ARCHS= 		${NO_SHARED_ARCHS}
 
 DISTNAME=		TclCurl-0.10.5
-PKGNAME=		${DISTNAME}p0
+PKGNAME=		${DISTNAME}p1
 CATEGORIES=		net
 
 HOMEPAGE=		http://personal.iddeo.es/andresgarci/tclcurl/english/

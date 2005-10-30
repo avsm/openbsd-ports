@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.9 2005/02/11 23:28:34 naddy Exp $
+# $OpenBSD: Makefile,v 1.9.2.1 2005/10/30 07:22:47 sturm Exp $
 
 COMMENT=		"GNU copy-in/out (cpio)"
 
 DISTNAME=		cpio-2.5
-PKGNAME=		g${DISTNAME}p0
+PKGNAME=		g${DISTNAME}p1
 CATEGORIES=		archivers
 
 # GPL/LGPL

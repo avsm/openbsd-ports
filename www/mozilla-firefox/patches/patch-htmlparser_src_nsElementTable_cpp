@@ -1,6 +1,6 @@
-$OpenBSD: patch-htmlparser_src_nsElementTable_cpp,v 1.1 2005/10/19 13:08:12 naddy Exp $
+$OpenBSD: patch-htmlparser_src_nsElementTable_cpp,v 1.1.2.1 2005/10/30 07:18:40 sturm Exp $
 --- htmlparser/src/nsElementTable.cpp.orig	Sat Apr 10 06:08:26 2004
-+++ htmlparser/src/nsElementTable.cpp	Tue Oct 18 16:16:55 2005
++++ htmlparser/src/nsElementTable.cpp	Wed Oct 19 15:11:46 2005
 @@ -934,15 +934,6 @@ void InitializeElementTable(void) {     
        /*special parents,kids,skip*/       &gParamParents,0,eHTMLTag_unknown);
  

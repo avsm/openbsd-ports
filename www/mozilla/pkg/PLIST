@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.29.2.1 2005/10/03 13:39:31 sturm Exp $
+@comment $OpenBSD: PLIST,v 1.29.2.2 2005/10/30 07:19:27 sturm Exp $
 %%SHARED%%
 %%gtk2%%
 !%%gtk2%%
@@ -568,7 +568,6 @@ mozilla/greprefs/all.js
 mozilla/greprefs/non-shared.txt
 mozilla/greprefs/security-prefs.js
 mozilla/greprefs/xpinstall.js
-mozilla/include/dom/nsIDOMNSEventTarget.h
 mozilla/mozilla-bin
 mozilla/mozilla-config
 mozilla/mozilla-xremote-client

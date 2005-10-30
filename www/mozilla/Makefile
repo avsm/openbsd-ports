@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.83.2.1 2005/10/03 13:39:31 sturm Exp $
+# $OpenBSD: Makefile,v 1.83.2.2 2005/10/30 07:19:27 sturm Exp $
 
 ONLY_FOR_ARCHS= alpha i386 sparc sparc64 amd64 powerpc
 
@@ -7,8 +7,8 @@ COMMENT-devel=	"devel files for Gecko"
 
 VER=		1.7.12
 DISTNAME=	mozilla
-PKGNAME=	mozilla-${VER}
-PKGNAME-devel=	mozilla-devel-${VER}
+PKGNAME=	mozilla-${VER}p3
+PKGNAME-devel=	mozilla-devel-${VER}p3
 DISTFILES=	mozilla-${VER}-source.tar.bz2
 SO_VERSION=	5.0
 # NOTE: Must bump minor version if any shlib's are removed from the

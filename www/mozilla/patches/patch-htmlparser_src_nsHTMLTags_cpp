@@ -1,4 +1,4 @@
-$OpenBSD: patch-htmlparser_src_nsHTMLTags_cpp,v 1.1 2005/10/19 15:21:21 naddy Exp $
+$OpenBSD: patch-htmlparser_src_nsHTMLTags_cpp,v 1.1.2.1 2005/10/30 07:19:27 sturm Exp $
 --- htmlparser/src/nsHTMLTags.cpp.orig	Wed Feb 18 01:15:49 2004
 +++ htmlparser/src/nsHTMLTags.cpp	Wed Oct 19 15:11:46 2005
 @@ -200,8 +200,6 @@ static const PRUnichar sHTMLTagUnicodeNa

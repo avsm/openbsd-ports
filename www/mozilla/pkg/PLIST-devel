@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-devel,v 1.10.2.1 2005/10/03 13:39:31 sturm Exp $
+@comment $OpenBSD: PLIST-devel,v 1.10.2.2 2005/10/30 07:19:27 sturm Exp $
 %%SHARED%%
 %%gtk2%%
 !%%gtk2%%
@@ -484,6 +484,7 @@ mozilla/include/dom/nsIDOMMutationEvent.h
 mozilla/include/dom/nsIDOMMutationListener.h
 mozilla/include/dom/nsIDOMNSDocument.h
 mozilla/include/dom/nsIDOMNSEvent.h
+mozilla/include/dom/nsIDOMNSEventTarget.h
 mozilla/include/dom/nsIDOMNSHTMLAnchorElement.h
 mozilla/include/dom/nsIDOMNSHTMLAreaElement.h
 mozilla/include/dom/nsIDOMNSHTMLButtonElement.h

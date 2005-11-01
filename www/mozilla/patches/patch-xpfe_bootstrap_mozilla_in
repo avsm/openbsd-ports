@@ -1,4 +1,4 @@
-$OpenBSD: patch-xpfe_bootstrap_mozilla_in,v 1.6 2005/03/13 05:02:17 kurt Exp $
+$OpenBSD: patch-xpfe_bootstrap_mozilla_in,v 1.6.4.1 2005/11/01 11:38:31 sturm Exp $
 --- xpfe/bootstrap/mozilla.in.orig	Tue Jan 11 23:29:52 2005
 +++ xpfe/bootstrap/mozilla.in	Tue Jan 11 23:31:51 2005
 @@ -73,6 +73,7 @@ moz_pis_startstop_scripts()
@@ -19,6 +19,6 @@ $OpenBSD: patch-xpfe_bootstrap_mozilla_in,v 1.6 2005/03/13 05:02:17 kurt Exp $
 +fi
 +
 +export MOZ_PLUGIN_PATH MRE_HOME
- eval "set -- $moreargs"
  
  ## Start addon scripts
+ moz_pis_startstop_scripts "start"

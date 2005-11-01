@@ -1,16 +1,16 @@
-# $OpenBSD: Makefile,v 1.88 2005/05/15 16:24:06 kurt Exp $
+# $OpenBSD: Makefile,v 1.88.2.1 2005/11/01 11:38:31 sturm Exp $
 
 ONLY_FOR_ARCHS= alpha i386 sparc sparc64 amd64 powerpc
 
 COMMENT=	"open source version of the Netscape browser"
 COMMENT-devel=	"devel files for Gecko"
 
-VER=		1.7.8
+VER=		1.7.12
 DISTNAME=	mozilla
 PKGNAME=	mozilla-${VER}
 PKGNAME-devel=	mozilla-devel-${VER}
 DISTFILES=	mozilla-${VER}-source.tar.bz2
-SO_VERSION=	3.0
+SO_VERSION=	5.0
 # NOTE: Must bump minor version if any shlib's are removed from the
 # components dir to avoid pkg_add -r issues.
  
@@ -43,10 +43,9 @@ BUILD_DEPENDS=	:zip->=2.3:archivers/zip \
 LIB_DEPENDS=	jpeg.62::graphics/jpeg \
 		png.3::graphics/png
 
-WANTLIB=	X11 Xext Xt m
-
 .if defined(PACKAGING) && ${SUBPACKAGE} == "-devel"
 LIB_DEPENDS=
+WANTLIB=	X11 Xt m Xext
 MODULES=	devel/gettext
 .  if ${FLAVOR:L:Mgtk2}
 RUN_DEPENDS=	:${PKGNAME}-gtk2:www/mozilla,gtk2
@@ -56,14 +55,9 @@ RUN_DEPENDS=	:${PKGNAME}:www/mozilla
 .  endif
 .else
 RUN_DEPENDS=	:esound-0.2.*:audio/esound
-WANTLIB+=	Xft Xp Xrender c fontconfig freetype pthread z
+WANTLIB=	X11 Xext Xft Xp Xrender Xt c fontconfig freetype m pthread z
 .  if empty(MACHINE_ARCH:Malpha)
 WANTLIB+=	stdc++
-.  endif
-
-.  if ${FLAVOR:L:Mgtk2}
-LIB_DEPENDS+=	gnomevfs-2::x11/gnome/vfs2
-WANTLIB+=	ORBit-2 bonobo-2 bonobo-activation gconf-2 gthread-2.0.0.0
 .  endif
 .endif
 
@@ -103,7 +97,8 @@ CONFIGURE_ARGS=					\
 		--disable-pedantic		\
 		--disable-debug			\
 		--disable-tests			\
-		--disable-ldap
+		--disable-ldap			\
+		--disable-gnomevfs
 
 .if ${FLAVOR:L:Mgtk2}
 CONFIGURE_ARGS+=--enable-default-toolkit=gtk2

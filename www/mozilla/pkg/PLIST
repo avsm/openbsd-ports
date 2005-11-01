@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.32 2005/04/11 15:03:18 kurt Exp $
+@comment $OpenBSD: PLIST,v 1.32.2.1 2005/11/01 11:38:31 sturm Exp $
 %%SHARED%%
 %%gtk2%%
 !%%gtk2%%
@@ -568,6 +568,7 @@ mozilla/greprefs/all.js
 mozilla/greprefs/non-shared.txt
 mozilla/greprefs/security-prefs.js
 mozilla/greprefs/xpinstall.js
+mozilla/include/dom/nsIDOMNSEventTarget.h
 mozilla/mozilla-bin
 mozilla/mozilla-config
 mozilla/mozilla-xremote-client
@@ -579,8 +580,6 @@ mozilla/res/arrow.gif
 mozilla/res/arrowd.gif
 mozilla/res/bloatcycle.html
 mozilla/res/broken-image.gif
-mozilla/res/builtin/
-mozilla/res/builtin/platformHTMLBindings.xml
 mozilla/res/charsetData.properties
 mozilla/res/charsetalias.properties
 mozilla/res/cmessage.txt
@@ -595,7 +594,6 @@ mozilla/res/entityTables/htmlEntityVersions.properties
 mozilla/res/entityTables/mathml20.properties
 mozilla/res/entityTables/transliterate.properties
 mozilla/res/fonts/
-mozilla/res/fonts/fontEncoding.properties
 mozilla/res/fonts/mathfont.properties
 mozilla/res/fonts/mathfontCMEX10.properties
 mozilla/res/fonts/mathfontCMSY10.properties
@@ -607,6 +605,7 @@ mozilla/res/fonts/mathfontPUA.properties
 mozilla/res/fonts/mathfontSymbol.properties
 mozilla/res/forms.css
 mozilla/res/grabber.gif
+mozilla/res/hiddenWindow.html
 mozilla/res/html/
 mozilla/res/html.css
 mozilla/res/html/gopher-audio.gif

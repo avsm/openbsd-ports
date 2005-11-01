@@ -1,4 +1,4 @@
-$OpenBSD: patch-getmail,v 1.1 2005/10/03 17:59:55 sturm Exp $
+$OpenBSD: patch-getmail,v 1.1.2.1 2005/11/01 11:28:01 sturm Exp $
 
 work around a bug in python 2.3.5
 

@@ -1,2 +1,2 @@
-@comment $OpenBSD: PFRAG.shared,v 1.7 2005/05/26 23:13:28 naddy Exp $
-@lib lib/libcurl.so.3.0
+@comment $OpenBSD: PFRAG.shared,v 1.7.2.1 2005/11/01 11:20:12 sturm Exp $
+@lib lib/libcurl.so.3.1

@@ -1,6 +1,6 @@
-$OpenBSD: patch-lib_Makefile_in,v 1.1 2005/10/16 15:31:39 naddy Exp $
---- lib/Makefile.in.orig	Sun Oct 16 16:15:38 2005
-+++ lib/Makefile.in	Sun Oct 16 16:15:53 2005
+$OpenBSD: patch-lib_Makefile_in,v 1.1.6.1 2005/11/01 11:20:12 sturm Exp $
+--- lib/Makefile.in.orig	Fri Oct 21 19:06:17 2005
++++ lib/Makefile.in	Fri Oct 21 19:06:28 2005
 @@ -188,7 +188,7 @@ USE_MANUAL_FALSE = @USE_MANUAL_FALSE@
  USE_MANUAL_TRUE = @USE_MANUAL_TRUE@
  USE_SSLEAY = @USE_SSLEAY@

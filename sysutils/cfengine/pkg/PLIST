@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.8 2005/07/21 15:16:47 aanriot Exp $
+@comment $OpenBSD: PLIST,v 1.8.2.1 2005/11/01 11:34:52 sturm Exp $
 @comment doc/
 @comment doc/cfengine-${V}/
 @info info/cfengine-Anomalies.info
@@ -22,7 +22,7 @@ sbin/cfkey
 sbin/cfrun
 sbin/cfservd
 sbin/cfshow
-sbin/vicf
+@comment sbin/vicf
 share/cfengine/
 share/cfengine/ChangeLog
 share/cfengine/INSTALL

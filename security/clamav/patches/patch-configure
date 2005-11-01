@@ -27,7 +27,7 @@
  openbsd*)
      if test "$have_pthreads" = "yes"; then
  	LIBCLAMAV_LIBS="$LIBCLAMAV_LIBS -pthread"
--	if test "$disable_cr" = "yes"; then
+-	if test "$use_cr" = "no"; then
 -	    CLAMD_LIBS="$CLAMD_LIBS -pthread"
 -	    CLAMAV_MILTER_LIBS="$CLAMAV_MILTER_LIBS -pthread"
 -	else

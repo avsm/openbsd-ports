@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.44 2005/07/12 15:49:27 robert Exp $
+# $OpenBSD: Makefile,v 1.44.2.1 2005/11/01 11:50:23 sturm Exp $
 
 FULLPKGNAME=	php4-extensions-${V}
 COMMENT=	"informational package about PHP4 extensions"
@@ -48,6 +48,7 @@ CONFIGURE_ARGS+=	--without-curl
 .else
 MULTI_PACKAGES+=	-curl
 COMMENT-curl=		"curl URL library extensions for php4"
+FULLPKGNAME-curl=	php4-curl-${V}p0
 CONFIGURE_ARGS+=	--with-curl=shared,${LOCALBASE}
 CURL_DEPENDS=		curl.2::net/curl
 CURL_WANTLIB=		crypto ssl z

@@ -1,9 +1,10 @@
-# $OpenBSD: Makefile,v 1.5 2005/02/14 00:35:53 pvalchev Exp $
+# $OpenBSD: Makefile,v 1.5.4.1 2005/11/01 11:50:23 sturm Exp $
 
 COMMENT=	"gtk livejournal client"
 
 VERSION=	4.0.1
 DISTNAME=	logjam-${VERSION}
+PKGNAME=	${DISTNAME}p0
 CATEGORIES=	misc x11
 
 HOMEPAGE=	http://logjam.danga.com/

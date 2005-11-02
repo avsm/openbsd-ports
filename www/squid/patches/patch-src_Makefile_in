@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_Makefile_in,v 1.8.2.1 2005/05/26 03:47:27 robert Exp $
+$OpenBSD: patch-src_Makefile_in,v 1.8.2.2 2005/11/02 09:40:35 sturm Exp $
 --- src/Makefile.in.orig	Sat Apr 23 20:12:08 2005
 +++ src/Makefile.in	Wed May 18 18:11:44 2005
 @@ -33,7 +33,7 @@ bindir = @bindir@
@@ -11,8 +11,8 @@ $OpenBSD: patch-src_Makefile_in,v 1.8.2.1 2005/05/26 03:47:27 robert Exp $
  localstatedir = @localstatedir@
  libdir = @libdir@
 @@ -376,9 +376,9 @@ EXTRA_DIST = \
- 
- 
+ DEFAULT_HTTP_PORT = @CACHE_HTTP_PORT@
+ DEFAULT_ICP_PORT = @CACHE_ICP_PORT@
  DEFAULT_PREFIX = $(prefix)
 -DEFAULT_CONFIG_FILE = $(sysconfdir)/squid.conf
 -DEFAULT_CACHEMGR_CONFIG = $(sysconfdir)/cachemgr.conf
@@ -99,9 +99,9 @@ $OpenBSD: patch-src_Makefile_in,v 1.8.2.1 2005/05/26 03:47:27 robert Exp $
  install: install-recursive
  install-exec: install-exec-recursive
 @@ -1144,7 +1144,7 @@ cf_gen_defines.h: $(srcdir)/cf_gen_defin
- 
- cf.data: cf.data.pre Makefile
  	sed "\
+ 	s%@DEFAULT_HTTP_PORT@%$(DEFAULT_HTTP_PORT)%g;\
+ 	s%@DEFAULT_ICP_PORT@%$(DEFAULT_ICP_PORT)%g;\
 -	s%@DEFAULT_MIME_TABLE@%$(DEFAULT_MIME_TABLE)%g;\
 +	s%@DEFAULT_MIME_TABLE@%$(sysconfdir)/mime.conf%g;\
  	s%@DEFAULT_DNSSERVER@%$(DEFAULT_DNSSERVER)%g;\

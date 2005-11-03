@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.44.2.1 2005/11/01 11:50:23 sturm Exp $
+# $OpenBSD: Makefile,v 1.44.2.2 2005/11/03 09:26:15 sturm Exp $
 
 FULLPKGNAME=	php4-extensions-${V}
 COMMENT=	"informational package about PHP4 extensions"
@@ -48,7 +48,7 @@ CONFIGURE_ARGS+=	--without-curl
 .else
 MULTI_PACKAGES+=	-curl
 COMMENT-curl=		"curl URL library extensions for php4"
-FULLPKGNAME-curl=	php4-curl-${V}p0
+FULLPKGNAME-curl=	php4-curl-${V}
 CONFIGURE_ARGS+=	--with-curl=shared,${LOCALBASE}
 CURL_DEPENDS=		curl.2::net/curl
 CURL_WANTLIB=		crypto ssl z
@@ -127,10 +127,10 @@ CONFIGURE_ARGS+=       --with-xpm-dir=${X11BASE}
 .  if !defined(PACKAGING) || ${SUBPACKAGE} == "-gd"
 WANTLIB+=		X11 Xpm
 .  endif
-FULLPKGNAME-gd=		php4-gd-${V}p2
+FULLPKGNAME-gd=		php4-gd-${V}
 .else
 CONFIGURE_ARGS+=       --without-xpm-dir
-FULLPKGNAME-gd=		php4-gd-${V}p2-no_x11
+FULLPKGNAME-gd=		php4-gd-${V}-no_x11
 .endif
 .endif
 

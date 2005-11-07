@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.7 2004/12/26 12:33:17 sturm Exp $
+@comment $OpenBSD: PLIST,v 1.7.2.1 2005/11/07 21:09:03 sturm Exp $
 bin/encode_keychange
 bin/fixproc
 @comment bin/ipf-mod.pl
@@ -135,11 +135,14 @@ include/net-snmp/system/bsdi3.h
 include/net-snmp/system/bsdi4.h
 include/net-snmp/system/cygwin.h
 include/net-snmp/system/darwin.h
+include/net-snmp/system/darwin7.h
 include/net-snmp/system/dynix.h
 include/net-snmp/system/freebsd.h
 include/net-snmp/system/freebsd2.h
 include/net-snmp/system/freebsd3.h
 include/net-snmp/system/freebsd4.h
+include/net-snmp/system/freebsd5.h
+include/net-snmp/system/freebsd6.h
 include/net-snmp/system/generic.h
 include/net-snmp/system/hpux.h
 include/net-snmp/system/irix.h
@@ -164,19 +167,19 @@ include/net-snmp/varbind_api.h
 include/net-snmp/version.h
 lib/libnetsnmp.a
 lib/libnetsnmp.la
-@lib lib/libnetsnmp.so.6.2
+@lib lib/libnetsnmp.so.6.3
 lib/libnetsnmpagent.a
 lib/libnetsnmpagent.la
-@lib lib/libnetsnmpagent.so.6.2
+@lib lib/libnetsnmpagent.so.6.3
 lib/libnetsnmphelpers.a
 lib/libnetsnmphelpers.la
-@lib lib/libnetsnmphelpers.so.6.2
+@lib lib/libnetsnmphelpers.so.6.3
 lib/libnetsnmpmibs.a
 lib/libnetsnmpmibs.la
-@lib lib/libnetsnmpmibs.so.6.2
+@lib lib/libnetsnmpmibs.so.6.3
 lib/libnetsnmptrapd.a
 lib/libnetsnmptrapd.la
-@lib lib/libnetsnmptrapd.so.6.2
+@lib lib/libnetsnmptrapd.so.6.3
 @man man/man1/mib2c.1
 @man man/man1/snmpbulkget.1
 @man man/man1/snmpbulkwalk.1

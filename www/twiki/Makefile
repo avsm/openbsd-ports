@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.2 2005/03/08 07:43:19 kevlo Exp $
+# $OpenBSD: Makefile,v 1.2.2.1 2005/11/09 20:33:07 sturm Exp $
 
 COMMENT=	"web-based collaboration platform"
 
-DISTNAME=	TWiki20030201
-PKGNAME=	TWiki-20030201
+DISTNAME=	TWiki20040903
+PKGNAME=	TWiki-20040903p0
 CATEGORIES=	www
 
 HOMEPAGE=	http://twiki.org/
@@ -19,24 +19,33 @@ NO_BUILD=	Yes
 NO_REGRESS=	Yes
 PKG_ARCH=	*
 
-WRKDIST=	${WRKDIR}
+WRKDIST=	${WRKDIR}/twiki
 
 PREFIX=		/var/www
-WWWDOCDIR=	${PREFIX}/htdocs
-SUBST_VARS=	WWWDOCDIR
+WWWDOCDIR=	${PREFIX}/htdocs/twiki
+WWWCGIDIR=	${PREFIX}/cgi-bin/twiki
+SUBST_VARS=	WWWDOCDIR WWWCGIDIR
 
 do-configure:
 	@perl -i -pe 's@%%WWWDOCDIR%%@${WWWDOCDIR}@g' ${WRKSRC}/lib/TWiki.cfg
 	@perl -i -pe 's@%%WWWDOCDIR%%@${WWWDOCDIR}@g' ${WRKSRC}/bin/setlib.cfg
 	@find ${WRKSRC} -name '*.orig' |xargs rm
+	@find ${WRKSRC} -name '*\,v' |xargs rm
 
 do-install:
-	${INSTALL_SCRIPT_DIR} ${PREFIX}/cgi-bin/twiki
-	${INSTALL_SCRIPT} ${WRKSRC}/bin/* ${PREFIX}/cgi-bin/twiki
-	${INSTALL_DATA} ${WRKSRC}/lib/TWiki.cfg ${WRKSRC}/lib/TWiki.cfg-sample
-	${INSTALL_DATA_DIR} ${WWWDOCDIR}/twiki
+	${INSTALL_DATA_DIR} ${PREFIX}/conf
+	${INSTALL_DATA} ${FILESDIR}/httpd-twiki.conf ${PREFIX}/conf/
+
+	${INSTALL_DATA_DIR} ${WWWDOCDIR}
+	${INSTALL_SCRIPT_DIR} ${WWWCGIDIR}
+	${INSTALL_SCRIPT} ${WRKSRC}/bin/* ${WWWCGIDIR}
+
+.for f in index.html robots.txt TWikiDocumentation.html TWikiHistory.html
+	${INSTALL_DATA} ${WRKSRC}/${f} ${WWWDOCDIR}
+.endfor
+
 .for d in data lib pub templates
-	cp -R ${WRKSRC}/${d} ${WWWDOCDIR}/twiki
+	cp -R ${WRKSRC}/${d} ${WWWDOCDIR}
 .endfor
 
 .include <bsd.port.mk>

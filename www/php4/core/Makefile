@@ -1,12 +1,12 @@
-# $OpenBSD: Makefile,v 1.29.2.1 2005/11/03 09:26:15 sturm Exp $
+# $OpenBSD: Makefile,v 1.29.2.2 2005/11/10 21:21:24 robert Exp $
 
 MULTI_PACKAGES=	-pear
 SUBPACKAGE?=
 
 COMMENT=	"server-side HTML-embedded scripting language"
 COMMENT-pear=	"base classes for common PHP tasks"
-PKGNAME=	php4-core-${V}
-FULLPKGNAME-pear= php4-pear-${V}
+PKGNAME=	php4-core-${V}p0
+FULLPKGNAME-pear= php4-pear-${V}p0
 
 CONFIGURE_ARGS+= --with-apxs=/usr/sbin/apxs \
 		--without-mysql \

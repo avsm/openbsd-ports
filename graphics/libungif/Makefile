@@ -1,11 +1,10 @@
-# $OpenBSD: Makefile,v 1.8 2004/11/30 01:06:37 espie Exp $
+# $OpenBSD: Makefile,v 1.8.4.1 2005/11/11 18:36:42 sturm Exp $
 
 COMMENT=	"tools and library routines for working with GIF images"
 
-DISTNAME=	libungif-4.1.0b1
+DISTNAME=	libungif-4.1.4
 CATEGORIES=	graphics
 MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=libungif/}
-EXTRACT_SUFX=	.tar.bz2
 
 HOMEPAGE=	http://sourceforge.net/projects/libungif/
 
@@ -17,21 +16,19 @@ PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 WANTLIB=		c m
 
+USE_LIBTOOL=	Yes
 CONFIGURE_STYLE= autoconf
+AUTOCONF_VERSION=2.59
 CONFIGURE_ARGS+= ${CONFIGURE_SHARED}
 CONFIGURE_ARGS+= --without-x
 
-PATCH_LIST=	${PORTSDIR}/infrastructure/patches/patch-lt1.3.3-ltconfig \
-		${PORTSDIR}/infrastructure/patches/patch-lt1.3.3-ltmain_sh \
-		patch-*
-
-DOCS=	COPYING UNCOMPRESSED_GIF
+DOCS=	README UNCOMPRESSED_GIF
 HTMLDOCS= *.html *.txt *.png
 DOCSDIR= ${PREFIX}/share/doc/libungif
 
 post-install:
 	@cd ${PREFIX}/lib; \
-	for f in libungif.a libungif.so.5.0; do \
+	for f in libungif.a libungif.so.5.4; do \
 		g=`echo $$f | sed -e s#libungif#libgif#g`; \
 		ln -sf $$f $$g; \
 	done && \

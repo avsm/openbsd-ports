@@ -1,4 +1,4 @@
-$OpenBSD: patch-configure_ac,v 1.1 2005/11/09 21:17:20 brad Exp $
+$OpenBSD: patch-configure_ac,v 1.1.2.1 2005/11/11 18:36:42 sturm Exp $
 --- configure.ac.orig	Sat Nov  5 18:33:38 2005
 +++ configure.ac	Sat Nov  5 18:35:06 2005
 @@ -19,21 +19,17 @@ dnl Checks for libraries.

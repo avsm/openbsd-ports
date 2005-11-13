@@ -1,4 +1,4 @@
-$OpenBSD: patch-htmlparser_src_COtherElements_h,v 1.1 2005/10/21 08:47:14 aanriot Exp $
+$OpenBSD: patch-htmlparser_src_COtherElements_h,v 1.1.2.1 2005/11/13 12:24:44 robert Exp $
 --- htmlparser/src/COtherElements.h.orig	Wed Jul  2 00:21:20 2003
 +++ htmlparser/src/COtherElements.h	Wed Oct 19 15:11:46 2005
 @@ -2346,7 +2346,6 @@ void CElementTable::InitializeElements()

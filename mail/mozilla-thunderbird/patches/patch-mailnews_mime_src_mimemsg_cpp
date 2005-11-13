@@ -1,4 +1,4 @@
-$OpenBSD: patch-mailnews_mime_src_mimemsg_cpp,v 1.1 2005/04/01 19:24:07 kurt Exp $
+$OpenBSD: patch-mailnews_mime_src_mimemsg_cpp,v 1.1.4.1 2005/11/13 12:37:13 sturm Exp $
 --- mailnews/mime/src/mimemsg.cpp.orig	Thu Mar 31 15:06:05 2005
 +++ mailnews/mime/src/mimemsg.cpp	Thu Mar 31 15:06:20 2005
 @@ -522,7 +522,7 @@ MimeMessage_close_headers (MimeObject *o

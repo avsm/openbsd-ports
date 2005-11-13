@@ -1,4 +1,4 @@
-$OpenBSD: patch-htmlparser_public_nsHTMLTagList_h,v 1.1 2005/10/21 08:47:14 aanriot Exp $
+$OpenBSD: patch-htmlparser_public_nsHTMLTagList_h,v 1.1.4.1 2005/11/13 12:37:13 sturm Exp $
 --- htmlparser/public/nsHTMLTagList.h.orig	Fri Jun  4 17:29:24 2004
 +++ htmlparser/public/nsHTMLTagList.h	Wed Oct 19 15:11:46 2005
 @@ -141,7 +141,6 @@ HTML_TAG(optgroup, OptGroup)

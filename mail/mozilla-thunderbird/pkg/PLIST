@@ -1,7 +1,8 @@
-@comment $OpenBSD: PLIST,v 1.4 2004/12/27 21:21:39 wilfried Exp $
+@comment $OpenBSD: PLIST,v 1.4.2.1 2005/11/13 12:37:14 sturm Exp $
 %%SHARED%%
 bin/mozilla-thunderbird
 bin/thunderbird
+bin/thunderbird-config
 mozilla-thunderbird/
 mozilla-thunderbird/LICENSE
 mozilla-thunderbird/chrome/
@@ -397,6 +398,11 @@ mozilla-thunderbird/defaults/wallet/SchemaConcat.tbl
 mozilla-thunderbird/defaults/wallet/SchemaStrings.tbl
 mozilla-thunderbird/defaults/wallet/StateSchema.tbl
 mozilla-thunderbird/defaults/wallet/VcardSchema.tbl
+mozilla-thunderbird/extensions/
+mozilla-thunderbird/extensions/Extensions.rdf
+mozilla-thunderbird/extensions/installed-extensions-processed.txt
+mozilla-thunderbird/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/
+mozilla-thunderbird/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}/install.rdf
 mozilla-thunderbird/greprefs/
 mozilla-thunderbird/greprefs/all.js
 mozilla-thunderbird/greprefs/security-prefs.js
@@ -404,6 +410,7 @@ mozilla-thunderbird/greprefs/xpinstall.js
 mozilla-thunderbird/mozicon16.xpm
 mozilla-thunderbird/mozicon50.xpm
 mozilla-thunderbird/mozilla-thunderbird-bin
+mozilla-thunderbird/mozilla-xremote-client
 mozilla-thunderbird/regchrome
 mozilla-thunderbird/regxpcom
 mozilla-thunderbird/res/
@@ -412,8 +419,6 @@ mozilla-thunderbird/res/arrow.gif
 mozilla-thunderbird/res/arrowd.gif
 mozilla-thunderbird/res/bloatcycle.html
 mozilla-thunderbird/res/broken-image.gif
-mozilla-thunderbird/res/builtin/
-mozilla-thunderbird/res/builtin/platformHTMLBindings.xml
 mozilla-thunderbird/res/charsetData.properties
 mozilla-thunderbird/res/charsetalias.properties
 mozilla-thunderbird/res/cmessage.txt
@@ -429,6 +434,7 @@ mozilla-thunderbird/res/fonts/
 mozilla-thunderbird/res/fonts/fontEncoding.properties
 mozilla-thunderbird/res/forms.css
 mozilla-thunderbird/res/grabber.gif
+mozilla-thunderbird/res/hiddenWindow.html
 mozilla-thunderbird/res/html/
 mozilla-thunderbird/res/html.css
 mozilla-thunderbird/res/html/gopher-audio.gif
@@ -579,4 +585,12 @@ mozilla-thunderbird/res/viewer.properties
 mozilla-thunderbird/res/viewsource.css
 mozilla-thunderbird/run-mozilla.sh
 mozilla-thunderbird/thunderbird-bin
-mozilla-thunderbird/thunderbird-config
+@cwd ${LOCALBASE}/mozilla-thunderbird
+@exec rm -rf /tmp/.mozilla
+@exec cd %D && env HOME=/tmp LD_LIBRARY_PATH=%D ./regxpcom
+@exec cd %D && env HOME=/tmp LD_LIBRARY_PATH=%D ./regchrome
+@exec rm -rf /tmp/.mozilla
+@unexec rm -f %D/components/compreg.dat
+@unexec rm -f %D/components/xpti.dat
+@unexec rm -f %D/chrome/chrome.rdf
+@unexec rm -rf %D/chrome/overlayinfo

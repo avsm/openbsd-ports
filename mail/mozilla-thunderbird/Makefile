@@ -1,12 +1,15 @@
-# $OpenBSD: Makefile,v 1.18 2005/01/13 15:52:07 wilfried Exp $
+# $OpenBSD: Makefile,v 1.18.2.1 2005/11/13 12:37:13 sturm Exp $
 
-ONLY_FOR_ARCHS=	alpha i386 sparc sparc64 amd64 powerpc
+ONLY_FOR_ARCHS=	alpha amd64 i386 powerpc sparc sparc64 
 
 COMMENT=	"redesign of the integrated Mozilla App-Suite mail component"
 
-VER=		1.0
+VER=		1.0.7
 DISTNAME=	mozilla
-PKGNAME=	mozilla-thunderbird-${VER}p1
+PKGNAME=	mozilla-thunderbird-${VER}
+SO_VERSION=	4.0
+# NOTE: Must bump minor version if any shlib's are removed from the
+# components dir to avoid pkg_add -r issues.
 
 CATEGORIES=	mail news
 
@@ -18,23 +21,26 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 WANTLIB=		X11 Xext Xft Xi Xp Xrender Xt c fontconfig freetype \
-			iconv intl m pthread stdc++ z
+			m pthread z
+.if empty(MACHINE_ARCH:Malpha)
+WANTLIB+=		stdc++
+.endif
 
 MASTER_SITES=	http://ftp.eu.mozilla.org/pub/mozilla.org/thunderbird/releases/${VER}/source/ \
 		http://ftp.mozilla.org/pub/thunderbird/releases/${VER}/source/
 DISTFILES=	thunderbird-${VER}-source.tar.bz2
 
-MODULES=	gcc3
+MODULES=	gcc3 devel/gettext
 MODGCC3_ARCHES=	alpha
 MODGCC3_LANGS=	C++
-BUILD_DEPENDS=	:zip->=2.3:archivers/zip \
+RUN_DEPENDS=	:esound-*:audio/esound
+BUILD_DEPENDS=	:ORBit-*:devel/ORBit \
+		:zip->=2.3:archivers/zip \
 		:pkgconfig-*:devel/pkgconfig
 LIB_DEPENDS=	gtk.1,gdk.1::x11/gtk+ \
 		glib.1,gmodule.1::devel/glib \
-		IDL.4::devel/ORBit \
 		jpeg.62::graphics/jpeg \
-		png.3::graphics/png \
-		esd.2::audio/esound
+		png.3::graphics/png
 
 VMEM_WARNING=	Yes
 
@@ -42,7 +48,7 @@ USE_X11=	Yes
 USE_GMAKE=	Yes
 # Regression tests are too hard to adapt to run here
 NO_REGRESS=	Yes
-SUBST_VARS=	LOCALBASE
+SUBST_VARS=	LOCALBASE SO_VERSION
 
 MODGNU_CONFIG_GUESS_DIRS=	${WRKSRC}/build/autoconf \
 				${WRKSRC}/nsprpub/build/autoconf \
@@ -78,12 +84,19 @@ CONFIGURE_ARGS+=--enable-crypto			\
 		--enable-image-decoders=default,-xbm
 
 CONFIGURE_ENV=	MOZ_THUNDERBIRD=1 \
-		PKG_CONFIG_PATH="${LOCALBASE}/lib/pkgconfig:${X11BASE}/lib/pkgconfig"
+		PKG_CONFIG_PATH="${LOCALBASE}/lib/pkgconfig:${X11BASE}/lib/pkgconfig" \
+		BUILD_OFFICIAL=1 \
+		MOZILLA_OFFICIAL=1 \
+		SO_VERSION="${SO_VERSION}"
 MAKE_ENV=	MOZ_THUNDERBIRD=1 \
-		LD_LIBRARY_PATH="${WRKSRC}/dist/bin"
+		LD_LIBRARY_PATH="${WRKSRC}/dist/bin" \
+		BUILD_OFFICIAL=1 \
+		MOZILLA_OFFICIAL=1 \
+		SO_VERSION="${SO_VERSION}"
 
 MOB=		${WRKSRC}/dist/bin
 MOZ=		${PREFIX}/mozilla-thunderbird
+MAGIC=		{972ce4c6-7e08-4474-a285-3208198ce6fd}
 
 post-extract:
 	@cp ${FILESDIR}/xptc* ${WRKSRC}/xpcom/reflect/xptcall/src/md/unix/
@@ -93,6 +106,9 @@ pre-configure:
 	@cd ${WRKSRC}/directory/c-sdk && ${SETENV} ${AUTOCONF_ENV} ${AUTOCONF}
 	@perl -pi -e 's|_LOCALBASE_|${LOCALBASE}|g; s|_X11BASE_|${X11BASE}|g' \
 		${WRKSRC}/mail/app/mozilla.in
+	@perl -pi -e 's|_SO_VERSION_|${SO_VERSION}|g' \
+		${WRKSRC}/nsprpub/pr/include/md/_openbsd.h \
+		${WRKSRC}/xpcom/components/nsNativeComponentLoader.cpp
 
 do-install:
 .for dir in chrome components defaults greprefs res
@@ -100,15 +116,22 @@ do-install:
 	@cd ${MOB} && ${TAR} -chf - ${dir} | \
 		${TAR} -xf - -C ${MOZ}
 .endfor
-	@cd ${MOB} && ${TAR} -chf - *.so.1.0 | \
+	@cd ${MOB} && ${TAR} -chf - *.so.?.? | \
 		${TAR} -xf - -C ${MOZ}
-	@chmod 444 ${MOZ}/*.so.1.0 ${MOZ}/components/*.so.1.0 ${MOZ}/components/*.js
+	@chmod 444 ${MOZ}/*.so.?.? ${MOZ}/components/*.so.?.? ${MOZ}/components/*.js
 	${INSTALL_DATA} ${WRKSRC}/LICENSE ${MOZ}
 	${INSTALL_DATA} ${WRKSRC}/mail/app/mozicon16.xpm ${WRKSRC}/mail/app/mozicon50.xpm ${MOZ}
 	${INSTALL_SCRIPT} ${MOB}/thunderbird ${PREFIX}/bin/mozilla-thunderbird
 	ln -f ${PREFIX}/bin/mozilla-thunderbird ${PREFIX}/bin/thunderbird
-	${INSTALL_SCRIPT} ${MOB}/run-mozilla.sh ${MOB}/thunderbird-config ${MOZ}
-	${INSTALL_PROGRAM} ${MOB}/regchrome ${MOB}/regxpcom ${MOB}/thunderbird-bin ${MOZ}
+	${INSTALL_SCRIPT} ${MOB}/thunderbird-config ${PREFIX}/bin
+	${INSTALL_SCRIPT} ${MOB}/run-mozilla.sh ${MOZ}
+	${INSTALL_PROGRAM} ${MOB}/regchrome ${MOB}/regxpcom ${MOB}/thunderbird-bin ${MOB}/mozilla-xremote-client ${MOZ}
 	ln -f ${MOZ}/thunderbird-bin ${MOZ}/mozilla-thunderbird-bin
+
+	${INSTALL_DATA_DIR} ${MOZ}/extensions
+	${INSTALL_DATA} ${FILESDIR}/Extensions.rdf ${MOZ}/extensions/
+	${INSTALL_DATA_DIR} ${MOZ}/extensions/${MAGIC}
+	${INSTALL_DATA} ${MOZ}/defaults/profile/extensions/installed-extensions.txt ${MOZ}/extensions/installed-extensions-processed.txt
+	${INSTALL_DATA} ${MOZ}/defaults/profile/extensions/${MAGIC}/install.rdf ${MOZ}/extensions/${MAGIC}/
 
 .include <bsd.port.mk>

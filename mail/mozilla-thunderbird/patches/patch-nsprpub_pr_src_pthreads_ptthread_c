@@ -1,4 +1,4 @@
-$OpenBSD: patch-nsprpub_pr_src_pthreads_ptthread_c,v 1.1 2005/03/26 19:04:13 wilfried Exp $
+$OpenBSD: patch-nsprpub_pr_src_pthreads_ptthread_c,v 1.1.4.1 2005/11/13 12:37:13 sturm Exp $
 --- nsprpub/pr/src/pthreads/ptthread.c.orig	Wed Aug 28 16:42:52 2002
 +++ nsprpub/pr/src/pthreads/ptthread.c	Sun Mar 20 08:53:15 2005
 @@ -48,6 +48,7 @@

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.34.2.1 2005/11/12 11:26:56 sturm Exp $
+# $OpenBSD: Makefile,v 1.34.2.2 2005/11/20 20:35:57 sturm Exp $
 
 COMMENT=	"mailing list manager with web interface"
 
@@ -49,7 +49,8 @@ CONFIGURE_ARGS+=	--prefix='${MMHOME}' \
 FLAVORS=	postfix
 FLAVOR?=
 .if ${FLAVOR:L:Mpostfix}
-CONFIGURE_ARGS+=--with-mail-gid=nobody
+FULLPKGNAME=	${DISTNAME}p1${FLAVOR_EXT}
+CONFIGURE_ARGS+=--with-mail-gid=_mailman
 .else
 CONFIGURE_ARGS+=--with-mail-gid=daemon
 .endif

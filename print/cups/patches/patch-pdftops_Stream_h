@@ -1,4 +1,4 @@
-$OpenBSD: patch-pdftops_Stream_h,v 1.1 2005/12/06 23:23:44 mbalmer Exp $
+$OpenBSD: patch-pdftops_Stream_h,v 1.1.2.1 2005/12/07 21:22:45 sturm Exp $
 --- pdftops/Stream.h.orig	Mon Feb  2 23:41:09 2004
 +++ pdftops/Stream.h	Wed Dec  7 00:08:08 2005
 @@ -231,6 +231,8 @@ public:

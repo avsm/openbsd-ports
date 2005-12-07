@@ -1,4 +1,4 @@
-$OpenBSD: patch-pdftops_Stream_cxx,v 1.1 2005/12/06 23:23:44 mbalmer Exp $
+$OpenBSD: patch-pdftops_Stream_cxx,v 1.1.4.1 2005/12/07 21:23:22 sturm Exp $
 --- pdftops/Stream.cxx.orig	Mon Feb  2 23:41:09 2004
 +++ pdftops/Stream.cxx	Wed Dec  7 00:07:58 2005
 @@ -404,18 +404,33 @@ void ImageStream::skipLine() {

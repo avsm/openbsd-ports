@@ -1,4 +1,4 @@
-$OpenBSD: patch-xpdf_Stream_h,v 1.1 2005/12/07 10:51:40 bernd Exp $
+$OpenBSD: patch-xpdf_Stream_h,v 1.1.4.1 2005/12/08 19:40:40 sturm Exp $
 --- xpdf/Stream.h.orig	Mon May 17 21:37:57 2004
 +++ xpdf/Stream.h	Tue Dec  6 22:42:40 2005
 @@ -233,6 +233,8 @@ public:

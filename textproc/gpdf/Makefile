@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.10 2005/08/22 22:37:12 naddy Exp $
+# $OpenBSD: Makefile,v 1.10.2.1 2005/12/08 19:40:40 sturm Exp $
 
 COMMENT=		"PDF viewer for GNOME"
 
 DISTNAME=		gpdf-2.8.1
-PKGNAME=		${DISTNAME}p0
+PKGNAME=		${DISTNAME}p2
 CATEGORIES=		textproc x11/gnome
 
 HOMEPAGE=		http://www.inf.tu-dresden.de/~mk793652/gpdf/

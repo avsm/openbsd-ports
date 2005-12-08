@@ -1,4 +1,4 @@
-$OpenBSD: patch-libs_xpdf_xpdf_Stream_cc,v 1.1 2005/12/07 21:04:31 bernd Exp $
+$OpenBSD: patch-libs_xpdf_xpdf_Stream_cc,v 1.1.4.1 2005/12/08 23:02:51 sturm Exp $
 --- libs/xpdf/xpdf/Stream.cc.orig	Thu Jan 22 02:26:45 2004
 +++ libs/xpdf/xpdf/Stream.cc	Wed Dec  7 12:06:58 2005
 @@ -407,18 +407,33 @@ void ImageStream::skipLine() {

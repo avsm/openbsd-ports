@@ -1,6 +1,6 @@
-$OpenBSD: patch-SSLeay_pm,v 1.1 2006/01/21 18:02:56 sturm Exp $
---- SSLeay.pm.orig	Sat Jan 21 18:58:09 2006
-+++ SSLeay.pm	Sat Jan 21 18:58:31 2006
+$OpenBSD: patch-SSLeay_pm,v 1.1.4.1 2006/01/21 18:12:16 sturm Exp $
+--- SSLeay.pm.orig	Sat Jan 21 19:05:39 2006
++++ SSLeay.pm	Sat Jan 21 19:06:04 2006
 @@ -1853,8 +1853,8 @@ sub randomize (;$$) {
      my ($rn_seed_file, $seed, $egd_path) = @_;
      my $rnsf = defined($rn_seed_file) && -r $rn_seed_file;

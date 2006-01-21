@@ -1,9 +1,9 @@
-$OpenBSD: patch-examples_filtdef,v 1.1 2001/01/16 23:19:49 avsm Exp $
+$OpenBSD: patch-examples_filtdef,v 1.1.18.1 2006/01/21 17:49:01 sturm Exp $
 --- examples/filtdef.orig	Sun Nov 23 20:16:32 1997
 +++ examples/filtdef	Tue Jan 16 23:01:36 2001
 @@ -1,4 +1,4 @@
 -#!/usr/local/bin/perl
 +#!/usr/bin/perl
  
- use Compress::Zlib ;
- 
+ use strict ;
+ local ($^W) = 1; #use warnings ;

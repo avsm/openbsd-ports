@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.13 2004/06/26 07:35:07 xsa Exp $
+# $OpenBSD: Makefile,v 1.13.6.1 2006/01/21 18:39:37 sturm Exp $
 
 COMMENT=		"modules for parsing (and creating!) MIME entities"
 
 DISTNAME=		MIME-tools-5.411a
-PKGNAME=		p5-${DISTNAME}
+PKGNAME=		p5-${DISTNAME}p0
 CATEGORIES=		mail perl5
 
 HOMEPAGE=		http://www.zeegee.com/code/perl/MIME-tools/
@@ -22,6 +22,6 @@ RUN_DEPENDS=	:p5-Mail-Tools-*:mail/p5-Mail-Tools  \
 BUILD_DEPENDS=	${RUN_DEPENDS}
 
 CONFIGURE_STYLE= 	perl
-WRKSRC=		${WRKDIR}/${DISTNAME:S/a//}
+WRKDIST=		${WRKDIR}/${DISTNAME:S/a//}
 
 .include <bsd.port.mk>

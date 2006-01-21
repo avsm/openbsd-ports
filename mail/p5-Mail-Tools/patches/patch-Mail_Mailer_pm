@@ -1,0 +1,34 @@
+$OpenBSD: patch-Mail_Mailer_pm,v 1.1.2.1 2006/01/21 18:58:35 sturm Exp $
+--- Mail/Mailer.pm.orig	Sat Jan 21 19:14:49 2006
++++ Mail/Mailer.pm	Sat Jan 21 19:15:18 2006
+@@ -131,7 +131,7 @@ sub Version { $VERSION }
+ @Mailers = (
+ 
+     # Body on stdin with tilde escapes
+-    'mail'	=> 	'mail',
++    # 'mail'	=> 	'mail',
+ 
+     # Headers-blank-Body all on stdin
+     'sendmail'  =>      '/usr/lib/sendmail;/usr/sbin/sendmail;/usr/ucblib/sendmail',
+@@ -139,21 +139,6 @@ sub Version { $VERSION }
+     'smtp'	=> 	undef,
+     'test'	=> 	'test'
+ );
+-
+-# There are several flavours of mail, which do we have ????
+-
+-{
+-    my $cmd = is_exe('mailx;Mail;mail');
+-    my $osname = $Config{'osname'};
+-
+-    if($osname =~ /(?:dgux)|(?:solaris)/io) {
+-	$cmd .= " -~";
+-    }
+-    elsif($osname =~ /(?:linux)|(?:bsdos)|(?:freebsd)/io) {
+-	$cmd .= " -I";
+-    }
+-    push @Mailers, 'mail', $cmd;
+-}
+ 
+ push(@Mailers, split(/:/,$ENV{PERL_MAILERS})) if $ENV{PERL_MAILERS};
+ 

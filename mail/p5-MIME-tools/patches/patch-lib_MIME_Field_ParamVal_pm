@@ -1,0 +1,12 @@
+$OpenBSD: patch-lib_MIME_Field_ParamVal_pm,v 1.1.2.1 2006/01/21 18:39:12 sturm Exp $
+--- lib/MIME/Field/ParamVal.pm.orig	Sat Jan 21 19:01:56 2006
++++ lib/MIME/Field/ParamVal.pm	Sat Jan 21 19:02:32 2006
+@@ -200,7 +200,7 @@ sub parse_params {
+ 	$raw =~ m/\G$SPCZ\;$SPCZ/og or last;             # skip leading separator
+ 	$raw =~ m/\G($PARAMNAME)\s*=\s*/og or last;      # give up if not a param
+ 	$param = lc($1);
+-	$raw =~ m/\G(\"([^\"]+)\")|\G($TOKEN)|\G($ENCTOKEN)/g or last;   # give up if no value
++	$raw =~ m/\G(\"([^\"]*)\")|\G($TOKEN)|\G($ENCTOKEN)/g or last;   # give up if no value
+ 	my ($qstr, $str, $token, $enctoken) = ($1, $2, $3, $4);
+ 	$params{$param} = defined($qstr) ? $str : (defined($token) ? $token : $enctoken);
+ 	debug "   field param <$param> = <$params{$param}>";

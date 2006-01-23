@@ -1,10 +1,12 @@
-# $OpenBSD: Makefile,v 1.48 2005/02/27 07:25:50 brad Exp $
+# $OpenBSD: Makefile,v 1.48.2.1 2006/01/23 21:27:05 sturm Exp $
 
 COMMENT=		"K Desktop Environment, libraries"
 CATEGORIES=		x11 x11/kde
 VERSION=		3.3.2
 DISTNAME=		kdelibs-${VERSION}
-PKGNAME=		${DISTNAME}p4
+MASTER_SITES0=		ftp://ftp.kde.org/pub/kde/security_patches/
+PATCHFILES=		post-3.2.3-kdelibs-kjs.diff:0
+PKGNAME=		${DISTNAME}p5
 MODKDE_VERSION?=	3.3.0
 
 FLAVORS=debug

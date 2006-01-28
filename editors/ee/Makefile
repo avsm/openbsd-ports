@@ -1,9 +1,10 @@
-# $OpenBSD: Makefile,v 1.5 2004/11/24 11:08:02 espie Exp $
+# $OpenBSD: Makefile,v 1.5.2.1 2006/01/28 15:37:31 sturm Exp $
 
 COMMENT=		"easy to use text editor"
 
 VERSION=		1.4.6
 DISTNAME=		ee-${VERSION}
+PKGNAME=		${DISTNAME}p1
 CATEGORIES=     	editors
 
 HOMEPAGE=		http://mahon.cwx.net/

@@ -1,4 +1,4 @@
-$OpenBSD: patch-hotspot_src_cpu_i486_vm_interpreterRT_i486_cpp,v 1.1 2006/01/18 15:08:16 kurt Exp $
+$OpenBSD: patch-hotspot_src_cpu_i486_vm_interpreterRT_i486_cpp,v 1.1.2.1 2006/01/30 02:50:40 kurt Exp $
 --- hotspot/src/cpu/i486/vm/interpreterRT_i486.cpp.orig	Wed Sep 10 21:40:12 2003
 +++ hotspot/src/cpu/i486/vm/interpreterRT_i486.cpp	Wed Jan 18 09:26:07 2006
 @@ -8,6 +8,8 @@

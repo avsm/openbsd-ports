@@ -1,0 +1,71 @@
+$OpenBSD: patch-magick_delegate_c,v 1.1.4.1 2006/02/01 20:55:25 sturm Exp $
+--- magick/delegate.c.orig	Sun Jan 29 09:45:06 2006
++++ magick/delegate.c	Sun Jan 29 09:51:29 2006
+@@ -701,6 +701,8 @@ static MagickBooleanType InitializeDeleg
+ MagickExport MagickBooleanType InvokeDelegate(ImageInfo *image_info,
+   Image *image,const char *decode,const char *encode,ExceptionInfo *exception)
+ {
++#define ProhibitedAlphabet  "*?\"'<>|`$"
++
+   char
+     *command,
+     **commands,
+@@ -755,11 +757,11 @@ MagickExport MagickBooleanType InvokeDel
+         }
+       image_info->temporary=MagickTrue;
+     }
+-  if (delegate_info->mode != 0)
+-    if (((decode != (const char *) NULL) &&
+-         (delegate_info->encode != (char *) NULL)) ||
+-        ((encode != (const char *) NULL) &&
+-         (delegate_info->decode != (char *) NULL)))
++  if ((delegate_info->mode != 0) &&
++      (((decode != (const char *) NULL) &&
++        (delegate_info->encode != (char *) NULL)) ||
++       ((encode != (const char *) NULL) &&
++        (delegate_info->decode != (char *) NULL))))
+       {
+         char
+           filename[MaxTextExtent],
+@@ -774,6 +776,13 @@ MagickExport MagickBooleanType InvokeDel
+         /*
+           Delegate requires a particular image format.
+         */
++        if ((strpbrk(image_info->filename,ProhibitedAlphabet) != (char *) NULL) ||
++            (strpbrk(image->filename,ProhibitedAlphabet) != (char *) NULL))
++          {
++            ThrowFileException(exception,FileOpenError,
++              "FilenameContainsProhibitedCharacters",image->filename);
++            return(MagickFalse);
++          }
+         if (AcquireUniqueFilename(image_info->unique) == MagickFalse)
+           {
+             ThrowFileException(exception,FileOpenError,
+@@ -853,18 +862,25 @@ MagickExport MagickBooleanType InvokeDel
+   for (i=0; commands[i] != (char *) NULL; i++)
+   {
+     status=MagickFalse;
++    if ((strpbrk(image_info->filename,ProhibitedAlphabet) != (char *) NULL) ||
++        (strpbrk(image->filename,ProhibitedAlphabet) != (char *) NULL))
++      {
++        ThrowFileException(exception,FileOpenError,
++          "FilenameContainsProhibitedCharacters",image->filename);
++        break;
++      }
+     if (AcquireUniqueFilename(image_info->unique) == MagickFalse)
+       {
+         ThrowFileException(exception,FileOpenError,
+           "UnableToCreateTemporaryFile",image_info->unique);
+-        return(MagickFalse);
++        break;
+       }
+     if (AcquireUniqueFilename(image_info->zero) == MagickFalse)
+       {
+         (void) RelinquishUniqueFileResource(image_info->unique);
+         ThrowFileException(exception,FileOpenError,
+           "UnableToCreateTemporaryFile",image_info->zero);
+-        return(MagickFalse);
++        break;
+       }
+     command=TranslateText(image_info,image,commands[i]);
+     if (command == (char *) NULL)

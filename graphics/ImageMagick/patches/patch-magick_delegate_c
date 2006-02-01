@@ -1,0 +1,67 @@
+$OpenBSD: patch-magick_delegate_c,v 1.1.2.1 2006/02/01 20:53:32 sturm Exp $
+--- magick/delegate.c.orig	Sun Jan 29 09:08:37 2006
++++ magick/delegate.c	Sun Jan 29 09:16:41 2006
+@@ -647,6 +647,8 @@ static unsigned int InitializeDelegateLi
+ MagickExport unsigned int InvokeDelegate(ImageInfo *image_info,Image *image,
+   const char *decode,const char *encode,ExceptionInfo *exception)
+ {
++#define ProhibitedAlphabet  "*?\"'<>|`$"
++
+   char
+     *command,
+     **commands,
+@@ -701,9 +703,9 @@ MagickExport unsigned int InvokeDelegate
+         }
+       image_info->temporary=True;
+     }
+-  if (delegate_info->mode != 0)
+-    if (((decode != False)&& (delegate_info->encode != (char *) NULL)) ||
+-        ((encode != False) && (delegate_info->decode != (char *) NULL)))
++  if ((delegate_info->mode != 0) &&
++      (((decode != False) && (delegate_info->encode != (char *) NULL)) ||
++       ((encode != False) && (delegate_info->decode != (char *) NULL))))
+       {
+         char
+           filename[MaxTextExtent],
+@@ -718,6 +720,13 @@ MagickExport unsigned int InvokeDelegate
+         /*
+           Delegate requires a particular image format.
+         */
++        if ((strpbrk(image_info->filename,ProhibitedAlphabet) != (char *) NULL) ||
++            (strpbrk(image->filename,ProhibitedAlphabet) != (char *) NULL))
++          {
++            ThrowFileException(exception,FileOpenError,
++              "FilenameContainsProhibitedCharacters",image->filename);
++            return(False);
++          }
+         if (AcquireUniqueFilename(image_info->unique) == False)
+           {
+             ThrowFileException(exception,FileOpenError,
+@@ -796,18 +805,25 @@ MagickExport unsigned int InvokeDelegate
+   for (i=0; commands[i] != (char *) NULL; i++)
+   {
+     status=False;
++    if ((strpbrk(image_info->filename,ProhibitedAlphabet) != (char *) NULL) ||
++        (strpbrk(image->filename,ProhibitedAlphabet) != (char *) NULL))
++      {
++        ThrowFileException(exception,FileOpenError,
++          "FilenameContainsProhibitedCharacters",image->filename);
++        break;
++      }
+     if (AcquireUniqueFilename(image_info->unique) == False)
+       {
+         ThrowFileException(exception,FileOpenError,
+           "UnableToCreateTemporaryFile",image_info->unique);
+-        return(False);
++        break;
+       }
+     if (AcquireUniqueFilename(image_info->zero) == False)
+       {
+         (void) RelinquishUniqueFileResource(image_info->unique);
+         ThrowFileException(exception,FileOpenError,
+           "UnableToCreateTemporaryFile",image_info->zero);
+-        return(False);
++        break;
+       }
+     command=TranslateText(image_info,image,commands[i]);
+     if (command == (char *) NULL)

@@ -1,7 +1,7 @@
-$OpenBSD: patch-kpdf_xpdf_splash_SplashXPathScanner_cc,v 1.1 2006/02/04 13:25:36 espie Exp $
---- kpdf/xpdf/splash/SplashXPathScanner.cc.orig	Sat Sep 10 10:18:43 2005
-+++ kpdf/xpdf/splash/SplashXPathScanner.cc	Sat Feb  4 14:21:47 2006
-@@ -186,7 +186,7 @@ GBool SplashXPathScanner::getNextSpan(in
+$OpenBSD: patch-kpdf_xpdf_splash_SplashXPathScanner_cc,v 1.1.2.1 2006/02/05 19:04:55 sturm Exp $
+--- kpdf/xpdf/splash/SplashXPathScanner.cc.orig	Mon May 23 14:05:37 2005
++++ kpdf/xpdf/splash/SplashXPathScanner.cc	Sun Feb  5 13:08:56 2006
+@@ -182,7 +182,7 @@ GBool SplashXPathScanner::getNextSpan(in
  }
  
  void SplashXPathScanner::computeIntersections(int y) {
@@ -10,13 +10,13 @@ $OpenBSD: patch-kpdf_xpdf_splash_SplashXPathScanner_cc,v 1.1 2006/02/04 13:25:36
    SplashXPathSeg *seg;
    int i, j;
  
-@@ -236,19 +236,27 @@ void SplashXPathScanner::computeIntersec
+@@ -232,19 +232,27 @@ void SplashXPathScanner::computeIntersec
      } else if (seg->flags & splashXPathVert) {
        xx0 = xx1 = seg->x0;
      } else {
 -      if (ySegMin <= y) {
 -	// intersection with top edge
--	xx0 = seg->x0 + ((SplashCoord)y - seg->y0) * seg->dxdy;
+-	xx0 = seg->x0 + (y - seg->y0) * seg->dxdy;
 +      if (seg->x0 < seg->x1) {
 +	xSegMin = seg->x0;
 +	xSegMax = seg->x1;
@@ -28,7 +28,7 @@ $OpenBSD: patch-kpdf_xpdf_splash_SplashXPathScanner_cc,v 1.1 2006/02/04 13:25:36
        }
 -      if (ySegMax >= y + 1) {
 -	// intersection with bottom edge
--	xx1 = seg->x0 + ((SplashCoord)y + 1 - seg->y0) * seg->dxdy;
+-	xx1 = seg->x0 + (y + 1 - seg->y0) * seg->dxdy;
 -      } else {
 -	// x coord of segment endpoint with max y coord
 -	xx1 = (seg->flags & splashXPathFlip) ? seg->x0 : seg->x1;

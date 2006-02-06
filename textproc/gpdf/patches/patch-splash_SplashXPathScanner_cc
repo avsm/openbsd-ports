@@ -1,4 +1,4 @@
-$OpenBSD: patch-splash_SplashXPathScanner_cc,v 1.1 2006/02/05 09:59:38 bernd Exp $
+$OpenBSD: patch-splash_SplashXPathScanner_cc,v 1.1.2.1 2006/02/06 22:16:23 sturm Exp $
 --- splash/SplashXPathScanner.cc.orig	Sat Feb  4 14:44:27 2006
 +++ splash/SplashXPathScanner.cc	Sat Feb  4 14:46:44 2006
 @@ -182,7 +182,7 @@ GBool SplashXPathScanner::getNextSpan(in

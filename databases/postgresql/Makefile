@@ -1,14 +1,14 @@
-# $OpenBSD: Makefile,v 1.72.2.1 2005/06/06 20:43:03 sturm Exp $
+# $OpenBSD: Makefile,v 1.72.2.2 2006/02/07 21:08:28 sturm Exp $
 
 COMMENT=	"PostgreSQL RDBMS (client)"
 COMMENT-server=	"PostgreSQL RDBMS (server)"
 COMMENT-docs=	"PostgreSQL RDBMS documentation"
 
-VERSION=	7.4.3
+VERSION=	7.4.11
 DISTNAME=	postgresql-${VERSION}
-FULLPKGNAME=	postgresql-client-${VERSION}p2
-PKGNAME-server=	postgresql-server-${VERSION}p2
-PKGNAME-docs=	postgresql-docs-${VERSION}p1
+FULLPKGNAME=	postgresql-client-${VERSION}
+PKGNAME-server=	postgresql-server-${VERSION}
+PKGNAME-docs=	postgresql-docs-${VERSION}
 
 CATEGORIES=	databases
 
@@ -21,7 +21,7 @@ PERMIT_PACKAGE_CDROM=	"without fee clause"
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	"without fee clause"
 PERMIT_DISTFILES_FTP=	Yes
-WANTLIB=		c crypto curses m readline ssl util z
+WANTLIB=		c com_err crypto curses m readline ssl util z
 
 MASTER_SITES= ftp://ftp3.us.postgresql.org/pub/postgresql/source/v${VERSION}/ \
 	      ftp://ftp.postgresql.org/pub/source/v${VERSION}/

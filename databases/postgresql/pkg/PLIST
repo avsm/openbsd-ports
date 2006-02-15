@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.28 2005/05/11 10:10:39 mbalmer Exp $
+@comment $OpenBSD: PLIST,v 1.28.2.1 2006/02/15 22:20:33 sturm Exp $
 @conflict pgsql-*
 @conflict pgsql-clients-*
 @conflict postgresql-*
@@ -223,6 +223,18 @@ lib/postgresql/pgxs/src/nls-global.mk
 @man man/man7/unlisten.7
 @man man/man7/update.7
 @man man/man7/vacuum.7
+share/doc/postgresql/html/release-7-3-11.html
+share/doc/postgresql/html/release-7-3-12.html
+share/doc/postgresql/html/release-7-3-13.html
+share/doc/postgresql/html/release-7-3-14.html
+share/doc/postgresql/html/release-7-4-10.html
+share/doc/postgresql/html/release-7-4-11.html
+share/doc/postgresql/html/release-7-4-12.html
+share/doc/postgresql/html/release-7-4-9.html
+share/doc/postgresql/html/release-8-0-3.html
+share/doc/postgresql/html/release-8-0-4.html
+share/doc/postgresql/html/release-8-0-5.html
+share/doc/postgresql/html/release-8-0-6.html
 share/postgresql/
 share/postgresql/conversion_create.sql
 share/postgresql/information_schema.sql
@@ -323,6 +335,7 @@ share/postgresql/timezone/America/Cayenne
 share/postgresql/timezone/America/Cayman
 share/postgresql/timezone/America/Chicago
 share/postgresql/timezone/America/Chihuahua
+share/postgresql/timezone/America/Coral_Harbour
 share/postgresql/timezone/America/Cordoba
 share/postgresql/timezone/America/Costa_Rica
 share/postgresql/timezone/America/Cuiaba
@@ -548,6 +561,7 @@ share/postgresql/timezone/Australia/Adelaide
 share/postgresql/timezone/Australia/Brisbane
 share/postgresql/timezone/Australia/Broken_Hill
 share/postgresql/timezone/Australia/Canberra
+share/postgresql/timezone/Australia/Currie
 share/postgresql/timezone/Australia/Darwin
 share/postgresql/timezone/Australia/Hobart
 share/postgresql/timezone/Australia/LHI

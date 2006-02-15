@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.26 2004/09/18 10:35:36 espie Exp $
+@comment $OpenBSD: PLIST,v 1.26.2.1 2006/02/15 21:09:43 sturm Exp $
 @conflict pgsql-*
 @conflict pgsql-clients-*
 @conflict postgresql-*
@@ -183,6 +183,8 @@ share/doc/postgresql/README
 share/doc/postgresql/README.mb.big5
 share/doc/postgresql/README.mb.jp
 share/doc/postgresql/TODO
+share/doc/postgresql/html/release-7-3-14.html
+share/doc/postgresql/html/release-7-4-11.html
 share/postgresql/
 share/postgresql/conversion_create.sql
 share/postgresql/information_schema.sql

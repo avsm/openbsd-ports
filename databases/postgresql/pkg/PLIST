@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.28.2.1 2006/02/15 22:20:33 sturm Exp $
+@comment $OpenBSD: PLIST,v 1.28.2.2 2006/02/17 22:20:56 sturm Exp $
 @conflict pgsql-*
 @conflict pgsql-clients-*
 @conflict postgresql-*
@@ -223,18 +223,6 @@ lib/postgresql/pgxs/src/nls-global.mk
 @man man/man7/unlisten.7
 @man man/man7/update.7
 @man man/man7/vacuum.7
-share/doc/postgresql/html/release-7-3-11.html
-share/doc/postgresql/html/release-7-3-12.html
-share/doc/postgresql/html/release-7-3-13.html
-share/doc/postgresql/html/release-7-3-14.html
-share/doc/postgresql/html/release-7-4-10.html
-share/doc/postgresql/html/release-7-4-11.html
-share/doc/postgresql/html/release-7-4-12.html
-share/doc/postgresql/html/release-7-4-9.html
-share/doc/postgresql/html/release-8-0-3.html
-share/doc/postgresql/html/release-8-0-4.html
-share/doc/postgresql/html/release-8-0-5.html
-share/doc/postgresql/html/release-8-0-6.html
 share/postgresql/
 share/postgresql/conversion_create.sql
 share/postgresql/information_schema.sql

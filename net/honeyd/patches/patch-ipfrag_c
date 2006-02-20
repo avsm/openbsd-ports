@@ -1,4 +1,4 @@
-$OpenBSD: patch-ipfrag_c,v 1.1 2006/02/19 17:09:32 naddy Exp $
+$OpenBSD: patch-ipfrag_c,v 1.1.2.1 2006/02/20 22:02:36 sturm Exp $
 --- ipfrag.c.orig	Fri Dec 31 20:13:38 2004
 +++ ipfrag.c	Sun Feb 19 17:54:36 2006
 @@ -81,6 +81,7 @@ fragcompare(struct fragment *a, struct f

@@ -1,4 +1,4 @@
-$OpenBSD: patch-ipfrag_h,v 1.1 2006/02/19 17:09:32 naddy Exp $
+$OpenBSD: patch-ipfrag_h,v 1.1.4.1 2006/02/20 22:03:04 sturm Exp $
 --- ipfrag.h.orig	Fri Dec 31 20:13:43 2004
 +++ ipfrag.h	Sun Feb 19 17:54:36 2006
 @@ -52,6 +52,7 @@ struct fragment {

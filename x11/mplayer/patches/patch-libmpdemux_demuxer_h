@@ -1,4 +1,4 @@
-$OpenBSD: patch-libmpdemux_demuxer_h,v 1.2 2006/02/23 11:34:54 biorn Exp $
+$OpenBSD: patch-libmpdemux_demuxer_h,v 1.2.4.1 2006/02/28 08:23:49 sturm Exp $
 --- libmpdemux/demuxer.h.orig	Sun Apr  3 16:08:26 2005
 +++ libmpdemux/demuxer.h	Wed Feb 22 13:25:21 2006
 @@ -155,17 +155,19 @@ inline static demux_packet_t* new_demux_

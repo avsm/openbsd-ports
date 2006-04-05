@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.31 2005/07/17 07:50:32 alek Exp $
+# $OpenBSD: Makefile,v 1.31.2.1 2006/04/05 21:00:46 sturm Exp $
 
 COMMENT=	"technical diagrams drawing tool"
 
 DISTNAME=	dia-0.94
-PKGNAME=	${DISTNAME}p0
+PKGNAME=	${DISTNAME}p4
 CATEGORIES=	graphics
 
 HOMEPAGE=	http://www.gnome.org/projects/dia/

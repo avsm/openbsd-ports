@@ -1,4 +1,4 @@
-$OpenBSD: patch-plug-ins_xfig_xfig-import_c,v 1.1 2006/04/03 16:21:47 steven Exp $
+$OpenBSD: patch-plug-ins_xfig_xfig-import_c,v 1.1.2.1 2006/04/05 20:50:22 sturm Exp $
 --- plug-ins/xfig/xfig-import.c.orig	Mon Aug 16 09:56:21 2004
 +++ plug-ins/xfig/xfig-import.c	Mon Apr  3 18:16:09 2006
 @@ -441,11 +441,17 @@ create_standard_group(GList *items, Diag

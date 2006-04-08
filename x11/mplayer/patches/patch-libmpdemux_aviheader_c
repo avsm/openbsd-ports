@@ -1,7 +1,7 @@
-$OpenBSD: patch-libmpdemux_aviheader_c,v 1.1 2006/04/06 21:47:43 biorn Exp $
---- libmpdemux/aviheader.c.orig	Thu Apr  6 20:46:29 2006
-+++ libmpdemux/aviheader.c	Thu Apr  6 20:50:41 2006
-@@ -224,11 +224,13 @@ while(1){
+$OpenBSD: patch-libmpdemux_aviheader_c,v 1.1.2.1 2006/04/08 14:33:43 sturm Exp $
+--- libmpdemux/aviheader.c.orig	Wed Oct 20 04:13:33 2004
++++ libmpdemux/aviheader.c	Fri Apr  7 21:40:22 2006
+@@ -243,11 +243,13 @@ while(1){
  	  
        print_avisuperindex_chunk(s);
  

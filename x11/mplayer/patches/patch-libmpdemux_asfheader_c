@@ -1,4 +1,4 @@
-$OpenBSD: patch-libmpdemux_asfheader_c,v 1.1 2006/04/06 21:47:43 biorn Exp $
+$OpenBSD: patch-libmpdemux_asfheader_c,v 1.1.4.1 2006/04/08 14:34:26 sturm Exp $
 --- libmpdemux/asfheader.c.orig	Sat Dec 25 12:31:32 2004
 +++ libmpdemux/asfheader.c	Thu Apr  6 20:30:42 2006
 @@ -189,7 +189,7 @@ int read_asf_header(demuxer_t *demuxer){

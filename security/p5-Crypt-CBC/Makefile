@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.13 2006/01/12 13:12:42 steven Exp $
+# $OpenBSD: Makefile,v 1.13.2.1 2006/05/01 08:45:28 sturm Exp $
 
 COMMENT=	"cryptographic cipher block chaining mode"
 
-DISTNAME=	Crypt-CBC-2.15
+DISTNAME=	Crypt-CBC-2.17
 PKGNAME=	p5-${DISTNAME}
 CATEGORIES=	security perl5
 MASTER_SITES=	${MASTER_SITE_PERL_CPAN:=Crypt/}

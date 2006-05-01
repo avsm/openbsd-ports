@@ -1,8 +1,7 @@
-# $OpenBSD: Makefile,v 1.22 2005/11/14 12:46:04 bernd Exp $
+# $OpenBSD: Makefile,v 1.22.2.1 2006/05/01 14:27:09 sturm Exp $
 
 COMMENT=		"jabber server"
-DISTNAME=		jabberd-2.0s9
-PKGNAME=		${DISTNAME}p3
+DISTNAME=		jabberd-2.0s11
 CATEGORIES=		net
 HOMEPAGE=		http://jabberd.jabberstudio.org/2/
 MAINTAINER=		Gerardo Santana Gomez Garrido <santana@openbsd.org.mx>

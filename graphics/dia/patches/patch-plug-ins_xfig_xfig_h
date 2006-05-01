@@ -1,4 +1,4 @@
-$OpenBSD: patch-plug-ins_xfig_xfig_h,v 1.1 2006/04/03 16:21:47 steven Exp $
+$OpenBSD: patch-plug-ins_xfig_xfig_h,v 1.1.6.1 2006/05/01 08:51:34 sturm Exp $
 --- plug-ins/xfig/xfig.h.orig	Mon Aug 16 09:56:21 2004
 +++ plug-ins/xfig/xfig.h	Mon Apr  3 18:16:09 2006
 @@ -6,6 +6,7 @@ extern char *fig_fonts[];

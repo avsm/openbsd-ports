@@ -1,4 +1,4 @@
-$OpenBSD: patch-portable_c,v 1.1 2006/04/07 23:14:13 pvalchev Exp $
+$OpenBSD: patch-portable_c,v 1.1.6.1 2006/05/01 09:03:08 sturm Exp $
 --- portable.c.orig	Tue Jul 16 09:55:11 1991
 +++ portable.c	Fri Apr  7 01:35:28 2006
 @@ -364,6 +364,31 @@ ZOOFILE zoo_file;

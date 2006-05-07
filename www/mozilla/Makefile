@@ -1,16 +1,16 @@
-# $OpenBSD: Makefile,v 1.88.2.1 2005/11/01 11:38:31 sturm Exp $
+# $OpenBSD: Makefile,v 1.88.2.2 2006/05/07 06:40:33 sturm Exp $
 
 ONLY_FOR_ARCHS= alpha i386 sparc sparc64 amd64 powerpc
 
 COMMENT=	"open source version of the Netscape browser"
 COMMENT-devel=	"devel files for Gecko"
 
-VER=		1.7.12
+VER=		1.7.13
 DISTNAME=	mozilla
 PKGNAME=	mozilla-${VER}
 PKGNAME-devel=	mozilla-devel-${VER}
 DISTFILES=	mozilla-${VER}-source.tar.bz2
-SO_VERSION=	5.0
+SO_VERSION=	7.0
 # NOTE: Must bump minor version if any shlib's are removed from the
 # components dir to avoid pkg_add -r issues.
  

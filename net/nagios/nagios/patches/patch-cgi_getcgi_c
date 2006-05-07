@@ -1,0 +1,12 @@
+$OpenBSD: patch-cgi_getcgi_c,v 1.1.4.1 2006/05/07 12:30:53 sturm Exp $
+--- cgi/getcgi.c.orig	Sun May  7 06:21:08 2006
++++ cgi/getcgi.c	Sun May  7 06:21:31 2006
+@@ -169,6 +169,8 @@ char **getcgivars(void){
+ 			printf("getcgivars(): No Content-Length was sent with the POST request.\n") ;
+ 			exit(1);
+ 		        }
++		if(content_length<0)
++			content_length=0;
+ 		if(!(cgiinput=(char *)malloc(content_length+1))){
+ 			printf("getcgivars(): Could not allocate memory for CGI input.\n");
+ 			exit(1);

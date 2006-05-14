@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-tests,v 1.12 2005/03/23 03:47:20 brad Exp $
+@comment $OpenBSD: PLIST-tests,v 1.12.2.1 2006/05/14 07:43:33 sturm Exp $
 share/mysql-test/
 share/mysql-test/README
 share/mysql-test/include/
@@ -9,16 +9,19 @@ share/mysql-test/include/have_innodb.inc
 share/mysql-test/include/have_isam.inc
 share/mysql-test/include/have_openssl.inc
 share/mysql-test/include/have_openssl_1.inc
+share/mysql-test/include/have_outfile.inc
 share/mysql-test/include/have_query_cache.inc
 share/mysql-test/include/master-slave.inc
 share/mysql-test/include/not_embedded.inc
 share/mysql-test/include/system_db_struct.inc
+share/mysql-test/include/test_outfile.inc
 share/mysql-test/install_test_db
 share/mysql-test/mysql-test-run
 share/mysql-test/r/
 share/mysql-test/r/alias.result
 share/mysql-test/r/alter_table.result
 share/mysql-test/r/analyse.result
+share/mysql-test/r/analyze.result
 share/mysql-test/r/ansi.result
 share/mysql-test/r/auto_increment.result
 share/mysql-test/r/backup.result
@@ -104,6 +107,7 @@ share/mysql-test/r/have_met_timezone.require
 share/mysql-test/r/have_moscow_leap_timezone.require
 share/mysql-test/r/have_openssl.require
 share/mysql-test/r/have_openssl_1.require
+share/mysql-test/r/have_outfile.require
 share/mysql-test/r/have_query_cache.require
 share/mysql-test/r/have_raid.require
 share/mysql-test/r/have_symlink.require
@@ -151,10 +155,12 @@ share/mysql-test/r/openssl_1.result
 share/mysql-test/r/openssl_2.result
 share/mysql-test/r/order_by.result
 share/mysql-test/r/order_fill_sortbuf.result
+share/mysql-test/r/outfile.result
 share/mysql-test/r/overflow.result
 share/mysql-test/r/packet.result
 share/mysql-test/r/query_cache.result
 share/mysql-test/r/query_cache_merge.result
+share/mysql-test/r/query_cache_notembedded.result
 share/mysql-test/r/raid.result
 share/mysql-test/r/range.result
 share/mysql-test/r/rename.result
@@ -281,6 +287,7 @@ share/mysql-test/t/
 share/mysql-test/t/alias.test
 share/mysql-test/t/alter_table.test
 share/mysql-test/t/analyse.test
+share/mysql-test/t/analyze.test
 share/mysql-test/t/ansi-master.opt
 share/mysql-test/t/ansi.test
 share/mysql-test/t/auto_increment.test
@@ -423,6 +430,7 @@ share/mysql-test/t/overflow.test
 share/mysql-test/t/packet.test
 share/mysql-test/t/query_cache.test
 share/mysql-test/t/query_cache_merge.test
+share/mysql-test/t/query_cache_notembedded.test
 share/mysql-test/t/raid.test
 share/mysql-test/t/range.test
 share/mysql-test/t/rename.test

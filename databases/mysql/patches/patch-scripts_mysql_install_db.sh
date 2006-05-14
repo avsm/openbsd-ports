@@ -1,7 +1,7 @@
-$OpenBSD: patch-scripts_mysql_install_db.sh,v 1.18 2005/03/23 03:47:20 brad Exp $
---- scripts/mysql_install_db.sh.orig	Fri Mar  4 19:38:15 2005
-+++ scripts/mysql_install_db.sh	Tue Mar 15 09:38:55 2005
-@@ -7,16 +7,12 @@
+$OpenBSD: patch-scripts_mysql_install_db.sh,v 1.18.2.1 2006/05/14 07:43:33 sturm Exp $
+--- scripts/mysql_install_db.sh.orig	Sat May  6 20:55:47 2006
++++ scripts/mysql_install_db.sh	Sat May 13 08:14:23 2006
+@@ -8,16 +8,12 @@
  #
  # All unrecognized arguments to this script are passed to mysqld.
  
@@ -21,7 +21,7 @@ $OpenBSD: patch-scripts_mysql_install_db.sh,v 1.18 2005/03/23 03:47:20 brad Exp 
      --no-defaults|--defaults-file=*|--defaults-extra-file=*)
        defaults="$1"; shift
        ;;
-@@ -35,7 +31,6 @@ parse_arguments() {
+@@ -36,7 +32,6 @@ parse_arguments() {
  
    for arg do
      case "$arg" in
@@ -29,7 +29,7 @@ $OpenBSD: patch-scripts_mysql_install_db.sh,v 1.18 2005/03/23 03:47:20 brad Exp 
        --basedir=*) basedir=`echo "$arg" | sed -e 's/^[^=]*=//'` ;;
        --ldata=*|--datadir=*) ldata=`echo "$arg" | sed -e 's/^[^=]*=//'` ;;
        --user=*)
-@@ -43,10 +38,9 @@ parse_arguments() {
+@@ -44,10 +39,9 @@ parse_arguments() {
          # as 'user' (crucial e.g. if log-bin=/some_other_path/
          # where a chown of datadir won't help)
  	 user=`echo "$arg" | sed -e 's/^[^=]*=//'` ;;
@@ -41,7 +41,7 @@ $OpenBSD: patch-scripts_mysql_install_db.sh,v 1.18 2005/03/23 03:47:20 brad Exp 
        *)
          if test -n "$pick_args"
          then
-@@ -82,7 +76,6 @@ ldata=
+@@ -83,7 +77,6 @@ ldata=
  execdir=
  bindir=
  basedir=
@@ -49,7 +49,7 @@ $OpenBSD: patch-scripts_mysql_install_db.sh,v 1.18 2005/03/23 03:47:20 brad Exp 
  parse_arguments `$print_defaults $defaults mysqld mysql_install_db`
  parse_arguments PICK-ARGS-FROM-ARGV "$@"
  
-@@ -111,52 +104,35 @@ mysqld=$execdir/mysqld
+@@ -112,52 +105,35 @@ mysqld=$execdir/mysqld
  mysqld_opt=""
  scriptdir=$bindir
  
@@ -119,7 +119,7 @@ $OpenBSD: patch-scripts_mysql_install_db.sh,v 1.18 2005/03/23 03:47:20 brad Exp 
  fi
  
  if test "$ip_only" = "1"
-@@ -166,12 +142,10 @@ then
+@@ -167,12 +143,10 @@ then
  fi
  
  # Create database directories mysql & test
@@ -136,7 +136,7 @@ $OpenBSD: patch-scripts_mysql_install_db.sh,v 1.18 2005/03/23 03:47:20 brad Exp 
  
  # Initialize variables
  c_d="" i_d=""
-@@ -363,12 +337,6 @@ $c_c
+@@ -364,12 +338,6 @@ $c_c
  END_OF_DATA
  then
    echo ""
@@ -149,7 +149,7 @@ $OpenBSD: patch-scripts_mysql_install_db.sh,v 1.18 2005/03/23 03:47:20 brad Exp 
    echo "PLEASE REMEMBER TO SET A PASSWORD FOR THE MySQL root USER !"
    echo "To do so, start the server, then issue the following commands:"
    echo "$bindir/mysqladmin -u root password 'new-password'"
-@@ -384,15 +352,6 @@ then
+@@ -385,15 +353,6 @@ then
      echo "able to use the new GRANT command!"
    fi
    echo

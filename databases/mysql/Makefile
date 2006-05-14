@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.107 2005/03/30 03:07:52 brad Exp $
+# $OpenBSD: Makefile,v 1.107.2.1 2006/05/14 07:43:33 sturm Exp $
 # Uses pthreads
 
 .if ${MACHINE_ARCH} == "hppa" || ${MACHINE_ARCH} == "m88k"
@@ -9,10 +9,10 @@ COMMENT=	"multithreaded SQL database (client)"
 COMMENT-server=	"multithreaded SQL database (server)"
 COMMENT-tests=	"multithreaded SQL database (regression test suite)"
 
-VERSION=	4.0.24
+VERSION=	4.0.27
 DISTNAME=	mysql-${VERSION}
 FULLPKGNAME=	mysql-client-${VERSION}
-PKGNAME-server=	mysql-server-${VERSION}p1
+PKGNAME-server=	mysql-server-${VERSION}
 FULLPKGNAME-tests= mysql-tests-${VERSION}
 CATEGORIES=	databases
 V=		MySQL-4.0
@@ -89,13 +89,7 @@ PKG_ARCH=	*
 WANTLIB=
 .endif
 
-DOCS=	manual.html manual.ps manual_toc.html manual.txt
-
 post-install:
-	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/mysql/Flags
-	cd ${WRKSRC}/Docs; ${INSTALL_DATA} ${DOCS} ${PREFIX}/share/doc/mysql
-	${INSTALL_DATA} ${WRKSRC}/Docs/Flags/*.gif \
-		${PREFIX}/share/doc/mysql/Flags
 	cd ${PREFIX}/lib && ln -sf mysql/libmysqlclient.so.12.0 . && \
 		ln -sf mysql/libmysqlclient_r.so.12.0 .
 

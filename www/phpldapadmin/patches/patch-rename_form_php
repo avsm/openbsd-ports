@@ -1,4 +1,4 @@
-$OpenBSD: patch-rename_form_php,v 1.1 2006/05/21 19:15:08 aanriot Exp $
+$OpenBSD: patch-rename_form_php,v 1.1.2.1 2006/05/24 16:15:08 sturm Exp $
 --- rename_form.php.orig	Sun May 21 13:30:59 2006
 +++ rename_form.php	Sun May 21 13:31:17 2006
 @@ -36,7 +36,7 @@ include './header.php'; ?>

@@ -1,4 +1,4 @@
-$OpenBSD: patch-copy_form_php,v 1.1 2006/05/21 19:15:08 aanriot Exp $
+$OpenBSD: patch-copy_form_php,v 1.1.2.1 2006/05/24 16:15:08 sturm Exp $
 --- copy_form.php.orig	Sun May 21 13:24:35 2006
 +++ copy_form.php	Sun May 21 13:26:14 2006
 @@ -56,15 +56,15 @@ if( is_array( $children ) && count( $chi

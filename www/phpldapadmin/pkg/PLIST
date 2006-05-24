@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.2.2.1 2005/11/01 11:19:00 sturm Exp $
+@comment $OpenBSD: PLIST,v 1.2.2.2 2006/05/24 16:15:08 sturm Exp $
 phpldapadmin-${VERSION}/
 @comment phpldapadmin-${VERSION}/.cvsignore
 phpldapadmin-${VERSION}/INSTALL
@@ -31,6 +31,7 @@ phpldapadmin-${VERSION}/delete_form.php
 @comment phpldapadmin-${VERSION}/doc/
 @comment phpldapadmin-${VERSION}/doc/CREDITS
 @comment phpldapadmin-${VERSION}/doc/ChangeLog
+@comment phpldapadmin-${VERSION}/doc/ChangeLogCVS.txt
 @comment phpldapadmin-${VERSION}/doc/INSTALL-de.txt
 @comment phpldapadmin-${VERSION}/doc/INSTALL-es.txt
 @comment phpldapadmin-${VERSION}/doc/INSTALL-fr.txt

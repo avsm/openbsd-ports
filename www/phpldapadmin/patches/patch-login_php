@@ -1,4 +1,4 @@
-$OpenBSD: patch-login_php,v 1.1 2006/05/21 19:15:08 aanriot Exp $
+$OpenBSD: patch-login_php,v 1.1.2.1 2006/05/24 16:15:08 sturm Exp $
 --- login.php.orig	Sun May 21 13:26:24 2006
 +++ login.php	Sun May 21 13:28:36 2006
 @@ -30,7 +30,7 @@ $dn = isset( $_POST['login_dn'] ) ? $_PO

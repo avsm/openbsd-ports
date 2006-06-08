@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.37 2006/02/08 04:54:49 david Exp $
+# $OpenBSD: Makefile,v 1.37.2.1 2006/06/08 20:23:36 sturm Exp $
 
 COMMENT=		"mailfilter to identify and mark spam"
 
-DISTNAME=		Mail-SpamAssassin-3.1.0
-PKGNAME=		p5-${DISTNAME}p0
+DISTNAME=		Mail-SpamAssassin-3.1.3
+PKGNAME=		p5-${DISTNAME}
 CATEGORIES=		mail perl5
 
 MAINTAINER=		Ben Lovett <ben@tilderoot.com>
@@ -55,7 +55,7 @@ PORTHOME=		${WRKDIR}/temp-home
 FAQ=		OpenBSD-SpamAssassin-mini-howto.html
 DOCS=		README UPGRADE LICENSE procmailrc.example \
 		sample-nonspam.txt sample-spam.txt
-LOCALCF=	local.cf init.pre v310.pre
+LOCALCF=	local.cf init.pre v310.pre v312.pre
 
 pre-configure:
 	@perl -pi -e "s#\@\@LOCAL_RULES_DIR\@\@#${CONFDIR}#" ${WRKSRC}/rules/*

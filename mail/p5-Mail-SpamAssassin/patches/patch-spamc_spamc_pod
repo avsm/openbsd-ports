@@ -1,7 +1,7 @@
-$OpenBSD: patch-spamc_spamc_pod,v 1.1 2004/10/31 08:44:44 sturm Exp $
---- spamc/spamc.pod.orig	Mon Sep 13 16:34:05 2004
-+++ spamc/spamc.pod	Sun Oct  3 10:46:22 2004
-@@ -185,7 +185,7 @@ unmodified and an exit code of C<0> will
+$OpenBSD: patch-spamc_spamc_pod,v 1.1.4.1 2006/06/08 18:41:20 sturm Exp $
+--- spamc/spamc.pod.orig	Mon Nov 28 23:27:27 2005
++++ spamc/spamc.pod	Thu Jun  8 18:54:04 2006
+@@ -185,7 +185,7 @@ in an error code.  The exit codes used a
  
  =head1 SEE ALSO
  

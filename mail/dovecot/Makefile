@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.33 2006/02/11 04:10:08 brad Exp $
+# $OpenBSD: Makefile,v 1.33.2.1 2006/06/09 05:51:01 sturm Exp $
 
 COMMENT= 	"compact IMAP/POP3 server"
 
-DISTNAME=	dovecot-1.0.beta3
+DISTNAME=	dovecot-1.0.beta8
 CATEGORIES=	mail
 MASTER_SITES=	${HOMEPAGE}releases/
 
@@ -43,7 +43,7 @@ USE_LIBTOOL=	Yes
 CONFIGURE_STYLE= autoconf
 AUTOCONF_VERSION= 2.59
 CONFIGURE_ARGS+=--localstatedir=/var \
-		--with-ioloop=kqueue \
+#		--with-ioloop=kqueue \
 		--with-notify=kqueue \
 		--with-ssl=openssl \
 		--with-ssldir=/etc/ssl \

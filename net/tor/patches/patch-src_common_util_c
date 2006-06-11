@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_common_util_c,v 1.1 2006/06/10 08:33:36 steven Exp $
+$OpenBSD: patch-src_common_util_c,v 1.1.2.1 2006/06/11 08:23:24 sturm Exp $
 --- src/common/util.c.orig	Fri Jun  9 18:22:20 2006
 +++ src/common/util.c	Fri Jun  9 18:23:58 2006
 @@ -609,7 +609,7 @@ esc_for_log(const char *s)

@@ -1,4 +1,4 @@
-; $OpenBSD: musiconhold.conf.sample,v 1.1 2006/06/12 19:04:10 naddy Exp $
+; $OpenBSD: musiconhold.conf.sample,v 1.1.2.1 2006/06/15 15:34:35 sturm Exp $
 ; Music on Hold -- Sample Configuration
 
 [default]

@@ -1,6 +1,6 @@
-$OpenBSD: patch-Makefile,v 1.4 2005/08/15 17:36:07 jolan Exp $
---- Makefile.orig	Tue Apr 26 09:30:23 2005
-+++ Makefile	Sun Aug 14 21:15:32 2005
+$OpenBSD: patch-Makefile,v 1.4.2.1 2006/06/15 15:35:23 sturm Exp $
+--- Makefile.orig	Tue Nov 29 19:24:39 2005
++++ Makefile	Thu Jun 15 16:19:29 2006
 @@ -20,6 +20,7 @@ OSARCH=$(shell uname -s)
  
  ifeq (${OSARCH},Linux)
@@ -103,8 +103,8 @@ $OpenBSD: patch-Makefile,v 1.4 2005/08/15 17:36:07 jolan Exp $
  
  LIBEDIT=editline/libedit.a
  
-@@ -222,17 +238,21 @@ ASTLINK=-Wl,-E 
- SOLINK=-shared -Xlinker -x
+@@ -233,17 +249,21 @@ ifeq ($(wildcard $(CROSS_COMPILE_TARGET)
+   CFLAGS+=-DDLFCNCOMPAT
  endif
  
 +ifneq (${OSARCH},OpenBSD)
@@ -126,17 +126,17 @@ $OpenBSD: patch-Makefile,v 1.4 2005/08/15 17:36:07 jolan Exp $
  
  all: depend asterisk subdirs 
  
-@@ -401,7 +421,8 @@ bininstall: all
+@@ -412,7 +432,8 @@ bininstall: all
  	mkdir -p $(DESTDIR)$(ASTMANDIR)/man8
  	install -m 644 keys/iaxtel.pub $(DESTDIR)$(ASTVARLIBDIR)/keys
  	install -m 644 keys/freeworlddialup.pub $(DESTDIR)$(ASTVARLIBDIR)/keys
 -	install -m 644 asterisk.8.gz $(DESTDIR)$(ASTMANDIR)/man8
 +	zcat asterisk.8.gz > asterisk.8
 +	install -m 644 asterisk.8 $(DESTDIR)$(ASTMANDIR)/man8
- 	if [ -d contrib/firmware/iax ]; then \
- 		install -m 644 contrib/firmware/iax/iaxy.bin $(DESTDIR)$(ASTVARLIBDIR)/firmware/iax/iaxy.bin; \
- 	else \
-@@ -410,6 +431,7 @@ bininstall: all
+ 	install -m 644 contrib/scripts/astgenkey.8 $(DESTDIR)$(ASTMANDIR)/man8
+ 	install -m 644 contrib/scripts/autosupport.8 $(DESTDIR)$(ASTMANDIR)/man8
+ 	install -m 644 contrib/scripts/safe_asterisk.8 $(DESTDIR)$(ASTMANDIR)/man8
+@@ -424,6 +445,7 @@ bininstall: all
  	( cd $(DESTDIR)$(ASTVARLIBDIR)/sounds  ; ln -s $(ASTSPOOLDIR)/vm . )
  	( cd $(DESTDIR)$(ASTVARLIBDIR)/sounds  ; ln -s $(ASTSPOOLDIR)/voicemail . )
  	if [ -f mpg123-0.59r/mpg123 ]; then $(MAKE) -C mpg123-0.59r install; fi
@@ -144,7 +144,7 @@ $OpenBSD: patch-Makefile,v 1.4 2005/08/15 17:36:07 jolan Exp $
  	@echo " +---- Asterisk Installation Complete -------+"  
  	@echo " +                                           +"
  	@echo " +    YOU MUST READ THE SECURITY DOCUMENT    +"
-@@ -443,6 +465,7 @@ bininstall: all
+@@ -457,6 +479,7 @@ bininstall: all
  	@echo " + before doing a '$(MAKE) install'.            +"
  	@echo " +                                           +"
  	@echo " +-------------------------------------------+"

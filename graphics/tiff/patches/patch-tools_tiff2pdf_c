@@ -1,4 +1,4 @@
-$OpenBSD: patch-tools_tiff2pdf_c,v 1.1 2006/06/12 17:31:34 naddy Exp $
+$OpenBSD: patch-tools_tiff2pdf_c,v 1.1.2.1 2006/06/15 11:23:24 sturm Exp $
 --- tools/tiff2pdf.c.orig	Sun Jun 11 15:58:06 2006
 +++ tools/tiff2pdf.c	Sun Jun 11 16:00:21 2006
 @@ -279,8 +279,8 @@ tsize_t t2p_sample_lab_signed_to_unsigne

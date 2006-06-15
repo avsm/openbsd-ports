@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.38 2005/07/17 20:54:36 naddy Exp $
+# $OpenBSD: Makefile,v 1.38.2.1 2006/06/15 11:23:24 sturm Exp $
 
 COMMENT=	"tools and library routines for working with TIFF images"
 
 DISTNAME=	tiff-3.7.3
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	graphics
 
 MASTER_SITES=	ftp://ftp.remotesensing.org/pub/libtiff/ \

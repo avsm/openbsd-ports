@@ -1,14 +1,14 @@
-# $OpenBSD: Makefile,v 1.31.2.1 2006/04/05 21:00:46 sturm Exp $
+# $OpenBSD: Makefile,v 1.31.2.2 2006/06/16 05:56:38 sturm Exp $
 
 COMMENT=	"technical diagrams drawing tool"
 
-DISTNAME=	dia-0.94
-PKGNAME=	${DISTNAME}p4
+DISTNAME=	dia-0.95-1
+PKGNAME=	dia-0.95.1
 CATEGORIES=	graphics
 
 HOMEPAGE=	http://www.gnome.org/projects/dia/
 
-MASTER_SITES=	${MASTER_SITE_GNOME:=sources/dia/0.94/}
+MASTER_SITES=	${MASTER_SITE_GNOME:=sources/dia/0.95/}
 
 # GPL
 PERMIT_PACKAGE_CDROM=   Yes

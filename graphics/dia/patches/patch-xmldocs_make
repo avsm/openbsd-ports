@@ -1,4 +1,4 @@
-$OpenBSD: patch-xmldocs_make,v 1.1 2006/06/13 19:27:54 steven Exp $
+$OpenBSD: patch-xmldocs_make,v 1.1.4.1 2006/06/16 05:56:38 sturm Exp $
 --- xmldocs.make.orig	Thu Jun  8 12:36:49 2006
 +++ xmldocs.make	Thu Jun  8 12:37:02 2006
 @@ -36,11 +36,11 @@

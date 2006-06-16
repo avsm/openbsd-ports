@@ -1,4 +1,4 @@
-$OpenBSD: patch-doc_eu_Makefile_in,v 1.1 2006/06/13 19:27:54 steven Exp $
+$OpenBSD: patch-doc_eu_Makefile_in,v 1.1.2.1 2006/06/16 05:56:14 sturm Exp $
 --- doc/eu/Makefile.in.orig	Thu May 25 22:49:19 2006
 +++ doc/eu/Makefile.in	Thu Jun  8 12:19:25 2006
 @@ -332,6 +332,7 @@ entities = 

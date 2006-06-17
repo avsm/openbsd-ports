@@ -1,4 +1,4 @@
-$OpenBSD: patch-gd_gif_in_c,v 1.1 2006/06/15 22:18:25 bernd Exp $
+$OpenBSD: patch-gd_gif_in_c,v 1.1.2.1 2006/06/17 16:07:25 sturm Exp $
 
 Security fix for CVE-2006-2906, from Xavier Roche via Ubuntu via NetBSD.
 

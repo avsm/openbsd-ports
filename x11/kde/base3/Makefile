@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.44 2005/08/16 09:49:53 espie Exp $
+# $OpenBSD: Makefile,v 1.44.2.1 2006/06/17 20:53:53 sturm Exp $
 
 COMMENT= 		"K Desktop Environment, basic applications"
 COMMENT-plugins=	"Konqueror nsplugins, essentially native JDK"
 CATEGORIES=		x11 x11/kde
 VERSION=		3.4.2
 DISTNAME=		kdebase-${VERSION}
-PKGNAME=		${DISTNAME}p0
+PKGNAME=		${DISTNAME}p1
 MODKDE_VERSION?=	3.4
 
 FLAVORS=		debug

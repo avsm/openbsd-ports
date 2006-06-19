@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.4.2.1 2006/05/07 10:50:05 sturm Exp $
+# $OpenBSD: Makefile,v 1.4.2.2 2006/06/19 21:21:05 sturm Exp $
 
 COMMENT=	"host and service monitor"
 COMMENT-web=	"cgis and webpages for nagios"
@@ -6,7 +6,7 @@ COMMENT-web=	"cgis and webpages for nagios"
 V=		2.0b4
 DISTNAME=	nagios-${V}
 PKGNAME=	${DISTNAME}p0
-PKGNAME-web=	nagios-web-${V}p0
+PKGNAME-web=	nagios-web-${V}p1
 CATEGORIES=	net
 
 HOMEPAGE=	http://www.nagios.org/

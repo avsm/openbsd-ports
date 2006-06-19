@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.2 2005/05/30 10:34:00 alek Exp $
+# $OpenBSD: Makefile,v 1.2.2.1 2006/06/19 06:09:49 sturm Exp $
 
 COMMENT=		"library of assorted spiffy things"
 
-DISTNAME=		libast-0.6.1
+DISTNAME=		libast-0.7
 CATEGORIES=		devel
 
 HOMEPAGE=		http://eterm.sourceforge.net/

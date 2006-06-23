@@ -1,0 +1,24 @@
+$OpenBSD: patch-servers_slurpd_st_c,v 1.1.2.1 2006/06/23 22:23:23 sturm Exp $
+--- servers/slurpd/st.c.orig	Thu Jan 20 18:01:19 2005
++++ servers/slurpd/st.c	Thu Jun 22 22:14:12 2006
+@@ -257,14 +257,15 @@ St_read(
+ 	}
+ 	if ( found ) {
+ 	    char tbuf[ 255 ];
+-	    sprintf( tbuf, "%s:%s (timestamp %s.%s)", hostname, port,
+-		    timestamp, seq );
++	    sprintf( tbuf, "%s.%s", timestamp, seq );
+ #ifdef NEW_LOGGING
+-		LDAP_LOG ( SLURPD, DETAIL1, "St_write: "
+-			"Retrieved state information for %s\n", tbuf, 0, 0 );
++	    LDAP_LOG ( SLURPD, DETAIL1, "St_write: "
++		"Retrieved state information for %s:%s (timestamp %s)\n",
++		hostname, port, tbuf );
+ #else
+ 	    Debug( LDAP_DEBUG_ARGS,
+-		    "Retrieved state information for %s\n", tbuf, 0, 0 );
++		"Retrieved state information for %s:%s (timestamp %s)\n",
++		hostname, port, tbuf );
+ #endif
+ 	} else {
+ #ifdef NEW_LOGGING

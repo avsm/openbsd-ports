@@ -1,4 +1,4 @@
-$OpenBSD: patch-imap_browse_c,v 1.1 2006/06/21 08:16:45 bernd Exp $
+$OpenBSD: patch-imap_browse_c,v 1.1.2.1 2006/06/24 17:15:31 sturm Exp $
 
 From mutt CVS:
 Fix browse_get_namespace() which could overflow ns[LONG_STRING].

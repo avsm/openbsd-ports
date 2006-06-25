@@ -1,7 +1,7 @@
-$OpenBSD: patch-cipher_Makefile_in,v 1.2 2006/02/06 21:57:56 bernd Exp $
---- cipher/Makefile.in.orig	Tue Mar 15 16:52:21 2005
-+++ cipher/Makefile.in	Mon Feb  6 16:04:35 2006
-@@ -271,7 +271,7 @@ sbindir = @sbindir@
+$OpenBSD: patch-cipher_Makefile_in,v 1.2.2.1 2006/06/25 14:38:23 sturm Exp $
+--- cipher/Makefile.in.orig	Wed Mar  8 09:43:26 2006
++++ cipher/Makefile.in	Sun Jun 25 14:19:50 2006
+@@ -270,7 +270,7 @@ sbindir = @sbindir@
  sharedstatedir = @sharedstatedir@
  sysconfdir = @sysconfdir@
  target_alias = @target_alias@

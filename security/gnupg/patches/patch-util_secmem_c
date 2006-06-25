@@ -1,7 +1,7 @@
-$OpenBSD: patch-util_secmem_c,v 1.1 2006/02/06 21:57:56 bernd Exp $
---- util/secmem.c.orig	Thu Mar 10 10:42:06 2005
-+++ util/secmem.c	Mon Feb  6 20:35:32 2006
-@@ -36,6 +36,9 @@
+$OpenBSD: patch-util_secmem_c,v 1.1.2.1 2006/06/25 14:38:23 sturm Exp $
+--- util/secmem.c.orig	Tue Feb 14 11:10:20 2006
++++ util/secmem.c	Sun Jun 25 14:18:47 2006
+@@ -37,6 +37,9 @@
  #include <sys/lock.h>
  #endif
  #endif
@@ -11,7 +11,7 @@ $OpenBSD: patch-util_secmem_c,v 1.1 2006/02/06 21:57:56 bernd Exp $
  
  #include "types.h"
  #include "memory.h"
-@@ -85,11 +88,23 @@ static int suspend_warning;
+@@ -86,11 +89,23 @@ static int suspend_warning;
  static void
  print_warn(void)
  {

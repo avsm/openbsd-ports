@@ -1,12 +1,12 @@
-$OpenBSD: patch-g10_Makefile_in,v 1.1 2005/02/19 12:10:03 alek Exp $
---- g10/Makefile.in.orig	Sat Feb 19 11:15:25 2005
-+++ g10/Makefile.in	Sat Feb 19 11:15:31 2005
-@@ -315,7 +315,7 @@ sbindir = @sbindir@
+$OpenBSD: patch-g10_Makefile_in,v 1.1.8.1 2006/06/25 14:38:02 sturm Exp $
+--- g10/Makefile.in.orig	Wed Mar  8 09:43:26 2006
++++ g10/Makefile.in	Sun Jun 25 15:53:42 2006
+@@ -321,7 +321,7 @@ sbindir = @sbindir@
  sharedstatedir = @sharedstatedir@
  sysconfdir = @sysconfdir@
  target_alias = @target_alias@
 -INCLUDES = -I$(top_srcdir)/include -I$(top_srcdir)/intl
 +INCLUDES = -I$(top_srcdir)/include
  EXTRA_DIST = options.skel
- @HAVE_DOSISH_SYSTEM_FALSE@AM_CFLAGS = -DGNUPG_LIBEXECDIR="\"$(libexecdir)\""
- needed_libs = ../cipher/libcipher.a ../mpi/libmpi.a ../util/libutil.a
+ # it seems that we can't use this with automake 1.5
+ #OMIT_DEPENDENCIES = zlib.h zconf.h

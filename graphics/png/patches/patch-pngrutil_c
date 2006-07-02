@@ -1,0 +1,12 @@
+$OpenBSD: patch-pngrutil_c,v 1.2.4.1 2006/07/02 15:31:23 sturm Exp $
+--- pngrutil.c.orig	Sun Jul  2 17:11:19 2006
++++ pngrutil.c	Sun Jul  2 17:11:33 2006
+@@ -275,7 +275,7 @@ png_decompress_chunk(png_structp png_ptr
+       if (ret != Z_STREAM_END)
+       {
+ #if !defined(PNG_NO_STDIO) && !defined(_WIN32_WCE)
+-         char umsg[50];
++         char umsg[52];
+ 
+          if (ret == Z_BUF_ERROR)
+             sprintf(umsg,"Buffer error in compressed datastream in %s chunk",

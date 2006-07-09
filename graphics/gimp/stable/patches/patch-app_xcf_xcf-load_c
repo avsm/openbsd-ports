@@ -1,0 +1,16 @@
+$OpenBSD: patch-app_xcf_xcf-load_c,v 1.1.4.1 2006/07/09 19:01:25 sturm Exp $
+--- app/xcf/xcf-load.c.orig	Sun Jul  9 16:29:52 2006
++++ app/xcf/xcf-load.c	Sun Jul  9 16:30:38 2006
+@@ -1661,6 +1661,12 @@ xcf_load_vector (XcfInfo   *info,
+           continue;
+         }
+ 
++      if (num_axes < 2 || num_axes > 6)
++        {
++          g_printerr ("bad number of axes in stroke description\n");
++          return FALSE;
++        }
++
+       control_points = g_value_array_new (num_control_points);
+ 
+       anchor.selected = FALSE;

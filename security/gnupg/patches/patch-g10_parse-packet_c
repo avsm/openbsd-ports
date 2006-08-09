@@ -1,9 +1,9 @@
-$OpenBSD: patch-g10_parse-packet_c,v 1.1.4.1 2006/06/25 14:38:23 sturm Exp $
+$OpenBSD: patch-g10_parse-packet_c,v 1.1.4.2 2006/08/09 20:17:02 sturm Exp $
 
 Security fix for CVE-2006-3082. Diff from gnupg CVS.
 
---- g10/parse-packet.c.orig	Sun Jun 25 15:50:59 2006
-+++ g10/parse-packet.c	Sun Jun 25 15:50:38 2006
+--- g10/parse-packet.c.orig	Tue Feb 14 11:10:17 2006
++++ g10/parse-packet.c	Wed Aug  9 21:34:49 2006
 @@ -1983,6 +1983,20 @@ parse_user_id( IOBUF inp, int pkttype, u
  {
      byte *p;
@@ -24,4 +24,33 @@ Security fix for CVE-2006-3082. Diff from gnupg CVS.
 +
      packet->pkt.user_id = m_alloc(sizeof *packet->pkt.user_id  + pktlen);
      packet->pkt.user_id->len = pktlen;
+ 
+@@ -2077,6 +2091,16 @@ parse_comment( IOBUF inp, int pkttype, u
+ {
+     byte *p;
+ 
++    /* Cap comment packet at a reasonable value to avoid an integer
++       overflow in the malloc below.  Comment packets are actually not
++       anymore define my OpenPGP and we even stopped to use our
++       private comment packet. */
++    if (pktlen>65536)
++      {
++       log_error ("packet(%d) too large\n", pkttype);
++       iobuf_skip_rest (inp, pktlen, 0);
++       return G10ERR_INVALID_PACKET;
++      }
+     packet->pkt.comment = m_alloc(sizeof *packet->pkt.comment + pktlen - 1);
+     packet->pkt.comment->len = pktlen;
+     p = packet->pkt.comment->data;
+@@ -2329,6 +2353,11 @@ parse_gpg_control( IOBUF inp, int pkttyp
+ 	if ( sesmark[i] != iobuf_get_noeof(inp) )
+             goto skipit;
+     }
++
++    /* Definitely too large.  We skip it to avoid an overflow in the malloc. */
++    if (pktlen > 4096)
++        goto skipit;
++
+     if ( list_mode )
+         puts ("- gpg control packet");
  

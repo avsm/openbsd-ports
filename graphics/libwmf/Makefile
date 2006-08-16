@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.9 2005/05/16 19:22:16 alek Exp $
+# $OpenBSD: Makefile,v 1.9.2.1 2006/08/16 20:27:32 sturm Exp $
 
 COMMENT=	"WMF handling and conversion library"
 
 DISTNAME=	libwmf-0.2.8.3
+PKGNAME=	${DISTNAME}p2
 CATEGORIES=	graphics devel
 
 HOMEPAGE=	http://wvware.sf.net/

@@ -1,11 +1,9 @@
-# $OpenBSD: Makefile,v 1.14.2.1 2006/05/01 18:59:41 sturm Exp $
+# $OpenBSD: Makefile,v 1.14.2.2 2006/08/20 10:11:40 sturm Exp $
 
 COMMENT=		"virus scanner"
-DISTNAME=		clamav-0.88.2
+DISTNAME=		clamav-0.88.4
 CATEGORIES=		security
-SHARED_LIBS=		clamav 1.19
-MODGNU_SHARED_LIBS=	clamav ''
-LIBclamav_ALIAS=	realclamav
+SHARED_LIBS=		clamav 1.20
 
 HOMEPAGE=		http://www.clamav.net/
 
@@ -42,6 +40,7 @@ CONFIGURE_ARGS+=        --disable-clamav \
 			--disable-clamuko \
 			--enable-bigstack \
 			--enable-milter \
+			--mandir=${PREFIX}/man \
 			--with-user=_clamav \
 			--with-group=_clamav \
                         --disable-cr \

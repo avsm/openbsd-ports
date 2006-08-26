@@ -1,4 +1,4 @@
-$OpenBSD: patch-lib_http_c,v 1.1 2006/08/17 17:02:13 naddy Exp $
+$OpenBSD: patch-lib_http_c,v 1.1.4.1 2006/08/26 06:28:40 sturm Exp $
 --- lib/http.c.orig	Sat Apr  9 06:06:15 2005
 +++ lib/http.c	Thu Aug 17 18:29:22 2006
 @@ -212,7 +212,7 @@ httplib_parse_sc_header(const char *url,

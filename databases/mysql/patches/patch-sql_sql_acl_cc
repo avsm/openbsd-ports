@@ -1,4 +1,4 @@
-$OpenBSD: patch-sql_sql_acl_cc,v 1.5 2006/10/03 04:52:03 brad Exp $
+$OpenBSD: patch-sql_sql_acl_cc,v 1.5.2.1 2006/10/04 16:29:15 sturm Exp $
 --- sql/sql_acl.cc.orig	Mon Oct  2 21:50:32 2006
 +++ sql/sql_acl.cc	Mon Oct  2 23:04:25 2006
 @@ -149,8 +149,8 @@ my_bool acl_init(bool dont_read_acl_tabl

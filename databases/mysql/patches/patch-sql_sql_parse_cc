@@ -1,4 +1,4 @@
-$OpenBSD: patch-sql_sql_parse_cc,v 1.4 2006/10/03 04:52:03 brad Exp $
+$OpenBSD: patch-sql_sql_parse_cc,v 1.4.2.1 2006/10/04 16:29:15 sturm Exp $
 --- sql/sql_parse.cc.orig	Fri Aug 25 17:12:28 2006
 +++ sql/sql_parse.cc	Mon Oct  2 11:28:32 2006
 @@ -4383,9 +4383,6 @@ end_with_restore_list:

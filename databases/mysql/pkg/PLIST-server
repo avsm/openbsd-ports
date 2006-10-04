@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-server,v 1.18.2.1 2006/05/14 07:19:51 sturm Exp $
+@comment $OpenBSD: PLIST-server,v 1.18.2.2 2006/10/04 16:29:15 sturm Exp $
 @newgroup _mysql:502
 @newuser _mysql:502:_mysql:daemon:MySQL Account:/nonexistent:/sbin/nologin
 bin/comp_err
@@ -19,6 +19,7 @@ bin/mysql_secure_installation
 bin/mysql_setpermission
 bin/mysql_tableinfo
 bin/mysql_upgrade
+bin/mysql_upgrade_shell
 bin/mysql_waitpid
 bin/mysql_zap
 bin/mysqlaccess
@@ -45,6 +46,7 @@ libexec/mysqlmanager
 @man man/man1/myisamlog.1
 @man man/man1/myisampack.1
 @man man/man1/mysql.server.1
+@man man/man1/mysql_explain_log.1
 @man man/man1/mysql_fix_privilege_tables.1
 @man man/man1/mysql_upgrade.1
 @man man/man1/mysql_zap.1

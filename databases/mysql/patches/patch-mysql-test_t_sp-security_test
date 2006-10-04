@@ -1,4 +1,4 @@
-$OpenBSD: patch-mysql-test_t_sp-security_test,v 1.1 2006/10/03 04:52:03 brad Exp $
+$OpenBSD: patch-mysql-test_t_sp-security_test,v 1.1.2.1 2006/10/04 16:29:15 sturm Exp $
 --- mysql-test/t/sp-security.test.orig	Fri Aug 25 17:44:06 2006
 +++ mysql-test/t/sp-security.test	Mon Oct  2 11:28:32 2006
 @@ -790,4 +790,80 @@ SELECT Host,User,Password FROM mysql.use

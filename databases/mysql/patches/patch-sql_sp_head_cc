@@ -1,4 +1,4 @@
-$OpenBSD: patch-sql_sp_head_cc,v 1.1 2006/10/03 04:52:03 brad Exp $
+$OpenBSD: patch-sql_sp_head_cc,v 1.1.2.1 2006/10/04 16:29:15 sturm Exp $
 --- sql/sp_head.cc.orig	Fri Aug 25 17:11:56 2006
 +++ sql/sp_head.cc	Mon Oct  2 11:28:32 2006
 @@ -1097,6 +1097,7 @@ sp_head::execute(THD *thd)

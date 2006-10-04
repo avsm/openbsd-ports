@@ -1,6 +1,6 @@
-$OpenBSD: patch-mysql-test_mysql-test-run_sh,v 1.6.2.1 2006/05/14 07:19:51 sturm Exp $
---- mysql-test/mysql-test-run.sh.orig	Wed Apr 26 20:31:05 2006
-+++ mysql-test/mysql-test-run.sh	Wed May 10 22:35:58 2006
+$OpenBSD: patch-mysql-test_mysql-test-run_sh,v 1.6.2.2 2006/10/04 16:29:15 sturm Exp $
+--- mysql-test/mysql-test-run.sh.orig	Fri Mar 31 12:10:41 2006
++++ mysql-test/mysql-test-run.sh	Mon Apr 17 01:25:23 2006
 @@ -101,7 +101,6 @@ sleep_until_file_created ()
      loop=`expr $loop - 1`
    done

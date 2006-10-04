@@ -1,6 +1,6 @@
-$OpenBSD: patch-mysql-test_Makefile_in,v 1.9.2.1 2006/05/14 07:19:51 sturm Exp $
---- mysql-test/Makefile.in.orig	Wed Apr 26 20:31:57 2006
-+++ mysql-test/Makefile.in	Wed May 10 22:37:32 2006
+$OpenBSD: patch-mysql-test_Makefile_in,v 1.9.2.2 2006/10/04 16:29:15 sturm Exp $
+--- mysql-test/Makefile.in.orig	Wed Apr 26 14:31:57 2006
++++ mysql-test/Makefile.in	Sun May  7 03:14:55 2006
 @@ -387,7 +387,7 @@ zlib_dir = @zlib_dir@
  @HAVE_NDBCLUSTER_DB_TRUE@DIST_SUBDIRS = ndb
  @HAVE_NDBCLUSTER_DB_FALSE@USE_NDBCLUSTER = \"\"

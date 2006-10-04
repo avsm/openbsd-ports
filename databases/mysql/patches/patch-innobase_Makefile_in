@@ -1,6 +1,6 @@
-$OpenBSD: patch-innobase_Makefile_in,v 1.7.2.1 2006/05/14 07:19:51 sturm Exp $
---- innobase/Makefile.in.orig	Wed Apr 26 20:33:12 2006
-+++ innobase/Makefile.in	Wed May 10 22:37:30 2006
+$OpenBSD: patch-innobase_Makefile_in,v 1.7.2.2 2006/10/04 16:29:15 sturm Exp $
+--- innobase/Makefile.in.orig	Wed Apr 26 14:33:12 2006
++++ innobase/Makefile.in	Sun May  7 03:14:55 2006
 @@ -548,9 +548,9 @@ distcleancheck: distclean
  check-am: all-am
  check: check-recursive

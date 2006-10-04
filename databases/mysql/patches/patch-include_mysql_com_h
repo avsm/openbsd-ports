@@ -1,4 +1,4 @@
-$OpenBSD: patch-include_mysql_com_h,v 1.1 2006/10/03 04:52:03 brad Exp $
+$OpenBSD: patch-include_mysql_com_h,v 1.1.2.1 2006/10/04 16:29:15 sturm Exp $
 --- include/mysql_com.h.orig	Tue Oct  3 00:13:53 2006
 +++ include/mysql_com.h	Tue Oct  3 00:14:50 2006
 @@ -134,11 +134,11 @@ enum enum_server_command

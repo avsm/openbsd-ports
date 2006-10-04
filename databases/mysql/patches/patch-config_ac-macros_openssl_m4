@@ -1,4 +1,4 @@
-$OpenBSD: patch-config_ac-macros_openssl_m4,v 1.1 2006/10/03 04:52:03 brad Exp $
+$OpenBSD: patch-config_ac-macros_openssl_m4,v 1.1.2.1 2006/10/04 16:29:15 sturm Exp $
 --- config/ac-macros/openssl.m4.orig	Tue Oct  3 00:17:53 2006
 +++ config/ac-macros/openssl.m4	Tue Oct  3 00:19:47 2006
 @@ -30,8 +30,8 @@ AC_DEFUN([MYSQL_FIND_OPENSSL], [

@@ -1,4 +1,4 @@
-$OpenBSD: patch-scripts_mysql_install_db_sh,v 1.2.2.1 2006/05/14 07:19:51 sturm Exp $
+$OpenBSD: patch-scripts_mysql_install_db_sh,v 1.2.2.2 2006/10/04 16:29:15 sturm Exp $
 --- scripts/mysql_install_db.sh.orig	Wed Apr 26 14:30:55 2006
 +++ scripts/mysql_install_db.sh	Sun May  7 03:16:59 2006
 @@ -8,10 +8,9 @@

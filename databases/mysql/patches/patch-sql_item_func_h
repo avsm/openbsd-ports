@@ -1,4 +1,4 @@
-$OpenBSD: patch-sql_item_func_h,v 1.1 2006/10/03 04:52:03 brad Exp $
+$OpenBSD: patch-sql_item_func_h,v 1.1.2.1 2006/10/04 16:29:15 sturm Exp $
 --- sql/item_func.h.orig	Fri Aug 25 17:12:10 2006
 +++ sql/item_func.h	Mon Oct  2 11:28:32 2006
 @@ -1465,8 +1465,7 @@ public:

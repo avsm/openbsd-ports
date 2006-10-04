@@ -1,4 +1,4 @@
-$OpenBSD: patch-sql_sql_trigger_cc,v 1.1 2006/10/03 04:52:03 brad Exp $
+$OpenBSD: patch-sql_sql_trigger_cc,v 1.1.2.1 2006/10/04 16:29:15 sturm Exp $
 --- sql/sql_trigger.cc.orig	Fri Aug 25 17:11:50 2006
 +++ sql/sql_trigger.cc	Mon Oct  2 11:28:32 2006
 @@ -1493,40 +1493,11 @@ bool Table_triggers_list::process_trigge

@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.4 2005/04/11 01:19:56 naddy Exp $
+# $OpenBSD: Makefile,v 1.4.2.1 2006/10/21 13:06:47 sturm Exp $
 
 COMMENT=	"dynamic object oriented portal script written in PHP"
 
-V=		2.0.9.2
+V=		2.0.15
 DISTNAME=	xoops-${V}
-PKGNAME=	${DISTNAME}p0
+PKGNAME=	${DISTNAME}
 CATEGORIES=	www
 
 HOMEPAGE=	http://www.xoops.org/

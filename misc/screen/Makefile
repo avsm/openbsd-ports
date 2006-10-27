@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.55 2005/01/27 02:09:52 naddy Exp $
+# $OpenBSD: Makefile,v 1.55.4.1 2006/10/27 20:36:25 sturm Exp $
 
 COMMENT=	"multi-screen window manager"
 
-VERSION=	4.0.2
+VERSION=	4.0.3
 DISTNAME=	screen-${VERSION}
 CATEGORIES=	misc
 MASTER_SITES=	ftp://ftp.uni-erlangen.de/pub/utilities/screen/

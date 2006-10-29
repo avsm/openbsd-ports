@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_kernel_qimage_cpp,v 1.5 2006/10/24 22:39:36 espie Exp $
+$OpenBSD: patch-src_kernel_qimage_cpp,v 1.5.2.1 2006/10/29 17:50:15 sturm Exp $
 --- src/kernel/qimage.cpp.orig	Fri Sep  2 14:43:01 2005
 +++ src/kernel/qimage.cpp	Tue Oct 24 22:30:51 2006
 @@ -475,7 +475,12 @@ QImage::QImage( uchar* yourdata, int w, 

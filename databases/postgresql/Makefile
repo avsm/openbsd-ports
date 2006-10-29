@@ -1,20 +1,20 @@
-# $OpenBSD: Makefile,v 1.85.2.1 2006/05/24 22:29:59 sturm Exp $
+# $OpenBSD: Makefile,v 1.85.2.2 2006/10/29 18:19:07 sturm Exp $
 
 COMMENT=	"PostgreSQL RDBMS (client)"
 COMMENT-server=	"PostgreSQL RDBMS (server)"
 COMMENT-docs=	"PostgreSQL RDBMS documentation"
 
-VERSION=	8.1.4
+VERSION=	8.1.5
 DISTNAME=	postgresql-${VERSION}
 FULLPKGNAME=	postgresql-client-${VERSION}
 PKGNAME-server=	postgresql-server-${VERSION}
 PKGNAME-docs=	postgresql-docs-${VERSION}
 
 CATEGORIES=	databases
-SHARED_LIBS=	ecpg		5.1 \
-		ecpg_compat	2.1 \
-		pgtypes		2.1 \
-		pq		4.1
+SHARED_LIBS=	ecpg		5.2 \
+		ecpg_compat	2.2 \
+		pgtypes		2.2 \
+		pq		4.2
 
 HOMEPAGE=	http://www.postgresql.org/
 

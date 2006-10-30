@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_kernel_qpixmap_x11_cpp,v 1.1 2006/10/24 22:39:36 espie Exp $
+$OpenBSD: patch-src_kernel_qpixmap_x11_cpp,v 1.1.4.1 2006/10/30 20:59:12 sturm Exp $
 --- src/kernel/qpixmap_x11.cpp.orig	Fri Sep  2 14:43:00 2005
 +++ src/kernel/qpixmap_x11.cpp	Tue Oct 24 22:30:51 2006
 @@ -953,6 +953,9 @@ bool QPixmap::convertFromImage( const QI

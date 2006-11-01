@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_tools_qfile_cpp,v 1.1 2006/10/18 18:05:31 espie Exp $
+$OpenBSD: patch-src_tools_qfile_cpp,v 1.1.4.1 2006/11/01 08:59:09 sturm Exp $
 --- src/tools/qfile.cpp.orig	Wed Oct 18 13:21:33 2006
 +++ src/tools/qfile.cpp	Wed Oct 18 13:35:35 2006
 @@ -70,8 +70,13 @@ class QFilePrivate

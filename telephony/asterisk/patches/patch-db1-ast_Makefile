@@ -1,7 +1,7 @@
-$OpenBSD: patch-db1-ast_Makefile,v 1.2 2006/06/12 19:04:10 naddy Exp $
---- db1-ast/Makefile.orig	Sun Apr 30 15:27:56 2006
-+++ db1-ast/Makefile	Thu Jun  1 02:34:47 2006
-@@ -8,9 +8,11 @@
+$OpenBSD: patch-db1-ast_Makefile,v 1.2.2.1 2006/11/01 13:45:32 sturm Exp $
+--- db1-ast/Makefile.orig	Sun Apr 30 16:27:56 2006
++++ db1-ast/Makefile	Fri Oct 20 13:47:54 2006
+@@ -8,9 +8,11 @@ else
  SOVER=2
  endif
  #Added support for UltraSparc - Belgarath

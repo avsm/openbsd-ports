@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.10 2006/06/15 06:39:50 steven Exp $
+# $OpenBSD: Makefile,v 1.10.2.1 2006/11/01 13:45:31 sturm Exp $
 
 COMMENT=	"open source PBX"
 DISTNAME=	asterisk-1.2.9.1
-PKGNAME=	${DISTNAME}p0
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	telephony
-MASTER_SITES=	ftp://ftp.digium.com/pub/asterisk/
+MASTER_SITES=	http://ftp.digium.com/pub/asterisk/releases/
 
 HOMEPAGE=	http://www.asterisk.org/
 

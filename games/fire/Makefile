@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.7 2004/11/28 22:41:17 espie Exp $
+# $OpenBSD: Makefile,v 1.7.8.1 2006/11/03 17:38:53 sturm Exp $
 
 COMMENT=	"organic fireworks demo"
 
 DISTNAME=	fire-1.0
+PKGNAME=	${DISTNAME}p0
 CATEGORIES=	games
 
 HOMEPAGE=	http://www.libsdl.org/projects/fire/

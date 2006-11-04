@@ -1,4 +1,4 @@
-$OpenBSD: patch-j2se_src_share_classes_java_util_TimeZone_java,v 1.1 2006/09/26 17:48:19 kurt Exp $
+$OpenBSD: patch-j2se_src_share_classes_java_util_TimeZone_java,v 1.1.2.1 2006/11/04 09:23:01 sturm Exp $
 --- j2se/src/share/classes/java/util/TimeZone.java.orig	Wed Aug 30 13:18:08 2006
 +++ j2se/src/share/classes/java/util/TimeZone.java	Wed Aug 30 13:19:26 2006
 @@ -748,15 +748,13 @@ abstract public class TimeZone implement

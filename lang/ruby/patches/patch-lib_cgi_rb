@@ -1,4 +1,4 @@
-$OpenBSD: patch-lib_cgi_rb,v 1.1 2006/11/02 12:46:13 bernd Exp $
+$OpenBSD: patch-lib_cgi_rb,v 1.1.4.1 2006/11/04 11:46:17 sturm Exp $
 
 Security fix for CVE-2006-5467 from ruby CVS. Should be fixed in >1.8.5.
 

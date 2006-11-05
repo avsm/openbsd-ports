@@ -1,6 +1,6 @@
-@comment $OpenBSD: PLIST,v 1.11 2005/11/01 11:34:15 mbalmer Exp $
-@group daemon
+@comment $OpenBSD: PLIST,v 1.11.2.1 2006/11/05 20:08:08 sturm Exp $
 @owner root
+@group daemon
 horde/
 horde/COPYING
 horde/README
@@ -343,8 +343,6 @@ horde/lib/Horde/RPC/syncml_wbxml.php
 horde/lib/Horde/RPC/webdav.php
 horde/lib/Horde/RPC/xmlrpc.php
 horde/lib/Horde/Registry.php
-horde/lib/Horde/Relationship/
-horde/lib/Horde/Relationship/Manager.php
 horde/lib/Horde/SQL/
 horde/lib/Horde/SQL.php
 horde/lib/Horde/SQL/Attributes.php
@@ -513,7 +511,6 @@ horde/lib/VFS/sql.php
 horde/lib/VFS/sql_file.php
 horde/lib/VFS/tests/
 horde/lib/XML/
-horde/lib/XML/RAX.php
 horde/lib/XML/SVG.php
 horde/lib/XML/WBXML/
 horde/lib/XML/WBXML.php
@@ -1598,6 +1595,4 @@ horde/themes/simplex/info.php
 horde/themes/simplex/screen.css
 horde/util/
 horde/util/barcode.php
-horde/util/google_example.php
-horde/util/icon_browser.php
 horde/util/regex_test.php

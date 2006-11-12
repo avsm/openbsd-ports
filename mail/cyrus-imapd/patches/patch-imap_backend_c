@@ -1,4 +1,4 @@
-$OpenBSD: patch-imap_backend_c,v 1.1 2006/09/22 09:08:24 jasper Exp $
+$OpenBSD: patch-imap_backend_c,v 1.1.2.1 2006/11/12 09:02:03 sturm Exp $
 --- imap/backend.c.orig	Sun Sep 17 16:40:12 2006
 +++ imap/backend.c	Sun Sep 17 16:40:45 2006
 @@ -271,7 +271,7 @@ struct backend *backend_connect(struct b

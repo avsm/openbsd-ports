@@ -1,0 +1,16 @@
+$OpenBSD: patch-pngset_c,v 1.2.2.1 2006/11/18 07:59:44 sturm Exp $
+--- pngset.c.orig	Sat Nov 18 08:50:27 2006
++++ pngset.c	Sat Nov 18 08:52:07 2006
+@@ -944,10 +944,10 @@ png_set_sPLT(png_structp png_ptr,
+         /* TODO: use png_malloc_warn */
+         png_strcpy(to->name, from->name);
+         to->entries = (png_sPLT_entryp)png_malloc(png_ptr,
+-            from->nentries * png_sizeof(png_sPLT_t));
++            from->nentries * png_sizeof(png_sPLT_entry));
+         /* TODO: use png_malloc_warn */
+         png_memcpy(to->entries, from->entries,
+-            from->nentries * png_sizeof(png_sPLT_t));
++            from->nentries * png_sizeof(png_sPLT_entry));
+         to->nentries = from->nentries;
+         to->depth = from->depth;
+     }

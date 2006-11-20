@@ -1,0 +1,19 @@
+$OpenBSD: patch-loaders_loader_jpeg_c,v 1.1.4.1 2006/11/20 20:44:56 sturm Exp $
+
+Fix for CVE-2006-4806, CVE-2006-4807, CVE-2006-4808, CVE-2006-4809.
+
+--- loaders/loader_jpeg.c.orig	Fri Nov  7 08:39:32 2003
++++ loaders/loader_jpeg.c	Mon Nov 20 21:09:35 2006
+@@ -98,6 +98,12 @@ load(ImlibImage * im, ImlibProgressFunct
+      {
+         im->w = w = cinfo.output_width;
+         im->h = h = cinfo.output_height;
++	if ((w < 1) || (h < 1) || (w > 8192) || (h > 8192))
++	  {
++             jpeg_destroy_decompress(&cinfo);
++             fclose(f);
++             return 0;
++	  }
+         UNSET_FLAG(im->flags, F_HAS_ALPHA);
+         im->format = strdup("jpeg");
+      }

@@ -1,0 +1,18 @@
+$OpenBSD: patch-loaders_loader_argb_c,v 1.1.4.1 2006/11/20 20:44:56 sturm Exp $
+
+Fix for CVE-2006-4806, CVE-2006-4807, CVE-2006-4808, CVE-2006-4809.
+
+--- loaders/loader_argb.c.orig	Fri Nov  7 08:39:32 2003
++++ loaders/loader_argb.c	Mon Nov 20 21:09:11 2006
+@@ -53,6 +53,11 @@ load(ImlibImage * im, ImlibProgressFunct
+            fclose(f);
+            return 0;
+         }
++      if ((w < 1) || (h < 1) || (w > 8192) || (h > 8192))
++	{
++           fclose(f);
++           return 0;
++	}
+       im->w = w;
+       im->h = h;
+       if (!im->format)

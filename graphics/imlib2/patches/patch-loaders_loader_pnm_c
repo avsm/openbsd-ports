@@ -1,0 +1,27 @@
+$OpenBSD: patch-loaders_loader_pnm_c,v 1.1.4.1 2006/11/20 20:44:56 sturm Exp $
+
+Fix for CVE-2006-4806, CVE-2006-4807, CVE-2006-4808, CVE-2006-4809.
+
+--- loaders/loader_pnm.c.orig	Sun Feb 15 02:30:48 2004
++++ loaders/loader_pnm.c	Mon Nov 20 21:09:55 2006
+@@ -114,7 +114,7 @@ load(ImlibImage * im, ImlibProgressFunct
+                }
+           }
+      }
+-   if ((w <= 0) || (w > 8192) || (h <= 0) || (h > 8192) || (v < 0) || (v > 255))
++   if ((v < 0) || (v > 255))
+      {
+         fclose(f);
+         return 0;
+@@ -122,6 +122,11 @@ load(ImlibImage * im, ImlibProgressFunct
+ 
+    im->w = w;
+    im->h = h;
++   if ((w < 1) || (h < 1) || (w > 8192) || (h > 8192))
++     {
++	fclose(f);
++	return 0;
++     }
+    if (!im->format)
+      {
+         if (p == '8')

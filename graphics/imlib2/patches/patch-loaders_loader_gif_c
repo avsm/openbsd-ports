@@ -1,0 +1,18 @@
+$OpenBSD: patch-loaders_loader_gif_c,v 1.1.4.1 2006/11/20 20:44:56 sturm Exp $
+
+Fix for CVE-2006-4806, CVE-2006-4807, CVE-2006-4808, CVE-2006-4809.
+
+--- loaders/loader_gif.c.orig	Tue Feb 10 19:32:22 2004
++++ loaders/loader_gif.c	Mon Nov 20 21:09:23 2006
+@@ -78,6 +78,11 @@ load(ImlibImage * im, ImlibProgressFunct
+                }
+              w = gif->Image.Width;
+              h = gif->Image.Height;
++	     if ((w < 1) || (h < 1) || (w > 8192) || (h > 8192))
++	       {
++                  DGifCloseFile(gif);
++                  return 0;
++	       }
+              rows = malloc(h * sizeof(GifRowType *));
+              if (!rows)
+                {

@@ -1,0 +1,39 @@
+$OpenBSD: patch-loaders_loader_tiff_c,v 1.1.4.1 2006/11/20 20:44:57 sturm Exp $
+
+Fix for CVE-2006-4806, CVE-2006-4807, CVE-2006-4808, CVE-2006-4809.
+
+--- loaders/loader_tiff.c.orig	Sun Feb 15 02:30:48 2004
++++ loaders/loader_tiff.c	Mon Nov 20 21:23:12 2006
+@@ -81,7 +81,7 @@ static void
+ raster(TIFFRGBAImage_Extra * img, uint32 * rast,
+        uint32 x, uint32 y, uint32 w, uint32 h)
+ {
+-   uint32              image_width, image_height;
++   int                image_width, image_height;
+    uint32             *pixel, pixel_value;
+    int                 i, j, dy, rast_offset;
+    DATA32             *buffer_pixel, *buffer = img->image->data;
+@@ -200,6 +200,12 @@ load(ImlibImage * im, ImlibProgressFunct
+    rgba_image.image = im;
+    im->w = width = rgba_image.rgba.width;
+    im->h = height = rgba_image.rgba.height;
++   if ((width < 1) || (height < 1) || (width > 8192) || (height > 8192))
++     {
++	TIFFRGBAImageEnd((TIFFRGBAImage *) & rgba_image);
++        TIFFClose(tif);
++        return 0;
++     }
+    rgba_image.num_pixels = num_pixels = width * height;
+    if (rgba_image.rgba.alpha != EXTRASAMPLE_UNSPECIFIED)
+       SET_FLAG(im->flags, F_HAS_ALPHA);
+@@ -392,8 +398,9 @@ save(ImlibImage * im, ImlibProgressFunct
+ 
+    if (has_alpha)
+      {
++	uint16 extras[] = { EXTRASAMPLE_ASSOCALPHA };
+         TIFFSetField(tif, TIFFTAG_SAMPLESPERPIXEL, 4);
+-        TIFFSetField(tif, TIFFTAG_EXTRASAMPLES, EXTRASAMPLE_ASSOCALPHA);
++	TIFFSetField(tif, TIFFTAG_EXTRASAMPLES, 1, extras);
+      }
+    else
+      {

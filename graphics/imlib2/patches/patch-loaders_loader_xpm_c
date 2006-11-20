@@ -1,0 +1,30 @@
+$OpenBSD: patch-loaders_loader_xpm_c,v 1.1.2.1 2006/11/20 20:29:52 sturm Exp $
+
+Fix for CVE-2006-4806, CVE-2006-4807, CVE-2006-4808, CVE-2006-4809.
+
+--- loaders/loader_xpm.c.orig	Tue Feb 10 19:32:22 2004
++++ loaders/loader_xpm.c	Mon Nov 20 21:16:52 2006
+@@ -216,19 +216,19 @@ load(ImlibImage * im, ImlibProgressFunct
+                             xpm_parse_done();
+                             return 0;
+                          }
+-                       if (w > 32767)
++                       if ((w > 8192) || (w < 1))
+                          {
+                             fprintf(stderr,
+-                                    "IMLIB ERROR: Image width > 32767 pixels for file\n");
++                                    "IMLIB ERROR: Image width > 8192 or < 1 pixels for file\n");
+                             free(line);
+                             fclose(f);
+                             xpm_parse_done();
+                             return 0;
+                          }
+-                       if (h > 32767)
++                       if ((h > 8192) || (h < 1))
+                          {
+                             fprintf(stderr,
+-                                    "IMLIB ERROR: Image height > 32767 pixels for file\n");
++                                    "IMLIB ERROR: Image height > 8192 or < 1 pixels for file\n");
+                             free(line);
+                             fclose(f);
+                             xpm_parse_done();

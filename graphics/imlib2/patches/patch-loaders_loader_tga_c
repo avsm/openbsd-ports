@@ -1,0 +1,81 @@
+$OpenBSD: patch-loaders_loader_tga_c,v 1.1.2.1 2006/11/20 20:29:52 sturm Exp $
+--- loaders/loader_tga.c.orig	Thu May 20 05:34:27 2004
++++ loaders/loader_tga.c	Mon Nov 20 21:10:05 2006
+@@ -304,9 +304,8 @@ load(ImlibImage * im, ImlibProgressFunct
+    im->w = (header->widthHi << 8) | header->widthLo;
+    im->h = (header->heightHi << 8) | header->heightLo;
+ 
+-   if ((im->w > 32767) || (im->w < 1) || (im->h > 32767) || (im->h < 1))
++   if ((im->w < 1) || (im->h < 1) || (im->w > 8192) || (im->h > 8192))
+      {
+-        im->w = 0;
+ 	munmap(seg, ss.st_size);
+         close(fd);
+         return 0;
+@@ -325,7 +324,7 @@ load(ImlibImage * im, ImlibProgressFunct
+    if (((!im->data) && (im->loader)) || (immediate_load) || (progress))
+      {
+         unsigned long       datasize;
+-        unsigned char      *bufptr;
++        unsigned char      *bufptr, *bufend;
+         DATA32             *dataptr;
+ 
+         int                 y, pl = 0;
+@@ -354,6 +353,7 @@ load(ImlibImage * im, ImlibProgressFunct
+ 
+         /* bufptr is the next byte to be read from the buffer */
+         bufptr = filedata;
++	bufend = filedata + datasize;
+ 
+         /* dataptr is the next 32-bit pixel to be filled in */
+         dataptr = im->data;
+@@ -429,9 +429,10 @@ load(ImlibImage * im, ImlibProgressFunct
+              unsigned char       curbyte, red, green, blue, alpha;
+              DATA32             *final_pixel = dataptr + im->w * im->h;
+ 
+-             /* loop until we've got all the pixels */
+-             while (dataptr < final_pixel)
+-               {
++             /* loop until we've got all the pixels or run out of input */
++	     while ((dataptr < final_pixel) &&
++		    ((bufptr + 1 + (bpp / 8)) < bufend))
++	       {
+                   int                 count;
+ 
+                   curbyte = *bufptr++;
+@@ -448,7 +449,7 @@ load(ImlibImage * im, ImlibProgressFunct
+                               green = *bufptr++;
+                               red = *bufptr++;
+                               alpha = *bufptr++;
+-                              for (i = 0; i < count; i++)
++			    for (i = 0; (i < count) && (dataptr < final_pixel); i++)
+                                 {
+                                    WRITE_RGBA(dataptr, red, green, blue, alpha);
+                                    dataptr++;
+@@ -459,7 +460,7 @@ load(ImlibImage * im, ImlibProgressFunct
+                               blue = *bufptr++;
+                               green = *bufptr++;
+                               red = *bufptr++;
+-                              for (i = 0; i < count; i++)
++			    for (i = 0; (i < count) && (dataptr < final_pixel); i++)
+                                 {
+                                    WRITE_RGBA(dataptr, red, green, blue,
+                                               (char)0xff);
+@@ -469,7 +470,7 @@ load(ImlibImage * im, ImlibProgressFunct
+ 
+                            case 8:
+                               alpha = *bufptr++;
+-                              for (i = 0; i < count; i++)
++			    for (i = 0; (i < count) && (dataptr < final_pixel); i++)
+                                 {
+                                    WRITE_RGBA(dataptr, alpha, alpha, alpha,
+                                               (char)0xff);
+@@ -484,7 +485,7 @@ load(ImlibImage * im, ImlibProgressFunct
+                     {
+                        int                 i;
+ 
+-                       for (i = 0; i < count; i++)
++                       for (i = 0; (i < count) && (dataptr < final_pixel); i++)
+                          {
+                             switch (bpp)
+                               {

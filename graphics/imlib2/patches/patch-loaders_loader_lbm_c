@@ -1,0 +1,18 @@
+$OpenBSD: patch-loaders_loader_lbm_c,v 1.1.2.1 2006/11/20 20:29:51 sturm Exp $
+
+Fix for CVE-2006-4806, CVE-2006-4807, CVE-2006-4808, CVE-2006-4809.
+
+--- loaders/loader_lbm.c.orig	Mon Aug 30 08:05:59 2004
++++ loaders/loader_lbm.c	Mon Nov 20 21:09:43 2006
+@@ -421,7 +421,10 @@ ILBM    ilbm;
+ 
+         im->w = L2RWORD(ilbm.bmhd.data);
+         im->h = L2RWORD(ilbm.bmhd.data + 2);
+-        if (im->w <= 0 || im->h <= 0) ok = 0;
++	if ((im->w < 1) || (im->h < 1) || (im->w > 8192) || (im->h > 8192))
++	  {
++	     ok = 0;
++	  }
+ 
+         ilbm.depth = ilbm.bmhd.data[8];
+         if (ilbm.depth < 1 || (ilbm.depth > 8 && ilbm.depth != 24 && ilbm.depth != 32)) ok = 0; /* Only 1 to 8, 24, or 32 planes. */

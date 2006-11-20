@@ -1,0 +1,20 @@
+$OpenBSD: patch-loaders_loader_png_c,v 1.1.2.1 2006/11/20 20:29:52 sturm Exp $
+
+Fix for CVE-2006-4806, CVE-2006-4807, CVE-2006-4808, CVE-2006-4809.
+
+--- loaders/loader_png.c.orig	Mon Aug 30 10:13:20 2004
++++ loaders/loader_png.c	Mon Nov 20 21:09:50 2006
+@@ -91,6 +91,13 @@ load(ImlibImage * im, ImlibProgressFunct
+                      &interlace_type, NULL, NULL);
+         im->w = (int)w32;
+         im->h = (int)h32;
++	if ((w32 < 1) || (h32 < 1) || (w32 > 8192) || (h32 > 8192))
++	  {
++             png_read_end(png_ptr, info_ptr);
++             png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp) NULL);
++             fclose(f);
++             return 0;
++	  }
+         if (color_type == PNG_COLOR_TYPE_PALETTE)
+ 	  {
+ 	     png_set_expand(png_ptr);

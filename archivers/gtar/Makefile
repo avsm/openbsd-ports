@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.38 2006/02/27 21:29:55 naddy Exp $
+# $OpenBSD: Makefile,v 1.38.4.1 2006/11/30 21:14:19 sturm Exp $
 
 COMMENT=	"GNU version of the traditional tar archiver"
 
 DISTNAME=	tar-1.15.1
-PKGNAME=	g${DISTNAME}p4
+PKGNAME=	g${DISTNAME}p5
 CATEGORIES=	archivers
 HOMEPAGE=	http://www.gnu.org/software/tar/
 

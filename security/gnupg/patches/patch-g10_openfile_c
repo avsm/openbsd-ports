@@ -1,4 +1,4 @@
-$OpenBSD: patch-g10_openfile_c,v 1.1 2006/11/28 10:18:49 bernd Exp $
+$OpenBSD: patch-g10_openfile_c,v 1.1.2.1 2006/11/30 20:49:29 sturm Exp $
 
 Fixes a buffer overflow when running gnupg in interactive mode.
 Should be fixed in >1.4.5.

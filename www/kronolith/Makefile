@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.9 2005/11/13 19:47:34 mbalmer Exp $ 
+# $OpenBSD: Makefile,v 1.9.2.1 2006/11/30 22:03:52 sturm Exp $ 
 
 COMMENT=	"addressbook for imp"
 
 HORDE_MODULE=	kronolith
 HORDE_NAME=	Kronolith
 
-DISTNAME=	${HORDE_MODULE}-h3-2.0.5
+DISTNAME=	${HORDE_MODULE}-h3-2.0.7
 CATEGORIES=	www mail
 HOMEPAGE=	http://www.horde.org/${HORDE_MODULE}/
 

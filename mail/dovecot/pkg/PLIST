@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.13.2.1 2006/06/09 05:51:02 sturm Exp $
+@comment $OpenBSD: PLIST,v 1.13.2.2 2006/12/05 22:52:23 sturm Exp $
 @newgroup _dovecot:518
 @newuser _dovecot:518:_dovecot:daemon:Dovecot Account:/nonexistent:/sbin/nologin
 %%SHARED%%
@@ -20,6 +20,7 @@ lib/dovecot/lda/
 lib/dovecot/pop3/
 libexec/dovecot/
 libexec/dovecot/checkpassword-reply
+libexec/dovecot/deliver
 libexec/dovecot/dict
 libexec/dovecot/dovecot-auth
 libexec/dovecot/gdbhelper
@@ -49,8 +50,8 @@ share/examples/dovecot/dovecot-example.conf
 @sample ${SYSCONFDIR}/dovecot.conf
 share/examples/dovecot/dovecot-ldap.conf
 share/examples/dovecot/dovecot-openssl.cnf
-@sample ${SYSCONFDIR}/ssl/dovecot-openssl.cnf
-@mode 700
+@sample /etc/ssl/dovecot-openssl.cnf
+@mode 755
 @sample /var/dovecot/
 @mode 750
 @group _dovecot
@@ -58,6 +59,6 @@ share/examples/dovecot/dovecot-openssl.cnf
 @mode
 @group
 share/examples/dovecot/dovecot-sql.conf
-@extra ${SYSCONFDIR}/ssl/dovecotcert.pem
-@extra ${SYSCONFDIR}/ssl/private/dovecot.pem
+@extra /etc/ssl/dovecotcert.pem
+@extra /etc/ssl/private/dovecot.pem
 @extraunexec rm -rf /var/dovecot

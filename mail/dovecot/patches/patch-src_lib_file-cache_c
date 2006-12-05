@@ -1,0 +1,28 @@
+$OpenBSD: patch-src_lib_file-cache_c,v 1.1.2.1 2006/12/05 05:52:12 sturm Exp $
+
+Fixed since 1.0.rc15:
+
+http://dovecot.org/list/dovecot-news/2006-November/000023.html
+
+--- src/lib/file-cache.c.orig	Fri Feb 17 04:00:17 2006
++++ src/lib/file-cache.c	Tue Dec  5 06:38:39 2006
+@@ -128,8 +128,8 @@ ssize_t file_cache_read(struct file_cach
+ 	i_assert(psize > 0);
+ 
+ 	bits = buffer_get_space_unsafe(cache->page_bitmask, 0,
+-				       poffset / CHAR_BIT +
+-				       (psize + CHAR_BIT - 1) / CHAR_BIT);
++				       (poffset + psize + CHAR_BIT - 1) /
++				       CHAR_BIT);
+ 
+ 	dest_offset = poffset * page_size;
+ 	dest = PTR_OFFSET(cache->mmap_base, dest_offset);
+@@ -267,7 +267,7 @@ void file_cache_invalidate(struct file_c
+ 	}
+ 
+ 	bits = buffer_get_space_unsafe(cache->page_bitmask, offset / CHAR_BIT,
+-				       (size + CHAR_BIT - 1) / CHAR_BIT);
++				       1 + (size + CHAR_BIT - 1) / CHAR_BIT);
+ 
+ 	/* set the first byte */
+ 	for (i = offset % CHAR_BIT, mask = 0; i < CHAR_BIT && size > 0; i++) {

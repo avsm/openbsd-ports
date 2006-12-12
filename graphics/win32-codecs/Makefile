@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.16 2005/08/12 22:59:15 espie Exp $
+# $OpenBSD: Makefile,v 1.16.4.1 2006/12/12 21:42:52 robert Exp $
 
 ONLY_FOR_ARCHS=	i386
 
@@ -18,7 +18,8 @@ PERMIT_PACKAGE_FTP=     "Unsure of codec's license"
 PERMIT_DISTFILES_CDROM= "Unsure of codec's license"
 PERMIT_DISTFILES_FTP=   "Unsure of codec's license"
 
-MASTER_SITES=	http://www1.mplayerhq.hu/MPlayer/releases/codecs/ \
+MASTER_SITES=	http://humppa.hu/distfiles/ \
+		http://www1.mplayerhq.hu/MPlayer/releases/codecs/ \
 		http://www2.mplayerhq.hu/MPlayer/releases/codecs/ \
 		ftp://mplayerhq.hu/MPlayer/releases/codecs/ \
 		ftp://ftp.lug.udel.edu/MPlayer/releases/codecs/

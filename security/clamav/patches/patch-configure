@@ -1,7 +1,7 @@
-$OpenBSD: patch-configure,v 1.5 2006/08/15 18:48:22 mbalmer Exp $
---- configure.orig	Sat Jul  1 13:12:52 2006
-+++ configure	Mon Jul 31 20:02:42 2006
-@@ -11828,11 +11828,11 @@ cat >>conftest.$ac_ext <<_ACEOF
+$OpenBSD: patch-configure,v 1.5.2.1 2006/12/13 22:16:12 sturm Exp $
+--- configure.orig	Sun Nov  5 17:09:20 2006
++++ configure	Wed Dec 13 23:12:45 2006
+@@ -11838,11 +11838,11 @@ cat >>conftest.$ac_ext <<_ACEOF
  #ifdef __cplusplus
  extern "C"
  #endif
@@ -15,7 +15,7 @@ $OpenBSD: patch-configure,v 1.5 2006/08/15 18:48:22 mbalmer Exp $
    ;
    return 0;
  }
-@@ -12248,6 +12248,8 @@ cat confdefs.h >>conftest.$ac_ext
+@@ -12258,6 +12258,8 @@ cat confdefs.h >>conftest.$ac_ext
  cat >>conftest.$ac_ext <<_ACEOF
  /* end confdefs.h.  */
  $ac_includes_default
@@ -24,7 +24,7 @@ $OpenBSD: patch-configure,v 1.5 2006/08/15 18:48:22 mbalmer Exp $
  #include <resolv.h>
  _ACEOF
  rm -f conftest.$ac_objext
-@@ -13293,13 +13295,9 @@ _ACEOF
+@@ -13319,13 +13321,9 @@ _ACEOF
  openbsd*)
      if test "$have_pthreads" = "yes"; then
  	LIBCLAMAV_LIBS="$LIBCLAMAV_LIBS -pthread"
@@ -41,7 +41,7 @@ $OpenBSD: patch-configure,v 1.5 2006/08/15 18:48:22 mbalmer Exp $
  	TH_SAFE="-thread-safe"
  
  cat >>confdefs.h <<\_ACEOF
-@@ -14497,6 +14495,7 @@ cat confdefs.h >>conftest.$ac_ext
+@@ -14523,6 +14521,7 @@ cat confdefs.h >>conftest.$ac_ext
  cat >>conftest.$ac_ext <<_ACEOF
  /* end confdefs.h.  */
  
@@ -49,7 +49,7 @@ $OpenBSD: patch-configure,v 1.5 2006/08/15 18:48:22 mbalmer Exp $
  #include <tcpd.h>
  int allow_severity = 0;
  int deny_severity  = 0;
-@@ -14565,6 +14564,7 @@ cat confdefs.h >>conftest.$ac_ext
+@@ -14591,6 +14590,7 @@ cat confdefs.h >>conftest.$ac_ext
  cat >>conftest.$ac_ext <<_ACEOF
  /* end confdefs.h.  */
  

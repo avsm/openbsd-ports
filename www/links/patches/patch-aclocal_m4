@@ -1,7 +1,7 @@
-$OpenBSD: patch-aclocal_m4,v 1.1 2004/02/23 15:44:43 espie Exp $
---- aclocal.m4.orig	Thu Feb 12 23:04:12 2004
-+++ aclocal.m4	Thu Feb 12 23:04:23 2004
-@@ -124,62 +124,3 @@
+$OpenBSD: patch-aclocal_m4,v 1.1.12.1 2006/12/13 21:59:58 sturm Exp $
+--- aclocal.m4.orig	Tue Nov 28 23:19:11 2006
++++ aclocal.m4	Wed Dec 13 22:59:06 2006
+@@ -124,62 +124,3 @@ for am_file in <<$1>>; do
    am_indx=`expr "<<$>>am_indx" + 1`
  done<<>>dnl>>)
  changequote([,]))])

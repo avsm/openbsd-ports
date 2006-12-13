@@ -1,7 +1,7 @@
-# $OpenBSD: Makefile,v 1.14.2.3 2006/10/19 15:11:06 sturm Exp $
+# $OpenBSD: Makefile,v 1.14.2.4 2006/12/13 22:44:12 sturm Exp $
 
 COMMENT=		"virus scanner"
-DISTNAME=		clamav-0.88.5
+DISTNAME=		clamav-0.88.6
 CATEGORIES=		security
 SHARED_LIBS=		clamav 1.20
 

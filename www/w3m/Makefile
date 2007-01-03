@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.62 2006/08/12 15:51:38 naddy Exp $
+# $OpenBSD: Makefile,v 1.62.2.1 2007/01/03 20:36:17 sturm Exp $
 
 .if ${MACHINE_ARCH} == "amd64" || ${MACHINE_ARCH} == "sparc64"
 BROKEN=		crashes
@@ -7,7 +7,7 @@ BROKEN=		crashes
 COMMENT=	"pager/text-based web browser"
 
 DISTNAME=	w3m-0.5.1
-PKGNAME=	${DISTNAME}p1
+PKGNAME=	${DISTNAME}p2
 CATEGORIES=	www
 HOMEPAGE=	http://w3m.sourceforge.net/
 

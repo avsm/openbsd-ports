@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.60 2006/02/10 18:54:58 sturm Exp $
+# $OpenBSD: Makefile,v 1.60.2.1 2007/01/04 20:17:52 sturm Exp $
 
 COMMENT=	"pager/text-based web browser"
 
 DISTNAME=	w3m-0.5.1
-PKGNAME=	${DISTNAME}p1
+PKGNAME=	${DISTNAME}p2
 CATEGORIES=	www
 HOMEPAGE=	http://w3m.sourceforge.net/
 

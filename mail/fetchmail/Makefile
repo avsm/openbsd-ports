@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.105 2006/01/31 14:30:34 bernd Exp $
+# $OpenBSD: Makefile,v 1.105.2.1 2007/01/10 19:46:20 sturm Exp $
 
 COMMENT=	"mail retrieval utility for POP2, POP3, KPOP, IMAP and more"
 
-DISTNAME=	fetchmail-6.3.2
+DISTNAME=	fetchmail-6.3.6
 CATEGORIES=	mail
 MASTER_SITES=	http://download.berlios.de/fetchmail/
 
@@ -22,7 +22,8 @@ MODULES=		devel/gettext
 SEPARATE_BUILD=		concurrent
 CONFIGURE_STYLE=	gnu
 CONFIGURE_ARGS=		--enable-inet6 --with-ssl \
-			--with-kerberos5 --enable-NTLM
+			--with-kerberos5 --enable-NTLM \
+			--mandir='${PREFIX}/man'
 
 EXTRACT_SUFX=		.tar.bz2
 

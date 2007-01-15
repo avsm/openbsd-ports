@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.85.2.2 2006/10/29 18:19:07 sturm Exp $
+# $OpenBSD: Makefile,v 1.85.2.3 2007/01/15 21:33:32 sturm Exp $
 
 COMMENT=	"PostgreSQL RDBMS (client)"
 COMMENT-server=	"PostgreSQL RDBMS (server)"
 COMMENT-docs=	"PostgreSQL RDBMS documentation"
 
-VERSION=	8.1.5
+VERSION=	8.1.6
 DISTNAME=	postgresql-${VERSION}
 FULLPKGNAME=	postgresql-client-${VERSION}
 PKGNAME-server=	postgresql-server-${VERSION}

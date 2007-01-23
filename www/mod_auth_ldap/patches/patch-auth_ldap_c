@@ -1,4 +1,4 @@
-$OpenBSD: patch-auth_ldap_c,v 1.1 2007/01/22 15:04:32 bernd Exp $
+$OpenBSD: patch-auth_ldap_c,v 1.1.4.1 2007/01/23 21:44:49 sturm Exp $
 
 Fixes a security bug that could allow attacker to execute arbitrary
 commands as the apache user.

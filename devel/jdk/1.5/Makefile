@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.13 2006/02/22 22:52:44 kurt Exp $
+# $OpenBSD: Makefile,v 1.13.2.1 2007/01/31 14:52:31 kurt Exp $
 
 ONLY_FOR_ARCHS= 	i386
 
@@ -6,8 +6,8 @@ COMMENT=		"Java2(TM) Standard Edition Dev Kit v${V}"
 COMMENT-jre=		"Java2(TM) Standard Edition Runtime Environment v${V}"
 V=			1.5.0
 DISTNAME=		jdk-1_5_0
-PKGNAME=		jdk-${V}p9
-PKGNAME-jre=		jre-${V}p9
+PKGNAME=		jdk-${V}p25
+PKGNAME-jre=		jre-${V}p25
 
 CATEGORIES=		devel/jdk java
 
@@ -21,7 +21,7 @@ MAINTAINER=		Kurt Miller <kurt@openbsd.org>
 
 DISTFILES=		${DISTNAME}-src-scsl.zip \
 			${DISTNAME}-bin-scsl.zip \
-			bsd-jdk15-patches-2.tar.bz2
+			bsd-jdk15-patches-4.tar.bz2
 
 # Sun Community Source License
 # http://www.sun.com/software/communitysource/j2se/java2/license.html
@@ -66,7 +66,7 @@ FETCH_MANUALLY+=	"    ${DISTNAME}-src-scsl.zip"
 FETCH_MANUALLY+=	"    ${DISTNAME}-bin-scsl.zip"
 FETCH_MANUALLY+=	"from http://wwws.sun.com/software/communitysource/j2se/java2/download.html"
 FETCH_MANUALLY+=	"Get the BSD patchset file:"
-FETCH_MANUALLY+=	"    bsd-jdk15-patches-2.tar.bz2"
+FETCH_MANUALLY+=	"    bsd-jdk15-patches-4.tar.bz2"
 FETCH_MANUALLY+=	"from http://www.eyesbeyond.com/freebsddom/java/jdk15.html"
 
 FLAVORS=		no_web with_ipv6
@@ -86,7 +86,7 @@ MAKE_ENV+=		ALT_BOOTDIR="${LOCALBASE}/jdk-1.4.2/"
 .endif
 
 .if !${FLAVOR:L:Mno_web}
-BUILD_DEPENDS+=		:mozilla-devel-*:www/mozilla,-devel
+BUILD_DEPENDS+=		::devel/nspr
 .else
 #no plugin - no messages
 MESSAGE=                /dev/null

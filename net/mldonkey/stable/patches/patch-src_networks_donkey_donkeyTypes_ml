@@ -1,7 +1,7 @@
-$OpenBSD: patch-src_networks_donkey_donkeyTypes_ml,v 1.1 2007/01/24 01:32:51 espie Exp $
---- src/networks/donkey/donkeyTypes.ml.orig	Tue Sep  5 16:18:24 2006
-+++ src/networks/donkey/donkeyTypes.ml	Wed Jan 24 02:25:44 2007
-@@ -569,6 +569,8 @@ and upload_info = {
+$OpenBSD: patch-src_networks_donkey_donkeyTypes_ml,v 1.1.2.1 2007/01/31 14:27:28 sturm Exp $
+--- src/networks/donkey/donkeyTypes.ml.orig	Mon Aug  8 18:47:31 2005
++++ src/networks/donkey/donkeyTypes.ml	Wed Jan 31 15:18:34 2007
+@@ -556,6 +556,8 @@ and upload_info = {
      mutable up_pos : int64;
      mutable up_end_chunk : int64;
      mutable up_chunks : (int64 * int64) list;

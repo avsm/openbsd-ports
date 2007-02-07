@@ -1,0 +1,22 @@
+$OpenBSD: patch-smbd_trans2_c,v 1.1.2.1 2007/02/07 19:52:53 sturm Exp $
+
+	Potential Denial of Service bug in smbd -- CVE-2007-0452
+
+--- smbd/trans2.c.orig	Wed Jan 25 00:46:32 2006
++++ smbd/trans2.c	Wed Feb  7 20:15:29 2007
+@@ -4284,9 +4284,15 @@ size = %.0f, uid = %u, gid = %u, raw per
+ 					fname, newname ));
+ 				status = rename_internals(conn, fname, base_name, 0, overwrite, False);
+ 			}
++
+ 			if (!NT_STATUS_IS_OK(status)) {
++				if (open_was_deferred(SVAL(inbuf,smb_mid))) {
++					/* We have re-scheduled this call. */
++					return -1;
++				}
+ 				return ERROR_NT(status);
+ 			}
++
+ 			process_pending_change_notify_queue((time_t)0);
+ 			SSVAL(params,0,0);
+ 			send_trans2_replies(outbuf, bufsize, params, 2, *ppdata, 0);

@@ -1,0 +1,51 @@
+$OpenBSD: patch-printing_nt_printing_c,v 1.1.2.1 2007/02/07 19:52:53 sturm Exp $
+
+	Potential Denial of Service bug in smbd -- CVE-2007-0452
+
+--- printing/nt_printing.c.orig	Wed Jan 25 00:46:33 2006
++++ printing/nt_printing.c	Wed Feb  7 20:15:28 2007
+@@ -4794,7 +4794,7 @@ static BOOL delete_driver_files( NT_PRIN
+ 			pstrcpy( file, s );
+ 			driver_unix_convert(file, conn, NULL, &bad_path, &st);
+ 			DEBUG(10,("deleting driverfile [%s]\n", s));
+-			unlink_internals(conn, 0, file, False);
++			unlink_internals(conn, 0, file, False, False);
+ 		}
+ 	}
+ 		
+@@ -4803,7 +4803,7 @@ static BOOL delete_driver_files( NT_PRIN
+ 			pstrcpy( file, s );
+ 			driver_unix_convert(file, conn, NULL, &bad_path, &st);
+ 			DEBUG(10,("deleting configfile [%s]\n", s));
+-			unlink_internals(conn, 0, file, False);
++			unlink_internals(conn, 0, file, False, False);
+ 		}
+ 	}
+ 	
+@@ -4812,7 +4812,7 @@ static BOOL delete_driver_files( NT_PRIN
+ 			pstrcpy( file, s );
+ 			driver_unix_convert(file, conn, NULL, &bad_path, &st);
+ 			DEBUG(10,("deleting datafile [%s]\n", s));
+-			unlink_internals(conn, 0, file, False);
++			unlink_internals(conn, 0, file, False, False);
+ 		}
+ 	}
+ 	
+@@ -4821,7 +4821,7 @@ static BOOL delete_driver_files( NT_PRIN
+ 			pstrcpy( file, s );
+ 			driver_unix_convert(file, conn, NULL, &bad_path, &st);
+ 			DEBUG(10,("deleting helpfile [%s]\n", s));
+-			unlink_internals(conn, 0, file, False);
++			unlink_internals(conn, 0, file, False, False);
+ 		}
+ 	}
+ 	
+@@ -4837,7 +4837,7 @@ static BOOL delete_driver_files( NT_PRIN
+ 				pstrcpy( file, p );
+ 				driver_unix_convert(file, conn, NULL, &bad_path, &st);
+ 				DEBUG(10,("deleting dependent file [%s]\n", file));
+-				unlink_internals(conn, 0, file, False);
++				unlink_internals(conn, 0, file, False, False);
+ 			}
+ 			
+ 			i++;

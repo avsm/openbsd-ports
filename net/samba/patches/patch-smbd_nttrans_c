@@ -1,0 +1,40 @@
+$OpenBSD: patch-smbd_nttrans_c,v 1.1.4.1 2007/02/07 20:36:14 sturm Exp $
+
+	Potential Denial of Service bug in smbd -- CVE-2007-0452
+
+--- smbd/nttrans.c.orig	Wed Jan 25 00:46:32 2006
++++ smbd/nttrans.c	Wed Feb  7 20:15:28 2007
+@@ -669,7 +669,7 @@ create_options = 0x%x root_dir_fid = 0x%
+ 	if (lp_acl_check_permissions(SNUM(conn)) && (share_access & FILE_SHARE_DELETE)
+ 				&& (access_mask & DELETE_ACCESS)) {
+ #endif
+-		status = can_delete(conn, fname, file_attributes, bad_path, True);
++		status = can_delete(conn, fname, file_attributes, bad_path, True, False);
+ 		/* We're only going to fail here if it's access denied, as that's the
+ 		   only error we care about for "can we delete this ?" questions. */
+ 		if (!NT_STATUS_IS_OK(status) && (NT_STATUS_EQUAL(status,NT_STATUS_ACCESS_DENIED) ||
+@@ -1282,7 +1282,7 @@ static int call_nt_transact_create(conne
+ 	/* Setting FILE_SHARE_DELETE is the hint. */
+ 	if (lp_acl_check_permissions(SNUM(conn)) && (share_access & FILE_SHARE_DELETE) && (access_mask & DELETE_ACCESS)) {
+ #endif
+-		status = can_delete(conn, fname, file_attributes, bad_path, True);
++		status = can_delete(conn, fname, file_attributes, bad_path, True, False);
+ 		/* We're only going to fail here if it's access denied, as that's the
+ 		   only error we care about for "can we delete this ?" questions. */
+ 		if (!NT_STATUS_IS_OK(status) && (NT_STATUS_EQUAL(status,NT_STATUS_ACCESS_DENIED) ||
+@@ -1900,8 +1900,14 @@ static int call_nt_transact_rename(conne
+ 
+ 	status = rename_internals(conn, fsp->fsp_name,
+ 				  new_name, 0, replace_if_exists, path_contains_wcard);
+-	if (!NT_STATUS_IS_OK(status))
++
++	if (!NT_STATUS_IS_OK(status)) {
++		if (open_was_deferred(SVAL(inbuf,smb_mid))) {
++			/* We have re-scheduled this call. */
++			return -1;
++		}
+ 		return ERROR_NT(status);
++	}
+ 
+ 	/*
+ 	 * Rename was successful.

@@ -1,4 +1,4 @@
-$OpenBSD: patch-j2sdk1_3_1_src_share_classes_sun_awt_image_GifImageDecoder_java,v 1.1 2007/01/28 04:46:48 kurt Exp $
+$OpenBSD: patch-j2sdk1_3_1_src_share_classes_sun_awt_image_GifImageDecoder_java,v 1.1.4.1 2007/02/08 20:24:14 sturm Exp $
 --- j2sdk1.3.1/src/share/classes/sun/awt/image/GifImageDecoder.java.orig	Sat Jan 27 17:18:05 2007
 +++ j2sdk1.3.1/src/share/classes/sun/awt/image/GifImageDecoder.java	Sat Jan 27 17:18:55 2007
 @@ -499,6 +499,14 @@ public class GifImageDecoder extends Ima

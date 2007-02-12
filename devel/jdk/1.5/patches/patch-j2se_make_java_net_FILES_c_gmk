@@ -1,0 +1,11 @@
+$OpenBSD: patch-j2se_make_java_net_FILES_c_gmk,v 1.1.4.1 2007/02/12 22:21:50 sturm Exp $
+--- j2se/make/java/net/FILES_c.gmk.orig	Wed Jan 24 04:07:35 2007
++++ j2se/make/java/net/FILES_c.gmk	Wed Jan 24 04:07:50 2007
+@@ -27,6 +27,6 @@ ifeq ($(PLATFORM), linux)
+     FILES_c += $(CTARGDIR)linux_close.c
+ endif
+ 
+-ifeq ($(TRUE_PLATFORM), FreeBSD)
++ifeq ($(PLATFORM), bsd)
+     FILES_c += $(CTARGDIR)bsd_close.c
+ endif

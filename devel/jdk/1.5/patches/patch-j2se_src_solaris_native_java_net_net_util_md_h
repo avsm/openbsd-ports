@@ -1,0 +1,12 @@
+$OpenBSD: patch-j2se_src_solaris_native_java_net_net_util_md_h,v 1.1.4.1 2007/02/12 22:21:50 sturm Exp $
+--- j2se/src/solaris/native/java/net/net_util_md.h.orig	Wed Jan 24 04:08:35 2007
++++ j2se/src/solaris/native/java/net/net_util_md.h	Wed Jan 24 04:09:04 2007
+@@ -39,7 +39,7 @@ struct sockaddr_in6_ext { 
+ #endif
+ 
+ 
+-#if defined(__linux__) || defined(__FreeBSD__)
++#if defined(__linux__) || defined(_ALLBSD_SOURCE)
+ extern int NET_Timeout(int s, long timeout);
+ extern int NET_Read(int s, void* buf, size_t len);
+ extern int NET_RecvFrom(int s, void *buf, int len, unsigned int flags,

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.5 2005/10/02 15:41:19 aanriot Exp $
+# $OpenBSD: Makefile,v 1.5.2.1 2007/02/18 10:34:29 sturm Exp $
 
 COMMENT=	"Web and CGI vulnerability scanner with SSL support"
 
@@ -8,7 +8,8 @@ CATEGORIES=	security www
 HOMEPAGE=	http://www.cirt.net/code/nikto.shtml
 
 MASTER_SITES=	http://www.cirt.net/nikto/ \
-		http://packetstormsecurity.org/UNIX/cgi-scanners/
+		http://www.cirt.net/nikto/ARCHIVE/
+EXTRACT_SUFX=	.tar.bz2
 
 # GPL
 PERMIT_PACKAGE_CDROM=   Yes

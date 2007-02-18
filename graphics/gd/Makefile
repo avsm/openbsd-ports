@@ -1,14 +1,13 @@
-# $OpenBSD: Makefile,v 1.44.2.1 2006/06/17 16:07:25 sturm Exp $
+# $OpenBSD: Makefile,v 1.44.2.2 2007/02/18 16:07:54 sturm Exp $
 
 COMMENT=	"library for dynamic creation of images"
 
-DISTNAME=	gd-2.0.33
-PKGNAME=	${DISTNAME}p3
-SHARED_LIBS=	gd	20.33
+DISTNAME=	gd-2.0.34
+SHARED_LIBS=	gd	20.34
 CATEGORIES=	graphics
-MASTER_SITES=	http://www.boutell.com/gd/http/
+MASTER_SITES=	${HOMEPAGE}releases/
 
-HOMEPAGE=	http://www.boutell.com/gd/
+HOMEPAGE=	http://www.libgd.org/
 
 LIB_DEPENDS=	jpeg.62::graphics/jpeg \
 		png.2::graphics/png

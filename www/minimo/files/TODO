@@ -1,4 +1,0 @@
-#	$Id: TODO,v 1.2 2005/11/08 07:19:07 jolan Exp $
-
-- zaurus/arm support (need proper xptc asm stubs for arm)
-- configure looks for libgnomeui

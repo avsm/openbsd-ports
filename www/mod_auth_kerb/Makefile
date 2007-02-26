@@ -1,11 +1,10 @@
-# $OpenBSD: Makefile,v 1.4 2006/05/27 16:08:16 alek Exp $
+# $OpenBSD: Makefile,v 1.4.2.1 2007/02/26 16:17:42 sturm Exp $
 
 SHARED_ONLY=	Yes
 
 COMMENT=	"Apache Kerberos authentication module"
 
-VERSION=	5.0rc7
-DISTNAME=	mod_auth_kerb-${VERSION}
+DISTNAME=	mod_auth_kerb-5.3
 CATEGORIES=	www
 
 HOMEPAGE=	http://modauthkerb.sourceforge.net/

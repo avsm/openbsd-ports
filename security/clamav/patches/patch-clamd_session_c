@@ -1,0 +1,46 @@
+$OpenBSD: patch-clamd_session_c,v 1.2 2007/02/28 20:31:08 mbalmer Exp $
+--- clamd/session.c.orig	Sun Feb 11 01:19:59 2007
++++ clamd/session.c	Wed Feb 14 08:53:39 2007
+@@ -232,8 +232,10 @@ int command(int desc, const struct cl_en
+ {
+ 	char buff[1025];
+ 	int bread, opt;
++	struct msghdr msg;
++	struct cmsghdr *cmsg;
++	unsigned char buf[CMSG_SPACE(sizeof(int))];
+ 
+-
+     bread = readsock(desc, buff, sizeof(buff)-1, '\n', timeout, 0, 1);
+     if(bread == -2) /* timeout */
+ 	return -2;
+@@ -367,7 +369,29 @@ int command(int desc, const struct cl_en
+ 		    logg("%s: OK\n", path);
+ 	    }
+ 	}
+-
++    } else if(!strncmp(buff, CMD14, strlen(CMD14))) { /* FILDES */
++	memset(&msg, 0, sizeof(msg));
++	msg.msg_control = buf;
++	msg.msg_controllen = sizeof(buf);
++ 
++	if (recvmsg(desc, &msg, 0) == -1) {
++	    logg("recvmsg failed!");
++	    return -1;
++	}
++	if ((msg.msg_flags & MSG_TRUNC) || (msg.msg_flags & MSG_CTRUNC)) {
++	    logg("control message truncated");
++	    return -1;
++	}
++	for (cmsg = CMSG_FIRSTHDR(&msg); cmsg != NULL;
++	    cmsg = CMSG_NXTHDR(&msg, cmsg)) {
++		if (cmsg->cmsg_len == CMSG_LEN(sizeof(int)) &&
++		    cmsg->cmsg_level == SOL_SOCKET &&
++		    cmsg->cmsg_type == SCM_RIGHTS) {
++			int fd = *(int *)CMSG_DATA(cmsg);
++	    		scanfd(fd, NULL, engine, limits, options, copt, desc);
++			close(fd);
++		}
++	}
+     } else {
+ 	mdprintf(desc, "UNKNOWN COMMAND\n");
+     }

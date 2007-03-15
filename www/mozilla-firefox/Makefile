@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.48.2.7 2006/12/23 20:53:49 sturm Exp $
+# $OpenBSD: Makefile,v 1.48.2.8 2007/03/15 21:10:05 sturm Exp $
 
 ONLY_FOR_ARCHS=	alpha amd64 i386 powerpc sparc sparc64
 
 COMMENT=	"redesign of Mozilla's browser component"
 
-VER=		1.5.0.9
+VER=		1.5.0.10
 DISTNAME=	mozilla
 PKGNAME=	mozilla-firefox-${VER}
 SO_VERSION=	18.0
@@ -12,7 +12,7 @@ SO_VERSION=	18.0
 # components dir to avoid pkg_add -r issues.
 .for _lib in accessibility appcomps auth autoconfig browsercomps \
 	browserdirprovider caps chrome commandlines composer cookie docshell \
-	editor embedcomponents fileview gfx_gtk gfxps gfxpsshar gkgfx \
+	editor embedcomponents fileview freebl3 gfx_gtk gfxps gfxpsshar gkgfx \
 	gklayout gkplugin gtkembedmoz gtkxtbin htmlpars i18n imglib2 inspector \
 	jar50 jsd jsj mork mozfind mozjs necko necko2 nsappshell nspr4 nss3 \
 	nssckbi oji permissions pipboot pipnss pippki plc4 plds4 pref rdf \

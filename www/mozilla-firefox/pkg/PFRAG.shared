@@ -1,4 +1,4 @@
-@comment $OpenBSD: PFRAG.shared,v 1.9 2005/12/31 18:35:56 sturm Exp $
+@comment $OpenBSD: PFRAG.shared,v 1.9.2.1 2007/03/15 21:10:05 sturm Exp $
 @lib mozilla-firefox/components/libaccessibility.so.${LIBaccessibility_VERSION}
 @lib mozilla-firefox/components/libappcomps.so.${LIBappcomps_VERSION}
 @lib mozilla-firefox/components/libauth.so.${LIBauth_VERSION}
@@ -52,6 +52,7 @@
 @lib mozilla-firefox/components/libxpconnect.so.${LIBxpconnect_VERSION}
 @lib mozilla-firefox/components/libxpinstall.so.${LIBxpinstall_VERSION}
 @lib mozilla-firefox/extensions/inspector@mozilla.org/components/libinspector.so.${LIBinspector_VERSION}
+@lib mozilla-firefox/libfreebl3.so.${LIBfreebl3_VERSION}
 @lib mozilla-firefox/libgfxpsshar.so.${LIBgfxpsshar_VERSION}
 @lib mozilla-firefox/libgkgfx.so.${LIBgkgfx_VERSION}
 @lib mozilla-firefox/libgtkembedmoz.so.${LIBgtkembedmoz_VERSION}

@@ -1,4 +1,4 @@
-$OpenBSD: patch-clamd_session_c,v 1.2 2007/02/28 20:31:08 mbalmer Exp $
+$OpenBSD: patch-clamd_session_c,v 1.2.4.1 2007/03/16 21:32:03 sturm Exp $
 --- clamd/session.c.orig	Sun Feb 11 01:19:59 2007
 +++ clamd/session.c	Wed Feb 14 08:53:39 2007
 @@ -232,8 +232,10 @@ int command(int desc, const struct cl_en

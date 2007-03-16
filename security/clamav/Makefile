@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.18.2.3 2006/12/24 06:27:19 sturm Exp $
+# $OpenBSD: Makefile,v 1.18.2.4 2007/03/16 22:12:34 sturm Exp $
 
 COMMENT=		"virus scanner"
-DISTNAME=		clamav-0.88.7
+DISTNAME=		clamav-0.90
 CATEGORIES=		security
-SHARED_LIBS=		clamav 2.0
+SHARED_LIBS=		clamav 3.0
 
 HOMEPAGE=		http://www.clamav.net/
 
@@ -22,8 +22,6 @@ LIB_DEPENDS=		gmp.>=6::devel/gmp \
 			bz2.>=10::archivers/bzip2
 
 RUN_DEPENDS=		:lha-*:archivers/lha \
-			:unarj-*:archivers/unarj \
-			:unrar-*:archivers/unrar \
 			:zoo-*:archivers/zoo \
 			:arc-*:archivers/arc \
 			:unzip-*:archivers/unzip 
@@ -48,7 +46,7 @@ CONFIGURE_ARGS+=        --disable-clamav \
 
 NO_REGRESS=		Yes
 
-CONFIGURE_ENV+=		LDFLAGS="-L/usr/lib -L${LOCALBASE}/lib" \
+CONFIGURE_ENV+=		LDFLAGS="-pthread -L/usr/lib -L${LOCALBASE}/lib" \
 			CPPFLAGS="-I/usr/include -I${LOCALBASE}/include"
 
 DOCS=			clamav-mirror-howto.pdf clamdoc.pdf signatures.pdf

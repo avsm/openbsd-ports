@@ -1,4 +1,4 @@
-$OpenBSD: patch-clamd_session_h,v 1.2 2007/02/28 20:31:08 mbalmer Exp $
+$OpenBSD: patch-clamd_session_h,v 1.2.6.1 2007/03/16 22:12:34 sturm Exp $
 --- clamd/session.h.orig	Tue Jan 30 22:19:10 2007
 +++ clamd/session.h	Wed Feb 14 08:27:25 2007
 @@ -38,6 +38,7 @@

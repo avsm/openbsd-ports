@@ -1,4 +1,4 @@
-$OpenBSD: patch-apps_irssi_docs_Makefile_in,v 1.1 2006/10/03 18:34:50 brad Exp $
+$OpenBSD: patch-apps_irssi_docs_Makefile_in,v 1.1.4.1 2007/03/22 21:35:15 sturm Exp $
 --- apps/irssi/docs/Makefile.in.orig	Fri Jan  6 08:46:28 2006
 +++ apps/irssi/docs/Makefile.in	Tue Oct  3 14:20:37 2006
 @@ -313,12 +313,12 @@ distclean-libtool:

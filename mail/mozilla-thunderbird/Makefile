@@ -1,22 +1,22 @@
-# $OpenBSD: Makefile,v 1.37.2.5 2006/12/23 20:54:43 sturm Exp $
+# $OpenBSD: Makefile,v 1.37.2.6 2007/03/22 22:08:10 sturm Exp $
 
 ONLY_FOR_ARCHS=	alpha amd64 i386 powerpc sparc sparc64
 
 COMMENT=	"redesign of the integrated Mozilla App-Suite mail component"
 
-VER=		1.5.0.9
+VER=		1.5.0.10
 DISTNAME=	mozilla
 PKGNAME=	mozilla-thunderbird-${VER}
-SO_VERSION=	12.0
+SO_VERSION=	12.1
 # NOTE: Must bump minor version if any shlib's are removed from the
 # components dir to avoid pkg_add -r issues.
 .for _lib in accessibility appcomps auth autoconfig caps chrome commandlines \
-	composer docshell editor embedcomponents fileview gfx_gtk gfxps \
-	gfxpsshar gkgfx gklayout gtkembedmoz gtkxtbin htmlpars i18n imglib2 \
-	import jar50 jsd ldap50 mail mailcomps mork mozfind mozjs mozldap \
-	msgsmime myspell necko necko2 nsappshell nspr4 nss3 nssckbi pipboot \
-	pipnss pippki plc4 plds4 pref prldap50 rdf remoteservice smime3 \
-	softokn3 spellchecker ssl3 system-pref toolkitcomps txmgr uconv \
+	composer docshell editor embedcomponents fileview freebl3 gfx_gtk \
+	gfxps gfxpsshar gkgfx gklayout gtkembedmoz gtkxtbin htmlpars i18n \
+	imglib2 import jar50 jsd ldap50 mail mailcomps mork mozfind mozjs \
+	mozldap msgsmime myspell necko necko2 nsappshell nspr4 nss3 nssckbi \
+	pipboot pipnss pippki plc4 plds4 pref prldap50 rdf remoteservice \
+	smime3 softokn3 spellchecker ssl3 system-pref toolkitcomps txmgr uconv \
 	universalchardet wallet walletviewers webbrwsr websrvcs widget_gtk2 \
 	xmlextras xpcom xpcom_compat xpcom_compat_c xpcom_core xpconnect \
 	xpinstall xpistub

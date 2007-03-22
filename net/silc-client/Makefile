@@ -1,9 +1,8 @@
-# $OpenBSD: Makefile,v 1.33.4.1 2007/03/22 21:35:15 sturm Exp $
+# $OpenBSD: Makefile,v 1.33.4.2 2007/03/22 22:10:13 sturm Exp $
 
 COMMENT=	"Secure Internet Live Conferencing (SILC) client"
 
 DISTNAME=	silc-client-1.0.4.1
-PKGNAME=	${DISTNAME}p1
 CATEGORIES=	net
 
 HOMEPAGE=	http://www.silcnet.org/

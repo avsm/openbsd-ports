@@ -1,4 +1,4 @@
-$OpenBSD: patch-configure_ac,v 1.1 2006/10/03 18:34:50 brad Exp $
+$OpenBSD: patch-configure_ac,v 1.1.6.1 2007/03/23 07:25:55 sturm Exp $
 --- configure.ac.orig	Fri Jan  6 08:46:28 2006
 +++ configure.ac	Tue Oct  3 14:20:37 2006
 @@ -455,8 +455,9 @@ if test -n "$with_silc_includes" || test

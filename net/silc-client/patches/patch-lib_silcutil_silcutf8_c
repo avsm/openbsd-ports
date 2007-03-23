@@ -1,4 +1,4 @@
-$OpenBSD: patch-lib_silcutil_silcutf8_c,v 1.1 2006/09/18 05:41:10 ray Exp $
+$OpenBSD: patch-lib_silcutil_silcutf8_c,v 1.1.6.1 2007/03/23 07:25:55 sturm Exp $
 --- lib/silcutil/silcutf8.c.orig	Sun Apr  3 08:20:34 2005
 +++ lib/silcutil/silcutf8.c	Sun Aug 27 15:23:38 2006
 @@ -565,15 +565,19 @@ bool silc_utf8_strncasecmp(const char *s

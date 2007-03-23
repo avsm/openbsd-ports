@@ -1,4 +1,4 @@
-$OpenBSD: patch-doc_Makefile_in,v 1.2 2007/03/21 11:24:02 martynas Exp $
+$OpenBSD: patch-doc_Makefile_in,v 1.2.4.1 2007/03/23 07:25:55 sturm Exp $
 --- doc/Makefile.in.orig	Wed Mar  7 21:02:19 2007
 +++ doc/Makefile.in	Sat Mar 17 18:29:19 2007
 @@ -272,6 +272,7 @@ target_os = @target_os@

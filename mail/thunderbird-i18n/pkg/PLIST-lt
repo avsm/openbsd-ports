@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-lt,v 1.1 2007/03/19 22:08:02 martynas Exp $
+@comment $OpenBSD: PLIST-lt,v 1.1.2.1 2007/03/23 07:37:47 sturm Exp $
 mozilla-thunderbird/extensions/langpack-lt@thunderbird.mozilla.org/
 mozilla-thunderbird/extensions/langpack-lt@thunderbird.mozilla.org/chrome/
 mozilla-thunderbird/extensions/langpack-lt@thunderbird.mozilla.org/chrome.manifest

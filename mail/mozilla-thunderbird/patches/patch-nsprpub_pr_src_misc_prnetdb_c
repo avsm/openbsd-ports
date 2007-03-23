@@ -1,7 +1,7 @@
-$OpenBSD: patch-nsprpub_pr_src_misc_prnetdb_c,v 1.5 2006/01/23 12:34:06 wilfried Exp $
---- nsprpub/pr/src/misc/prnetdb.c.orig	Thu Aug 18 19:24:38 2005
-+++ nsprpub/pr/src/misc/prnetdb.c	Sat Sep 10 09:08:28 2005
-@@ -2110,7 +2110,12 @@ PR_IMPLEMENT(PRAddrInfo *) PR_GetAddrInf
+$OpenBSD: patch-nsprpub_pr_src_misc_prnetdb_c,v 1.5.4.1 2007/03/23 07:36:18 sturm Exp $
+--- nsprpub/pr/src/misc/prnetdb.c.orig	Tue Nov 14 18:41:59 2006
++++ nsprpub/pr/src/misc/prnetdb.c	Fri Mar 23 07:29:49 2007
+@@ -2115,7 +2115,12 @@ PR_IMPLEMENT(PRAddrInfo *) PR_GetAddrInf
           */
          hints.ai_socktype = SOCK_STREAM;
  

@@ -1,12 +1,12 @@
-# $OpenBSD: Makefile,v 1.28 2006/07/22 18:18:36 steven Exp $
+# $OpenBSD: Makefile,v 1.28.2.1 2007/04/02 11:51:02 sturm Exp $
 
 SHARED_ONLY=	Yes
 
 COMMENT=	"object-oriented web application server"
 
-VERSION=	2.8.6
+VERSION=	2.8.9.1
 DISTNAME=	Zope-${VERSION}-final
-PKGNAME=	${DISTNAME:S/-final//:L}p0
+PKGNAME=	${DISTNAME:S/-final//:L}
 CATEGORIES=     www
 
 HOMEPAGE=	http://www.zope.org/
@@ -24,6 +24,7 @@ EXTRACT_SUFX=	.tgz
 
 MODPY_VERSION=	2.4
 MODULES=	lang/python
+RUN_DEPENDS=	${MODPY_EXPAT_DEPENDS}
 
 .if !defined(NO_SHARED_LIBS) || ${NO_SHARED_LIBS:U} != YES
 RUN_DEPENDS+=	expat::textproc/expat

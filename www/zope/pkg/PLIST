@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.18 2006/06/17 15:23:57 naddy Exp $
+@comment $OpenBSD: PLIST,v 1.18.2.1 2007/04/02 11:51:02 sturm Exp $
 @pkgpath www/zope-btreefolder2
 @newgroup _zope:534
 @newuser _zope:534:_zope:daemon:Zope Account:/nonexistent:/sbin/nologin
@@ -119,6 +119,9 @@ lib/zope/lib/python/AccessControl/dtml/roleEdit.dtml
 lib/zope/lib/python/AccessControl/dtml/userFolderProps.dtml
 lib/zope/lib/python/AccessControl/interfaces.py
 lib/zope/lib/python/AccessControl/interfaces.pyc
+lib/zope/lib/python/AccessControl/requestmethod.py
+lib/zope/lib/python/AccessControl/requestmethod.pyc
+lib/zope/lib/python/AccessControl/requestmethod.txt
 lib/zope/lib/python/AccessControl/securitySuite/
 lib/zope/lib/python/AccessControl/securitySuite/README
 lib/zope/lib/python/AccessControl/securitySuite/ResultObject.py
@@ -156,6 +159,8 @@ lib/zope/lib/python/AccessControl/tests/testAcquisition.py
 lib/zope/lib/python/AccessControl/tests/testAcquisition.pyc
 lib/zope/lib/python/AccessControl/tests/testBindings.py
 lib/zope/lib/python/AccessControl/tests/testBindings.pyc
+lib/zope/lib/python/AccessControl/tests/testChownRecursive.py
+lib/zope/lib/python/AccessControl/tests/testChownRecursive.pyc
 lib/zope/lib/python/AccessControl/tests/testClassSecurityInfo.py
 lib/zope/lib/python/AccessControl/tests/testClassSecurityInfo.pyc
 lib/zope/lib/python/AccessControl/tests/testDeprecatedAPI.py
@@ -180,6 +185,8 @@ lib/zope/lib/python/AccessControl/tests/testZopeGuards.py
 lib/zope/lib/python/AccessControl/tests/testZopeGuards.pyc
 lib/zope/lib/python/AccessControl/tests/testZopeSecurityPolicy.py
 lib/zope/lib/python/AccessControl/tests/testZopeSecurityPolicy.pyc
+lib/zope/lib/python/AccessControl/tests/test_requestmethod.py
+lib/zope/lib/python/AccessControl/tests/test_requestmethod.pyc
 lib/zope/lib/python/AccessControl/tests/test_safeiter.py
 lib/zope/lib/python/AccessControl/tests/test_safeiter.pyc
 lib/zope/lib/python/AccessControl/unauthorized.py
@@ -729,6 +736,8 @@ lib/zope/lib/python/OFS/tests/testContentTypes.py
 lib/zope/lib/python/OFS/tests/testContentTypes.pyc
 lib/zope/lib/python/OFS/tests/testCopySupport.py
 lib/zope/lib/python/OFS/tests/testCopySupport.pyc
+lib/zope/lib/python/OFS/tests/testCopySupportHooks.py
+lib/zope/lib/python/OFS/tests/testCopySupportHooks.pyc
 lib/zope/lib/python/OFS/tests/testFileAndImage.py
 lib/zope/lib/python/OFS/tests/testFileAndImage.pyc
 lib/zope/lib/python/OFS/tests/testFolder.py
@@ -747,6 +756,10 @@ lib/zope/lib/python/OFS/tests/testRanges.py
 lib/zope/lib/python/OFS/tests/testRanges.pyc
 lib/zope/lib/python/OFS/tests/testTraverse.py
 lib/zope/lib/python/OFS/tests/testTraverse.pyc
+lib/zope/lib/python/OFS/tests/test_Uninstalled.py
+lib/zope/lib/python/OFS/tests/test_Uninstalled.pyc
+lib/zope/lib/python/OFS/tests/test_XMLExportImport.py
+lib/zope/lib/python/OFS/tests/test_XMLExportImport.pyc
 lib/zope/lib/python/OFS/www/
 lib/zope/lib/python/OFS/www/ControlPanel_icon.gif
 lib/zope/lib/python/OFS/www/Help_icon.gif
@@ -2515,6 +2528,8 @@ lib/zope/lib/python/Testing/ZopeTestCase/functional.py
 lib/zope/lib/python/Testing/ZopeTestCase/functional.pyc
 lib/zope/lib/python/Testing/ZopeTestCase/interfaces.py
 lib/zope/lib/python/Testing/ZopeTestCase/interfaces.pyc
+lib/zope/lib/python/Testing/ZopeTestCase/placeless.py
+lib/zope/lib/python/Testing/ZopeTestCase/placeless.pyc
 lib/zope/lib/python/Testing/ZopeTestCase/profiler.py
 lib/zope/lib/python/Testing/ZopeTestCase/profiler.pyc
 lib/zope/lib/python/Testing/ZopeTestCase/runalltests.py
@@ -2527,6 +2542,8 @@ lib/zope/lib/python/Testing/ZopeTestCase/testFunctional.py
 lib/zope/lib/python/Testing/ZopeTestCase/testFunctional.pyc
 lib/zope/lib/python/Testing/ZopeTestCase/testInterfaces.py
 lib/zope/lib/python/Testing/ZopeTestCase/testInterfaces.pyc
+lib/zope/lib/python/Testing/ZopeTestCase/testPlaceless.py
+lib/zope/lib/python/Testing/ZopeTestCase/testPlaceless.pyc
 lib/zope/lib/python/Testing/ZopeTestCase/testPortalTestCase.py
 lib/zope/lib/python/Testing/ZopeTestCase/testPortalTestCase.pyc
 lib/zope/lib/python/Testing/ZopeTestCase/testPythonScript.py
@@ -3115,6 +3132,8 @@ lib/zope/lib/python/ZPublisher/tests/testPublish.py
 lib/zope/lib/python/ZPublisher/tests/testPublish.pyc
 lib/zope/lib/python/ZPublisher/tests/testTaintedString.py
 lib/zope/lib/python/ZPublisher/tests/testTaintedString.pyc
+lib/zope/lib/python/ZPublisher/tests/test_Converters.py
+lib/zope/lib/python/ZPublisher/tests/test_Converters.pyc
 lib/zope/lib/python/ZPublisher/tests/test_xmlrpc.py
 lib/zope/lib/python/ZPublisher/tests/test_xmlrpc.pyc
 lib/zope/lib/python/ZPublisher/xmlrpc.py
@@ -3557,6 +3576,8 @@ lib/zope/lib/python/persistent/tests/test_PickleCache.py
 lib/zope/lib/python/persistent/tests/test_PickleCache.pyc
 lib/zope/lib/python/persistent/tests/test_list.py
 lib/zope/lib/python/persistent/tests/test_list.pyc
+lib/zope/lib/python/persistent/tests/test_mapping.py
+lib/zope/lib/python/persistent/tests/test_mapping.pyc
 lib/zope/lib/python/persistent/tests/test_overriding_attrs.py
 lib/zope/lib/python/persistent/tests/test_overriding_attrs.pyc
 lib/zope/lib/python/persistent/tests/test_persistent.py
@@ -5884,7 +5905,6 @@ lib/zope/lib/python/zope/app/utility/utility.py
 lib/zope/lib/python/zope/app/utility/utility.pyc
 lib/zope/lib/python/zope/app/utility/vocabulary.py
 lib/zope/lib/python/zope/app/utility/vocabulary.pyc
-lib/zope/lib/python/zope/app/version.txt
 lib/zope/lib/python/zope/app/zapi/
 lib/zope/lib/python/zope/app/zapi/__init__.py
 lib/zope/lib/python/zope/app/zapi/__init__.pyc

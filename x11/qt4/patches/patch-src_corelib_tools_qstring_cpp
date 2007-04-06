@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_corelib_tools_qstring_cpp,v 1.1 2007/03/31 23:10:18 espie Exp $
+$OpenBSD: patch-src_corelib_tools_qstring_cpp,v 1.1.4.1 2007/04/06 11:35:29 sturm Exp $
 --- src/corelib/tools/qstring.cpp.orig	Wed Feb 21 10:58:43 2007
 +++ src/corelib/tools/qstring.cpp	Sat Mar 31 15:01:10 2007
 @@ -3352,6 +3352,7 @@ QString QString::fromUtf8(const char *str, int size)

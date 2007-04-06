@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.12 2006/01/13 19:18:50 espie Exp $
+# $OpenBSD: Makefile,v 1.12.2.1 2007/04/06 11:35:29 sturm Exp $
 
 COMMENT=		"C++ X11 GUI toolkit"
 COMMENT-examples=	"examples for qt4"
@@ -10,7 +10,7 @@ PKGNAME=		qt4-${VERSION}
 PKGNAME-mysql=		qt4-mysql-${VERSION}p0
 PKGNAME-postgresql=	qt4-postgresql-${VERSION}p0
 PKGNAME-examples=	qt4-examples-${VERSION}
-FULLPKGNAME=		qt4-${VERSION}p0
+FULLPKGNAME=		qt4-${VERSION}p1
 FULLPKGNAME-html=	qt4-html-${VERSION}
 SHARED_LIBS=	Qt3Support 5.0 \
 		QtCore 5.0 \

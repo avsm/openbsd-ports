@@ -1,7 +1,7 @@
-$OpenBSD: patch-src_codecs_qutfcodec_cpp,v 1.1 2007/03/31 22:49:46 espie Exp $
---- src/codecs/qutfcodec.cpp.orig	Thu Oct 19 16:25:07 2006
-+++ src/codecs/qutfcodec.cpp	Sat Mar 31 14:51:50 2007
-@@ -154,6 +154,7 @@ int QUtf8Codec::heuristicContentMatch(const char* char
+$OpenBSD: patch-src_codecs_qutfcodec_cpp,v 1.1.2.1 2007/04/06 10:28:08 sturm Exp $
+--- src/codecs/qutfcodec.cpp.orig	Fri Sep  2 14:42:58 2005
++++ src/codecs/qutfcodec.cpp	Fri Apr  6 11:04:23 2007
+@@ -154,6 +154,7 @@ int QUtf8Codec::heuristicContentMatch(co
  
  class QUtf8Decoder : public QTextDecoder {
      uint uc;
@@ -9,7 +9,7 @@ $OpenBSD: patch-src_codecs_qutfcodec_cpp,v 1.1 2007/03/31 22:49:46 espie Exp $
      int need;
      bool headerDone;
  public:
-@@ -167,8 +168,9 @@ class QUtf8Decoder : public QTextDecoder { (public)
+@@ -167,8 +168,9 @@ public:
  	result.setLength( len ); // worst case
  	QChar *qch = (QChar *)result.unicode();
  	uchar ch;
@@ -20,7 +20,7 @@ $OpenBSD: patch-src_codecs_qutfcodec_cpp,v 1.1 2007/03/31 22:49:46 espie Exp $
  	    if (need) {
  		if ( (ch&0xc0) == 0x80 ) {
  		    uc = (uc << 6) | (ch & 0x3f);
-@@ -182,6 +184,8 @@ class QUtf8Decoder : public QTextDecoder { (public)
+@@ -182,6 +184,8 @@ public:
  			    *qch++ = QChar(high);
  			    *qch++ = QChar(low);
  			    headerDone = TRUE;
@@ -29,7 +29,7 @@ $OpenBSD: patch-src_codecs_qutfcodec_cpp,v 1.1 2007/03/31 22:49:46 espie Exp $
  			} else {
  			    if (headerDone || QChar(uc) != QChar::byteOrderMark)
  				*qch++ = uc;
-@@ -190,6 +194,7 @@ class QUtf8Decoder : public QTextDecoder { (public)
+@@ -190,6 +194,7 @@ public:
  		    }
  		} else {
  		    // error
@@ -37,7 +37,7 @@ $OpenBSD: patch-src_codecs_qutfcodec_cpp,v 1.1 2007/03/31 22:49:46 espie Exp $
  		    *qch++ = QChar::replacement;
  		    need = 0;
  		}
-@@ -200,12 +205,21 @@ class QUtf8Decoder : public QTextDecoder { (public)
+@@ -200,12 +205,21 @@ public:
  		} else if ((ch & 0xe0) == 0xc0) {
  		    uc = ch & 0x1f;
  		    need = 1;

@@ -1,0 +1,11 @@
+$OpenBSD: patch-configure,v 1.3 2007/04/11 20:28:15 jakob Exp $
+--- configure.orig	Sun Apr  8 11:10:07 2007
++++ configure	Sun Apr  8 21:54:58 2007
+@@ -20159,6 +20159,7 @@ LIBTOOL='$(SHELL) $(top_builddir)/libtool'
+ 
+ 
+ 
++LIBS="${LIBS} -liconv"
+ 
+       if test "X$prefix" = "XNONE"; then
+     acl_final_prefix="$ac_default_prefix"

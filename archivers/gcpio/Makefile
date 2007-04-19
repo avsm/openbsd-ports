@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.10 2005/10/20 21:45:18 naddy Exp $
+# $OpenBSD: Makefile,v 1.10.2.1 2007/04/19 13:47:06 sturm Exp $
 
 COMMENT=	"GNU copy-in/out (cpio)"
 
-DISTNAME=	cpio-2.6
+DISTNAME=	cpio-2.7
 PKGNAME=	g${DISTNAME}
 CATEGORIES=	archivers
 
@@ -19,6 +19,8 @@ WANTLIB=	c
 
 CONFIGURE_STYLE=gnu
 CONFIGURE_ARGS=	--program-prefix="g" \
+		--infodir='${PREFIX}/info' \
+		--mandir='${PREFIX}/man' \
 		--with-rmt=/etc/rmt
 
 .include <bsd.port.mk>

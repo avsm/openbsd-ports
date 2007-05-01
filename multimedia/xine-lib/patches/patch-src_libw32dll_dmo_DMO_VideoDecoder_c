@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_libw32dll_dmo_DMO_VideoDecoder_c,v 1.1 2007/04/14 11:57:39 robert Exp $
+$OpenBSD: patch-src_libw32dll_dmo_DMO_VideoDecoder_c,v 1.1.4.1 2007/05/01 16:35:02 sturm Exp $
 --- src/libw32dll/dmo/DMO_VideoDecoder.c.orig	Sat Apr 14 02:03:02 2007
 +++ src/libw32dll/dmo/DMO_VideoDecoder.c	Sat Apr 14 02:03:23 2007
 @@ -118,6 +118,7 @@ DMO_VideoDecoder * DMO_VideoDecoder_Open

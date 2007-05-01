@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.2 2006/10/12 04:48:15 brad Exp $
+@comment $OpenBSD: PLIST,v 1.2.2.1 2007/05/01 16:35:02 sturm Exp $
 %%i386%%
 bin/xine-config
 include/xine/
@@ -150,8 +150,6 @@ share/doc/xine/hackersguide/post_frame.png
 share/locale/cs/LC_MESSAGES/libxine1.mo
 share/locale/de/LC_MESSAGES/libxine1.mo
 share/locale/es/LC_MESSAGES/libxine1.mo
-share/locale/eu/
-share/locale/eu/LC_MESSAGES/
 share/locale/eu/LC_MESSAGES/libxine1.mo
 share/locale/fr/LC_MESSAGES/libxine1.mo
 share/locale/it/LC_MESSAGES/libxine1.mo

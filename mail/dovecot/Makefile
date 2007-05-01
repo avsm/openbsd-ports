@@ -1,8 +1,10 @@
-# $OpenBSD: Makefile,v 1.33.2.3 2006/12/05 22:52:23 sturm Exp $
+# $OpenBSD: Makefile,v 1.33.2.4 2007/05/01 11:22:12 sturm Exp $
+
+SHARED_ONLY=	Yes
 
 COMMENT= 	"compact IMAP/POP3 server"
 
-DISTNAME=	dovecot-1.0.rc15
+DISTNAME=	dovecot-1.0.0
 CATEGORIES=	mail
 MASTER_SITES=	${HOMEPAGE}releases/
 
@@ -40,8 +42,7 @@ LIB_DEPENDS+=		pq.4::databases/postgresql
 .endif
 
 USE_LIBTOOL=	Yes
-CONFIGURE_STYLE= autoconf
-AUTOCONF_VERSION= 2.59
+CONFIGURE_STYLE= gnu
 CONFIGURE_ARGS+=--localstatedir=/var \
 		--with-ioloop=kqueue \
 		--with-ssl=openssl \
@@ -58,8 +59,8 @@ pre-build:
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/dovecot
 	${INSTALL_DATA} ${WRKSRC}/doc/dovecot-openssl.cnf \
-		${WRKSRC}/doc/dovecot-sql.conf \
-		${WRKSRC}/doc/dovecot-ldap.conf \
+		${WRKSRC}/doc/dovecot-sql-example.conf \
+		${WRKSRC}/doc/dovecot-ldap-example.conf \
 		${WRKSRC}/dovecot-example.conf \
 		${PREFIX}/share/examples/dovecot
 	${INSTALL_SCRIPT} ${WRKSRC}/doc/mkcert.sh \

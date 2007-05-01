@@ -1,8 +1,7 @@
-# $OpenBSD: Makefile,v 1.16 2007/02/11 01:03:28 ian Exp $
+# $OpenBSD: Makefile,v 1.16.2.1 2007/05/01 16:16:42 sturm Exp $
 
 COMMENT=	"open source multi-protocol PBX and telephony toolkit"
-DISTNAME=	asterisk-1.2.15
-PKGNAME=	${DISTNAME}
+DISTNAME=	asterisk-1.2.17
 CATEGORIES=	telephony
 MASTER_SITES=	http://ftp.digium.com/pub/asterisk/releases/
 

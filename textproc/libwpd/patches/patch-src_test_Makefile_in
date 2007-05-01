@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_test_Makefile_in,v 1.1 2007/03/17 20:41:01 kili Exp $
+$OpenBSD: patch-src_test_Makefile_in,v 1.1.2.1 2007/05/01 16:19:27 sturm Exp $
 --- src/test/Makefile.in.orig	Fri Mar 16 10:04:31 2007
 +++ src/test/Makefile.in	Sat Mar 17 18:48:05 2007
 @@ -204,10 +204,7 @@ target_alias = @target_alias@

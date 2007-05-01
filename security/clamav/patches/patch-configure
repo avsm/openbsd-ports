@@ -1,7 +1,7 @@
-$OpenBSD: patch-configure,v 1.6 2007/02/28 20:31:08 mbalmer Exp $
---- configure.orig	Wed Feb 14 08:34:54 2007
-+++ configure	Wed Feb 14 08:39:18 2007
-@@ -21659,11 +21659,11 @@ cat >>conftest.$ac_ext <<_ACEOF
+$OpenBSD: patch-configure,v 1.6.2.1 2007/05/01 16:24:35 sturm Exp $
+--- configure.orig	Fri Apr 13 01:27:29 2007
++++ configure	Fri Apr 13 17:39:49 2007
+@@ -21664,11 +21664,11 @@ cat >>conftest.$ac_ext <<_ACEOF
  #ifdef __cplusplus
  extern "C"
  #endif
@@ -15,7 +15,7 @@ $OpenBSD: patch-configure,v 1.6 2007/02/28 20:31:08 mbalmer Exp $
    ;
    return 0;
  }
-@@ -22220,6 +22220,7 @@ _ACEOF
+@@ -22225,6 +22225,7 @@ _ACEOF
  cat confdefs.h >>conftest.$ac_ext
  cat >>conftest.$ac_ext <<_ACEOF
  /* end confdefs.h.  */
@@ -23,7 +23,7 @@ $OpenBSD: patch-configure,v 1.6 2007/02/28 20:31:08 mbalmer Exp $
  #include <netinet/in.h>
  
  #include <resolv.h>
-@@ -23140,11 +23141,9 @@ _ACEOF
+@@ -23174,11 +23175,9 @@ _ACEOF
      ;;
  openbsd*)
      if test "$have_pthreads" = "yes"; then
@@ -38,18 +38,11 @@ $OpenBSD: patch-configure,v 1.6 2007/02/28 20:31:08 mbalmer Exp $
  	TH_SAFE="-thread-safe"
  
  cat >>confdefs.h <<\_ACEOF
-@@ -24218,6 +24217,7 @@ cat confdefs.h >>conftest.$ac_ext
+@@ -24300,6 +24299,8 @@ cat confdefs.h >>conftest.$ac_ext
  cat >>conftest.$ac_ext <<_ACEOF
  /* end confdefs.h.  */
  
 +#include <sys/types.h>
- #include <tcpd.h>
- int allow_severity = 0;
- int deny_severity  = 0;
-@@ -24270,6 +24270,7 @@ cat confdefs.h >>conftest.$ac_ext
- cat >>conftest.$ac_ext <<_ACEOF
- /* end confdefs.h.  */
- 
 +#include <sys/types.h>
  #include <tcpd.h>
  int allow_severity = 0;

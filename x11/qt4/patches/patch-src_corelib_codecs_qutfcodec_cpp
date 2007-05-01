@@ -1,7 +1,7 @@
-$OpenBSD: patch-src_corelib_codecs_qutfcodec_cpp,v 1.1 2007/03/31 23:10:18 espie Exp $
---- src/corelib/codecs/qutfcodec.cpp.orig	Wed Feb 21 10:58:41 2007
-+++ src/corelib/codecs/qutfcodec.cpp	Sat Mar 31 15:01:10 2007
-@@ -127,15 +127,19 @@ QString QUtf8Codec::convertToUnicode(const char *chars
+$OpenBSD: patch-src_corelib_codecs_qutfcodec_cpp,v 1.1.6.1 2007/05/01 16:27:48 sturm Exp $
+--- src/corelib/codecs/qutfcodec.cpp.orig	Mon Nov 27 18:26:05 2006
++++ src/corelib/codecs/qutfcodec.cpp	Sat Apr 14 19:11:52 2007
+@@ -127,15 +127,19 @@ QString QUtf8Codec::convertToUnicode(con
      bool headerdone = false;
      QChar replacement = QChar::ReplacementCharacter;
      int need = 0;
@@ -22,7 +22,7 @@ $OpenBSD: patch-src_corelib_codecs_qutfcodec_cpp,v 1.1 2007/03/31 23:10:18 espie
      }
      if (!headerdone && len > 3
          && (uchar)chars[0] == 0xef && (uchar)chars[1] == 0xbb && (uchar)chars[2] == 0xbf) {
-@@ -152,7 +156,7 @@ QString QUtf8Codec::convertToUnicode(const char *chars
+@@ -152,7 +156,7 @@ QString QUtf8Codec::convertToUnicode(con
      int invalid = 0;
  
      for (int i=0; i<len; i++) {
@@ -31,7 +31,7 @@ $OpenBSD: patch-src_corelib_codecs_qutfcodec_cpp,v 1.1 2007/03/31 23:10:18 espie
          if (need) {
              if ((ch&0xc0) == 0x80) {
                  uc = (uc << 6) | (ch & 0x3f);
-@@ -163,14 +167,27 @@ QString QUtf8Codec::convertToUnicode(const char *chars
+@@ -163,14 +167,27 @@ QString QUtf8Codec::convertToUnicode(con
                          uc -= 0x10000;
                          unsigned short high = uc/0x400 + 0xd800;
                          unsigned short low = uc%0x400 + 0xdc00;
@@ -59,7 +59,7 @@ $OpenBSD: patch-src_corelib_codecs_qutfcodec_cpp,v 1.1 2007/03/31 23:10:18 espie
                  *qch++ = QChar::ReplacementCharacter;
                  ++invalid;
                  need = 0;
-@@ -181,12 +198,22 @@ QString QUtf8Codec::convertToUnicode(const char *chars
+@@ -181,12 +198,22 @@ QString QUtf8Codec::convertToUnicode(con
              } else if ((ch & 0xe0) == 0xc0) {
                  uc = ch & 0x1f;
                  need = 1;
@@ -82,7 +82,7 @@ $OpenBSD: patch-src_corelib_codecs_qutfcodec_cpp,v 1.1 2007/03/31 23:10:18 espie
              }
          }
      }
-@@ -197,6 +224,7 @@ QString QUtf8Codec::convertToUnicode(const char *chars
+@@ -197,6 +224,7 @@ QString QUtf8Codec::convertToUnicode(con
          if (headerdone)
              state->flags |= IgnoreHeader;
          state->state_data[0] = need ? uc : 0;

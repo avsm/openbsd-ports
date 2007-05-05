@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_cairo-xlib-surface_c,v 1.2 2006/06/10 12:26:19 steven Exp $
+$OpenBSD: patch-src_cairo-xlib-surface_c,v 1.2.2.1 2007/05/05 07:54:23 sturm Exp $
 --- src/cairo-xlib-surface.c.orig	Wed Mar 15 16:26:51 2006
 +++ src/cairo-xlib-surface.c	Sat Jun  3 18:18:03 2006
 @@ -72,6 +72,8 @@ _native_byte_order_lsb (void);
@@ -359,7 +359,7 @@ $OpenBSD: patch-src_cairo-xlib-surface_c,v 1.2 2006/06/10 12:26:19 steven Exp $
 +    switch(surface->workaround) {
 +    case WORKAROUND_NONE:
 +	/* Default behaviour is supposed to work */
-+	stride = image->width * 4;
++	stride = image->stride;
 +	depth = image->depth;
 +	data = image->data;
 +	break;

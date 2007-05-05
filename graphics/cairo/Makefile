@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.7 2006/06/10 12:26:19 steven Exp $
+# $OpenBSD: Makefile,v 1.7.2.1 2007/05/05 07:54:23 sturm Exp $
 
 COMMENT=		"vector graphics library"
 
-PKGNAME=		${DISTNAME}p0
+PKGNAME=		${DISTNAME}p1
 DISTNAME=		cairo-1.0.4
 SHARED_LIBS=		cairo	4.4
 CATEGORIES=		graphics

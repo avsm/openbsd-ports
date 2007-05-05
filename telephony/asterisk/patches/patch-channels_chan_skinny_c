@@ -1,6 +1,6 @@
-$OpenBSD: patch-channels_chan_skinny_c,v 1.1.4.1 2006/11/01 13:45:32 sturm Exp $
+$OpenBSD: patch-channels_chan_skinny_c,v 1.1.4.2 2007/05/05 08:22:00 sturm Exp $
 --- channels/chan_skinny.c.orig	Tue Nov 29 19:24:39 2005
-+++ channels/chan_skinny.c	Fri Oct 20 13:53:38 2006
++++ channels/chan_skinny.c	Sat May  5 09:57:49 2007
 @@ -99,7 +99,7 @@ typedef unsigned int   UINT32;
  #define htolel(x) (x)
  #define htoles(x) (x)

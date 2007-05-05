@@ -1,6 +1,6 @@
-$OpenBSD: patch-channels_chan_sip_c,v 1.1.2.2 2007/03/23 07:26:47 sturm Exp $
+$OpenBSD: patch-channels_chan_sip_c,v 1.1.2.3 2007/05/05 08:22:00 sturm Exp $
 --- channels/chan_sip.c.orig	Thu May 25 19:18:01 2006
-+++ channels/chan_sip.c	Fri Mar 23 07:41:22 2007
++++ channels/chan_sip.c	Sat May  5 09:57:49 2007
 @@ -3587,6 +3587,7 @@ static int process_sdp(struct sip_pvt *p
  				hp = ast_gethostbyname(host, &ahp);
  				if (!hp) {
@@ -17,6 +17,34 @@ $OpenBSD: patch-channels_chan_sip_c,v 1.1.2.2 2007/03/23 07:26:47 sturm Exp $
  				}
  			}
  		}
+@@ -11114,17 +11116,17 @@ static int handle_request(struct sip_pvt
+ 			/* ignore means "don't do anything with it" but still have to 
+ 			   respond appropriately  */
+ 			ignore=1;
++		} else if (e) {
++			e = ast_skip_blanks(e);
++			if (sscanf(e, "%d %n", &respid, &len) != 1) {
++				ast_log(LOG_WARNING, "Invalid response: '%s'\n", e);
++			} else {
++				/* More SIP ridiculousness, we have to ignore bogus contacts in 100 etc responses */
++				if ((respid == 200) || ((respid >= 300) && (respid <= 399)))
++					extract_uri(p, req);
++				handle_response(p, respid, e + len, req, ignore, seqno);
++			}
+ 		}
+-	
+-		e = ast_skip_blanks(e);
+-		if (sscanf(e, "%d %n", &respid, &len) != 1) {
+-			ast_log(LOG_WARNING, "Invalid response: '%s'\n", e);
+-		} else {
+-			/* More SIP ridiculousness, we have to ignore bogus contacts in 100 etc responses */
+-			if ((respid == 200) || ((respid >= 300) && (respid <= 399)))
+-				extract_uri(p, req);
+-			handle_response(p, respid, e + len, req, ignore, seqno);
+-		}
+ 		return 0;
+ 	}
+ 
 @@ -11179,6 +11181,12 @@ static int handle_request(struct sip_pvt
  			}
  			return res;

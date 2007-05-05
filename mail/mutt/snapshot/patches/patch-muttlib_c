@@ -1,8 +1,8 @@
-$OpenBSD: patch-muttlib_c,v 1.1 2007/05/04 09:09:31 kili Exp $
+$OpenBSD: patch-muttlib_c,v 1.1.2.1 2007/05/05 08:45:19 sturm Exp $
 
---- muttlib.c.orig	Thu May  3 09:41:31 2007
-+++ muttlib.c	Thu May  3 13:54:16 2007
-@@ -536,7 +536,9 @@ char *mutt_gecos_name (char *dest, size_t destlen, str
+--- muttlib.c.orig	Thu Jun  8 13:51:03 2006
++++ muttlib.c	Sat May  5 10:33:48 2007
+@@ -536,7 +536,9 @@ char *mutt_gecos_name (char *dest, size_
    {
      if (dest[idx] == '&')
      {

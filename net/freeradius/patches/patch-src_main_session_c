@@ -1,12 +1,12 @@
-$OpenBSD: patch-src_main_session_c,v 1.1.1.1 2006/04/16 14:37:08 sturm Exp $
---- src/main/session.c.orig	Mon Mar 27 23:02:47 2006
-+++ src/main/session.c	Mon Mar 27 23:02:54 2006
-@@ -222,7 +222,7 @@ int rad_check_ts(uint32_t nasaddr, unsig
- 		user, session_id, NULL);
- #else
- 	execl(mainconfig.checkrad, "checkrad", cl->nastype, address, port,
+$OpenBSD: patch-src_main_session_c,v 1.1.1.1.2.1 2007/05/31 13:07:04 sturm Exp $
+--- src/main/session.c.orig	Fri Feb  9 11:27:59 2007
++++ src/main/session.c	Thu May 31 14:46:05 2007
+@@ -201,7 +201,7 @@ int rad_check_ts(uint32_t nasaddr, unsig
+ 	   processor to execute checkrad
+ 	*/
+ 	execl(getenv("COMSPEC"), "", "/C","checkrad", cl->nastype, address, port,
 -		user, session_id, NULL);
 +		user, session_id, (void *)NULL);
- #endif
- 	radlog(L_ERR, "Check-TS: exec %s: %s", mainconfig.checkrad, strerror(errno));
- 
+ #else
+ 	execl(mainconfig.checkrad, "checkrad", cl->nastype, address, port,
+ 		user, session_id, NULL);

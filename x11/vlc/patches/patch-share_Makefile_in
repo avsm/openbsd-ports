@@ -1,0 +1,11 @@
+$OpenBSD: patch-share_Makefile_in,v 1.3 2007/06/05 01:53:04 jolan Exp $
+--- share/Makefile.in.orig	Tue Apr 17 17:47:19 2007
++++ share/Makefile.in	Fri May 11 23:51:38 2007
+@@ -813,7 +813,6 @@ skins2/default.vlt: $(skins2_default_vlt_FILES)
+ 
+ skins2/default.vlt:
+ 	mkdir -p skins2
+-	tar cvvzf skins2/default.vlt --exclude .svn -C $(srcdir)/skins2 default/
+ 
+ .PHONY: $(nobase_pkgdata_DATA)
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.

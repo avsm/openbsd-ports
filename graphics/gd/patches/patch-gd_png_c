@@ -1,7 +1,7 @@
-$OpenBSD: patch-gd_png_c,v 1.1 2007/05/31 18:32:06 rui Exp $
---- gd_png.c.orig	Thu May 31 16:03:54 2007
-+++ gd_png.c	Thu May 31 16:05:09 2007
-@@ -81,7 +81,11 @@ gdPngErrorHandler (png_structp png_ptr, png_const_char
+$OpenBSD: patch-gd_png_c,v 1.1.2.1 2007/06/06 06:07:18 sturm Exp $
+--- gd_png.c.orig	Sat Feb  3 02:41:00 2007
++++ gd_png.c	Wed Jun  6 08:05:11 2007
+@@ -81,7 +81,11 @@ gdPngErrorHandler (png_structp png_ptr, 
  static void
  gdPngReadData (png_structp png_ptr, png_bytep data, png_size_t length)
  {

@@ -1,7 +1,7 @@
-$OpenBSD: patch-php_ini-dist,v 1.6 2006/05/09 14:15:40 robert Exp $
---- php.ini-dist.orig	Tue Nov 15 00:14:23 2005
-+++ php.ini-dist	Sat Nov 26 13:18:08 2005
-@@ -441,10 +441,7 @@
+$OpenBSD: patch-php_ini-dist,v 1.6.4.1 2007/06/17 07:54:58 sturm Exp $
+--- php.ini-dist.orig	Mon Aug 14 20:40:19 2006
++++ php.ini-dist	Sun Jun 10 10:40:37 2007
+@@ -451,10 +451,7 @@ default_mimetype = "text/html"
  ;;;;;;;;;;;;;;;;;;;;;;;;;
  
  ; UNIX: "/path1:/path2"
@@ -13,7 +13,7 @@ $OpenBSD: patch-php_ini-dist,v 1.6 2006/05/09 14:15:40 robert Exp $
  
  ; The root of the PHP pages, used only if nonempty.
  ; if PHP was not compiled with FORCE_REDIRECT, you SHOULD set doc_root
-@@ -458,7 +455,7 @@
+@@ -468,7 +465,7 @@ doc_root =
  user_dir =
  
  ; Directory in which the loadable extensions (modules) reside.
@@ -22,7 +22,7 @@ $OpenBSD: patch-php_ini-dist,v 1.6 2006/05/09 14:15:40 robert Exp $
  
  ; Whether or not to enable the dl() function.  The dl() function does NOT work
  ; properly in multithreaded servers, such as IIS or Zeus, and is automatically
-@@ -519,7 +516,7 @@
+@@ -529,7 +526,7 @@ upload_max_filesize = 2M
  ;;;;;;;;;;;;;;;;;;
  
  ; Whether to allow the treatment of URLs (like http:// or ftp://) as files.
@@ -31,7 +31,7 @@ $OpenBSD: patch-php_ini-dist,v 1.6 2006/05/09 14:15:40 robert Exp $
  
  ; Define the anonymous ftp password (your email address)
  ;from="john@doe.com"
-@@ -537,70 +534,6 @@
+@@ -547,70 +544,6 @@ default_socket_timeout = 60
  ; fgets() and file() will work regardless of the source of the file.
  ; auto_detect_line_endings = Off
  
@@ -102,7 +102,7 @@ $OpenBSD: patch-php_ini-dist,v 1.6 2006/05/09 14:15:40 robert Exp $
  ;;;;;;;;;;;;;;;;;;;
  ; Module Settings ;
  ;;;;;;;;;;;;;;;;;;;
-@@ -616,13 +549,6 @@
+@@ -626,13 +559,6 @@ default_socket_timeout = 60
  define_syslog_variables  = Off
  
  [mail function]
@@ -116,7 +116,7 @@ $OpenBSD: patch-php_ini-dist,v 1.6 2006/05/09 14:15:40 robert Exp $
  ; For Unix only.  You may supply arguments as well (default: "sendmail -t -i").
  ;sendmail_path =
  
-@@ -1173,6 +1099,53 @@
+@@ -1198,6 +1124,53 @@ soap.wsdl_cache_dir="/tmp"
  ; instead of original one.
  soap.wsdl_cache_ttl=86400
  

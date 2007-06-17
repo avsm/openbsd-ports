@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile.inc,v 1.13 2006/10/24 09:30:25 wilfried Exp $
+# $OpenBSD: Makefile.inc,v 1.13.2.1 2007/06/17 07:54:57 sturm Exp $
 
 # This port currently only works with archs supporting dynamic loading
 # and has Apache that supports DSO's.
@@ -70,3 +70,6 @@ PATCH_LIST=		${.CURDIR}/../patches/patch-* \
 			patch-*
 PATCHFILES=		suhosin-patch-${V}-${SUHOSIN_V}.patch.gz:1
 PATCH_DIST_STRIP=	-p1
+
+post-extract:
+	@find ${WRKSRC} -name \*.orig -exec rm {} \;

@@ -1,0 +1,34 @@
+$OpenBSD: patch-ext_soap_php_http_c,v 1.1.2.1 2007/06/17 07:54:58 sturm Exp $
+--- ext/soap/php_http.c.orig	Thu Apr 13 10:18:36 2006
++++ ext/soap/php_http.c	Sun Jun 10 16:18:56 2007
+@@ -891,19 +891,20 @@ try_again:
+ 				efree(http_body);
+ 				efree(loc);
+ 				if (new_url->scheme == NULL && new_url->path != NULL) {
+-					new_url->scheme = estrdup(phpurl->scheme);
+-					new_url->host = estrdup(phpurl->host);
++					new_url->scheme = NULL;
++					new_url->host = phpurl->host ? estrdup(phpurl->host) : NULL;
+ 					new_url->port = phpurl->port;
+ 					if (new_url->path && new_url->path[0] != '/') {
+-						char *t = phpurl->path?phpurl->path:"/";
++						char *t = phpurl->path;
+ 						char *p = strrchr(t, '/');
+-						char *s = emalloc((p - t) + strlen(new_url->path) + 2);
+-
+-						strncpy(s, t, (p - t) + 1);
+-						s[(p - t) + 1] = 0;
+-						strcat(s, new_url->path);
+-						efree(new_url->path);
+-						new_url->path = s;
++						if (p) {
++							char *s = emalloc((p - t) + strlen(new_url->path) + 2);
++							strncpy(s, t, (p - t) + 1);
++							s[(p - t) + 1] = 0;
++							strcat(s, new_url->path);
++							efree(new_url->path);
++							new_url->path = s;
++						}
+ 					}
+ 				}
+ 				phpurl = new_url;

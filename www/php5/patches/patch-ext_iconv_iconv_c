@@ -1,7 +1,7 @@
-$OpenBSD: patch-ext_iconv_iconv_c,v 1.1.1.1 2004/10/02 11:32:37 robert Exp $
---- ext/iconv/iconv.c.orig	Mon Jul 26 22:41:02 2004
-+++ ext/iconv/iconv.c	Mon Jul 26 22:46:24 2004
-@@ -267,7 +267,7 @@
+$OpenBSD: patch-ext_iconv_iconv_c,v 1.1.1.1.10.1 2007/06/17 07:54:58 sturm Exp $
+--- ext/iconv/iconv.c.orig	Thu Apr 27 02:50:54 2006
++++ ext/iconv/iconv.c	Sun Jun 10 10:40:37 2007
+@@ -251,7 +251,7 @@ static php_iconv_err_t _php_iconv_append
  
  			out_p = (d)->c + (d)->len;
  
@@ -10,7 +10,7 @@ $OpenBSD: patch-ext_iconv_iconv_c,v 1.1.1.1 2004/10/02 11:32:37 robert Exp $
  #if ICONV_SUPPORTS_ERRNO
  				switch (errno) { 
  					case EINVAL:
-@@ -427,7 +427,7 @@
+@@ -411,7 +411,7 @@ PHP_ICONV_API php_iconv_err_t php_iconv_
  	out_p = out_buf;
  
  	while (in_left > 0) {
@@ -19,7 +19,7 @@ $OpenBSD: patch-ext_iconv_iconv_c,v 1.1.1.1 2004/10/02 11:32:37 robert Exp $
  		out_size = bsz - out_left;
  		if (result == (size_t)(-1)) {
  			if (errno == E2BIG && in_left > 0) {
-@@ -541,7 +541,7 @@
+@@ -525,7 +525,7 @@ static php_iconv_err_t _php_iconv_strlen
  
  		prev_in_left = in_left;
  
@@ -28,7 +28,7 @@ $OpenBSD: patch-ext_iconv_iconv_c,v 1.1.1.1 2004/10/02 11:32:37 robert Exp $
  			if (prev_in_left == in_left) {
  				break;
  			}
-@@ -641,7 +641,7 @@
+@@ -638,7 +638,7 @@ static php_iconv_err_t _php_iconv_substr
  
  		prev_in_left = in_left;
  
@@ -37,7 +37,7 @@ $OpenBSD: patch-ext_iconv_iconv_c,v 1.1.1.1 2004/10/02 11:32:37 robert Exp $
  			if (prev_in_left == in_left) {
  				break;
  			}
-@@ -772,7 +772,7 @@
+@@ -769,7 +769,7 @@ static php_iconv_err_t _php_iconv_strpos
  
  		prev_in_left = in_left;
  
@@ -46,7 +46,7 @@ $OpenBSD: patch-ext_iconv_iconv_c,v 1.1.1.1 2004/10/02 11:32:37 robert Exp $
  			if (prev_in_left == in_left) {
  #if ICONV_SUPPORTS_ERRNO
  				switch (errno) {
-@@ -1025,7 +1025,7 @@
+@@ -1018,7 +1018,7 @@ static php_iconv_err_t _php_iconv_mime_e
  
  					out_left = out_size - out_reserved;
  
@@ -55,7 +55,7 @@ $OpenBSD: patch-ext_iconv_iconv_c,v 1.1.1.1 2004/10/02 11:32:37 robert Exp $
  #if ICONV_SUPPORTS_ERRNO
  						switch (errno) {
  							case EINVAL:
-@@ -1125,7 +1125,7 @@
+@@ -1118,7 +1118,7 @@ static php_iconv_err_t _php_iconv_mime_e
  					out_p = buf;
  					out_left = out_size;
  
@@ -64,7 +64,7 @@ $OpenBSD: patch-ext_iconv_iconv_c,v 1.1.1.1 2004/10/02 11:32:37 robert Exp $
  #if ICONV_SUPPORTS_ERRNO
  						switch (errno) {
  							case EINVAL:
-@@ -2374,7 +2374,7 @@
+@@ -2376,7 +2376,7 @@ static int php_iconv_stream_filter_appen
  		tcnt = self->stub_len;
  
  		while (tcnt > 0) {

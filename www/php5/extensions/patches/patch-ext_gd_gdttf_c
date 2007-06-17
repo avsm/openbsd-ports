@@ -1,7 +1,7 @@
-$OpenBSD: patch-ext_gd_gdttf_c,v 1.1.1.1 2004/10/02 11:32:35 robert Exp $
---- ext/gd/gdttf.c.orig	Tue Jul 27 00:57:58 2004
-+++ ext/gd/gdttf.c	Tue Jul 27 00:58:59 2004
-@@ -712,7 +712,7 @@
+$OpenBSD: patch-ext_gd_gdttf_c,v 1.1.1.1.10.1 2007/06/17 07:54:58 sturm Exp $
+--- ext/gd/gdttf.c.orig	Sun Jan  9 22:05:05 2005
++++ ext/gd/gdttf.c	Sun Jun 10 18:10:52 2007
+@@ -712,7 +712,7 @@ gdttfchar(gdImage *im, int fg, font_t *f
  				}
  #if HAVE_LIBGD20
  				if (im->trueColor) {

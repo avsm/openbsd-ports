@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.19 2006/11/25 11:09:04 espie Exp $
+# $OpenBSD: Makefile,v 1.19.2.1 2007/06/17 07:54:57 sturm Exp $
 
 MULTI_PACKAGES=	-main -pear
 
 COMMENT-main=	"server-side HTML-embedded scripting language"
 COMMENT-pear=	"base classes for common PHP tasks"
-PKGNAME-main=	php5-core-${V}p0
-FULLPKGNAME-pear= php5-pear-${V}p0
+PKGNAME-main=	php5-core-${V}p1
+FULLPKGNAME-pear= php5-pear-${V}p1
 DISTFILES=	php-${V}.tar.gz \
 		pear-${PEAR_V}.tar.gz:0
 
@@ -50,7 +50,6 @@ PREFIX-pear=		${CHROOT_DIR}
 RUN_DEPENDS-pear=	:php5-core-${V}:www/php5/core
 WANTLIB-pear=
 LIB_DEPENDS-pear=
-
 
 pre-fake:
 	${INSTALL_DATA_DIR} ${PREFIX}/${APACHE_MODULE_SUBDIR}

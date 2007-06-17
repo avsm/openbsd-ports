@@ -1,0 +1,63 @@
+$OpenBSD: patch-main_streams_streams_c,v 1.1.2.1 2007/06/17 07:54:58 sturm Exp $
+--- main/streams/streams.c.orig	Sat Apr 22 19:17:40 2006
++++ main/streams/streams.c	Sun Jun 10 16:03:46 2007
+@@ -1457,12 +1457,12 @@ PHPAPI int php_register_url_stream_wrapp
+ 		return FAILURE;
+ 	}
+ 
+-	return zend_hash_add(&url_stream_wrappers_hash, protocol, protocol_len, &wrapper, sizeof(wrapper), NULL);
++	return zend_hash_add(&url_stream_wrappers_hash, protocol, protocol_len + 1, &wrapper, sizeof(wrapper), NULL);
+ }
+ 
+ PHPAPI int php_unregister_url_stream_wrapper(char *protocol TSRMLS_DC)
+ {
+-	return zend_hash_del(&url_stream_wrappers_hash, protocol, strlen(protocol));
++	return zend_hash_del(&url_stream_wrappers_hash, protocol, strlen(protocol) + 1);
+ }
+ 
+ static void clone_wrapper_hash(TSRMLS_D)
+@@ -1487,7 +1487,7 @@ PHPAPI int php_register_url_stream_wrapp
+ 		clone_wrapper_hash(TSRMLS_C);
+ 	}
+ 
+-	return zend_hash_add(FG(stream_wrappers), protocol, protocol_len, &wrapper, sizeof(wrapper), NULL);
++	return zend_hash_add(FG(stream_wrappers), protocol, protocol_len + 1, &wrapper, sizeof(wrapper), NULL);
+ }
+ 
+ PHPAPI int php_unregister_url_stream_wrapper_volatile(char *protocol TSRMLS_DC)
+@@ -1496,7 +1496,7 @@ PHPAPI int php_unregister_url_stream_wra
+ 		clone_wrapper_hash(TSRMLS_C);
+ 	}
+ 
+-	return zend_hash_del(FG(stream_wrappers), protocol, strlen(protocol));
++	return zend_hash_del(FG(stream_wrappers), protocol, strlen(protocol) + 1);
+ }
+ /* }}} */
+ 
+@@ -1530,7 +1530,8 @@ PHPAPI php_stream_wrapper *php_stream_lo
+ 	}
+ 
+ 	if (protocol)	{
+-		if (FAILURE == zend_hash_find(wrapper_hash, (char*)protocol, n, (void**)&wrapperpp))	{
++		char *tmp = estrndup(protocol, n);
++		if (FAILURE == zend_hash_find(wrapper_hash, (char*)tmp, n + 1, (void**)&wrapperpp))	{
+ 			char wrapper_name[32];
+ 
+ 			if (n >= sizeof(wrapper_name))
+@@ -1543,6 +1544,7 @@ PHPAPI php_stream_wrapper *php_stream_lo
+ 			wrapperpp = NULL;
+ 			protocol = NULL;
+ 		}
++		efree(tmp);
+ 	}
+ 	/* TODO: curl based streams probably support file:// properly */
+ 	if (!protocol || !strncasecmp(protocol, "file", n))	{
+@@ -1591,7 +1593,7 @@ PHPAPI php_stream_wrapper *php_stream_lo
+ 			}
+ 			
+ 			/* Check again, the original check might have not known the protocol name */
+-			if (zend_hash_find(wrapper_hash, "file", sizeof("file")-1, (void**)&wrapperpp) == SUCCESS) {
++			if (zend_hash_find(wrapper_hash, "file", sizeof("file"), (void**)&wrapperpp) == SUCCESS) {
+ 				return *wrapperpp;
+ 			}
+ 

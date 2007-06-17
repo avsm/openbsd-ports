@@ -1,6 +1,6 @@
-# $OpenBSD: Makefile,v 1.32 2007/02/09 13:48:20 bernd Exp $
+# $OpenBSD: Makefile,v 1.32.2.1 2007/06/17 07:54:57 sturm Exp $
 
-FULLPKGNAME-main=		php5-extensions-${V}p0
+FULLPKGNAME-main=		php5-extensions-${V}p1
 COMMENT-main=		"informational package about PHP5 extensions"
 
 MULTI_PACKAGES=	-main
@@ -48,7 +48,7 @@ COMMENT-curl=		"curl URL library extensions for php5"
 CONFIGURE_ARGS+=	--with-curl=shared,${LOCALBASE}
 LIB_DEPENDS-curl=	curl.>=2::net/curl
 WANTLIB-curl=		${WANTLIB} crypto ssl z
-FULLPKGNAME-curl=	php5-curl-${V}p2
+FULLPKGNAME-curl=	php5-curl-${V}p3
 .endif
 
 # dba
@@ -101,11 +101,11 @@ CONFIGURE_ARGS+=	--with-gd=shared ${GRAPHIC_CONFIG} \
 
 . if ${FLAVOR:L:Mno_x11}
 CONFIGURE_ARGS+=	--without-xpm-dir --without-freetype-dir
-FULLPKGNAME-gd=		php5-gd-${V}-no_x11p2
+FULLPKGNAME-gd=		php5-gd-${V}-no_x11p3
 . else
 USE_X11=		yes
 CONFIGURE_ARGS+=	--with-xpm-dir=${X11BASE}
-FULLPKGNAME-gd=		php5-gd-${V}p1
+FULLPKGNAME-gd=		php5-gd-${V}p2
 WANTLIB-gd+=		X11 Xpm freetype
 . endif
 .endif
@@ -290,7 +290,7 @@ MULTI_PACKAGES+=	-sybase_ct
 COMMENT-sybase_ct=	"sybase database access extensions for php5"
 CONFIGURE_ARGS+=        --with-sybase-ct=shared,${LOCALBASE}
 LIB_DEPENDS-sybase_ct=	ct::databases/freetds
-FULLPKGNAME-sybase_ct=	php5-sybase_ct-${V}p2
+FULLPKGNAME-sybase_ct=	php5-sybase_ct-${V}p3
 .endif
 
 # xml-rpc
@@ -318,7 +318,7 @@ WANTLIB-xsl=		${WANTLIB} iconv xml2 z
 .endif
 
 .for i in ${MULTI_PACKAGES}
-FULLPKGNAME${i} ?=	php5${i}-${V}p1
+FULLPKGNAME${i} ?=	php5${i}-${V}p2
 RUN_DEPENDS${i}=	:php5-core-${V}:www/php5/core
 MODULE_NAME${i}=	${i:S/-//g}
 .endfor

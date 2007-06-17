@@ -1,0 +1,12 @@
+$OpenBSD: patch-ext_standard_string_c,v 1.1.2.1 2007/06/17 07:54:58 sturm Exp $
+--- ext/standard/string.c.orig	Thu Aug 10 19:46:43 2006
++++ ext/standard/string.c	Sun Jun 10 11:58:42 2007
+@@ -3044,7 +3044,7 @@ PHPAPI int php_char_to_str_ex(char *str,
+ 	}
+ 	
+ 	Z_STRLEN_P(result) = len + (char_count * (to_len - 1));
+-	Z_STRVAL_P(result) = target = emalloc(Z_STRLEN_P(result) + 1);
++	Z_STRVAL_P(result) = target = safe_emalloc(char_count, to_len, len + 1);
+ 	Z_TYPE_P(result) = IS_STRING;
+ 	
+ 	for (source = str; source < source_end; source++) {

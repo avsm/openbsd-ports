@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.12.2.1 2007/05/01 16:23:06 sturm Exp $
+# $OpenBSD: Makefile,v 1.12.2.2 2007/06/17 13:14:15 sturm Exp $
 
 PKG_ARCH=	*
 
 COMMENT-main=	"${MAINLANG} language pack for Firefox"
-V=		2.0.0.3
+V=		2.0.0.4
 NAME=		firefox-i18n
 PKGNAME=	${NAME}-${MAINLANG}-${V}
 PKGNAME-main=	${NAME}-${MAINLANG}-${V}
@@ -12,7 +12,7 @@ CATEGORIES=	www
 
 HOMEPAGE=	http://www.mozilla.org/projects/l10n/
 
-MAINTAINER=	Antoine Jacoutot <ajacoutot@openbsd.org>
+MAINTAINER=	Martynas Venckus <martynas@openbsd.org>
 
 # Mozilla public license
 PERMIT_PACKAGE_CDROM=	Yes

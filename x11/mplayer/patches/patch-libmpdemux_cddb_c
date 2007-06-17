@@ -1,7 +1,7 @@
-$OpenBSD: patch-libmpdemux_cddb_c,v 1.3 2007/06/07 07:28:36 robert Exp $
---- libmpdemux/cddb.c.orig	Thu Jun  7 09:09:01 2007
-+++ libmpdemux/cddb.c	Thu Jun  7 09:09:52 2007
-@@ -437,7 +437,7 @@ cddb_read_parse(HTTP_header_t *http_hdr, cddb_data_t *
+$OpenBSD: patch-libmpdemux_cddb_c,v 1.3.2.1 2007/06/17 09:29:08 sturm Exp $
+--- libmpdemux/cddb.c.orig	Sun Jun 11 20:35:46 2006
++++ libmpdemux/cddb.c	Sun Jun 17 10:55:51 2007
+@@ -437,7 +437,7 @@ cddb_read_parse(HTTP_header_t *http_hdr,
  
  	switch(status) {
  		case 210:
@@ -10,7 +10,7 @@ $OpenBSD: patch-libmpdemux_cddb_c,v 1.3 2007/06/07 07:28:36 robert Exp $
  			if( ret!=3 ) {
  				mp_msg(MSGT_DEMUX, MSGL_ERR, MSGTR_ParseError);
  				return -1;
-@@ -498,7 +498,7 @@ cddb_parse_matches_list(HTTP_header_t *http_hdr, cddb_
+@@ -498,7 +498,7 @@ cddb_parse_matches_list(HTTP_header_t *h
  	ptr++;
  	// We have a list of exact/inexact matches, so which one do we use?
  	// So let's take the first one.
@@ -19,7 +19,7 @@ $OpenBSD: patch-libmpdemux_cddb_c,v 1.3 2007/06/07 07:28:36 robert Exp $
  	if( ret!=3 ) {
  		mp_msg(MSGT_DEMUX, MSGL_ERR, MSGTR_ParseError);
  		return -1;
-@@ -535,7 +535,7 @@ cddb_query_parse(HTTP_header_t *http_hdr, cddb_data_t 
+@@ -535,7 +535,7 @@ cddb_query_parse(HTTP_header_t *http_hdr
  	switch(status) {
  		case 200:
  			// Found exact match

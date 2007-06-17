@@ -1,7 +1,7 @@
-$OpenBSD: patch-server_MaraDNS_c,v 1.1 2007/06/09 11:15:48 rui Exp $
---- server/MaraDNS.c.orig	Sat Jun  9 00:01:15 2007
-+++ server/MaraDNS.c	Sat Jun  9 00:02:32 2007
-@@ -2999,6 +2999,8 @@ int star_collision(js_string *lookfor, mhash *bighash)
+$OpenBSD: patch-server_MaraDNS_c,v 1.1.4.1 2007/06/17 08:53:03 sturm Exp $
+--- server/MaraDNS.c.orig	Thu May 17 06:01:44 2007
++++ server/MaraDNS.c	Sun Jun 17 10:50:50 2007
+@@ -2999,6 +2999,8 @@ int star_collision(js_string *lookfor, m
                spot_data.datatype == MARA_DNS_LIST) {
              /* There is a RR phohibiting the star record.  Return
               * name error */

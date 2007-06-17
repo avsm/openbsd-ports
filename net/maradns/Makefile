@@ -1,6 +1,6 @@
-# $OpenBSD: Makefile,v 1.4 2006/08/10 09:55:03 bernd Exp $
+# $OpenBSD: Makefile,v 1.4.2.1 2007/06/17 08:53:03 sturm Exp $
 
-VERSION=	1.2.07.1
+VERSION=	1.2.12.06
 COMMENT=	"simple and performant DNS server"
 DISTNAME=	maradns-${VERSION}
 PKGNAME=	${DISTNAME}p0
@@ -22,6 +22,13 @@ MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=maradns/}
 MAKE_FLAGS=	CC="${CC}" FLAGS="${CFLAGS} -D_THREAD_SAFE -pthread"
 
 NO_REGRESS=	Yes
+
+post-extract:
+	rm ${WRKSRC}/doc/en/source/csv2.ej.orig
+	rm ${WRKSRC}/doc/en/source/mararc.ej.orig
+	rm ${WRKSRC}//parse/Csv2_rr_wks.c.orig
+	rm ${WRKSRC}/server/MaraDNS.c.orig
+	rm ${WRKSRC}/server/recursive.c.orig
 
 post-configure:
 	@find ${WRKSRC} -type f | xargs perl -pi -e "s,/etc,${SYSCONFDIR},g"

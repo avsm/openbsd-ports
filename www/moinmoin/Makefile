@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.5 2007/02/13 09:13:43 bernd Exp $
+# $OpenBSD: Makefile,v 1.5.2.1 2007/06/17 08:37:36 sturm Exp $
 
 COMMENT=	"Python clone of WikiWiki"
 
-DISTNAME=	moin-1.5.7
+DISTNAME=	moin-1.5.8
 PKGNAME=	moin${DISTNAME}
 CATEGORIES=	www
 PKG_ARCH=	*

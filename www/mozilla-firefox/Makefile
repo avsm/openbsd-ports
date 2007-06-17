@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.70.2.1 2007/05/01 16:22:32 sturm Exp $
+# $OpenBSD: Makefile,v 1.70.2.2 2007/06/17 13:13:40 sturm Exp $
 
 SHARED_ONLY=	Yes
 ONLY_FOR_ARCHS=	alpha amd64 arm i386 powerpc sparc sparc64
@@ -6,7 +6,7 @@ ONLY_FOR_ARCHS=	alpha amd64 arm i386 powerpc sparc sparc64
 COMMENT-main=	"redesign of Mozilla's browser component"
 COMMENT-devel=	"devel files for Gecko"
 
-VER=		2.0.0.3
+VER=		2.0.0.4
 DISTNAME=	mozilla
 PKGNAME=	mozilla-firefox-${VER}
 PKGNAME-main=	mozilla-firefox-${VER}
@@ -117,6 +117,10 @@ CONFIGURE_ENV=	${MAKE_ENV} \
 MOB=		${WRKSRC}/dist/bin
 MOZ=		${PREFIX}/mozilla-firefox
 
+DATADIRS=	chrome components defaults dictionaries extensions \
+		greprefs icons init.d plugins res searchplugins
+DISTDIRS=	include idl
+
 post-extract:
 	@cp ${FILESDIR}/xptc* ${WRKSRC}/xpcom/reflect/xptcall/src/md/unix/
 
@@ -130,18 +134,16 @@ post-build:
 	@cd ${WRKSRC}/xpfe/bootstrap && ${MAKE_PROGRAM} firefox.1
 
 do-install:
-.for dir in include idl
-	${INSTALL_DATA_DIR} ${MOZ}/${dir}
-	@cd ${WRKSRC}/dist && ${TAR} -chf - ${dir} | \
-		${TAR} -xf - -C ${MOZ}
-.endfor
-.for dir in chrome components defaults dictionaries extensions greprefs icons \
-	init.d plugins res searchplugins
-	${INSTALL_DATA_DIR} ${MOZ}/${dir}
-	@cd ${MOB} && ${TAR} -chf - ${dir}/ | \
-		${TAR} -xf - -C ${MOZ}
-	@find ${MOZ} -type f -exec chmod 644 {} \;
-.endfor
+	cd ${WRKSRC}/dist && \
+		find ${DISTDIRS} -type d \
+			-exec ${INSTALL_DATA_DIR} ${MOZ}/{} \; && \
+		find ${DISTDIRS} ! -type d \
+			-exec ${INSTALL_DATA} {} ${MOZ}/{} \;
+	cd ${MOB} && \
+		find ${DATADIRS} -type d \
+			-exec ${INSTALL_DATA_DIR} ${MOZ}/{} \; && \
+		find ${DATADIRS} ! -type d \
+			-exec ${INSTALL_DATA} -m 644 {} ${MOZ}/{} \;
 	${INSTALL_DATA} ${MOB}/*.so.${SO_VERSION} ${MOZ}
 	chown -R ${SHAREOWN}:${SHAREGRP} ${MOZ}
 	${INSTALL_DATA} ${WRKSRC}/LICENSE ${MOZ}

@@ -1,7 +1,7 @@
-$OpenBSD: patch-php_ini-recommended,v 1.6 2006/05/09 14:15:40 robert Exp $
---- php.ini-recommended.orig	Tue Nov 15 00:14:23 2005
-+++ php.ini-recommended	Sat Nov 26 13:19:47 2005
-@@ -499,10 +499,7 @@
+$OpenBSD: patch-php_ini-recommended,v 1.6.2.1 2007/06/17 07:55:53 sturm Exp $
+--- php.ini-recommended.orig	Thu Feb  9 00:43:48 2006
++++ php.ini-recommended	Sun Jun 10 19:33:35 2007
+@@ -509,10 +509,7 @@ default_mimetype = "text/html"
  ;;;;;;;;;;;;;;;;;;;;;;;;;
  
  ; UNIX: "/path1:/path2"
@@ -13,7 +13,7 @@ $OpenBSD: patch-php_ini-recommended,v 1.6 2006/05/09 14:15:40 robert Exp $
  
  ; The root of the PHP pages, used only if nonempty.
  ; if PHP was not compiled with FORCE_REDIRECT, you SHOULD set doc_root
-@@ -516,7 +513,7 @@
+@@ -526,7 +523,7 @@ doc_root =
  user_dir =
  
  ; Directory in which the loadable extensions (modules) reside.
@@ -22,7 +22,7 @@ $OpenBSD: patch-php_ini-recommended,v 1.6 2006/05/09 14:15:40 robert Exp $
  
  ; Whether or not to enable the dl() function.  The dl() function does NOT work
  ; properly in multithreaded servers, such as IIS or Zeus, and is automatically
-@@ -577,7 +574,7 @@
+@@ -587,7 +584,7 @@ upload_max_filesize = 2M
  ;;;;;;;;;;;;;;;;;;
  
  ; Whether to allow the treatment of URLs (like http:// or ftp://) as files.
@@ -31,7 +31,7 @@ $OpenBSD: patch-php_ini-recommended,v 1.6 2006/05/09 14:15:40 robert Exp $
  
  ; Define the anonymous ftp password (your email address)
  ;from="john@doe.com"
-@@ -595,70 +592,6 @@
+@@ -605,70 +602,6 @@ default_socket_timeout = 60
  ; fgets() and file() will work regardless of the source of the file.
  ; auto_detect_line_endings = Off
  
@@ -102,7 +102,7 @@ $OpenBSD: patch-php_ini-recommended,v 1.6 2006/05/09 14:15:40 robert Exp $
  ;;;;;;;;;;;;;;;;;;;
  ; Module Settings ;
  ;;;;;;;;;;;;;;;;;;;
-@@ -674,13 +607,6 @@
+@@ -684,13 +617,6 @@ default_socket_timeout = 60
  define_syslog_variables  = Off
  
  [mail function]
@@ -116,7 +116,7 @@ $OpenBSD: patch-php_ini-recommended,v 1.6 2006/05/09 14:15:40 robert Exp $
  ; For Unix only.  You may supply arguments as well (default: "sendmail -t -i").
  ;sendmail_path =
  
-@@ -1231,6 +1157,53 @@
+@@ -1255,6 +1181,53 @@ soap.wsdl_cache_dir="/tmp"
  ; instead of original one.
  soap.wsdl_cache_ttl=86400
  

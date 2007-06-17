@@ -1,0 +1,38 @@
+$OpenBSD: patch-ext_session_session_c,v 1.1.4.1 2007/06/17 07:55:52 sturm Exp $
+--- ext/session/session.c.orig	Fri Feb 10 08:39:13 2006
++++ ext/session/session.c	Sun Jun 10 17:45:42 2007
+@@ -546,16 +546,20 @@ static void php_session_track_init(TSRML
+ 	zend_delete_global_variable("HTTP_SESSION_VARS", sizeof("HTTP_SESSION_VARS")-1 TSRMLS_CC);
+ 	zend_delete_global_variable("_SESSION", sizeof("_SESSION")-1 TSRMLS_CC);
+ 
++	if (PS(http_session_vars)) {
++		zval_ptr_dtor(&PS(http_session_vars));
++	}
++
+ 	MAKE_STD_ZVAL(session_vars);
+ 	array_init(session_vars);
+ 	PS(http_session_vars) = session_vars;
+ 	
+ 	if (PG(register_long_arrays)) {
+-		ZEND_SET_GLOBAL_VAR_WITH_LENGTH("HTTP_SESSION_VARS", sizeof("HTTP_SESSION_VARS"), PS(http_session_vars), 2, 1);
+-		ZEND_SET_GLOBAL_VAR_WITH_LENGTH("_SESSION", sizeof("_SESSION"), PS(http_session_vars), 2, 1);
++		ZEND_SET_GLOBAL_VAR_WITH_LENGTH("HTTP_SESSION_VARS", sizeof("HTTP_SESSION_VARS"), PS(http_session_vars), 3, 1);
++		ZEND_SET_GLOBAL_VAR_WITH_LENGTH("_SESSION", sizeof("_SESSION"), PS(http_session_vars), 3, 1);
+ 	}
+ 	else {
+-		ZEND_SET_GLOBAL_VAR_WITH_LENGTH("_SESSION", sizeof("_SESSION"), PS(http_session_vars), 1, 0);
++		ZEND_SET_GLOBAL_VAR_WITH_LENGTH("_SESSION", sizeof("_SESSION"), PS(http_session_vars), 2, 1);
+ 	}
+ }
+ 
+@@ -1763,6 +1767,10 @@ static void php_rinit_session_globals(TS
+ 
+ static void php_rshutdown_session_globals(TSRMLS_D)
+ {
++	if (PS(http_session_vars)) {
++		zval_ptr_dtor(&PS(http_session_vars));
++		PS(http_session_vars) = NULL;
++	}
+ 	if (PS(mod_data)) {
+ 		zend_try {
+ 			PS(mod)->s_close(&PS(mod_data) TSRMLS_CC);

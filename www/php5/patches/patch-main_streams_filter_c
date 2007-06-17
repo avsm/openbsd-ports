@@ -1,0 +1,13 @@
+$OpenBSD: patch-main_streams_filter_c,v 1.1.4.1 2007/06/17 07:55:53 sturm Exp $
+--- main/streams/filter.c.orig	Fri May 19 12:24:19 2006
++++ main/streams/filter.c	Sun Jun 10 16:14:06 2007
+@@ -264,7 +264,8 @@ PHPAPI php_stream_filter *php_stream_fil
+ 		/* try a wildcard */
+ 		char *wildname;
+ 
+-		wildname = estrdup(filtername);
++		wildname = emalloc(n+3);
++		memcpy(wildname, filtername, n+1);
+ 		period = wildname + (period - filtername);
+ 		while (period && !filter) {
+ 			*period = '\0';

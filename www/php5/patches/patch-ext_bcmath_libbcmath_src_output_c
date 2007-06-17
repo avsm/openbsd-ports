@@ -1,7 +1,7 @@
-$OpenBSD: patch-ext_bcmath_libbcmath_src_output_c,v 1.1.1.1 2004/10/02 11:32:37 robert Exp $
---- ext/bcmath/libbcmath/src/output.c.orig	Mon Jul 26 23:09:43 2004
-+++ ext/bcmath/libbcmath/src/output.c	Mon Jul 26 23:09:22 2004
-@@ -71,7 +71,7 @@
+$OpenBSD: patch-ext_bcmath_libbcmath_src_output_c,v 1.1.1.1.8.1 2007/06/17 07:55:52 sturm Exp $
+--- ext/bcmath/libbcmath/src/output.c.orig	Fri Nov 22 10:25:29 2002
++++ ext/bcmath/libbcmath/src/output.c	Sun Jun 10 19:33:35 2007
+@@ -71,7 +71,7 @@ bc_out_long (val, size, space, out_char)
    int len, ix;
  
    if (space) (*out_char) (' ');

@@ -1,4 +1,4 @@
-$OpenBSD: patch-platform_OpenBSD_sm_cpu_c,v 1.2 2007/05/18 12:07:37 henning Exp $
+$OpenBSD: patch-platform_OpenBSD_sm_cpu_c,v 1.2.2.1 2007/06/18 05:18:50 sturm Exp $
 --- platform/OpenBSD/sm_cpu.c.orig	Sun Feb 11 21:09:35 2007
 +++ platform/OpenBSD/sm_cpu.c	Wed May 16 13:00:53 2007
 @@ -67,11 +67,6 @@

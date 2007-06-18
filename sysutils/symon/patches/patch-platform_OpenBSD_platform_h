@@ -1,4 +1,4 @@
-$OpenBSD: patch-platform_OpenBSD_platform_h,v 1.2 2007/05/18 12:07:37 henning Exp $
+$OpenBSD: patch-platform_OpenBSD_platform_h,v 1.2.2.1 2007/06/18 05:18:50 sturm Exp $
 --- platform/OpenBSD/platform.h.orig	Wed May 16 12:28:00 2007
 +++ platform/OpenBSD/platform.h	Wed May 16 12:28:08 2007
 @@ -19,22 +19,15 @@

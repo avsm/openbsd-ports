@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.6.4.1 2007/05/20 17:47:25 sturm Exp $
+@comment $OpenBSD: PLIST,v 1.6.4.2 2007/06/18 18:49:22 sturm Exp $
 %%SHARED%%
 include/libexif/
 include/libexif/_stdint.h
@@ -26,9 +26,11 @@ share/doc/libexif/COPYING
 share/doc/libexif/ChangeLog
 share/doc/libexif/NEWS
 share/doc/libexif/README
+share/locale/cs/LC_MESSAGES/libexif-12.mo
 share/locale/de/LC_MESSAGES/libexif-12.mo
 share/locale/es/LC_MESSAGES/libexif-12.mo
 share/locale/fr/LC_MESSAGES/libexif-12.mo
 share/locale/pl/LC_MESSAGES/libexif-12.mo
 share/locale/ru/LC_MESSAGES/libexif-12.mo
+share/locale/sk/LC_MESSAGES/libexif-12.mo
 share/locale/vi/LC_MESSAGES/libexif-12.mo

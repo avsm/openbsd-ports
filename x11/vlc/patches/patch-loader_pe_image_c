@@ -1,7 +1,7 @@
-$OpenBSD: patch-loader_pe_image_c,v 1.1 2005/12/24 09:01:17 jolan Exp $
---- loader/pe_image.c.orig	Sun Dec 11 15:36:29 2005
-+++ loader/pe_image.c	Sat Dec 24 02:11:48 2005
-@@ -905,7 +905,7 @@ void PE_UnloadLibrary(WINE_MODREF *wm)
+$OpenBSD: patch-loader_pe_image_c,v 1.1.4.1 2007/06/26 19:26:04 sturm Exp $
+--- loader/pe_image.c.orig	Sat Jun 16 16:25:19 2007
++++ loader/pe_image.c	Tue Jun 26 20:54:43 2007
+@@ -921,7 +921,7 @@ void PE_UnloadLibrary(WINE_MODREF *wm)
   */
  static void __attribute__((noinline)) extend_stack_for_dll_alloca(void)
  {

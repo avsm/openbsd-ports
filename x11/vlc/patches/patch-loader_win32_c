@@ -1,7 +1,7 @@
-$OpenBSD: patch-loader_win32_c,v 1.1 2005/12/24 09:01:17 jolan Exp $
---- loader/win32.c.orig	Sun Dec 11 15:36:29 2005
-+++ loader/win32.c	Sat Dec 24 02:21:10 2005
-@@ -993,7 +993,7 @@ static void WINAPI expGetSystemInfo(SYST
+$OpenBSD: patch-loader_win32_c,v 1.1.4.1 2007/06/26 19:26:04 sturm Exp $
+--- loader/win32.c.orig	Sat Jun 16 16:25:19 2007
++++ loader/win32.c	Tue Jun 26 20:54:43 2007
+@@ -1012,7 +1012,7 @@ static void WINAPI expGetSystemInfo(SYST
  
  /* disable cpuid based detection (mplayer's cpudetect.c does this - see above) */
  #ifndef MPLAYER

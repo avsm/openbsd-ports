@@ -1,0 +1,12 @@
+$OpenBSD: patch-include_vlc_vlc_h,v 1.1.2.1 2007/06/26 19:26:04 sturm Exp $
+--- include/vlc/vlc.h.orig	Tue Jun 26 21:09:15 2007
++++ include/vlc/vlc.h	Tue Jun 26 21:09:57 2007
+@@ -569,6 +569,8 @@ int            VLC_VolumeMute( int );
+  */
+ int             VLC_FullScreen( int );
+ 
++/* missing prototype in OpenBSD 4.0 */
++lldiv_t lldiv(long long, long long);
+ 
+ # ifdef __cplusplus
+ }

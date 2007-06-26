@@ -1,7 +1,7 @@
-$OpenBSD: patch-modules_access_ftp_c,v 1.4 2007/04/08 17:34:20 ajacoutot Exp $
---- modules/access/ftp.c.orig	Sat Dec  9 02:12:17 2006
-+++ modules/access/ftp.c	Sun Apr  8 10:45:29 2007
-@@ -542,7 +542,7 @@ static int ftp_ReadCommand( access_t *p_access,
+$OpenBSD: patch-modules_access_ftp_c,v 1.4.2.1 2007/06/26 19:26:04 sturm Exp $
+--- modules/access/ftp.c.orig	Sat Jun 16 16:25:11 2007
++++ modules/access/ftp.c	Tue Jun 26 20:54:43 2007
+@@ -542,7 +542,7 @@ static int ftp_ReadCommand( access_t *p_
      return( i_answer / 100 );
  }
  

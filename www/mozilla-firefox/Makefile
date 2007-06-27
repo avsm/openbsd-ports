@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.54.2.5 2007/04/02 14:00:27 sturm Exp $
+# $OpenBSD: Makefile,v 1.54.2.6 2007/06/27 06:12:27 sturm Exp $
 
 ONLY_FOR_ARCHS=	alpha amd64 i386 powerpc sparc sparc64
 
 COMMENT=	"redesign of Mozilla's browser component"
 
-VER=		1.5.0.11
+VER=		1.5.0.12
 DISTNAME=	mozilla
 PKGNAME=	mozilla-firefox-${VER}
 SO_VERSION=	18.0

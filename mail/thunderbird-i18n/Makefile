@@ -1,7 +1,7 @@
-# $OpenBSD: Makefile,v 1.8.2.1 2007/05/01 16:21:03 sturm Exp $
+# $OpenBSD: Makefile,v 1.8.2.2 2007/06/27 05:02:48 sturm Exp $
 
 COMMENT-main=	"${MAINLANG} language pack for Thunderbird"
-V=		1.5.0.10
+V=		1.5.0.12
 NAME=		thunderbird-i18n
 PKGNAME=	${NAME}-${MAINLANG}-${V}
 PKGNAME-main=	${NAME}-${MAINLANG}-${V}

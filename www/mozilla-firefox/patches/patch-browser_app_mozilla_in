@@ -1,15 +1,21 @@
-$OpenBSD: patch-browser_app_mozilla_in,v 1.6 2007/03/01 22:46:06 robert Exp $
---- browser/app/mozilla.in.orig	Wed Sep 21 00:13:03 2005
-+++ browser/app/mozilla.in	Sat Feb 24 18:46:11 2007
-@@ -93,6 +93,7 @@ moz_pis_startstop_scripts()
+$OpenBSD: patch-browser_app_mozilla_in,v 1.6.2.1 2007/07/04 17:11:48 sturm Exp $
+--- browser/app/mozilla.in.orig	Tue Sep 20 23:13:03 2005
++++ browser/app/mozilla.in	Wed Jul  4 16:47:25 2007
+@@ -92,7 +92,13 @@ moz_pis_startstop_scripts()
+ #uncomment for debugging
  #set -x
  
++LIMIT=`ulimit -n`
++if [ $LIMIT -lt 128 -a "${LIMIT}" != "unlimited" ]; then
++	ulimit -Sn 128
++fi
++
  moz_libdir=%MOZAPPDIR%
 +MOZ_PLUGIN_PATH=_LOCALBASE_/lib/mozilla-plugins
  MRE_HOME=%MREDIR%
  
  # Use run-mozilla.sh in the current dir if it exists
-@@ -171,7 +172,11 @@ do
+@@ -171,7 +177,11 @@ do
    esac
  done
  

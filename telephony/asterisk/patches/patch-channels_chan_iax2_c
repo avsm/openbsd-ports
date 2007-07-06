@@ -1,0 +1,17 @@
+$OpenBSD: patch-channels_chan_iax2_c,v 1.2.2.1 2007/07/06 13:53:36 sturm Exp $
+--- channels/chan_iax2.c.orig	Tue Jun  6 17:48:00 2006
++++ channels/chan_iax2.c	Fri Jul  6 15:42:00 2007
+@@ -6615,6 +6615,13 @@ static int socket_read(int *id, int fd, 
+ 			ast_mutex_unlock(&iaxsl[fr->callno]);
+ 			return 1;
+ 		}
++		/* Ensure text frames are NULL-terminated */
++		if (f.frametype == AST_FRAME_TEXT && buf[res - 1] != '\0') {
++			if (res < sizeof(buf))
++				buf[res++] = '\0';
++			else /* Trims one character from the text message, but that's better than overwriting the end of the buffer. */
++				buf[res - 1] = '\0';
++		}
+ 		f.datalen = res - sizeof(*fh);
+ 
+ 		/* Handle implicit ACKing unless this is an INVAL, and only if this is 

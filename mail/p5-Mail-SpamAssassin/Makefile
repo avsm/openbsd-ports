@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.41.2.1 2007/03/09 06:20:10 sturm Exp $
+# $OpenBSD: Makefile,v 1.41.2.2 2007/07/06 13:13:11 sturm Exp $
 
 COMMENT=		"mailfilter to identify and mark spam"
 
-DISTNAME=		Mail-SpamAssassin-3.1.8
+DISTNAME=		Mail-SpamAssassin-3.2.1
 PKGNAME=		p5-${DISTNAME}
 CATEGORIES=		mail perl5
 
@@ -15,11 +15,11 @@ PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
-WANTLIB=		c crypto ssl
+WANTLIB=		c crypto ssl z
 
 MASTER_SITES=		${MASTER_SITE_APACHE:=spamassassin/source/}
 
-BUILD_DEPENDS=		:p5-HTML-Parser->=3.31:www/p5-HTML-Parser \
+COMMON_DEPENDS=		:p5-HTML-Parser->=3.31:www/p5-HTML-Parser \
 			:p5-Digest-SHA1-*:security/p5-Digest-SHA1 \
 			:p5-Net-DNS->=0.34:net/p5-Net-DNS \
 			:p5-Mail-SPF-Query-*:mail/p5-Mail-SPF-Query \
@@ -29,7 +29,8 @@ BUILD_DEPENDS=		:p5-HTML-Parser->=3.31:www/p5-HTML-Parser \
 			:p5-Archive-Tar->=1.23:archivers/p5-Archive-Tar \
 			:p5-IO-Zlib->=1.04:archivers/p5-IO-Zlib
 
-RUN_DEPENDS=		${BUILD_DEPENDS} \
+BUILD_DEPENDS=		${COMMON_DEPENDS}
+RUN_DEPENDS=		${COMMON_DEPENDS} \
 			:gnupg-*:security/gnupg
 
 MAKE_ENV+=		CC="${CC}"

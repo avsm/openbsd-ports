@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.11 2006/08/01 22:19:46 espie Exp $
+# $OpenBSD: Makefile,v 1.11.2.1 2007/07/21 13:46:19 ajacoutot Exp $
 
 COMMENT=		"data backends for the Evolution mail/PIM suite"
 
 R=			1.2
 DISTNAME=		evolution-data-server-$R.3
-PKGNAME=		${DISTNAME}p0
+PKGNAME=		${DISTNAME}p2
 CATEGORIES=		databases
 SHARED_LIBS=		camel-$R	0.0 \
 			camel-provider-$R 4.3 \

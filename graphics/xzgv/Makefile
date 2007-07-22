@@ -1,13 +1,16 @@
-# $OpenBSD: Makefile,v 1.4 2006/11/13 11:20:25 steven Exp $
+# $OpenBSD: Makefile,v 1.4.2.1 2007/07/22 19:47:12 ajacoutot Exp $
 
 COMMENT=	"picture viewer for X, with thumbnail-based file selector"
 DISTNAME=	xzgv-0.8
-PKGNAME=	${DISTNAME}p0
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	graphics
 
 HOMEPAGE=	http://rus.members.beeb.net/xzgv.html
 
 MAINTAINER=	Julian Leyh <oenone@oenone.de>
+
+PATCHFILES=	xzgv-0.8-integer-overflow-fix.diff:0
+PATCH_DIST_STRIP=	-p1
 
 # GPL
 PERMIT_PACKAGE_CDROM=	Yes
@@ -16,6 +19,7 @@ PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
 MASTER_SITES=	ftp://ftp.ibiblio.org/pub/Linux/apps/graphics/viewers/X/
+MASTER_SITES0=	http://rus.members.beeb.net/
 
 MODULES=	devel/gettext
 

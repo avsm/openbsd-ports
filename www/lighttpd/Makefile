@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.31 2006/03/09 19:00:59 brad Exp $
+# $OpenBSD: Makefile,v 1.31.2.1 2007/07/29 19:01:17 sturm Exp $
 
 SHARED_ONLY=	Yes
 
 COMMENT=	"secure, fast, compliant, and very flexible web-server"
 
-DISTNAME=	lighttpd-1.4.11
+DISTNAME=	lighttpd-1.4.16
 CATEGORIES=	www net
 
 MAINTAINER=	Brad Smith <brad@openbsd.org>
@@ -18,11 +18,12 @@ PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
-WANTLIB=		c crypto m ssl z 
+WANTLIB=		c crypto m ssl z
 
 MASTER_SITES=	${HOMEPAGE}download/
 
 USE_LIBTOOL=	Yes
+LIBTOOL_FLAGS=	--tag=disable-static
 CONFIGURE_STYLE= gnu
 CONFIGURE_ARGS+= --with-openssl \
 		 --without-bzip2 \
@@ -44,13 +45,15 @@ CONFIGURE_ARGS+= --with-mysql
 LIB_DEPENDS+=	mysqlclient.10::databases/mysql
 .endif
 
+pre-build:
+	@perl -pi -e "s,/usr/bin/rrdtool,${LOCALBASE}/bin/rrdtool,g" \
+	    ${WRKSRC}/doc/lighttpd.conf
+	@perl -pi -e "s,/etc/lighttpd,${SYSCONFDIR},g" \
+	    ${WRKSRC}/doc/lighttpd.1
+
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/lighttpd
 	${INSTALL_DATA} ${WRKSRC}/doc/lighttpd.conf \
 		${PREFIX}/share/examples/lighttpd
-
-post-configure:
-	@perl -pi -e "s,/usr/bin/rrdtool,${LOCALBASE}/bin/rrdtool," \
-		${WRKSRC}/doc/lighttpd.conf
 
 .include <bsd.port.mk>

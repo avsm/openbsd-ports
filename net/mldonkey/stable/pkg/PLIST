@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.5 2006/03/07 09:19:14 espie Exp $
+@comment $OpenBSD: PLIST,v 1.5.2.1 2007/08/01 06:12:53 ajacoutot Exp $
 bin/mlbt
 bin/mlbt+gui
 bin/mldc
@@ -9,7 +9,6 @@ bin/mldonkey_gui
 bin/mlgnut
 bin/mlgnut+gui
 bin/mlgui
-bin/mlim
 bin/mlnet
 bin/mlnet+gui
 bin/mlslsk
@@ -21,21 +20,12 @@ share/mldonkey/distrib/Bugs.txt
 share/mldonkey/distrib/ChangeLog
 share/mldonkey/distrib/Copying.txt
 share/mldonkey/distrib/Developers.txt
-share/mldonkey/distrib/FAQ.html
 share/mldonkey/distrib/GeoIP_LICENSE.txt
 share/mldonkey/distrib/Install.txt
-share/mldonkey/distrib/Readme.txt
 share/mldonkey/distrib/Todo.txt
 share/mldonkey/distrib/ed2k_links.txt
 share/mldonkey/distrib/ed2k_mozilla/
-share/mldonkey/distrib/ed2k_mozilla/README
-share/mldonkey/distrib/ed2k_mozilla/mldonkey_protocol_handler-1.7.xpi
-share/mldonkey/distrib/ed2k_mozilla/src/
-share/mldonkey/distrib/ed2k_mozilla/src/components/
-share/mldonkey/distrib/ed2k_mozilla/src/components/ed2kprotocol.js
-share/mldonkey/distrib/ed2k_mozilla/src/contents.rdf
-share/mldonkey/distrib/ed2k_mozilla/src/install.js
-share/mldonkey/distrib/ed2k_mozilla/src/install.rdf
+share/mldonkey/distrib/ed2k_mozilla/mldonkey_protocol_handler-2.1.xpi
 share/mldonkey/distrib/ed2k_submit/
 share/mldonkey/distrib/ed2k_submit/README.MLdonkeySubmit
 share/mldonkey/distrib/ed2k_submit/ed2k.protocol
@@ -73,10 +63,12 @@ share/mldonkey/distrib/i18n/gui_messages.ini.sp
 share/mldonkey/distrib/i18n/gui_messages.ini.sv
 share/mldonkey/distrib/i18n/mlnet_strings.catalan
 share/mldonkey/distrib/i18n/mlnet_strings.de
+share/mldonkey/distrib/i18n/mlnet_strings.de_DE.utf8
 share/mldonkey/distrib/i18n/mlnet_strings.dutch
 share/mldonkey/distrib/i18n/mlnet_strings.fr
 share/mldonkey/distrib/i18n/mlnet_strings.fr.noaccents
 share/mldonkey/distrib/i18n/mlnet_strings.ga
+share/mldonkey/distrib/i18n/mlnet_strings.it_IT.UTF-8
 share/mldonkey/distrib/i18n/mlnet_strings.pt_BR
 share/mldonkey/distrib/i18n/mlnet_strings.sp
 share/mldonkey/distrib/i18n/mlnet_strings.sv
@@ -85,3 +77,4 @@ share/mldonkey/distrib/make_buginfo
 share/mldonkey/distrib/mldonkey_command
 share/mldonkey/distrib/mldonkey_gui_started_for_macosx
 share/mldonkey/distrib/mldonkey_previewer
+share/mldonkey/distrib/multiuser.txt

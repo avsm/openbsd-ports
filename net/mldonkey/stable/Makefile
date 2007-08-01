@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.12.2.1 2007/02/03 16:25:14 sturm Exp $
+# $OpenBSD: Makefile,v 1.12.2.2 2007/08/01 06:12:52 ajacoutot Exp $
 
 COMMENT='e-donkey client'
 CATEGORIES=net
@@ -21,14 +21,14 @@ MODGNU_CONFIG_GUESS_DIRS=${WRKSRC}/config
 HOMEPAGE=http://mldonkey.sourceforge.net/Main_Page
 
 MASTER_SITES=${MASTER_SITE_SOURCEFORGE:=mldonkey/}
-DISTNAME=mldonkey-2.7.6
-PKGNAME=${DISTNAME}p0
+DISTNAME=mldonkey-2.9.0
 EXTRACT_SUFX=.tar.bz2
 
 CONFIGURE_ARGS+=--enable-gui=newgui1
 CONFIGURE_ENV+=CPPFLAGS='-I${LOCALBASE}/include/libpng -I${LOCALBASE}/include -I${X11BASE}/include'
 CONFIGURE_ENV+=LDFLAGS='-L${LOCALBASE}/lib -L${X11BASE}/lib'
 
+USE_X11=	Yes
 USE_GMAKE=Yes
 MODULES=lang/ocaml
 BUILD_DEPENDS=::x11/lablgtk
@@ -48,7 +48,7 @@ post-install:
 .include <bsd.port.mk>
 
 .if ${MODOCAML_NATIVE:L} == "yes"
-strip_binaries=cd ${PREFIX}/bin && strip mlnet mlgui mlnet+gui mlim
+strip_binaries=cd ${PREFIX}/bin && strip mlnet mlgui mlnet+gui
 .else
 strip_binaries=:
 .endif

@@ -1,19 +1,17 @@
-$OpenBSD: patch-poppler_Stream_cc,v 1.1 2007/07/31 22:22:01 kili Exp $
-
-Fix for CVE-2007-3387.
-
---- poppler/Stream.cc.orig	Fri Jul 28 20:07:41 2006
-+++ poppler/Stream.cc	Tue Jul 31 21:39:35 2007
-@@ -422,21 +422,13 @@ StreamPredictor::StreamPredictor(Stream *strA, int pre
+$OpenBSD: patch-poppler_Stream_cc,v 1.1.2.1 2007/08/02 09:47:32 ajacoutot Exp $
+--- poppler/Stream.cc.orig	Tue Feb 28 20:38:21 2006
++++ poppler/Stream.cc	Wed Aug  1 10:44:33 2007
+@@ -421,22 +421,14 @@ StreamPredictor::StreamPredictor(Stream 
+   predLine = NULL;
    ok = gFalse;
  
-   nVals = width * nComps;
 -  if (width <= 0 || nComps <= 0 || nBits <= 0 ||
 -      nComps >= INT_MAX/nBits ||
 -      width >= INT_MAX/nComps/nBits ||
 -      nVals * nBits + 7 < 0) {
 -    return;
 -  }
+   nVals = width * nComps;
 -  totalBits = nVals * nBits;
 -  if (totalBits == 0 ||
 -      (totalBits / nBits) / nComps != width ||

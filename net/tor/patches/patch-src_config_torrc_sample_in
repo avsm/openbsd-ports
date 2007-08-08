@@ -1,6 +1,6 @@
-$OpenBSD: patch-src_config_torrc_sample_in,v 1.2 2006/09/20 22:06:36 ray Exp $
---- src/config/torrc.sample.in.orig	Sat Feb 11 20:12:29 2006
-+++ src/config/torrc.sample.in	Wed Sep 20 02:39:38 2006
+$OpenBSD: patch-src_config_torrc_sample_in,v 1.2.2.1 2007/08/08 16:16:19 ajacoutot Exp $
+--- src/config/torrc.sample.in.orig	Fri May 25 02:51:41 2007
++++ src/config/torrc.sample.in	Wed Aug  8 17:48:23 2007
 @@ -43,18 +43,18 @@ SocksListenAddress 127.0.0.1 # accept co
  ## Send every possible message to @LOCALSTATEDIR@/log/tor/debug.log
  #Log debug file @LOCALSTATEDIR@/log/tor/debug.log
@@ -23,9 +23,9 @@ $OpenBSD: patch-src_config_torrc_sample_in,v 1.2 2006/09/20 22:06:36 ray Exp $
  
  ## The port on which Tor will listen for local connections from Tor
  ## controller applications, as documented in control-spec.txt.
-@@ -137,3 +137,6 @@ SocksListenAddress 127.0.0.1 # accept co
+@@ -142,3 +142,6 @@ SocksListenAddress 127.0.0.1 # accept co
  #ExitPolicy accept *:119 # accept nntp as well as default exit policy
- #ExitPolicy reject *:* # middleman only -- no exits allowed
+ #ExitPolicy reject *:* # no exits allowed
  
 +## Revoke privileges
 +User _tor

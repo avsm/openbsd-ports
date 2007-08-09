@@ -1,6 +1,6 @@
-$OpenBSD: patch-channels_chan_skinny_c,v 1.1.4.2 2007/05/05 08:22:00 sturm Exp $
---- channels/chan_skinny.c.orig	Tue Nov 29 19:24:39 2005
-+++ channels/chan_skinny.c	Sat May  5 09:57:49 2007
+$OpenBSD: patch-channels_chan_skinny_c,v 1.1.4.3 2007/08/09 17:11:03 ajacoutot Exp $
+--- channels/chan_skinny.c.orig	Tue Jul 31 14:52:50 2007
++++ channels/chan_skinny.c	Tue Jul 31 14:46:35 2007
 @@ -99,7 +99,7 @@ typedef unsigned int   UINT32;
  #define htolel(x) (x)
  #define htoles(x) (x)
@@ -10,11 +10,11 @@ $OpenBSD: patch-channels_chan_skinny_c,v 1.1.4.2 2007/05/05 08:22:00 sturm Exp $
  #define __bswap_16(x) \
       ((((x) & 0xff00) >> 8) | \
        (((x) & 0x00ff) << 8))
-@@ -2880,6 +2880,10 @@ static int get_input(struct skinnysessio
+@@ -2880,6 +2880,10 @@ static int get_input(struct skinnysession *s)  
  			return -1;
  		}
  		dlen = letohl(*(int *)s->inbuf);
-+		if (dlen < 0) {
++		if (dlen < 4) {
 +			ast_log(LOG_WARNING, "Skinny Client sent invalid data.\n");
 +			return -1;
 +		}

@@ -1,7 +1,7 @@
-$OpenBSD: patch-manager_c,v 1.1.2.1 2007/05/05 08:22:00 sturm Exp $
---- manager.c.orig	Sat Feb 11 19:15:00 2006
-+++ manager.c	Sat May  5 09:57:49 2007
-@@ -533,7 +533,8 @@ static int authenticate(struct mansessio
+$OpenBSD: patch-manager_c,v 1.1.2.2 2007/08/09 17:11:03 ajacoutot Exp $
+--- manager.c.orig	Sat Feb 11 18:15:00 2006
++++ manager.c	Tue Jul 31 14:42:52 2007
+@@ -533,7 +533,8 @@ static int authenticate(struct mansession *s, struct m
  				} else if (ha)
  					ast_free_ha(ha);
  				if (!strcasecmp(authtype, "MD5")) {

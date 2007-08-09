@@ -1,7 +1,7 @@
-$OpenBSD: patch-channels_chan_sip_c,v 1.1.2.3 2007/05/05 08:22:00 sturm Exp $
---- channels/chan_sip.c.orig	Thu May 25 19:18:01 2006
-+++ channels/chan_sip.c	Sat May  5 09:57:49 2007
-@@ -3587,6 +3587,7 @@ static int process_sdp(struct sip_pvt *p
+$OpenBSD: patch-channels_chan_sip_c,v 1.1.2.4 2007/08/09 17:11:03 ajacoutot Exp $
+--- channels/chan_sip.c.orig	Tue Jul 31 14:52:50 2007
++++ channels/chan_sip.c	Tue Jul 31 14:42:52 2007
+@@ -3587,6 +3587,7 @@ static int process_sdp(struct sip_pvt *p, struct sip_r
  				hp = ast_gethostbyname(host, &ahp);
  				if (!hp) {
  					ast_log(LOG_WARNING, "Unable to lookup host in secondary c= line, '%s'\n", c);
@@ -9,7 +9,7 @@ $OpenBSD: patch-channels_chan_sip_c,v 1.1.2.3 2007/05/05 08:22:00 sturm Exp $
  				}
  			}
  		}
-@@ -3615,6 +3616,7 @@ static int process_sdp(struct sip_pvt *p
+@@ -3615,6 +3616,7 @@ static int process_sdp(struct sip_pvt *p, struct sip_r
  				hp = ast_gethostbyname(host, &ahp);
  				if (!hp) {
  					ast_log(LOG_WARNING, "Unable to lookup host in secondary c= line, '%s'\n", c);
@@ -17,7 +17,7 @@ $OpenBSD: patch-channels_chan_sip_c,v 1.1.2.3 2007/05/05 08:22:00 sturm Exp $
  				}
  			}
  		}
-@@ -11114,17 +11116,17 @@ static int handle_request(struct sip_pvt
+@@ -11114,17 +11116,17 @@ static int handle_request(struct sip_pvt *p, struct si
  			/* ignore means "don't do anything with it" but still have to 
  			   respond appropriately  */
  			ignore=1;
@@ -45,7 +45,7 @@ $OpenBSD: patch-channels_chan_sip_c,v 1.1.2.3 2007/05/05 08:22:00 sturm Exp $
  		return 0;
  	}
  
-@@ -11179,6 +11181,12 @@ static int handle_request(struct sip_pvt
+@@ -11179,6 +11181,12 @@ static int handle_request(struct sip_pvt *p, struct si
  			}
  			return res;
  		}

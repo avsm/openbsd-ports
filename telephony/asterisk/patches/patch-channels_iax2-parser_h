@@ -1,0 +1,12 @@
+$OpenBSD: patch-channels_iax2-parser_h,v 1.1.2.1 2007/08/09 17:11:03 ajacoutot Exp $
+--- channels/iax2-parser.h.orig	Tue Nov 29 18:24:39 2005
++++ channels/iax2-parser.h	Tue Jul 31 14:46:00 2007
+@@ -119,6 +119,8 @@ struct iax_frame {
+ 	struct iax_frame *prev;
+ 	/* Actual, isolated frame header */
+ 	struct ast_frame af;
++	/* Amount of data _allocated_ for afdata */
++	size_t afdatalen;
+ 	unsigned char unused[AST_FRIENDLY_OFFSET];
+ 	unsigned char afdata[0];	/* Data for frame */
+ };

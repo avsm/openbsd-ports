@@ -1,12 +1,7 @@
-$OpenBSD: patch-splash_Splash_cc,v 1.1 2007/07/31 22:22:01 kili Exp $
-
-Fix CVE-2006-0301. From poppler mailinglist archives (also in the
-POPPLER_0_4_X branch, but not merged into 0.5 until the xpdf 3.02
-merge in the "unstable" 0.5.9 release).
-
---- splash/Splash.cc.orig	Mon Jul 24 21:04:51 2006
-+++ splash/Splash.cc	Wed Jul 25 22:48:11 2007
-@@ -950,6 +950,10 @@ void Splash::drawPixel(int x, int y, SplashColorPtr co
+$OpenBSD: patch-splash_Splash_cc,v 1.1.4.1 2007/08/09 17:14:09 ajacoutot Exp $
+--- splash/Splash.cc.orig	Tue May 30 22:41:38 2006
++++ splash/Splash.cc	Wed Aug  1 10:35:11 2007
+@@ -950,6 +950,10 @@ void Splash::drawPixel(int x, int y, Spl
    int alpha2, ialpha2;
    Guchar t;
  
@@ -17,7 +12,7 @@ merge in the "unstable" 0.5.9 release).
    if (noClip || state->clip->test(x, y)) {
      if (alpha != 1 || softMask || state->blendFunc) {
        blendFunc = state->blendFunc ? state->blendFunc : &blendNormal;
-@@ -1243,6 +1247,11 @@ void Splash::drawSpan(int x0, int x1, int y, SplashPat
+@@ -1243,6 +1247,11 @@ void Splash::drawSpan(int x0, int x1, in
      updateModY(y);
    }
  
@@ -29,7 +24,7 @@ merge in the "unstable" 0.5.9 release).
    if (alpha != 1 || softMask || state->blendFunc) {
      blendFunc = state->blendFunc ? state->blendFunc : &blendNormal;
      if (softMask) {
-@@ -1950,6 +1959,11 @@ void Splash::xorSpan(int x0, int x1, int y, SplashPatt
+@@ -1950,6 +1959,11 @@ void Splash::xorSpan(int x0, int x1, int
      updateModX(x1);
      updateModY(y);
    }

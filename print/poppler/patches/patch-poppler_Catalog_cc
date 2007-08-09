@@ -1,10 +1,6 @@
-$OpenBSD: patch-poppler_Catalog_cc,v 1.1 2007/07/31 22:22:01 kili Exp $
-
-Fix CVE-2007-0104. From poppler CVS, but with a smaller value for
-MAX_CALL_DEPTH to avoid crashes.
-
---- poppler/Catalog.cc.orig	Wed Sep 13 17:10:52 2006
-+++ poppler/Catalog.cc	Wed Jul 25 21:00:04 2007
+$OpenBSD: patch-poppler_Catalog_cc,v 1.1.4.1 2007/08/09 17:14:09 ajacoutot Exp $
+--- poppler/Catalog.cc.orig	Fri May 19 19:44:22 2006
++++ poppler/Catalog.cc	Wed Aug  1 10:34:10 2007
 @@ -26,6 +26,12 @@
  #include "UGooString.h"
  #include "Catalog.h"
@@ -36,7 +32,7 @@ MAX_CALL_DEPTH to avoid crashes.
    Object kids;
    Object kid;
    Object kidRef;
-@@ -262,9 +268,13 @@ int Catalog::readPageTree(Dict *pagesDict, PageAttrs *
+@@ -262,9 +268,13 @@ int Catalog::readPageTree(Dict *pagesDic
      // This should really be isDict("Pages"), but I've seen at least one
      // PDF file where the /Type entry is missing.
      } else if (kid.isDict()) {

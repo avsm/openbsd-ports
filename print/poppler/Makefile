@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.1.1.1 2006/06/18 13:09:44 alek Exp $
+# $OpenBSD: Makefile,v 1.1.1.1.2.1 2007/08/09 17:14:09 ajacoutot Exp $
 
 COMMENT=	"PDF rendering library"
 
 DISTNAME=	poppler-0.5.3
+PKGNAME=	${DISTNAME}p2
 CATEGORIES=	print
 SHARED_LIBS=	poppler 1.0 \
 		poppler-glib 1.0

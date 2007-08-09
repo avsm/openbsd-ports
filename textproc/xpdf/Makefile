@@ -1,13 +1,16 @@
-# $OpenBSD: Makefile,v 1.53.2.1 2007/04/03 12:03:20 sturm Exp $
+# $OpenBSD: Makefile,v 1.53.2.2 2007/08/09 17:12:36 ajacoutot Exp $
 
 COMMENT=	"PDF viewer for X"
 
 DISTNAME=	xpdf-3.02
+PKGNAME=	xpdf-3.02pl1
 CATEGORIES=	textproc x11
 
 MASTER_SITES=	ftp://ftp.foolabs.com/pub/xpdf/ \
 		ftp://gd.tuwien.ac.at/publishing/xpdf/ \
 		ftp://tug.org/xpdf/
+PATCHFILES=	xpdf-3.02pl1.patch
+PATCH_DIST_STRIP=-p1
 
 HOMEPAGE=	http://www.foolabs.com/xpdf/
 
@@ -38,8 +41,6 @@ CONFIGURE_ENV=	CPPFLAGS="-I${X11BASE}/include/freetype2 -I${X11BASE}/include -I$
 NO_REGRESS=	Yes
 
 post-install:
-	@cd ${PREFIX}/bin && \
-	  strip pdffonts pdfimages pdfinfo pdftoppm pdftops pdftotext xpdf
 	${INSTALL_DATA_DIR} ${PREFIX}/share/examples/xpdf
 	${INSTALL_DATA} ${WRKSRC}/doc/sample-xpdfrc \
 		${PREFIX}/share/examples/xpdf/xpdfrc

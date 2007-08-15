@@ -1,0 +1,23 @@
+$OpenBSD: patch-kpdf_xpdf_xpdf_Stream_cc,v 1.1.4.1 2007/08/15 08:17:37 sturm Exp $
+--- kpdf/xpdf/xpdf/Stream.cc.orig	Sun Aug 12 14:31:57 2007
++++ kpdf/xpdf/xpdf/Stream.cc	Sun Aug 12 14:33:08 2007
+@@ -412,14 +412,14 @@ StreamPredictor::StreamPredictor(Stream 
+   predLine = NULL;
+   ok = gFalse;
+ 
++  nVals = width * nComps;
+   if (width <= 0 || nComps <= 0 || nBits <= 0 ||
+-      nComps >= INT_MAX / nBits ||
+-      width >= INT_MAX / nComps / nBits)
++      nComps > gfxColorMaxComps || nBits > 16 ||
++      width >= INT_MAX / nComps ||
++      nVals >= (INT_MAX - 7) / nBits) {
+     return;
++  }
+ 
+-  nVals = width * nComps;
+-  if (nVals * nBits + 7 <= 0)
+-    return;
+   pixBytes = (nComps * nBits + 7) >> 3;
+   rowBytes = ((nVals * nBits + 7) >> 3) + pixBytes;
+   if (rowBytes < 0)

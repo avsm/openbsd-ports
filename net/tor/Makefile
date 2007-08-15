@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.21 2006/07/17 19:23:03 jcs Exp $
+# $OpenBSD: Makefile,v 1.21.2.1 2007/08/15 08:02:56 sturm Exp $
 
 COMMENT=	"anonymity service using onion routing"
 
-DISTNAME=	tor-0.1.1.22
+DISTNAME=	tor-0.1.2.16
 CATEGORIES=	net
 HOMEPAGE=	http://tor.eff.org/
 
@@ -21,6 +21,9 @@ AUTOCONF_VERSION=2.59
 
 CONFIGURE_STYLE=gnu
 CONFIGURE_ARGS=	--with-ssl-dir=/usr
+
+DB_DIR=		/var/tor
+SUBST_VARS=	DB_DIR
 
 FAKE_FLAGS=	DESTDIR=${WRKINST} sysconfdir=${PREFIX}/share/examples
 

@@ -1,9 +1,31 @@
-$OpenBSD: patch-src_config_torrc_sample_in,v 1.1 2006/07/17 19:23:03 jcs Exp $
---- src/config/torrc.sample.in.orig	Sat Jul  8 04:36:45 2006
-+++ src/config/torrc.sample.in	Sat Jul  8 04:36:46 2006
-@@ -137,3 +137,6 @@ SocksListenAddress 127.0.0.1 # accept co
+$OpenBSD: patch-src_config_torrc_sample_in,v 1.1.2.1 2007/08/15 08:02:56 sturm Exp $
+--- src/config/torrc.sample.in.orig	Fri May 25 02:51:41 2007
++++ src/config/torrc.sample.in	Sun Aug 12 13:27:45 2007
+@@ -43,18 +43,18 @@ SocksListenAddress 127.0.0.1 # accept co
+ ## Send every possible message to @LOCALSTATEDIR@/log/tor/debug.log
+ #Log debug file @LOCALSTATEDIR@/log/tor/debug.log
+ ## Use the system log instead of Tor's logfiles
+-#Log notice syslog
++Log notice syslog
+ ## To send all messages to stderr:
+ #Log debug stderr
+ 
+ ## Uncomment this to start the process in the background... or use
+ ## --runasdaemon 1 on the command line. This is ignored on Windows;
+ ## see the FAQ entry if you want Tor to run as an NT service.
+-#RunAsDaemon 1
++RunAsDaemon 1
+ 
+ ## The directory for keeping all the keys/etc. By default, we store
+ ## things in $HOME/.tor on Unix, and in Application Data\tor on Windows.
+-#DataDirectory @LOCALSTATEDIR@/lib/tor
++DataDirectory /var/tor
+ 
+ ## The port on which Tor will listen for local connections from Tor
+ ## controller applications, as documented in control-spec.txt.
+@@ -142,3 +142,6 @@ SocksListenAddress 127.0.0.1 # accept co
  #ExitPolicy accept *:119 # accept nntp as well as default exit policy
- #ExitPolicy reject *:* # middleman only -- no exits allowed
+ #ExitPolicy reject *:* # no exits allowed
  
 +## Revoke privileges
 +User _tor

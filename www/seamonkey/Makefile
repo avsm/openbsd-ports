@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.5.2.1 2007/05/01 16:18:34 sturm Exp $
+# $OpenBSD: Makefile,v 1.5.2.2 2007/08/25 18:23:21 sturm Exp $
 
 SHARED_ONLY=	Yes
 ONLY_FOR_ARCHS=	alpha amd64 i386 powerpc sparc sparc64
@@ -6,7 +6,7 @@ ONLY_FOR_ARCHS=	alpha amd64 i386 powerpc sparc sparc64
 COMMENT-main=	"integrated mozilla application suite"
 COMMENT-devel=  "devel files for Gecko"
 
-VER=		1.1.1
+VER=		1.1.4
 DISTNAME=	seamonkey-${VER}.source
 PKGNAME=	seamonkey-${VER}
 PKGNAME-main=	seamonkey-${VER}
@@ -116,6 +116,10 @@ WRKDIST=	${WRKDIR}/mozilla
 MOB=		${WRKSRC}/dist/bin
 MOZ=		${PREFIX}/seamonkey
 
+DATADIRS=	chrome components defaults dictionaries greprefs \
+		init.d plugins res searchplugins
+DISTDIRS=	include idl
+
 post-extract:
 	@cp ${FILESDIR}/xptc* ${WRKSRC}/xpcom/reflect/xptcall/src/md/unix/
 
@@ -127,18 +131,16 @@ pre-configure:
 		${WRKSRC}/xpcom/components/nsNativeComponentLoader.cpp
 
 do-install:
-.for dir in include idl
-	${INSTALL_DATA_DIR} ${MOZ}/${dir}
-	@cd ${WRKSRC}/dist && ${TAR} -chf - ${dir} | \
-		${TAR} -xf - -C ${MOZ}
-.endfor
-.for dir in chrome components defaults dictionaries greprefs init.d plugins \
-	res searchplugins
-	${INSTALL_DATA_DIR} ${MOZ}/${dir}
-	@cd ${MOB} && ${TAR} -chf - ${dir} | \
-		${TAR} -xf - -C ${MOZ}
-	@find ${MOZ} -type f -exec chmod 644 {} \;
-.endfor
+	cd ${WRKSRC}/dist && \
+		find ${DISTDIRS} -type d \
+			-exec ${INSTALL_DATA_DIR} ${MOZ}/{} \; && \
+		find ${DISTDIRS} ! -type d \
+			-exec ${INSTALL_DATA} {} ${MOZ}/{} \;
+	cd ${MOB} && \
+		find ${DATADIRS} -type d \
+			-exec ${INSTALL_DATA_DIR} ${MOZ}/{} \; && \
+		find ${DATADIRS} ! -type d \
+			-exec ${INSTALL_DATA} -m 644 {} ${MOZ}/{} \;
 	${INSTALL_DATA} ${MOB}/*.so.${SO_VERSION} ${MOZ}
 	chown -R ${SHAREOWN}:${SHAREGRP} ${MOZ}
 	${INSTALL_DATA} ${WRKSRC}/LICENSE ${MOZ}

@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-main,v 1.4.2.1 2007/05/01 16:18:35 sturm Exp $
+@comment $OpenBSD: PLIST-main,v 1.4.2.2 2007/08/25 18:23:21 sturm Exp $
 %%SHARED%%
 bin/seamonkey
 @man man/man1/seamonkey.1
@@ -245,13 +245,7 @@ seamonkey/defaults/
 seamonkey/defaults/autoconfig/
 seamonkey/defaults/autoconfig/platform.js
 seamonkey/defaults/autoconfig/prefcalls.js
-seamonkey/defaults/isp/
-seamonkey/defaults/isp/US/
-seamonkey/defaults/isp/US/movemail.rdf
-seamonkey/defaults/isp/movemail.rdf
 seamonkey/defaults/messenger/
-seamonkey/defaults/messenger/SpamAssassin.sfd
-seamonkey/defaults/messenger/SpamPal.sfd
 seamonkey/defaults/messenger/US/
 seamonkey/defaults/messenger/US/mailViews.dat
 seamonkey/defaults/messenger/mailViews.dat

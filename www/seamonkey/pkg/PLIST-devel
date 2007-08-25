@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-devel,v 1.3.2.1 2007/05/01 16:18:35 sturm Exp $
+@comment $OpenBSD: PLIST-devel,v 1.3.2.2 2007/08/25 18:23:21 sturm Exp $
 @conflict seamonkey-<1.0.7p1
 bin/seamonkey-config
 lib/pkgconfig/seamonkey-gtkmozembed.pc
@@ -582,6 +582,7 @@ seamonkey/idl/nsIEnvironment.idl
 seamonkey/idl/nsIErrorService.idl
 seamonkey/idl/nsIEventHandler.idl
 seamonkey/idl/nsIEventQueue.idl
+seamonkey/idl/nsIEventQueueListener.idl
 seamonkey/idl/nsIEventQueueService.idl
 seamonkey/idl/nsIEventTarget.idl
 seamonkey/idl/nsIException.idl
@@ -792,6 +793,7 @@ seamonkey/idl/nsIMsgProgress.idl
 seamonkey/idl/nsIMsgProtocolInfo.idl
 seamonkey/idl/nsIMsgPurgeService.idl
 seamonkey/idl/nsIMsgQuote.idl
+seamonkey/idl/nsIMsgQuotingOutputStreamListener.idl
 seamonkey/idl/nsIMsgRDFDataSource.idl
 seamonkey/idl/nsIMsgRecipientArray.idl
 seamonkey/idl/nsIMsgSMIMECompFields.idl
@@ -2576,6 +2578,7 @@ seamonkey/include/msgcompose/nsIMsgComposeProgressParams.h
 seamonkey/include/msgcompose/nsIMsgComposeSecure.h
 seamonkey/include/msgcompose/nsIMsgComposeService.h
 seamonkey/include/msgcompose/nsIMsgQuote.h
+seamonkey/include/msgcompose/nsIMsgQuotingOutputStreamListener.h
 seamonkey/include/msgcompose/nsIMsgRecipientArray.h
 seamonkey/include/msgcompose/nsIMsgSend.h
 seamonkey/include/msgcompose/nsIMsgSendLater.h
@@ -3405,6 +3408,7 @@ seamonkey/include/xpcom/nsIEnumerator.h
 seamonkey/include/xpcom/nsIEnvironment.h
 seamonkey/include/xpcom/nsIErrorService.h
 seamonkey/include/xpcom/nsIEventQueue.h
+seamonkey/include/xpcom/nsIEventQueueListener.h
 seamonkey/include/xpcom/nsIEventQueueService.h
 seamonkey/include/xpcom/nsIEventTarget.h
 seamonkey/include/xpcom/nsIException.h

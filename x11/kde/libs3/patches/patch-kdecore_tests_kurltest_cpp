@@ -1,4 +1,4 @@
-$OpenBSD: patch-kdecore_tests_kurltest_cpp,v 1.1 2007/08/25 08:03:02 espie Exp $
+$OpenBSD: patch-kdecore_tests_kurltest_cpp,v 1.1.2.1 2007/09/01 17:49:30 ajacoutot Exp $
 --- kdecore/tests/kurltest.cpp.orig	Fri Mar 17 11:19:04 2006
 +++ kdecore/tests/kurltest.cpp	Wed Aug 15 13:51:42 2007
 @@ -288,6 +288,16 @@ int main(int argc, char *argv[])

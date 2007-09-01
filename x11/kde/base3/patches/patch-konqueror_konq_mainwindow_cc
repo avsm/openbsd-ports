@@ -1,7 +1,7 @@
-$OpenBSD: patch-konqueror_konq_mainwindow_cc,v 1.5 2007/08/25 08:03:02 espie Exp $
---- konqueror/konq_mainwindow.cc.orig	Mon May 14 09:55:47 2007
-+++ konqueror/konq_mainwindow.cc	Wed Aug 15 13:55:38 2007
-@@ -611,12 +611,11 @@ void KonqMainWindow::openURL( KonqView *_view, const K
+$OpenBSD: patch-konqueror_konq_mainwindow_cc,v 1.5.2.1 2007/09/01 17:48:54 ajacoutot Exp $
+--- konqueror/konq_mainwindow.cc.orig	Mon Jan 15 12:32:12 2007
++++ konqueror/konq_mainwindow.cc	Thu Aug 30 10:24:17 2007
+@@ -611,12 +611,11 @@ void KonqMainWindow::openURL( KonqView *
    }
    else // no known serviceType, use KonqRun
    {
@@ -16,7 +16,7 @@ $OpenBSD: patch-konqueror_konq_mainwindow_cc,v 1.5 2007/08/25 08:03:02 espie Exp
            setLocationBarURL( url );
        }
  
-@@ -819,8 +818,6 @@ bool KonqMainWindow::openView( QString serviceType, co
+@@ -819,8 +818,6 @@ bool KonqMainWindow::openView( QString s
          if ( childView )
          {
              enableAllActions( true );

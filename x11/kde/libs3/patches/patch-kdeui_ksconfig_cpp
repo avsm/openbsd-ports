@@ -1,7 +1,7 @@
-$OpenBSD: patch-kdeui_ksconfig_cpp,v 1.1 2006/05/02 12:35:42 steven Exp $
---- kdeui/ksconfig.cpp.orig	Wed Apr 19 23:56:18 2006
-+++ kdeui/ksconfig.cpp	Wed Apr 19 23:56:27 2006
-@@ -187,7 +187,7 @@ KSpellConfig::readGlobalSettings()
+$OpenBSD: patch-kdeui_ksconfig_cpp,v 1.1.2.1 2007/09/01 17:51:17 ajacoutot Exp $
+--- kdeui/ksconfig.cpp.orig	Mon May 22 20:14:23 2006
++++ kdeui/ksconfig.cpp	Thu Aug 30 10:01:03 2007
+@@ -188,7 +188,7 @@ KSpellConfig::readGlobalSettings()
    setDictionary    ( kc->readEntry("KSpell_Dictionary") );
    setDictFromList  ( kc->readNumEntry("KSpell_DictFromList", false) );
    setEncoding ( kc->readNumEntry ("KSpell_Encoding", KS_E_ASCII) );

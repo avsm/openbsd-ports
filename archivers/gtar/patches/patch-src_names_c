@@ -1,7 +1,7 @@
-$OpenBSD: patch-src_names_c,v 1.1 2007/09/01 21:05:21 naddy Exp $
---- src/names.c.orig	Wed Jun 27 15:30:32 2007
-+++ src/names.c	Sat Sep  1 21:58:57 2007
-@@ -1012,11 +1012,10 @@ contains_dot_dot (char const *name)
+$OpenBSD: patch-src_names_c,v 1.1.2.1 2007/09/04 06:10:22 ajacoutot Exp $
+--- src/names.c.orig	Mon Sep  3 11:28:20 2007
++++ src/names.c	Mon Sep  3 11:29:33 2007
+@@ -1152,11 +1152,10 @@ contains_dot_dot (char const *name)
        if (p[0] == '.' && p[1] == '.' && (ISSLASH (p[2]) || !p[2]))
  	return 1;
  

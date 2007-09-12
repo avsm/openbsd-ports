@@ -1,0 +1,29 @@
+$OpenBSD: patch-scripts_imapproxy_conf,v 1.2 2007/09/12 19:54:48 brad Exp $
+--- scripts/imapproxy.conf.orig	Tue Jan 30 10:23:46 2007
++++ scripts/imapproxy.conf	Wed Aug 22 02:53:55 2007
+@@ -67,14 +67,14 @@ cache_expiration_time 300
+ ## This setting controls which username the imap proxy process will run as.
+ ## It is not allowed to run as "root".
+ #
+-proc_username nobody
++proc_username _imapproxy
+ 
+ #
+ ## proc_groupname
+ ##
+ ## This setting controls which groupname the imap proxy process will run as.
+ #
+-proc_groupname nobody
++proc_groupname _imapproxy
+ 
+ 
+ #
+@@ -164,7 +164,7 @@ force_tls no
+ ## a directory is specified here, imapproxy will chroot() to that
+ ## directory.
+ #
+-#chroot_directory /var/empty
++chroot_directory /var/empty
+ 
+ 
+ #

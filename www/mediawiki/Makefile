@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.12 2007/01/25 10:43:05 mbalmer Exp $
+# $OpenBSD: Makefile,v 1.12.2.1 2007/09/15 09:05:19 ajacoutot Exp $
 
 COMMENT=	"web-based collaborative editing environment"
 
 DISTNAME=	mediawiki-1.9.1
+PKGNAME=	${DISTNAME}p0
 CATEGORIES=	www
 
 HOMEPAGE=	http://www.mediawiki.org/

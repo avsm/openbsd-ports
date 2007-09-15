@@ -1,0 +1,17 @@
+$OpenBSD: patch-includes_api_ApiFormatBase_php,v 1.1.2.1 2007/09/15 09:05:19 ajacoutot Exp $
+--- includes/api/ApiFormatBase.php.orig	Wed Jan 24 09:32:49 2007
++++ includes/api/ApiFormatBase.php	Fri Sep 14 20:46:56 2007
+@@ -143,8 +143,11 @@ for more information.
+ 	* This method also replaces any '<' with &lt;
+ 	*/
+ 	protected function formatHTML($text) {
+-		// encode all tags as safe blue strings
+-		$text = ereg_replace('\<([^>]+)\>', '<span style="color:blue;">&lt;\1&gt;</span>', $text);
++		// Escape everything first for full coverage
++		$text = htmlspecialchars($text);
++		
++		// encode all comments or tags as safe blue strings
++		$text = preg_replace('/\&lt;(!--.*?--|.*?)\&gt;/', '<span style="color:blue;">&lt;\1&gt;</span>', $text);
+ 		// identify URLs
+ 		$protos = "http|https|ftp|gopher";
+ 		$text = ereg_replace("($protos)://[^ '\"()<\n]+", '<a href="\\0">\\0</a>', $text);

@@ -1,7 +1,7 @@
-$OpenBSD: patch-kdm_backend_session_c,v 1.1 2007/10/04 19:00:17 jasper Exp $
+$OpenBSD: patch-kdm_backend_session_c,v 1.1.2.1 2007/10/05 12:40:02 ajacoutot Exp $
 --- kdm/backend/session.c.orig	Thu Jan 19 18:03:14 2006
-+++ kdm/backend/session.c	Tue Sep 25 20:28:25 2007
-@@ -121,8 +121,9 @@ conv_auto( int what, const char *prompt ATTR_UNUSED )
++++ kdm/backend/session.c	Fri Oct  5 10:53:54 2007
+@@ -121,8 +121,9 @@ conv_auto( int what, const char *prompt 
  static void
  DoAutoLogon( void )
  {

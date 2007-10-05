@@ -1,5 +1,6 @@
---- config.h.in.orig	Wed Jan 24 23:41:06 2007
-+++ config.h.in	Wed Jan 24 23:41:44 2007
+$OpenBSD: patch-config_h_in,v 1.1.4.1 2007/10/05 14:57:33 ajacoutot Exp $
+--- config.h.in.orig	Sun Sep 23 02:26:37 2007
++++ config.h.in	Sun Sep 23 02:27:02 2007
 @@ -89,6 +89,10 @@
  /* Define to empty if `const' does not conform to ANSI C. */
  #undef const

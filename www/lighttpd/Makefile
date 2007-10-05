@@ -1,11 +1,12 @@
-# $OpenBSD: Makefile,v 1.38.2.1 2007/07/29 19:00:55 sturm Exp $
+# $OpenBSD: Makefile,v 1.38.2.2 2007/10/05 14:56:49 ajacoutot Exp $
 
 SHARED_ONLY=	Yes
 
 COMMENT=	"secure, fast, compliant, and very flexible web-server"
 
-DISTNAME=	lighttpd-1.4.16
+DISTNAME=	lighttpd-1.4.18
 CATEGORIES=	www net
+MASTER_SITES=	${HOMEPAGE}download/
 
 MAINTAINER=	Brad Smith <brad@openbsd.org>
 
@@ -20,8 +21,6 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 WANTLIB=		c crypto m ssl z
-
-MASTER_SITES=	${HOMEPAGE}download/
 
 USE_LIBTOOL=	Yes
 LIBTOOL_FLAGS=	--tag=disable-static

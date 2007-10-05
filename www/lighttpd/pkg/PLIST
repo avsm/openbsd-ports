@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.14.2.1 2007/07/29 19:00:56 sturm Exp $
+@comment $OpenBSD: PLIST,v 1.14.2.2 2007/10/05 14:56:50 ajacoutot Exp $
 bin/spawn-fcgi
 lib/lighttpd/
 @comment lib/lighttpd/mod_access.la
@@ -67,6 +67,7 @@ lib/lighttpd/mod_webdav.so
 @man man/man1/lighttpd.1
 @man man/man1/spawn-fcgi.1
 sbin/lighttpd
+sbin/lighttpd-angel
 share/examples/lighttpd/
 share/examples/lighttpd/lighttpd.conf
 @sample ${SYSCONFDIR}/lighttpd.conf

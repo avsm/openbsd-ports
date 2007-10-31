@@ -1,15 +1,6 @@
-$OpenBSD: patch-ctm_ctm_ctm_ed_c,v 1.1 2007/10/26 20:44:35 ajacoutot Exp $
---- ctm/ctm/ctm_ed.c.orig	Tue May 30 05:47:22 1995
-+++ ctm/ctm/ctm_ed.c	Fri Oct 26 22:39:59 2007
-@@ -6,7 +6,7 @@
-  * this stuff is worth it, you can buy me a beer in return.   Poul-Henning Kamp
-  * ----------------------------------------------------------------------------
-  *
-- * $Id: ctm_ed.c,v 1.6 1995/05/30 03:47:22 rgrimes Exp $
-+ * $Id: ctm_ed.c,v 1.2 1999/07/13 23:02:05 deraadt Exp $
-  *
-  */
- 
+$OpenBSD: patch-ctm_ctm_ctm_ed_c,v 1.2 2007/10/31 23:14:46 ajacoutot Exp $
+--- ctm/ctm/ctm_ed.c.orig	Wed Oct 31 23:06:34 2007
++++ ctm/ctm/ctm_ed.c	Wed Oct 31 23:06:34 2007
 @@ -21,13 +21,13 @@ ctm_edit(u_char *script, int length, char *filein, cha
  
      fi = fopen(filein,"r");

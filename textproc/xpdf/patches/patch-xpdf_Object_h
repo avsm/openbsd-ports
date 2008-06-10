@@ -1,4 +1,4 @@
-$OpenBSD: patch-xpdf_Object_h,v 1.1 2008/04/19 07:38:24 bernd Exp $
+$OpenBSD: patch-xpdf_Object_h,v 1.1.2.1 2008/06/10 04:59:04 robert Exp $
 
 * CVE-2008-1693: Arbitrary code execution vulnerability in handling of
   PDF embedded fonts.

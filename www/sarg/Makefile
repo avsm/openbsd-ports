@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.8 2007/09/15 20:38:26 merdely Exp $
+# $OpenBSD: Makefile,v 1.8.2.1 2008/06/15 01:47:33 robert Exp $
 
 COMMENT=		Squid Analysis Report Generator
 
-DISTNAME=		sarg-2.2.3.1
-PKGNAME=		${DISTNAME}p0
+DISTNAME=		sarg-2.2.5
+PKGNAME=		${DISTNAME}
 CATEGORIES=		www
 
 HOMEPAGE=	 	http://sarg.sourceforge.net/

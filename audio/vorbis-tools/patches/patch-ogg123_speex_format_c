@@ -1,7 +1,7 @@
-$OpenBSD: patch-ogg123_speex_format_c,v 1.1 2008/05/11 22:17:28 jasper Exp $
---- ogg123/speex_format.c.orig	Sun May 11 13:26:45 2008
-+++ ogg123/speex_format.c	Sun May 11 13:28:22 2008
-@@ -475,7 +475,7 @@ void *process_header(ogg_packet *op, int *frame_size,
+$OpenBSD: patch-ogg123_speex_format_c,v 1.1.2.1 2008/06/29 13:20:20 robert Exp $
+--- ogg123/speex_format.c.orig	Mon Jun 20 06:01:34 2005
++++ ogg123/speex_format.c	Sat May 17 20:04:28 2008
+@@ -471,7 +471,7 @@ void *process_header(ogg_packet *op, int *frame_size,
             cb->printf_error(callback_arg, ERROR, _("Cannot read header"));
       return NULL;
     }

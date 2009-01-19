@@ -25,6 +25,11 @@
  * All Rights Reserved.
  *
  * $Log: sound_libsndio.cxx,v $
+ * Revision 1.1  2009/01/17 12:30:08  jakemsr
+ * - add sndio backend
+ * - remove OSS and esd support
+ * ok ajacoutot@ (MAINTAINER)
+ *
  */
 
 #pragma implementation "sound_libsndio.h"
@@ -33,7 +38,7 @@
 
 #include <sys/poll.h>
 
-PCREATE_SOUND_PLUGIN(LIBSNDIO, PSoundChannelLIBSNDIO);
+PCREATE_SOUND_PLUGIN(SNDIO, PSoundChannelLIBSNDIO);
 
 PSoundChannelLIBSNDIO::PSoundChannelLIBSNDIO()
 {

@@ -1,0 +1,12 @@
+$OpenBSD: patch-pngwutil_c,v 1.1.2.1 2009/06/12 01:59:58 william Exp $
+--- pngwutil.c.orig	Fri Oct 31 09:42:01 2008
++++ pngwutil.c	Thu Jun  4 16:25:56 2009
+@@ -1338,7 +1338,7 @@ png_check_keyword(png_structp png_ptr, png_charp key, 
+    if (key_len > 79)
+    {
+       png_warning(png_ptr, "keyword length must be 1 - 79 characters");
+-      new_key[79] = '\0';
++      (*new_key[79]) = '\0';
+       key_len = 79;
+    }
+ 

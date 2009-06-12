@@ -1,0 +1,42 @@
+$OpenBSD: patch-pngrtran_c,v 1.2.2.1 2009/06/12 01:59:58 william Exp $
+--- pngrtran.c.orig	Fri Oct 31 09:42:01 2008
++++ pngrtran.c	Thu Jun  4 16:28:15 2009
+@@ -309,9 +309,7 @@ png_set_dither(png_structp png_ptr, png_colorp palette
+ 
+          hash = (png_dsortpp)png_malloc(png_ptr, (png_uint_32)(769 *
+             png_sizeof(png_dsortp)));
+-         for (i = 0; i < 769; i++)
+-            hash[i] = NULL;
+-/*         png_memset(hash, 0, 769 * png_sizeof(png_dsortp)); */
++         png_memset(hash, 0, 769 * png_sizeof(png_dsortp));
+ 
+          num_new_palette = num_palette;
+ 
+@@ -4128,6 +4126,8 @@ png_build_gamma_table(png_structp png_ptr)
+      png_ptr->gamma_16_table = (png_uint_16pp)png_malloc(png_ptr,
+         (png_uint_32)(num * png_sizeof(png_uint_16p)));
+ 
++     png_memset(png_ptr->gamma_16_table, 0, num * png_sizeof(png_uint_16p)); 
++
+      if (png_ptr->transformations & (PNG_16_TO_8 | PNG_BACKGROUND))
+      {
+         double fin, fout;
+@@ -4188,6 +4188,8 @@ png_build_gamma_table(png_structp png_ptr)
+         png_ptr->gamma_16_to_1 = (png_uint_16pp)png_malloc(png_ptr,
+            (png_uint_32)(num * png_sizeof(png_uint_16p )));
+ 
++        png_memset(png_ptr->gamma_16_to_1, 0, num * png_sizeof(png_uint_16p)); 
++
+         for (i = 0; i < num; i++)
+         {
+            png_ptr->gamma_16_to_1[i] = (png_uint_16p)png_malloc(png_ptr,
+@@ -4210,6 +4212,9 @@ png_build_gamma_table(png_structp png_ptr)
+ 
+         png_ptr->gamma_16_from_1 = (png_uint_16pp)png_malloc(png_ptr,
+            (png_uint_32)(num * png_sizeof(png_uint_16p)));
++
++        png_memset(png_ptr->gamma_16_from_1, 0,
++           num * png_sizeof(png_uint_16p)); 
+ 
+         for (i = 0; i < num; i++)
+         {

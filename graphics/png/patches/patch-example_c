@@ -1,0 +1,14 @@
+$OpenBSD: patch-example_c,v 1.1.2.1 2009/06/12 01:59:58 william Exp $
+--- example.c.orig	Fri Oct 31 09:42:01 2008
++++ example.c	Thu Jun  4 16:26:40 2009
+@@ -342,6 +342,10 @@ void read_png(FILE *fp, unsigned int sig_read)  /* fil
+    /* The easiest way to read the image: */
+    png_bytep row_pointers[height];
+ 
++   /* Clear the pointer array */
++   for (row = 0; row < height; row++)
++      row_pointers[row] = NULL;
++
+    for (row = 0; row < height; row++)
+    {
+       row_pointers[row] = png_malloc(png_ptr, png_get_rowbytes(png_ptr,

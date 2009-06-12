@@ -1,0 +1,12 @@
+$OpenBSD: patch-pngread_c,v 1.2.2.1 2009/06/12 01:59:58 william Exp $
+--- pngread.c.orig	Fri Oct 31 09:42:01 2008
++++ pngread.c	Thu Jun  4 16:26:40 2009
+@@ -1437,6 +1437,8 @@ png_read_png(png_structp png_ptr, png_infop info_ptr,
+ #ifdef PNG_FREE_ME_SUPPORTED
+       info_ptr->free_me |= PNG_FREE_ROWS;
+ #endif
++      png_memset(info_ptr->row_pointers, 0, info_ptr->height
++         * png_sizeof(png_bytep));
+       for (row = 0; row < (int)info_ptr->height; row++)
+       {
+          info_ptr->row_pointers[row] = (png_bytep)png_malloc(png_ptr,

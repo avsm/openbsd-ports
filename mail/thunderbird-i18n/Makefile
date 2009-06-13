@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.26 2009/01/09 15:45:41 martynas Exp $
+# $OpenBSD: Makefile,v 1.26.2.1 2009/06/13 02:42:31 william Exp $
 
 PKG_ARCH=	*
 
-V=		2.0.0.19
+V=		2.0.0.21
 NAME=		thunderbird-i18n
 PKGNAME=	${NAME}-${V}
 

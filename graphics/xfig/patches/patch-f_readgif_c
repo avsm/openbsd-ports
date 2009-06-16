@@ -1,0 +1,30 @@
+$OpenBSD: patch-f_readgif_c,v 1.1.2.1 2009/06/16 01:40:55 william Exp $
+
+resolve CVE-2009-1962
+
+--- f_readgif.c.pat.orig	Tue Jul 26 12:39:59 2005
++++ f_readgif.c	Thu Jun 11 10:08:44 2009
+@@ -76,7 +76,7 @@ read_gif(FILE *file, int filetype, F_pic *pic)
+ 	char		buf[BUFLEN],pcxname[PATH_MAX];
+ 	FILE		*giftopcx;
+ 	struct Cmap 	localColorMap[MAX_COLORMAP_SIZE];
+-	int		i, stat, size;
++	int		i, stat, size, fd;
+ 	int		useGlobalColormap;
+ 	unsigned int	bitPixel, red, green, blue;
+ 	unsigned char	c;
+@@ -173,7 +173,13 @@ read_gif(FILE *file, int filetype, F_pic *pic)
+ 	/* now call giftopnm and ppmtopcx */
+ 
+ 	/* make name for temp output file */
+-	sprintf(pcxname, "%s/%s%06d.pix", TMPDIR, "xfig-pcx", getpid());
++	snprintf(pcxname, sizeof(pcxname), "%s/xfig-pcx.XXXXXX", TMPDIR);
++	if ((fd = mkstemp(pcxname)) == -1) {
++		file_msg("Cannot create temporary file\n");
++		return FileInvalid;
++	}
++	close(fd);
++
+ 	/* make command to convert gif to pcx into temp file */
+ 	sprintf(buf, "giftopnm | ppmtopcx > %s 2> /dev/null", pcxname);
+ 	if ((giftopcx = popen(buf,"w" )) == 0) {

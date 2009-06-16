@@ -1,0 +1,15 @@
+$OpenBSD: patch-mode_c,v 1.1.2.1 2009/06/16 01:40:55 william Exp $
+
+resolve CVE-2009-1962
+
+--- mode.c.pat.orig	Tue Jul 26 12:40:00 2005
++++ mode.c	Thu Jun 11 10:08:44 2009
+@@ -86,7 +86,7 @@ int		min_num_points;
+ 
+ int		cur_exp_lang;		/* gets initialized in main.c */
+ Boolean		batch_exists = False;
+-char		batch_file[32];
++char		batch_file[PATH_MAX];
+ 
+ /*******************************************************************/
+ /* If you change the order of the lang_items[] you must change the */

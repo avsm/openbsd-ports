@@ -1,0 +1,35 @@
+$OpenBSD: patch-main_c,v 1.1.2.1 2009/06/16 01:40:55 william Exp $
+
+resolve CVE-2009-1962
+
+--- main.c.pat.orig	Sun Jan 14 19:24:26 2007
++++ main.c	Thu Jun 11 10:08:44 2009
+@@ -653,8 +653,10 @@ void main(int argc, char **argv)
+     update_figs = False;
+ 
+     /* get the TMPDIR environment variable for temporary files */
+-    if ((TMPDIR = getenv("XFIGTMPDIR"))==NULL)
+-	TMPDIR = "/tmp";
++    if ((TMPDIR = getenv("XFIGTMPDIR"))==NULL) {
++		if ((TMPDIR = getenv("TMPDIR")) == NULL)
++			TMPDIR = "/tmp";
++	}
+ 
+     /* first check args to see if user wants to scale the figure as it is
+ 	read in and make sure it is a resonable (positive) number */
+@@ -1669,7 +1671,14 @@ make_cut_buf_name(void)
+     if (userhome != NULL && *strcpy(cut_buf_name, userhome) != '\0') {
+ 	strcat(cut_buf_name, "/.xfig");
+     } else {
+-	sprintf(cut_buf_name, "%s/xfig%06d", TMPDIR, getpid());
++		int fd;
++		sprintf(cut_buf_name, "%s/xfig.XXXXXX", TMPDIR);
++		if ((fd = mkstemp(cut_buf_name)) == -1) {
++			fprintf(stderr, "Can't create temporary file for cut_buff: %s\n",
++					strerror(errno));
++			exit(0);
++		}
++		close(fd);
+     }
+ }
+ 

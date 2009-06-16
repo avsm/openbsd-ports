@@ -1,0 +1,32 @@
+$OpenBSD: patch-f_util_c,v 1.1.2.1 2009/06/16 01:40:55 william Exp $
+
+resolve CVE-2009-1962
+
+--- f_util.c.pat.orig	Tue Jan 16 12:58:18 2007
++++ f_util.c	Thu Jun 11 10:08:44 2009
+@@ -906,14 +906,20 @@ void update_xfigrc(char *name, char *string)
+ int strain_out(char *name)
+ {
+     char    line[RC_BUFSIZ+1], *tok;
++    int fd;
+ 
+     /* make a temp filename in the user's home directory so we
+        can just rename it to .xfigrc after creating it */
+-    sprintf(tmpname, "%s/%s%06d", userhome, "xfig-xfigrc", getpid());
+-    tmpf = fopen(tmpname,"wb");
+-    if (tmpf == 0) {
+-	file_msg("Can't make temporary file for .xfigrc - error: %s",strerror(errno));
+-	return -1;	
++    snprintf(tmpname, sizeof(tmpname), "%s/xfig-xfigrc.XXXXXX", userhome);
++
++    if ((fd = mkstemp(tmpname)) == -1 || (tmpf = fdopen(fd, "wb")) == NULL) {
++       file_msg("Can't make temporary file for .xfigrc - error: %s",
++              strerror(errno));
++       if (fd != -1) {
++          unlink(tmpname);
++          close(fd);
++       }
++       return -1;
+     }
+     /* read the .xfigrc file and write all to temp file except file names */
+     xfigrc = fopen(xfigrc_name,"r");

@@ -1,0 +1,25 @@
+$OpenBSD: patch-f_readppm_c,v 1.1.2.1 2009/06/16 01:40:55 william Exp $
+
+resolve CVE-2009-1962
+
+--- f_readppm.c.pat.orig	Tue Jul 26 12:39:59 2005
++++ f_readppm.c	Thu Jun 11 10:08:44 2009
+@@ -34,10 +34,16 @@ read_ppm(FILE *file, int filetype, F_pic *pic)
+ {
+ 	char	 buf[BUFLEN],pcxname[PATH_MAX];
+ 	FILE	*giftopcx;
+-	int	 stat, size;
++	int	 stat, size, fd;
+ 
+ 	/* make name for temp output file */
+-	sprintf(pcxname, "%s/%s%06d.pix", TMPDIR, "xfig-pcx", getpid());
++	snprintf(pcxname, sizeof(pcxname), "%s/xfig-pcx.XXXXXX", TMPDIR);
++	if ((fd = mkstemp(pcxname)) == -1) {
++	    file_msg("Cannot open temp file %s: %s\n", pcxname, strerror(errno));
++	    return FileInvalid;
++	}
++	close(fd);
++
+ 	/* make command to convert gif to pcx into temp file */
+ 	sprintf(buf, "ppmtopcx > %s 2> /dev/null", pcxname);
+ 	if ((giftopcx = popen(buf,"w" )) == 0) {

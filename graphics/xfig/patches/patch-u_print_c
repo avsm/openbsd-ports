@@ -1,0 +1,43 @@
+$OpenBSD: patch-u_print_c,v 1.1.2.1 2009/06/16 01:40:55 william Exp $
+
+resolve CVE-2009-1962
+
+--- u_print.c.pat.orig	Fri Feb 24 15:18:11 2006
++++ u_print.c	Thu Jun 11 10:08:44 2009
+@@ -92,9 +92,16 @@ void print_to_printer(char *printer, char *backgrnd, f
+     char	    syspr[2*PATH_MAX+200];
+     char	    tmpfile[PATH_MAX];
+     char	   *name;
++    int     fd;
+ 
+-    sprintf(tmpfile, "%s/%s%06d", TMPDIR, "xfig-print", getpid());
++    snprintf(tmpfile, sizeof(tmpfile), "%s/xfig-print.XXXXXX", TMPDIR);
+     warnexist = False;
++    if ((fd = mkstemp(tmpfile)) == -1) {
++       file_msg("Can't open temp file %s: %s\n", tmpfile, strerror(errno));
++       return;
++    }
++    close(fd);
++
+     init_write_tmpfile();
+     if (write_file(tmpfile, False)) {
+       end_write_tmpfile();
+@@ -648,10 +655,16 @@ exec_prcmd(char *command, char *msg)
+     char   errfname[PATH_MAX];
+     FILE  *errfile;
+     char   str[400];
+-    int	   status;
++    int	   status, fd;
+ 
+     /* make temp filename for any errors */
+-    sprintf(errfname, "%s/xfig-export%06d.err", TMPDIR, getpid());
++    snprintf(errfname, sizeof(errfname), "%s/xfig-export.XXXXXX", TMPDIR);
++    if ((fd = mkstemp(errfname)) == -1) {
++	file_msg("Can't open temp file %s: %s\n", errfname, strerror(errno));
++	return 1;
++    }
++    close(fd);
++    
+     /* direct any output from fig2dev to this file */
+     strcat(command, " 2> "); 
+     strcat(command, errfname); 

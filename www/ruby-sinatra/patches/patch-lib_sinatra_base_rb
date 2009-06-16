@@ -1,0 +1,17 @@
+$OpenBSD: patch-lib_sinatra_base_rb,v 1.1.2.1 2009/06/16 02:02:13 william Exp $
+
+Security fix for directory traversal vulnerability in static file route [#177]
+
+--- lib/sinatra/base.rb.orig	Fri Jun 12 12:30:24 2009
++++ lib/sinatra/base.rb	Fri Jun 12 12:31:50 2009
+@@ -741,7 +741,9 @@ module Sinatra
+     # static files route
+     get(/.*[^\/]$/) do
+       pass unless options.static? && options.public?
+-      path = options.public + unescape(request.path_info)
++      public_dir = File.expand_path(options.public)
++      path = File.expand_path(public_dir + unescape(request.path_info))
++      pass if path[0, public_dir.length] != public_dir
+       pass unless File.file?(path)
+       send_file path, :disposition => nil
+     end

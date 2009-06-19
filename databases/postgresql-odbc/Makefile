@@ -1,8 +1,8 @@
-# $Id: Makefile,v 1.1.1.1 2008/10/30 00:01:31 pirofti Exp $
+# $Id: Makefile,v 1.2 2009/03/14 12:24:48 espie Exp $
 
 COMMENT=	ODBC driver for PostgreSQL
-VERSION=	08.03.0300
-PKGNAME=	postgresql-odbc-${VERSION}p0
+VERSION=	08.03.0400
+PKGNAME=	postgresql-odbc-${VERSION}
 DISTNAME=	psqlodbc-${VERSION}
 CATEGORIES=	databases
 
@@ -20,9 +20,8 @@ MASTER_SITES=		ftp://ftp9.us.postgresql.org/pub/mirrors/postgresql/odbc/versions
 
 SHARED_ONLY=yes
 
-LIB_DEPENDS=		pq:postgresql-client->=8.3,<8.4:databases/postgresql \
-			iodbcinst:iodbc-*:databases/iodbc \
-			iodbc:iodbc-*:databases/iodbc
+LIB_DEPENDS=		pq:postgresql-client->=8.3:databases/postgresql \
+			iodbc,iodbcinst:iodbc-*:databases/iodbc
 
 WANTLIB=		pthread 
 

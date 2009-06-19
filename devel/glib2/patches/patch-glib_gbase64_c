@@ -1,4 +1,4 @@
-$OpenBSD: patch-glib_gbase64_c,v 1.2 2009/04/13 09:03:34 ajacoutot Exp $
+$OpenBSD: patch-glib_gbase64_c,v 1.2.2.1 2009/06/19 02:29:47 william Exp $
 
 Security fix for CVE-2008-4316.
 Fixes multiple integer overflows.

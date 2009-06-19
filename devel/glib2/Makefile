@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.58 2009/01/28 09:24:38 jasper Exp $
+# $OpenBSD: Makefile,v 1.58.2.1 2009/06/19 02:29:47 william Exp $
 
 COMMENT-main=		general-purpose utility library
 COMMENT-docs=		glib2 documentation
@@ -6,7 +6,7 @@ COMMENT-fam=		fam(3) gio module
 
 VERSION=		2.18.4
 DISTNAME=		glib-${VERSION}
-PKGNAME-main=		glib2-${VERSION}p0
+PKGNAME-main=		glib2-${VERSION}p1
 PKGNAME-docs=		glib2-docs-${VERSION}
 PKGNAME-fam=		glib2-fam-${VERSION}
 

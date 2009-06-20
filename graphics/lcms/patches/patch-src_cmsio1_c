@@ -1,0 +1,219 @@
+$OpenBSD: patch-src_cmsio1_c,v 1.1.2.1 2009/06/20 01:34:27 william Exp $
+
+CVE-2009-0581
+CVE-2009-0723    
+CVE-2009-0733
+
+--- src/cmsio1.c.orig	Fri Jul 27 06:00:02 2007
++++ src/cmsio1.c	Thu Jun 18 23:57:39 2009
+@@ -260,11 +260,14 @@ void EvalCHRM(LPcmsCIEXYZ Dest, LPMAT3 Chrm, LPcmsCIEX
+ // Read profile header and validate it
+ 
+ static
+-LPLCMSICCPROFILE ReadHeader(LPLCMSICCPROFILE Icc, LCMSBOOL lIsFromMemory)
++LPLCMSICCPROFILE ReadHeader(LPLCMSICCPROFILE Icc,
++                            LCMSBOOL lIsFromMemory,
++                            DWORD dwSize)
+ {
+      icTag Tag;
+      icHeader Header;
+      icInt32Number TagCount, i;
++     icUInt32Number extent;
+     
+        if (Icc -> Read(&Header, sizeof(icHeader), 1, Icc) != 1) 
+                       goto ErrorCleanup;
+@@ -285,7 +288,11 @@ LPLCMSICCPROFILE ReadHeader(LPLCMSICCPROFILE Icc, LCMS
+        // Validate it
+ 
+        if (Header.magic != icMagicNumber) goto ErrorCleanup;
+-                   
++                 
++       if (dwSize && dwSize != Header.size) {
++            goto ErrorCleanup;
++        }
++     
+        if (Icc ->Read(&TagCount, sizeof(icInt32Number), 1, Icc) != 1)
+                      goto ErrorCleanup;
+ 
+@@ -320,7 +327,7 @@ LPLCMSICCPROFILE ReadHeader(LPLCMSICCPROFILE Icc, LCMS
+ 
+        // Read tag directory
+ 
+-       if (TagCount > MAX_TABLE_TAG) {
++       if (TagCount > MAX_TABLE_TAG || TagCount < 0) {
+ 
+            cmsSignalError(LCMS_ERRC_ABORTED, "Too many tags (%d)", TagCount);
+            goto ErrorCleanup;
+@@ -338,7 +345,9 @@ LPLCMSICCPROFILE ReadHeader(LPLCMSICCPROFILE Icc, LCMS
+ 
+               // Perform some sanity check. Offset + size should fall inside file.
+ 
+-              if (Tag.offset + Tag.size > Header.size) goto ErrorCleanup;
++              extent = Tag.offset + Tag.size;
++              if (extent > Header.size || extent < Tag.offset)
++                  goto ErrorCleanup;
+ 
+               Icc -> TagNames[i]   = Tag.sig;
+               Icc -> TagOffsets[i] = Tag.offset;
+@@ -493,9 +502,9 @@ LCMSBOOL ReadLUT8(LPLCMSICCPROFILE Icc, LPLUT NewLUT, 
+        NewLUT -> OutputEntries = 256;
+ 
+        // Do some checking
+-       if (NewLUT -> cLutPoints > 100) NewLUT ->cLutPoints = 100;
+-       if (NewLUT -> InputChan > MAXCHANNELS)  NewLUT -> InputChan = MAXCHANNELS;
+-       if (NewLUT -> OutputChan > MAXCHANNELS) NewLUT -> OutputChan = MAXCHANNELS;
++       if (!_cmsValidateLUT(NewLUT)) {
++          return FALSE;
++       }
+ 
+        AdjustEndianess32((LPBYTE) &LUT8.e00);
+        AdjustEndianess32((LPBYTE) &LUT8.e01);
+@@ -570,7 +579,7 @@ LCMSBOOL ReadLUT8(LPLCMSICCPROFILE Icc, LPLUT NewLUT, 
+ 
+        if (nTabSize > 0) {
+ 
+-            PtrW = (LPWORD) _cmsMalloc(sizeof(WORD) * nTabSize);
++            PtrW = (LPWORD) _cmsCalloc(sizeof(WORD), nTabSize);
+             if (PtrW == NULL) return FALSE;
+ 
+             Temp = (LPBYTE) _cmsMalloc(nTabSize);
+@@ -735,6 +744,9 @@ LCMSBOOL ReadLUT16(LPLCMSICCPROFILE Icc, LPLUT NewLUT)
+        NewLUT -> InputEntries  = LUT16.inputEnt;
+        NewLUT -> OutputEntries = LUT16.outputEnt;
+ 
++       if (!_cmsValidateLUT(NewLUT)) {
++         return FALSE;
++       }
+ 
+        // Matrix handling
+ 
+@@ -797,11 +809,9 @@ LCMSBOOL ReadLUT16(LPLCMSICCPROFILE Icc, LPLUT NewLUT)
+                                                 NewLUT->InputChan));
+        if (nTabSize > 0) {
+ 
+-           PtrW = (LPWORD) _cmsMalloc(sizeof(WORD) * nTabSize);
+-           if (PtrW == NULL) {
+-               _cmsFree(PtrW);
++           PtrW = (LPWORD) _cmsCalloc(sizeof(WORD), nTabSize);
++           if (PtrW == NULL) 
+                return FALSE;
+-           }
+ 
+            NewLUT -> T = PtrW;
+            NewLUT -> Tsize = (unsigned int) (nTabSize * sizeof(WORD));
+@@ -1114,8 +1124,8 @@ LCMSBOOL ReadCLUT(LPLCMSICCPROFILE Icc, size_t Offset,
+     if (Icc ->Read(&CLUT, sizeof(icCLutStruct), 1, Icc) != 1) return FALSE;
+ 
+ 
+-    cmsAlloc3DGrid(NewLUT, CLUT.gridPoints[0], NewLUT ->InputChan, 
+-                                               NewLUT ->OutputChan);
++    if (cmsAlloc3DGrid(NewLUT, CLUT.gridPoints[0], NewLUT ->InputChan, 
++                                               NewLUT ->OutputChan) == NULL) return FALSE;
+ 
+     // Precission can be 1 or 2 bytes
+ 
+@@ -1172,10 +1182,11 @@ LCMSBOOL ReadSetOfCurves(LPLCMSICCPROFILE Icc, size_t 
+     else 
+         nCurves = NewLUT ->OutputChan;    
+ 
++    ZeroMemory(Curves, sizeof(Curves));
+     for (i=0; i < nCurves; i++) {
+ 
+         Curves[i] = ReadCurve(Icc);                     
+-        if (Curves[i] == NULL) return FALSE;
++        if (Curves[i] == NULL) goto Error;
+         SkipAlignment(Icc);
+    
+     }
+@@ -1187,6 +1198,15 @@ LCMSBOOL ReadSetOfCurves(LPLCMSICCPROFILE Icc, size_t 
+ 
+     return TRUE;
+ 
++Error:
++    for (i=0; i < nCurves; i++) {
++
++        if (Curves[i]) 
++            cmsFreeGamma(Curves[i]);
++    }
++
++    return FALSE;
++
+ }
+ 
+ // V4 stuff. LutAtoB type 
+@@ -1208,6 +1228,13 @@ LCMSBOOL ReadLUT_A2B(LPLCMSICCPROFILE Icc, LPLUT NewLU
+        NewLUT -> InputChan     = LUT16.inputChan;
+        NewLUT -> OutputChan    = LUT16.outputChan;
+ 
++       // Validate the NewLUT here to avoid excessive number of channels
++       // (leading to stack-based buffer overflow in ReadSetOfCurves).
++       // Needs revalidation after table size is filled in.
++       if (!_cmsValidateLUT(NewLUT)) {
++           return FALSE;
++       }
++
+        AdjustEndianess32((LPBYTE) &LUT16.offsetB);
+        AdjustEndianess32((LPBYTE) &LUT16.offsetMat);
+        AdjustEndianess32((LPBYTE) &LUT16.offsetM);
+@@ -1267,6 +1294,13 @@ LCMSBOOL ReadLUT_B2A(LPLCMSICCPROFILE Icc, LPLUT NewLU
+        NewLUT -> InputChan     = LUT16.inputChan;
+        NewLUT -> OutputChan    = LUT16.outputChan;
+ 
++       // Validate the NewLUT here to avoid excessive number of channels
++       // (leading to stack-based buffer overflow in ReadSetOfCurves).
++       // Needs revalidation after table size is filled in.
++       if (!_cmsValidateLUT(NewLUT)) {
++           return FALSE;
++       }
++
+        AdjustEndianess32((LPBYTE) &LUT16.offsetB);
+        AdjustEndianess32((LPBYTE) &LUT16.offsetMat);
+        AdjustEndianess32((LPBYTE) &LUT16.offsetM);
+@@ -1565,7 +1599,7 @@ int ReadEmbeddedTextTag(LPLCMSICCPROFILE Icc, size_t s
+             if (Len < 0) Len = 0;
+             if (Len > 20*1024) Len = 20 * 1024; 
+ 
+-            wchar = (wchar_t*) _cmsMalloc(Len+2);
++            wchar = (wchar_t*) _cmsMalloc(Len*sizeof(wchar_t)+2);
+             if (!wchar) return -1;
+             
+             if (Icc ->Read(wchar, 1, Len, Icc) != Len) return -1;
+@@ -1974,7 +2008,8 @@ int cmsReadICCnamedColorList(cmsHTRANSFORM xform, cmsH
+ 
+ LPcmsNAMEDCOLORLIST LCMSEXPORT cmsReadColorantTable(cmsHPROFILE hProfile, icTagSignature sig)
+ {   
+-    icInt32Number n, Count, i;
++    icInt32Number n;
++    icUInt32Number Count, i;
+     size_t offset;
+     icTagTypeSignature  BaseType;
+     LPLCMSICCPROFILE   Icc = (LPLCMSICCPROFILE) (LPSTR) hProfile;
+@@ -2315,6 +2350,10 @@ LPcmsSEQ LCMSEXPORT cmsReadProfileSequenceDescription(
+     Icc ->Read(&Count, sizeof(icUInt32Number), 1, Icc);
+     AdjustEndianess32((LPBYTE) &Count);
+     
++    if (Count > 1000) {
++         return NULL;
++    }
++ 
+     size = sizeof(int) + Count * sizeof(cmsPSEQDESC);
+     OutSeq = (LPcmsSEQ) _cmsMalloc(size);
+     if (OutSeq == NULL) return NULL;
+@@ -2495,7 +2534,7 @@ cmsHPROFILE LCMSEXPORT cmsOpenProfileFromFile(const ch
+        NewIcc = _cmsCreateProfileFromFilePlaceholder(lpFileName);
+         if (!NewIcc) return NULL;
+       
+-       if (!ReadHeader(NewIcc, FALSE)) return NULL;
++       if (!ReadHeader(NewIcc, FALSE, 0)) return NULL;
+                       
+        ReadCriticalTags(NewIcc);
+ 
+@@ -2515,7 +2554,7 @@ cmsHPROFILE LCMSEXPORT cmsOpenProfileFromMem(LPVOID Me
+        NewIcc = _cmsCreateProfileFromMemPlaceholder(MemPtr, dwSize); 
+        if (!NewIcc) return NULL;
+        
+-       if (!ReadHeader(NewIcc, TRUE)) return NULL;
++       if (!ReadHeader(NewIcc, TRUE, dwSize)) return NULL;
+              
+        ReadCriticalTags(NewIcc);
+ 

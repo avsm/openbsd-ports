@@ -1,6 +1,11 @@
-$OpenBSD: patch-include_lcms_h,v 1.7 2008/07/19 11:18:23 espie Exp $
---- include/lcms.h.orig	Sat Jul 19 12:52:40 2008
-+++ include/lcms.h	Sat Jul 19 12:55:23 2008
+$OpenBSD: patch-include_lcms_h,v 1.7.4.1 2009/06/20 01:34:27 william Exp $
+
+CVE-2009-0581
+CVE-2009-0723    
+CVE-2009-0733
+
+--- include/lcms.h.orig	Fri Jul 27 06:00:01 2007
++++ include/lcms.h	Thu Jun 18 23:57:39 2009
 @@ -143,17 +143,17 @@ typedef    pthread_rwlock_t      LCMS_RWLOCK_T;
  #   define USE_BIG_ENDIAN      1
  #endif
@@ -22,7 +27,7 @@ $OpenBSD: patch-include_lcms_h,v 1.7 2008/07/19 11:18:23 espie Exp $
  #   define USE_BIG_ENDIAN      1
  #endif
  
-@@ -1407,7 +1407,6 @@ LCMS_INLINE WORD _cmsClampWord(int in)
+@@ -1407,11 +1407,21 @@ LCMS_INLINE WORD _cmsClampWord(int in)
  LCMS_INLINE void* _cmsMalloc(size_t size)
  {
      if (size > ((size_t) 1024*1024*500)) return NULL;  // Never allow over 500Mb
@@ -30,3 +35,29 @@ $OpenBSD: patch-include_lcms_h,v 1.7 2008/07/19 11:18:23 espie Exp $
  
      return (void*) malloc(size);
  }
+ 
++LCMS_INLINE void* _cmsCalloc(size_t nmemb, size_t size)
++{
++    size_t alloc = nmemb * size;
++    if (size == 0) {
++      return _cmsMalloc(0);
++    }
++    if (alloc / size != nmemb) {
++        return NULL;
++    }
++    return _cmsMalloc(alloc);
++}
+ 
+ LCMS_INLINE void _cmsFree(void *Ptr)
+ {
+@@ -2023,6 +2033,10 @@ void cdecl _cmsComputePrelinearizationTablesFromXFORM(
+ 
+ // Build a tone curve for K->K' if possible (only works on CMYK)
+ LPGAMMATABLE _cmsBuildKToneCurve(cmsHTRANSFORM hCMYK2CMYK, int nPoints);
++
++// Validates a LUT
++LCMSBOOL cdecl _cmsValidateLUT(LPLUT NewLUT);
++
+ 
+ // These are two VITAL macros, from converting between 8 and 16 bit
+ // representation. 

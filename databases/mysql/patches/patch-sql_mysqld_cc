@@ -1,7 +1,7 @@
-$OpenBSD: patch-sql_mysqld_cc,v 1.13 2009/02/17 10:47:00 sthen Exp $
---- sql/mysqld.cc.orig	Thu Jan 29 16:45:28 2009
-+++ sql/mysqld.cc	Mon Feb 16 14:22:00 2009
-@@ -3746,7 +3746,7 @@ int main(int argc, char **argv)
+$OpenBSD: patch-sql_mysqld_cc,v 1.13.2.1 2009/06/28 03:38:54 william Exp $
+--- sql/mysqld.cc.orig	Thu May  7 17:15:02 2009
++++ sql/mysqld.cc	Thu May 28 17:45:10 2009
+@@ -3750,7 +3750,7 @@ int main(int argc, char **argv)
    init_ssl();
  
  #ifdef HAVE_LIBWRAP

@@ -1,0 +1,35 @@
+$OpenBSD: patch-filter_texttops_c,v 1.1.2.1 2009/06/28 03:53:16 william Exp $
+
+CVE-2008-3640
+
+--- filter/texttops.c.orig	Mon Oct  2 12:26:04 2006
++++ filter/texttops.c	Sat Jun 20 23:08:04 2009
+@@ -181,6 +181,14 @@ WriteProlog(const char *title,		/* I - Title of job */
+   SizeColumns = (PageRight - PageLeft) / 72.0 * CharsPerInch;
+   SizeLines   = (PageTop - PageBottom) / 72.0 * LinesPerInch;
+ 
++  if (SizeColumns <= 0 || SizeColumns > 32767 ||
++      SizeLines <= 0 || SizeLines > 32767)
++  {
++    fprintf(stderr, "ERROR: Unable to print %dx%d text page!\n",
++                    SizeColumns, SizeLines);
++    exit(1);
++  }
++
+   Page    = calloc(sizeof(lchar_t *), SizeLines);
+   Page[0] = calloc(sizeof(lchar_t), SizeColumns * SizeLines);
+   for (i = 1; i < SizeLines; i ++)
+@@ -194,6 +202,13 @@ WriteProlog(const char *title,		/* I - Title of job */
+   }
+   else
+     ColumnWidth = SizeColumns;
++
++  if (ColumnWidth <= 0)
++  {
++    fprintf(stderr, "ERROR: Unable to print %d text columns!\n",
++                    PageColumns);
++    exit(1);
++  }
+ 
+  /*
+   * Output the DSC header...

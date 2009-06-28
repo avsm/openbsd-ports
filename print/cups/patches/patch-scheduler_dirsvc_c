@@ -1,0 +1,30 @@
+$OpenBSD: patch-scheduler_dirsvc_c,v 1.2.2.1 2009/06/28 03:53:17 william Exp $
+
+CVE-2008-0882
+
+--- scheduler/dirsvc.c.orig	Tue Nov 14 11:35:27 2006
++++ scheduler/dirsvc.c	Sat Jun 20 22:50:30 2009
+@@ -1954,9 +1954,9 @@ process_browse_data(
+     if (hptr && !*hptr)
+       *hptr = '.';			/* Resource FQDN */
+ 
+-    if ((p = cupsdFindClass(name)) == NULL && BrowseShortNames)
++    if ((p = cupsdFindDest(name)) == NULL && BrowseShortNames)
+     {
+-      if ((p = cupsdFindClass(resource + 9)) != NULL)
++      if ((p = cupsdFindDest(resource + 9)) != NULL)
+       {
+         if (p->hostname && strcasecmp(p->hostname, host))
+ 	{
+@@ -2060,9 +2060,9 @@ process_browse_data(
+     if (hptr && !*hptr)
+       *hptr = '.';			/* Resource FQDN */
+ 
+-    if ((p = cupsdFindPrinter(name)) == NULL && BrowseShortNames)
++    if ((p = cupsdFindDest(name)) == NULL && BrowseShortNames)
+     {
+-      if ((p = cupsdFindPrinter(resource + 10)) != NULL)
++      if ((p = cupsdFindDest(resource + 10)) != NULL)
+       {
+         if (p->hostname && strcasecmp(p->hostname, host))
+ 	{

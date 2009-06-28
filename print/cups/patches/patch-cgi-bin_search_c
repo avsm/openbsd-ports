@@ -1,0 +1,17 @@
+$OpenBSD: patch-cgi-bin_search_c,v 1.1.2.1 2009/06/28 03:53:16 william Exp $
+
+CVE-2008-0047
+
+--- cgi-bin/search.c.orig	Sun Sep 17 15:01:47 2006
++++ cgi-bin/search.c	Sat Jun 20 22:42:02 2009
+@@ -171,7 +171,9 @@ cgiCompileSearch(const char *query)	/* I - Query strin
+       * string + RE overhead...
+       */
+ 
+-      wlen = (sptr - s) + 4 * wlen + 2 * strlen(prefix) + 4;
++      wlen = (sptr - s) + 2 * 4 * wlen + 2 * strlen(prefix) + 11;
++      if (lword)
++        wlen += strlen(lword);
+ 
+       if (wlen > slen)
+       {

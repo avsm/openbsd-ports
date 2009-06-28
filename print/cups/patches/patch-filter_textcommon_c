@@ -1,0 +1,44 @@
+$OpenBSD: patch-filter_textcommon_c,v 1.1.2.1 2009/06/28 03:53:16 william Exp $
+
+CVE-2008-3640
+
+--- filter/textcommon.c.orig	Thu Aug  4 14:40:13 2005
++++ filter/textcommon.c	Sat Jun 20 23:07:59 2009
+@@ -613,13 +613,37 @@ TextMain(const char *name,	/* I - Name of filter */
+                 !strcasecmp(val, "yes");
+ 
+   if ((val = cupsGetOption("columns", num_options, options)) != NULL)
++  {
+     PageColumns = atoi(val);
+ 
++    if (PageColumns < 1)
++    {
++      fprintf(stderr, "ERROR: Bad columns value %d!\n", PageColumns);
++      return (1);
++    }
++  }
++
+   if ((val = cupsGetOption("cpi", num_options, options)) != NULL)
++  {
+     CharsPerInch = atof(val);
+ 
++    if (CharsPerInch <= 0.0)
++    {
++      fprintf(stderr, "ERROR: Bad cpi value %f!\n", CharsPerInch);
++      return (1);
++    }
++  }
++
+   if ((val = cupsGetOption("lpi", num_options, options)) != NULL)
++  {
+     LinesPerInch = atof(val);
++
++    if (LinesPerInch <= 0.0)
++    {
++      fprintf(stderr, "ERROR: Bad lpi value %f!\n", LinesPerInch);
++      return (1);
++    }
++  }
+ 
+   if (PrettyPrint)
+     PageTop -= 216.0f / LinesPerInch;

@@ -1,0 +1,40 @@
+$OpenBSD: patch-filter_image-sgilib_c,v 1.1.2.1 2009/06/28 03:53:16 william Exp $
+
+CVE-2008-3639
+
+--- filter/image-sgilib.c.orig	Sun Oct  2 00:25:52 2005
++++ filter/image-sgilib.c	Sat Jun 20 23:07:11 2009
+@@ -610,13 +610,14 @@ read_rle8(FILE           *fp,		/* I - File to read fro
+     if (ch & 128)
+     {
+       for (i = 0; i < count; i ++, row ++, xsize --, length ++)
+-        *row = getc(fp);
++        if (xsize > 0)
++	  *row = getc(fp);
+     }
+     else
+     {
+       ch = getc(fp);
+       length ++;
+-      for (i = 0; i < count; i ++, row ++, xsize --)
++      for (i = 0; i < count && xsize > 0; i ++, row ++, xsize --)
+         *row = ch;
+     }
+   }
+@@ -655,13 +656,14 @@ read_rle16(FILE           *fp,		/* I - File to read fr
+     if (ch & 128)
+     {
+       for (i = 0; i < count; i ++, row ++, xsize --, length ++)
+-        *row = getshort(fp);
++        if (xsize > 0)
++	  *row = getshort(fp);
+     }
+     else
+     {
+       ch = getshort(fp);
+       length ++;
+-      for (i = 0; i < count; i ++, row ++, xsize --)
++      for (i = 0; i < count && xsize > 0; i ++, row ++, xsize --)
+         *row = ch;
+     }
+   }

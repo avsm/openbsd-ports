@@ -1,0 +1,15 @@
+$OpenBSD: patch-cups_auth_c,v 1.1.2.1 2009/06/28 03:53:16 william Exp $
+
+CVE-2007-4351
+
+--- cups/auth.c.orig	Sat Sep 16 15:08:36 2006
++++ cups/auth.c	Sat Jun 20 22:37:12 2009
+@@ -74,7 +74,7 @@ cupsDoAuthentication(http_t     *http,	/* I - HTTP con
+   char		prompt[1024],		/* Prompt for user */
+ 		realm[HTTP_MAX_VALUE],	/* realm="xyz" string */
+ 		nonce[HTTP_MAX_VALUE],	/* nonce="xyz" string */
+-		encode[512];		/* Encoded username:password */
++		encode[4096];		/* Encoded username:password */
+ 
+ 
+   DEBUG_printf(("cupsDoAuthentication(http=%p, method=\"%s\", resource=\"%s\")\n",

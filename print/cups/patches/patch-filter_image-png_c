@@ -1,0 +1,64 @@
+$OpenBSD: patch-filter_image-png_c,v 1.2.2.1 2009/06/28 03:53:16 william Exp $
+
+CVE-2008-1722, plus integer overflow patch from L2974
+
+--- filter/image-png.c.orig	Thu May 11 07:41:36 2006
++++ filter/image-png.c	Sat Jun 20 23:19:52 2009
+@@ -179,15 +179,55 @@ _cupsImageReadPNG(
+     * Interlaced images must be loaded all at once...
+     */
+ 
++    size_t bufsize;			/* Size of buffer */
++
++
+     if (color_type == PNG_COLOR_TYPE_GRAY ||
+ 	color_type == PNG_COLOR_TYPE_GRAY_ALPHA)
+-      in = malloc(img->xsize * img->ysize);
++    {
++      bufsize = img->xsize * img->ysize;
++
++      if ((bufsize / img->xsize) != img->ysize)
++      {
++	fprintf(stderr, "DEBUG: PNG image dimensions (%ux%u) too large!\n",
++		(unsigned)width, (unsigned)height);
++	fclose(fp);
++	return (1);
++      }
++    }
+     else
+-      in = malloc(img->xsize * img->ysize * 3);
++    {
++      bufsize = img->xsize * img->ysize * 3;
++
++      if ((bufsize / (img->xsize * 3)) != img->ysize)
++      {
++	fprintf(stderr, "DEBUG: PNG image dimensions (%ux%u) too large!\n",
++		(unsigned)width, (unsigned)height);
++	fclose(fp);
++	return (1);
++      }
++    }
++
++    in = malloc(bufsize);
+   }
+ 
+   bpp = cupsImageGetDepth(img);
+   out = malloc(img->xsize * bpp);
++
++  if (!in || !out)
++  {
++    fputs("DEBUG: Unable to allocate memory for PNG image!\n", stderr);
++
++    if (in)
++      free(in);
++
++    if (out)
++      free(out);
++
++    fclose(fp);
++
++    return (1);
++  }
+ 
+  /*
+   * Read the image, interlacing as needed...

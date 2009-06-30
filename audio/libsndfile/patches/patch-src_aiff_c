@@ -1,0 +1,37 @@
+$OpenBSD: patch-src_aiff_c,v 1.1.2.1 2009/06/30 02:28:49 william Exp $
+
+CVE-2009-1791
+
+--- src/aiff.c.orig	Thu Aug 31 05:22:07 2006
++++ src/aiff.c	Sun Jun 28 17:42:35 2009
+@@ -714,13 +714,25 @@ aiff_read_header (SF_PRIVATE *psf, COMM_CHUNK *comm_fm
+ 						psf_log_printf (psf, "  Count : %d\n", mark_count) ;
+ 
+ 						for (n = 0 ; n < mark_count && bytesread < dword ; n++)
+-						{	bytesread += psf_binheader_readf (psf, "E241", &mark_id, &position, &pstr_len) ;
+-							psf_log_printf (psf, "   Mark ID  : %u\n   Position : %u\n", mark_id, position) ;
++						{	unsigned int pstr_len ;
++							unsigned char ch ;
+ 
+-							pstr_len += (pstr_len & 1) + 1 ; /* fudgy, fudgy, hack, hack */
++							bytesread += psf_binheader_readf (psf, "E241", &mark_id, &position, &ch) ;
++  							psf_log_printf (psf, "   Mark ID  : %u\n   Position : %u\n", mark_id, position) ;
++  
++							pstr_len = (ch & 1) ? ch : ch + 1 ;
+ 
+-							bytesread += psf_binheader_readf (psf, "b", psf->u.scbuf, pstr_len) ;
+-							psf_log_printf (psf, "   Name     : %s\n", psf->u.scbuf) ;
++							if (pstr_len < sizeof (psf->u.scbuf) - 1)
++							{	bytesread += psf_binheader_readf (psf, "b", psf->u.scbuf, pstr_len) ;
++								psf->u.scbuf [pstr_len] = 0 ;
++								}
++							else
++							{	unsigned int read_len = pstr_len - (sizeof (psf->u.scbuf) - 1) ;
++								bytesread += psf_binheader_readf (psf, "bj", psf->u.scbuf, read_len, pstr_len - read_len) ;
++								psf->u.scbuf [sizeof (psf->u.scbuf) - 1] = 0 ;
++								}
++  
++  							psf_log_printf (psf, "   Name     : %s\n", psf->u.scbuf) ;
+ 
+ 							markstr [n].markerID = mark_id ;
+ 							markstr [n].position = position ;

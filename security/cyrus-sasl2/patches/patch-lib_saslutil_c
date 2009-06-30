@@ -1,18 +1,9 @@
-$OpenBSD: patch-lib_saslutil_c,v 1.1.2.1 2009/06/28 03:18:56 william Exp $
+$OpenBSD: patch-lib_saslutil_c,v 1.1.2.2 2009/06/30 22:35:46 william Exp $
 
 Resolve CVE-2009-0688:  unsafe use of sasl_encode64()
 
 --- lib/saslutil.c.orig	Mon Mar 13 13:26:36 2006
 +++ lib/saslutil.c	Fri Jun 19 19:53:21 2009
-@@ -1,7 +1,7 @@
- /* saslutil.c
-  * Rob Siemborski
-  * Tim Martin
-- * $Id: saslutil.c,v 1.44 2006/03/13 18:26:36 mel Exp $
-+ * $Id: saslutil.c,v 1.44.2.1 2009/04/27 17:47:17 murch Exp $
-  */
- /* 
-  * Copyright (c) 1998-2003 Carnegie Mellon University.  All rights reserved.
 @@ -125,10 +125,12 @@ int sasl_encode64(const char *_in, unsigned inlen,
      
      /* Will it fit? */

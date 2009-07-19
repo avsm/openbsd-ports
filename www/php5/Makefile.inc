@@ -1,12 +1,12 @@
-# $OpenBSD: Makefile.inc,v 1.24 2009/01/19 14:22:47 robert Exp $
+# $OpenBSD: Makefile.inc,v 1.24.2.1 2009/07/19 02:11:36 william Exp $
 
 # This port currently only works with archs supporting dynamic loading
 # and has Apache that supports DSO's.
 NOT_FOR_ARCHS=		${NO_SHARED_ARCHS}
 
-V=			5.2.8
+V=			5.2.10
 SUHOSIN_V=		0.9.27
-SUHOSIN_P_V=		0.9.6.3
+SUHOSIN_P_V=		0.9.7
 
 DISTNAME?=		php-${V}
 CATEGORIES=		www lang
@@ -45,7 +45,7 @@ PHP_LDFLAGS=		-lstdc++ -lm
 .endif
 
 CONFIGURE_STYLE=	autoconf
-AUTOCONF_VERSION=	2.52
+AUTOCONF_VERSION=	2.13
 CONFIGURE_ENV=          CFLAGS="${CFLAGS} -I${LOCALBASE}/include -pthread" \
                         LDFLAGS="-L${LOCALBASE}/lib ${PHP_LDFLAGS} -pthread" \
 			EXTENSION_DIR=${MODULES_DIR}
@@ -73,10 +73,10 @@ PSEUDO_FLAVORS+=	no_suhosin
 FLAVOR?=
 .if ${FLAVOR:L:Mno_suhosin}
 SUPDISTFILES=		suhosin-${SUHOSIN_V}.tgz:0 \
-			suhosin-patch-${V}-${SUHOSIN_P_V}.patch.gz:0
+			suhosin-patch-${V}-${SUHOSIN_P_V}-openbsd.patch.gz:0
 .else
 DISTFILES+=		suhosin-${SUHOSIN_V}.tgz:0
-PATCHFILES=		suhosin-patch-${V}-${SUHOSIN_P_V}.patch.gz:0
+PATCHFILES=		suhosin-patch-${V}-${SUHOSIN_P_V}-openbsd.patch.gz:0
 PATCH_DIST_STRIP=	-p1
 CONFIGURE_ARGS+=	--enable-suhosin
 

@@ -1,7 +1,33 @@
-$OpenBSD: patch-src_demuxers_demux_qt_c,v 1.7 2009/02/02 22:00:42 sthen Exp $
---- src/demuxers/demux_qt.c.orig	Wed Jan  7 11:14:32 2009
-+++ src/demuxers/demux_qt.c	Thu Jan  8 01:02:34 2009
-@@ -3049,7 +3049,7 @@ static demux_plugin_t *open_plugin (demux_class_t *cla
+$OpenBSD: patch-src_demuxers_demux_qt_c,v 1.7.2.1 2009/08/13 00:57:18 william Exp $
+
+First two chunks are from upstream changeset 9758  d21a4564db03:
+Fix an integer overflow in the Quicktime demuxer.
+
+--- src/demuxers/demux_qt.c.orig	Sun Feb  8 13:56:51 2009
++++ src/demuxers/demux_qt.c	Sat Jul 11 15:23:07 2009
+@@ -1535,7 +1535,8 @@ static qt_error parse_trak_atom (qt_trak *trak,
+     } else if (current_atom == STTS_ATOM) {
+ 
+       /* there should only be one of these atoms */
+-      if (trak->time_to_sample_table) {
++      if (trak->time_to_sample_table
++          || current_atom_size < 12 || current_atom_size >= UINT_MAX) {
+         last_error = QT_HEADER_TROUBLE;
+         goto free_trak;
+       }
+@@ -1545,6 +1546,11 @@ static qt_error parse_trak_atom (qt_trak *trak,
+       debug_atom_load("    qt stts atom (time-to-sample atom): %d entries\n",
+         trak->time_to_sample_count);
+ 
++      if (trak->time_to_sample_count > (current_atom_size - 12) / 8) {
++        last_error = QT_HEADER_TROUBLE;
++        goto free_trak;
++      }
++
+       trak->time_to_sample_table = (time_to_sample_table_t *)calloc(
+         trak->time_to_sample_count+1, sizeof(time_to_sample_table_t));
+       if (!trak->time_to_sample_table) {
+@@ -3049,7 +3055,7 @@ static demux_plugin_t *open_plugin (demux_class_t *cla
        /* special consideration for DRM-protected files */
        if (this->qt->last_error == QT_DRM_NOT_SUPPORTED)
          _x_message (this->stream, XINE_MSG_ENCRYPTED_SOURCE,

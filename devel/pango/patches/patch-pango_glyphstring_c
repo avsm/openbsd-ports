@@ -1,4 +1,4 @@
-$OpenBSD: patch-pango_glyphstring_c,v 1.1 2009/05/11 12:43:21 jasper Exp $
+$OpenBSD: patch-pango_glyphstring_c,v 1.1.4.1 2009/08/13 00:43:52 william Exp $
 
 Security fix for CVE-2009-1194, "Pango integer overflow in heap allocation
 	size calculations"
@@ -40,4 +40,3 @@ Patch from upstream git, commit id: 4de30e5500eaeb49f4bf0b7a07f718e149a2ed5e
 +	  string->space = more_space;
  	}
      }
- 

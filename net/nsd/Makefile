@@ -1,9 +1,10 @@
-# $OpenBSD: Makefile,v 1.47 2009/02/01 19:13:40 jakob Exp $
+# $OpenBSD: Makefile,v 1.47.2.1 2009/08/14 01:55:54 william Exp $
 
 COMMENT=	authoritative-only name server daemon
 
 VERSION=	3.2.1
 DISTNAME=	nsd-${VERSION}
+PKGNAME=	${DISTNAME}p0
 CATEGORIES=	net
 
 MASTER_SITES=	http://www.nlnetlabs.nl/downloads/nsd/

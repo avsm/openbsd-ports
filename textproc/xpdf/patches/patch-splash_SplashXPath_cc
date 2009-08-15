@@ -1,4 +1,4 @@
-$OpenBSD: patch-splash_SplashXPath_cc,v 1.1 2009/05/30 22:35:57 miod Exp $
+$OpenBSD: patch-splash_SplashXPath_cc,v 1.1.4.1 2009/08/15 13:40:18 william Exp $
 --- splash/SplashXPath.cc.orig	Tue Feb 27 22:05:52 2007
 +++ splash/SplashXPath.cc	Sat May 30 19:51:56 2009
 @@ -77,9 +77,17 @@ SplashXPath::SplashXPath(SplashPath *path, SplashCoord

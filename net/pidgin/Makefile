@@ -1,19 +1,18 @@
-# $OpenBSD: Makefile,v 1.35 2009/02/12 03:07:59 sthen Exp $
+# $OpenBSD: Makefile,v 1.35.2.1 2009/08/15 03:24:24 william Exp $
 
 SHARED_ONLY=	Yes
 
 COMMENT=	multi-protocol instant messaging client
 
-DISTNAME=	pidgin-2.5.4
-PKGNAME=	${DISTNAME}p0
+DISTNAME=	pidgin-2.5.8
 CATEGORIES=	net
 MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=pidgin/}
 
 SHARED_LIBS+=	jabber		0.0
 SHARED_LIBS+=	oscar		0.0
-SHARED_LIBS+=	purple		4.4
-SHARED_LIBS+=	purple-client	4.4
-SHARED_LIBS+=	gnt		4.4
+SHARED_LIBS+=	purple		4.5
+SHARED_LIBS+=	purple-client	4.5
+SHARED_LIBS+=	gnt		4.5
 
 HOMEPAGE=	http://pidgin.im/
 
@@ -72,7 +71,8 @@ CONFIGURE_ARGS+= --with-gconf-schema-file-dir=${LOCALBASE}/share/schemas/pidgin 
 		 --disable-schemas-install \
 		 --with-python=${PYTHON}
 CONFIGURE_ENV=	CPPFLAGS="-I${LOCALBASE}/include" \
-		LDFLAGS="-L${LOCALBASE}/lib"
+		LDFLAGS="-L${LOCALBASE}/lib" \
+		ac_cv_lib_db_dbopen=no
 
 MAKE_FLAGS+=	CFLAGS="${CFLAGS}"
 

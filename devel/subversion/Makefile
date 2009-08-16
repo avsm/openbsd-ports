@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.54 2009/02/09 20:48:23 naddy Exp $
+# $OpenBSD: Makefile,v 1.54.2.1 2009/08/16 02:21:43 william Exp $
 
 COMMENT-main=	subversion revision control system
 COMMENT-perl=	perl interface to subversion
@@ -8,12 +8,12 @@ COMMENT-ap2=	apache2 subversion modules
 
 VERSION=	1.5.5
 DISTNAME=	subversion-${VERSION}
-PKGNAME=	${DISTNAME}
-PKGNAME-main=	${DISTNAME}
-PKGNAME-perl=	p5-SVN-${VERSION}
-PKGNAME-python=	py-subversion-${VERSION}
-PKGNAME-ruby=	ruby-subversion-${VERSION}p0
-PKGNAME-ap2=	ap2-subversion-${VERSION}
+PKGNAME=	${DISTNAME}p0
+PKGNAME-main=	${DISTNAME}p0
+PKGNAME-perl=	p5-SVN-${VERSION}p0
+PKGNAME-python=	py-subversion-${VERSION}p0
+PKGNAME-ruby=	ruby-subversion-${VERSION}p1
+PKGNAME-ap2=	ap2-subversion-${VERSION}p0
 
 SO_VERSION=	1.1
 SVN_LIBS=	svn_client-1 svn_delta-1 svn_diff-1 svn_fs-1 \

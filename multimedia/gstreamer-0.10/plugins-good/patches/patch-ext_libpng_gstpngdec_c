@@ -1,4 +1,4 @@
-$OpenBSD: patch-ext_libpng_gstpngdec_c,v 1.1 2009/06/03 20:24:31 jasper Exp $
+$OpenBSD: patch-ext_libpng_gstpngdec_c,v 1.1.4.1 2009/08/16 01:08:34 william Exp $
 
 GStreamer Good Plug-ins PNG Processing Integer Overflow Vulnerability (SA35205)
 Patch from upstream git: d9544bcc44adcef769cbdf7f6453e140058a3adc

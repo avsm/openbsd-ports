@@ -1,10 +1,10 @@
-$OpenBSD: patch-src_fe-common_core_fe-core-commands_c,v 1.1 2009/06/23 09:26:02 sthen Exp $
+$OpenBSD: patch-src_fe-common_core_fe-core-commands_c,v 1.1.4.1 2009/08/19 02:51:18 william Exp $
 
 Don't assume the size of time_t.
 
---- src/fe-common/core/fe-core-commands.c.orig	Mon Jun 22 22:12:56 2009
-+++ src/fe-common/core/fe-core-commands.c	Mon Jun 22 22:13:36 2009
-@@ -172,12 +172,12 @@ static void cmd_nick(const char *data, SERVER_REC *ser
+--- src/fe-common/core/fe-core-commands.c.orig	Sat Oct  6 05:38:19 2007
++++ src/fe-common/core/fe-core-commands.c	Tue Jul 14 10:38:20 2009
+@@ -198,12 +198,12 @@ static void cmd_join(const char *data, SERVER_REC *ser
  /* SYNTAX: UPTIME */
  static void cmd_uptime(char *data)
  {

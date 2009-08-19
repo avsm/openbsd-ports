@@ -1,4 +1,4 @@
-$OpenBSD: patch-eval_c,v 1.7 2009/06/16 09:12:44 bernd Exp $
+$OpenBSD: patch-eval_c,v 1.7.4.1 2009/08/19 01:18:10 william Exp $
 
 Fix usage of short-named constants.
 

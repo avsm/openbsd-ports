@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-main,v 1.5 2008/09/28 15:43:05 bernd Exp $
+@comment $OpenBSD: PLIST-main,v 1.5.2.1 2009/08/19 01:18:10 william Exp $
 @pkgpath lang/ruby
 bin/erb
 bin/irb
@@ -1577,8 +1577,6 @@ share/ri/${REV}/system/ERB/Compiler/ExplicitScanner/
 share/ri/${REV}/system/ERB/Compiler/ExplicitScanner/cdesc-ExplicitScanner.yaml
 share/ri/${REV}/system/ERB/Compiler/PercentLine/
 share/ri/${REV}/system/ERB/Compiler/PercentLine/cdesc-PercentLine.yaml
-share/ri/${REV}/system/ERB/Compiler/PercentScanner/
-share/ri/${REV}/system/ERB/Compiler/PercentScanner/cdesc-PercentScanner.yaml
 share/ri/${REV}/system/ERB/Compiler/Scanner/
 share/ri/${REV}/system/ERB/Compiler/Scanner/cdesc-Scanner.yaml
 share/ri/${REV}/system/ERB/Compiler/SimpleScanner/
@@ -2377,6 +2375,7 @@ share/ri/${REV}/system/IRB/
 share/ri/${REV}/system/IRB/Abort/
 share/ri/${REV}/system/IRB/Abort/cdesc-Abort.yaml
 share/ri/${REV}/system/IRB/Context/
+share/ri/${REV}/system/IRB/Context/_set_last_value-i.yaml
 share/ri/${REV}/system/IRB/Context/cdesc-Context.yaml
 share/ri/${REV}/system/IRB/Context/change_workspace-i.yaml
 share/ri/${REV}/system/IRB/Context/debug%3f-i.yaml
@@ -4627,11 +4626,15 @@ share/ri/${REV}/system/REXML/Document/cdesc-Document.yaml
 share/ri/${REV}/system/REXML/Document/clone-i.yaml
 share/ri/${REV}/system/REXML/Document/doctype-i.yaml
 share/ri/${REV}/system/REXML/Document/encoding-i.yaml
+share/ri/${REV}/system/REXML/Document/entity_expansion_limit%3d-c.yaml
+share/ri/${REV}/system/REXML/Document/entity_expansion_limit-c.yaml
 share/ri/${REV}/system/REXML/Document/expanded_name-i.yaml
 share/ri/${REV}/system/REXML/Document/name-i.yaml
 share/ri/${REV}/system/REXML/Document/new-c.yaml
 share/ri/${REV}/system/REXML/Document/node_type-i.yaml
 share/ri/${REV}/system/REXML/Document/parse_stream-c.yaml
+share/ri/${REV}/system/REXML/Document/record_entity_expansion%21-i.yaml
+share/ri/${REV}/system/REXML/Document/record_entity_expansion-i.yaml
 share/ri/${REV}/system/REXML/Document/root-i.yaml
 share/ri/${REV}/system/REXML/Document/stand_alone%3f-i.yaml
 share/ri/${REV}/system/REXML/Document/version-i.yaml
@@ -9483,7 +9486,7 @@ share/ri/${REV}/system/Vector/compare_by-i.yaml
 share/ri/${REV}/system/Vector/covector-i.yaml
 share/ri/${REV}/system/Vector/each2-i.yaml
 share/ri/${REV}/system/Vector/elements-c.yaml
-share/ri/${REV}/system/Vector/eqn%3f-i.yaml
+share/ri/${REV}/system/Vector/eql%3f-i.yaml
 share/ri/${REV}/system/Vector/hash-i.yaml
 share/ri/${REV}/system/Vector/init_elements-i.yaml
 share/ri/${REV}/system/Vector/inner_product-i.yaml
@@ -9667,6 +9670,9 @@ share/ri/${REV}/system/WEBrick/HTTPRequest/fixup-i.yaml
 share/ri/${REV}/system/WEBrick/HTTPRequest/keep_alive%3f-i.yaml
 share/ri/${REV}/system/WEBrick/HTTPRequest/meta_vars-i.yaml
 share/ri/${REV}/system/WEBrick/HTTPRequest/new-c.yaml
+share/ri/${REV}/system/WEBrick/HTTPRequest/orig_meta_vars-i.yaml
+share/ri/${REV}/system/WEBrick/HTTPRequest/orig_parse-i.yaml
+share/ri/${REV}/system/WEBrick/HTTPRequest/orig_parse_uri-i.yaml
 share/ri/${REV}/system/WEBrick/HTTPRequest/parse-i.yaml
 share/ri/${REV}/system/WEBrick/HTTPRequest/parse_query-i.yaml
 share/ri/${REV}/system/WEBrick/HTTPRequest/parse_uri-i.yaml

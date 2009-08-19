@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.66.2.1 2009/06/19 02:48:23 william Exp $
+# $OpenBSD: Makefile,v 1.66.2.2 2009/08/19 01:18:10 william Exp $
 
 SHARED_ONLY=		Yes
 
@@ -8,10 +8,10 @@ COMMENT-gdbm=		gdbm interface for ruby
 COMMENT-tk=		tk interface for ruby
 
 VERSION=		1.8.6
-PATCHLEVEL=		287
+PATCHLEVEL=		369
 DISTNAME=		ruby-${VERSION}-p${PATCHLEVEL}
 SHARED_LIBS=		ruby 2.0
-PKGNAME-main=		ruby-${VERSION}.${PATCHLEVEL}p3
+PKGNAME-main=		ruby-${VERSION}.${PATCHLEVEL}p0
 PKGNAME-iconv=		ruby-iconv-${VERSION}.${PATCHLEVEL}p0
 PKGNAME-gdbm=		ruby-gdbm-${VERSION}.${PATCHLEVEL}p0
 PKGNAME-tk=		ruby-tk-${VERSION}.${PATCHLEVEL}p0

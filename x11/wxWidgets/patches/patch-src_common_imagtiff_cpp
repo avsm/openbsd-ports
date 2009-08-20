@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_common_imagtiff_cpp,v 1.1 2009/06/11 08:32:42 jasper Exp $
+$OpenBSD: patch-src_common_imagtiff_cpp,v 1.1.4.1 2009/08/20 03:51:14 william Exp $
 
 Security fix for part 2 or SA35292 (wxWidgets Double Free Vulnerability).
 Patch from upstream svn -r60879 and -r60897.

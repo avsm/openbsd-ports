@@ -1,4 +1,4 @@
-$OpenBSD: patch-tools_rgb2ycbcr_c,v 1.1 2009/07/22 13:15:00 jasper Exp $
+$OpenBSD: patch-tools_rgb2ycbcr_c,v 1.1.2.1 2009/08/22 17:24:29 william Exp $
 
 Fix several places in tiff2rgba and rgb2ycbcr that were being careless about
 possible integer overflow in calculation of buffer sizes.

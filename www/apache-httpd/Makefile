@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.18.2.1 2009/06/28 03:03:09 william Exp $
+# $OpenBSD: Makefile,v 1.18.2.2 2009/09/15 02:27:53 william Exp $
 
 COMMENT=	apache HTTP server
 
-V=		2.2.11
+V=		2.2.13
 PKGNAME=	apache-httpd-${V}
 DISTNAME=	httpd-${V}
 
@@ -19,7 +19,7 @@ PERMIT_DISTFILES_FTP=	Yes
 SHARED_ONLY=		Yes
 NO_REGRESS=		Yes
 
-WANTLIB=		c crypto m ssl expat apr-1 db.>=4 z
+WANTLIB=		c crypto m ssl expat apr-1-mt db.>=4 z pthread
 
 LIB_DEPENDS=		pcre::devel/pcre
 
@@ -30,9 +30,9 @@ FLAVOR?=
 CONFIGURE_ARGS+=	--with-ldap --enable-ldap --enable-authnz-ldap
 WANTLIB+=		asn1 com_err gssapi krb5 sasl2
 LIB_DEPENDS+=		ldap,lber::databases/openldap
-LIB_DEPENDS+=		aprutil-1.>=2:apr-util-*-ldap:devel/apr-util,ldap
+LIB_DEPENDS+=		aprutil-1-mt.>=2:apr-util-mt-*-ldap:devel/apr-util,ldap,mt
 .else
-LIB_DEPENDS+=		aprutil-1.>=2:apr-util-*-!ldap:devel/apr-util
+LIB_DEPENDS+=		aprutil-1-mt.>=2:apr-util-mt-*-!ldap:devel/apr-util,mt
 .endif
 
 MODULES=		converters/libiconv
@@ -50,8 +50,8 @@ CONFIGURE_ARGS+=	--enable-layout=OpenBSD \
 			--prefix=${HTTPD_DIR} \
 			--exec-prefix=${LOCALBASE} \
 			--sysconfdir=${CONFDIR} \
-			--with-apr=${LOCALBASE}  \
-			--with-apr-util=${LOCALBASE} \
+			--with-apr=${LOCALBASE}/bin/apr-1-mt-config  \
+			--with-apr-util=${LOCALBASE}/bin/apu-1-mt-config \
 			--enable-ssl --with-ssl=/usr \
 			--with-mpm=prefork \
 			--with-program-name=httpd2 \
@@ -60,7 +60,11 @@ CONFIGURE_ARGS+=	--enable-layout=OpenBSD \
 			--enable-disk-cache \
 			--enable-proxy \
 			--enable-mods-shared=all \
-			--with-pcre=${LOCALBASE}
+			--enable-suexec \
+			--with-suexec-caller=_apache2 \
+			--with-suexec-bin=${TRUEPREFIX}/sbin/suexec2 \
+			--with-suexec-logfile=/var/log/suexec2_log \
+			--with-pcre=${LOCALBASE} 
 
 CONFIGURE_ENV+=		CPPFLAGS="-I${LOCALBASE}/include" \
 			LDFLAGS="-L${LOCALBASE}/lib"
@@ -71,7 +75,7 @@ FAKE_FLAGS+=		rel_user=_apache2 rel_group=_apache2 \
 			sysconfdir=${PREFIX}/share/examples/apache2/conf
 
 A2SBIN=			apachectl apxs dbmmanage htdigest htpasswd \
-			logresolve rotatelogs
+			logresolve rotatelogs suexec
 A2MAN1=			dbmmanage htdigest htpasswd
 A2MAN8= 		apachectl apxs httpd logresolve rotatelogs suexec
 

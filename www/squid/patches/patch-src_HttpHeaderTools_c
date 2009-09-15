@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_HttpHeaderTools_c,v 1.1 2009/08/30 21:52:44 jasper Exp $
+$OpenBSD: patch-src_HttpHeaderTools_c,v 1.1.2.1 2009/09/15 02:38:09 william Exp $
 
 Security fix for CVE-2009-2855.
 Patch from upstream repository:

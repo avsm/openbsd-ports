@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.12 2008/08/06 03:11:38 pvalchev Exp $
+# $OpenBSD: Makefile,v 1.12.4.1 2009/09/15 02:40:22 william Exp $
 
 COMMENT=	caching DNS forwarder and DHCP server
 
 DISTNAME=	dnsmasq-2.45
+PKGNAME=	${DISTNAME}p0
 CATEGORIES=	net
 
 MAINTAINER=	Rui Reis <rui@openbsd.org>

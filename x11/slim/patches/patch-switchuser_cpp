@@ -1,4 +1,4 @@
-$OpenBSD: patch-switchuser_cpp,v 1.1 2009/09/04 20:24:25 landry Exp $
+$OpenBSD: patch-switchuser_cpp,v 1.1.2.1 2009/09/16 02:12:39 william Exp $
 --- switchuser.cpp.orig	Fri Sep  4 22:01:46 2009
 +++ switchuser.cpp	Fri Sep  4 22:02:32 2009
 @@ -10,7 +10,7 @@

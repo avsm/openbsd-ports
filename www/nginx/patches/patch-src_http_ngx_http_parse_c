@@ -1,0 +1,27 @@
+$OpenBSD: patch-src_http_ngx_http_parse_c,v 1.1.2.1 2009/09/19 01:40:15 william Exp $
+
+Resolve CVE-2009-2629
+
+--- src/http/ngx_http_parse.c.orig	Sun Mar 16 12:47:16 2008
++++ src/http/ngx_http_parse.c	Fri Sep 18 21:25:10 2009
+@@ -1123,11 +1123,15 @@ ngx_http_parse_complex_uri(ngx_http_request_t *r, ngx_
+ #endif
+             case '/':
+                 state = sw_slash;
+-                u -= 4;
+-                if (u < r->uri.data) {
+-                    return NGX_HTTP_PARSE_INVALID_REQUEST;
+-                }
+-                while (*(u - 1) != '/') {
++                u -= 5;
++                for ( ;; ) {
++                    if (u < r->uri.data) {
++                        return NGX_HTTP_PARSE_INVALID_REQUEST;
++                    }
++                    if (*u == '/') {
++                        u++;
++                        break;
++                    }
+                     u--;
+                 }
+                 break;

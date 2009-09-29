@@ -1,4 +1,4 @@
-$OpenBSD: patch-lib_AJAXTree_php,v 1.1 2009/09/26 10:02:57 bernd Exp $
+$OpenBSD: patch-lib_AJAXTree_php,v 1.1.2.1 2009/09/29 00:30:35 william Exp $
 
 Fix for php > 5.2.10.
 

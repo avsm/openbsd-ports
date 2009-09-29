@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.44.2.2 2009/08/22 16:58:14 william Exp $
+# $OpenBSD: Makefile,v 1.44.2.3 2009/09/29 00:07:15 william Exp $
 
 FULLPKGNAME-main=	php5-extensions-${V}
 COMMENT-main=		informational package about PHP5 extensions
@@ -92,7 +92,7 @@ CONFIGURE_ARGS+=	--with-gd=shared ${GRAPHIC_CONFIG} \
 
 . if ${FLAVOR:L:Mno_x11}
 CONFIGURE_ARGS+=	--without-xpm-dir --without-freetype-dir
-FULLPKGNAME-gd=		php5-gd-${V}p2-no_x11
+FULLPKGNAME-gd=		php5-gd-${V}-no_x11
 . else
 USE_X11=		yes
 CONFIGURE_ARGS+=	--with-xpm-dir=${X11BASE}
@@ -356,7 +356,7 @@ WANTLIB-xsl=		${WANTLIB} iconv xml2 z
 .endif
 
 .for i in ${MULTI_PACKAGES}
-FULLPKGNAME${i} ?=	php5${i}-${V}p2
+FULLPKGNAME${i} ?=	php5${i}-${V}
 RUN_DEPENDS${i}=	:php5-core-${V}:www/php5/core
 MODULE_NAME${i}=	${i:S/-//g}
 .endfor

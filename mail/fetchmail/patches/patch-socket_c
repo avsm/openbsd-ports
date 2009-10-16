@@ -1,0 +1,44 @@
+Security fix for CVE-2009-2666
+
+Detect malicious certificates that use a null byte injection in the 
+Common Name or subjectAltName (CVE-2009-2666).
+
+$OpenBSD: patch-socket_c,v 1.1.2.1 2009/10/16 23:36:52 william Exp $
+--- socket.c.orig	Thu Nov 13 06:48:47 2008
++++ socket.c	Wed Oct 14 23:00:53 2009
+@@ -629,6 +629,12 @@ static int SSL_verify_callback( int ok_return, X509_ST
+ 				report(stderr, GT_("Bad certificate: Subject CommonName too long!\n"));
+ 				return (0);
+ 			}
++			if ((size_t)i > strlen(buf)) {
++				/* Name contains embedded NUL characters, so we complain. This is likely
++				 * a certificate spoofing attack. */
++				report(stderr, GT_("Bad certificate: Subject CommonName contains NUL, aborting!\n"));
++				return 0;
++			}
+ 			if (_ssl_server_cname != NULL) {
+ 				char *p1 = buf;
+ 				char *p2 = _ssl_server_cname;
+@@ -640,12 +646,19 @@ static int SSL_verify_callback( int ok_return, X509_ST
+ 				 * first find a match among alternative names */
+ 				gens = X509_get_ext_d2i(x509_cert, NID_subject_alt_name, NULL, NULL);
+ 				if (gens) {
+-					int i, r;
+-					for (i = 0, r = sk_GENERAL_NAME_num(gens); i < r; ++i) {
+-						const GENERAL_NAME *gn = sk_GENERAL_NAME_value(gens, i);
++					int j, r;
++					for (j = 0, r = sk_GENERAL_NAME_num(gens); j < r; ++j) {
++						const GENERAL_NAME *gn = sk_GENERAL_NAME_value(gens, j);
+ 						if (gn->type == GEN_DNS) {
+ 							char *p1 = (char *)gn->d.ia5->data;
+ 							char *p2 = _ssl_server_cname;
++							/* Name contains embedded NUL characters, so we complain. This
++							 * is likely a certificate spoofing attack. */
++							if ((size_t)gn->d.ia5->length != strlen(p1)) {
++								report(stderr, GT_("Bad certificate: Subject Alternative Name contains NUL, aborting!\n"));
++								sk_GENERAL_NAME_free(gens);
++								return 0;
++							}
+ 							if (outlevel >= O_VERBOSE)
+ 								report(stderr, "Subject Alternative Name: %s\n", p1);
+ 							if (*p1 == '*') {

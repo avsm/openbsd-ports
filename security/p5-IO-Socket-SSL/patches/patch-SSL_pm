@@ -1,0 +1,25 @@
+Security fix:  verify_hostname_of_cert could match a hostname's prefix
+when no wildcard was given
+
+
+$OpenBSD: patch-SSL_pm,v 1.1.2.1 2009/10/18 03:01:42 william Exp $
+--- SSL.pm.orig	Sat Jan 24 01:30:08 2009
++++ SSL.pm	Fri Oct 16 21:01:35 2009
+@@ -1077,7 +1077,7 @@ sub dump_peer_certificate {
+ 			$ip4 = inet_aton( $identity ) or croak "'$identity' is not IPv4, but neither IPv6 nor hostname";
+ 		} else {
+ 			# assume hostname
+-			if ( $identity !~m{^[a-zA-Z0-9-_\.]+$} ) {
++			if ( $identity !~m{^[\w\-\.]+$} ) {
+ 				$identity = idn_to_ascii($identity) or
+ 					croak "Warning: Given name '$identity' could not be converted to IDNA!";
+ 			}
+@@ -1099,7 +1099,7 @@ sub dump_peer_certificate {
+ 			} elsif ( $wtyp eq 'leftmost' and $name =~m{^\*(\..+)$} ) {
+ 				$pattern = qr{^[\w\-]*\Q$1\E$}i;
+ 			} else {
+-				$pattern = qr{^\Q$name}i;
++				$pattern = qr{^\Q$name\E$}i;
+ 			}
+ 			return $identity =~ $pattern;
+ 		};

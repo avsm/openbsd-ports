@@ -1,4 +1,4 @@
-$OpenBSD: patch-app_cpp,v 1.1 2009/09/04 20:24:25 landry Exp $
+$OpenBSD: patch-app_cpp,v 1.1.4.1 2009/10/25 03:48:47 william Exp $
 Slim used to spawn 'xauth add . <COOKIE>' via the system() call, so the
 cookie itself was visible.  On multi-user system one can poll for the
 xauth processes via ps and gather cookies for X sessions.

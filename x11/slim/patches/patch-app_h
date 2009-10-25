@@ -1,4 +1,4 @@
-$OpenBSD: patch-app_h,v 1.1 2009/09/04 20:24:25 landry Exp $
+$OpenBSD: patch-app_h,v 1.1.4.1 2009/10/25 03:48:47 william Exp $
 --- app.h.orig	Fri Sep  4 21:55:48 2009
 +++ app.h	Fri Sep  4 22:04:27 2009
 @@ -28,6 +28,16 @@

@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-main,v 1.10 2009/04/29 11:36:58 sthen Exp $
+@comment $OpenBSD: PLIST-main,v 1.10.2.1 2009/10/25 03:07:30 william Exp $
 @conflict php4-core-*
 @pkgpath www/php5/core
 @pkgpath www/php5/core,hardened
@@ -168,7 +168,6 @@ share/php5/include/ext/standard/css.h
 share/php5/include/ext/standard/cyr_convert.h
 share/php5/include/ext/standard/datetime.h
 share/php5/include/ext/standard/dl.h
-share/php5/include/ext/standard/dns.h
 share/php5/include/ext/standard/exec.h
 share/php5/include/ext/standard/file.h
 share/php5/include/ext/standard/flock_compat.h
@@ -185,6 +184,7 @@ share/php5/include/ext/standard/php_assert.h
 share/php5/include/ext/standard/php_browscap.h
 share/php5/include/ext/standard/php_crypt.h
 share/php5/include/ext/standard/php_dir.h
+share/php5/include/ext/standard/php_dns.h
 share/php5/include/ext/standard/php_ext_syslog.h
 share/php5/include/ext/standard/php_filestat.h
 share/php5/include/ext/standard/php_fopen_wrappers.h
@@ -215,7 +215,6 @@ share/php5/include/ext/standard/sha1.h
 share/php5/include/ext/standard/streamsfuncs.h
 share/php5/include/ext/standard/uniqid.h
 share/php5/include/ext/standard/url.h
-share/php5/include/ext/standard/url_scanner.h
 share/php5/include/ext/standard/url_scanner_ex.h
 share/php5/include/ext/xml/
 share/php5/include/ext/xml/expat_compat.h
@@ -260,7 +259,6 @@ share/php5/include/main/streams/php_stream_plain_wrapper.h
 share/php5/include/main/streams/php_stream_transport.h
 share/php5/include/main/streams/php_stream_userspace.h
 share/php5/include/main/streams/php_streams_int.h
-!%%no_suhosin%%
 share/php5/include/main/win95nt.h
 share/php5/include/regex/
 share/php5/include/regex/cclass.h
@@ -269,5 +267,8 @@ share/php5/include/regex/regex.h
 share/php5/include/regex/regex2.h
 share/php5/include/regex/regex_extra.h
 share/php5/include/regex/utils.h
+!%%no_suhosin%%
+@mode 1777
+@sample /var/www/tmp/
 @extraunexec rm -fr ${PHP_CONFIG_PATH}/php5/
 @unexec-delete rm -fr ${PHP_CONFIG_PATH}/php5.sample/

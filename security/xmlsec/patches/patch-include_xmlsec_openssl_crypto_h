@@ -1,0 +1,19 @@
+Security fix for CVE-2009-0217:
+
+XML Signature HMAC Truncation Spoofing
+
+
+$OpenBSD: patch-include_xmlsec_openssl_crypto_h,v 1.1.4.1 2009/10/31 03:58:23 william Exp $
+--- include/xmlsec/openssl/crypto.h.orig	Wed Nov  7 01:44:01 2007
++++ include/xmlsec/openssl/crypto.h	Tue Aug 11 23:00:50 2009
+@@ -200,6 +200,10 @@ XMLSEC_CRYPTO_EXPORT xmlSecTransformId xmlSecOpenSSLTr
+  *
+  *******************************************************************/
+ #ifndef XMLSEC_NO_HMAC
++
++XMLSEC_CRYPTO_EXPORT int               xmlSecOpenSSLHmacGetMinOutputLength();
++XMLSEC_CRYPTO_EXPORT void              xmlSecOpenSSLHmacSetMinOutputLength(int min_length);
++
+ /** 
+  * xmlSecOpenSSLKeyDataHmacId:
+  * 

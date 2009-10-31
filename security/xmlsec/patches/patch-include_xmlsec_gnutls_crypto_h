@@ -1,0 +1,19 @@
+Security fix for CVE-2009-0217:
+
+XML Signature HMAC Truncation Spoofing 
+
+
+$OpenBSD: patch-include_xmlsec_gnutls_crypto_h,v 1.1.4.1 2009/10/31 03:58:23 william Exp $
+--- include/xmlsec/gnutls/crypto.h.orig	Wed Nov  7 01:44:01 2007
++++ include/xmlsec/gnutls/crypto.h	Tue Aug 11 23:00:50 2009
+@@ -113,6 +113,10 @@ XMLSEC_CRYPTO_EXPORT xmlSecTransformId xmlSecGnuTLSTra
+  *
+  *******************************************************************/
+ #ifndef XMLSEC_NO_HMAC
++
++XMLSEC_CRYPTO_EXPORT int               xmlSecGnuTLSHmacGetMinOutputLength();
++XMLSEC_CRYPTO_EXPORT void              xmlSecGnuTLSHmacSetMinOutputLength(int min_length);
++
+ /** 
+  * xmlSecGnuTLSKeyDataHmacId:
+  * 

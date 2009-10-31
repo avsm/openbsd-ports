@@ -1,0 +1,70 @@
+Security fix for CVE-2009-0217:
+
+XML Signature HMAC Truncation Spoofing 
+
+
+$OpenBSD: patch-src_openssl_hmac_c,v 1.1.4.1 2009/10/31 03:58:23 william Exp $
+--- src/openssl/hmac.c.orig	Wed Nov  7 01:43:12 2007
++++ src/openssl/hmac.c	Tue Aug 11 23:00:50 2009
+@@ -32,9 +32,39 @@
+ 
+ #include <xmlsec/openssl/crypto.h>
+ 
++#define XMLSEC_OPENSSL_MIN_HMAC_SIZE		64
+ 
+ /**************************************************************************
+  *
++ * Configuration
++ *
++ *****************************************************************************/
++static int g_xmlsec_openssl_hmac_min_length = XMLSEC_OPENSSL_MIN_HMAC_SIZE;
++
++/**
++ * xmlSecOpenSSLHmacGetMinOutputLength: 
++ * 
++ * Returns the min HMAC output length
++ */
++int xmlSecOpenSSLHmacGetMinOutputLength()
++{
++    return g_xmlsec_openssl_hmac_min_length;
++}
++
++/**
++ * xmlSecOpenSSLHmacSetMinOutputLength: 
++ *
++ * @min_length: the new min length 
++ * 
++ * Sets the min HMAC output length
++ */
++void xmlSecOpenSSLHmacSetMinOutputLength(int min_length)
++{
++    g_xmlsec_openssl_hmac_min_length = min_length;
++}
++
++/**************************************************************************
++ *
+  * Internal OpenSSL HMAC CTX
+  *
+  *****************************************************************************/
+@@ -240,7 +270,20 @@ xmlSecOpenSSLHmacNodeRead(xmlSecTransformPtr transform
+ 	    ctx->dgstSize = atoi((char*)content);	    
+ 	    xmlFree(content);
+ 	}
+-	/* todo: error if dgstSize == 0 ?*/
++
++	/* Ensure that HMAC length is greater than min specified.
++	   Otherwise, an attacker can set this lenght to 0 or very 
++	   small value
++	*/
++	if(ctx->dgstSize < xmlSecOpenSSLHmacGetMinOutputLength()) {
++ 	   xmlSecError(XMLSEC_ERRORS_HERE,
++		    xmlSecErrorsSafeString(xmlSecTransformGetName(transform)),
++		    xmlSecNodeHMACOutputLength,
++		    XMLSEC_ERRORS_R_INVALID_NODE_ATTRIBUTE,
++		    "HMAC output length is too small");
++	   return(-1);
++	}
++
+ 	cur = xmlSecGetNextElementNode(cur->next);
+     }
+     

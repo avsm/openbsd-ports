@@ -1,4 +1,9 @@
-$OpenBSD: patch-lib_silcclient_command_c,v 1.1 2009/08/11 21:20:02 sthen Exp $
+Security fix:
+
+Resolves string format vulnerability in client entry handling.
+
+
+$OpenBSD: patch-lib_silcclient_command_c,v 1.1.4.1 2009/11/02 02:16:36 william Exp $
 --- lib/silcclient/command.c.orig	Tue Aug 11 15:03:47 2009
 +++ lib/silcclient/command.c	Tue Aug 11 15:05:30 2009
 @@ -956,7 +956,7 @@ SILC_FSM_STATE(silc_client_command_topic)

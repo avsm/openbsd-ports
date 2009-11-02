@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.17 2009/06/24 07:38:30 sthen Exp $
+# $OpenBSD: Makefile,v 1.17.2.1 2009/11/02 01:46:41 william Exp $
 
 COMMENT=	robust and small HTTP server and mail proxy server
 
 DISTNAME=	nginx-0.7.60
-PKGNAME=	${DISTNAME}p0
+PKGNAME=	${DISTNAME}p1
 CATEGORIES=	www
 
 HOMEPAGE=	http://nginx.net/

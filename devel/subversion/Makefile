@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.59 2009/06/22 17:00:23 naddy Exp $
+# $OpenBSD: Makefile,v 1.59.2.1 2009/11/06 01:38:18 william Exp $
 
 COMMENT-main=		subversion revision control system
 COMMENT-perl=		perl interface to subversion
@@ -10,12 +10,12 @@ COMMENT-gnome-keyring=	gnome-keyring support for subversion
 VERSION=		1.6.1
 DISTNAME=		subversion-${VERSION}
 PKGNAME=		${DISTNAME}
-PKGNAME-main=		${DISTNAME}
-PKGNAME-perl=		p5-SVN-${VERSION}
-PKGNAME-python=		py-subversion-${VERSION}
-PKGNAME-ruby=		ruby-subversion-${VERSION}p0
-PKGNAME-ap2=		ap2-subversion-${VERSION}
-PKGNAME-gnome-keyring=	gnome-keyring-subversion-${VERSION}
+PKGNAME-main=		${DISTNAME}p0
+PKGNAME-perl=		p5-SVN-${VERSION}p0
+PKGNAME-python=		py-subversion-${VERSION}p0
+PKGNAME-ruby=		ruby-subversion-${VERSION}p1
+PKGNAME-ap2=		ap2-subversion-${VERSION}p0
+PKGNAME-gnome-keyring=	gnome-keyring-subversion-${VERSION}p0
 
 SO_VERSION=	1.2
 SVN_LIBS=	svn_client-1 svn_delta-1 svn_diff-1 svn_fs-1 \

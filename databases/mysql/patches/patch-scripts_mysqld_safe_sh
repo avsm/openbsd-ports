@@ -1,7 +1,7 @@
-$OpenBSD: patch-scripts_mysqld_safe_sh,v 1.12 2007/04/09 22:43:06 ckuethe Exp $
---- scripts/mysqld_safe.sh.orig	Mon Mar  5 20:21:13 2007
-+++ scripts/mysqld_safe.sh	Sat Mar 31 19:02:39 2007
-@@ -107,72 +107,12 @@ parse_arguments() {
+$OpenBSD: patch-scripts_mysqld_safe_sh,v 1.12.10.1 2009/11/07 18:04:19 william Exp $
+--- scripts/mysqld_safe.sh.orig	Thu Sep 10 05:04:45 2009
++++ scripts/mysqld_safe.sh	Mon Oct 12 12:20:22 2009
+@@ -107,83 +107,13 @@ parse_arguments() {
  }
  
  
@@ -14,16 +14,27 @@ $OpenBSD: patch-scripts_mysqld_safe_sh,v 1.12 2007/04/09 22:43:06 ckuethe Exp $
  
 -MY_PWD=`pwd`
 -# Check for the directories we would expect from a binary release install
--if test -f ./share/mysql/english/errmsg.sys -a -x ./bin/mysqld
+-if test -n "$MY_BASEDIR_VERSION" -a -d "$MY_BASEDIR_VERSION"
+-then
+-  # BASEDIR is already overridden on command line.  Do not re-set.
+ 
+-  # Use BASEDIR to discover le.
+-  if test -x "$MY_BASEDIR_VERSION/libexec/mysqld"
+-  then
+-    ledir="$MY_BASEDIR_VERSION/libexec"
+-  else
+-    ledir="$MY_BASEDIR_VERSION/bin"
+-  fi
+-elif test -f ./share/mysql/english/errmsg.sys -a -x "$MY_PWD/bin/mysqld"
 -then
 -  MY_BASEDIR_VERSION=$MY_PWD		# Where bin, share and data are
 -  ledir=$MY_BASEDIR_VERSION/bin		# Where mysqld is
+-  ledir="$MY_PWD/bin"			# Where mysqld is
 -# Check for the directories we would expect from a source install
--elif test -f ./share/mysql/english/errmsg.sys -a \
-- -x ./libexec/mysqld
+-elif test -f ./share/mysql/english/errmsg.sys -a -x "$MY_PWD/libexec/mysqld"
 -then
 -  MY_BASEDIR_VERSION=$MY_PWD		# Where libexec, share and var are
--  ledir=$MY_BASEDIR_VERSION/libexec	# Where mysqld is
+-  ledir="$MY_PWD/libexec"		# Where mysqld is
 -# Since we didn't find anything, used the compiled-in defaults
 -else
 -  MY_BASEDIR_VERSION=@prefix@
@@ -79,7 +90,7 @@ $OpenBSD: patch-scripts_mysqld_safe_sh,v 1.12 2007/04/09 22:43:06 ckuethe Exp $
  niceness=0
  
  # these rely on $DATADIR by default, so we'll set them later on
-@@ -210,8 +150,8 @@ mysql_unix_port_dir=`dirname $safe_mysql_unix_port`
+@@ -224,8 +154,8 @@ mysql_unix_port_dir=`dirname $safe_mysql_unix_port`
  if [ ! -d $mysql_unix_port_dir ]
  then
    mkdir $mysql_unix_port_dir
@@ -90,7 +101,7 @@ $OpenBSD: patch-scripts_mysqld_safe_sh,v 1.12 2007/04/09 22:43:06 ckuethe Exp $
  fi
  
  # Use the mysqld-max binary by default if the user doesn't specify a binary
-@@ -371,12 +311,6 @@ fi
+@@ -385,12 +315,6 @@ fi
  
  echo "Starting $MYSQLD daemon with databases from $DATADIR"
  
@@ -103,7 +114,7 @@ $OpenBSD: patch-scripts_mysqld_safe_sh,v 1.12 2007/04/09 22:43:06 ckuethe Exp $
  echo "`date +'%y%m%d %H:%M:%S  mysqld started'`" >> $err_log
  while true
  do
-@@ -393,35 +327,6 @@ do
+@@ -407,35 +331,6 @@ do
      break
    fi
  

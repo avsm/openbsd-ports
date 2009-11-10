@@ -1,4 +1,4 @@
-$OpenBSD: patch-misc_apr_rmm_c,v 1.1 2009/08/07 04:49:38 steven Exp $
+$OpenBSD: patch-misc_apr_rmm_c,v 1.1.4.1 2009/11/10 03:36:41 william Exp $
 
 SECURITY: CVE-2009-2412 (cve.mitre.org)
 Fix overflow in rmm, where size alignment was taking place.

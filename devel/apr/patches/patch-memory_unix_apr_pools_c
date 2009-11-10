@@ -1,10 +1,10 @@
-$OpenBSD: patch-memory_unix_apr_pools_c,v 1.2 2009/08/07 04:28:28 steven Exp $
+$OpenBSD: patch-memory_unix_apr_pools_c,v 1.2.4.1 2009/11/10 03:31:57 william Exp $
 
 SECURITY: CVE-2009-2412 (cve.mitre.org)
 Fix overflow in pools, where size alignment was taking place.
 
---- memory/unix/apr_pools.c.orig	Thu Aug  6 18:50:47 2009
-+++ memory/unix/apr_pools.c	Thu Aug  6 18:53:45 2009
+--- memory/unix/apr_pools.c.orig	Thu Aug  3 12:05:27 2006
++++ memory/unix/apr_pools.c	Thu Aug  6 23:59:18 2009
 @@ -168,16 +168,19 @@ APR_DECLARE(void) apr_allocator_max_free_set(apr_alloc
  }
  

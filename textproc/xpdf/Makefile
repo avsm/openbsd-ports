@@ -1,18 +1,18 @@
-# $OpenBSD: Makefile,v 1.65 2009/05/30 22:35:56 miod Exp $
+# $OpenBSD: Makefile,v 1.65.2.1 2009/11/12 01:59:40 william Exp $
 
 COMMENT-main=	PDF viewer for X11
 COMMENT-utils=	PDF conversion tools
 
 DISTNAME=	xpdf-3.02
-PKGNAME-main=	xpdf-3.02.3p0
-PKGNAME-utils=	xpdf-utils-3.02.3
+PKGNAME-main=	xpdf-3.02.4
+PKGNAME-utils=	xpdf-utils-3.02.4
 CATEGORIES=	textproc x11
 
 MASTER_SITES=	ftp://ftp.foolabs.com/pub/xpdf/ \
 		ftp://gd.tuwien.ac.at/publishing/xpdf/ \
 		ftp://tug.org/xpdf/
 PATCHFILES=	xpdf-3.02pl1.patch xpdf-3.02pl2.patch \
-		xpdf-3.02pl3.patch
+		xpdf-3.02pl3.patch xpdf-3.02pl4.patch
 PATCH_DIST_STRIP=-p1
 
 HOMEPAGE=	http://www.foolabs.com/xpdf/

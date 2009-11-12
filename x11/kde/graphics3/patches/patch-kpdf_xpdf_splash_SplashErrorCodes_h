@@ -1,4 +1,7 @@
-$OpenBSD: patch-kpdf_xpdf_splash_SplashErrorCodes_h,v 1.1 2009/10/15 15:50:25 kili Exp $
+Security fixes for xpdf
+
+
+$OpenBSD: patch-kpdf_xpdf_splash_SplashErrorCodes_h,v 1.1.2.1 2009/11/12 02:23:53 william Exp $
 --- kpdf/xpdf/splash/SplashErrorCodes.h.orig	Mon Jan 15 12:21:56 2007
 +++ kpdf/xpdf/splash/SplashErrorCodes.h	Thu Oct 15 16:35:46 2009
 @@ -29,6 +29,8 @@

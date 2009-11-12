@@ -1,4 +1,7 @@
-$OpenBSD: patch-kpdf_xpdf_xpdf_JBIG2Stream_cc,v 1.1 2009/10/15 15:50:25 kili Exp $
+Security fixes for xpdf
+
+
+$OpenBSD: patch-kpdf_xpdf_xpdf_JBIG2Stream_cc,v 1.1.2.1 2009/11/12 02:23:53 william Exp $
 --- kpdf/xpdf/xpdf/JBIG2Stream.cc.orig	Tue Aug 19 20:12:37 2008
 +++ kpdf/xpdf/xpdf/JBIG2Stream.cc	Sun Apr 19 22:57:52 2009
 @@ -422,12 +422,14 @@ void JBIG2HuffmanDecoder::buildTable(JBIG2HuffmanTable

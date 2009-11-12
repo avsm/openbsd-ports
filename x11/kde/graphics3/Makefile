@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.83 2009/06/24 20:40:23 sthen Exp $
+# $OpenBSD: Makefile,v 1.83.2.1 2009/11/12 02:23:53 william Exp $
 
 COMMENT-main =		K Desktop Environment, graphic applications
 COMMENT-kamera =	KDE interface to digital cameras
@@ -14,7 +14,7 @@ SEPARATE_BUILD =	flavored
 MULTI_PACKAGES =	-main -kpov -kamera -sane
 PKGNAME=${DISTNAME}
 
-PKGNAME-main =		${DISTNAME}
+PKGNAME-main =		${DISTNAME}p0
 PKGNAME-kamera =	kamera-${VERSION}
 PKGNAME-kpov =		kpovmodeller-${VERSION}
 PKGNAME-sane =		ksane-${VERSION}p0

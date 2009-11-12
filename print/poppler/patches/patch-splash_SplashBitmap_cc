@@ -1,0 +1,79 @@
+xpdf security patches for:
+
+CVE-2009-3603
+CVE-2009-3604
+CVE-2009-3606
+CVE-2009-3608
+CVE-2009-3609
+
+
+$OpenBSD: patch-splash_SplashBitmap_cc,v 1.2.2.1 2009/11/12 02:14:55 william Exp $
+--- splash/SplashBitmap.cc.orig	Sat May  2 14:14:57 2009
++++ splash/SplashBitmap.cc	Sat Oct 24 21:52:35 2009
+@@ -26,6 +26,7 @@
+ #endif
+ 
+ #include <stdio.h>
++#include <limits.h>
+ #include "goo/gmem.h"
+ #include "SplashErrorCodes.h"
+ #include "SplashBitmap.h"
+@@ -42,33 +43,51 @@ SplashBitmap::SplashBitmap(int widthA, int heightA, in
+   mode = modeA;
+   switch (mode) {
+   case splashModeMono1:
+-    rowSize = (width + 7) >> 3;
++    if (width > 0) {
++      rowSize = (width + 7) >> 3;
++    } else {
++      rowSize = -1;
++    }
+     break;
+   case splashModeMono8:
+-    rowSize = width;
++    if (width > 0) {
++      rowSize = width;
++    } else {
++      rowSize = -1;
++    }
+     break;
+   case splashModeRGB8:
+   case splashModeBGR8:
+-    rowSize = width * 3;
++    if (width > 0 && width <= INT_MAX / 3) {
++      rowSize = width * 3;
++    } else {
++      rowSize = -1;
++    }
+     break;
+   case splashModeXBGR8:
+     rowSize = width * 4;
+     break;
+ #if SPLASH_CMYK
+   case splashModeCMYK8:
+-    rowSize = width * 4;
++    if (width > 0 && width <= INT_MAX / 4) {
++      rowSize = width * 4;
++    } else {
++      rowSize = -1;
++    }
+     break;
+ #endif
+   }
+-  rowSize += rowPad - 1;
+-  rowSize -= rowSize % rowPad;
++  if (rowSize > 0) {
++    rowSize += rowPad - 1;
++    rowSize -= rowSize % rowPad;
++  }
+   data = (SplashColorPtr)gmallocn(rowSize, height);
+   if (!topDown) {
+     data += (height - 1) * rowSize;
+     rowSize = -rowSize;
+   }
+   if (alphaA) {
+-    alpha = (Guchar *)gmalloc(width * height);
++    alpha = (Guchar *)gmallocn(width, height);
+   } else {
+     alpha = NULL;
+   }

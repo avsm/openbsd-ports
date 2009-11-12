@@ -1,0 +1,23 @@
+xpdf security patches for:
+
+CVE-2009-3603
+CVE-2009-3604
+CVE-2009-3606
+CVE-2009-3608
+CVE-2009-3609
+
+
+$OpenBSD: patch-poppler_Stream_cc,v 1.4.2.1 2009/11/12 02:14:55 william Exp $
+--- poppler/Stream.cc.orig	Sat May 16 17:27:41 2009
++++ poppler/Stream.cc	Sat Oct 24 21:35:51 2009
+@@ -403,6 +403,10 @@ ImageStream::ImageStream(Stream *strA, int widthA, int
+   } else {
+     imgLineSize = nVals;
+   }
++  if (width > INT_MAX / nComps) {
++    // force a call to gmallocn(-1,...), which will throw an exception
++    imgLineSize = -1;
++  }
+   imgLine = (Guchar *)gmallocn(imgLineSize, sizeof(Guchar));
+   imgIdx = nVals;
+ }

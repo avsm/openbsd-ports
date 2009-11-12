@@ -1,0 +1,47 @@
+xpdf security patches for:
+
+CVE-2009-3603
+CVE-2009-3604
+CVE-2009-3606
+CVE-2009-3608
+CVE-2009-3609
+
+
+$OpenBSD: patch-splash_Splash_cc,v 1.4.2.1 2009/11/12 02:14:55 william Exp $
+--- splash/Splash.cc.orig	Sat May  2 14:14:57 2009
++++ splash/Splash.cc	Sat Oct 24 21:47:42 2009
+@@ -27,6 +27,7 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
++#include <limits.h>
+ #include "goo/gmem.h"
+ #include "SplashErrorCodes.h"
+ #include "SplashMath.h"
+@@ -2001,7 +2002,10 @@ SplashError Splash::fillImageMask(SplashImageMaskSourc
+   xq = w % scaledWidth;
+ 
+   // allocate pixel buffer
+-  pixBuf = (SplashColorPtr)gmalloc((yp + 1) * w);
++  if (yp < 0 || yp > INT_MAX - 1) {
++    return splashErrBadArg;
++  }
++  pixBuf = (SplashColorPtr)gmallocn(yp + 1, w);
+ 
+   // initialize the pixel pipe
+   pipeInit(&pipe, 0, 0, state->fillPattern, NULL, state->fillAlpha,
+@@ -2301,9 +2305,12 @@ SplashError Splash::drawImage(SplashImageSource src, v
+   xq = w % scaledWidth;
+ 
+   // allocate pixel buffers
+-  colorBuf = (SplashColorPtr)gmalloc((yp + 1) * w * nComps);
++  if (yp < 0 || yp > INT_MAX - 1 || w > INT_MAX / nComps) {
++    return splashErrBadArg;
++  }
++  colorBuf = (SplashColorPtr)gmallocn(yp + 1, w * nComps);
+   if (srcAlpha) {
+-    alphaBuf = (Guchar *)gmalloc((yp + 1) * w);
++    alphaBuf = (Guchar *)gmallocn(yp + 1, w);
+   } else {
+     alphaBuf = NULL;
+   }

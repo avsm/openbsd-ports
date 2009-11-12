@@ -1,0 +1,21 @@
+xpdf security patches for:
+
+CVE-2009-3603
+CVE-2009-3604
+CVE-2009-3606
+CVE-2009-3608
+CVE-2009-3609
+
+
+$OpenBSD: patch-poppler_PSOutputDev_cc,v 1.1.2.1 2009/11/12 02:14:55 william Exp $
+--- poppler/PSOutputDev.cc.orig	Sat May  2 14:14:57 2009
++++ poppler/PSOutputDev.cc	Sat Oct 24 21:35:51 2009
+@@ -4502,7 +4502,7 @@ void PSOutputDev::doImageL1Sep(GfxImageColorMap *color
+ 	     width, -height, height);
+ 
+   // allocate a line buffer
+-  lineBuf = (Guchar *)gmalloc(4 * width);
++  lineBuf = (Guchar *)gmallocn(width, 4);
+ 
+   // set up to process the data stream
+   imgStr = new ImageStream(str, width, colorMap->getNumPixelComps(),

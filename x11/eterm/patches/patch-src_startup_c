@@ -1,0 +1,20 @@
+Resolve CVE-2008-1692:
+
+Do not allow eterm to open a terminal window on :0 if -display is not 
+specified and the DISPLAY environment variable is not set.  This might
+allow local users to hijack X11 connections in some situations
+
+
+$OpenBSD: patch-src_startup_c,v 1.1.2.1 2009/11/13 03:40:52 william Exp $
+--- src/startup.c.orig	Sun Oct 18 00:03:20 2009
++++ src/startup.c	Sun Oct 18 00:04:48 2009
+@@ -96,7 +96,8 @@ eterm_bootstrap(int argc, char *argv[])
+ 
+     /* Open display, get options/resources and create the window */
+     if (getenv("DISPLAY") == NULL) {
+-        display_name = STRDUP(":0");
++        libast_print_error("can't open display, DISPLAY not set?!\n");
++        exit(EXIT_FAILURE);
+     } else {
+         display_name = STRDUP(getenv("DISPLAY"));
+     }

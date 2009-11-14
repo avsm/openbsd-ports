@@ -1,4 +1,4 @@
-$OpenBSD: patch-unit_tests_check_common_sh,v 1.1 2009/10/30 01:09:34 sthen Exp $
+$OpenBSD: patch-unit_tests_check_common_sh,v 1.1.2.1 2009/11/14 03:26:13 william Exp $
 --- unit_tests/check_common.sh.orig	Thu Oct 29 16:34:54 2009
 +++ unit_tests/check_common.sh	Thu Oct 29 16:35:05 2009
 @@ -47,7 +47,7 @@ die()

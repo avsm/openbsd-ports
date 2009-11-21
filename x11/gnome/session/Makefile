@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.83 2009/06/16 15:12:50 ajacoutot Exp $
+# $OpenBSD: Makefile,v 1.83.2.1 2009/11/21 18:03:50 william Exp $
 
 COMMENT=		GNOME session
 
 GNOME_PROJECT=		gnome-session
 GNOME_VERSION=		2.24.3
-PKGNAME=		${DISTNAME}p17
+PKGNAME=		${DISTNAME}p19
 
 CATEGORIES=		x11
 
@@ -66,6 +66,10 @@ CONFIGURE_ARGS+= 	${CONFIGURE_SHARED} \
 			--disable-rebuilds
 CONFIGURE_ENV=		CPPFLAGS="-I${LOCALBASE}/include" \
 			LDFLAGS="-L${LOCALBASE}/lib -lexecinfo"
+
+# XXX gconf2 MODULE changes this value but gsm-gconf.c uses this to
+# find the right path for gconftool-2
+CONFIGURE_ENV+=		GCONFTOOL=${LOCALBASE}/bin/gconftool-2
 
 MAKE_FLAGS=		XSLTPROC="${LOCALBASE}/bin/xsltproc -nonet"
 

@@ -1,4 +1,4 @@
-$OpenBSD: patch-IlmImf_ImfPxr24Compressor_cpp,v 1.1 2009/07/30 11:56:40 jasper Exp $
+$OpenBSD: patch-IlmImf_ImfPxr24Compressor_cpp,v 1.1.2.1 2009/11/21 04:33:50 william Exp $
 
 Security fix for CVE-2009-1720, patch from Debian.
 Fix integer overflows in compressor constructors.

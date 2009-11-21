@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-tests,v 1.31.2.1 2009/11/07 18:04:19 william Exp $
+@comment $OpenBSD: PLIST-tests,v 1.31.2.2 2009/11/21 18:00:45 william Exp $
 @man man/man1/mysql-stress-test.pl.1
 @man man/man1/mysql-test-run.pl.1
 @man man/man1/mysql_client_test.1
@@ -33,6 +33,7 @@ share/mysql-test/include/have_bdb.inc
 share/mysql-test/include/have_big5.inc
 share/mysql-test/include/have_blackhole.inc
 share/mysql-test/include/have_bug25714.inc
+share/mysql-test/include/have_case_insensitive_fs.inc
 share/mysql-test/include/have_case_sensitive_file_system.inc
 share/mysql-test/include/have_community_features.inc
 share/mysql-test/include/have_compress.inc
@@ -176,9 +177,11 @@ share/mysql-test/r/blackhole.result
 share/mysql-test/r/bool.result
 share/mysql-test/r/bootstrap.result
 share/mysql-test/r/bug40113.result
+share/mysql-test/r/bug41756.result
 share/mysql-test/r/bug46080.result
 share/mysql-test/r/bulk_replace.result
 share/mysql-test/r/case.result
+share/mysql-test/r/case_insensitive_fs.require
 share/mysql-test/r/case_sensitive_file_system.require
 share/mysql-test/r/cast.result
 share/mysql-test/r/check.result
@@ -301,6 +304,7 @@ share/mysql-test/r/grant.result
 share/mysql-test/r/grant2.result
 share/mysql-test/r/grant3.result
 share/mysql-test/r/grant_cache.result
+share/mysql-test/r/grant_lowercase_fs.result
 share/mysql-test/r/greedy_optimizer.result
 share/mysql-test/r/group_by.result
 share/mysql-test/r/group_min_max.result
@@ -1469,6 +1473,8 @@ share/mysql-test/t/bool.test
 share/mysql-test/t/bootstrap.test
 share/mysql-test/t/bug40113-master.opt
 share/mysql-test/t/bug40113.test
+share/mysql-test/t/bug41756-master.opt
+share/mysql-test/t/bug41756.test
 share/mysql-test/t/bug46080-master.opt
 share/mysql-test/t/bug46080.test
 share/mysql-test/t/bulk_replace.test
@@ -1608,6 +1614,7 @@ share/mysql-test/t/grant2.test
 share/mysql-test/t/grant3-master.opt
 share/mysql-test/t/grant3.test
 share/mysql-test/t/grant_cache.test
+share/mysql-test/t/grant_lowercase_fs.test
 share/mysql-test/t/greedy_optimizer.test
 share/mysql-test/t/group_by.test
 share/mysql-test/t/group_min_max.test

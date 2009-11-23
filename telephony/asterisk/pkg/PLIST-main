@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-main,v 1.14 2009/05/22 09:05:10 sthen Exp $
+@comment $OpenBSD: PLIST-main,v 1.14.2.1 2009/11/23 03:42:45 william Exp $
 @conflict asterisk-sounds-<=1.2.1p2
 @conflict app_conference-<=20070710
 @newgroup _asterisk:545
@@ -248,19 +248,21 @@ share/asterisk/agi-bin/agi-test.agi
 share/asterisk/agi-bin/jukebox.agi
 share/asterisk/firmware/
 share/asterisk/firmware/iax/
-share/asterisk/firmware/iax/iaxy.bin
 share/asterisk/images/
 share/asterisk/images/asterisk-intro.jpg
 share/asterisk/keys/
 share/asterisk/keys/freeworlddialup.pub
 share/asterisk/keys/iaxtel.pub
 share/asterisk/moh/
-share/asterisk/moh/.asterisk-moh-freeplay-wav
-share/asterisk/moh/CHANGES-asterisk-moh-freeplay-wav
-share/asterisk/moh/LICENSE-asterisk-moh-freeplay-wav
-share/asterisk/moh/fpm-calm-river.wav
-share/asterisk/moh/fpm-sunshine.wav
-share/asterisk/moh/fpm-world-mix.wav
+share/asterisk/moh/.asterisk-moh-opsound-wav
+share/asterisk/moh/CHANGES-asterisk-moh-opsound-wav
+share/asterisk/moh/CREDITS-asterisk-moh-opsound-wav
+share/asterisk/moh/LICENSE-asterisk-moh-opsound-wav
+share/asterisk/moh/macroform-cold_day.wav
+share/asterisk/moh/macroform-robot_dity.wav
+share/asterisk/moh/macroform-the_simplicity.wav
+share/asterisk/moh/manolo_camp-morning_coffee.wav
+share/asterisk/moh/reno_project-system.wav
 share/asterisk/sounds/
 share/asterisk/sounds/.asterisk-core-sounds-en-gsm-${CORESOUNDS}
 share/asterisk/sounds/CHANGES-asterisk-core-en-${CORESOUNDS}
@@ -661,6 +663,7 @@ share/asterisk/sounds/vm-opts-full.gsm
 share/asterisk/sounds/vm-opts.gsm
 share/asterisk/sounds/vm-passchanged.gsm
 share/asterisk/sounds/vm-password.gsm
+share/asterisk/sounds/vm-pls-try-again.gsm
 share/asterisk/sounds/vm-press.gsm
 share/asterisk/sounds/vm-prev.gsm
 share/asterisk/sounds/vm-reachoper.gsm
@@ -719,6 +722,8 @@ share/doc/asterisk/CODING-GUIDELINES
 share/doc/asterisk/COPYING
 share/doc/asterisk/CREDITS
 share/doc/asterisk/ChangeLog
+share/doc/asterisk/IAX2-security.pdf
+share/doc/asterisk/IAX2-security.txt
 share/doc/asterisk/LICENSE
 share/doc/asterisk/PEERING
 share/doc/asterisk/README
@@ -767,7 +772,7 @@ share/doc/asterisk/misdn.txt
 share/doc/asterisk/model.txt
 share/doc/asterisk/modules.txt
 share/doc/asterisk/mp3.txt
-share/doc/asterisk/musiconhold-fpm.txt
+share/doc/asterisk/musiconhold-opsound.txt
 share/doc/asterisk/mysql.txt
 share/doc/asterisk/osp.txt
 share/doc/asterisk/privacy.txt

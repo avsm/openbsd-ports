@@ -1,13 +1,15 @@
-# $OpenBSD: Makefile,v 1.56 2009/06/15 23:33:57 sthen Exp $
+# $OpenBSD: Makefile,v 1.56.2.1 2009/11/23 03:42:45 william Exp $
 
 SHARED_ONLY=		Yes
 COMMENT-main=		open source multi-protocol PBX and telephony toolkit
 
-V=			1.4.25.1
-CORESOUNDS=		1.4.15
-DISTNAME=		asterisk-$V
-FULLPKGNAME-main=	asterisk-$Vp0
-# N.B. overridden for h323 flavor below.
+VER=			1.4.27
+# you can set PATCHVER=p0, p1 etc to bump everything,
+# this takes care of the subpackage/flavor maze
+PATCHVER=		
+CORESOUNDS=		1.4.16
+DISTNAME=		asterisk-${VER:S/rc/-rc/}
+FULLPKGNAME-main=	asterisk-${VER}${PATCHVER}
 
 CATEGORIES=		telephony
 
@@ -17,8 +19,7 @@ MAINTAINER=		Stuart Henderson <sthen@openbsd.org>
 
 # Mostly GPL v2 (only). "Specific permission is also granted to link
 # Asterisk with OpenSSL and OpenH323 and distribute the resulting binary
-# files." iaxy.bin (firmware) is freely redistributable, see LICENSE.
-# core-sounds-en-gsm: GPLv2/CC-BY-SA, http://bugs.digium.com/view.php?id=10144
+# files." core-sounds-*: GPLv2/CC-BY-SA.
 PERMIT_PACKAGE_CDROM=	Yes
 PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM= Yes
@@ -43,8 +44,14 @@ AUTOMAKE_VERSION=	1.9
 BUILD_DEPENDS+=		${MODGNU_AUTOCONF_DEPENDS} \
 			${MODGNU_AUTOMAKE_DEPENDS}
 
-CONFIGURE_ENV+=		CPPFLAGS="${CPPFLAGS} -I${LOCALBASE}/include" \
-			LDFLAGS="-L${LOCALBASE}/lib"
+CPPFLAGS+=		-I${X11BASE}/include -I${LOCALBASE}/include
+LDFLAGS+=		-L${X11BASE}/lib -L${LOCALBASE}/lib
+CONFIGURE_ENV+=		CPPFLAGS="${CPPFLAGS}" \
+			CFLAGS="${CFLAGS}" \
+			LDFLAGS="${LDFLAGS}"
+MAKE_ENV=		ASTCFLAGS="${CFLAGS}" \
+			ASTLDFLAGS="${LDFLAGS}" \
+			DEBUG=""
 
 CONFIGURE_ARGS+=	--with-asterisk-user=_asterisk \
 			--with-asterisk-group=_asterisk \
@@ -112,7 +119,7 @@ CONFIGURE_ARGS+=	--with-netsnmp=${LOCALBASE}
 # XXX crashes at startup (bus error)
 #PSEUDO_FLAVORS+=	no_speex
 #.if ${FLAVOR:L:Mno_speex}
-#CONFIGURE_ARGS+=	--with-speex=no
+CONFIGURE_ARGS+=	--with-speex=no
 #.else
 #MULTI_PACKAGES+=	-speex
 #COMMENT-speex=		Speex codec for Asterisk
@@ -185,7 +192,7 @@ CPPFLAGS+=		-I${LOCALBASE}/include/openh323
 CONFIGURE_ARGS+=	--with-pwlib=${LOCALBASE}/lib \
 			--with-h323=${LOCALBASE}/lib
 WANTLIB-main+=		SDL avutil expat lber ldap ldap_r sasl2
-FULLPKGNAME-main=	asterisk-$Vp0-h323
+FULLPKGNAME-main=	asterisk-${VER}${PATCHVER}-h323
 
 pre-build:
 	cd ${WRKSRC} && ${MAKE_PROGRAM} include/asterisk/buildopts.h
@@ -197,13 +204,9 @@ CONFIGURE_ARGS+=	--with-pwlib=no \
 .endif
 
 .for i in ${MULTI_PACKAGES:S/-main//}
-FULLPKGNAME$i ?=	asterisk$i-$V
-RUN_DEPENDS$i +=	:asterisk-$V:telephony/asterisk
+FULLPKGNAME$i ?=	asterisk$i-${VER}${PATCHVER}
+RUN_DEPENDS$i +=	:asterisk-${VER}${PATCHVER}:telephony/asterisk
 .endfor
-
-MAKE_ENV=		ASTCFLAGS="${CFLAGS}" \
-			ASTLDFLAGS="${LDFLAGS}" \
-			DEBUG=""
 
 NO_REGRESS=		Yes
 
@@ -212,15 +215,10 @@ INSTALL_TARGET=		install samples
 EXAMPLEDIR=		${PREFIX}/share/examples/asterisk
 
 post-patch:
-	cd ${WRKSRC} && AUTOMAKE_VERSION=${AUTOMAKE_VERSION} \
-	    AUTOCONF_VERSION=${AUTOCONF_VERSION} aclocal -I autoconf
-	cd ${WRKSRC} && AUTOMAKE_VERSION=${AUTOMAKE_VERSION} \
-	    AUTOCONF_VERSION=${AUTOCONF_VERSION} autoconf
-	cd ${WRKSRC} && AUTOMAKE_VERSION=${AUTOMAKE_VERSION} \
-	    AUTOCONF_VERSION=${AUTOCONF_VERSION} autoheader
-	cd ${WRKSRC} && AUTOMAKE_VERSION=${AUTOMAKE_VERSION} \
-	    AUTOCONF_VERSION=${AUTOCONF_VERSION} automake \
-	    --add-missing --copy || true
+	cd ${WRKSRC}; \
+	    AUTOMAKE_VERSION=${AUTOMAKE_VERSION} \
+	    AUTOCONF_VERSION=${AUTOCONF_VERSION} \
+	    ./bootstrap.sh
 
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/asterisk

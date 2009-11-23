@@ -1,0 +1,39 @@
+CVE-2009-3607
+
+$OpenBSD: patch-glib_poppler-page_cc,v 1.1.2.1 2009/11/23 00:53:23 william Exp $
+--- glib/poppler-page.cc.orig	Sat May  2 14:14:57 2009
++++ glib/poppler-page.cc	Fri Nov 20 21:38:36 2009
+@@ -575,17 +575,17 @@ create_surface_from_thumbnail_data (guchar *data,
+ 				    gint    rowstride)
+ {
+   guchar *cairo_pixels;
++  gint cairo_stride;
+   cairo_surface_t *surface;
+-  static cairo_user_data_key_t key;
+   int j;
+ 
+-  cairo_pixels = (guchar *)g_malloc (4 * width * height);
+-  surface = cairo_image_surface_create_for_data ((unsigned char *)cairo_pixels,
+-						 CAIRO_FORMAT_RGB24,
+-						 width, height, 4 * width);
+-  cairo_surface_set_user_data (surface, &key,
+-			       cairo_pixels, (cairo_destroy_func_t)g_free);
++  surface = cairo_image_surface_create (CAIRO_FORMAT_RGB24, width, height);
++  if (cairo_surface_status (surface))
++    return NULL;
+ 
++  cairo_pixels = cairo_image_surface_get_data (surface);
++  cairo_stride = cairo_image_surface_get_stride (surface);
++
+   for (j = height; j; j--) {
+     guchar *p = data;
+     guchar *q = cairo_pixels;
+@@ -606,7 +606,7 @@ create_surface_from_thumbnail_data (guchar *data,
+     }
+ 
+     data += rowstride;
+-    cairo_pixels += 4 * width;
++    cairo_pixels += cairo_stride;
+   }
+ 
+   return surface;

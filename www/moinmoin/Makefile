@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.14 2009/03/28 16:49:49 naddy Exp $
+# $OpenBSD: Makefile,v 1.14.2.1 2009/12/05 23:41:27 william Exp $
 
 COMMENT =	wiki engine written in python
 
 MODPY_EGG_VERSION = 1.8.1
 DISTNAME =	moin-${MODPY_EGG_VERSION}
-PKGNAME =	moin${DISTNAME}p0
+PKGNAME =	moin${DISTNAME}p1
 
 CATEGORIES =	www
 

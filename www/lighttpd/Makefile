@@ -1,13 +1,12 @@
-# $OpenBSD: Makefile,v 1.59 2009/06/22 09:28:07 sthen Exp $
+# $OpenBSD: Makefile,v 1.59.2.1 2009/12/05 22:43:33 william Exp $
 
 SHARED_ONLY=	Yes
 
 COMMENT=	secure, fast, compliant, and very flexible web-server
 
-DISTNAME=	lighttpd-1.4.23
-PKGNAME=	${DISTNAME}p0
+DISTNAME=	lighttpd-1.4.25
 CATEGORIES=	www net
-MASTER_SITES=	${HOMEPAGE}/download/
+MASTER_SITES=	http://download.lighttpd.net/lighttpd/releases-1.4.x/
 
 HOMEPAGE=	http://www.lighttpd.net/
 

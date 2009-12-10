@@ -1,4 +1,10 @@
-$OpenBSD: patch-libraries_libldap_tls_c,v 1.1 2009/12/04 15:26:48 pea Exp $
+$OpenBSD: patch-libraries_libldap_tls_c,v 1.1.2.1 2009/12/10 00:36:14 william Exp $
+
+SECURITY FIX
+
+Resolves CVE-2009-3767
+
+
 --- libraries/libldap/tls.c.orig	Tue Feb 12 00:24:12 2008
 +++ libraries/libldap/tls.c	Thu Dec  3 12:03:47 2009
 @@ -981,7 +981,7 @@ ldap_pvt_tls_check_hostname( LDAP *ld, void *s, const 

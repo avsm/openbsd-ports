@@ -1,13 +1,13 @@
-# $OpenBSD: Makefile,v 1.17 2009/04/30 12:54:38 kevlo Exp $
+# $OpenBSD: Makefile,v 1.17.2.1 2009/12/16 02:02:57 william Exp $
 
 COMMENT=	standard compliant weblog
 
-DISTNAME=	wordpress-2.7.1
+DISTNAME=	wordpress-2.8.6
 CATEGORIES=	www
 
 HOMEPAGE=	http://wordpress.org/
 
-MAINTAINER=	Kevin Lo <kevlo@openbsd.org>
+MAINTAINER=	Michael Erdely <merdely@openbsd.org>
 
 # GPLv2
 PERMIT_PACKAGE_CDROM=	Yes
@@ -19,18 +19,18 @@ MASTER_SITES=	${HOMEPAGE}
 
 RUN_DEPENDS=	:php5-mysql-*:www/php5/extensions,-mysql
 
-EXTRACT_ONLY=
 NO_BUILD=	Yes
 NO_REGRESS=	Yes
 PKG_ARCH=	*
 
 PREFIX=		/var/www
 INSTDIR=	${PREFIX}/wordpress
+WRKDIST=	${WRKDIR}/wordpress
 
 SUBST_VARS=	INSTDIR
 
 do-install:
-	@cd ${PREFIX} && tar zxf ${FULLDISTDIR}/${DISTNAME}${EXTRACT_SUFX}
-	@chown -R ${SHAREOWN}:${SHAREGRP} ${PREFIX}/*
+	${INSTALL_DATA_DIR} ${PREFIX}/wordpress
+	cd ${WRKSRC} && pax -rw * ${PREFIX}/wordpress
 
 .include <bsd.port.mk>

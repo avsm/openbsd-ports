@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.23 2009/07/06 23:33:36 naddy Exp $
+# $OpenBSD: Makefile,v 1.23.2.1 2009/12/28 02:11:22 william Exp $
 
 ONLY_FOR_ARCHS= amd64 i386
 
@@ -10,7 +10,7 @@ VERSION=	3.1.0
 DISTNAME=	OOo_${VERSION}
 WRKDIST=	${WRKDIR}/OOO310_m11
 PKGNAME=	openoffice-${VERSION}
-PKGNAME-main=	openoffice-${VERSION}p6
+PKGNAME-main=	openoffice-${VERSION}p7
 PKGNAME-kde=	openoffice-kde-${VERSION}
 PKGNAME-java=	openoffice-java-${VERSION}p1
 CATEGORIES=	editors productivity
@@ -84,7 +84,8 @@ BUILD_DEPENDS+=	:zip-*:archivers/zip \
 		:bash-*:shells/bash \
 		:p5-Archive-Zip-*:archivers/p5-Archive-Zip \
 		::print/cups \
-		::devel/boost
+		::devel/boost \
+		:xpdf-3.02:textproc/xpdf:patch
 
 MODULES+=	lang/python
 LIB_DEPENDS-main=gdk-x11-2.0.>=400.14,gdk_pixbuf-2.0.>=400.14,gtk-x11-2.0.>=400.14::x11/gtk+2 \
@@ -191,7 +192,7 @@ CONFIGURE_ARGS+=	--enable-symbols \
 			--enable-debug
 .endif
 
-MAKE_ENV+=	envcflags="${CFLAGS}"
+MAKE_ENV+=	envcflags="${CFLAGS}" LOCALBASE="${LOCALBASE}"
 
 # kludge
 TCSH=		${LOCALBASE}/bin/tcsh
@@ -209,6 +210,10 @@ BUILD_CMD=	cd instsetoo_native && build.pl -P ${NCPU} --all && \
 BUILD_CMD=	cd instsetoo_native && build.pl -P ${NCPU} --all --dlv_switch -link && \
 		cd util && dmake ooolanguagepack
 .endif
+
+post-extract:
+	@mkdir -p ${WRKDIST}/xpdf/unxobsd.pro/misc
+	@echo mv ${WRKDIR}/textproc/xpdf/xpdf-3.02 . > ${WRKDIST}/xpdf/unxobsd.pro/misc/xpdf-3.02.unpack
 
 pre-patch:
 .if ${FLAVOR:L:Mparallel}

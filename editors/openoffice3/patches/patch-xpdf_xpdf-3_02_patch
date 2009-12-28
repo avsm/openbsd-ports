@@ -1,4 +1,4 @@
-$OpenBSD: patch-xpdf_xpdf-3_02_patch,v 1.1 2009/11/28 18:33:57 kili Exp $
+$OpenBSD: patch-xpdf_xpdf-3_02_patch,v 1.1.2.1 2009/12/28 02:11:22 william Exp $
 --- xpdf/xpdf-3.02.patch.orig.port	Thu Apr 23 12:18:16 2009
 +++ xpdf/xpdf-3.02.patch	Sun Nov 22 17:12:26 2009
 @@ -1,982 +1,16 @@

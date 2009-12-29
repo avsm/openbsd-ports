@@ -1,4 +1,4 @@
-$OpenBSD: patch-f_readold_c,v 1.1 2009/12/27 22:09:24 jasper Exp $
+$OpenBSD: patch-f_readold_c,v 1.1.2.1 2009/12/29 23:29:08 william Exp $
 
 Security fix for CVE-2009-4227.
 Xfig ".fig" File Parsing Buffer Overflow

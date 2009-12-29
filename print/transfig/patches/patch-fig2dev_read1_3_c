@@ -1,4 +1,4 @@
-$OpenBSD: patch-fig2dev_read1_3_c,v 1.1 2009/12/27 22:15:40 jasper Exp $
+$OpenBSD: patch-fig2dev_read1_3_c,v 1.1.2.1 2009/12/29 23:30:41 william Exp $
 
 Security fix for SA37577, related to CVE-2009-4227.
 transfig ".fig" File Parsing Buffer Overflow

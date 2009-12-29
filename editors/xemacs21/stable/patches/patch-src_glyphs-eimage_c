@@ -1,8 +1,7 @@
-$OpenBSD: patch-src_glyphs-eimage_c,v 1.1 2009/12/15 10:05:55 jasper Exp $
+$OpenBSD: patch-src_glyphs-eimage_c,v 1.1.2.1 2009/12/29 23:35:04 william Exp $
 
 Security fix for CVE-2009-2688, xemacs: multiple integer overflow flaws.
 
-Patch from gentoo.
 
 --- src/glyphs-eimage.c.orig	Mon Jan 31 03:55:17 2005
 +++ src/glyphs-eimage.c	Tue Dec 15 10:57:11 2009

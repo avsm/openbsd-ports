@@ -1,8 +1,7 @@
-$OpenBSD: patch-src_lisp_h,v 1.1 2009/12/15 10:05:55 jasper Exp $
+$OpenBSD: patch-src_lisp_h,v 1.1.2.1 2009/12/29 23:35:04 william Exp $
 
 Security fix for CVE-2009-2688, xemacs: multiple integer overflow flaws.
 
-Patch from gentoo.
 
 --- src/lisp.h.orig	Tue Dec 15 10:57:22 2009
 +++ src/lisp.h	Tue Dec 15 10:57:44 2009

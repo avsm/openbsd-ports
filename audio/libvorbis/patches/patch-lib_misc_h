@@ -1,0 +1,15 @@
+$OpenBSD: patch-lib_misc_h,v 1.1.2.1 2010/01/02 23:12:35 william Exp $
+--- lib/misc.h.orig	Mon Jul 23 20:09:47 2007
++++ lib/misc.h	Tue Dec  1 22:53:21 2009
+@@ -29,8 +29,9 @@ extern void _analysis_output(char *base,int i,float *v
+ #ifdef DEBUG_MALLOC
+ 
+ #define _VDBG_GRAPHFILE "malloc.m"
+-extern void *_VDBG_malloc(void *ptr,long bytes,char *file,long line); 
+-extern void _VDBG_free(void *ptr,char *file,long line); 
++#undef _VDBG_GRAPHFILE
++void *_VDBG_malloc(void *ptr,long bytes,char *file,long line);
++void _VDBG_free(void *ptr,char *file,long line);
+ 
+ #ifndef MISC_C 
+ #undef _ogg_malloc

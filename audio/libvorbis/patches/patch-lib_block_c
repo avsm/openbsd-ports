@@ -1,0 +1,33 @@
+$OpenBSD: patch-lib_block_c,v 1.1.6.1 2010/01/02 23:12:35 william Exp $
+
+SECURITY FIX
+
+Resolves a denial of service via underpopulated Huffman trees
+
+
+--- lib/block.c.orig	Mon Jul 23 20:09:47 2007
++++ lib/block.c	Tue Dec  1 22:53:21 2009
+@@ -235,7 +235,8 @@ static int _vds_shared_init(vorbis_dsp_state *v,vorbis
+     if(!ci->fullbooks){
+       ci->fullbooks=_ogg_calloc(ci->books,sizeof(*ci->fullbooks));
+       for(i=0;i<ci->books;i++){
+-	vorbis_book_init_decode(ci->fullbooks+i,ci->book_param[i]);
++	if(vorbis_book_init_decode(ci->fullbooks+i,ci->book_param[i]))
++	  return -1;
+ 	/* decode codebooks are now standalone after init */
+ 	vorbis_staticbook_destroy(ci->book_param[i]);
+ 	ci->book_param[i]=NULL;
+@@ -683,9 +684,11 @@ int vorbis_synthesis_restart(vorbis_dsp_state *v){
+ }
+ 
+ int vorbis_synthesis_init(vorbis_dsp_state *v,vorbis_info *vi){
+-  if(_vds_shared_init(v,vi,0)) return 1;
++  if(_vds_shared_init(v,vi,0)){
++    vorbis_dsp_clear(v);
++    return 1;
++  }
+   vorbis_synthesis_restart(v);
+-
+   return 0;
+ }
+ 

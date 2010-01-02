@@ -1,33 +1,51 @@
-$OpenBSD: patch-lib_res0_c,v 1.2 2008/05/17 19:58:25 naddy Exp $
---- lib/res0.c.orig	Sat May 17 21:22:14 2008
-+++ lib/res0.c	Sat May 17 21:24:04 2008
-@@ -223,6 +223,20 @@ vorbis_info_residue *res0_unpack(vorbis_info *vi,oggpa
-   for(j=0;j<acc;j++)
-     if(info->booklist[j]>=ci->books)goto errout;
+$OpenBSD: patch-lib_res0_c,v 1.2.6.1 2010/01/02 23:12:35 william Exp $
+
+Fix for Mozilla BZ #501279
+
+
+--- lib/res0.c.orig	Mon Jul 23 20:09:47 2007
++++ lib/res0.c	Thu Dec 17 21:54:44 2009
+@@ -208,16 +208,27 @@ vorbis_info_residue *res0_unpack(vorbis_info *vi,oggpa
+   info->partitions=oggpack_read(opb,6)+1;
+   info->groupbook=oggpack_read(opb,8);
  
-+  /* verify the phrasebook is not specifying an impossible or
-+     inconsistent partitioning scheme. */
-+  {
-+    int entries = ci->book_param[info->groupbook]->entries;
-+    int dim = ci->book_param[info->groupbook]->dim;
-+    int partvals = 1;
-+    while(dim>0){
-+      partvals *= info->partitions;
-+      if(partvals > entries) goto errout;
-+      dim--;
-+    }
-+    if(partvals != entries) goto errout;
-+  }
++  /* check for premature EOP */
++  if(info->groupbook<0)goto errout;
 +
-   return(info);
-  errout:
-   res0_free_info(info);
-@@ -263,7 +277,7 @@ vorbis_look_residue *res0_look(vorbis_dsp_state *vd,
+   for(j=0;j<info->partitions;j++){
+     int cascade=oggpack_read(opb,3);
+-    if(oggpack_read(opb,1))
+-      cascade|=(oggpack_read(opb,5)<<3);
++    int cflag=oggpack_read(opb,1);
++    if(cflag<0) goto errout;
++    if(cflag){
++      int c=oggpack_read(opb,5);
++      if(c<0) goto errout;
++      cascade|=(c<<3);
++    }
+     info->secondstages[j]=cascade;
+ 
+     acc+=icount(cascade);
+   }
+-  for(j=0;j<acc;j++)
+-    info->booklist[j]=oggpack_read(opb,8);
++  for(j=0;j<acc;j++){
++    int book=oggpack_read(opb,8);
++    if(book<0) goto errout;
++    info->booklist[j]=book;
++  }
+ 
+   if(info->groupbook>=ci->books)goto errout;
+   for(j=0;j<acc;j++)
+@@ -263,7 +274,10 @@ vorbis_look_residue *res0_look(vorbis_dsp_state *vd,
      }
    }
  
 -  look->partvals=rint(pow((float)look->parts,(float)dim));
-+  look->partvals=look->phrasebook->entries;
++  look->partvals=1;
++  for(j=0;j<dim;j++)
++      look->partvals*=look->parts;
++
    look->stages=maxstage;
    look->decodemap=_ogg_malloc(look->partvals*sizeof(*look->decodemap));
    for(j=0;j<look->partvals;j++){

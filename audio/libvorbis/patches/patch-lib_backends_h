@@ -1,11 +1,16 @@
-$OpenBSD: patch-lib_backends_h,v 1.1 2009/11/24 21:43:14 naddy Exp $
---- lib/backends.h.orig	Tue Nov 24 22:00:01 2009
-+++ lib/backends.h	Tue Nov 24 22:00:01 2009
-@@ -109,6 +109,7 @@ typedef struct vorbis_info_residue0{
-   /* first stage (lossless partitioning) */
-   int    grouping;         /* group n vectors per partition */
+$OpenBSD: patch-lib_backends_h,v 1.1.2.1 2010/01/02 23:12:35 william Exp $
+
+Eliminate possibility of booklist overflow in res0/1/2 unpacking.
+
+
+--- lib/backends.h.orig	Mon Jul 23 20:09:47 2007
++++ lib/backends.h	Thu Dec 17 21:52:31 2009
+@@ -111,7 +111,7 @@ typedef struct vorbis_info_residue0{
    int    partitions;       /* possible codebooks for a partition */
-+  int    partvals;         /* partitions ^ groupbook dim */
    int    groupbook;        /* huffbook for partitioning */
    int    secondstages[64]; /* expanded out to pointers in lookup */
-   int    booklist[512];    /* list of second stage books */
+-  int    booklist[256];    /* list of second stage books */
++  int    booklist[512];    /* list of second stage books */
+ 
+   float  classmetric1[64];  
+   float  classmetric2[64];  

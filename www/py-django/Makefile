@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.7 2009/06/03 17:02:54 ian Exp $
+# $OpenBSD: Makefile,v 1.7.2.1 2010/01/06 01:30:23 william Exp $
 
 COMMENT=	high-level Python web framework
 
@@ -6,7 +6,7 @@ V=			1.0.2
 MODPY_EGG_VERSION=	${V}-final
 LNAME=			django
 DISTNAME=		Django-${MODPY_EGG_VERSION}
-PKGNAME=		py-${LNAME}-${V}
+PKGNAME=		py-${LNAME}-${V}p0
 CATEGORIES=		www
 
 HOMEPAGE=	http://www.djangoproject.com/

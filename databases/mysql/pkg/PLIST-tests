@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-tests,v 1.31.2.2 2009/11/21 18:00:45 william Exp $
+@comment $OpenBSD: PLIST-tests,v 1.31.2.3 2010/01/31 01:24:56 william Exp $
 @man man/man1/mysql-stress-test.pl.1
 @man man/man1/mysql-test-run.pl.1
 @man man/man1/mysql_client_test.1
@@ -384,6 +384,8 @@ share/mysql-test/r/innodb.result
 share/mysql-test/r/innodb_bug35220.result
 share/mysql-test/r/innodb_bug40565.result
 share/mysql-test/r/innodb_bug42419.result
+share/mysql-test/r/innodb_bug46000.result
+share/mysql-test/r/innodb_bug47777.result
 share/mysql-test/r/innodb_cache.result
 share/mysql-test/r/innodb_gis.result
 share/mysql-test/r/innodb_handler.result
@@ -1659,6 +1661,8 @@ share/mysql-test/t/innodb.test
 share/mysql-test/t/innodb_bug35220.test
 share/mysql-test/t/innodb_bug40565.test
 share/mysql-test/t/innodb_bug42419.test
+share/mysql-test/t/innodb_bug46000.test
+share/mysql-test/t/innodb_bug47777.test
 share/mysql-test/t/innodb_cache-master.opt
 share/mysql-test/t/innodb_cache.test
 share/mysql-test/t/innodb_gis.test

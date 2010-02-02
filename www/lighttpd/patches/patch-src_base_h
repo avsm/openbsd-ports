@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_base_h,v 1.1 2010/02/02 08:10:29 sthen Exp $
+$OpenBSD: patch-src_base_h,v 1.1.2.1 2010/02/02 13:58:53 sthen Exp $
 --- src/base.h.orig	Mon Feb  1 19:19:50 2010
 +++ src/base.h	Mon Feb  1 19:20:01 2010
 @@ -431,7 +431,6 @@ typedef struct {

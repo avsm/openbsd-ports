@@ -1,6 +1,6 @@
-$OpenBSD: patch-install_sh,v 1.21 2008/06/13 23:01:36 sturm Exp $
---- install.sh.orig	Wed Jun 11 23:11:27 2008
-+++ install.sh	Sat Jun 14 00:54:10 2008
+$OpenBSD: patch-install_sh,v 1.21.6.1 2010/02/06 17:50:40 william Exp $
+--- install.sh.orig	Mon Oct 19 17:55:07 2009
++++ install.sh	Mon Nov  2 14:11:30 2009
 @@ -870,7 +870,7 @@ generate_wrapper()
      wrapper_contain="#!/bin/sh
  
@@ -10,7 +10,7 @@ $OpenBSD: patch-install_sh,v 1.21 2008/06/13 23:01:36 sturm Exp $
  export OPERA_SCRIPT_PATH
  
  # Location of the Opera binaries
-@@ -925,9 +925,6 @@ if test \"\${OPERA_DIR}\" = '' ; then
+@@ -922,9 +922,6 @@ if test \"\${OPERA_DIR}\" = '' ; then
    fi
  fi
  

@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_irc_string_c,v 1.1 2010/02/01 09:23:33 jasper Exp $
+$OpenBSD: patch-src_irc_string_c,v 1.1.2.1 2010/02/09 03:20:13 william Exp $
 
 Security fix for CVE-2009-4016, "IRCD-hybrid 'LINKS' Command
 Integer Underflow Vulnerability.

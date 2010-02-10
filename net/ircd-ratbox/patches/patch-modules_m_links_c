@@ -1,0 +1,43 @@
+$OpenBSD: patch-modules_m_links_c,v 1.1.2.1 2010/02/10 04:48:15 william Exp $
+
+SECURITY FIX
+
+Resolve CVE-2009-4016:  Fix a critical bug in /links handling
+
+
+--- modules/m_links.c.orig	Fri Sep 19 11:33:46 2008
++++ modules/m_links.c	Fri Feb  5 19:16:39 2010
+@@ -94,6 +94,8 @@ mo_links(struct Client *client_p, struct Client *sourc
+ 
+ 	if(parc > 2)
+ 	{
++		if(strlen(parv[2]) > HOSTLEN)
++			return 0;
+ 		if(hunt_server(client_p, source_p, ":%s LINKS %s :%s", 1, parc, parv)
+ 		   != HUNTED_ISME)
+ 			return 0;
+@@ -166,19 +168,21 @@ clean_string(char *dest, const unsigned char *src, siz
+ 	if(dest == NULL || src == NULL)
+ 		return NULL;
+ 
+-	len -= 3;		/* allow for worst case, '^A\0' */
+-
+-	while(*src && (len > 0))
++	while(*src && (len > 1))
+ 	{
+ 		if(*src & 0x80)	/* if high bit is set */
+ 		{
+ 			*d++ = '.';
+ 			--len;
++			if(len <= 1)
++				break;
+ 		}
+ 		else if(!IsPrint(*src))	/* if NOT printable */
+ 		{
+ 			*d++ = '^';
+ 			--len;
++			if(len <= 1)
++				break;
+ 			*d++ = 0x40 + *src;	/* turn it into a printable */
+ 		}
+ 		else

@@ -1,0 +1,77 @@
+$OpenBSD: patch-src_cache_c,v 1.1.2.1 2010/02/10 04:48:15 william Exp $
+
+SECURITY FIX
+
+Resolves CVE-2010-0300:  Fix a bug with /quote help
+
+
+--- src/cache.c.orig	Fri Sep 19 11:33:46 2008
++++ src/cache.c	Fri Feb  5 19:17:02 2010
+@@ -114,12 +114,25 @@ cache_file(const char *filename, const char *shortname
+ 	struct cachefile *cacheptr;
+ 	struct cacheline *lineptr;
+ 	char line[BUFSIZE];
++	struct stat st;
++
+ 	char *p;
+ 
+ 	if((in = fopen(filename, "r")) == NULL)
+ 		return NULL;
+ 
+-
++        /* check and make sure we have something that is a file... */
++	if(fstat(fileno(in), &st) == -1)
++	{
++		fclose(in);
++		return NULL;
++	}    
++	if(!S_ISREG(st.st_mode))
++	{
++		fclose(in);
++		return NULL;	
++	}
++    
+ 	cacheptr = rb_malloc(sizeof(struct cachefile));
+ 
+ 	rb_strlcpy(cacheptr->name, shortname, sizeof(cacheptr->name));
+@@ -140,7 +153,11 @@ cache_file(const char *filename, const char *shortname
+ 		else
+ 			rb_dlinkAddTailAlloc(emptyline, &cacheptr->contents);
+ 	}
+-
++	if(rb_dlink_list_length(&cacheptr->contents) == 0)
++	{
++		rb_free(cacheptr);
++		cacheptr = NULL;
++	}
+ 	fclose(in);
+ 	return cacheptr;
+ }
+@@ -222,6 +239,7 @@ load_help(void)
+ 	struct stat sb;
+ #endif
+ 
++
+ 	/* opers must be done first */
+ 	helpfile_dir = opendir(HPATH);
+ 
+@@ -232,7 +250,8 @@ load_help(void)
+ 	{
+ 		rb_snprintf(filename, sizeof(filename), "%s/%s", HPATH, ldirent->d_name);
+ 		cacheptr = cache_file(filename, ldirent->d_name, HELP_OPER);
+-		add_to_help_hash(cacheptr->name, cacheptr);
++		if(cacheptr != NULL)
++			add_to_help_hash(cacheptr->name, cacheptr);
+ 	}
+ 
+ 	closedir(helpfile_dir);
+@@ -265,7 +284,8 @@ load_help(void)
+ #endif
+ 
+ 		cacheptr = cache_file(filename, ldirent->d_name, HELP_USER);
+-		add_to_help_hash(cacheptr->name, cacheptr);
++		if(cacheptr != NULL)
++			add_to_help_hash(cacheptr->name, cacheptr);
+ 	}
+ 
+ 	closedir(helpfile_dir);

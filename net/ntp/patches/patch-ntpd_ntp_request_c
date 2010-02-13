@@ -1,4 +1,10 @@
-$OpenBSD: patch-ntpd_ntp_request_c,v 1.1 2010/01/20 20:43:59 naddy Exp $
+$OpenBSD: patch-ntpd_ntp_request_c,v 1.1.2.1 2010/02/13 04:03:19 william Exp $
+
+SECURITY FIX
+
+Resolves CVE-2009-3563
+
+
 --- ntpd/ntp_request.c.orig	Tue May 12 07:59:01 2009
 +++ ntpd/ntp_request.c	Wed Jan 20 21:24:13 2010
 @@ -409,6 +409,7 @@ process_private(

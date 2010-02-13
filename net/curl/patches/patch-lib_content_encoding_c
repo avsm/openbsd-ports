@@ -1,4 +1,4 @@
-$OpenBSD: patch-lib_content_encoding_c,v 1.1 2010/02/10 16:27:32 naddy Exp $
+$OpenBSD: patch-lib_content_encoding_c,v 1.1.2.1 2010/02/13 04:00:57 william Exp $
 
 http://curl.haxx.se/docs/adv_20100209.html
 

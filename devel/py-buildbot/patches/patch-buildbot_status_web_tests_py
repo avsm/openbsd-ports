@@ -1,0 +1,15 @@
+$OpenBSD: patch-buildbot_status_web_tests_py,v 1.1.2.1 2010/02/14 03:43:29 william Exp $
+
+SECURITY FIX
+
+http://buildbot.net/trac/wiki/SecurityAlert0711
+
+
+--- buildbot/status/web/tests.py.orig	Mon Mar  2 12:13:03 2009
++++ buildbot/status/web/tests.py	Fri Feb 12 21:01:04 2010
+@@ -61,4 +61,4 @@ class TestsResource(HtmlResource):
+             result = self.test_results[name]
+             return TestResult(name, result)
+         except KeyError:
+-            return NoResource("No such test name '%s'" % path)
++            return NoResource("No such test name '%s'" % html.escape(path))

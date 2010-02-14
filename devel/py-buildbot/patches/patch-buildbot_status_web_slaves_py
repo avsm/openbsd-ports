@@ -1,0 +1,18 @@
+$OpenBSD: patch-buildbot_status_web_slaves_py,v 1.1.2.1 2010/02/14 03:43:29 william Exp $
+
+SECURITY FIX
+
+http://buildbot.net/trac/wiki/SecurityAlert0711
+
+
+--- buildbot/status/web/slaves.py.orig	Mon Mar  2 12:13:03 2009
++++ buildbot/status/web/slaves.py	Fri Feb 12 21:01:04 2010
+@@ -48,7 +48,7 @@ class OneBuildSlaveResource(HtmlResource, OneLineMixin
+ 
+         data.append("<a href=\"%s\">%s</a>\n" % (self.path_to_root(req), projectName))
+ 
+-        data.append("<h1>Build Slave: %s</h1>\n" % self.slavename)
++        data.append("<h1>Build Slave: %s</h1>\n" % html.escape(self.slavename))
+ 
+         shutdown_url = req.childLink("shutdown")
+ 

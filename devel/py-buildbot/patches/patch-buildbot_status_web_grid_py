@@ -1,0 +1,35 @@
+$OpenBSD: patch-buildbot_status_web_grid_py,v 1.1.2.1 2010/02/14 03:43:29 william Exp $
+
+SECURITY FIX
+
+http://buildbot.net/trac/wiki/SecurityAlert0711
+
+
+--- buildbot/status/web/grid.py.orig	Mon Mar  2 12:13:03 2009
++++ buildbot/status/web/grid.py	Fri Feb 12 21:01:04 2010
+@@ -3,6 +3,8 @@ from __future__ import generators
+ import sys, time, os.path
+ import urllib
+ 
++from twisted.web import html, resource
++
+ from buildbot import util
+ from buildbot import version
+ from buildbot.status.web.base import HtmlResource
+@@ -157,12 +159,13 @@ class GridStatusResource(HtmlResource):
+         data += '<tr>\n'
+         data += '<td class="title"><a href="%s">%s</a>' % (projectURL, projectName)
+         if categories:
++            html_categories = map(html.escape(categories))
+             if len(categories) > 1:
+-                data += '\n<br /><b>Categories:</b><br/>%s' % ('<br/>'.join(categories))
++                data += '\n<br /><b>Categories:</b><br/>%s' % ('<br/>'.join(html_categories))
+             else:
+-                data += '\n<br /><b>Category:</b> %s' % categories[0]
++                data += '\n<br /><b>Category:</b> %s' % html_categories[0]
+         if branch != ANYBRANCH:
+-            data += '\n<br /><b>Branch:</b> %s' % (branch or 'trunk')
++            data += '\n<br /><b>Branch:</b> %s' % (html.escape(branch) or 'trunk')
+         data += '</td>\n'
+         for stamp in stamps:
+             data += self.stamp_td(stamp)

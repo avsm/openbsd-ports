@@ -1,0 +1,24 @@
+$OpenBSD: patch-htdocs_cmd_php,v 1.1.2.1 2010/02/14 04:03:15 william Exp $
+
+SECURITY FIX
+
+Resolves CVE-2009-4427
+
+
+--- htdocs/cmd.php.orig	Thu Jan 10 07:28:34 2008
++++ htdocs/cmd.php	Wed Feb 10 21:22:34 2010
+@@ -35,6 +35,14 @@ if (DEBUG_ENABLED)
+ # Create page.
+ $www['page'] = new page($ldapserver->server_id);
+ 
++# See if we can render the command
++if (trim($www['cmd'])) {
++	# If this command has been disabled by the config.
++	if (!preg_match('/^([A-Za-z0-9-_]+)$/',$www['cmd']))
++		system_message(array('title'=>_('Command disabled by the server configuration'),
++			_('Error'),'body'=>sprintf('%s: <b>%s</b>.',_('The command could not be run'),$www['cmd']),'type'=>'error'),'index.php');
++}
++
+ if ($file)
+ 	include $file;
+ 

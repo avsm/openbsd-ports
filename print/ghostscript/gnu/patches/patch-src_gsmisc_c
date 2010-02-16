@@ -1,7 +1,10 @@
-$OpenBSD: patch-src_gsmisc_c,v 1.1 2010/01/04 19:14:52 jasper Exp $
+$OpenBSD: patch-src_gsmisc_c,v 1.1.2.1 2010/02/16 04:12:47 william Exp $
+
+SECURITY FIX
 
 CVE-2009-4270: Ghostscript "errprintf()" Buffer Overflow Vulnerability
 http://bugs.ghostscript.com/show_bug.cgi?id=690829
+
 
 --- src/gsmisc.c.orig	Mon Jan  4 17:00:27 2010
 +++ src/gsmisc.c	Mon Jan  4 17:02:04 2010

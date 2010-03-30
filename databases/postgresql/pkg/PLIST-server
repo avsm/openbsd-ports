@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-server,v 1.15 2008/07/18 06:57:30 brad Exp $
+@comment $OpenBSD: PLIST-server,v 1.15.6.1 2010/03/30 02:05:52 william Exp $
 @conflict pgsql-*
 @conflict pgsql-clients-*
 @conflict postgresql-clients-*
@@ -11,7 +11,6 @@ bin/ipcclean
 @bin bin/pg_controldata
 @bin bin/pg_ctl
 @bin bin/pg_resetxlog
-@bin bin/pg_standby
 @bin bin/postgres
 bin/postmaster
 include/postgresql/server/

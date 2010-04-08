@@ -1,0 +1,19 @@
+$OpenBSD: patch-FileUtils_h,v 1.1.2.1 2010/04/08 03:16:48 william Exp $
+
+SECURITY FIX
+
+Resolves CVE-2009-2658
+
+
+--- FileUtils.h.orig	Tue Mar 31 03:34:42 2009
++++ FileUtils.h	Tue Dec 29 19:49:23 2009
+@@ -263,6 +263,9 @@ class CDir : public vector<CFile*> { (public)
+ 	CFile::EFileAttr GetSortAttr() { return m_eSortAttr; }
+ 	bool IsDescending() { return m_bDesc; }
+ 
++	// Check if sPath + "/" + sAdd (~/ is handled) is an absolute path which
++	// resides under sPath. Returns absolute path on success, else "".
++	static CString CheckPathPrefix(const CString& sPath, const CString& sAdd, const CString& sHomeDir = "");
+ 	static CString ChangeDir(const CString& sPath, const CString& sAdd, const CString& sHomeDir);
+ 	static bool MakeDir(const CString& sPath, mode_t iMode = 0700);
+ 

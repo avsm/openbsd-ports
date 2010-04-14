@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_sgDiv_c_in,v 1.1 2010/02/09 13:44:28 sthen Exp $
+$OpenBSD: patch-src_sgDiv_c_in,v 1.1.4.1 2010/04/14 03:05:10 william Exp $
 
 squidGuard 1.4 patch 20091019; when constructing a redirect URL which
 includes the requested URL, truncate it to make sure it's smaller than

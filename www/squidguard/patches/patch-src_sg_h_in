@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_sg_h_in,v 1.1 2010/02/09 13:44:28 sthen Exp $
+$OpenBSD: patch-src_sg_h_in,v 1.1.4.1 2010/04/14 03:05:10 william Exp $
 
 squidGuard 1.4 patch 20091019; increase MAX_BUF above squid's MAX_URL value.
 

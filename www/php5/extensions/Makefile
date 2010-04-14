@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.45 2009/04/24 08:36:49 espie Exp $
+# $OpenBSD: Makefile,v 1.45.2.1 2010/04/14 03:17:20 william Exp $
 
 FULLPKGNAME-main=	php5-extensions-${V}
 COMMENT-main=		informational package about PHP5 extensions
@@ -211,7 +211,7 @@ WANTLIB-ncurses=	${WANTLIB} ncurses panel
 # odbc
 PSEUDO_FLAVORS+=	no_odbc
 .if ${FLAVOR:L:Mno_odbc}
-CONFIGURE_ARGS+=	--without-odbc
+CONFIGURE_ARGS+=	--without-iodbc
 .else
 MULTI_PACKAGES+=	-odbc
 COMMENT-odbc=		odbc database access extensions for php5
@@ -289,7 +289,7 @@ LIB_DEPENDS-shmop=
 # soap
 PSEUDO_FLAVORS+=	no_soap
 .if ${FLAVOR:L:Mno_soap}
-CONFIGURE_ARGS+=	--without-soap
+CONFIGURE_ARGS+=	--disable-soap
 .else
 MULTI_PACKAGES+=	-soap
 COMMENT-soap=		SOAP functions for php5

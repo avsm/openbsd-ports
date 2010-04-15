@@ -1,5 +1,3 @@
-$Id: README,v 2.3 1994/08/29 18:14:44 billr Exp $
-
 CALENTOOL - Version 2.3X
 
 Calentool is a day/week/month/year-at-glance tool for Workstations
@@ -27,4 +25,3 @@ common calendar program appointment files to calentool's file format.
 	Tektronix, Inc.
 	billr@saab.CNA.TEK.COM
 	August 29, 1994
-

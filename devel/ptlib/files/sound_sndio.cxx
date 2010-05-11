@@ -24,7 +24,25 @@
  * Portions are Copyright (C) 1993 Free Software Foundation, Inc.
  * All Rights Reserved.
  *
- * $Log: sound_libsndio.cxx,v $
+ * $Log: sound_sndio.cxx,v $
+ * Revision 1.1.1.1  2010/03/23 21:10:17  ajacoutot
+ * Import ptlib-2.6.5
+ *
+ * PTLib is a moderately large C++ class library that originated many years
+ * ago as a method to produce applications that run on both Microsoft
+ * Windows and Unix X-Windows systems. It also was to have a Macintosh port
+ * as well, but this never eventuated. In those days it was called the
+ * PWLib the Portable Windows Library.
+ *
+ * Since then, the availability of multi-platform GUI toolkits such as KDE
+ * and wxWindows, and the development of the OpenH323 and OPAL projects as
+ * primary user of the library, has emphasised the focus on networking, I/O
+ * portability, multi-threading and protocol portability. Mostly, the
+ * library is used to create high performance and highly portable
+ * network-centric applications. So all the GUI abstractions ahave been
+ * dropped and it was renamed the Portable Tools Library that you see
+ * today.
+ *
  * Revision 1.3  2009/06/01 22:19:23  ajacoutot
  * - aucat.sock is no more
  *
@@ -228,7 +246,7 @@ PBoolean PSoundChannelSNDIO::Write(const void * buf, PINDEX len)
       return FALSE;
     }
     len -= did;
-    (char *)buf += did;
+    buf = (char*)buf + did;
     tot += did;
   }
   lastWriteCount += tot;
@@ -252,7 +270,7 @@ PBoolean PSoundChannelSNDIO::Read(void * buf, PINDEX len)
       return FALSE;
     }
     len -= did;
-    (char *)buf += did;
+    buf = (char*)buf + did;
     tot += did;
   }
   lastReadCount += tot;

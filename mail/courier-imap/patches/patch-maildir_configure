@@ -1,4 +1,4 @@
-$OpenBSD: patch-maildir_configure,v 1.1 2010/04/21 07:18:25 giovanni Exp $
+$OpenBSD: patch-maildir_configure,v 1.1.2.1 2010/05/27 03:44:43 william Exp $
 --- maildir/configure.orig	Sun Nov 22 15:45:17 2009
 +++ maildir/configure	Tue Mar 30 11:23:32 2010
 @@ -18366,7 +18366,6 @@ if test "${ac_cv_lib_fam_FAMOpen+set}" = set; then

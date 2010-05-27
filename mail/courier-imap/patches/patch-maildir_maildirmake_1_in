@@ -1,4 +1,4 @@
-$OpenBSD: patch-maildir_maildirmake_1_in,v 1.1 2010/04/21 07:18:25 giovanni Exp $
+$OpenBSD: patch-maildir_maildirmake_1_in,v 1.1.2.1 2010/05/27 03:44:43 william Exp $
 --- maildir/maildirmake.1.in.orig	Fri Jan  8 19:57:25 2010
 +++ maildir/maildirmake.1.in	Fri Jan  8 19:59:58 2010
 @@ -27,7 +27,6 @@

@@ -1,10 +1,10 @@
-# $OpenBSD: Makefile,v 1.55 2010/02/26 14:45:03 sthen Exp $
+# $OpenBSD: Makefile,v 1.55.2.1 2010/05/27 03:55:15 william Exp $
 
 COMMENT-main=	server-side HTML-embedded scripting language
 COMMENT-fastcgi=stand-alone FastCGI version of PHP
 
 PKGNAME=	php5-core-${V}
-PKGNAME-main=	php5-core-${V}p1
+PKGNAME-main=	php5-core-${V}
 PKGNAME-fastcgi=php5-fastcgi-${V}
 
 DISTFILES=	php-${V}.tar.gz

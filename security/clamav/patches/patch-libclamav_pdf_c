@@ -1,0 +1,23 @@
+$OpenBSD: patch-libclamav_pdf_c,v 1.1.2.1 2010/05/29 00:56:58 william Exp $
+
+SECURITY FIX
+
+Resolves CVE-2010-1639, from upstream
+
+
+--- libclamav/pdf.c.orig	Fri May 28 12:01:34 2010
++++ libclamav/pdf.c	Fri May 28 12:03:09 2010
+@@ -482,10 +482,12 @@ cli_pdf(const char *dir, int desc, cli_ctx *ctx, off_t
+ 			}
+ 			if(ret) {
+ 				unsigned char *t;
++				unsigned size;
+ 
+ 				real_streamlen = ret;
+ 				/* free unused trailing bytes */
+-				t = (unsigned char *)cli_realloc(tmpbuf,calculated_streamlen);
++				size = real_streamlen > calculated_streamlen ? real_streamlen : calculated_streamlen;
++				t = (unsigned char *)cli_realloc(tmpbuf,size);
+ 				if(t == NULL) {
+ 					free(tmpbuf);
+ 					close(fout);

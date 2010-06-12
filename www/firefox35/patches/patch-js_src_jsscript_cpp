@@ -1,4 +1,4 @@
-$OpenBSD: patch-js_src_jsscript_cpp,v 1.1 2010/03/25 16:34:09 landry Exp $
+$OpenBSD: patch-js_src_jsscript_cpp,v 1.1.2.1 2010/06/12 03:42:22 william Exp $
 Fix alignment issues on sparc64
 https://bugzilla.mozilla.org/show_bug.cgi?id=514645
 http://hg.mozilla.org/mozilla-central/rev/4c38883a0438
@@ -33,4 +33,3 @@ http://hg.mozilla.org/mozilla-central/rev/4c38883a0438
 +        memset(cursor, 0, vectorSize);
          cursor += vectorSize;
      }
- 

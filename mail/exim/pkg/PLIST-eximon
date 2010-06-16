@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-eximon,v 1.1 2009/12/15 11:32:18 sthen Exp $
+@comment $OpenBSD: PLIST-eximon,v 1.1.2.1 2010/06/16 01:41:26 william Exp $
 @conflict exim-<4.71
 bin/eximon
-bin/eximon.bin
+@bin bin/eximon.bin

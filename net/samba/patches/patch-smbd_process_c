@@ -1,0 +1,45 @@
+$OpenBSD: patch-smbd_process_c,v 1.1.2.1 2010/06/19 03:34:51 william Exp $
+
+SECURITY FIX
+
+Resolves CVE-2010-2063
+
+
+--- smbd/process.c.orig	Wed Sep 30 08:21:56 2009
++++ smbd/process.c	Wed Jun 16 08:20:59 2010
+@@ -1159,6 +1159,7 @@ int chain_reply(char *inbuf,char *outbuf,int size,int 
+ {
+ 	static char *orig_inbuf;
+ 	static char *orig_outbuf;
++	static int orig_size;
+ 	int smb_com1, smb_com2 = CVAL(inbuf,smb_vwv0);
+ 	unsigned smb_off2 = SVAL(inbuf,smb_vwv1);
+ 	char *inbuf2, *outbuf2;
+@@ -1178,8 +1179,15 @@ int chain_reply(char *inbuf,char *outbuf,int size,int 
+ 		/* this is the first part of the chain */
+ 		orig_inbuf = inbuf;
+ 		orig_outbuf = outbuf;
++		orig_size = size;
+ 	}
+ 
++	/* Validate smb_off2 */
++	if ((smb_off2 < smb_wct - 4) || orig_size < (smb_off2 + 4 - smb_wct)) {
++		exit_server_cleanly("Bad chained packet");
++		return -1;
++	}
++
+ 	/*
+ 	 * The original Win95 redirector dies on a reply to
+ 	 * a lockingX and read chain unless the chain reply is
+@@ -1191,6 +1199,11 @@ int chain_reply(char *inbuf,char *outbuf,int size,int 
+ 	/* we need to tell the client where the next part of the reply will be */
+ 	SSVAL(outbuf,smb_vwv1,smb_offset(outbuf+outsize,outbuf));
+ 	SCVAL(outbuf,smb_vwv0,smb_com2);
++
++	if (outsize <= smb_wct) {
++		exit_server_cleanly("Bad chained packet");
++		return -1;
++	}
+ 
+ 	/* remember how much the caller added to the chain, only counting stuff
+ 		after the parameter words */

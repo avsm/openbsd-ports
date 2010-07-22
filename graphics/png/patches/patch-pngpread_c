@@ -1,0 +1,23 @@
+$OpenBSD: patch-pngpread_c,v 1.2.2.1 2010/07/22 02:31:07 william Exp $
+
+SECURITY FIX
+
+Resolves CVE-2010-1205
+from upstream commit 188eb6b42602bf7d7ae708a21897923b6a83fe7c
+
+
+--- pngpread.c.orig	Wed Dec  2 20:46:00 2009
++++ pngpread.c	Thu Jul 15 19:58:01 2010
+@@ -885,6 +885,12 @@ png_process_IDAT_data(png_structp png_ptr, png_bytep b
+ void /* PRIVATE */
+ png_push_process_row(png_structp png_ptr)
+ {
++   if (png_ptr->row_number >= png_ptr->num_rows)
++   {
++      png_benign_error(png_ptr, "Extra row in image");
++      return;
++   }
++
+    png_ptr->row_info.color_type = png_ptr->color_type;
+    png_ptr->row_info.width = png_ptr->iwidth;
+    png_ptr->row_info.channels = png_ptr->channels;

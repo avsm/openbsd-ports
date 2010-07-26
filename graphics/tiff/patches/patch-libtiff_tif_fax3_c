@@ -1,29 +1,38 @@
-$OpenBSD: patch-libtiff_tif_fax3_c,v 1.7 2008/10/25 09:39:29 naddy Exp $
+$OpenBSD: patch-libtiff_tif_fax3_c,v 1.7.6.1 2010/07/26 00:01:33 william Exp $
 
 CVE-2006-3464,3465
+CVE-2010-1411
 
---- libtiff/tif_fax3.c.orig	Tue Mar 21 17:42:50 2006
-+++ libtiff/tif_fax3.c	Fri Oct 24 18:54:16 2008
-@@ -1136,6 +1136,7 @@ static int
- Fax3VSetField(TIFF* tif, ttag_t tag, va_list ap)
- {
- 	Fax3BaseState* sp = Fax3State(tif);
-+	const TIFFFieldInfo* fip;
+--- libtiff/tif_fax3.c.orig	Thu Jul 22 22:24:18 2010
++++ libtiff/tif_fax3.c	Thu Jul 22 23:54:16 2010
+@@ -491,10 +491,26 @@ Fax3SetupState(TIFF* tif)
+ 	    td->td_compression == COMPRESSION_CCITTFAX4
+ 	);
  
- 	assert(sp != 0);
- 	assert(sp->vsetparent != 0);
-@@ -1181,7 +1182,13 @@ Fax3VSetField(TIFF* tif, ttag_t tag, va_list ap)
- 	default:
- 		return (*sp->vsetparent)(tif, tag, ap);
- 	}
--	TIFFSetFieldBit(tif, _TIFFFieldWithTag(tif, tag)->field_bit);
-+	
-+	if ((fip = _TIFFFieldWithTag(tif, tag))) {
-+		TIFFSetFieldBit(tif, fip->field_bit);
-+	} else {
-+		return (0);
+-	nruns = needsRefLine ? 2*TIFFroundup(rowpixels,32) : rowpixels;
+-
+-	dsp->runs = (uint32*) _TIFFCheckMalloc(tif, 2*nruns+3, sizeof (uint32),
+-					  "for Group 3/4 run arrays");
++	/*
++	  Assure that allocation computations do not overflow.
++  
++	  TIFFroundup and TIFFSafeMultiply return zero on integer overflow
++	*/
++	dsp->runs=(uint32*) NULL;
++	nruns = TIFFroundup(rowpixels,32);
++	if (needsRefLine) {
++		nruns = TIFFSafeMultiply(uint32,nruns,2);
 +	}
-+
- 	tif->tif_flags |= TIFF_DIRTYDIRECT;
- 	return (1);
- }
++	if ((nruns == 0) || (TIFFSafeMultiply(uint32,nruns,2) == 0)) {
++		TIFFErrorExt(tif->tif_clientdata, tif->tif_name,
++			     "Row pixels integer overflow (rowpixels %u)",
++			     rowpixels);
++               return (0);
++	}
++	dsp->runs = (uint32*) _TIFFCheckMalloc(tif,
++					       TIFFSafeMultiply(uint32,nruns,2),
++					       sizeof (uint32),
++					       "for Group 3/4 run arrays");
+ 	if (dsp->runs == NULL)
+ 		return (0);
+ 	dsp->curruns = dsp->runs;

@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.94 2010/01/17 08:58:38 espie Exp $
+# $OpenBSD: Makefile,v 1.94.2.1 2010/08/03 02:44:33 william Exp $
 
 COMMENT-main = 		K Desktop Environment, basic applications
 COMMENT-plugins =	Konqueror nsplugins, essentially native JDK
@@ -6,7 +6,7 @@ COMMENT-samba =		K Desktop Environment, samba support
 CATEGORIES =		x11 x11/kde
 VERSION =		3.5.10
 DISTNAME =		kdebase-${VERSION}
-PKGNAME-main =		${DISTNAME}p7
+PKGNAME-main =		${DISTNAME}p8
 PKGNAME-samba =		kdesamba-${VERSION}p1
 MODKDE_VERSION ?=	3.5.8
 SHARED_LIBS +=	konq                 7.0      # .6.0

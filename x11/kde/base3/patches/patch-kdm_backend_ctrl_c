@@ -1,7 +1,9 @@
-$OpenBSD: patch-kdm_backend_ctrl_c,v 1.1 2010/05/13 07:01:00 ajacoutot Exp $
+$OpenBSD: patch-kdm_backend_ctrl_c,v 1.1.2.1 2010/08/03 02:44:33 william Exp $
 
-CVE-2010-0436, see:
-    http://www.kde.org/info/security/advisory-20100413-1.txt
+SECURITY FIX
+
+Resolves CVE-2010-0436
+
 
 --- kdm/backend/ctrl.c.orig	Mon Jan 15 12:32:23 2007
 +++ kdm/backend/ctrl.c	Thu May 13 08:57:25 2010

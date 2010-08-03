@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST,v 1.33 2009/12/22 13:02:12 sthen Exp $
+@comment $OpenBSD: PLIST,v 1.33.2.1 2010/08/03 02:51:27 william Exp $
 bin/opera
 lib/opera/
 lib/opera/plugins/
@@ -16,10 +16,10 @@ share/doc/opera/
 share/doc/opera/LGPL
 share/doc/opera/LICENSE
 share/examples/opera/
-share/examples/opera/opera6rc
-@sample /etc/opera6rc
-share/examples/opera/opera6rc.fixed
-@sample /etc/opera6rc.fixed
+share/examples/opera/operaprefs_default.ini
+@sample /etc/operaprefs_default.ini
+share/examples/opera/operaprefs_fixed.ini
+@sample /etc/operaprefs_fixed.ini
 share/icons/
 share/icons/hicolor/
 share/icons/hicolor/128x128/
@@ -192,6 +192,8 @@ share/opera/locale/uk/bookmarks.adr
 share/opera/locale/uk/search.ini
 share/opera/locale/uk/standard_speeddial.ini
 share/opera/locale/uk/uk.lng
+share/opera/locale/vi/
+share/opera/locale/vi/vi.lng
 share/opera/locale/zh-cn/
 share/opera/locale/zh-cn/bookmarks.adr
 share/opera/locale/zh-cn/browser.js

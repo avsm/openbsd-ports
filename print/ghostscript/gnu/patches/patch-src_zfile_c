@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_zfile_c,v 1.4 2010/08/19 08:19:45 jasper Exp $
+$OpenBSD: patch-src_zfile_c,v 1.4.4.1 2010/08/21 11:10:50 jasper Exp $
 
 Security fix for SA40452
 Ghostscript "-P-" Command Line Option Security Issue.

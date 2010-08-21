@@ -1,4 +1,4 @@
-$OpenBSD: patch-kbx_keybox-blob_c,v 1.1 2010/08/21 11:03:21 jasper Exp $
+$OpenBSD: patch-kbx_keybox-blob_c,v 1.1.2.1 2010/08/21 11:03:51 jasper Exp $
 
 Security fix for CVE-2010-2547:
 Patch from upstream CVS:

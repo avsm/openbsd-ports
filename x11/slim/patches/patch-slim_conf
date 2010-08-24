@@ -1,4 +1,16 @@
-$OpenBSD: patch-slim_conf,v 1.4 2009/11/05 19:05:12 landry Exp $
+$OpenBSD: patch-slim_conf,v 1.4.2.1 2010/08/24 11:43:16 jasper Exp $
+
+* SA41005
+SLiM Insecure Default "default_path" Configuration Weakness
+
+Remove './' from PATH.
+
+Some windowmanagers inherent this PATH and that introduces some security
+risk because './' can allow local attackers to trick a user into
+accidentally executing code.
+
+* adjust paths
+
 --- slim.conf.orig	Fri Sep 26 02:54:15 2008
 +++ slim.conf	Thu Nov  5 19:02:22 2009
 @@ -1,17 +1,18 @@
@@ -7,7 +19,7 @@ $OpenBSD: patch-slim_conf,v 1.4 2009/11/05 19:05:12 landry Exp $
 -default_path        ./:/bin:/usr/bin:/usr/local/bin
 -default_xserver     /usr/bin/X
 -#xserver_arguments   -dpi 75
-+default_path        ./:/bin:/usr/bin:${LOCALBASE}/bin:${X11BASE}/bin
++default_path        /bin:/usr/bin:${LOCALBASE}/bin:${X11BASE}/bin
 +default_xserver     ${X11BASE}/bin/X
 +xserver_arguments   vt05
  

@@ -1,0 +1,19 @@
+$OpenBSD: patch-bin_lwp-download,v 1.1.2.1 2010/09/21 02:31:07 william Exp $
+
+SECURITY FIX
+
+Resolves CVE-2010-2253
+
+
+--- bin/lwp-download.orig	Wed Sep 15 22:33:09 2010
++++ bin/lwp-download	Wed Sep 15 22:32:50 2010
+@@ -138,7 +138,8 @@ my $res = $ua->request(HTTP::Request->new(GET => $url)
+ 	      # validate that we don't have a harmful filename now.  The server
+ 	      # might try to trick us into doing something bad.
+ 	      if (!length($file) ||
+-                  $file =~ s/([^a-zA-Z0-9_\.\-\+\~])/sprintf "\\x%02x", ord($1)/ge)
++                  $file =~ s/([^a-zA-Z0-9_\.\-\+\~])/sprintf "\\x%02x", ord($1)/ge ||
++                  $file =~ /^\./
+               {
+ 		  die "Will not save <$url> as \"$file\".\nPlease override file name on the command line.\n";
+ 	      }

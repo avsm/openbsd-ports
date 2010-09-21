@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.17 2010/04/18 20:39:49 fgsch Exp $
+# $OpenBSD: Makefile,v 1.17.2.1 2010/09/21 02:40:58 william Exp $
 
 COMMENT =	wiki engine written in python
 
-MODPY_EGG_VERSION = 1.9.2
+MODPY_EGG_VERSION = 1.9.3
 DISTNAME =	moin-${MODPY_EGG_VERSION}
 PKGNAME =	moin${DISTNAME}
 
@@ -26,8 +26,7 @@ NO_REGRESS =	Yes
 post-configure:
 	@cd ${WRKSRC}/wiki/server && perl -pi -e \
 	    's,/usr/bin/env python|/usr/bin/python,${MODPY_BIN},g' \
-	    moin moin.ajp moin.cgi moin.fcgi moin.scgi moin.wsgi test.wsgi \
-	    wikiserverconfig.py
+	    moin moin.ajp moin.cgi moin.fcgi moin.scgi test.wsgi
 
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/moinmoin

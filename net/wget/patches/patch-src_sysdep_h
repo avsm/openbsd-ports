@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_sysdep_h,v 1.1 2010/09/07 20:54:48 jasper Exp $
+$OpenBSD: patch-src_sysdep_h,v 1.1.2.1 2010/09/21 02:57:07 william Exp $
 
 Fix build with GCC2 where the configure test fails
 to pickup stdbool.h. So it creates the lib/stdbool.h

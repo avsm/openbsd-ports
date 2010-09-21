@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_Makefile_in,v 1.1 2010/09/13 11:32:39 jasper Exp $
+$OpenBSD: patch-src_Makefile_in,v 1.1.2.1 2010/09/21 02:57:07 william Exp $
 
 Fix linking order so this works on static arches too.
 (libidn before libintl before libiconv).

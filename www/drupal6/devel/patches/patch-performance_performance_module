@@ -1,0 +1,30 @@
+$OpenBSD: patch-performance_performance_module,v 1.1.2.1 2010/09/22 03:16:43 william Exp $
+
+SECURITY FIX
+
+Resolves SA-CONTRIB-2010-079
+
+from:
+http://drupalcode.org/viewvc/drupal/contributions/modules/devel/performance/performance.module?r1=1.2.2.32&r2=1.2.2.33
+
+
+--- performance/performance.module.orig	Thu Aug  5 11:00:10 2010
++++ performance/performance.module	Thu Aug  5 11:02:57 2010
+@@ -369,7 +369,7 @@ function performance_view_summary() {
+ 
+     if ($data['num_accesses'] > $threshold) {
+       $shown++;
+-      $row_data[] = $data['path'];
++      $row_data[] = check_plain($data['path']);
+       $row_data[] = format_date($data['last_access'], 'small');
+       $row_data[] = $data['num_accesses'];
+       $row_data[] = number_format($data['bytes_max']/1024/1024, 2);
+@@ -449,7 +449,7 @@ function performance_view_details() {
+ 
+     $row_data[] = $data['pid'];
+     $row_data[] = format_date($data['timestamp'], 'small');
+-    $row_data[] = $data['path'];
++    $row_data[] = check_plain($data['path']);
+     $row_data[] = number_format($data['bytes']/1024/1024, 2);
+     $row_data[] = $data['millisecs'];
+     $row_data[] = ($data['anon']) ? t('Yes') : t('No');

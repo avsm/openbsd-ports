@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.35.2.2 2010/07/08 03:09:42 william Exp $
+# $OpenBSD: Makefile,v 1.35.2.3 2010/10/02 02:47:50 william Exp $
 
 SHARED_ONLY=	Yes
 ONLY_FOR_ARCHS=	alpha amd64 arm i386 powerpc sparc sparc64
@@ -39,7 +39,7 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-MASTER_SITES=	http://releases.mozilla.org/pub/mozilla.org/firefox/releases/${VER}/source/
+MASTER_SITES=	ftp://ftp.mozilla.org/pub/firefox/releases/${VER}/source/
 DISTFILES=	firefox-${VER}.source.tar.bz2
 
 MODULES=	devel/gettext lang/python

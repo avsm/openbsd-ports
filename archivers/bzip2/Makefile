@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.57 2008/03/18 18:44:31 naddy Exp $
+# $OpenBSD: Makefile,v 1.57.8.1 2010/10/04 02:48:55 william Exp $
 
 COMMENT=	block-sorting file compressor, unencumbered
 
-VERSION=	1.0.5
+VERSION=	1.0.6
 DISTNAME=	bzip2-${VERSION}
 CATEGORIES=	archivers
 MASTER_SITES=	${HOMEPAGE}${VERSION}/

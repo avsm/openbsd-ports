@@ -1,0 +1,23 @@
+$OpenBSD: patch-poppler_Gfx_cc,v 1.1.4.1 2010/10/17 21:32:35 jasper Exp $
+
+Security fix for CVE-2010-3702, from upstream git:
+http://cgit.freedesktop.org/poppler/poppler/commit/?id=e853106b58d6b4b0467dbd6436c9bb1cfbd372cf
+
+--- poppler/Gfx.cc.orig	Wed Oct 13 12:54:00 2010
++++ poppler/Gfx.cc	Wed Oct 13 12:54:22 2010
+@@ -513,6 +513,7 @@ Gfx::Gfx(XRef *xrefA, OutputDev *outA, int pageNum, Di
+   drawText = gFalse;
+   maskHaveCSPattern = gFalse;
+   mcStack = NULL;
++  parser = NULL;
+ 
+   // start the resource stack
+   res = new GfxResources(xref, resDict, NULL);
+@@ -560,6 +561,7 @@ Gfx::Gfx(XRef *xrefA, OutputDev *outA, Dict *resDict, 
+   drawText = gFalse;
+   maskHaveCSPattern = gFalse;
+   mcStack = NULL;
++  parser = NULL;
+ 
+   // start the resource stack
+   res = new GfxResources(xref, resDict, NULL);

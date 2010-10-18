@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.7 2010/06/07 13:47:44 espie Exp $
+# $Id: Makefile,v 1.8 2010/07/18 10:30:41 steven Exp $
 
 COMMENT=	GiNaC is Not a Computer Algebra System (CAS)
 
@@ -31,6 +31,7 @@ MODGCC3_LANGS=	c++
 
 USE_GMAKE=	Yes
 USE_LIBTOOL=	Yes
+USE_GROFF =	Yes
 CONFIGURE_STYLE=gnu
 
 REGRESS_TARGET=	check

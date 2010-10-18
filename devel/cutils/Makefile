@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.2 2008/06/19 09:09:42 steven Exp $
+# $Id: Makefile,v 1.3 2008/10/27 11:34:00 pirofti Exp $
 
 COMMENT=	collection of utilities for C programmers
 
@@ -21,5 +21,6 @@ WANTLIB= 		c
 MASTER_SITES=		http://www.sigala.it/sandro/files/
 
 CONFIGURE_STYLE=	gnu
+USE_GROFF =	Yes
 
 .include <bsd.port.mk>

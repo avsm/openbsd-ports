@@ -1,0 +1,15 @@
+$OpenBSD: patch-src_lib_dhcp_c,v 1.1.2.1 2010/10/26 03:36:42 william Exp $
+
+CVE-2010-3696
+
+--- src/lib/dhcp.c.orig	Mon Oct 11 09:45:32 2010
++++ src/lib/dhcp.c	Mon Oct 11 09:46:15 2010
+@@ -714,7 +714,7 @@ int fr_dhcp_decode(RADIUS_PACKET *packet)
+ 			}
+ 
+ 			*tail = vp;
+-			while (*tail) tail = &vp->next;
++			while (*tail) tail = &(*tail)->next;
+ 			p += alen;
+ 		} /* loop over array entries */
+ 	} /* loop over the entire packet */

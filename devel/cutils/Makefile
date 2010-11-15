@@ -1,9 +1,9 @@
-# $Id: Makefile,v 1.3 2008/10/27 11:34:00 pirofti Exp $
+# $Id: Makefile,v 1.4 2010/10/18 17:47:52 espie Exp $
 
 COMMENT=	collection of utilities for C programmers
 
 DISTNAME=	cutils-1.6
-PKGNAME=	${DISTNAME}p1
+REVISION =	1
 CATEGORIES=	devel
 
 HOMEPAGE=	http://www.sigala.it/sandro/software.php
@@ -21,6 +21,6 @@ WANTLIB= 		c
 MASTER_SITES=		http://www.sigala.it/sandro/files/
 
 CONFIGURE_STYLE=	gnu
-USE_GROFF =	Yes
+USE_GROFF =		Yes
 
 .include <bsd.port.mk>

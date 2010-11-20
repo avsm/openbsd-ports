@@ -1,10 +1,9 @@
-# $OpenBSD: Makefile,v 1.50 2010/05/27 09:54:09 sthen Exp $
+# $OpenBSD: Makefile,v 1.50.2.1 2010/11/20 04:47:19 william Exp $
 
 COMMENT=		virus scanner
-DISTNAME=		clamav-0.96.1
-PKGNAME=		${DISTNAME}p0
+DISTNAME=		clamav-0.96.4
 CATEGORIES=		security
-SHARED_LIBS=		clamav 13.0 \
+SHARED_LIBS=		clamav 16.0 \
 			clamunrar 2.0 \
 			clamunrar_iface 2.0
 
@@ -57,7 +56,7 @@ MODPY_RUNDEP=		no
 CONFIGURE_ENV+=		LDFLAGS="-pthread -L/usr/lib -L${WRKSRC}/libclamav/.libs -L${LOCALBASE}/lib" \
 			CPPFLAGS="-I/usr/include -I${LOCALBASE}/include"
 
-DOCS=			clamav-mirror-howto.pdf clamdoc.pdf signatures.pdf
+DOCS=			clamav-mirror-howto.pdf clamdoc.pdf phishsigs_howto.pdf signatures.pdf
 
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/clamav \

@@ -1,4 +1,4 @@
-$OpenBSD: patch-avahi-client_client_c,v 1.1 2010/08/21 19:41:10 ajacoutot Exp $
+$OpenBSD: patch-avahi-client_client_c,v 1.1.2.1 2010/11/20 04:45:32 william Exp $
 
 Debian #590760:
 Let the client check if the daemon is already running instead of just

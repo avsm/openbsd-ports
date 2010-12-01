@@ -1,0 +1,37 @@
+$OpenBSD: patch-subversion_svnserve_main_c,v 1.3.2.1 2010/12/01 14:17:35 jasper Exp $
+Fix blame -g server-side memory leaks.
+http://svn.apache.org/viewvc?view=revision&revision=1033228
+--- subversion/svnserve/main.c.orig	Tue Mar 16 02:28:01 2010
++++ subversion/svnserve/main.c	Wed Nov 24 18:02:08 2010
+@@ -356,6 +356,7 @@ int main(int argc, const char *argv[])
+   apr_sockaddr_t *sa;
+   apr_pool_t *pool;
+   apr_pool_t *connection_pool;
++  apr_allocator_t *allocator;
+   svn_error_t *err;
+   apr_getopt_t *os;
+   int opt;
+@@ -747,10 +748,22 @@ int main(int argc, const char *argv[])
+         return ERROR_SUCCESS;
+ #endif
+ 
++      /* If we are using fulltext caches etc., we will allocate many large
++         chunks of memory of various sizes outside the cachde for those
++         fulltexts. Make sure, we use the memory wisely: use an allocator
++         that causes memory fragments to be given back to the OS early. */
++
++      if (apr_allocator_create(&allocator))
++        return EXIT_FAILURE;
++
++      apr_allocator_max_free_set(allocator, SVN_ALLOCATOR_RECOMMENDED_MAX_FREE);
++
+       /* Non-standard pool handling.  The main thread never blocks to join
+          the connection threads so it cannot clean up after each one.  So
+          separate pools, that can be cleared at thread exit, are used */
+-      connection_pool = svn_pool_create(NULL);
++
++      connection_pool = svn_pool_create_ex(NULL, allocator);
++      apr_allocator_owner_set(allocator, connection_pool);
+ 
+       status = apr_socket_accept(&usock, sock, connection_pool);
+       if (handling_mode == connection_mode_fork)

@@ -1,0 +1,18 @@
+$OpenBSD: patch-subversion_mod_dav_svn_repos_c,v 1.1.2.1 2010/12/01 14:17:35 jasper Exp $
+Fix NULL-deref in mod_dav_svn.
+http://svn.apache.org/viewvc?view=revision&revision=1033265
+--- subversion/mod_dav_svn/repos.c.orig	Wed Oct 14 20:05:15 2009
++++ subversion/mod_dav_svn/repos.c	Wed Nov 24 18:01:58 2010
+@@ -3781,6 +3781,12 @@ walk(const dav_walk_params *params, int depth, dav_res
+   walker_ctx_t ctx = { 0 };
+   dav_error *err;
+ 
++  if (params->root->info->restype == DAV_SVN_RESTYPE_PARENTPATH_COLLECTION)
++    {
++      /* Cannot walk an SVNParentPath collection, there is no repository. */
++      return NULL;
++    }
++
+   ctx.params = params;
+ 
+   ctx.wres.walk_ctx = params->walk_ctx;

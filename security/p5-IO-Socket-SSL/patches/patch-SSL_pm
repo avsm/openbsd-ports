@@ -1,0 +1,23 @@
+$OpenBSD: patch-SSL_pm,v 1.1.6.1 2010/12/08 18:44:51 jasper Exp $
+
+Security fix for SA42508,
+Perl IO::Socket::SSL "verify_mode" Security Bypass Security Issue
+
+Backported from IO-Socket-SSL 1.35
+
+--- SSL.pm.orig	Tue Dec  7 19:31:43 2010
++++ SSL.pm	Tue Dec  7 19:31:39 2010
+@@ -1370,12 +1371,7 @@ sub new {
+ 	if ( $verify_mode != Net::SSLeay::VERIFY_NONE() and 
+ 		! Net::SSLeay::CTX_load_verify_locations( 
+ 			$ctx, $arg_hash->{SSL_ca_file} || '',$arg_hash->{SSL_ca_path} || '') ) {
+-		if ( ! $arg_hash->{SSL_ca_file} && ! $arg_hash->{SSL_ca_path} ) {
+-			carp("No certificate verification because neither SSL_ca_file nor SSL_ca_path known");
+-			$verify_mode = Net::SSLeay::VERIFY_NONE();
+-		} else {
+-			return IO::Socket::SSL->error("Invalid certificate authority locations");
+-		}
++		return IO::Socket::SSL->error("Invalid certificate authority locations");
+ 	}
+ 
+ 	if ($arg_hash->{'SSL_check_crl'}) {

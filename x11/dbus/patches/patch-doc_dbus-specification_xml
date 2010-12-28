@@ -1,0 +1,31 @@
+$OpenBSD: patch-doc_dbus-specification_xml,v 1.1.2.1 2010/12/28 22:44:36 jasper Exp $
+
+Security fix for CVE-2010-4352
+D-Bus Message Validation Nested Variants Denial of Service
+
+Patch from upstream:
+https://bugs.freedesktop.org/show_bug.cgi?id=32321
+
+--- doc/dbus-specification.xml.orig	Tue Mar 23 20:01:27 2010
++++ doc/dbus-specification.xml	Tue Dec 28 23:36:18 2010
+@@ -561,12 +561,14 @@
+ 	      </row><row>
+                 <entry><literal>VARIANT</literal></entry>
+                 <entry>
+-                  A variant type has a marshaled <literal>SIGNATURE</literal>
+-                  followed by a marshaled value with the type
+-                  given in the signature.
+-                  Unlike a message signature, the variant signature 
+-                  can contain only a single complete type.
+-                  So "i", "ai" or "(ii)" is OK, but "ii" is not.
++                  A variant type has a marshaled
++                  <literal>SIGNATURE</literal> followed by a marshaled
++                  value with the type given in the signature.  Unlike
++                  a message signature, the variant signature can
++                  contain only a single complete type.  So "i", "ai"
++                  or "(ii)" is OK, but "ii" is not.  Use of variants may not
++                  cause a total message depth to be larger than 64, including
++		  other container types such as structures.
+                 </entry>
+                 <entry>
+                   1 (alignment of the signature)

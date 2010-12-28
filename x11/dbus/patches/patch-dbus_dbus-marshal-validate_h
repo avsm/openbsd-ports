@@ -1,0 +1,18 @@
+$OpenBSD: patch-dbus_dbus-marshal-validate_h,v 1.1.2.1 2010/12/28 22:44:36 jasper Exp $
+
+Security fix for CVE-2010-4352
+D-Bus Message Validation Nested Variants Denial of Service
+
+Patch from upstream:
+https://bugs.freedesktop.org/show_bug.cgi?id=32321
+
+--- dbus/dbus-marshal-validate.h.orig	Tue Mar 23 20:01:27 2010
++++ dbus/dbus-marshal-validate.h	Tue Dec 28 23:37:42 2010
+@@ -117,6 +117,7 @@ typedef enum
+   DBUS_INVALID_DICT_ENTRY_HAS_TOO_MANY_FIELDS = 53,
+   DBUS_INVALID_DICT_ENTRY_NOT_INSIDE_ARRAY = 54,
+   DBUS_INVALID_DICT_KEY_MUST_BE_BASIC_TYPE = 55,
++  DBUS_INVALID_NESTED_TOO_DEEPLY = 56,
+   DBUS_VALIDITY_LAST
+ } DBusValidity;
+ 

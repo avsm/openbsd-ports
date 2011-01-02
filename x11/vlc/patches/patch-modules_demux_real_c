@@ -1,4 +1,4 @@
-$OpenBSD: patch-modules_demux_real_c,v 1.1 2010/12/31 06:58:44 ajacoutot Exp $
+$OpenBSD: patch-modules_demux_real_c,v 1.1.2.1 2011/01/02 13:12:35 jasper Exp $
 
 - Fix heap buffer overflow (CVE-2010-3907).
 - Fix potential division by 0.

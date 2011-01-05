@@ -1,4 +1,4 @@
-$OpenBSD: patch-includes_OutputPage_php,v 1.1 2011/01/05 11:51:57 jasper Exp $
+$OpenBSD: patch-includes_OutputPage_php,v 1.1.2.1 2011/01/05 11:53:55 jasper Exp $
 
 Security fix for SA42810
 MediaWiki "Clickjacking" Security Bypass Vulnerability

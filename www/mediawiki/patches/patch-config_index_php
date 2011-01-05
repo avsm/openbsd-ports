@@ -1,4 +1,4 @@
-$OpenBSD: patch-config_index_php,v 1.1 2011/01/05 11:51:57 jasper Exp $
+$OpenBSD: patch-config_index_php,v 1.1.2.1 2011/01/05 11:53:55 jasper Exp $
 
 Security fix for SA42810
 MediaWiki "Clickjacking" Security Bypass Vulnerability

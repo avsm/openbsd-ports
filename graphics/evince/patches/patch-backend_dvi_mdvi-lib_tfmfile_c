@@ -1,4 +1,4 @@
-$OpenBSD: patch-backend_dvi_mdvi-lib_tfmfile_c,v 1.1 2011/01/06 22:55:31 jasper Exp $
+$OpenBSD: patch-backend_dvi_mdvi-lib_tfmfile_c,v 1.1.2.1 2011/01/06 22:55:38 jasper Exp $
 
 Security fixes for CVE-2010-2640, CVE-2010-2641, CVE-2010-2642, CVE-2010-2643.
 Patch from upstream git: d4139205b010ed06310d14284e63114e88ec6de2.

@@ -1,6 +1,6 @@
-$OpenBSD: patch-Hellanzb_HellaXMLRPC_xmlrpc_py,v 1.1 2010/08/23 07:02:06 giovanni Exp $
---- Hellanzb/HellaXMLRPC/xmlrpc.py.orig	Fri Aug 13 17:15:52 2010
-+++ Hellanzb/HellaXMLRPC/xmlrpc.py	Fri Aug 13 17:16:49 2010
+$OpenBSD: patch-Hellanzb_HellaXMLRPC_xmlrpc_py,v 1.1.2.1 2011/01/12 16:54:49 jasper Exp $
+--- Hellanzb/HellaXMLRPC/xmlrpc.py.orig	Tue Mar 27 06:20:43 2007
++++ Hellanzb/HellaXMLRPC/xmlrpc.py	Tue Jan 11 12:57:46 2011
 @@ -31,7 +31,7 @@ from twisted.internet import defer, protocol, reactor
  from twisted.python import log, reflect
  

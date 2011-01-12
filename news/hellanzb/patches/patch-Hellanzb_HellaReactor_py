@@ -1,4 +1,4 @@
-$OpenBSD: patch-Hellanzb_HellaReactor_py,v 1.1 2010/08/23 07:02:06 giovanni Exp $
+$OpenBSD: patch-Hellanzb_HellaReactor_py,v 1.1.2.1 2011/01/12 16:54:49 jasper Exp $
 --- Hellanzb/HellaReactor.py.orig	Fri Aug 13 17:17:25 2010
 +++ Hellanzb/HellaReactor.py	Fri Aug 13 17:17:38 2010
 @@ -9,7 +9,7 @@ reactor system so it can catch signals, and shutdown h

@@ -1,4 +1,4 @@
-$OpenBSD: patch-modules_meta_engine_taglib_cpp,v 1.1 2010/09/29 11:30:03 landry Exp $
+$OpenBSD: patch-modules_meta_engine_taglib_cpp,v 1.1.2.1 2011/01/14 21:52:37 jasper Exp $
 Fix for http://www.videolan.org/security/sa1004.html
 --- modules/meta_engine/taglib.cpp.orig	Tue Sep 28 19:24:18 2010
 +++ modules/meta_engine/taglib.cpp	Tue Sep 28 19:25:44 2010

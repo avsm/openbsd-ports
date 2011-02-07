@@ -1,13 +1,13 @@
-$OpenBSD: patch-src_log_c,v 1.1 2011/02/07 16:01:26 jasper Exp $
+$OpenBSD: patch-src_log_c,v 1.1.2.1 2011/02/07 16:01:52 jasper Exp $
 
 Security fix for CVE-2011-0017
 Privilege escalation from exim run-time user to root.
 
 Patch extracted from exim 3.74.
 
---- src/log.c.orig	Sun Dec 26 19:17:23 2010
-+++ src/log.c	Mon Feb  7 14:11:37 2011
-@@ -361,17 +361,26 @@ are neither exim nor root, creation is not attempted. 
+--- src/log.c.orig	Mon Nov 16 20:50:37 2009
++++ src/log.c	Mon Feb  7 14:16:59 2011
+@@ -343,17 +343,26 @@ are neither exim nor root, creation is not attempted. 
  
  else if (euid == root_uid)
    {

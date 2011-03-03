@@ -1,18 +1,32 @@
-$OpenBSD: patch-subversion_mod_dav_svn_repos_c,v 1.1.2.1 2010/12/01 14:17:35 jasper Exp $
+$OpenBSD: patch-subversion_mod_dav_svn_repos_c,v 1.1.2.2 2011/03/03 20:55:23 stsp Exp $
 Fix NULL-deref in mod_dav_svn.
 http://svn.apache.org/viewvc?view=revision&revision=1033265
+
+Also: http://subversion.apache.org/security/CVE-2011-0715-advisory.txt
 --- subversion/mod_dav_svn/repos.c.orig	Wed Oct 14 20:05:15 2009
-+++ subversion/mod_dav_svn/repos.c	Wed Nov 24 18:01:58 2010
-@@ -3781,6 +3781,12 @@ walk(const dav_walk_params *params, int depth, dav_res
++++ subversion/mod_dav_svn/repos.c	Thu Feb 24 12:55:58 2011
+@@ -1923,8 +1923,10 @@ get_resource(request_rec *r,
+       dav_locktoken_list *list = ltl;
+ 
+       serr = svn_fs_get_access(&access_ctx, repos->fs);
+-      if (serr)
++      if (serr || !access_ctx)
+         {
++          if (serr == NULL)
++            serr = svn_error_create(SVN_ERR_FS_LOCK_OWNER_MISMATCH, NULL, NULL);
+           return dav_svn__sanitize_error(serr, "Lock token is in request, "
+                                          "but no user name",
+                                          HTTP_BAD_REQUEST, r);
+@@ -3780,6 +3782,12 @@ walk(const dav_walk_params *params, int depth, dav_res
+ 
    walker_ctx_t ctx = { 0 };
    dav_error *err;
- 
++
 +  if (params->root->info->restype == DAV_SVN_RESTYPE_PARENTPATH_COLLECTION)
 +    {
 +      /* Cannot walk an SVNParentPath collection, there is no repository. */
 +      return NULL;
 +    }
-+
+ 
    ctx.params = params;
  
-   ctx.wres.walk_ctx = params->walk_ctx;

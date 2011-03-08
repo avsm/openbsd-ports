@@ -14,7 +14,7 @@
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 # 
 # RBlatter
-# $Id: pkgscanner.rb 18 2010-08-20 11:38:48Z eb771 $
+# $Id: pkgscanner.rb,v 1.1.1.1 2010/10/08 22:08:06 edd Exp $
 #
 # Takes packages from tlpdb
 
@@ -37,7 +37,7 @@ class PkgScanner
 		seekLine = @dbIndex.index[indexName]
 
 		if seekLine == nil then
-			puts "*warning: package not found: #{indexName}"
+			puts "\b*warning: package not found: #{indexName}"
 			return ""
 		end
 

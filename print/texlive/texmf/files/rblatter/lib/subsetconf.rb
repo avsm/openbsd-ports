@@ -14,7 +14,7 @@
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 # 
 # RBlatter 
-# $Id: subsetconf.rb 18 2010-08-20 11:38:48Z eb771 $
+# $Id: subsetconf.rb,v 1.1.1.1 2010/10/08 22:08:06 edd Exp $
 #
 # Holds a subset configuration
 

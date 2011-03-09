@@ -1,4 +1,4 @@
-$OpenBSD: patch-avahi-core_socket_c,v 1.3 2011/03/03 10:18:53 jasper Exp $
+$OpenBSD: patch-avahi-core_socket_c,v 1.3.2.1 2011/03/09 09:20:52 jasper Exp $
 
 Security fix for CVE-2011-0634, CVE-2011-1002.
 Avahi Empty UDP Packet Denial of Service Vulnerability.

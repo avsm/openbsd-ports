@@ -1,0 +1,30 @@
+$OpenBSD: patch-error_c,v 1.1.2.1 2011/03/09 16:04:05 jasper Exp $
+
+Security fix for CVE-2011-1005
+Ruby "#to_s" Safe Level Security Bypass Vulnerability
+
+Backported from upstream svn revision 30911.
+
+--- error.c.orig	Mon Aug  4 05:24:26 2008
++++ error.c	Wed Mar  9 10:57:11 2011
+@@ -403,7 +403,6 @@ exc_to_s(exc)
+     VALUE mesg = rb_attr_get(exc, rb_intern("mesg"));
+ 
+     if (NIL_P(mesg)) return rb_class_name(CLASS_OF(exc));
+-    if (OBJ_TAINTED(exc)) OBJ_TAINT(mesg);
+     return mesg;
+ }
+ 
+@@ -667,10 +666,9 @@ name_err_to_s(exc)
+     if (NIL_P(mesg)) return rb_class_name(CLASS_OF(exc));
+     StringValue(str);
+     if (str != mesg) {
+-	rb_iv_set(exc, "mesg", mesg = str);
++	OBJ_INFECT(str, mesg);
+     }
+-    if (OBJ_TAINTED(exc)) OBJ_TAINT(mesg);
+-    return mesg;
++    return str;
+ }
+ 
+ /*

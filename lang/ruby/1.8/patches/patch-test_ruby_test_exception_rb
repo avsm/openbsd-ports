@@ -1,0 +1,36 @@
+$OpenBSD: patch-test_ruby_test_exception_rb,v 1.1.2.1 2011/03/09 16:04:05 jasper Exp $
+
+Security fix for CVE-2011-1005
+Ruby "#to_s" Safe Level Security Bypass Vulnerability
+
+Backported from upstream svn revision 30911.
+
+--- test/ruby/test_exception.rb.orig	Tue Feb 13 00:01:19 2007
++++ test/ruby/test_exception.rb	Mon Mar  7 19:54:47 2011
+@@ -184,4 +184,26 @@ class TestException < Test::Unit::TestCase
+       assert(false)
+     end
+   end
++
++  def test_to_s_taintness_propagation
++    for exc in [Exception, NameError]
++      m = "abcdefg"
++      e = exc.new(m)
++      e.taint
++      s = e.to_s
++      assert_equal(false, m.tainted?,
++                   "#{exc}#to_s should not propagate taintness")
++      assert_equal(false, s.tainted?,
++                   "#{exc}#to_s should not propagate taintness")
++    end
++    
++    o = Object.new
++    def o.to_str
++      "foo"
++    end
++    o.taint
++    e = NameError.new(o)
++    s = e.to_s
++    assert_equal(true, s.tainted?)
++  end
+ end

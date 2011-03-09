@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_afs_VNOPS_afs_vnop_lookup_c,v 1.1 2011/03/02 10:38:03 jasper Exp $
+$OpenBSD: patch-src_afs_VNOPS_afs_vnop_lookup_c,v 1.1.2.1 2011/03/09 09:15:22 jasper Exp $
 
 Security fix for OpenAFS Security Advisory 2009-001 (CVE-2009-1251).
 http://www.openafs.org/security/OPENAFS-SA-2009-001.txt

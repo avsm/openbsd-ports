@@ -1,9 +1,8 @@
-# $OpenBSD: Makefile,v 1.52 2010/11/19 22:31:37 espie Exp $
+# $OpenBSD: Makefile,v 1.52.2.1 2011/03/11 09:41:12 jasper Exp $
 
 COMMENT=	small, easy to set up, fast and very secure FTP server
 
-DISTNAME=	pure-ftpd-1.0.29
-REVISION=	0
+DISTNAME=	pure-ftpd-1.0.30
 CATEGORIES=	net
 MASTER_SITES=	ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/ \
 		ftp://ftp2.fr.pureftpd.org/pub/mirrors/ftp.fr.pureftpd.org/pub/pure-ftpd/releases/ \
@@ -34,7 +33,6 @@ CONFIGURE_ARGS+= --with-everything \
 		 --with-tls
 
 MODULES=	converters/libiconv
-USE_GROFF =	Yes
 
 FLAVORS=	ldap mysql postgresql virtual_chroot
 FLAVOR?=

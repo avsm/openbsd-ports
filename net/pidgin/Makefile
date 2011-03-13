@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.87 2011/02/12 10:59:59 jasper Exp $
+# $OpenBSD: Makefile,v 1.87.2.1 2011/03/13 17:37:46 jasper Exp $
 
 SHARED_ONLY=	Yes
 
@@ -16,7 +16,7 @@ FULLPKGNAME$i= ${PKGNAME$i}${FLAVOR_EXT:S/-gtkspell//}
 FULLPKGPATH$i= ${PKGPATH},$i${FLAVOR_EXT:S/-gtkspell//:S/-/,/g}
 .endfor
 REVISION-main=	0
-REVISION-libpurple= 0
+REVISION-libpurple= 1
 CATEGORIES=	net
 MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=pidgin/}
 

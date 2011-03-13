@@ -1,0 +1,27 @@
+$OpenBSD: patch-servers_slapd_back-ndb_bind_cpp,v 1.1.2.1 2011/03/13 21:26:45 jasper Exp $
+
+Security fix for CVE-2011-1025
+rootpw not verified via slapd.conf when using the NDB backend
+
+Patch from upstream cvs:
+http://www.openldap.org/devel/cvsweb.cgi/servers/slapd/back-ndb/bind.cpp.diff?r1=1.5&r2=1.8
+
+--- servers/slapd/back-ndb/bind.cpp.orig	Sun Mar 13 19:56:47 2011
++++ servers/slapd/back-ndb/bind.cpp	Sun Mar 13 19:57:13 2011
+@@ -43,11 +43,13 @@ ndb_back_bind( Operation *op, SlapReply *rs )
+ 
+ 	/* allow noauth binds */
+ 	switch ( be_rootdn_bind( op, NULL ) ) {
+-	case SLAP_CB_CONTINUE:
+-		break;
++	case LDAP_SUCCESS:
++		/* frontend will send result */
++		return rs->sr_err = LDAP_SUCCESS;
+ 
+ 	default:
+-		return rs->sr_err;
++		/* give the database a chance */
++		break;
+ 	}
+ 
+ 	/* Get our NDB handle */

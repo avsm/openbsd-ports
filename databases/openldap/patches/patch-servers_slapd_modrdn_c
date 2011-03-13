@@ -1,0 +1,27 @@
+$OpenBSD: patch-servers_slapd_modrdn_c,v 1.2.2.1 2011/03/13 21:26:45 jasper Exp $
+
+Security fix for CVE-2011-1081
+DoS when submitting special MODRDN request
+
+Fix from upstream CVS:
+http://www.openldap.org/devel/cvsweb.cgi/servers/slapd/modrdn.c.diff?r1=1.170.2.8&r2=1.170.2.9
+
+--- servers/slapd/modrdn.c.orig	Thu Jun 10 19:48:07 2010
++++ servers/slapd/modrdn.c	Sun Mar 13 19:53:56 2011
+@@ -1,4 +1,4 @@
+-/* $OpenLDAP: pkg/ldap/servers/slapd/modrdn.c,v 1.170.2.8 2010/06/10 17:48:07 quanah Exp $ */
++/* $OpenLDAP: servers/slapd/modrdn.c,v 1.170.2.9 2011/01/04 19:44:44 quanah Exp $ */
+ /* This work is part of OpenLDAP Software <http://www.openldap.org/>.
+  *
+  * Copyright 1998-2010 The OpenLDAP Foundation.
+@@ -392,7 +392,9 @@ slap_modrdn2mods(
+ 	LDAPRDN		new_rdn = NULL;
+ 
+ 	assert( !BER_BVISEMPTY( &op->oq_modrdn.rs_newrdn ) );
+-	assert( !op->orr_deleteoldrdn || !BER_BVISEMPTY( &op->o_req_dn ) );
++
++	/* if requestDN is empty, silently reset deleteOldRDN */
++	if ( BER_BVISEMPTY( &op->o_req_dn ) ) op->orr_deleteoldrdn = 0;
+ 
+ 	if ( ldap_bv2rdn_x( &op->oq_modrdn.rs_newrdn, &new_rdn,
+ 		(char **)&rs->sr_text, LDAP_DN_FORMAT_LDAP, op->o_tmpmemctx ) ) {

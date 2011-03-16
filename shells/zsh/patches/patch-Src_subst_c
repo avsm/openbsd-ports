@@ -1,4 +1,4 @@
-$OpenBSD: patch-Src_subst_c,v 1.1 2011/03/04 10:08:59 pea Exp $
+$OpenBSD: patch-Src_subst_c,v 1.1.2.1 2011/03/16 14:16:37 pea Exp $
 
 Fix for ${foo:0:} crash
 

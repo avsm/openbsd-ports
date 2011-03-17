@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_nhttpd_proto_h,v 1.2 2011/03/17 17:44:23 jasper Exp $
+$OpenBSD: patch-src_nhttpd_proto_h,v 1.2.2.1 2011/03/17 17:46:08 jasper Exp $
 
 Security fix for CVE-2011-0751
 Nostromo Directory Traversal Vulnerability.

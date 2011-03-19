@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.4 2010/10/18 17:47:52 espie Exp $
+# $OpenBSD: Makefile,v 1.6 2011/03/19 09:18:37 jasper Exp $
 
 COMMENT=	collection of utilities for C programmers
 

@@ -1,4 +1,4 @@
-$OpenBSD: patch-libtiff_tif_fax3_h,v 1.1 2011/03/19 18:41:05 jasper Exp $
+$OpenBSD: patch-libtiff_tif_fax3_h,v 1.1.2.1 2011/03/19 18:42:29 jasper Exp $
 
 Security fix for CVE-2011-0192: buffer overflow in Fax4Decode.
 

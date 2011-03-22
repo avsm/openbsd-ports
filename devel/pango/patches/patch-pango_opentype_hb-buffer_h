@@ -1,4 +1,4 @@
-$OpenBSD: patch-pango_opentype_hb-buffer_h,v 1.1 2011/03/22 09:41:15 jasper Exp $
+$OpenBSD: patch-pango_opentype_hb-buffer_h,v 1.1.2.1 2011/03/22 09:41:52 jasper Exp $
 
 Security fix for CVE-2011-0064
 Pango "hb_buffer_ensure()" Memory Reallocation Vulnerability

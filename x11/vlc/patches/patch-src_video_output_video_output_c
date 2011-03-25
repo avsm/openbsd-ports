@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_video_output_video_output_c,v 1.1 2011/03/25 01:07:00 sthen Exp $
+$OpenBSD: patch-src_video_output_video_output_c,v 1.1.2.1 2011/03/25 09:06:35 jasper Exp $
 
 Consider too large width/height as invalid. CVE-2010-3275, CVE-2010-3276
 

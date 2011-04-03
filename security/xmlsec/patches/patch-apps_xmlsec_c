@@ -1,0 +1,59 @@
+$OpenBSD: patch-apps_xmlsec_c,v 1.1.2.1 2011/04/03 11:15:27 jasper Exp $
+
+Security fix for CVE-2011-1425
+XML Security Library XSLT File Access Vulnerability
+
+Patch from upstream git:
+http://git.gnome.org/browse/xmlsec/commit/?id=2d5eddcc4163ea050cf3a3a1a25452bb5124f780
+
+--- apps/xmlsec.c.orig	Sun Apr  3 13:07:34 2011
++++ apps/xmlsec.c	Sun Apr  3 13:11:20 2011
+@@ -24,6 +24,7 @@
+ #include <libxslt/extensions.h> 
+ #include <libxslt/xsltInternals.h>
+ #include <libxslt/xsltutils.h>
++#include <libxslt/security.h>
+ #include <libexslt/exslt.h>
+ #endif /* XMLSEC_NO_XSLT */
+ 
+@@ -2400,6 +2401,11 @@ xmlSecAppLoadKeys(void) {
+ }
+ 
+ static int intialized = 0;
++
++#ifndef XMLSEC_NO_XSLT
++static xsltSecurityPrefsPtr xsltSecPrefs = NULL;
++#endif /* XMLSEC_NO_XSLT */
++
+ static int
+ xmlSecAppInit(void) {
+     if(intialized != 0) {
+@@ -2414,7 +2420,19 @@ xmlSecAppInit(void) {
+ #ifndef XMLSEC_NO_XSLT
+     xmlIndentTreeOutput = 1; 
+ #endif /* XMLSEC_NO_XSLT */
+-        	
++
++    /* Init libxslt */
++#ifndef XMLSEC_NO_XSLT
++    /* disable everything */
++    xsltSecPrefs = xsltNewSecurityPrefs();
++    xsltSetSecurityPrefs(xsltSecPrefs,  XSLT_SECPREF_READ_FILE,        xsltSecurityForbid);
++    xsltSetSecurityPrefs(xsltSecPrefs,  XSLT_SECPREF_WRITE_FILE,       xsltSecurityForbid);
++    xsltSetSecurityPrefs(xsltSecPrefs,  XSLT_SECPREF_CREATE_DIRECTORY, xsltSecurityForbid);
++    xsltSetSecurityPrefs(xsltSecPrefs,  XSLT_SECPREF_READ_NETWORK,     xsltSecurityForbid);
++    xsltSetSecurityPrefs(xsltSecPrefs,  XSLT_SECPREF_WRITE_NETWORK,    xsltSecurityForbid);
++    xsltSetDefaultSecurityPrefs(xsltSecPrefs);
++#endif /* XMLSEC_NO_XSLT */
++
+     /* Init xmlsec */
+     if(xmlSecInit() < 0) {
+ 	fprintf(stderr, "Error: xmlsec intialization failed.\n");
+@@ -2461,6 +2479,7 @@ xmlSecAppShutdown(void) {
+     
+     /* Shutdown libxslt/libxml */
+ #ifndef XMLSEC_NO_XSLT
++    xsltFreeSecurityPrefs(xsltSecPrefs);
+     xsltCleanupGlobals();            
+ #endif /* XMLSEC_NO_XSLT */
+     xmlCleanupParser();

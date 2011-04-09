@@ -1,0 +1,18 @@
+$OpenBSD: patch-src_load_s3m_cpp,v 1.1.2.1 2011/04/09 07:48:48 jasper Exp $
+
+Security fix for SA44054: libmodplug "CSoundFile::ReadS3M()" Buffer Overflow Vulnerability
+Patch from libmodplug-0.8.8.2
+
+--- src/load_s3m.cpp.orig	Sat Apr  9 09:45:35 2011
++++ src/load_s3m.cpp	Sat Apr  9 09:46:30 2011
+@@ -257,6 +257,10 @@ BOOL CSoundFile::ReadS3M(const BYTE *lpStream, DWORD d
+ 	patnum = npat = psfh.patnum;
+ 	if (patnum > MAX_PATTERNS) patnum = MAX_PATTERNS;
+ 	memset(ptr, 0, sizeof(ptr));
++
++	// Ignore file if it has a corrupted header.
++	if (nins+npat > 256) return FALSE;
++
+ 	if (nins+npat)
+ 	{
+ 		memcpy(ptr, lpStream+dwMemPos, 2*(nins+npat));

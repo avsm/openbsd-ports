@@ -1,8 +1,9 @@
-# $OpenBSD: Makefile,v 1.59 2010/10/18 18:36:57 espie Exp $
+# $OpenBSD: Makefile,v 1.59.2.1 2011/04/10 17:17:54 jasper Exp $
 
 COMMENT =	mirroring/synchronization over low bandwidth links
 
 DISTNAME =	rsync-3.0.7
+REVISION =	0
 CATEGORIES =	net
 HOMEPAGE =	http://rsync.samba.org/
 

@@ -1,0 +1,41 @@
+$OpenBSD: patch-rsync_h,v 1.6.2.1 2011/04/10 17:17:54 jasper Exp $
+
+Security fix for CVE-2011-1097:
+rsync Incremental Recursion Memory Corruption Vulnerability
+
+Patch from upstream git:
+http://gitweb.samba.org/?p=rsync.git;a=patch;h=83b94efa6b60a3ff5eee4c5f7812c617a90a03f6;hp=c8255147b06b74dad940d32f9cef5fbe17595239
+
+--- rsync.h.orig	Sat Apr  9 10:49:12 2011
++++ rsync.h	Sat Apr  9 10:49:09 2011
+@@ -65,6 +65,7 @@
+ /* These flags are used in the live flist data. */
+ 
+ #define FLAG_TOP_DIR (1<<0)	/* sender/receiver/generator */
++#define FLAG_OWNED_BY_US (1<<0) /* generator: set by make_file() for aux flists only */
+ #define FLAG_FILE_SENT (1<<1)	/* sender/receiver/generator */
+ #define FLAG_DIR_CREATED (1<<1)	/* generator */
+ #define FLAG_CONTENT_DIR (1<<2)	/* sender/receiver/generator */
+@@ -83,8 +84,12 @@
+ 
+ /* These flags are passed to functions but not stored. */
+ 
+-#define FLAG_DIVERT_DIRS (1<<16)/* sender */
++#define FLAG_DIVERT_DIRS (1<<16)   /* sender, but must be unique */
+ 
++/* These flags are for get_dirlist(). */
++#define GDL_IGNORE_FILTER_RULES (1<<0)
++
++/* Some helper macros for matching bits. */
+ #define BITS_SET(val,bits) (((val) & (bits)) == (bits))
+ #define BITS_SETnUNSET(val,onbits,offbits) (((val) & ((onbits)|(offbits))) == (onbits))
+ #define BITS_EQUAL(b1,b2,mask) (((unsigned)(b1) & (unsigned)(mask)) \
+@@ -95,7 +100,7 @@
+ 
+ /* This is used when working on a new protocol version in CVS, and should
+  * be a new non-zero value for each CVS change that affects the protocol.
+- * It must ALWAYS be 0 when the protocol goes final! */
++ * It must ALWAYS be 0 when the protocol goes final (and NEVER before)! */
+ #define SUBPROTOCOL_VERSION 0
+ 
+ /* We refuse to interoperate with versions that are not in this range.

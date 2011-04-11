@@ -1,4 +1,4 @@
-$OpenBSD: patch-modules_demux_mp4_libmp4_c,v 1.1 2011/04/11 15:11:28 sthen Exp $
+$OpenBSD: patch-modules_demux_mp4_libmp4_c,v 1.1.2.1 2011/04/11 16:57:58 jasper Exp $
 
 Fix heap-based buffer overflow.
 

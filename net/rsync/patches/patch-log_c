@@ -1,0 +1,19 @@
+$OpenBSD: patch-log_c,v 1.2.4.1 2011/04/11 09:16:52 sthen Exp $
+
+Security fix for CVE-2011-1097:
+rsync Incremental Recursion Memory Corruption Vulnerability
+
+Patch from upstream git:
+http://gitweb.samba.org/?p=rsync.git;a=patch;h=83b94efa6b60a3ff5eee4c5f7812c617a90a03f6;hp=c8255147b06b74dad940d32f9cef5fbe17595239
+
+--- log.c.orig	Sat Jan 17 22:41:35 2009
++++ log.c	Sat Apr  9 10:45:56 2011
+@@ -35,8 +35,6 @@ extern int msg_fd_out;
+ extern int allow_8bit_chars;
+ extern int protocol_version;
+ extern int preserve_times;
+-extern int uid_ndx;
+-extern int gid_ndx;
+ extern int progress_is_active;
+ extern int stdout_format_has_i;
+ extern int stdout_format_has_o_or_i;

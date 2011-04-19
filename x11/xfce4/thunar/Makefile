@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.33 2011/01/18 21:34:58 ajacoutot Exp $
+# $OpenBSD: Makefile,v 1.33.2.1 2011/04/19 15:13:55 jasper Exp $
 
 COMMENT=	Xfce4 file manager
 
@@ -7,7 +7,7 @@ XFCE_PROJECT=	Thunar
 # :L is here for a reason
 PKGNAME=	${DISTNAME:L}
 
-REVISION=	0
+REVISION=	1
 
 SHARED_LIBS=	thunarx-2	0.0
 

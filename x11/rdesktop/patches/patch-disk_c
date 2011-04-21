@@ -1,0 +1,27 @@
+$OpenBSD: patch-disk_c,v 1.1.2.1 2011/04/21 11:08:07 jasper Exp $
+
+Security fix for Secunia Advisory SA44200
+rdesktop Disk Redirection Directory Traversal Vulnerability
+
+--- disk.c.orig	Fri Feb 15 21:13:25 2008
++++ disk.c	Tue Apr 19 15:35:42 2011
+@@ -356,6 +356,19 @@ disk_create(uint32 device_id, uint32 accessmask, uint3
+ 		filename[strlen(filename) - 1] = 0;
+ 	sprintf(path, "%s%s", g_rdpdr_device[device_id].local_path, filename);
+ 
++	/* Protect against mailicous servers:
++	   somelongpath/..     not allowed
++	   somelongpath/../b   not allowed
++	   somelongpath/..b    in principle ok, but currently not allowed
++	   somelongpath/b..    ok
++	   somelongpath/b..b   ok
++	   somelongpath/b../c  ok
++	 */
++	if (strstr(path, "/.."))
++	{
++		return RD_STATUS_ACCESS_DENIED;
++	}
++
+ 	switch (create_disposition)
+ 	{
+ 		case CREATE_ALWAYS:

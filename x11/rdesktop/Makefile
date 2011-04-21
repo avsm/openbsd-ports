@@ -1,8 +1,8 @@
-# $OpenBSD: Makefile,v 1.33 2010/11/22 08:37:04 espie Exp $
+# $OpenBSD: Makefile,v 1.33.2.1 2011/04/21 11:08:07 jasper Exp $
 
 COMMENT=	open source client for Windows Terminal Server
 DISTNAME=	rdesktop-1.6.0
-REVISION=	2
+REVISION=	3
 CATEGORIES=	x11 net
 MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=rdesktop/}
 

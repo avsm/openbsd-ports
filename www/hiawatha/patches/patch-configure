@@ -1,4 +1,4 @@
-$OpenBSD: patch-configure,v 1.1 2011/04/13 17:44:59 rpointel Exp $
+$OpenBSD: patch-configure,v 1.1.2.1 2011/04/28 03:40:56 william Exp $
 --- configure.orig	Wed Apr 13 16:48:30 2011
 +++ configure	Wed Apr 13 16:48:38 2011
 @@ -6806,7 +6806,7 @@ eval logdir="${localstatedir}/log/hiawatha"

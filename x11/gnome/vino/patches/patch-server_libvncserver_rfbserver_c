@@ -1,0 +1,21 @@
+$OpenBSD: patch-server_libvncserver_rfbserver_c,v 1.1.2.1 2011/05/04 09:51:19 jasper Exp $
+
+Security fix for CVE-2011-0904 and CVE-2011-0905:
+Vino Framebuffer Update Handling Denial of Service Vulnerability
+
+Patch from upstream:
+http://bugzilla-attachments.gnome.org/attachment.cgi?id=186688
+
+--- server/libvncserver/rfbserver.c.orig	Wed May  4 11:47:28 2011
++++ server/libvncserver/rfbserver.c	Wed May  4 11:48:11 2011
+@@ -1163,6 +1163,10 @@ rfbSendFramebufferUpdate(rfbClientPtr cl,
+         cl->rfbRawBytesEquivalent += (sz_rfbFramebufferUpdateRectHeader
+                                       + w * (cl->format.bitsPerPixel / 8) * h);
+ 
++        /* Validate the rectangle given by the update packet. */
++        if (w + x > cl->screen->width || h + y > cl->screen->height)
++            goto tx_error;
++
+         switch (cl->preferredEncoding) {
+         case rfbEncodingRaw:
+             if (!rfbSendRectEncodingRaw(cl, x, y, w, h))

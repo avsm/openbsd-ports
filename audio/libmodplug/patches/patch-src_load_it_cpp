@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_load_it_cpp,v 1.1 2011/05/05 21:25:48 jasper Exp $
+$OpenBSD: patch-src_load_it_cpp,v 1.1.2.1 2011/05/05 21:26:09 jasper Exp $
 
 Fixed various possible integer overflows in CSoundFile::ReadIT().
 From upstream git: 89dd2ff3f4463a5c657767cee81fa62dff7f70eb

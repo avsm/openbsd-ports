@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_load_med_cpp,v 1.1 2011/05/05 21:25:48 jasper Exp $
+$OpenBSD: patch-src_load_med_cpp,v 1.1.2.1 2011/05/05 21:26:09 jasper Exp $
 
 Fixed various possible integer overflows in CSoundFile::ReadMed()
 From upstream git: ce87da55599421e851a5b13492b753defba17349

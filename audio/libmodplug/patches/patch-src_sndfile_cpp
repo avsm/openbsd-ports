@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_sndfile_cpp,v 1.1 2011/05/05 21:25:48 jasper Exp $
+$OpenBSD: patch-src_sndfile_cpp,v 1.1.2.1 2011/05/05 21:26:09 jasper Exp $
 
 Fixed possible memory overread in CSoundFile::AdjustSampleLoop().
 From upstream git: fda0caf6490bb76cba349ae3e198b0d11d35c7c0

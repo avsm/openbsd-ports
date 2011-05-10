@@ -1,0 +1,17 @@
+$OpenBSD: patch-imap_pop3d_c,v 1.1.2.1 2011/05/10 14:22:15 gsoares Exp $
+
+Security Fix CVE-2011-0411
+Fixed bug #3423 - STARTTLS plaintext command injection vulnerability
+
+--- imap/pop3d.c.orig	Mon Dec 20 10:15:49 2010
++++ imap/pop3d.c	Tue May  3 11:34:26 2011
+@@ -1006,6 +1006,9 @@ done:
+ 		if (arg) {
+ 		    prot_printf(popd_out, "-ERR Unexpected extra argument\r\n");
+ 		} else {
++		    /* XXX  discard any input pipelined after STLS */
++		    prot_flush(popd_in);
++
+ 		    cmd_starttls(0);
+ 		}
+ 	    }

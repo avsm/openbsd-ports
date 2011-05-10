@@ -1,0 +1,18 @@
+$OpenBSD: patch-imap_sync_server_c,v 1.1.2.1 2011/05/10 14:22:15 gsoares Exp $
+
+Security Fix CVE-2011-0411
+Fixed bug #3423 - STARTTLS plaintext command injection vulnerability
+
+--- imap/sync_server.c.orig	Mon Dec 20 10:15:49 2010
++++ imap/sync_server.c	Tue May  3 11:34:26 2011
+@@ -701,6 +701,10 @@ static void cmdloop(void)
+ 	    if (!strcmp(cmd.s, "Starttls") && tls_enabled()) {
+ 		if (c == '\r') c = prot_getc(sync_in);
+ 		if (c != '\n') goto extraargs;
++
++		/* XXX  discard any input pipelined after STARTTLS */
++		prot_flush(sync_in);
++
+ 		/* if we've already done SASL fail */
+ 		if (sync_userid != NULL) {
+ 		    prot_printf(sync_out, 

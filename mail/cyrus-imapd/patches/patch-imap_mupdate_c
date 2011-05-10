@@ -1,0 +1,17 @@
+$OpenBSD: patch-imap_mupdate_c,v 1.1.2.1 2011/05/10 14:22:15 gsoares Exp $
+
+Security Fix CVE-2011-0411
+Fixed bug #3423 - STARTTLS plaintext command injection vulnerability
+
+--- imap/mupdate.c.orig	Mon Dec 20 10:15:49 2010
++++ imap/mupdate.c	Tue May  3 11:34:26 2011
+@@ -922,6 +922,9 @@ mupdate_docmd_result_t docmd(struct conn *c)
+ 	if (!strcmp(c->cmd.s, "Starttls")) {
+ 	    CHECKNEWLINE(c, ch);
+ 	    
++	    /* XXX  discard any input pipelined after STARTTLS */
++	    prot_flush(c->pin);
++
+ 	    if (!tls_enabled()) {
+ 		/* we don't support starttls */
+ 		goto badcmd;

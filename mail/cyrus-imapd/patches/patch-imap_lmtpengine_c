@@ -1,0 +1,17 @@
+$OpenBSD: patch-imap_lmtpengine_c,v 1.1.2.1 2011/05/10 14:22:15 gsoares Exp $
+
+Security Fix CVE-2011-0411
+Fixed bug #3423 - STARTTLS plaintext command injection vulnerability
+
+--- imap/lmtpengine.c.orig	Mon Dec 20 10:15:49 2010
++++ imap/lmtpengine.c	Tue May  3 11:34:26 2011
+@@ -1557,6 +1557,9 @@ void lmtpmode(struct lmtp_func *func,
+ 		sasl_ssf_t ssf;
+ 		char *auth_id;
+ 
++		/* XXX  discard any input pipelined after STARTTLS */
++		prot_flush(pin);
++
+ 		/* SASL and openssl have different ideas
+ 		   about whether ssf is signed */
+ 		layerp = (int *) &ssf;

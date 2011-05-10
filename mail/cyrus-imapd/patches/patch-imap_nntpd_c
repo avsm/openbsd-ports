@@ -1,0 +1,17 @@
+$OpenBSD: patch-imap_nntpd_c,v 1.1.2.1 2011/05/10 14:22:15 gsoares Exp $
+
+Security Fix CVE-2011-0411
+Fixed bug #3423 - STARTTLS plaintext command injection vulnerability
+
+--- imap/nntpd.c.orig	Mon Dec 20 10:15:49 2010
++++ imap/nntpd.c	Tue May  3 11:34:26 2011
+@@ -1406,6 +1406,9 @@ static void cmdloop(void)
+ 		if (c == '\r') c = prot_getc(nntp_in);
+ 		if (c != '\n') goto extraargs;
+ 
++		/* XXX  discard any input pipelined after STARTTLS */
++		prot_flush(nntp_in);
++
+ 		cmd_starttls(0);
+ 	    }
+ 	    else if (!strcmp(cmd.s, "Stat")) {

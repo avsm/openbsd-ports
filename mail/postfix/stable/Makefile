@@ -1,7 +1,6 @@
-# $OpenBSD: Makefile,v 1.131 2011/01/07 19:22:06 sthen Exp $
+# $OpenBSD: Makefile,v 1.131.2.1 2011/05/19 02:45:31 william Exp $
 
-VERSION=	2.7.2
-REVISION=	0
+VERSION=	2.7.4
 
 MASTER_SITES=	${MASTER_SITE_POSTFIX:=official/}
 

@@ -1,4 +1,4 @@
-$OpenBSD: patch-lib_TWiki_Client_TemplateLogin_pm,v 1.1 2011/05/19 06:27:30 jasper Exp $
+$OpenBSD: patch-lib_TWiki_Client_TemplateLogin_pm,v 1.1.2.1 2011/05/19 06:29:07 jasper Exp $
 
 Security fix for CVE-2011-1838:
 XSS Vulnerability with origurl parameter of login script

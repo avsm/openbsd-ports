@@ -1,7 +1,7 @@
-$OpenBSD: patch-Makefile_in,v 1.23 2010/05/05 02:07:44 sthen Exp $
---- Makefile.in.orig	Mon Mar  8 12:31:13 2010
-+++ Makefile.in	Sun May  2 16:56:25 2010
-@@ -756,7 +756,7 @@ install-data: install-data-recursive
+$OpenBSD: patch-Makefile_in,v 1.23.4.1 2011/05/30 21:38:56 sthen Exp $
+--- Makefile.in.orig	Wed May 11 11:03:16 2011
++++ Makefile.in	Sun May 29 17:28:38 2011
+@@ -760,7 +760,7 @@ install-data: install-data-recursive
  uninstall: uninstall-recursive
  
  install-am: all-am

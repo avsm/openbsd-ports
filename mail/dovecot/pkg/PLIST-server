@@ -1,4 +1,4 @@
-@comment $OpenBSD: PLIST-server,v 1.15 2010/10/03 23:25:52 sthen Exp $
+@comment $OpenBSD: PLIST-server,v 1.15.2.1 2011/05/31 12:54:52 sthen Exp $
 @pkgpath ${BASE_PKGPATH}
 @newgroup _dovecot:518
 @newuser _dovecot:518:_dovecot:daemon:Dovecot Account:/nonexistent:/sbin/nologin
@@ -306,7 +306,6 @@ share/doc/dovecot/wiki/UserDatabase.Prefetch.txt
 share/doc/dovecot/wiki/UserDatabase.Static.txt
 share/doc/dovecot/wiki/UserDatabase.txt
 share/doc/dovecot/wiki/UserIds.txt
-share/doc/dovecot/wiki/VarMailDotLock.txt
 share/doc/dovecot/wiki/Variables.txt
 share/doc/dovecot/wiki/VirtualUsers.Home.txt
 share/doc/dovecot/wiki/VirtualUsers.txt

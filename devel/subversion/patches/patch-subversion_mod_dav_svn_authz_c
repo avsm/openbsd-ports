@@ -1,0 +1,16 @@
+$OpenBSD: patch-subversion_mod_dav_svn_authz_c,v 1.1.2.1 2011/06/01 22:26:19 stsp Exp $
+CVE-2011-1783, CVE-2011-1921
+--- subversion/mod_dav_svn/authz.c.orig	Tue Nov  9 21:07:45 2010
++++ subversion/mod_dav_svn/authz.c	Mon May 30 15:18:47 2011
+@@ -46,6 +46,11 @@ dav_svn__allow_read(request_rec *r,
+       return TRUE;
+     }
+ 
++  /* Sometimes we get paths that do not start with '/' and 
++     hence below uri concatenation would lead to wrong uris .*/
++  if (path && path[0] != '/')
++    path = apr_pstrcat(pool, "/", path, NULL);
++
+   /* If bypass is specified and authz has exported the provider.
+      Otherwise, we fall through to the full version.  This should be
+      safer than allowing or disallowing all accesses if there is a

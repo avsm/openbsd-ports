@@ -1,0 +1,14 @@
+$OpenBSD: patch-subversion_libsvn_repos_authz_c,v 1.1.2.1 2011/06/01 22:26:19 stsp Exp $
+CVE-2011-1783, CVE-2011-1921
+--- subversion/libsvn_repos/authz.c.orig	Mon Aug 25 06:44:53 2008
++++ subversion/libsvn_repos/authz.c	Mon May 30 15:18:48 2011
+@@ -746,6 +746,9 @@ svn_repos_authz_check_access(svn_authz_t *authz, const
+       return SVN_NO_ERROR;
+     }
+ 
++  /* Sanity check. */
++  SVN_ERR_ASSERT(path[0] == '/');
++
+   /* Determine the granted access for the requested path. */
+   while (!authz_get_path_access(authz->cfg, repos_name,
+                                 current_path, user,

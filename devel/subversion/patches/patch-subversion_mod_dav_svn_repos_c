@@ -1,0 +1,32 @@
+$OpenBSD: patch-subversion_mod_dav_svn_repos_c,v 1.1.4.1 2011/06/01 22:26:19 stsp Exp $
+CVE-2011-0715, CVE-2011-1752
+--- subversion/mod_dav_svn/repos.c.orig	Mon May 30 15:18:57 2011
++++ subversion/mod_dav_svn/repos.c	Mon May 30 15:16:56 2011
+@@ -1923,8 +1923,10 @@ get_resource(request_rec *r,
+       dav_locktoken_list *list = ltl;
+ 
+       serr = svn_fs_get_access(&access_ctx, repos->fs);
+-      if (serr)
++      if (serr || !access_ctx)
+         {
++          if (serr == NULL)
++            serr = svn_error_create(SVN_ERR_FS_LOCK_OWNER_MISMATCH, NULL, NULL);
+           return dav_svn__sanitize_error(serr, "Lock token is in request, "
+                                          "but no user name",
+                                          HTTP_BAD_REQUEST, r);
+@@ -2825,10 +2827,11 @@ deliver(const dav_resource *resource, ap_filter_t *out
+   apr_status_t status;
+ 
+   /* Check resource type */
+-  if (resource->type != DAV_RESOURCE_TYPE_REGULAR
+-      && resource->type != DAV_RESOURCE_TYPE_VERSION
+-      && resource->type != DAV_RESOURCE_TYPE_WORKING
+-      && resource->info->restype != DAV_SVN_RESTYPE_PARENTPATH_COLLECTION)
++  if (resource->baselined
++      || (resource->type != DAV_RESOURCE_TYPE_REGULAR
++          && resource->type != DAV_RESOURCE_TYPE_VERSION
++          && resource->type != DAV_RESOURCE_TYPE_WORKING
++          && resource->info->restype != DAV_SVN_RESTYPE_PARENTPATH_COLLECTION))
+     {
+       return dav_new_error(resource->pool, HTTP_CONFLICT, 0,
+                            "Cannot GET this type of resource.");

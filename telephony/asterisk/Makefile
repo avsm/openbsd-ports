@@ -1,9 +1,9 @@
-# $OpenBSD: Makefile,v 1.100 2011/01/20 21:44:54 sthen Exp $
+# $OpenBSD: Makefile,v 1.100.2.1 2011/06/03 16:10:21 sthen Exp $
 
 SHARED_ONLY=		Yes
 COMMENT-main=		open source multi-protocol PBX and telephony toolkit
 
-VER=			1.8.2.2
+VER=			1.8.4.2
 DISTNAME=		asterisk-${VER:S/beta/-beta/:S/rc/-rc/}
 PKGNAME-main=		asterisk-${VER}
 
@@ -62,10 +62,11 @@ USE_GMAKE=		Yes
 USE_LIBTOOL=		Yes
 
 CONFIGURE_STYLE=	gnu
-AUTOCONF_VERSION=	2.64 # XXX 2.65 adds _'s with our m4
+AUTOCONF_VERSION=	2.64 # XXX 2.65 adds _'s with m4 in 4.9-release
 AUTOMAKE_VERSION=	1.10
 BUILD_DEPENDS+=		${MODGNU_AUTOCONF_DEPENDS} \
-			${MODGNU_AUTOMAKE_DEPENDS}
+			${MODGNU_AUTOMAKE_DEPENDS} \
+			devel/libtool,-ltdl # bogus dependencies in menuselect
 
 CPPFLAGS+=		-I${X11BASE}/include -I${LOCALBASE}/include
 LDFLAGS+= 		-L${X11BASE}/lib -L${LOCALBASE}/lib
@@ -180,8 +181,7 @@ WANTLIB-ldap=		ldap
 # odbc
 PSEUDO_FLAVORS+=	no_odbc
 .if ${FLAVOR:L:Mno_odbc}
-CONFIGURE_ARGS+=	--with-iodbc=no \
-			--with-ltdl=no
+CONFIGURE_ARGS+=	--with-iodbc=no
 .else
 MULTI_PACKAGES+=	-odbc
 COMMENT-odbc=		ODBC support for Asterisk
@@ -225,7 +225,7 @@ LIB_DEPENDS-speex=	audio/speex>=1.2rc1
 NO_REGRESS=		Yes
 INSTALL_TARGET=		install samples
 EXAMPLEDIR=		${PREFIX}/share/examples/asterisk
-EXAMPLEFILES=		extensions.ael extensions.conf logger.conf \
+EXAMPLEFILES=		cdr.conf extensions.ael extensions.conf logger.conf \
 			modules.conf musiconhold.conf sip.conf voicemail.conf
 
 .for i in ${MULTI_PACKAGES:N-main}

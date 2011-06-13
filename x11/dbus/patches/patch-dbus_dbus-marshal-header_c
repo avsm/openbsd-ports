@@ -1,4 +1,4 @@
-$OpenBSD: patch-dbus_dbus-marshal-header_c,v 1.1 2011/06/13 17:14:58 jasper Exp $
+$OpenBSD: patch-dbus_dbus-marshal-header_c,v 1.1.2.1 2011/06/13 17:16:27 jasper Exp $
 
 Security fix for SA44896:
 From c3223ba6c401ba81df1305851312a47c485e6cd7 Mon Sep 17 00:00:00 2001

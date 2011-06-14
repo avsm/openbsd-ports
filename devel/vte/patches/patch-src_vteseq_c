@@ -1,0 +1,66 @@
+$OpenBSD: patch-src_vteseq_c,v 1.1.4.1 2011/06/14 21:59:10 jasper Exp $
+
+commit cadfb9b5a43791034f38b562bb6f58d1b4513844
+Author: Christian Persch <chpe@gnome.org>
+Date:   Fri Jun 10 17:31:58 2011 +0200
+
+[CVE-2011-2198] Limit insert-blank-characters
+Bug #652124.
+
+--- src/vteseq.c.orig	Mon Aug  9 13:38:44 2010
++++ src/vteseq.c	Tue Jun 14 23:50:07 2011
+@@ -532,9 +532,10 @@ vte_sequence_handler_offset(VteTerminal *terminal,
+ 
+ /* Call another function a given number of times, or once. */
+ static void
+-vte_sequence_handler_multiple(VteTerminal *terminal,
+-			      GValueArray *params,
+-			      VteTerminalSequenceHandler handler)
++vte_sequence_handler_multiple_limited(VteTerminal *terminal,
++                                      GValueArray *params,
++                                      VteTerminalSequenceHandler handler,
++                                      glong max)
+ {
+ 	long val = 1;
+ 	int i;
+@@ -544,14 +545,30 @@ vte_sequence_handler_multiple(VteTerminal *terminal,
+ 		value = g_value_array_get_nth(params, 0);
+ 		if (G_VALUE_HOLDS_LONG(value)) {
+ 			val = g_value_get_long(value);
+-			val = MAX(val, 1);	/* FIXME: vttest. */
++			val = CLAMP(val, 1, max);	/* FIXME: vttest. */
+ 		}
+ 	}
+ 	for (i = 0; i < val; i++)
+ 		handler (terminal, NULL);
+ }
+ 
++static void
++vte_sequence_handler_multiple(VteTerminal *terminal,
++                              GValueArray *params,
++                              VteTerminalSequenceHandler handler)
++{
++        vte_sequence_handler_multiple_limited(terminal, params, handler, G_MAXLONG);
++}
+ 
++static void
++vte_sequence_handler_multiple_r(VteTerminal *terminal,
++                                GValueArray *params,
++                                VteTerminalSequenceHandler handler)
++{
++        vte_sequence_handler_multiple_limited(terminal, params, handler,
++                                              terminal->column_count - terminal->pvt->screen->cursor_current.col);
++}
++
+ /* Manipulate certain terminal attributes. */
+ static void
+ vte_sequence_handler_decset_internal(VteTerminal *terminal,
+@@ -1570,7 +1587,7 @@ vte_sequence_handler_ic (VteTerminal *terminal, GValue
+ static void
+ vte_sequence_handler_IC (VteTerminal *terminal, GValueArray *params)
+ {
+-	vte_sequence_handler_multiple(terminal, params, vte_sequence_handler_ic);
++	vte_sequence_handler_multiple_r(terminal, params, vte_sequence_handler_ic);
+ }
+ 
+ /* Begin insert mode. */

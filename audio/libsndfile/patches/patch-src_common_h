@@ -1,0 +1,17 @@
+$OpenBSD: patch-src_common_h,v 1.1.2.1 2011/07/14 07:20:42 jasper Exp $
+
+Fix for Secunia Advisory SA45125, heap overflow (heap gets overwritten with
+byte value of 0) due to integer overflow if PAF file handler.
+
+Extracted from libsndfile 1.0.25
+
+--- src/common.h.orig	Thu Jul 14 09:15:14 2011
++++ src/common.h	Thu Jul 14 09:15:17 2011
+@@ -551,6 +551,7 @@ enum
+ 	SFE_PAF_VERSION,
+ 	SFE_PAF_UNKNOWN_FORMAT,
+ 	SFE_PAF_SHORT_HEADER,
++	SFE_PAF_BAD_CHANNELS,
+ 
+ 	SFE_SVX_NO_FORM,
+ 	SFE_SVX_NO_BODY,

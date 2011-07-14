@@ -1,0 +1,43 @@
+$OpenBSD: patch-src_paf_c,v 1.1.2.1 2011/07/14 07:20:42 jasper Exp $
+
+Fix for Secunia Advisory SA45125, heap overflow (heap gets overwritten with
+byte value of 0) due to integer overflow if PAF file handler.
+
+Extracted from libsndfile 1.0.25
+
+--- src/paf.c.orig	Fri Sep 25 10:35:25 2009
++++ src/paf.c	Thu Jul 14 09:12:28 2011
+@@ -163,6 +163,9 @@ paf_read_header	(SF_PRIVATE *psf)
+ {	PAF_FMT		paf_fmt ;
+ 	int			marker ;
+ 
++	if (psf->filelength < PAF_HEADER_LENGTH)
++		return SFE_PAF_SHORT_HEADER ;
++
+ 	memset (&paf_fmt, 0, sizeof (paf_fmt)) ;
+ 	psf_binheader_readf (psf, "pm", 0, &marker) ;
+ 
+@@ -199,8 +202,8 @@ paf_read_header	(SF_PRIVATE *psf)
+ 		psf->endian = SF_ENDIAN_BIG ;
+ 		} ;
+ 
+-	if (psf->filelength < PAF_HEADER_LENGTH)
+-		return SFE_PAF_SHORT_HEADER ;
++	if (paf_fmt.channels > SF_MAX_CHANNELS)
++		return SFE_PAF_BAD_CHANNELS ;
+ 
+ 	psf->datalength = psf->filelength - psf->dataoffset ;
+ 
+@@ -356,11 +359,10 @@ paf24_init (SF_PRIVATE *psf)
+ 	*/
+ 	psf->last_op = 0 ;
+ 
+-	if (! (psf->codec_data = malloc (paf24size)))
++	if (! (psf->codec_data = calloc (1, paf24size)))
+ 		return SFE_MALLOC_FAILED ;
+ 
+ 	ppaf24 = (PAF24_PRIVATE*) psf->codec_data ;
+-	memset (ppaf24, 0, paf24size) ;
+ 
+ 	ppaf24->channels	= psf->sf.channels ;
+ 	ppaf24->samples		= ppaf24->data ;

@@ -1,0 +1,56 @@
+$OpenBSD: patch-src_sndfile_c,v 1.1.2.1 2011/07/14 07:20:42 jasper Exp $
+
+Fix for Secunia Advisory SA45125, heap overflow (heap gets overwritten with
+byte value of 0) due to integer overflow if PAF file handler.
+
+Extracted from libsndfile 1.0.25
+
+--- src/sndfile.c.orig	Thu Dec 10 19:49:31 2009
++++ src/sndfile.c	Thu Jul 14 09:13:31 2011
+@@ -21,6 +21,7 @@
+ #include	<stdlib.h>
+ #include	<string.h>
+ #include	<ctype.h>
++#include	<assert.h>
+ 
+ #include	"sndfile.h"
+ #include	"sfendian.h"
+@@ -64,7 +65,7 @@ ErrorStruct SndfileErrors [] =
+ 
+ 	/* Private error values and their associated strings. */
+ 	{	SFE_ZERO_MAJOR_FORMAT	, "Error : major format is 0." },
+-	{	SFE_ZERO_MINOR_FORMAT	, "Error : major format is 0." },
++	{	SFE_ZERO_MINOR_FORMAT	, "Error : minor format is 0." },
+ 	{	SFE_BAD_FILE			, "File does not exist or is not a regular file (possibly a pipe?)." },
+ 	{	SFE_BAD_FILE_READ		, "File exists but no data could be read." },
+ 	{	SFE_OPEN_FAILED			, "Could not open file." },
+@@ -170,6 +171,7 @@ ErrorStruct SndfileErrors [] =
+ 	{	SFE_PAF_VERSION			, "Error in PAF file, bad version." },
+ 	{	SFE_PAF_UNKNOWN_FORMAT	, "Error in PAF file, unknown format." },
+ 	{	SFE_PAF_SHORT_HEADER	, "Error in PAF file. File shorter than minimal header." },
++	{	SFE_PAF_BAD_CHANNELS	, "Error in PAF file. Bad channel count." },
+ 
+ 	{	SFE_SVX_NO_FORM			, "Error in 8SVX / 16SV file, no 'FORM' marker." },
+ 	{	SFE_SVX_NO_BODY			, "Error in 8SVX / 16SV file, no 'BODY' marker." },
+@@ -308,6 +310,9 @@ sf_open	(const char *path, int mode, SF_INFO *sfinfo)
+ 		return	NULL ;
+ 		} ;
+ 
++	/* Ultimate sanity check. */
++	assert (sizeof (sf_count_t) == 8) ;
++
+ 	memset (psf, 0, sizeof (SF_PRIVATE)) ;
+ 	psf_init_files (psf) ;
+ 
+@@ -634,10 +651,8 @@ sf_format_check	(const SF_INFO *info)
+ 				break ;
+ 
+ 		case SF_FORMAT_PAF :
+-				if (subformat == SF_FORMAT_PCM_S8 || subformat == SF_FORMAT_PCM_16)
++				if (subformat == SF_FORMAT_PCM_S8 || subformat == SF_FORMAT_PCM_16 || subformat == SF_FORMAT_PCM_24)
+ 					return 1 ;
+-				if (subformat == SF_FORMAT_PCM_24 || subformat == SF_FORMAT_PCM_32)
+-					return 1 ;
+ 				break ;
+ 
+ 		case SF_FORMAT_SVX :

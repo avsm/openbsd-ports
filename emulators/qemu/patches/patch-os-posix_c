@@ -1,4 +1,4 @@
-$OpenBSD: patch-os-posix_c,v 1.1 2011/07/19 06:05:42 ajacoutot Exp $
+$OpenBSD: patch-os-posix_c,v 1.1.2.1 2011/07/20 17:51:55 gsoares Exp $
 
 Set groups properly for -runas.
 
@@ -7,8 +7,8 @@ is not dropped when switching to an unprivileged user.
 
 CVE-2011-2527
 
---- os-posix.c.orig	Wed Jul 13 20:04:23 2011
-+++ os-posix.c	Wed Jul 13 20:05:37 2011
+--- os-posix.c.orig	Fri Oct 15 17:56:09 2010
++++ os-posix.c	Tue Jul 19 11:11:35 2011
 @@ -31,6 +31,7 @@
  /*needed for MAP_POPULATE before including qemu-options.h */
  #include <sys/mman.h>
@@ -17,7 +17,7 @@ CVE-2011-2527
  #include <libgen.h>
  
  /* Needed early for CONFIG_BSD etc. */
-@@ -204,6 +205,11 @@ static void change_process_uid(void)
+@@ -200,6 +201,11 @@ static void change_process_uid(void)
      if (user_pwd) {
          if (setgid(user_pwd->pw_gid) < 0) {
              fprintf(stderr, "Failed to setgid(%d)\n", user_pwd->pw_gid);

@@ -1,0 +1,51 @@
+$OpenBSD: patch-tests_misc-test_c,v 1.1.2.1 2011/07/28 18:10:50 jasper Exp $
+
+* CVE-2011-2054: Fixed a security hole that caused some
+  SoupServer users to unintentionally allow accessing the
+  entire local filesystem when they thought they were only
+  providing access to a single directory. [#653258] 
+
+--- tests/misc-test.c.orig	Tue Nov 23 19:07:19 2010
++++ tests/misc-test.c	Thu Jul 28 20:08:46 2011
+@@ -917,6 +917,33 @@ do_max_conns_test (void)
+ 	soup_test_session_abort_unref (session);
+ }
+ 
++static void
++do_dot_dot_test (void)
++{
++	SoupSession *session;
++	SoupMessage *msg;
++	SoupURI *uri;
++
++	debug_printf (1, "\n'..' smuggling test\n");
++
++	session = soup_test_session_new (SOUP_TYPE_SESSION_SYNC, NULL);
++
++	uri = soup_uri_new_with_base (base_uri, "/..%2ftest");
++	msg = soup_message_new_from_uri ("GET", uri);
++	soup_uri_free (uri);
++
++	soup_session_send_message (session, msg);
++
++	if (msg->status_code != SOUP_STATUS_BAD_REQUEST) {
++		debug_printf (1, "      FAILED: %d %s (expected Bad Request)\n",
++			      msg->status_code, msg->reason_phrase);
++		errors++;
++	}
++	g_object_unref (msg);
++
++	soup_test_session_abort_unref (session);
++}
++
+ int
+ main (int argc, char **argv)
+ {
+@@ -948,6 +975,7 @@ main (int argc, char **argv)
+ 	do_accept_language_test ();
+ 	do_persistent_connection_timeout_test ();
+ 	do_max_conns_test ();
++	do_dot_dot_test ();
+ 
+ 	soup_uri_free (base_uri);
+ 	soup_test_server_quit_unref (server);

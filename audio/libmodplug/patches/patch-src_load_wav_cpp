@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_load_wav_cpp,v 1.1 2011/08/18 17:56:48 jasper Exp $
+$OpenBSD: patch-src_load_wav_cpp,v 1.1.2.1 2011/08/18 17:57:03 jasper Exp $
 
 Fix integer overflow (SA45131/A)
 From upstream git: 2d4c56de314ab13e4437bd8b609f0b751066eee8

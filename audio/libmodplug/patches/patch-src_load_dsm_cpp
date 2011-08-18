@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_load_dsm_cpp,v 1.1 2011/08/18 17:56:47 jasper Exp $
+$OpenBSD: patch-src_load_dsm_cpp,v 1.1.2.1 2011/08/18 17:57:03 jasper Exp $
 
 Fix AMS and DSM too large by one - SA45131/C
 From upstream git: 26243ab9fe1171f70053e9aec4b20e9f7de9e4ef

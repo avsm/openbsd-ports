@@ -1,4 +1,4 @@
-# $OpenBSD: Makefile,v 1.55 2011/07/28 10:51:54 ajacoutot Exp $
+# $OpenBSD: Makefile,v 1.55.2.1 2011/08/19 13:41:13 jasper Exp $
 
 COMMENT-main =		network and application monitoring - agent
 COMMENT-server =	network and application monitoring - server
@@ -14,7 +14,7 @@ FULLPKGPATH-web =	net/zabbix,-web
 CATEGORIES =		net
 
 REVISION-main=		1
-REVISION-web=		4
+REVISION-web=		5
 REVISION-server=	2
 
 MAJV =			${VERSION:C/^([0-9]+\.[0-9]+).*/\1/}

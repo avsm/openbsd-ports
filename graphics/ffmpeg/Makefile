@@ -1,11 +1,11 @@
-# $OpenBSD: Makefile,v 1.76 2011/08/03 18:44:07 dcoppa Exp $
+# $OpenBSD: Makefile,v 1.76.2.1 2011/08/21 16:51:13 jasper Exp $
 
 COMMENT=	audio/video converter and streamer
 
 V=		20110408
 DISTNAME=	ffmpeg-git-${V}
 PKGNAME=	ffmpeg-${V}
-REVISION=	4
+REVISION=	5
 CATEGORIES=	graphics multimedia
 MASTER_SITES=	http://comstyle.com/source/
 

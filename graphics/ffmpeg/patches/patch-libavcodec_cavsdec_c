@@ -1,4 +1,4 @@
-$OpenBSD: patch-libavcodec_cavsdec_c,v 1.1 2011/08/16 19:01:47 sthen Exp $
+$OpenBSD: patch-libavcodec_cavsdec_c,v 1.1.2.1 2011/08/21 16:51:13 jasper Exp $
 
 Fix insufficient boundary check. oCERT #2011-002
 

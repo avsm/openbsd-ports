@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# $OpenBSD: courier_imap_ssl.rc,v 1.1 2011/08/22 07:57:25 giovanni Exp $
+
+daemon="${TRUEPREFIX}/libexec/imapd-ssl.rc"
+
+. /etc/rc.d/rc.subr
+
+pexp=".*courierlogger.*imapd-ssl.pid"
+
+rc_start() {
+	${rcexec} "${daemon} start"
+}
+
+rc_stop() {
+	${daemon} stop
+}
+
+rc_cmd $1

@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $OpenBSD: courier_imap_ssl.rc,v 1.1 2011/08/22 07:57:25 giovanni Exp $
+# $OpenBSD: courier_imap_ssl.rc,v 1.1.2.1 2011/08/22 08:48:28 giovanni Exp $
 
 daemon="${TRUEPREFIX}/libexec/imapd-ssl.rc"
 

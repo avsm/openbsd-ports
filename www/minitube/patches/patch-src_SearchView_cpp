@@ -1,4 +1,4 @@
-$OpenBSD: patch-src_SearchView_cpp,v 1.3 2011/08/18 10:40:15 dcoppa Exp $
+$OpenBSD: patch-src_SearchView_cpp,v 1.3.2.1 2011/08/24 07:54:18 jasper Exp $
 
 Disable checking for new versions at startup
 

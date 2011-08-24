@@ -1,4 +1,4 @@
-$OpenBSD: patch-lib_FlashVideo_Site_Youtube_pm,v 1.1 2011/08/16 08:23:09 sthen Exp $
+$OpenBSD: patch-lib_FlashVideo_Site_Youtube_pm,v 1.1.2.1 2011/08/24 07:52:00 jasper Exp $
 --- lib/FlashVideo/Site/Youtube.pm.orig	Fri Aug  5 18:00:19 2011
 +++ lib/FlashVideo/Site/Youtube.pm	Fri Aug  5 18:00:42 2011
 @@ -133,11 +133,61 @@ sub find_video {

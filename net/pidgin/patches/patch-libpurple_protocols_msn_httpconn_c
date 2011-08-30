@@ -1,0 +1,17 @@
+$OpenBSD: patch-libpurple_protocols_msn_httpconn_c,v 1.1.2.1 2011/08/30 07:15:24 jasper Exp $
+
+Security fix for CVE-2011-3184, Remote crash in MSN protocol plugin
+Fix from upstream git: 16af0661899a978b4fedc1c165965b85009013d1
+
+--- libpurple/protocols/msn/httpconn.c.orig	Mon Aug 29 13:02:56 2011
++++ libpurple/protocols/msn/httpconn.c	Mon Aug 29 13:03:10 2011
+@@ -111,8 +111,8 @@ msn_httpconn_parse_data(MsnHttpConn *httpconn, const c
+ 			return TRUE;
+ 		}
+ 
+-		buf = s;
+ 		size -= (s - buf);
++		buf = s;
+ 	}
+ 
+ 	if ((s = strstr(buf, "\r\n\r\n")) == NULL)

@@ -1,0 +1,94 @@
+$OpenBSD: patch-rsvg-private_h,v 1.1.2.1 2011/09/07 07:32:18 jasper Exp $
+
+From 34c95743ca692ea0e44778e41a7c0a129363de84 Mon Sep 17 00:00:00 2001
+From: Christian Persch <chpe@gnome.org>
+Date: Thu, 01 Sep 2011 19:35:38 +0000
+Subject: Store node type separately in RsvgNode
+
+The node name (formerly RsvgNode:type) cannot be used to infer
+the sub-type of RsvgNode that we're dealing with, since for unknown
+elements we put type = node-name. This lead to a (potentially exploitable)
+crash e.g. when the element name started with "fe" which tricked
+the old code into considering it as a RsvgFilterPrimitive.
+
+CVE-2011-3146
+
+https://bugzilla.gnome.org/show_bug.cgi?id=658014
+
+--- rsvg-private.h.orig	Sat Jan  1 13:18:27 2011
++++ rsvg-private.h	Wed Sep  7 09:29:58 2011
+@@ -255,15 +255,73 @@ struct RsvgSizeCallbackData {
+ 
+ void _rsvg_size_callback (int *width, int *height, gpointer data);
+ 
++typedef enum {
++    RSVG_NODE_TYPE_INVALID = 0,
++
++    RSVG_NODE_TYPE_CHARS,
++    RSVG_NODE_TYPE_CIRCLE,
++    RSVG_NODE_TYPE_CLIP_PATH,
++    RSVG_NODE_TYPE_COMPONENT_TRANFER_FUNCTION,
++    RSVG_NODE_TYPE_DEFS,
++    RSVG_NODE_TYPE_ELLIPSE,
++    RSVG_NODE_TYPE_FILTER,
++    RSVG_NODE_TYPE_GROUP,
++    RSVG_NODE_TYPE_IMAGE,
++    RSVG_NODE_TYPE_LIGHT_SOURCE,
++    RSVG_NODE_TYPE_LINE,
++    RSVG_NODE_TYPE_LINEAR_GRADIENT,
++    RSVG_NODE_TYPE_MARKER,
++    RSVG_NODE_TYPE_MASK,
++    RSVG_NODE_TYPE_PATH,
++    RSVG_NODE_TYPE_PATTERN,
++    RSVG_NODE_TYPE_POLYGON,
++    RSVG_NODE_TYPE_POLYLINE,
++    RSVG_NODE_TYPE_RADIAL_GRADIENT,
++    RSVG_NODE_TYPE_RECT,
++    RSVG_NODE_TYPE_STOP,
++    RSVG_NODE_TYPE_SVG,
++    RSVG_NODE_TYPE_SWITCH,
++    RSVG_NODE_TYPE_SYMBOL,
++    RSVG_NODE_TYPE_TEXT,
++    RSVG_NODE_TYPE_TREF,
++    RSVG_NODE_TYPE_TSPAN,
++    RSVG_NODE_TYPE_USE,
++
++    /* Filter primitives */
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE = 64,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_BLEND,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_COLOUR_MATRIX,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_COMPONENT_TRANSFER,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_COMPOSITE,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_CONVOLVE_MATRIX,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_DIFFUSE_LIGHTING,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_DISPLACEMENT_MAP,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_ERODE,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_FLOOD,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_GAUSSIAN_BLUR,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_IMAGE,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_MERGE,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_MERGE_NODE,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_OFFSET,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_SPECULAR_LIGHTING,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_TILE,
++    RSVG_NODE_TYPE_FILTER_PRIMITIVE_TURBULENCE,
++
++} RsvgNodeType;
++
+ struct _RsvgNode {
+     RsvgState *state;
+     RsvgNode *parent;
+-    GString *type;
+     GPtrArray *children;
++    RsvgNodeType type;
++    const char *name; /* owned by the xmlContext, invalid after parsing! */
+     void (*free) (RsvgNode * self);
+     void (*draw) (RsvgNode * self, RsvgDrawingCtx * ctx, int dominate);
+     void (*set_atts) (RsvgNode * self, RsvgHandle * ctx, RsvgPropertyBag *);
+ };
++
++#define RSVG_NODE_TYPE(node)                ((node)->type)
++#define RSVG_NODE_IS_FILTER_PRIMITIVE(node) (RSVG_NODE_TYPE((node)) & RSVG_NODE_TYPE_FILTER_PRIMITIVE)
+ 
+ struct _RsvgNodeChars {
+     RsvgNode super;

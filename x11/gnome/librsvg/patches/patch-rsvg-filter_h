@@ -1,0 +1,28 @@
+$OpenBSD: patch-rsvg-filter_h,v 1.1.2.1 2011/09/07 07:32:18 jasper Exp $
+
+From 34c95743ca692ea0e44778e41a7c0a129363de84 Mon Sep 17 00:00:00 2001
+From: Christian Persch <chpe@gnome.org>
+Date: Thu, 01 Sep 2011 19:35:38 +0000
+Subject: Store node type separately in RsvgNode
+
+The node name (formerly RsvgNode:type) cannot be used to infer
+the sub-type of RsvgNode that we're dealing with, since for unknown
+elements we put type = node-name. This lead to a (potentially exploitable)
+crash e.g. when the element name started with "fe" which tricked
+the old code into considering it as a RsvgFilterPrimitive.
+
+CVE-2011-3146
+
+https://bugzilla.gnome.org/show_bug.cgi?id=658014
+
+--- rsvg-filter.h.orig	Sun May 30 23:21:34 2010
++++ rsvg-filter.h	Wed Sep  7 09:29:58 2011
+@@ -64,7 +64,7 @@ RsvgNode    *rsvg_new_filter_primitive_displacement_ma
+ RsvgNode    *rsvg_new_filter_primitive_turbulence           (void);
+ RsvgNode    *rsvg_new_filter_primitive_image                (void);
+ RsvgNode    *rsvg_new_filter_primitive_diffuse_lighting	    (void);
+-RsvgNode    *rsvg_new_filter_primitive_light_source	        (char type);
++RsvgNode    *rsvg_new_node_light_source	                    (char type);
+ RsvgNode    *rsvg_new_filter_primitive_specular_lighting    (void);
+ RsvgNode    *rsvg_new_filter_primitive_tile                 (void);
+ 

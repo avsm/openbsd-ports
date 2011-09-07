@@ -1,0 +1,28 @@
+$OpenBSD: patch-rsvg-image_c,v 1.1.2.1 2011/09/07 07:32:18 jasper Exp $
+
+From 34c95743ca692ea0e44778e41a7c0a129363de84 Mon Sep 17 00:00:00 2001
+From: Christian Persch <chpe@gnome.org>
+Date: Thu, 01 Sep 2011 19:35:38 +0000
+Subject: Store node type separately in RsvgNode
+
+The node name (formerly RsvgNode:type) cannot be used to infer
+the sub-type of RsvgNode that we're dealing with, since for unknown
+elements we put type = node-name. This lead to a (potentially exploitable)
+crash e.g. when the element name started with "fe" which tricked
+the old code into considering it as a RsvgFilterPrimitive.
+
+CVE-2011-3146
+
+https://bugzilla.gnome.org/show_bug.cgi?id=658014
+
+--- rsvg-image.c.orig	Sat Jan  1 13:18:27 2011
++++ rsvg-image.c	Wed Sep  7 09:29:58 2011
+@@ -356,7 +356,7 @@ rsvg_new_image (void)
+ {
+     RsvgNodeImage *image;
+     image = g_new (RsvgNodeImage, 1);
+-    _rsvg_node_init (&image->super);
++    _rsvg_node_init (&image->super, RSVG_NODE_TYPE_IMAGE);
+     g_assert (image->super.state);
+     image->img = NULL;
+     image->preserve_aspect_ratio = RSVG_ASPECT_RATIO_XMID_YMID;

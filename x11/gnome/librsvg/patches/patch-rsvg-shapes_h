@@ -1,0 +1,28 @@
+$OpenBSD: patch-rsvg-shapes_h,v 1.1.2.1 2011/09/07 07:32:18 jasper Exp $
+
+From 34c95743ca692ea0e44778e41a7c0a129363de84 Mon Sep 17 00:00:00 2001
+From: Christian Persch <chpe@gnome.org>
+Date: Thu, 01 Sep 2011 19:35:38 +0000
+Subject: Store node type separately in RsvgNode
+
+The node name (formerly RsvgNode:type) cannot be used to infer
+the sub-type of RsvgNode that we're dealing with, since for unknown
+elements we put type = node-name. This lead to a (potentially exploitable)
+crash e.g. when the element name started with "fe" which tricked
+the old code into considering it as a RsvgFilterPrimitive.
+
+CVE-2011-3146
+
+https://bugzilla.gnome.org/show_bug.cgi?id=658014
+
+--- rsvg-shapes.h.orig	Sun May 30 23:21:34 2010
++++ rsvg-shapes.h	Wed Sep  7 09:29:58 2011
+@@ -34,7 +34,7 @@
+ 
+ G_BEGIN_DECLS 
+ 
+-RsvgNode * rsvg_new_path (void);
++RsvgNode *rsvg_new_path (void);
+ RsvgNode *rsvg_new_polygon (void);
+ RsvgNode *rsvg_new_polyline (void);
+ RsvgNode *rsvg_new_line (void);

@@ -1,0 +1,55 @@
+$OpenBSD: patch-rsvg-mask_c,v 1.1.2.1 2011/09/07 07:32:18 jasper Exp $
+
+From 34c95743ca692ea0e44778e41a7c0a129363de84 Mon Sep 17 00:00:00 2001
+From: Christian Persch <chpe@gnome.org>
+Date: Thu, 01 Sep 2011 19:35:38 +0000
+Subject: Store node type separately in RsvgNode
+
+The node name (formerly RsvgNode:type) cannot be used to infer
+the sub-type of RsvgNode that we're dealing with, since for unknown
+elements we put type = node-name. This lead to a (potentially exploitable)
+crash e.g. when the element name started with "fe" which tricked
+the old code into considering it as a RsvgFilterPrimitive.
+
+CVE-2011-3146
+
+https://bugzilla.gnome.org/show_bug.cgi?id=658014
+
+--- rsvg-mask.c.orig	Sun May 30 23:21:34 2010
++++ rsvg-mask.c	Wed Sep  7 09:29:58 2011
+@@ -74,7 +74,7 @@ rsvg_new_mask (void)
+     RsvgMask *mask;
+ 
+     mask = g_new (RsvgMask, 1);
+-    _rsvg_node_init (&mask->super);
++    _rsvg_node_init (&mask->super, RSVG_NODE_TYPE_MASK);
+     mask->maskunits = objectBoundingBox;
+     mask->contentunits = userSpaceOnUse;
+     mask->x = _rsvg_css_parse_length ("0");
+@@ -113,7 +113,7 @@ rsvg_mask_parse (const RsvgDefs * defs, const char *st
+         val = rsvg_defs_lookup (defs, name);
+         g_free (name);
+ 
+-        if (val && (!strcmp (val->type->str, "mask")))
++        if (val && RSVG_NODE_TYPE (val) == RSVG_NODE_TYPE_MASK)
+             return val;
+     }
+     return NULL;
+@@ -130,7 +130,7 @@ rsvg_clip_path_parse (const RsvgDefs * defs, const cha
+         val = rsvg_defs_lookup (defs, name);
+         g_free (name);
+ 
+-        if (val && (!strcmp (val->type->str, "clipPath")))
++        if (val && RSVG_NODE_TYPE (val) == RSVG_NODE_TYPE_CLIP_PATH)
+             return val;
+     }
+     return NULL;
+@@ -168,7 +168,7 @@ rsvg_new_clip_path (void)
+     RsvgClipPath *clip_path;
+ 
+     clip_path = g_new (RsvgClipPath, 1);
+-    _rsvg_node_init (&clip_path->super);
++    _rsvg_node_init (&clip_path->super, RSVG_NODE_TYPE_CLIP_PATH);
+     clip_path->units = userSpaceOnUse;
+     clip_path->super.set_atts = rsvg_clip_path_set_atts;
+     clip_path->super.free = _rsvg_node_free;

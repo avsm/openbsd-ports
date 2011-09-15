@@ -1,4 +1,4 @@
-$OpenBSD: patch-packages_xpce_src_img_gifread_c,v 1.1 2011/09/15 15:36:54 jasper Exp $
+$OpenBSD: patch-packages_xpce_src_img_gifread_c,v 1.1.2.1 2011/09/15 15:37:03 jasper Exp $
 
 From bb328029beb148691edc031d9db9cf0a503c8247 Mon Sep 17 00:00:00 2001
 From: Jan Wielemaker <J.Wielemaker@cs.vu.nl>

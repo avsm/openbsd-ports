@@ -1,0 +1,29 @@
+$OpenBSD: patch-pngrutil_c,v 1.2.12.1 2011/09/24 23:43:05 william Exp $
+
+Resolve CVE-2011-3328, from upstream
+
+
+--- pngrutil.c.orig	Fri Sep 23 20:26:12 2011
++++ pngrutil.c	Fri Sep 23 20:27:28 2011
+@@ -1037,12 +1037,15 @@ png_handle_cHRM(png_structp png_ptr, png_infop info_pt
+           */
+          png_uint_32 w = y_red + y_green + y_blue;
+ 
+-         png_ptr->rgb_to_gray_red_coeff   = (png_uint_16)(((png_uint_32)y_red *
+-            32768)/w);
+-         png_ptr->rgb_to_gray_green_coeff = (png_uint_16)(((png_uint_32)y_green
+-            * 32768)/w);
+-         png_ptr->rgb_to_gray_blue_coeff  = (png_uint_16)(((png_uint_32)y_blue *
+-            32768)/w);
++         if (w != 0)
++         {
++            png_ptr->rgb_to_gray_red_coeff   = (png_uint_16)(((png_uint_32)y_red *
++               32768)/w);
++            png_ptr->rgb_to_gray_green_coeff = (png_uint_16)(((png_uint_32)y_green
++               * 32768)/w);
++            png_ptr->rgb_to_gray_blue_coeff  = (png_uint_16)(((png_uint_32)y_blue *
++               32768)/w);
++         }
+       }
+    }
+ #endif

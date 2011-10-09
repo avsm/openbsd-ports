@@ -1,6 +1,6 @@
---- lib/Crypto/Hash/__init__.py.orig	Fri Sep 30 12:13:19 2011
-+++ lib/Crypto/Hash/__init__.py	Fri Sep 30 12:13:38 2011
-@@ -32,13 +32,12 @@
+--- lib/Crypto/Hash/__init__.py.orig	Fri Aug 27 06:41:55 2010
++++ lib/Crypto/Hash/__init__.py	Sun Oct  9 17:06:47 2011
+@@ -32,13 +32,12 @@ The hashing modules here all support the interface des
  
  Submodules:
  Crypto.Hash.HMAC          RFC 2104: Keyed-Hashing for Message Authentication

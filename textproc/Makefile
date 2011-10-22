@@ -94,6 +94,7 @@
      SUBDIR += mxml
      SUBDIR += namazu
      SUBDIR += ocaml-rss
+     SUBDIR += ocaml-text
      SUBDIR += ocaml-xml-light
      SUBDIR += odt2txt
      SUBDIR += oniguruma

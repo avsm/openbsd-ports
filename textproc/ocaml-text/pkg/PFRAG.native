@@ -1,0 +1,5 @@
+@comment $OpenBSD$
+lib/ocaml/site-lib/text/text-bigarray.a
+lib/ocaml/site-lib/text/text-bigarray.cmxa
+lib/ocaml/site-lib/text/text.a
+lib/ocaml/site-lib/text/text.cmxa

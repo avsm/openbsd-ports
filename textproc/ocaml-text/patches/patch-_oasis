@@ -1,0 +1,12 @@
+$OpenBSD$
+--- _oasis.orig	Tue Oct 11 09:41:47 2011
++++ _oasis	Tue Oct 11 09:41:59 2011
+@@ -73,7 +73,7 @@ Document "text-manual"
+   Title: OCamlText user manual
+   Type: custom (0.2)
+   Install: true
+-  XCustom: make -C manual manual.pdf
++  XCustom: gmake -C manual manual.pdf
+   DataFiles: manual/manual.pdf
+   InstallDir: $pdfdir
+ 

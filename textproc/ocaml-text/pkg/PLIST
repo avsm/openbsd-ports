@@ -1,0 +1,17 @@
+@comment $OpenBSD$
+%%SHARED%%
+lib/ocaml/
+lib/ocaml/site-lib/
+lib/ocaml/site-lib/text/
+lib/ocaml/site-lib/text/META
+lib/ocaml/site-lib/text/encoding.cmi
+lib/ocaml/site-lib/text/encoding.mli
+lib/ocaml/site-lib/text/encoding_bigarray.cmi
+lib/ocaml/site-lib/text/encoding_bigarray.mli
+lib/ocaml/site-lib/text/libtext-bigarray.a
+lib/ocaml/site-lib/text/libtext.a
+lib/ocaml/site-lib/text/text-bigarray.cma
+lib/ocaml/site-lib/text/text.cma
+lib/ocaml/site-lib/text/text.cmi
+lib/ocaml/site-lib/text/text.mli
+%%native%%

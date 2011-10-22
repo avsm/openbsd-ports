@@ -1,0 +1,10 @@
+@comment $OpenBSD$
+lib/ocaml/
+lib/ocaml/site-lib/
+lib/ocaml/site-lib/react/
+lib/ocaml/site-lib/react/META
+lib/ocaml/site-lib/react/react.cmi
+lib/ocaml/site-lib/react/react.cmo
+lib/ocaml/site-lib/react/react.ml
+lib/ocaml/site-lib/react/react.mli
+%%native%%

@@ -1,0 +1,9 @@
+$OpenBSD$
+--- src/META.orig	Sat Oct 22 19:10:21 2011
++++ src/META	Sat Oct 22 19:10:34 2011
+@@ -3,4 +3,4 @@ description = "Applicative events and signals for OCam
+ archive(byte) = "react.cmo"
+ archive(native) = "react.cmx"
+ archive(plugin,native) = "react.cmxs"
+-directory = "+react"
++directory = "+site-lib/react"

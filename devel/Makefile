@@ -1024,6 +1024,7 @@
      SUBDIR += rapidsvn
      SUBDIR += rats
      SUBDIR += re2c
+     SUBDIR += react
      SUBDIR += readline
      SUBDIR += remake
      SUBDIR += rsvndump

@@ -1,0 +1,13 @@
+@comment $OpenBSD$
+%%SHARED%%
+lib/ocaml/site-lib/ssl/
+lib/ocaml/site-lib/ssl/META
+lib/ocaml/site-lib/ssl/libssl_stubs.a
+lib/ocaml/site-lib/ssl/libssl_threads_stubs.a
+lib/ocaml/site-lib/ssl/ssl.cma
+lib/ocaml/site-lib/ssl/ssl.cmi
+lib/ocaml/site-lib/ssl/ssl.mli
+lib/ocaml/site-lib/ssl/ssl_threads.cma
+lib/ocaml/site-lib/ssl/ssl_threads.cmi
+lib/ocaml/site-lib/ssl/ssl_threads.mli
+%%native%%

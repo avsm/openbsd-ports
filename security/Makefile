@@ -107,6 +107,7 @@
      SUBDIR += nipper
      SUBDIR += nss
      SUBDIR += oath-toolkit
+     SUBDIR += ocaml-ssl
      SUBDIR += onesixtyone
      SUBDIR += opencdk
      SUBDIR += openct

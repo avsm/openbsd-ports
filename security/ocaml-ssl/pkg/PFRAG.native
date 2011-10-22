@@ -1,0 +1,7 @@
+@comment $OpenBSD$
+lib/ocaml/site-lib/ssl/ssl.a
+lib/ocaml/site-lib/ssl/ssl.cmx
+lib/ocaml/site-lib/ssl/ssl.cmxa
+lib/ocaml/site-lib/ssl/ssl_threads.a
+lib/ocaml/site-lib/ssl/ssl_threads.cmx
+lib/ocaml/site-lib/ssl/ssl_threads.cmxa

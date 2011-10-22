@@ -2,8 +2,7 @@
 
 COMMENT=	Objective Caml package manager
 CATEGORIES=	sysutils
-DISTNAME=	findlib-1.2.4
-REVISION =	2
+DISTNAME=	findlib-1.2.7
 MASTER_SITES=	http://www.ocaml-programming.de/packages/
 
 MAINTAINER=	Anil Madhavapeddy <avsm@openbsd.org>

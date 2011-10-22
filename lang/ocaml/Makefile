@@ -8,8 +8,8 @@ NOT_FOR_ARCHS=	hppa
 COMMENT=	ML language based on complete class-based objective system
 
 BASENAME=	ocaml-3.12
-DISTNAME=	${BASENAME}.0
-REVISION=	3
+DISTNAME=	${BASENAME}.1
+REVISION=	0
 CATEGORIES=	lang
 MASTER_SITES=	http://caml.inria.fr/pub/distrib/${BASENAME}/
 DOCFILES=	${BASENAME}-refman.html.tar.gz

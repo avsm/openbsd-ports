@@ -1,0 +1,22 @@
+@comment $OpenBSD$
+lib/ocaml/site-lib/fieldslib/
+lib/ocaml/site-lib/fieldslib/META
+lib/ocaml/site-lib/fieldslib/fieldslib.cma
+lib/ocaml/site-lib/fieldslib/fieldslib.cmi
+lib/ocaml/site-lib/fieldslib/pa_fields_conv.cma
+lib/ocaml/site-lib/fieldslib/pa_fields_conv.cmi
+lib/ocaml/site-lib/fieldslib/pa_fields_conv.mli
+share/doc/fieldslib/
+share/doc/fieldslib/Field.html
+share/doc/fieldslib/index.html
+share/doc/fieldslib/index_attributes.html
+share/doc/fieldslib/index_class_types.html
+share/doc/fieldslib/index_classes.html
+share/doc/fieldslib/index_exceptions.html
+share/doc/fieldslib/index_methods.html
+share/doc/fieldslib/index_module_types.html
+share/doc/fieldslib/index_modules.html
+share/doc/fieldslib/index_types.html
+share/doc/fieldslib/index_values.html
+share/doc/fieldslib/style.css
+share/doc/fieldslib/type_Field.html

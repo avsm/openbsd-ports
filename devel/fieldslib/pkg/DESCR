@@ -1,0 +1,5 @@
+This library defines a syntax extension for OCaml using Camlp4
+thatcan be used to define first class values representing record
+fields, and additional routines, to get and set record fields,
+iterate and fold over all fields of a record and create new record
+values.

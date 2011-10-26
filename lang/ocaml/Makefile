@@ -76,6 +76,12 @@ post-install:
 		${PREFIX}/share/doc/ocaml/html/libref
 	@strip ${PREFIX}/bin/ocamlrun ${PREFIX}/bin/ocamlyacc
 	@${INSTALL_DATA} ${WRKSRC}/LICENSE ${PREFIX}/share/doc/ocaml
+	${INSTALL_DATA_DIR} ${PREFIX}/lib/ocaml/typing 
+	${INSTALL_DATA_DIR} ${PREFIX}/lib/ocaml/parsing
+	${INSTALL_DATA_DIR} ${PREFIX}/lib/ocaml/utils
+	${INSTALL_DATA} ${WRKBUILD}/typing/* ${PREFIX}/lib/ocaml/typing/
+	${INSTALL_DATA} ${WRKBUILD}/parsing/* ${PREFIX}/lib/ocaml/parsing/
+	${INSTALL_DATA} ${WRKBUILD}/utils/* ${PREFIX}/lib/ocaml/utils/
 
 # PFRAG.native was generated from PLIST with:
 # egrep '(ocamlopt|\.cmx|\.cmxa|\.cmxs|\.opt|opt\.1|opt.cmi|\.native|\.o)$'

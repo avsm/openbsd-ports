@@ -1,0 +1,203 @@
+$OpenBSD$
+--- lib/unix_stubs.c.orig	Wed Oct 26 23:45:31 2011
++++ lib/unix_stubs.c	Wed Oct 26 23:45:38 2011
+@@ -29,10 +29,10 @@
+ #include <string.h>
+ #include <pthread.h>
+ /* Darwin needs this to be included before if.h*/
+-#ifdef __APPLE__
++#if defined(__APPLE__) || defined(__OpenBSD__)
+ #define _POSIX_SOURCE
+ #include <sys/socket.h>
+-#endif
++#endif 
+ #include <sys/uio.h>
+ #include <sys/utsname.h>
+ #include <sys/file.h>
+@@ -50,7 +50,9 @@
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ #include <fnmatch.h>
++#if !defined(__OpenBSD__)
+ #include <wordexp.h>
++#endif
+ #include <stdio.h>
+ #include <assert.h>
+ #include <time.h>
+@@ -60,6 +62,12 @@
+ #include <sys/mman.h>
+ #include <math.h>
+ 
++#if defined(__OpenBSD__)
++#define stat64 stat
++#define lstat64 lstat
++#define fstat64 fstat
++#endif
++
+ #include "ocaml_utils.h"
+ 
+ CAMLprim value unix_error_stub(value v_errcode, value v_cmdname, value cmd_arg)
+@@ -626,8 +634,6 @@ CAMLprim value unix_fdatasync(value v_fd)
+   if (ret == -1) uerror("fdatasync", Nothing);
+   return Val_unit;
+ }
+-#else
+-#warning "_POSIX_SYNCHRONIZED_IO undefined or <= 0; unix_fdatasync undefined"
+ #endif
+ 
+ CAMLprim value unix_dirfd(value v_dh)
+@@ -780,6 +786,7 @@ static inline void decode_sigset(value vset, sigset_t 
+   }
+ }
+ 
++#if !defined(__OpenBSD__)
+ CAMLprim value unix_pselect_stub(
+   value v_rfds, value v_wfds, value v_efds, value v_timeout, value v_sigmask)
+ {
+@@ -823,11 +830,18 @@ CAMLprim value unix_pselect_stub(
+ 
+   return v_res;
+ }
++#endif
+ 
+-
+ /* Clock functions */
+ 
+-#if defined(_POSIX_MONOTONIC_CLOCK) && (_POSIX_MONOTONIC_CLOCK > -1)
++#if defined(CLOCK_PROCESS_CPUTIME_ID)
++#   define CLOCK_MODE CLOCK_PROCESS_CPUTIME_ID
++#elif defined(CLOCK_PROF)
++#   define CLOCK_MODE CLOCK_PROF
++#else
++#   define CLOCK_MODE CLOCK_REALTIME
++#endif
++
+ #define clockid_t_val(v_cl) ((clockid_t) Nativeint_val(v_cl))
+ 
+ CAMLprim value unix_clock_gettime(value v_cl)
+@@ -868,6 +882,7 @@ static inline pthread_t pthread_t_val(value __unused v
+   return pthread_self();
+ }
+ 
++#if !defined(__OpenBSD__)
+ CAMLprim value unix_pthread_getcpuclockid(value v_tid)
+ {
+   clockid_t c;
+@@ -875,22 +890,19 @@ CAMLprim value unix_pthread_getcpuclockid(value v_tid)
+     uerror("pthread_getcpuclockid", Nothing);
+   return caml_copy_nativeint(c);
+ }
++#endif
+ 
+ CAMLprim value unix_clock_process_cputime_id_stub(value __unused v_unit)
+ {
+-  return caml_copy_nativeint(CLOCK_PROCESS_CPUTIME_ID);
++  return caml_copy_nativeint(CLOCK_MODE);
+ }
+ 
+ CAMLprim value unix_clock_thread_cputime_id_stub(value __unused v_unit)
+ {
+-  return caml_copy_nativeint(CLOCK_THREAD_CPUTIME_ID);
++  return caml_copy_nativeint(CLOCK_MODE);
+ }
+ 
+-#else
+-#warning "POSIX MON not present; clock functions undefined"
+-#endif
+ 
+-
+ /* Resource limits */
+ 
+ static inline int resource_val(value v_resource)
+@@ -903,7 +915,9 @@ static inline int resource_val(value v_resource)
+     case 3 : resource = RLIMIT_FSIZE; break;
+     case 4 : resource = RLIMIT_NOFILE; break;
+     case 5 : resource = RLIMIT_STACK; break;
++#if !defined(__OpenBSD__)
+     case 6 : resource = RLIMIT_AS; break;
++#endif
+     default :
+       /* impossible */
+       caml_failwith("resource_val: unknown sum tag");
+@@ -1012,8 +1026,10 @@ CAMLprim value unix_sysconf(value v_name)
+     case 5 : name = _SC_PAGESIZE; break;
+     case 6 : name = _SC_RE_DUP_MAX; break;
+     case 7 : name = _SC_STREAM_MAX; break;
++#if !defined(__OpenBSD__)
+     case 8 : name = _SC_SYMLOOP_MAX; break;
+     case 9 : name = _SC_TTY_NAME_MAX; break;
++#endif
+     case 10 : name = _SC_TZNAME_MAX; break;
+     case 11 : name = _SC_VERSION; break;
+     /* We think this might work on Solaris, too, but don't have any boxes
+@@ -1022,7 +1038,9 @@ CAMLprim value unix_sysconf(value v_name)
+     case 12 : name = _SC_PHYS_PAGES; break;
+     case 13 : name = _SC_AVPHYS_PAGES; break;
+ #endif
++#if !defined(__OpenBSD__)
+     case 14 : name = _SC_IOV_MAX; break;
++#endif
+     default :
+       /* impossible */
+       caml_failwith("unix_sysconf: unknown sum tag");
+@@ -1088,8 +1106,6 @@ CAMLprim value unix_mutex_timedlock(value v_mtx, value
+   caml_pthread_check(ret, "Mutex.timedlock");
+   return Val_true;
+ }
+-#else
+-#warning "POSIX TMO not present; unix_mutex_timedlock undefined"
+ #endif
+ 
+ CAMLprim value unix_condition_timedwait(value v_cnd, value v_mtx, value v_timeo)
+@@ -1138,7 +1154,6 @@ static struct custom_operations caml_mutex_ops = {
+ 
+ };
+ 
+-#if defined(_XOPEN_UNIX) && (_XOPEN_UNIX > 0)
+ CAMLprim value unix_create_error_checking_mutex(value __unused v_unit)
+ {
+   pthread_mutex_t *mtx;
+@@ -1156,9 +1171,6 @@ CAMLprim value unix_create_error_checking_mutex(value 
+   Mutex_val(v_res) = mtx;
+   return v_res;
+ }
+-#else
+-#warn "XOPEN_UNIX not defined or = 0; unix_create_error_checking_mutex not available"
+-#endif
+ 
+ /* Pathname resolution */
+ 
+@@ -1301,6 +1313,9 @@ CAMLprim value unix_fnmatch(value v_flags, value v_glo
+ 
+ CAMLprim value unix_wordexp_make_flags(value v_flags)
+ {
++#if defined(__OpenBSD__)
++  caml_failwith("wordexp not available");
++#else
+   int flags = 0, i = Wosize_val(v_flags);
+   while (--i >= 0) {
+     switch (Int_val(Field(v_flags, i))) {
+@@ -1310,11 +1325,14 @@ CAMLprim value unix_wordexp_make_flags(value v_flags)
+     }
+   }
+   return caml_copy_int32(flags);
++#endif
+ }
+ 
+ CAMLprim value unix_wordexp(value v_flags, value v_str)
+ {
+-  
++#if defined(__OpenBSD__)
++  caml_failwith("wordexp not available");
++#else
+   CAMLparam0();
+   CAMLlocal1(v_res);
+   int flags = Int32_val(v_flags);
+@@ -1343,6 +1361,7 @@ CAMLprim value unix_wordexp(value v_flags, value v_str
+     case WRDE_SYNTAX : caml_failwith("wordexp: syntax error");
+     default : caml_failwith("wordexp: impossible");
+   }
++#endif
+ }
+ 
+ 

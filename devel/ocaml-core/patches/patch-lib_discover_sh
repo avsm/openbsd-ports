@@ -1,0 +1,9 @@
+$OpenBSD$
+--- lib/discover.sh.orig	Wed Oct 26 22:56:54 2011
++++ lib/discover.sh	Wed Oct 26 22:57:14 2011
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ set -e -u -o pipefail
+ 
+ ML_OUTFILE="${1:?Usage: discover.sh ML_OUTFILE C_OUTFILE}"

@@ -1,0 +1,9 @@
+@comment $OpenBSD$
+lib/ocaml/site-lib/sexplib/
+lib/ocaml/site-lib/sexplib/META
+lib/ocaml/site-lib/sexplib/pa_sexp_conv.cma
+lib/ocaml/site-lib/sexplib/pa_sexp_conv.cmi
+lib/ocaml/site-lib/sexplib/pa_sexp_conv.mli
+lib/ocaml/site-lib/sexplib/sexplib.cma
+lib/ocaml/site-lib/sexplib/sexplib.cmi
+%%native%%

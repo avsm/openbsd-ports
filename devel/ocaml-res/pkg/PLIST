@@ -1,0 +1,14 @@
+@comment $OpenBSD$
+lib/ocaml/site-lib/res/
+lib/ocaml/site-lib/res/META
+lib/ocaml/site-lib/res/nopres_intf.cmi
+lib/ocaml/site-lib/res/nopres_intf.mli
+lib/ocaml/site-lib/res/pres_intf.cmi
+lib/ocaml/site-lib/res/pres_intf.mli
+lib/ocaml/site-lib/res/res.cma
+lib/ocaml/site-lib/res/res.cmi
+lib/ocaml/site-lib/res/res.mli
+lib/ocaml/site-lib/res/strat.cmi
+lib/ocaml/site-lib/res/strat.mli
+lib/ocaml/site-lib/res/weak_intf.cmi
+%%native%%

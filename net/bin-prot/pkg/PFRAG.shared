@@ -1,0 +1,2 @@
+@comment $OpenBSD$
+lib/ocaml/site-lib/bin_prot/dllbin_prot.so

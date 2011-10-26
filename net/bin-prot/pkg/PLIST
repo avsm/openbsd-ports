@@ -1,0 +1,11 @@
+@comment $OpenBSD$
+%%SHARED%%
+lib/ocaml/site-lib/bin-prot/
+lib/ocaml/site-lib/bin_prot/
+lib/ocaml/site-lib/bin_prot/META
+lib/ocaml/site-lib/bin_prot/bin_prot.cma
+lib/ocaml/site-lib/bin_prot/bin_prot.cmi
+lib/ocaml/site-lib/bin_prot/libbin_prot.a
+lib/ocaml/site-lib/bin_prot/pa_bin_prot.cma
+lib/ocaml/site-lib/bin_prot/pa_bin_prot.cmi
+lib/ocaml/site-lib/bin_prot/pa_bin_prot.mli

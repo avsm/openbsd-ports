@@ -1,0 +1,5 @@
+@comment $OpenBSD$
+lib/ocaml/site-lib/bin_prot/bin_prot.a
+lib/ocaml/site-lib/bin_prot/bin_prot.cmxa
+lib/ocaml/site-lib/bin_prot/pa_bin_prot.a
+lib/ocaml/site-lib/bin_prot/pa_bin_prot.cmxa

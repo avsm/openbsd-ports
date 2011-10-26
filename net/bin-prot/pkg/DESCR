@@ -1,0 +1,33 @@
+This library contains functionality for reading and writing
+OCaml-values in a type-safe binary protocol. It is extremely
+efficient, typically supporting type-safe marshalling and unmarshalling
+of even highly structured values at speeds sufficient to saturate
+a gigabit connection. The protocol is also heavily optimized for
+size, making it ideal for long-term storage of large amounts of
+data.
+
+The library is highly dependable and safe to use: a rigorous test
+suite has to date guaranteed that this library has never exhibited
+a bug in production systems in several years of use. "Bin_prot" has
+been successfully employed in mission-critical financial applications,
+storing many terabytes of structured data derived from thousands
+of type definitions, and typically processing millions of messages
+a day in realtime for low-latency applications that must not crash.
+
+Since version two this library should work with all CPU architectures
+currently supported by OCaml, no matter the word size (32 or 64
+bit), endianness (2), or alignment requirements. It provides users
+with a convenient and safe way of performing I/O on any extensionally
+defined OCaml type (see later sections for details). Functions,
+objects, first-class modules, as well as values whose type is bound
+through a polymorphic record field are hence not supported. This
+is hardly ever a limitation in practice.
+
+As of now, there is no support for cyclic or shared values. Cyclic
+values will lead to non-termination whereas shared values, besides
+requiring more space when encoded, may lead to a substantial increase
+in memory footprint when they are read back. It would not be trivial
+to support these kinds of values in a type-safe way without noticably
+sacrificing performance. If these kinds of values are needed, the
+user may want to use the as of today still unsafe marshalling
+functions provided by OCaml.

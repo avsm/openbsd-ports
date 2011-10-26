@@ -1,0 +1,42 @@
+$OpenBSD$
+--- lib/common_stubs.h.orig	Thu Sep  1 18:40:11 2011
++++ lib/common_stubs.h	Wed Oct 26 22:34:21 2011
+@@ -31,7 +31,6 @@
+ #include <sys/types.h>
+ 
+ #include <string.h>
+-#include <arpa/inet.h>
+ 
+ #include <caml/config.h>
+ #include <caml/memory.h>
+@@ -47,6 +46,14 @@
+ #include "int64_emul.h"
+ #endif
+ 
++#if defined(__OpenBSD__)
++#define le16toh(x) htole16(x)
++#define le32toh(x) htole32(x)
++#define le64toh(x) htole64(x)
++#define be16toh(x) htobe16(x)
++#define be32toh(x) htobe32(x)
++#define be64toh(x) htobe64(x)
++#endif /* defined(__OpenBSD__) */
+ 
+ 
+ /* Endianness- and alignment-independent integer marshalling functions */
+@@ -63,13 +70,13 @@
+ #include <byteswap.h>
+ #endif /* __linux__ */
+ 
+-#if defined(__FreeBSD__) || defined(__NetBSD__)
++#if defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__)
+ #include <sys/endian.h>
+ #define __BYTE_ORDER_BYTE_ORDER
+ #define bswap_16 bswap16
+ #define bswap_32 bswap32
+ #define bswap_64 bswap64
+-#endif /* defined(__FreeBSD__) || defined(__NetBSD__) */
++#endif /* defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) */
+ 
+ 
+ #if _BYTE_ORDER == _LITTLE_ENDIAN
